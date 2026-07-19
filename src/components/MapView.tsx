@@ -13,29 +13,44 @@ interface Props {
   onBoundsChange: (bounds: L.LatLngBounds, zoom: number) => void
 }
 
+function pinIcon(color: string): L.DivIcon {
+  const svg = `
+    <svg width="34" height="44" viewBox="0 0 34 44" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17 1C8.7 1 2 7.7 2 16c0 10.5 12.2 24.2 14.1 26.3a1.2 1.2 0 0 0 1.8 0C19.8 40.2 32 26.5 32 16 32 7.7 25.3 1 17 1z"
+            fill="${color}" stroke="#ffffff" stroke-width="2"/>
+      <circle cx="17" cy="16" r="6" fill="#ffffff"/>
+    </svg>`
+  return L.divIcon({
+    className: 'pin',
+    html: svg,
+    iconSize: [34, 44],
+    iconAnchor: [17, 43],
+    popupAnchor: [0, -38],
+  })
+}
+
 function popupHtml(station: Station): string {
   const services = station.services
     .map(
       (s) =>
-        `<span class="badge" style="background:${SERVICE_COLORS[s]}">${SERVICE_LABELS[s]}</span>`,
+        `<span class="badge" style="--badge:${SERVICE_COLORS[s]}">${SERVICE_LABELS[s]}</span>`,
     )
-    .join(' ')
+    .join('')
   const rows: string[] = []
-  if (station.description) rows.push(`<p>${station.description}</p>`)
-  if (station.fee) rows.push(`<p><strong>Avgift:</strong> ${station.fee}</p>`)
+  if (station.description) rows.push(`<p class="desc">${station.description}</p>`)
+  if (station.fee) rows.push(`<p class="meta"><strong>Avgift</strong>${station.fee}</p>`)
   if (station.openingHours)
-    rows.push(`<p><strong>Öppettider:</strong> ${station.openingHours}</p>`)
+    rows.push(`<p class="meta"><strong>Öppettider</strong>${station.openingHours}</p>`)
   const nav = `https://www.google.com/maps/dir/?api=1&destination=${station.lat},${station.lon}`
-  rows.push(
-    `<p><a href="${nav}" target="_blank" rel="noopener">Vägbeskrivning</a>` +
-      (station.osmUrl
-        ? ` · <a href="${station.osmUrl}" target="_blank" rel="noopener">OpenStreetMap</a>`
-        : '') +
-      '</p>',
-  )
+  const links =
+    `<div class="links"><a class="primary" href="${nav}" target="_blank" rel="noopener">Vägbeskrivning →</a>` +
+    (station.osmUrl
+      ? `<a href="${station.osmUrl}" target="_blank" rel="noopener">OpenStreetMap</a>`
+      : '') +
+    '</div>'
   const sourceNote =
     station.source === 'osm' ? 'Källa: OpenStreetMap' : 'Källa: eget register'
-  return `<div class="popup"><h3>${station.name}</h3><div class="badges">${services}</div>${rows.join('')}<p class="source">${sourceNote}</p></div>`
+  return `<div class="popup"><h3>${station.name}</h3><div class="badges">${services}</div>${rows.join('')}${links}<p class="source">${sourceNote}</p></div>`
 }
 
 export default function MapView({ stations, activeFilters, flyTo, onBoundsChange }: Props) {
@@ -81,14 +96,8 @@ export default function MapView({ stations, activeFilters, flyTo, onBoundsChange
     for (const station of stations) {
       if (!station.services.some((s) => activeFilters.has(s))) continue
       const primary = station.services.find((s) => activeFilters.has(s)) ?? station.services[0]
-      L.circleMarker([station.lat, station.lon], {
-        radius: 9,
-        color: '#ffffff',
-        weight: 2,
-        fillColor: SERVICE_COLORS[primary],
-        fillOpacity: 0.95,
-      })
-        .bindPopup(popupHtml(station), { maxWidth: 280 })
+      L.marker([station.lat, station.lon], { icon: pinIcon(SERVICE_COLORS[primary]) })
+        .bindPopup(popupHtml(station), { maxWidth: 300, className: 'station-popup' })
         .addTo(layer)
     }
   }, [stations, activeFilters])

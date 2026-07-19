@@ -5,9 +5,15 @@ import { OWN_STATIONS } from './data/stations'
 import { searchPlace } from './lib/geocode'
 import { fetchOsmStations } from './lib/overpass'
 import type { ServiceType, Station } from './types'
-import { SERVICE_COLORS, SERVICE_LABELS } from './types'
+import { SERVICE_LABELS } from './types'
 
 const ALL_SERVICES: ServiceType[] = ['gravatten', 'latrin', 'vatten']
+
+const SERVICE_ICONS: Record<ServiceType, string> = {
+  gravatten: '🚿',
+  latrin: '🚽',
+  vatten: '🚰',
+}
 
 export default function App() {
   const [osmStations, setOsmStations] = useState<Station[]>([])
@@ -16,7 +22,7 @@ export default function App() {
   )
   const [flyTo, setFlyTo] = useState<{ lat: number; lon: number; zoom?: number } | null>(null)
   const [query, setQuery] = useState('')
-  const [status, setStatus] = useState('Zooma in till en region för att hämta stationer.')
+  const [status, setStatus] = useState('Zooma in eller sök på en ort för att hämta stationer.')
   const [loading, setLoading] = useState(false)
   const fetchTimer = useRef<ReturnType<typeof setTimeout>>()
   const cacheRef = useRef(new Map<string, Station>())
@@ -29,18 +35,18 @@ export default function App() {
   const handleBoundsChange = useCallback((bounds: L.LatLngBounds, zoom: number) => {
     clearTimeout(fetchTimer.current)
     if (zoom < MIN_FETCH_ZOOM) {
-      setStatus('Zooma in till en region för att hämta stationer.')
+      setStatus('Zooma in eller sök på en ort för att hämta stationer.')
       return
     }
     fetchTimer.current = setTimeout(async () => {
       setLoading(true)
-      setStatus('Hämtar stationer från OpenStreetMap …')
+      setStatus('Hämtar stationer …')
       try {
         const fetched = await fetchOsmStations(bounds)
         const cache = cacheRef.current
         for (const s of fetched) cache.set(s.id, s)
         setOsmStations([...cache.values()])
-        setStatus(`${cache.size} stationer inlästa (OpenStreetMap + eget register).`)
+        setStatus(`${cache.size + OWN_STATIONS.length} stationer inlästa`)
       } catch {
         setStatus('Kunde inte hämta data just nu – försök igen om en stund.')
       } finally {
@@ -69,7 +75,7 @@ export default function App() {
         return
       }
       const hit = results[0]
-      setStatus(hit.name)
+      setStatus(hit.name.split(',').slice(0, 2).join(','))
       setFlyTo({ lat: hit.lat, lon: hit.lon, zoom: 11 })
     } catch {
       setStatus('Sökningen misslyckades – försök igen.')
@@ -93,11 +99,29 @@ export default function App() {
 
   return (
     <div className="app">
-      <header className="topbar">
-        <h1>
-          <img src="/icon.svg" alt="" width="28" height="28" /> Tömningskartan
-        </h1>
-        <form className="search" onSubmit={handleSearch}>
+      <MapView
+        stations={stations}
+        activeFilters={activeFilters}
+        flyTo={flyTo}
+        onBoundsChange={handleBoundsChange}
+      />
+
+      <div className="panel">
+        <header className="brand">
+          <img src="/icon.svg" alt="" width="34" height="34" />
+          <div>
+            <h1>Tömningskartan</h1>
+            <p>Gråvatten · latrin · färskvatten för husbil &amp; husvagn</p>
+          </div>
+        </header>
+
+        <form className="search" onSubmit={handleSearch} role="search">
+          <svg className="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"
+              fill="currentColor"
+            />
+          </svg>
           <input
             type="search"
             placeholder="Sök ort, t.ex. Mora"
@@ -106,37 +130,38 @@ export default function App() {
             aria-label="Sök ort"
           />
           <button type="submit">Sök</button>
-          <button type="button" onClick={handleLocate} title="Visa min position">
-            📍 Nära mig
-          </button>
         </form>
+
         <div className="filters" role="group" aria-label="Filtrera tjänster">
           {ALL_SERVICES.map((service) => (
-            <label
+            <button
               key={service}
-              className={activeFilters.has(service) ? 'filter active' : 'filter'}
-              style={{ '--dot': SERVICE_COLORS[service] } as React.CSSProperties}
+              type="button"
+              className={activeFilters.has(service) ? 'chip active' : 'chip'}
+              data-service={service}
+              aria-pressed={activeFilters.has(service)}
+              onClick={() => toggleFilter(service)}
             >
-              <input
-                type="checkbox"
-                checked={activeFilters.has(service)}
-                onChange={() => toggleFilter(service)}
-              />
-              <span className="dot" /> {SERVICE_LABELS[service]}
-            </label>
+              <span aria-hidden="true">{SERVICE_ICONS[service]}</span>
+              {SERVICE_LABELS[service]}
+            </button>
           ))}
         </div>
-      </header>
-      <MapView
-        stations={stations}
-        activeFilters={activeFilters}
-        flyTo={flyTo}
-        onBoundsChange={handleBoundsChange}
-      />
-      <footer className="statusbar" aria-live="polite">
-        {loading ? '⏳ ' : ''}
+      </div>
+
+      <button className="locate-btn" type="button" onClick={handleLocate} aria-label="Visa min position">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 8a4 4 0 1 0 4 4 4 4 0 0 0-4-4zm8.94 3A8.99 8.99 0 0 0 13 3.06V1h-2v2.06A8.99 8.99 0 0 0 3.06 11H1v2h2.06A8.99 8.99 0 0 0 11 20.94V23h2v-2.06A8.99 8.99 0 0 0 20.94 13H23v-2zM12 19a7 7 0 1 1 7-7 7 7 0 0 1-7 7z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+
+      <div className={loading ? 'status loading' : 'status'} aria-live="polite">
+        {loading && <span className="spinner" aria-hidden="true" />}
         {status}
-      </footer>
+      </div>
     </div>
   )
 }
