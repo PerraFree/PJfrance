@@ -1,5 +1,5 @@
 /* Enkel service worker: cachar appskalet så att appen startar även offline. */
-const CACHE = 'tomningskartan-v1'
+const CACHE = 'tomningskartan-v2'
 const APP_SHELL = ['/', '/manifest.webmanifest', '/icon.svg']
 
 self.addEventListener('install', (event) => {

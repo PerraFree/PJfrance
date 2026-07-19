@@ -109,9 +109,265 @@ body {
   border: 2px solid #fff;
 }
 
+.filter.as-btn {
+  border: none;
+  font-family: inherit;
+  color: inherit;
+}
+
+.filter.as-btn:disabled {
+  cursor: wait;
+}
+
+.map-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
 .map {
   flex: 1;
   min-height: 0;
+}
+
+.frost-banner {
+  background: #0d47a1;
+  color: #fff;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+/* Verktygslådan */
+
+.toolbox {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  right: 0.75rem;
+  max-width: 420px;
+  max-height: calc(100% - 1.5rem);
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  z-index: 1100;
+}
+
+.toolbox-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.4rem;
+  padding: 0.6rem 0.6rem 0;
+}
+
+.toolbox-tabs {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+}
+
+.toolbox .tab {
+  border: none;
+  background: #e8f0e8;
+  border-radius: 999px;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.toolbox .tab.active {
+  background: #1b5e20;
+  color: #fff;
+}
+
+.toolbox-body {
+  padding: 0.75rem 0.9rem 0.9rem;
+  font-size: 0.92rem;
+}
+
+.toolbox-body p {
+  margin: 0.4rem 0;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  background: #43a047;
+  color: #fff;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.92rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn.secondary {
+  background: #78909c;
+}
+
+.btn.tiny {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.8rem;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.btn-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0.5rem 0;
+}
+
+.tool-note {
+  color: #556;
+  font-size: 0.82rem;
+}
+
+.ok {
+  color: #1b5e20;
+}
+
+.warn,
+td.warn {
+  color: #c62828;
+  font-weight: 600;
+}
+
+/* Vattenpass */
+
+.level {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.bubble-box {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  margin: 0.3rem auto;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f1f8e9 0%, #dcedc8 100%);
+  border: 3px solid #9ccc65;
+  overflow: hidden;
+}
+
+.bubble-box.level-ok {
+  border-color: #2e7d32;
+}
+
+.bubble {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 34px;
+  height: 34px;
+  margin: -17px 0 0 -17px;
+  border-radius: 50%;
+  background: rgba(67, 160, 71, 0.85);
+  box-shadow: inset -3px -3px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s linear;
+}
+
+.crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  margin: -22px 0 0 -22px;
+  border: 2px dashed rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Väder-tabellen */
+
+.wx-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.4rem 0;
+  font-size: 0.88rem;
+}
+
+.wx-table th,
+.wx-table td {
+  text-align: left;
+  padding: 0.25rem 0.5rem;
+  border-bottom: 1px solid #e0e6e0;
+}
+
+/* Tankkoll */
+
+.tank-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0.5rem 0;
+  flex-wrap: wrap;
+}
+
+.tank-row .btn {
+  flex: 0 0 auto;
+}
+
+.tank-info {
+  font-size: 0.85rem;
+  color: #334;
+}
+
+/* Fordonsprofil */
+
+.veh-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin: 0.5rem 0;
+}
+
+.veh-field input {
+  width: 5rem;
+  padding: 0.35rem 0.4rem;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+/* Kart-ikoner */
+
+.restr-icon {
+  font-size: 18px;
+  text-align: center;
+  line-height: 22px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+.sun-icon {
+  text-align: center;
+  pointer-events: none;
+}
+
+.sun-icon span {
+  font-size: 22px;
+  display: block;
+  line-height: 1;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+}
+
+.sun-icon small {
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 999px;
+  padding: 0 4px;
 }
 
 .statusbar {

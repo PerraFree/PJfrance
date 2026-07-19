@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+import type { Restriction } from '../lib/lowbridges'
+import type { SunSpot } from '../lib/sunfinder'
 import type { ServiceType, Station } from '../types'
 import { SERVICE_COLORS, SERVICE_LABELS } from '../types'
 
@@ -11,6 +13,8 @@ interface Props {
   activeFilters: Set<ServiceType>
   flyTo: { lat: number; lon: number; zoom?: number } | null
   onBoundsChange: (bounds: L.LatLngBounds, zoom: number) => void
+  restrictions: Restriction[]
+  sunSpots: SunSpot[]
 }
 
 function popupHtml(station: Station): string {
@@ -38,10 +42,31 @@ function popupHtml(station: Station): string {
   return `<div class="popup"><h3>${station.name}</h3><div class="badges">${services}</div>${rows.join('')}<p class="source">${sourceNote}</p></div>`
 }
 
-export default function MapView({ stations, activeFilters, flyTo, onBoundsChange }: Props) {
+function restrictionHtml(r: Restriction): string {
+  const rows: string[] = []
+  if (r.maxHeight !== undefined)
+    rows.push(`<p><strong>Maxhöjd:</strong> ${r.maxHeight.toFixed(1)} m</p>`)
+  if (r.maxWeight !== undefined)
+    rows.push(`<p><strong>Maxvikt:</strong> ${r.maxWeight.toFixed(1)} t</p>`)
+  rows.push(
+    `<p><a href="${r.osmUrl}" target="_blank" rel="noopener">OpenStreetMap</a></p>`,
+  )
+  return `<div class="popup"><h3>⚠️ ${r.name ?? 'Begränsning'}</h3>${rows.join('')}<p class="source">Källa: OpenStreetMap – kontrollera alltid skyltning på plats</p></div>`
+}
+
+export default function MapView({
+  stations,
+  activeFilters,
+  flyTo,
+  onBoundsChange,
+  restrictions,
+  sunSpots,
+}: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<L.Map | null>(null)
   const layerRef = useRef<L.LayerGroup | null>(null)
+  const restrLayerRef = useRef<L.LayerGroup | null>(null)
+  const sunLayerRef = useRef<L.LayerGroup | null>(null)
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return
@@ -53,6 +78,8 @@ export default function MapView({ stations, activeFilters, flyTo, onBoundsChange
       maxZoom: 19,
     }).addTo(map)
     layerRef.current = L.layerGroup().addTo(map)
+    restrLayerRef.current = L.layerGroup().addTo(map)
+    sunLayerRef.current = L.layerGroup().addTo(map)
     mapRef.current = map
 
     const notify = () => onBoundsChange(map.getBounds(), map.getZoom())
@@ -63,6 +90,8 @@ export default function MapView({ stations, activeFilters, flyTo, onBoundsChange
       map.remove()
       mapRef.current = null
       layerRef.current = null
+      restrLayerRef.current = null
+      sunLayerRef.current = null
     }
     // onBoundsChange är stabil via useCallback i App
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -92,6 +121,41 @@ export default function MapView({ stations, activeFilters, flyTo, onBoundsChange
         .addTo(layer)
     }
   }, [stations, activeFilters])
+
+  useEffect(() => {
+    const layer = restrLayerRef.current
+    if (!layer) return
+    layer.clearLayers()
+    for (const r of restrictions) {
+      L.marker([r.lat, r.lon], {
+        icon: L.divIcon({
+          className: 'restr-icon',
+          html: '⚠️',
+          iconSize: [22, 22],
+          iconAnchor: [11, 11],
+        }),
+      })
+        .bindPopup(restrictionHtml(r), { maxWidth: 260 })
+        .addTo(layer)
+    }
+  }, [restrictions])
+
+  useEffect(() => {
+    const layer = sunLayerRef.current
+    if (!layer) return
+    layer.clearLayers()
+    for (const s of sunSpots) {
+      const emoji = s.score >= 0.7 ? '☀️' : s.score >= 0.35 ? '🌤️' : '☁️'
+      L.marker([s.lat, s.lon], {
+        icon: L.divIcon({
+          className: 'sun-icon',
+          html: `<span>${emoji}</span><small>${Math.round(s.score * 100)}%</small>`,
+          iconSize: [40, 40],
+          iconAnchor: [20, 20],
+        }),
+      }).addTo(layer)
+    }
+  }, [sunSpots])
 
   return <div ref={containerRef} className="map" />
 }

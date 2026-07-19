@@ -1,9 +1,19 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type L from 'leaflet'
 import MapView, { MIN_FETCH_ZOOM } from './components/MapView'
+import Toolbox from './components/Toolbox'
 import { OWN_STATIONS } from './data/stations'
 import { searchPlace } from './lib/geocode'
+import type { Restriction } from './lib/lowbridges'
+import { fetchRestrictions } from './lib/lowbridges'
 import { fetchOsmStations } from './lib/overpass'
+import type { ParkedPosition } from './lib/parking'
+import { loadParked } from './lib/parking'
+import { isSeasonClosed } from './lib/season'
+import { fetchForecast, minNightTemps } from './lib/smhi'
+import type { SunSpot } from './lib/sunfinder'
+import { findSun } from './lib/sunfinder'
+import { loadVehicle, saveVehicle } from './lib/vehicle'
 import type { ServiceType, Station } from './types'
 import { SERVICE_COLORS, SERVICE_LABELS } from './types'
 
@@ -21,33 +31,90 @@ export default function App() {
   const fetchTimer = useRef<ReturnType<typeof setTimeout>>()
   const cacheRef = useRef(new Map<string, Station>())
 
-  const stations = useMemo(
-    () => [...OWN_STATIONS, ...osmStations],
-    [osmStations],
-  )
+  const [toolboxOpen, setToolboxOpen] = useState(false)
+  const [vehicle, setVehicle] = useState(loadVehicle)
+  const [parked, setParked] = useState<ParkedPosition | null>(loadParked)
+  const [showRestrictions, setShowRestrictions] = useState(false)
+  const [restrictions, setRestrictions] = useState<Restriction[]>([])
+  const [hideSeasonClosed, setHideSeasonClosed] = useState(false)
+  const [sunSpots, setSunSpots] = useState<SunSpot[]>([])
+  const [sunLoading, setSunLoading] = useState(false)
+  const [frostWarning, setFrostWarning] = useState('')
+  const lastBoundsRef = useRef<{ bounds: L.LatLngBounds; zoom: number } | null>(null)
+  const mapCenterRef = useRef({ lat: 62.0, lon: 15.0 })
 
-  const handleBoundsChange = useCallback((bounds: L.LatLngBounds, zoom: number) => {
-    clearTimeout(fetchTimer.current)
-    if (zoom < MIN_FETCH_ZOOM) {
-      setStatus('Zooma in till en region för att hämta stationer.')
+  const stations = useMemo(() => {
+    const all = [...OWN_STATIONS, ...osmStations]
+    return hideSeasonClosed ? all.filter((s) => !isSeasonClosed(s.openingHours)) : all
+  }, [osmStations, hideSeasonClosed])
+
+  // Frostvakt: kolla nattemperaturen vid den parkerade bilen när appen öppnas
+  useEffect(() => {
+    if (!parked) {
+      setFrostWarning('')
       return
     }
-    fetchTimer.current = setTimeout(async () => {
-      setLoading(true)
-      setStatus('Hämtar stationer från OpenStreetMap …')
-      try {
-        const fetched = await fetchOsmStations(bounds)
-        const cache = cacheRef.current
-        for (const s of fetched) cache.set(s.id, s)
-        setOsmStations([...cache.values()])
-        setStatus(`${cache.size} stationer inlästa (OpenStreetMap + eget register).`)
-      } catch {
-        setStatus('Kunde inte hämta data just nu – försök igen om en stund.')
-      } finally {
-        setLoading(false)
+    let cancelled = false
+    fetchForecast(parked.lat, parked.lon)
+      .then((forecast) => {
+        if (cancelled) return
+        const frost = minNightTemps(forecast).find((n) => n.temp <= 0)
+        setFrostWarning(
+          frost
+            ? `❄️ Frostvakt: ner mot ${frost.temp.toFixed(0)} °C i natt/kommande nätter där bilen står – töm eller värm vattensystemet!`
+            : '',
+        )
+      })
+      .catch(() => {})
+    return () => {
+      cancelled = true
+    }
+  }, [parked])
+
+  const loadRestrictions = useCallback(
+    async (bounds: L.LatLngBounds, zoom: number) => {
+      if (zoom < MIN_FETCH_ZOOM) {
+        setRestrictions([])
+        return
       }
-    }, 600)
-  }, [])
+      try {
+        setRestrictions(await fetchRestrictions(bounds, vehicle.height, vehicle.weight))
+      } catch {
+        // Overpass överbelastad – behåll det som redan visas
+      }
+    },
+    [vehicle.height, vehicle.weight],
+  )
+
+  const handleBoundsChange = useCallback(
+    (bounds: L.LatLngBounds, zoom: number) => {
+      const c = bounds.getCenter()
+      mapCenterRef.current = { lat: c.lat, lon: c.lng }
+      lastBoundsRef.current = { bounds, zoom }
+      clearTimeout(fetchTimer.current)
+      if (zoom < MIN_FETCH_ZOOM) {
+        setStatus('Zooma in till en region för att hämta stationer.')
+        return
+      }
+      fetchTimer.current = setTimeout(async () => {
+        setLoading(true)
+        setStatus('Hämtar stationer från OpenStreetMap …')
+        try {
+          const fetched = await fetchOsmStations(bounds)
+          const cache = cacheRef.current
+          for (const s of fetched) cache.set(s.id, s)
+          setOsmStations([...cache.values()])
+          setStatus(`${cache.size} stationer inlästa (OpenStreetMap + eget register).`)
+        } catch {
+          setStatus('Kunde inte hämta data just nu – försök igen om en stund.')
+        } finally {
+          setLoading(false)
+        }
+        if (showRestrictions) void loadRestrictions(bounds, zoom)
+      }, 600)
+    },
+    [showRestrictions, loadRestrictions],
+  )
 
   const toggleFilter = (service: ServiceType) => {
     setActiveFilters((prev) => {
@@ -56,6 +123,44 @@ export default function App() {
       else next.add(service)
       return next
     })
+  }
+
+  const toggleRestrictions = () => {
+    const next = !showRestrictions
+    setShowRestrictions(next)
+    if (!next) {
+      setRestrictions([])
+    } else if (lastBoundsRef.current) {
+      const { bounds, zoom } = lastBoundsRef.current
+      if (zoom < MIN_FETCH_ZOOM) {
+        setStatus('Zooma in för att se höjd-/viktbegränsningar för ditt fordon.')
+      } else {
+        void loadRestrictions(bounds, zoom)
+      }
+    }
+  }
+
+  const handleSunSearch = async () => {
+    if (sunSpots.length > 0) {
+      setSunSpots([])
+      return
+    }
+    setSunLoading(true)
+    setStatus('Kollar solchanserna inom körbart avstånd (SMHI) …')
+    try {
+      const spots = await findSun(mapCenterRef.current.lat, mapCenterRef.current.lon)
+      setSunSpots(spots)
+      const best = [...spots].sort((a, b) => b.score - a.score)[0]
+      setStatus(
+        best && best.score > 0
+          ? `Solchans: bästa läget har ${Math.round(best.score * 100)} % sol närmaste två dagarna.`
+          : 'Solchans: tyvärr mest moln överallt i närheten just nu.',
+      )
+    } catch {
+      setStatus('Kunde inte hämta solprognosen just nu.')
+    } finally {
+      setSunLoading(false)
+    }
   }
 
   const handleSearch = async (e: React.FormEvent) => {
@@ -125,14 +230,65 @@ export default function App() {
               <span className="dot" /> {SERVICE_LABELS[service]}
             </label>
           ))}
+          <label className={hideSeasonClosed ? 'filter active' : 'filter'}>
+            <input
+              type="checkbox"
+              checked={hideSeasonClosed}
+              onChange={() => setHideSeasonClosed((v) => !v)}
+            />
+            🗓️ Dölj säsongsstängt
+          </label>
+          <label className={showRestrictions ? 'filter active' : 'filter'}>
+            <input type="checkbox" checked={showRestrictions} onChange={toggleRestrictions} />
+            ⚠️ Låga broar ({vehicle.height} m)
+          </label>
+          <button
+            type="button"
+            className={sunSpots.length > 0 ? 'filter active as-btn' : 'filter as-btn'}
+            onClick={handleSunSearch}
+            disabled={sunLoading}
+          >
+            {sunLoading ? '⏳' : '☀️'} Solchans
+          </button>
+          <button
+            type="button"
+            className="filter as-btn"
+            onClick={() => setToolboxOpen((v) => !v)}
+          >
+            🧰 Verktyg
+          </button>
         </div>
       </header>
-      <MapView
-        stations={stations}
-        activeFilters={activeFilters}
-        flyTo={flyTo}
-        onBoundsChange={handleBoundsChange}
-      />
+      {frostWarning && (
+        <div className="frost-banner" role="alert">
+          {frostWarning}
+          <button className="btn tiny" onClick={() => setFrostWarning('')} aria-label="Stäng">
+            ✕
+          </button>
+        </div>
+      )}
+      <div className="map-wrap">
+        <MapView
+          stations={stations}
+          activeFilters={activeFilters}
+          flyTo={flyTo}
+          onBoundsChange={handleBoundsChange}
+          restrictions={restrictions}
+          sunSpots={sunSpots}
+        />
+        <Toolbox
+          open={toolboxOpen}
+          onClose={() => setToolboxOpen(false)}
+          vehicle={vehicle}
+          onVehicleChange={(v) => {
+            setVehicle(v)
+            saveVehicle(v)
+          }}
+          parked={parked}
+          onParkedChange={setParked}
+          mapCenter={mapCenterRef.current}
+        />
+      </div>
       <footer className="statusbar" aria-live="polite">
         {loading ? '⏳ ' : ''}
         {status}
