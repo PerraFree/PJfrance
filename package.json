@@ -1,0 +1,26 @@
+{
+  "name": "tomningskartan",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Karta över platser i Sverige för tömning av gråvatten och latrin samt påfyllning av färskvatten",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "leaflet": "^1.9.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.12",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "playwright-core": "^1.61.1",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.0"
+  }
+}
