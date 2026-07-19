@@ -55,8 +55,10 @@ function toStation(p: TvParking): Station | null {
   const hasLatrin = types.some((t) => LATRIN_RE.test(t))
   const hasWater = types.some((t) => WATER_RE.test(t))
   if (!hasLatrin && !hasWater) return null
+  // Trafikverkets anläggningar är enbart avsedda för portabla toaletter
+  // (kassett) – inte gråvatten eller fast tank.
   const services: Station['services'] = []
-  if (hasLatrin) services.push('gravatten', 'latrin')
+  if (hasLatrin) services.push('latrin')
   if (hasWater) services.push('vatten')
   return {
     id: `tv-${p.Id ?? `${pos.lat},${pos.lon}`}`,

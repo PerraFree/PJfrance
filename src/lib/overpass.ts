@@ -54,11 +54,26 @@ function placeKind(tags: Record<string, string>): string | undefined {
   return undefined
 }
 
+/**
+ * Många svenska sanitary_dump_station i OSM är sugtömningsstationer för
+ * fritidsbåtar ute i vattnet – oanvändbara för husbil/husvagn.
+ */
+function isBoatStation(tags: Record<string, string>): boolean {
+  return (
+    tags.waterway === 'sanitary_dump_station' ||
+    'seamark:type' in tags ||
+    tags['sanitary_dump_station:suction'] === 'yes' ||
+    tags.boat === 'yes' ||
+    tags.motorhome === 'no'
+  )
+}
+
 function toStation(el: OverpassElement): Station | null {
   const lat = el.lat ?? el.center?.lat
   const lon = el.lon ?? el.center?.lon
   if (lat === undefined || lon === undefined) return null
   const tags = el.tags ?? {}
+  if (isBoatStation(tags)) return null
   const services = servicesFromTags(tags)
   if (services.length === 0) return null
   const kind = placeKind(tags)
