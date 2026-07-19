@@ -108,7 +108,7 @@ export default function App() {
 
       <div className="panel">
         <header className="brand">
-          <img src="/icon.svg" alt="" width="34" height="34" />
+          <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" width="34" height="34" />
           <div>
             <h1>Tömningskartan</h1>
             <p>Gråvatten · latrin · färskvatten för husbil &amp; husvagn</p>
