@@ -6,8 +6,8 @@ export interface Station {
   lat: number
   lon: number
   services: ServiceType[]
-  /** 'osm' = hämtad från OpenStreetMap, 'egen' = eget register */
-  source: 'osm' | 'egen'
+  /** 'osm' = OpenStreetMap, 'egen' = eget register, 'trafikverket' = Trafikverkets rastplatser */
+  source: 'osm' | 'egen' | 'trafikverket'
   description?: string
   fee?: string
   openingHours?: string

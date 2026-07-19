@@ -14,16 +14,44 @@ interface OverpassElement {
 
 function servicesFromTags(tags: Record<string, string>): ServiceType[] {
   const services = new Set<ServiceType>()
+
+  // Dedikerade tömningsstationer
   if (tags.amenity === 'sanitary_dump_station') {
     services.add('gravatten')
     services.add('latrin')
-    if (tags['sanitary_dump_station:grey_water'] === 'no') services.delete('gravatten')
-    if (tags['sanitary_dump_station:chemical_toilet'] === 'no') services.delete('latrin')
   }
-  if (tags.amenity === 'water_point' || tags.water_point === 'yes' || tags.drinking_water === 'yes') {
+  // Platser (rastplatser, campingar, gästhamnar, mackar …) som erbjuder tömning
+  const sds = tags.sanitary_dump_station
+  if (sds && sds !== 'no') {
+    services.add('gravatten')
+    services.add('latrin')
+  }
+  if (tags['sanitary_dump_station:grey_water'] === 'no') services.delete('gravatten')
+  if (tags['sanitary_dump_station:chemical_toilet'] === 'no') services.delete('latrin')
+
+  if (
+    tags.amenity === 'water_point' ||
+    tags.water_point === 'yes' ||
+    tags.amenity === 'drinking_water' ||
+    tags.drinking_water === 'yes'
+  ) {
     services.add('vatten')
   }
   return [...services]
+}
+
+/** Beskriver vilken sorts plats stationen ligger på, för namn och popup. */
+function placeKind(tags: Record<string, string>): string | undefined {
+  if (tags.highway === 'rest_area') return 'Rastplats'
+  if (tags.highway === 'services') return 'Vägkrog/serviceområde'
+  if (tags.tourism === 'caravan_site') return 'Ställplats/campingplats'
+  if (tags.tourism === 'camp_site') return 'Camping'
+  if (tags.leisure === 'marina' || tags.mooring) return 'Gästhamn/marina'
+  if (tags.amenity === 'fuel') return 'Drivmedelsstation'
+  if (tags.amenity === 'sanitary_dump_station') return 'Tömningsstation'
+  if (tags.amenity === 'water_point') return 'Vattenpåfyllning'
+  if (tags.amenity === 'drinking_water') return 'Dricksvatten'
+  return undefined
 }
 
 function toStation(el: OverpassElement): Station | null {
@@ -33,15 +61,15 @@ function toStation(el: OverpassElement): Station | null {
   const tags = el.tags ?? {}
   const services = servicesFromTags(tags)
   if (services.length === 0) return null
+  const kind = placeKind(tags)
   return {
     id: `osm-${el.type}-${el.id}`,
-    name:
-      tags.name ??
-      (tags.amenity === 'water_point' ? 'Vattenpåfyllning' : 'Tömningsstation'),
+    name: tags.name ?? kind ?? 'Tömningsstation',
     lat,
     lon,
     services,
     source: 'osm',
+    description: tags.name && kind ? kind : undefined,
     fee: tags.fee === 'yes' ? tags.charge ?? 'Avgift' : tags.fee === 'no' ? 'Gratis' : undefined,
     openingHours: tags.opening_hours,
     osmUrl: `https://www.openstreetmap.org/${el.type}/${el.id}`,
@@ -57,10 +85,12 @@ export async function fetchOsmStations(bounds: LatLngBounds): Promise<Station[]>
     bounds.getEast(),
   ].join(',')
   const query = `
-    [out:json][timeout:25];
+    [out:json][timeout:40];
     (
       nwr["amenity"="sanitary_dump_station"](${bbox});
+      nwr["sanitary_dump_station"]["sanitary_dump_station"!="no"](${bbox});
       nwr["amenity"="water_point"](${bbox});
+      node["amenity"="drinking_water"](${bbox});
     );
     out center tags;
   `

@@ -1,9 +1,14 @@
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type L from 'leaflet'
 import MapView, { MIN_FETCH_ZOOM } from './components/MapView'
 import { OWN_STATIONS } from './data/stations'
 import { searchPlace } from './lib/geocode'
 import { fetchOsmStations } from './lib/overpass'
+import {
+  fetchTrafikverketStations,
+  getTrafikverketKey,
+  setTrafikverketKey,
+} from './lib/trafikverket'
 import type { ServiceType, Station } from './types'
 import { SERVICE_LABELS } from './types'
 
@@ -15,8 +20,27 @@ const SERVICE_ICONS: Record<ServiceType, string> = {
   vatten: '🚰',
 }
 
+/** Slår ihop stationer som ligger på (nästan) samma plats; eget register vinner över Trafikverket som vinner över OSM. */
+function dedupe(stations: Station[]): Station[] {
+  const priority = { egen: 0, trafikverket: 1, osm: 2 }
+  const byCell = new Map<string, Station>()
+  const sorted = [...stations].sort((a, b) => priority[a.source] - priority[b.source])
+  for (const s of sorted) {
+    const key = `${s.lat.toFixed(3)},${s.lon.toFixed(3)}`
+    const existing = byCell.get(key)
+    if (!existing) {
+      byCell.set(key, s)
+    } else {
+      const merged = new Set([...existing.services, ...s.services])
+      byCell.set(key, { ...existing, services: [...merged] })
+    }
+  }
+  return [...byCell.values()]
+}
+
 export default function App() {
   const [osmStations, setOsmStations] = useState<Station[]>([])
+  const [tvStations, setTvStations] = useState<Station[]>([])
   const [activeFilters, setActiveFilters] = useState<Set<ServiceType>>(
     new Set(ALL_SERVICES),
   )
@@ -24,13 +48,37 @@ export default function App() {
   const [query, setQuery] = useState('')
   const [status, setStatus] = useState('Zooma in eller sök på en ort för att hämta stationer.')
   const [loading, setLoading] = useState(false)
+  const [showSettings, setShowSettings] = useState(false)
+  const [tvKey, setTvKey] = useState(getTrafikverketKey)
   const fetchTimer = useRef<ReturnType<typeof setTimeout>>()
   const cacheRef = useRef(new Map<string, Station>())
 
   const stations = useMemo(
-    () => [...OWN_STATIONS, ...osmStations],
-    [osmStations],
+    () => dedupe([...OWN_STATIONS, ...tvStations, ...osmStations]),
+    [osmStations, tvStations],
   )
+
+  // Trafikverkets rastplatser hämtas en gång för hela landet när nyckel finns
+  useEffect(() => {
+    if (!tvKey) {
+      setTvStations([])
+      return
+    }
+    let cancelled = false
+    fetchTrafikverketStations(tvKey)
+      .then((result) => {
+        if (cancelled) return
+        setTvStations(result)
+        setStatus(`${result.length} rastplatser hämtade från Trafikverket.`)
+      })
+      .catch(() => {
+        if (cancelled) return
+        setStatus('Kunde inte hämta från Trafikverket – kontrollera API-nyckeln.')
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [tvKey])
 
   const handleBoundsChange = useCallback((bounds: L.LatLngBounds, zoom: number) => {
     clearTimeout(fetchTimer.current)
@@ -46,7 +94,7 @@ export default function App() {
         const cache = cacheRef.current
         for (const s of fetched) cache.set(s.id, s)
         setOsmStations([...cache.values()])
-        setStatus(`${cache.size + OWN_STATIONS.length} stationer inlästa`)
+        setStatus(`${cache.size} stationer från OpenStreetMap i minnet.`)
       } catch {
         setStatus('Kunde inte hämta data just nu – försök igen om en stund.')
       } finally {
@@ -97,6 +145,18 @@ export default function App() {
     )
   }
 
+  const handleSaveKey = (e: React.FormEvent) => {
+    e.preventDefault()
+    const input = (e.currentTarget as HTMLFormElement).elements.namedItem(
+      'tvkey',
+    ) as HTMLInputElement
+    const value = input.value.trim()
+    setTrafikverketKey(value)
+    setTvKey(value)
+    setShowSettings(false)
+    if (!value) setStatus('Trafikverket-nyckeln borttagen.')
+  }
+
   return (
     <div className="app">
       <MapView
@@ -113,6 +173,16 @@ export default function App() {
             <h1>Tömningskartan</h1>
             <p>Gråvatten · latrin · färskvatten för husbil &amp; husvagn</p>
           </div>
+          <button
+            type="button"
+            className="settings-btn"
+            onClick={() => setShowSettings((v) => !v)}
+            aria-expanded={showSettings}
+            aria-label="Datakällor och inställningar"
+            title="Datakällor"
+          >
+            ⚙
+          </button>
         </header>
 
         <form className="search" onSubmit={handleSearch} role="search">
@@ -147,6 +217,29 @@ export default function App() {
             </button>
           ))}
         </div>
+
+        {showSettings && (
+          <form className="settings" onSubmit={handleSaveKey}>
+            <p>
+              <strong>Trafikverkets rastplatser</strong> (~205 st med gratis
+              latrintömning) hämtas med en kostnadsfri API-nyckel från{' '}
+              <a href="https://data.trafikverket.se" target="_blank" rel="noopener noreferrer">
+                data.trafikverket.se
+              </a>
+              . Nyckeln sparas bara i din webbläsare.
+            </p>
+            <div className="settings-row">
+              <input
+                name="tvkey"
+                type="text"
+                defaultValue={tvKey}
+                placeholder="API-nyckel för Trafikverket"
+                aria-label="API-nyckel för Trafikverket"
+              />
+              <button type="submit">Spara</button>
+            </div>
+          </form>
+        )}
       </div>
 
       <button className="locate-btn" type="button" onClick={handleLocate} aria-label="Visa min position">

@@ -85,6 +85,76 @@ body {
   color: var(--text-dim);
 }
 
+.settings-btn {
+  margin-left: auto;
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid #d6e0d6;
+  border-radius: 10px;
+  background: #f6f9f6;
+  color: var(--text-dim);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.settings-btn:hover,
+.settings-btn[aria-expanded='true'] {
+  border-color: var(--green-500);
+  color: var(--green-700);
+}
+
+.settings {
+  border-top: 1px solid #e2eae2;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.settings p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  line-height: 1.45;
+}
+
+.settings a {
+  color: var(--green-700);
+}
+
+.settings-row {
+  display: flex;
+  gap: 8px;
+}
+
+.settings-row input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1.5px solid #d6e0d6;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  background: #f6f9f6;
+  color: var(--text);
+}
+
+.settings-row input:focus {
+  outline: none;
+  border-color: var(--green-500);
+}
+
+.settings-row button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  background: var(--green-700);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 /* ---------- Sök ---------- */
 
 .search {

@@ -6,9 +6,18 @@ Webbapp (PWA) för husbils- och husvagnsägare i Sverige: hitta platser för att
 ## Funktioner (MVP)
 
 - Interaktiv karta över Sverige (Leaflet + OpenStreetMap)
-- Stationer hämtas live från OpenStreetMap via Overpass API
-  (`amenity=sanitary_dump_station` och `amenity=water_point`) för den del av
-  kartan du tittar på (zooma in för att ladda)
+- Stationer hämtas live från OpenStreetMap via Overpass API för den del av
+  kartan du tittar på (zooma in för att ladda). Frågan täcker dedikerade
+  tömningsstationer (`amenity=sanitary_dump_station`), alla platser taggade
+  med `sanitary_dump_station=*` (rastplatser, campingar, ställplatser,
+  gästhamnar, drivmedelsstationer), vattenpåfyllning (`amenity=water_point`)
+  och dricksvatten (`amenity=drinking_water`)
+- Trafikverkets ~205 rastplatser med gratis latrintömning kan hämtas via
+  Trafikverkets öppna API — skaffa en kostnadsfri nyckel på
+  [data.trafikverket.se](https://data.trafikverket.se) och klistra in den
+  under kugghjulet ⚙ i appen (sparas i webbläsarens localStorage)
+- Dubblettrensning när samma plats finns i flera källor
+  (eget register > Trafikverket > OSM)
 - Eget register med platser som saknas i OSM (`src/data/stations.ts`)
 - Filter: gråvatten / latrin / färskvatten
 - Ortsökning (Nominatim) och "Nära mig" via GPS

@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css'
 import type { ServiceType, Station } from '../types'
 import { SERVICE_COLORS, SERVICE_LABELS } from '../types'
 
-const MIN_FETCH_ZOOM = 8
+const MIN_FETCH_ZOOM = 7
 
 interface Props {
   stations: Station[]
@@ -49,7 +49,11 @@ function popupHtml(station: Station): string {
       : '') +
     '</div>'
   const sourceNote =
-    station.source === 'osm' ? 'Källa: OpenStreetMap' : 'Källa: eget register'
+    station.source === 'osm'
+      ? 'Källa: OpenStreetMap'
+      : station.source === 'trafikverket'
+        ? 'Källa: Trafikverket'
+        : 'Källa: eget register'
   return `<div class="popup"><h3>${station.name}</h3><div class="badges">${services}</div>${rows.join('')}${links}<p class="source">${sourceNote}</p></div>`
 }
 
