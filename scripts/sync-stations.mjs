@@ -22,7 +22,13 @@ const OUT = new URL('../public/data/stations-seed.json', import.meta.url)
 const OVERPASS_MIRRORS = [
   'https://overpass-api.de/api/interpreter',
   'https://overpass.kumi.systems/api/interpreter',
+  'https://overpass.private.coffee/api/interpreter',
 ]
+
+// Overpass/OSM:s användningspolicy kräver en identifierande User-Agent
+const USER_AGENT = 'Tomningskartan-sync/0.1 (+https://github.com/PerraFree/PJfrance)'
+
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const OSM_QUERY = `
 [out:json][timeout:300];
@@ -78,45 +84,60 @@ function placeKind(tags) {
 
 async function fetchOsm() {
   let lastError
-  for (const url of OVERPASS_MIRRORS) {
-    try {
-      const res = await fetch(url, {
-        method: 'POST',
-        body: 'data=' + encodeURIComponent(OSM_QUERY),
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      })
-      if (!res.ok) throw new Error(`${url} svarade ${res.status}`)
-      const json = await res.json()
-      const stations = []
-      for (const el of json.elements ?? []) {
-        const lat = el.lat ?? el.center?.lat
-        const lon = el.lon ?? el.center?.lon
-        if (lat === undefined || lon === undefined) continue
-        const tags = el.tags ?? {}
-        if (isBoatStation(tags)) continue
-        const services = servicesFromTags(tags)
-        if (services.length === 0) continue
-        const kind = placeKind(tags)
-        stations.push({
-          id: `osm-${el.type}-${el.id}`,
-          name: tags.name ?? kind ?? 'Tömningsstation',
-          lat,
-          lon,
-          services,
-          source: 'osm',
-          description: tags.name && kind ? kind : undefined,
-          fee: tags.fee === 'yes' ? (tags.charge ?? 'Avgift') : tags.fee === 'no' ? 'Gratis' : undefined,
-          openingHours: tags.opening_hours,
-          osmUrl: `https://www.openstreetmap.org/${el.type}/${el.id}`,
-        })
+  for (let attempt = 0; attempt < 2; attempt++) {
+    if (attempt > 0) {
+      console.log('Nytt varv över speglarna om 30 s …')
+      await sleep(30_000)
+    }
+    for (const url of OVERPASS_MIRRORS) {
+      try {
+        return await fetchOsmFrom(url)
+      } catch (err) {
+        lastError = err
+        console.warn(`OSM-hämtning misslyckades via ${url}: ${err.message}`)
+        await sleep(5_000)
       }
-      return stations
-    } catch (err) {
-      lastError = err
-      console.warn(`OSM-hämtning misslyckades via ${url}: ${err.message}`)
     }
   }
   throw lastError
+}
+
+async function fetchOsmFrom(url) {
+  const res = await fetch(url, {
+    method: 'POST',
+    body: 'data=' + encodeURIComponent(OSM_QUERY),
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'User-Agent': USER_AGENT,
+      Accept: 'application/json',
+    },
+  })
+  if (!res.ok) throw new Error(`${url} svarade ${res.status}`)
+  const json = await res.json()
+  const stations = []
+  for (const el of json.elements ?? []) {
+    const lat = el.lat ?? el.center?.lat
+    const lon = el.lon ?? el.center?.lon
+    if (lat === undefined || lon === undefined) continue
+    const tags = el.tags ?? {}
+    if (isBoatStation(tags)) continue
+    const services = servicesFromTags(tags)
+    if (services.length === 0) continue
+    const kind = placeKind(tags)
+    stations.push({
+      id: `osm-${el.type}-${el.id}`,
+      name: tags.name ?? kind ?? 'Tömningsstation',
+      lat,
+      lon,
+      services,
+      source: 'osm',
+      description: tags.name && kind ? kind : undefined,
+      fee: tags.fee === 'yes' ? (tags.charge ?? 'Avgift') : tags.fee === 'no' ? 'Gratis' : undefined,
+      openingHours: tags.opening_hours,
+      osmUrl: `https://www.openstreetmap.org/${el.type}/${el.id}`,
+    })
+  }
+  return stations
 }
 
 // ---------- Trafikverket ----------
