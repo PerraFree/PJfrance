@@ -53,10 +53,27 @@ export default function App() {
   const fetchTimer = useRef<ReturnType<typeof setTimeout>>()
   const cacheRef = useRef(new Map<string, Station>())
 
+  const [seedStations, setSeedStations] = useState<Station[]>([])
+
   const stations = useMemo(
-    () => dedupe([...OWN_STATIONS, ...tvStations, ...osmStations]),
-    [osmStations, tvStations],
+    () => dedupe([...OWN_STATIONS, ...tvStations, ...osmStations, ...seedStations]),
+    [osmStations, tvStations, seedStations],
   )
+
+  // Grunddata för hela Sverige, förhämtad vid bygget (scripts/sync-stations.mjs)
+  useEffect(() => {
+    fetch(`${import.meta.env.BASE_URL}data/stations-seed.json`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((json: { stations?: Station[] } | null) => {
+        if (json?.stations?.length) {
+          setSeedStations(json.stations)
+          setStatus(`${json.stations.length} stationer i hela Sverige inlästa.`)
+        }
+      })
+      .catch(() => {
+        /* seed saknas i dev – livehämtning täcker upp */
+      })
+  }, [])
 
   // Trafikverkets rastplatser hämtas en gång för hela landet när nyckel finns
   useEffect(() => {

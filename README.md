@@ -33,6 +33,16 @@ npm run build    # produktionsbygge till dist/
 npm run preview  # förhandsgranska bygget
 ```
 
+## Datasynk (grunddata för hela Sverige)
+
+`scripts/sync-stations.mjs` hämtar alla Sveriges stationer från OSM (Overpass)
+och Trafikverket och skriver `public/data/stations-seed.json`, som appen läser
+vid start — kartan är därmed fylld direkt utan att man behöver zooma.
+Skriptet körs automatiskt i deploy-workflowen före bygget (lägg repo-secreten
+`TRV_API_KEY` för att få med Trafikverkets rastplatser) och veckovis via
+schemat i workflowen. Kör lokalt med `node scripts/sync-stations.mjs`
+(kräver internetåtkomst till overpass-api.de).
+
 ## Arkitektur & vidareutveckling
 
 - `src/lib/overpass.ts` – hämtning och tolkning av OSM-data
