@@ -35,6 +35,8 @@ jobs:
       - run: npm run build
         env:
           BASE_PATH: /PJfrance/
+          VITE_SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ vars.SUPABASE_ANON_KEY }}
       - name: Publicera till gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:

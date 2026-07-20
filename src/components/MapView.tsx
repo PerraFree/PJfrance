@@ -55,7 +55,9 @@ function popupHtml(station: Station): string {
         ? 'Källa: Trafikverket'
         : station.source === 'kommun'
           ? 'Källa: kommunens webbplats'
-          : 'Källa: eget register'
+          : station.source === 'community'
+            ? 'Inskickad av en användare'
+            : 'Källa: eget register'
   return `<div class="popup"><h3>${station.name}</h3><div class="badges">${services}</div>${rows.join('')}${links}<p class="source">${sourceNote}</p></div>`
 }
 

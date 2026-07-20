@@ -155,6 +155,189 @@ body {
   cursor: pointer;
 }
 
+.submit-place-btn {
+  margin-top: 2px;
+  padding: 9px 12px;
+  border: 1.5px dashed #b9cbb9;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--green-700);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.submit-place-btn:hover {
+  background: var(--green-100);
+  border-color: var(--green-500);
+}
+
+/* ---------- Modal (Föreslå plats) ---------- */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(16, 30, 18, 0.5);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal {
+  position: relative;
+  width: min(440px, 100%);
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  padding: 22px 22px 20px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 8px;
+  background: #f0f4f0;
+  color: #5c6b5d;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: #e4efe4;
+}
+
+.modal h2 {
+  margin: 0 0 6px;
+  font-size: 1.25rem;
+  color: var(--green-900);
+}
+
+.modal-intro {
+  margin: 0 0 14px;
+  font-size: 0.85rem;
+  color: #5c6b5d;
+  line-height: 1.45;
+}
+
+.modal form label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #3a4a3b;
+  margin-bottom: 12px;
+}
+
+.modal form input[type='text'],
+.modal form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  padding: 10px 12px;
+  border: 1.5px solid #d6e0d6;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: #f6f9f6;
+  color: var(--text);
+}
+
+.modal form input:focus,
+.modal form textarea:focus {
+  outline: none;
+  border-color: var(--green-500);
+  background: #fff;
+}
+
+.modal fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+
+.modal legend {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #3a4a3b;
+  padding: 0;
+  margin-bottom: 6px;
+}
+
+.service-checks {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.service-check {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 6px;
+  font-weight: 500 !important;
+  margin-bottom: 0 !important;
+}
+
+.service-check input {
+  width: auto;
+  margin: 0;
+}
+
+.primary-btn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: var(--green-700);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.primary-btn:hover {
+  background: var(--green-500);
+}
+
+.primary-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.form-error {
+  margin: 0 0 12px;
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: #fdecea;
+  color: #b3261e;
+  font-size: 0.83rem;
+}
+
+.submit-done {
+  text-align: center;
+}
+
+.submit-done h2 {
+  margin-bottom: 10px;
+}
+
+.submit-done p {
+  color: #5c6b5d;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
 /* ---------- Sök ---------- */
 
 .search {

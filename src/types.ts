@@ -8,9 +8,10 @@ export interface Station {
   services: ServiceType[]
   /**
    * 'osm' = OpenStreetMap, 'egen' = eget register,
-   * 'trafikverket' = Trafikverkets rastplatser, 'kommun' = kommunal webbsida
+   * 'trafikverket' = Trafikverkets rastplatser, 'kommun' = kommunal webbsida,
+   * 'community' = inskickad av användare (crowdsourcing)
    */
-  source: 'osm' | 'egen' | 'trafikverket' | 'kommun'
+  source: 'osm' | 'egen' | 'trafikverket' | 'kommun' | 'community'
   description?: string
   fee?: string
   openingHours?: string

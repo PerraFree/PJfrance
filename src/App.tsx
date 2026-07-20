@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type L from 'leaflet'
 import MapView, { MIN_FETCH_ZOOM } from './components/MapView'
+import SubmitForm from './components/SubmitForm'
+import { communityEnabled } from './config'
 import { OWN_STATIONS } from './data/stations'
+import { fetchApprovedPlaces } from './lib/community'
 import { searchPlace } from './lib/geocode'
 import { fetchOsmStations } from './lib/overpass'
 import {
@@ -20,9 +23,9 @@ const SERVICE_ICONS: Record<ServiceType, string> = {
   vatten: '🚰',
 }
 
-/** Slår ihop stationer som ligger på (nästan) samma plats; eget register vinner över Trafikverket som vinner över OSM. */
+/** Slår ihop stationer som ligger på (nästan) samma plats; mer tillförlitliga källor vinner. */
 function dedupe(stations: Station[]): Station[] {
-  const priority = { egen: 0, kommun: 1, trafikverket: 2, osm: 3 }
+  const priority = { egen: 0, kommun: 1, trafikverket: 2, community: 3, osm: 4 }
   const byCell = new Map<string, Station>()
   const sorted = [...stations].sort((a, b) => priority[a.source] - priority[b.source])
   for (const s of sorted) {
@@ -54,11 +57,29 @@ export default function App() {
   const cacheRef = useRef(new Map<string, Station>())
 
   const [seedStations, setSeedStations] = useState<Station[]>([])
+  const [communityStations, setCommunityStations] = useState<Station[]>([])
+  const [showSubmit, setShowSubmit] = useState(false)
 
   const stations = useMemo(
-    () => dedupe([...OWN_STATIONS, ...tvStations, ...osmStations, ...seedStations]),
-    [osmStations, tvStations, seedStations],
+    () =>
+      dedupe([
+        ...OWN_STATIONS,
+        ...communityStations,
+        ...tvStations,
+        ...osmStations,
+        ...seedStations,
+      ]),
+    [osmStations, tvStations, seedStations, communityStations],
   )
+
+  const loadCommunity = useCallback(() => {
+    if (!communityEnabled) return
+    fetchApprovedPlaces()
+      .then((places) => setCommunityStations(places))
+      .catch(() => {
+        /* community-lagret är valfritt */
+      })
+  }, [])
 
   // Grunddata för hela Sverige, förhämtad vid bygget (scripts/sync-stations.mjs)
   useEffect(() => {
@@ -74,6 +95,11 @@ export default function App() {
         /* seed saknas i dev – livehämtning täcker upp */
       })
   }, [])
+
+  // Godkända community-platser (crowdsourcing)
+  useEffect(() => {
+    loadCommunity()
+  }, [loadCommunity])
 
   // Trafikverkets rastplatser hämtas en gång för hela landet när nyckel finns
   useEffect(() => {
@@ -257,6 +283,16 @@ export default function App() {
             </div>
           </form>
         )}
+
+        {communityEnabled && (
+          <button
+            type="button"
+            className="submit-place-btn"
+            onClick={() => setShowSubmit(true)}
+          >
+            ＋ Föreslå en plats som saknas
+          </button>
+        )}
       </div>
 
       <button className="locate-btn" type="button" onClick={handleLocate} aria-label="Visa min position">
@@ -272,6 +308,13 @@ export default function App() {
         {loading && <span className="spinner" aria-hidden="true" />}
         {status}
       </div>
+
+      {showSubmit && (
+        <SubmitForm
+          onClose={() => setShowSubmit(false)}
+          onSubmitted={loadCommunity}
+        />
+      )}
     </div>
   )
 }
