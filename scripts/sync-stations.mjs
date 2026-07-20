@@ -111,6 +111,7 @@ async function fetchOsmFrom(url) {
       'User-Agent': USER_AGENT,
       Accept: 'application/json',
     },
+    signal: AbortSignal.timeout(360_000),
   })
   if (!res.ok) throw new Error(`${url} svarade ${res.status}`)
   const json = await res.json()
@@ -162,6 +163,7 @@ async function fetchTrafikverket(apiKey) {
     method: 'POST',
     headers: { 'Content-Type': 'text/xml' },
     body,
+    signal: AbortSignal.timeout(120_000),
   })
   if (!res.ok) throw new Error(`Trafikverket svarade ${res.status}`)
   const json = await res.json()
