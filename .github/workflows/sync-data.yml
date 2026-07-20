@@ -1,0 +1,43 @@
+name: Synka stationsdata till repot
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - claude/gravatten-latrin-app-sverige-aed0qg
+    paths:
+      - 'scripts/sync-stations.mjs'
+      - '.github/workflows/sync-data.yml'
+  schedule:
+    - cron: '0 3 * * 1'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-data
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Hämta stationsdata (OSM + ev. Trafikverket)
+        run: node scripts/sync-stations.mjs
+        env:
+          TRV_API_KEY: ${{ secrets.TRV_API_KEY }}
+      - name: Committa uppdaterad seed-fil
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data/stations-seed.json
+          if git diff --cached --quiet; then
+            echo "Ingen ändring i stationsdatan."
+          else
+            git commit -m "Uppdatera stationsdata (automatisk synk) [skip ci]"
+            git push
+          fi
