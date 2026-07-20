@@ -1,0 +1,18 @@
+{
+  "name": "Tömningskartan – gråvatten, latrin & vatten i Sverige",
+  "short_name": "Tömningskartan",
+  "description": "Hitta platser för att tömma gråvatten och latrin samt fylla på färskvatten – för husbil och husvagn.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f7f4",
+  "theme_color": "#1b5e20",
+  "lang": "sv",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
