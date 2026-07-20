@@ -22,7 +22,7 @@ const SERVICE_ICONS: Record<ServiceType, string> = {
 
 /** Slår ihop stationer som ligger på (nästan) samma plats; eget register vinner över Trafikverket som vinner över OSM. */
 function dedupe(stations: Station[]): Station[] {
-  const priority = { egen: 0, trafikverket: 1, osm: 2 }
+  const priority = { egen: 0, kommun: 1, trafikverket: 2, osm: 3 }
   const byCell = new Map<string, Station>()
   const sorted = [...stations].sort((a, b) => priority[a.source] - priority[b.source])
   for (const s of sorted) {

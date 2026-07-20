@@ -7,15 +7,19 @@
  *  - OpenStreetMap via Overpass (hela Sverige, exkl. dricksvattenkranar
  *    som skulle göra filen onödigt stor – de hämtas live per kartvy)
  *  - Trafikverkets Parking-API om miljövariabeln TRV_API_KEY är satt
+ *  - Kommunala platser från scripts/municipal-stations.json (geokodas via
+ *    Nominatim här i CI, eftersom de saknas i OSM). Lägg till nya genom att
+ *    fylla på JSON-filen med namn + adress (query) – inga koordinater behövs.
  *
  * Körs i CI före `vite build` (se .github/workflows/deploy.yml) och kan
  * köras lokalt: `node scripts/sync-stations.mjs`.
  *
  * OBS: tolkningslogiken speglar src/lib/overpass.ts och src/lib/trafikverket.ts.
  */
-import { writeFile, mkdir } from 'node:fs/promises'
+import { writeFile, readFile, mkdir } from 'node:fs/promises'
 
 const OUT = new URL('../public/data/stations-seed.json', import.meta.url)
+const MUNICIPAL = new URL('./municipal-stations.json', import.meta.url)
 
 // ---------- OpenStreetMap ----------
 
@@ -196,6 +200,57 @@ async function fetchTrafikverket(apiKey) {
   return stations
 }
 
+// ---------- Kommunala platser (geokodas via Nominatim) ----------
+
+async function geocode(query) {
+  const url =
+    'https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=se&q=' +
+    encodeURIComponent(query)
+  const res = await fetch(url, {
+    headers: { 'User-Agent': USER_AGENT, 'Accept-Language': 'sv' },
+    signal: AbortSignal.timeout(30_000),
+  })
+  if (!res.ok) throw new Error(`Nominatim svarade ${res.status}`)
+  const json = await res.json()
+  if (!json.length) return null
+  return { lat: parseFloat(json[0].lat), lon: parseFloat(json[0].lon) }
+}
+
+async function fetchMunicipal() {
+  let entries
+  try {
+    entries = JSON.parse(await readFile(MUNICIPAL, 'utf8'))
+  } catch {
+    return []
+  }
+  const stations = []
+  for (const [i, e] of entries.entries()) {
+    try {
+      const pos = await geocode(e.query)
+      if (!pos) {
+        console.warn(`Kommun: kunde inte geokoda "${e.query}" (${e.name})`)
+        continue
+      }
+      stations.push({
+        id: `kommun-${i}-${e.query.replace(/\s+/g, '-').toLowerCase()}`,
+        name: e.name,
+        lat: pos.lat,
+        lon: pos.lon,
+        services: e.services,
+        source: 'kommun',
+        description: e.description,
+        fee: e.fee,
+        osmUrl: e.url,
+      })
+    } catch (err) {
+      console.warn(`Kommun: geokodning misslyckades för "${e.query}": ${err.message}`)
+    }
+    // Nominatims policy: max 1 anrop/sekund
+    await sleep(1200)
+  }
+  return stations
+}
+
 // ---------- Kör ----------
 
 const stations = []
@@ -219,6 +274,14 @@ if (trvKey) {
   }
 } else {
   console.log('TRV_API_KEY ej satt – hoppar över Trafikverket.')
+}
+
+try {
+  const kommun = await fetchMunicipal()
+  console.log(`Kommun: ${kommun.length} platser`)
+  stations.push(...kommun)
+} catch (err) {
+  console.error(`Kommun-geokodning misslyckades: ${err.message}`)
 }
 
 if (stations.length === 0) {
