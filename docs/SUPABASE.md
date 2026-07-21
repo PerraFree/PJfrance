@@ -42,6 +42,24 @@ create policy "anon can insert pending"
 create policy "anon can read approved"
   on submissions for select to anon
   using (status = 'approved');
+
+-- Felrapporter på befintliga platser ("Rapportera fel"-knappen)
+create table reports (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  station_id text not null,
+  station_name text not null,
+  reason text not null,
+  note text,
+  status text not null default 'open'
+);
+
+alter table reports enable row level security;
+
+-- Vem som helst får skicka in en felrapport
+create policy "anon can insert reports"
+  on reports for insert to anon
+  with check (status = 'open');
 ```
 
 ## 3. Koppla nycklarna till appen
@@ -64,6 +82,11 @@ create policy "anon can read approved"
 geokodats (lat/lon fylldes i när det skickades). För att publicera ett
 förslag: ändra `status` från `pending` till `approved`. Då dyker det upp på
 kartan för alla. Sätt `rejected` för att avvisa.
+
+**Felrapporter** hamnar i **Table Editor → reports** (status `open`). Där ser
+du vilken plats (`station_name`), vad som är fel (`reason`) och ev. kommentar.
+Åtgärda platsen (t.ex. i kommunregistret eller genom att avpublicera ett
+community-förslag) och sätt `status` till `resolved`.
 
 > Tips: du kan få mejl vid nya förslag via Supabase **Database Webhooks**
 > eller genom att titta i Table Editor då och då.

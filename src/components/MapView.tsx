@@ -11,6 +11,12 @@ interface Props {
   activeFilters: Set<ServiceType>
   flyTo: { lat: number; lon: number; zoom?: number } | null
   onBoundsChange: (bounds: L.LatLngBounds, zoom: number) => void
+  canReport: boolean
+  onReport: (station: { id: string; name: string }) => void
+}
+
+function escapeAttr(value: string): string {
+  return value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
 }
 
 function pinIcon(color: string): L.DivIcon {
@@ -29,7 +35,7 @@ function pinIcon(color: string): L.DivIcon {
   })
 }
 
-function popupHtml(station: Station): string {
+function popupHtml(station: Station, canReport: boolean): string {
   const services = station.services
     .map(
       (s) =>
@@ -58,13 +64,25 @@ function popupHtml(station: Station): string {
           : station.source === 'community'
             ? 'Inskickad av en användare'
             : 'Källa: eget register'
-  return `<div class="popup"><h3>${station.name}</h3><div class="badges">${services}</div>${rows.join('')}${links}<p class="source">${sourceNote}</p></div>`
+  const report = canReport
+    ? `<button type="button" class="report-btn" data-station-id="${escapeAttr(station.id)}" data-station-name="${escapeAttr(station.name)}">⚠ Rapportera fel</button>`
+    : ''
+  return `<div class="popup"><h3>${station.name}</h3><div class="badges">${services}</div>${rows.join('')}${links}<p class="source">${sourceNote}</p>${report}</div>`
 }
 
-export default function MapView({ stations, activeFilters, flyTo, onBoundsChange }: Props) {
+export default function MapView({
+  stations,
+  activeFilters,
+  flyTo,
+  onBoundsChange,
+  canReport,
+  onReport,
+}: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<L.Map | null>(null)
   const layerRef = useRef<L.LayerGroup | null>(null)
+  const onReportRef = useRef(onReport)
+  onReportRef.current = onReport
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return
@@ -82,7 +100,22 @@ export default function MapView({ stations, activeFilters, flyTo, onBoundsChange
     map.on('moveend', notify)
     notify()
 
+    // Klick på "Rapportera fel" i en popup (event-delegering)
+    const onPopupClick = (e: Event) => {
+      const btn = (e.target as HTMLElement).closest('.report-btn') as HTMLElement | null
+      if (!btn) return
+      const id = btn.dataset.stationId
+      const name = btn.dataset.stationName
+      if (id && name) {
+        map.closePopup()
+        onReportRef.current({ id, name })
+      }
+    }
+    const container = map.getContainer()
+    container.addEventListener('click', onPopupClick)
+
     return () => {
+      container.removeEventListener('click', onPopupClick)
       map.remove()
       mapRef.current = null
       layerRef.current = null
@@ -105,10 +138,10 @@ export default function MapView({ stations, activeFilters, flyTo, onBoundsChange
       if (!station.services.some((s) => activeFilters.has(s))) continue
       const primary = station.services.find((s) => activeFilters.has(s)) ?? station.services[0]
       L.marker([station.lat, station.lon], { icon: pinIcon(SERVICE_COLORS[primary]) })
-        .bindPopup(popupHtml(station), { maxWidth: 300, className: 'station-popup' })
+        .bindPopup(popupHtml(station, canReport), { maxWidth: 300, className: 'station-popup' })
         .addTo(layer)
     }
-  }, [stations, activeFilters])
+  }, [stations, activeFilters, canReport])
 
   return <div ref={containerRef} className="map" />
 }

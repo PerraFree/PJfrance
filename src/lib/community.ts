@@ -7,7 +7,9 @@ import type { ServiceType, Station } from '../types'
  * och läsa godkända (status='approved'). Se docs/SUPABASE.md.
  */
 
-const restUrl = `${SUPABASE_URL.replace(/\/$/, '')}/rest/v1/submissions`
+const base = SUPABASE_URL.replace(/\/$/, '')
+const restUrl = `${base}/rest/v1/submissions`
+const reportsUrl = `${base}/rest/v1/reports`
 
 const headers = {
   apikey: SUPABASE_ANON_KEY,
@@ -36,6 +38,27 @@ export async function submitPlace(place: NewSubmission): Promise<void> {
   if (!res.ok) {
     const text = await res.text().catch(() => '')
     throw new Error(`Kunde inte skicka förslaget (${res.status}). ${text}`)
+  }
+}
+
+export interface NewReport {
+  station_id: string
+  station_name: string
+  reason: string
+  note?: string
+}
+
+/** Rapporterar ett fel på en befintlig plats (nedlagd, fel uppgifter m.m.). */
+export async function submitReport(report: NewReport): Promise<void> {
+  if (!communityEnabled) throw new Error('Crowdsourcing är inte konfigurerad.')
+  const res = await fetch(reportsUrl, {
+    method: 'POST',
+    headers: { ...headers, Prefer: 'return=minimal' },
+    body: JSON.stringify({ ...report, status: 'open' }),
+  })
+  if (!res.ok) {
+    const text = await res.text().catch(() => '')
+    throw new Error(`Kunde inte skicka rapporten (${res.status}). ${text}`)
   }
 }
 

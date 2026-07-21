@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type L from 'leaflet'
 import MapView, { MIN_FETCH_ZOOM } from './components/MapView'
 import SubmitForm from './components/SubmitForm'
+import ReportForm from './components/ReportForm'
 import { communityEnabled } from './config'
 import { OWN_STATIONS } from './data/stations'
 import { fetchApprovedPlaces } from './lib/community'
@@ -59,6 +60,7 @@ export default function App() {
   const [seedStations, setSeedStations] = useState<Station[]>([])
   const [communityStations, setCommunityStations] = useState<Station[]>([])
   const [showSubmit, setShowSubmit] = useState(false)
+  const [reportTarget, setReportTarget] = useState<{ id: string; name: string } | null>(null)
 
   const stations = useMemo(
     () =>
@@ -207,6 +209,8 @@ export default function App() {
         activeFilters={activeFilters}
         flyTo={flyTo}
         onBoundsChange={handleBoundsChange}
+        canReport={communityEnabled}
+        onReport={setReportTarget}
       />
 
       <div className="panel">
@@ -313,6 +317,14 @@ export default function App() {
         <SubmitForm
           onClose={() => setShowSubmit(false)}
           onSubmitted={loadCommunity}
+        />
+      )}
+
+      {reportTarget && (
+        <ReportForm
+          stationId={reportTarget.id}
+          stationName={reportTarget.name}
+          onClose={() => setReportTarget(null)}
         />
       )}
     </div>
