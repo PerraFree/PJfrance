@@ -1,9 +1,11 @@
 /* Enkel service worker: cachar appskal + stationsdata så appen fungerar offline. */
-const CACHE = 'tomningskartan-v2'
+const CACHE = 'tomningskartan-v3'
 const APP_SHELL = [
   './',
   './manifest.webmanifest',
   './icon.svg',
+  './icon-192.png',
+  './apple-touch-icon.png',
   './data/stations-seed.json',
 ]
 
