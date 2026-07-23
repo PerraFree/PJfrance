@@ -3,6 +3,7 @@ import type L from 'leaflet'
 import MapView, { MIN_FETCH_ZOOM } from './components/MapView'
 import SubmitForm from './components/SubmitForm'
 import ReportForm from './components/ReportForm'
+import NearestList from './components/NearestList'
 import { communityEnabled } from './config'
 import { OWN_STATIONS } from './data/stations'
 import { fetchApprovedPlaces } from './lib/community'
@@ -72,6 +73,8 @@ export default function App() {
   const [communityStations, setCommunityStations] = useState<Station[]>([])
   const [showSubmit, setShowSubmit] = useState(false)
   const [reportTarget, setReportTarget] = useState<{ id: string; name: string } | null>(null)
+  const [focus, setFocus] = useState<{ id: string; nonce: number } | null>(null)
+  const [showNearest, setShowNearest] = useState(false)
 
   const stations = useMemo(
     () =>
@@ -101,12 +104,22 @@ export default function App() {
       .then((json: { stations?: Station[] } | null) => {
         if (json?.stations?.length) {
           setSeedStations(json.stations)
-          setStatus(`${json.stations.length} stationer i hela Sverige inlästa.`)
+          setStatus(`${json.stations.length} platser i hela Sverige inlästa.`)
         }
       })
       .catch(() => {
         /* seed saknas i dev – livehämtning täcker upp */
       })
+  }, [])
+
+  // Delad plats-länk (?at=lat,lon,zoom) – flyg dit vid start
+  useEffect(() => {
+    const at = new URLSearchParams(location.search).get('at')
+    if (!at) return
+    const [lat, lon, zoom] = at.split(',').map(Number)
+    if (!Number.isNaN(lat) && !Number.isNaN(lon)) {
+      setFlyTo({ lat, lon, zoom: Number.isNaN(zoom) ? 15 : zoom })
+    }
   }, [])
 
   // Godkända community-platser (crowdsourcing)
@@ -197,7 +210,8 @@ export default function App() {
         const loc = { lat: pos.coords.latitude, lon: pos.coords.longitude }
         setUserLoc(loc)
         setFlyTo({ ...loc, zoom: 11 })
-        setStatus('Visar stationer nära dig – avstånd visas i varje plats.')
+        setShowNearest(true)
+        setStatus('Visar platser nära dig – avstånd visas i varje plats.')
       },
       () => setStatus('Kunde inte hämta din position.'),
     )
@@ -222,6 +236,7 @@ export default function App() {
         activeFilters={activeFilters}
         flyTo={flyTo}
         userLoc={userLoc}
+        focus={focus}
         onBoundsChange={handleBoundsChange}
         canReport={communityEnabled}
         onReport={setReportTarget}
@@ -339,6 +354,29 @@ export default function App() {
           stationId={reportTarget.id}
           stationName={reportTarget.name}
           onClose={() => setReportTarget(null)}
+        />
+      )}
+
+      {userLoc && !showNearest && (
+        <button
+          className="nearest-toggle"
+          type="button"
+          onClick={() => setShowNearest(true)}
+        >
+          ☰ Närmast dig
+        </button>
+      )}
+
+      {userLoc && showNearest && (
+        <NearestList
+          stations={stations}
+          activeFilters={activeFilters}
+          userLoc={userLoc}
+          onPick={(s) => {
+            setFlyTo({ lat: s.lat, lon: s.lon, zoom: 14 })
+            setFocus({ id: s.id, nonce: performance.now() })
+          }}
+          onClose={() => setShowNearest(false)}
         />
       )}
     </div>

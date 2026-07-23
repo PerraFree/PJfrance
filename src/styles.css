@@ -452,6 +452,127 @@ body {
 
 /* ---------- Flytande knappar & status ---------- */
 
+/* ---------- Närmaste-lista ---------- */
+
+.nearest {
+  position: absolute;
+  left: 14px;
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  z-index: 1100;
+  width: min(340px, calc(100vw - 28px));
+  max-height: min(46vh, 440px);
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.nearest-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px 8px;
+}
+
+.nearest-head h2 {
+  margin: 0;
+  font-size: 0.98rem;
+  color: var(--green-900);
+}
+
+.nearest-head button {
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 8px;
+  background: var(--field, #f0f4f0);
+  color: var(--text-dim);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.nearest ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 6px 8px;
+  overflow-y: auto;
+}
+
+.nearest li button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 10px;
+  border: none;
+  border-radius: 10px;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: var(--text);
+}
+
+.nearest li button:hover {
+  background: var(--field, #f0f4f0);
+}
+
+.nearest .dots {
+  display: inline-flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.nearest .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1.5px solid #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.nearest-name {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.88rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nearest-km {
+  flex-shrink: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--green-700);
+  font-variant-numeric: tabular-nums;
+}
+
+.nearest-empty {
+  padding: 8px 12px 14px;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.nearest-toggle {
+  position: absolute;
+  left: 14px;
+  bottom: calc(14px + env(safe-area-inset-bottom));
+  z-index: 1100;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--green-900);
+  font-size: 0.88rem;
+  font-weight: 650;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
 .locate-btn {
   position: absolute;
   right: 12px;
@@ -641,6 +762,21 @@ body {
 .popup .open-now.closed {
   background: #fdeceb;
   color: #b3261e;
+}
+
+.popup .share-btn {
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--green-700);
+  cursor: pointer;
+}
+
+.popup .share-btn:hover {
+  text-decoration: underline;
 }
 
 .popup .contact {

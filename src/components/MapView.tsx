@@ -15,6 +15,7 @@ interface Props {
   activeFilters: Set<ServiceType>
   flyTo: { lat: number; lon: number; zoom?: number } | null
   userLoc: { lat: number; lon: number } | null
+  focus: { id: string; nonce: number } | null
   onBoundsChange: (bounds: L.LatLngBounds, zoom: number) => void
   canReport: boolean
   onReport: (station: { id: string; name: string }) => void
@@ -114,6 +115,7 @@ function popupHtml(
   const nav = `https://www.google.com/maps/dir/?api=1&destination=${station.lat},${station.lon}`
   const links =
     `<div class="links"><a class="primary" href="${nav}" target="_blank" rel="noopener">Vägbeskrivning →</a>` +
+    `<button type="button" class="share-btn" data-lat="${station.lat}" data-lon="${station.lon}" data-name="${escapeAttr(station.name)}">Dela</button>` +
     (station.osmUrl
       ? `<a href="${station.osmUrl}" target="_blank" rel="noopener">OpenStreetMap</a>`
       : '') +
@@ -148,11 +150,32 @@ function readSavedView(): { lat: number; lon: number; zoom: number } | null {
   return null
 }
 
+async function sharePlace(name: string, lat: number, lon: number) {
+  const url = `${location.origin}${location.pathname}?at=${lat.toFixed(5)},${lon.toFixed(5)},16`
+  const shareData = { title: name, text: `${name} – Tömningskartan`, url }
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData)
+      return
+    }
+  } catch {
+    /* användaren avbröt */
+    return
+  }
+  try {
+    await navigator.clipboard.writeText(url)
+    alert('Länk kopierad!')
+  } catch {
+    prompt('Kopiera länken:', url)
+  }
+}
+
 export default function MapView({
   stations,
   activeFilters,
   flyTo,
   userLoc,
+  focus,
   onBoundsChange,
   canReport,
   onReport,
@@ -161,6 +184,7 @@ export default function MapView({
   const mapRef = useRef<L.Map | null>(null)
   const clusterRef = useRef<L.MarkerClusterGroup | null>(null)
   const userMarkerRef = useRef<L.CircleMarker | null>(null)
+  const markersById = useRef<Map<string, L.Marker>>(new Map())
   const onReportRef = useRef(onReport)
   onReportRef.current = onReport
 
@@ -203,15 +227,23 @@ export default function MapView({
     map.on('moveend', notify)
     notify()
 
-    // Klick på "Rapportera fel" i en popup (event-delegering)
+    // Klick i popup (event-delegering): rapportera fel + dela
     const onPopupClick = (e: Event) => {
-      const btn = (e.target as HTMLElement).closest('.report-btn') as HTMLElement | null
-      if (!btn) return
-      const id = btn.dataset.stationId
-      const name = btn.dataset.stationName
-      if (id && name) {
-        map.closePopup()
-        onReportRef.current({ id, name })
+      const target = e.target as HTMLElement
+      const report = target.closest('.report-btn') as HTMLElement | null
+      if (report) {
+        const id = report.dataset.stationId
+        const name = report.dataset.stationName
+        if (id && name) {
+          map.closePopup()
+          onReportRef.current({ id, name })
+        }
+        return
+      }
+      const share = target.closest('.share-btn') as HTMLElement | null
+      if (share) {
+        const { lat, lon, name } = share.dataset
+        if (lat && lon && name) sharePlace(name, parseFloat(lat), parseFloat(lon))
       }
     }
     const container = map.getContainer()
@@ -259,19 +291,31 @@ export default function MapView({
     const cluster = clusterRef.current
     if (!cluster) return
     cluster.clearLayers()
+    markersById.current.clear()
     const markers: L.Marker[] = []
     for (const station of stations) {
       if (!station.services.some((s) => activeFilters.has(s))) continue
       const primary = station.services.find((s) => activeFilters.has(s)) ?? station.services[0]
-      markers.push(
-        L.marker([station.lat, station.lon], { icon: pinIcon(SERVICE_COLORS[primary]) }).bindPopup(
-          popupHtml(station, canReport, userLoc),
-          { maxWidth: 300, className: 'station-popup' },
-        ),
-      )
+      const marker = L.marker([station.lat, station.lon], {
+        icon: pinIcon(SERVICE_COLORS[primary]),
+      }).bindPopup(popupHtml(station, canReport, userLoc), {
+        maxWidth: 300,
+        className: 'station-popup',
+      })
+      markersById.current.set(station.id, marker)
+      markers.push(marker)
     }
     cluster.addLayers(markers)
   }, [stations, activeFilters, canReport, userLoc])
+
+  // Fokusera en plats från närmaste-listan: zooma in ur klustret och öppna popupen
+  useEffect(() => {
+    const cluster = clusterRef.current
+    if (!focus || !cluster) return
+    const marker = markersById.current.get(focus.id)
+    if (!marker) return
+    cluster.zoomToShowLayer(marker, () => marker.openPopup())
+  }, [focus])
 
   return <div ref={containerRef} className="map" />
 }
