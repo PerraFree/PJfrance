@@ -1,19 +1,33 @@
 :root {
-  --green-900: #14401a;
-  --green-700: #1b5e20;
-  --green-500: #2e7d32;
-  --green-100: #e4efe4;
+  /* Grön-biased palett */
+  --green-900: #123a1a;
+  --green-700: #1c6b2e;
+  --green-500: #2e9e4a;
+  --green-100: #e7f1e8;
   --surface: #ffffff;
-  --text: #1d2b1e;
-  --text-dim: #5c6b5d;
-  --radius: 16px;
-  --shadow: 0 8px 30px rgba(16, 42, 20, 0.18);
+  --field: #f2f6f1;
+  --text: #1b2a1d;
+  --text-dim: #5d6b5e;
+  --border: #e3ebe2;
+  --border-strong: #d3ddd2;
+
+  /* Radier per roll (varierade, inte allt likadant) */
+  --r-card: 20px;
+  --r-control: 13px;
+  --r-pill: 999px;
+
+  /* Mjuka lager-skuggor */
+  --shadow-sm: 0 1px 2px rgba(16, 42, 20, 0.06), 0 2px 6px rgba(16, 42, 20, 0.08);
+  --shadow: 0 6px 16px rgba(16, 42, 20, 0.1), 0 14px 40px rgba(16, 42, 20, 0.14);
+  --radius: var(--r-card);
+
+  /* Kategorifärger (semantiska) */
   --gravatten: #6d4c41;
-  --latrin: #7b1fa2;
+  --latrin: #8226b0;
   --vatten: #0277bd;
   --stallplats: #e65100;
-  --camping: #00695c;
-  --gasol: #c62828;
+  --camping: #00796b;
+  --gasol: #d32f2f;
 }
 
 * {
@@ -28,10 +42,15 @@ body,
 }
 
 body {
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
   color: var(--text);
-  background: #dfe8df;
+  background: #eef3ec;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button {
+  font-family: inherit;
 }
 
 .app {
@@ -55,46 +74,60 @@ body {
   z-index: 1100;
   width: min(400px, calc(100vw - 28px));
   background: var(--surface);
-  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
   box-shadow: var(--shadow);
-  padding: 14px 16px 12px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
+  animation: panel-in 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.99);
+  }
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
 }
 
 .brand img {
-  border-radius: 9px;
+  border-radius: 10px;
   flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
 }
 
 .brand h1 {
   margin: 0;
-  font-size: 1.15rem;
-  font-weight: 750;
-  letter-spacing: -0.01em;
+  font-size: 1.22rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   color: var(--green-900);
 }
 
 .brand p {
-  margin: 1px 0 0;
-  font-size: 0.76rem;
+  margin: 2px 0 0;
+  font-size: 0.75rem;
+  line-height: 1.35;
   color: var(--text-dim);
 }
 
 .settings-btn {
   margin-left: auto;
-  width: 34px;
-  height: 34px;
-  border: 1.5px solid #d6e0d6;
-  border-radius: 10px;
-  background: #f6f9f6;
+  align-self: flex-start;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-control);
+  background: var(--field);
   color: var(--text-dim);
   font-size: 1rem;
   cursor: pointer;
@@ -159,14 +192,13 @@ body {
 }
 
 .submit-place-btn {
-  margin-top: 2px;
-  padding: 9px 12px;
-  border: 1.5px dashed #b9cbb9;
-  border-radius: 12px;
-  background: transparent;
+  padding: 10px 12px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--r-control);
+  background: var(--field);
   color: var(--green-700);
   font-size: 0.88rem;
-  font-weight: 600;
+  font-weight: 650;
   cursor: pointer;
   transition: all 0.15s;
 }
@@ -363,42 +395,52 @@ body {
 .search input {
   flex: 1;
   min-width: 0;
-  padding: 10px 12px 10px 36px;
-  border: 1.5px solid #d6e0d6;
-  border-radius: 12px;
+  padding: 11px 12px 11px 38px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-control);
   font-size: 0.95rem;
-  background: #f6f9f6;
+  background: var(--field);
   color: var(--text);
-  transition: border-color 0.15s, background 0.15s;
+  transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+
+.search input::placeholder {
+  color: #90a191;
 }
 
 .search input:focus {
   outline: none;
   border-color: var(--green-500);
   background: #fff;
+  box-shadow: 0 0 0 3px rgba(46, 158, 74, 0.16);
 }
 
 .search button {
-  padding: 10px 16px;
+  padding: 0 18px;
   border: none;
-  border-radius: 12px;
+  border-radius: var(--r-control);
   background: var(--green-700);
   color: #fff;
   font-size: 0.92rem;
-  font-weight: 600;
+  font-weight: 650;
   cursor: pointer;
-  transition: background 0.15s;
+  box-shadow: var(--shadow-sm);
+  transition: background 0.15s, transform 0.1s;
 }
 
 .search button:hover {
   background: var(--green-500);
 }
 
+.search button:active {
+  transform: translateY(1px);
+}
+
 /* ---------- Filterchips ---------- */
 
 .filters {
   display: flex;
-  gap: 8px;
+  gap: 7px;
   flex-wrap: wrap;
 }
 
@@ -406,19 +448,40 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 7px 13px;
-  border-radius: 999px;
-  border: 1.5px solid #d6e0d6;
-  background: #f6f9f6;
-  color: var(--text-dim);
+  padding: 7px 12px 7px 10px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
   font-size: 0.85rem;
   font-weight: 600;
+  letter-spacing: -0.01em;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.08s;
 }
 
+.chip-ic {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  color: var(--text-dim);
+}
+
+/* Kategorifärg alltid synlig i ikonen – fungerar som legend även när filtret är av */
+.chip[data-service='gravatten'] .chip-ic { color: var(--gravatten); }
+.chip[data-service='latrin'] .chip-ic { color: var(--latrin); }
+.chip[data-service='vatten'] .chip-ic { color: var(--vatten); }
+.chip[data-service='stallplats'] .chip-ic { color: var(--stallplats); }
+.chip[data-service='camping'] .chip-ic { color: var(--camping); }
+.chip[data-service='gasol'] .chip-ic { color: var(--gasol); }
+
 .chip:hover {
-  border-color: #b9cbb9;
+  border-color: var(--border-strong);
+  background: var(--field);
+}
+
+.chip:active {
+  transform: scale(0.97);
 }
 
 .chip.active {
@@ -426,39 +489,26 @@ body {
   border-color: transparent;
 }
 
-.chip.active[data-service='gravatten'] {
-  background: var(--gravatten);
+.chip.active .chip-ic {
+  color: #fff;
 }
 
-.chip.active[data-service='latrin'] {
-  background: var(--latrin);
-}
-
-.chip.active[data-service='vatten'] {
-  background: var(--vatten);
-}
-
-.chip.active[data-service='stallplats'] {
-  background: var(--stallplats);
-}
-
-.chip.active[data-service='camping'] {
-  background: var(--camping);
-}
-
-.chip.active[data-service='gasol'] {
-  background: var(--gasol);
-}
+.chip.active[data-service='gravatten'] { background: var(--gravatten); }
+.chip.active[data-service='latrin'] { background: var(--latrin); }
+.chip.active[data-service='vatten'] { background: var(--vatten); }
+.chip.active[data-service='stallplats'] { background: var(--stallplats); }
+.chip.active[data-service='camping'] { background: var(--camping); }
+.chip.active[data-service='gasol'] { background: var(--gasol); }
 
 .chip-count {
   font-size: 0.72rem;
   font-weight: 700;
-  opacity: 0.7;
+  color: var(--text-dim);
   font-variant-numeric: tabular-nums;
 }
 
 .chip.active .chip-count {
-  opacity: 0.85;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .filter-extras {
@@ -466,31 +516,42 @@ body {
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
 }
 
 .free-toggle {
-  padding: 6px 12px;
-  border-radius: 999px;
-  border: 1.5px solid var(--border, #d6e0d6);
-  background: var(--field, #f6f9f6);
+  padding: 6px 13px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
   color: var(--text-dim);
   font-size: 0.82rem;
-  font-weight: 600;
-  font-family: inherit;
+  font-weight: 650;
   cursor: pointer;
   transition: all 0.15s;
 }
 
+.free-toggle:hover {
+  background: var(--field);
+}
+
 .free-toggle.active {
-  background: #2e7d32;
+  background: var(--green-700);
   border-color: transparent;
   color: #fff;
 }
 
 .stats {
-  font-size: 0.75rem;
+  margin-left: auto;
+  font-size: 0.74rem;
   color: var(--text-dim);
   font-variant-numeric: tabular-nums;
+}
+
+:where(button, a, input, [tabindex]):focus-visible {
+  outline: 2px solid var(--green-500);
+  outline-offset: 2px;
 }
 
 /* Leaflet lagerväxlare */
@@ -660,15 +721,20 @@ body {
   left: 14px;
   bottom: calc(14px + env(safe-area-inset-bottom));
   z-index: 1100;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 999px;
+  padding: 11px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-pill);
   background: var(--surface);
   color: var(--green-900);
   font-size: 0.88rem;
   font-weight: 650;
   box-shadow: var(--shadow);
   cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.nearest-toggle:active {
+  transform: scale(0.97);
 }
 
 .locate-btn {
@@ -676,9 +742,9 @@ body {
   right: 12px;
   bottom: calc(112px + env(safe-area-inset-bottom));
   z-index: 1100;
-  width: 46px;
-  height: 46px;
-  border: none;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--border);
   border-radius: 50%;
   background: var(--surface);
   color: var(--green-700);
@@ -691,7 +757,11 @@ body {
 
 .locate-btn:hover {
   background: var(--green-100);
-  transform: scale(1.05);
+  transform: scale(1.06);
+}
+
+.locate-btn:active {
+  transform: scale(0.96);
 }
 
 .locate-btn svg {
@@ -780,67 +850,71 @@ body {
 /* ---------- Popup ---------- */
 
 .station-popup .leaflet-popup-content-wrapper {
-  border-radius: 14px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
   box-shadow: var(--shadow);
-  padding: 4px;
+  padding: 5px;
 }
 
 .station-popup .leaflet-popup-content {
-  margin: 12px 14px;
+  margin: 13px 15px;
   font-family: inherit;
   line-height: 1.45;
 }
 
 .popup h3 {
-  margin: 0 0 6px;
-  font-size: 1rem;
-  letter-spacing: -0.01em;
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
   color: var(--green-900);
+  text-wrap: balance;
 }
 
 .popup .badges {
   display: flex;
   gap: 5px;
   flex-wrap: wrap;
-  margin-bottom: 8px;
+  margin-bottom: 9px;
 }
 
 .popup .badge {
   background: var(--badge);
   color: #fff;
-  border-radius: 999px;
-  padding: 2px 9px;
-  font-size: 0.72rem;
-  font-weight: 600;
+  border-radius: var(--r-pill);
+  padding: 3px 10px;
+  font-size: 0.7rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
 }
 
 .popup .dist {
-  margin: 4px 0 6px;
+  margin: 4px 0 8px;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 650;
   color: var(--green-700);
 }
 
 .popup .desc {
   margin: 6px 0;
-  font-size: 0.85rem;
+  font-size: 0.86rem;
+  color: var(--text);
 }
 
 .popup .amenities {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
-  margin: 6px 0;
+  gap: 5px;
+  margin: 8px 0;
 }
 
 .popup .amenity {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: #3a4a3b;
-  background: var(--field, #f1f5f1);
-  border: 1px solid #d6e0d6;
-  border-radius: 7px;
-  padding: 2px 7px;
+  font-size: 0.73rem;
+  font-weight: 650;
+  color: var(--green-900);
+  background: var(--green-100);
+  border-radius: 8px;
+  padding: 3px 9px;
 }
 
 .popup .open-now {

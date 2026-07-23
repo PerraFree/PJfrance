@@ -11,6 +11,7 @@ import { fetchApprovedPlaces } from './lib/community'
 import { searchPlace } from './lib/geocode'
 import { fetchOsmStations } from './lib/overpass'
 import { getPosition, tap } from './lib/native'
+import { serviceIcon } from './lib/icons'
 import {
   fetchTrafikverketStations,
   getTrafikverketKey,
@@ -27,15 +28,6 @@ const ALL_SERVICES: ServiceType[] = [
   'camping',
   'gasol',
 ]
-
-const SERVICE_ICONS: Record<ServiceType, string> = {
-  gravatten: '🚿',
-  latrin: '🚽',
-  vatten: '🚰',
-  stallplats: '🚐',
-  camping: '⛺',
-  gasol: '🔥',
-}
 
 const FREE_RE = /gratis|free|ingår|kostnadsfri|utan avgift/i
 function isFree(s: Station): boolean {
@@ -314,7 +306,11 @@ export default function App() {
               aria-pressed={activeFilters.has(service)}
               onClick={() => toggleFilter(service)}
             >
-              <span aria-hidden="true">{SERVICE_ICONS[service]}</span>
+              <span
+                className="chip-ic"
+                aria-hidden="true"
+                dangerouslySetInnerHTML={{ __html: serviceIcon(service) }}
+              />
               {SERVICE_LABELS[service]}
               {counts[service] > 0 && <span className="chip-count">{counts[service]}</span>}
             </button>
@@ -328,7 +324,7 @@ export default function App() {
             aria-pressed={freeOnly}
             onClick={() => setFreeOnly((v) => !v)}
           >
-            💰 Endast gratis
+            Endast gratis
           </button>
           <span className="stats">
             {shownStations.length.toLocaleString('sv-SE')} platser
@@ -365,7 +361,7 @@ export default function App() {
             className="submit-place-btn"
             onClick={() => setShowSubmit(true)}
           >
-            ＋ Föreslå en plats som saknas
+            Föreslå en plats som saknas
           </button>
         )}
       </div>
@@ -405,7 +401,7 @@ export default function App() {
           type="button"
           onClick={() => setShowNearest(true)}
         >
-          ☰ Närmast dig
+          Närmast dig
         </button>
       )}
 

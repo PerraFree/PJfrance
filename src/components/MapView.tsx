@@ -4,9 +4,10 @@ import 'leaflet/dist/leaflet.css'
 import 'leaflet.markercluster'
 import 'leaflet.markercluster/dist/MarkerCluster.css'
 import type { Amenities, ServiceType, Station } from '../types'
-import { AMENITY_LABELS, SERVICE_COLORS, SERVICE_LABELS } from '../types'
+import { SERVICE_COLORS, SERVICE_LABELS } from '../types'
 import { openNow } from '../lib/openingHours'
 import { sharePlace as nativeShare } from '../lib/native'
+import { amenityChip } from '../lib/icons'
 
 const MIN_FETCH_ZOOM = 7
 const VIEW_KEY = 'tomningskartan.view'
@@ -34,11 +35,12 @@ function esc(value: string): string {
     .replace(/"/g, '&quot;')
 }
 
+const AMENITY_KEYS: (keyof Amenities)[] = ['el', 'dusch', 'wc', 'wifi', 'hund']
+
 function amenityChips(amenities: Amenities | undefined): string {
   if (!amenities) return ''
-  const chips = (Object.keys(AMENITY_LABELS) as (keyof Amenities)[])
-    .filter((k) => amenities[k])
-    .map((k) => `<span class="amenity">${AMENITY_LABELS[k]}</span>`)
+  const chips = AMENITY_KEYS.filter((k) => amenities[k])
+    .map((k) => amenityChip(k))
     .join('')
   return chips ? `<div class="amenities">${chips}</div>` : ''
 }
