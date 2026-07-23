@@ -288,7 +288,9 @@ export default function MapView({
 
   useEffect(() => {
     if (flyTo && mapRef.current) {
-      mapRef.current.flyTo([flyTo.lat, flyTo.lon], flyTo.zoom ?? 12)
+      const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+      if (reduce) mapRef.current.setView([flyTo.lat, flyTo.lon], flyTo.zoom ?? 12)
+      else mapRef.current.flyTo([flyTo.lat, flyTo.lon], flyTo.zoom ?? 12)
     }
   }, [flyTo])
 

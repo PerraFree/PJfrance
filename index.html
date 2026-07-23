@@ -3,14 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#1b5e20" />
+    <meta name="theme-color" content="#1b5e20" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#14401a" media="(prefers-color-scheme: dark)" />
     <meta
       name="description"
       content="Hitta ställplatser, campingplatser, tömning av gråvatten och latrin, färskvatten och gasol i Sverige – för husbil och husvagn."
     />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-    <title>Tömningskartan – gråvatten, latrin & vatten i Sverige</title>
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Tömningskartan" />
+
+    <!-- Delning (Open Graph / Twitter) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tömningskartan" />
+    <meta property="og:locale" content="sv_SE" />
+    <meta
+      property="og:title"
+      content="Tömningskartan – ställplatser, tömning & vatten för husbil"
+    />
+    <meta
+      property="og:description"
+      content="Hitta ställplatser, campingplatser, gråvatten- och latrintömning, färskvatten och gasol i hela Sverige."
+    />
+    <meta property="og:image" content="/icon-512.png" />
+    <meta name="twitter:card" content="summary" />
+
+    <title>Tömningskartan – ställplatser, tömning & vatten för husbil i Sverige</title>
   </head>
   <body>
     <div id="root"></div>

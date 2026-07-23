@@ -4,6 +4,7 @@ import MapView, { MIN_FETCH_ZOOM } from './components/MapView'
 import SubmitForm from './components/SubmitForm'
 import ReportForm from './components/ReportForm'
 import NearestList from './components/NearestList'
+import IntroHint from './components/IntroHint'
 import { communityEnabled } from './config'
 import { OWN_STATIONS } from './data/stations'
 import { fetchApprovedPlaces } from './lib/community'
@@ -258,6 +259,7 @@ export default function App() {
 
   return (
     <div className="app">
+      <IntroHint />
       <MapView
         stations={shownStations}
         activeFilters={activeFilters}
