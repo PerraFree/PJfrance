@@ -41,6 +41,16 @@ function servicesFromTags(tags: Record<string, string>): ServiceType[] {
   // Övernattning
   if (tags.tourism === 'caravan_site') services.add('stallplats')
   if (tags.tourism === 'camp_site') services.add('camping')
+  // Golfklubbar och liknande som uttryckligen tillåter husbil/husvagn
+  if (
+    (tags.leisure === 'golf_course' || tags.leisure === 'sports_centre') &&
+    (tags.caravan === 'yes' ||
+      tags.caravan === 'designated' ||
+      tags.motorhome === 'yes' ||
+      tags.motorhome === 'designated')
+  ) {
+    services.add('stallplats')
+  }
 
   // Gasol/LPG-påfyllning
   if (
@@ -60,6 +70,7 @@ function placeKind(tags: Record<string, string>): string | undefined {
   if (tags.highway === 'services') return 'Vägkrog/serviceområde'
   if (tags.tourism === 'caravan_site') return 'Ställplats för husbil'
   if (tags.tourism === 'camp_site') return 'Camping'
+  if (tags.leisure === 'golf_course') return 'Ställplats vid golfklubb'
   if (tags.leisure === 'marina' || tags.mooring) return 'Gästhamn/marina'
   if (tags.shop === 'gas') return 'Gasolförsäljning'
   if (tags.amenity === 'fuel') return 'Drivmedelsstation'
@@ -194,6 +205,8 @@ export async function fetchOsmStations(bounds: LatLngBounds): Promise<Station[]>
       node["amenity"="drinking_water"](${bbox});
       nwr["tourism"="caravan_site"](${bbox});
       nwr["tourism"="camp_site"](${bbox});
+      nwr["leisure"="golf_course"]["caravan"~"^(yes|designated)$"](${bbox});
+      nwr["leisure"="golf_course"]["motorhome"~"^(yes|designated)$"](${bbox});
       nwr["amenity"="fuel"]["fuel:lpg"="yes"](${bbox});
       nwr["shop"="gas"](${bbox});
     );

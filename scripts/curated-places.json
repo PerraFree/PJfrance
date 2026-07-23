@@ -54,5 +54,23 @@
     "fee": "Gratis",
     "description": "Ca 350 m från väg 35. Tömning av gråvatten och latrintank samt färskvatten. Källa: Åtvidabergs kommun.",
     "url": "https://www.atvidaberg.se/nyheter/uppleva-och-gora/2024-07-29-servicestalle-for-husbilar"
+  },
+  {
+    "name": "Borås Camping (Saltemad)",
+    "query": "Saltemads Camping, Borås",
+    "source": "egen",
+    "services": ["camping", "stallplats", "vatten"],
+    "facilities": ["dricksvatten", "el", "dusch", "wc", "tvatt", "wifi", "lekplats"],
+    "description": "Privat camping vid Viskan med ställplats, stugor och vandrarhem. Se webbplatsen för aktuella priser och tömningsmöjligheter.",
+    "url": "https://borascamping.se/"
+  },
+  {
+    "name": "Borås Golfklubb – ställplats",
+    "query": "Borås Golfklubb, Borås",
+    "source": "egen",
+    "services": ["stallplats"],
+    "facilities": ["restaurang"],
+    "description": "Ställplats för husbil vid golfklubben, med restaurang. Se webbplatsen för el, vatten och avgift.",
+    "url": "https://www.borasgolfklubb.se/restaurang-boende/stallplats"
   }
 ]

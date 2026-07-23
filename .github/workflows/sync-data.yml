@@ -7,6 +7,7 @@ on:
       - claude/gravatten-latrin-app-sverige-aed0qg
     paths:
       - 'scripts/sync-stations.mjs'
+      - 'scripts/curated-places.json'
       - '.github/workflows/sync-data.yml'
   schedule:
     - cron: '0 3 * * 1'

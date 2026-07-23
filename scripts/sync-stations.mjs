@@ -7,9 +7,11 @@
  *  - OpenStreetMap via Overpass (hela Sverige, exkl. dricksvattenkranar
  *    som skulle göra filen onödigt stor – de hämtas live per kartvy)
  *  - Trafikverkets Parking-API om miljövariabeln TRV_API_KEY är satt
- *  - Kommunala platser från scripts/municipal-stations.json (geokodas via
- *    Nominatim här i CI, eftersom de saknas i OSM). Lägg till nya genom att
- *    fylla på JSON-filen med namn + adress (query) – inga koordinater behövs.
+ *  - Kurerat register i scripts/curated-places.json: kommunala platser,
+ *    privata campingar, golfklubbar med ställplats m.m. som saknas eller är
+ *    fel-taggade i OSM. Adressen (query) geokodas via Nominatim här i CI, eller
+ *    ange lat/lon direkt. Rika fält (facilities, capacity, payment, website …)
+ *    tas med om de anges. Lägg till nya platser genom att fylla på JSON-filen.
  *
  * Körs i CI före `vite build` (se .github/workflows/deploy.yml) och kan
  * köras lokalt: `node scripts/sync-stations.mjs`.
@@ -19,7 +21,7 @@
 import { writeFile, readFile, mkdir } from 'node:fs/promises'
 
 const OUT = new URL('../public/data/stations-seed.json', import.meta.url)
-const MUNICIPAL = new URL('./municipal-stations.json', import.meta.url)
+const CURATED = new URL('./curated-places.json', import.meta.url)
 
 // ---------- OpenStreetMap ----------
 
@@ -43,6 +45,8 @@ area["ISO3166-1"="SE"][admin_level=2]->.se;
   nwr["amenity"="water_point"](area.se);
   nwr["tourism"="caravan_site"](area.se);
   nwr["tourism"="camp_site"](area.se);
+  nwr["leisure"="golf_course"]["caravan"~"^(yes|designated)$"](area.se);
+  nwr["leisure"="golf_course"]["motorhome"~"^(yes|designated)$"](area.se);
   nwr["amenity"="fuel"]["fuel:lpg"="yes"](area.se);
   nwr["shop"="gas"](area.se);
 );
@@ -77,6 +81,15 @@ function servicesFromTags(tags) {
   }
   if (tags.tourism === 'caravan_site') services.add('stallplats')
   if (tags.tourism === 'camp_site') services.add('camping')
+  if (
+    (tags.leisure === 'golf_course' || tags.leisure === 'sports_centre') &&
+    (tags.caravan === 'yes' ||
+      tags.caravan === 'designated' ||
+      tags.motorhome === 'yes' ||
+      tags.motorhome === 'designated')
+  ) {
+    services.add('stallplats')
+  }
   if (tags['fuel:lpg'] === 'yes' || tags.shop === 'gas' || tags['service:vehicle:lpg'] === 'yes') {
     services.add('gasol')
   }
@@ -88,6 +101,7 @@ function placeKind(tags) {
   if (tags.highway === 'services') return 'Vägkrog/serviceområde'
   if (tags.tourism === 'caravan_site') return 'Ställplats för husbil'
   if (tags.tourism === 'camp_site') return 'Camping'
+  if (tags.leisure === 'golf_course') return 'Ställplats vid golfklubb'
   if (tags.leisure === 'marina' || tags.mooring) return 'Gästhamn/marina'
   if (tags.shop === 'gas') return 'Gasolförsäljning'
   if (tags.amenity === 'fuel') return 'Drivmedelsstation'
@@ -286,37 +300,56 @@ async function geocode(query) {
   return { lat: parseFloat(json[0].lat), lon: parseFloat(json[0].lon) }
 }
 
-async function fetchMunicipal() {
+async function fetchCurated() {
   let entries
   try {
-    entries = JSON.parse(await readFile(MUNICIPAL, 'utf8'))
+    entries = JSON.parse(await readFile(CURATED, 'utf8'))
   } catch {
     return []
   }
   const stations = []
   for (const [i, e] of entries.entries()) {
     try {
-      const pos = await geocode(e.query)
+      // Ange lat/lon direkt i posten för att hoppa över geokodning.
+      const pos =
+        typeof e.lat === 'number' && typeof e.lon === 'number'
+          ? { lat: e.lat, lon: e.lon }
+          : await geocode(e.query)
       if (!pos) {
-        console.warn(`Kommun: kunde inte geokoda "${e.query}" (${e.name})`)
+        console.warn(`Register: kunde inte geokoda "${e.query}" (${e.name})`)
         continue
       }
-      stations.push({
-        id: `kommun-${i}-${e.query.replace(/\s+/g, '-').toLowerCase()}`,
+      const station = {
+        id: `curated-${i}-${(e.query ?? e.name).replace(/\s+/g, '-').toLowerCase()}`,
         name: e.name,
         lat: pos.lat,
         lon: pos.lon,
         services: e.services,
-        source: 'kommun',
+        source: e.source ?? 'kommun',
         description: e.description,
         fee: e.fee,
-        osmUrl: e.url,
-      })
+        // Källänken visas som "Webbplats" (inte "OpenStreetMap").
+        website: e.website ?? e.url,
+      }
+      // Valfria, rika fält – tas bara med om de anges i posten.
+      for (const key of [
+        'facilities',
+        'capacity',
+        'maxstay',
+        'payment',
+        'address',
+        'operator',
+        'phone',
+        'openingHours',
+      ]) {
+        if (e[key] !== undefined) station[key] = e[key]
+      }
+      stations.push(station)
     } catch (err) {
-      console.warn(`Kommun: geokodning misslyckades för "${e.query}": ${err.message}`)
+      console.warn(`Register: hämtning misslyckades för "${e.query ?? e.name}": ${err.message}`)
     }
-    // Nominatims policy: max 1 anrop/sekund
-    await sleep(1200)
+    // Nominatims policy: max 1 anrop/sekund (bara när geokodning behövs)
+    if (!(typeof e.lat === 'number' && typeof e.lon === 'number')) await sleep(1200)
   }
   return stations
 }
@@ -347,11 +380,11 @@ if (trvKey) {
 }
 
 try {
-  const kommun = await fetchMunicipal()
-  console.log(`Kommun: ${kommun.length} platser`)
-  stations.push(...kommun)
+  const curated = await fetchCurated()
+  console.log(`Register: ${curated.length} platser`)
+  stations.push(...curated)
 } catch (err) {
-  console.error(`Kommun-geokodning misslyckades: ${err.message}`)
+  console.error(`Register-geokodning misslyckades: ${err.message}`)
 }
 
 if (stations.length === 0) {
