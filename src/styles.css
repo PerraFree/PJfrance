@@ -11,6 +11,9 @@
   --gravatten: #6d4c41;
   --latrin: #7b1fa2;
   --vatten: #0277bd;
+  --stallplats: #e65100;
+  --camping: #00695c;
+  --gasol: #c62828;
 }
 
 * {
@@ -433,6 +436,18 @@ body {
 
 .chip.active[data-service='vatten'] {
   background: var(--vatten);
+}
+
+.chip.active[data-service='stallplats'] {
+  background: var(--stallplats);
+}
+
+.chip.active[data-service='camping'] {
+  background: var(--camping);
+}
+
+.chip.active[data-service='gasol'] {
+  background: var(--gasol);
 }
 
 /* ---------- Flytande knappar & status ---------- */

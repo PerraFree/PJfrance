@@ -37,6 +37,20 @@ function servicesFromTags(tags: Record<string, string>): ServiceType[] {
   ) {
     services.add('vatten')
   }
+
+  // Övernattning
+  if (tags.tourism === 'caravan_site') services.add('stallplats')
+  if (tags.tourism === 'camp_site') services.add('camping')
+
+  // Gasol/LPG-påfyllning
+  if (
+    tags['fuel:lpg'] === 'yes' ||
+    tags.shop === 'gas' ||
+    tags['service:vehicle:lpg'] === 'yes'
+  ) {
+    services.add('gasol')
+  }
+
   return [...services]
 }
 
@@ -44,9 +58,10 @@ function servicesFromTags(tags: Record<string, string>): ServiceType[] {
 function placeKind(tags: Record<string, string>): string | undefined {
   if (tags.highway === 'rest_area') return 'Rastplats'
   if (tags.highway === 'services') return 'Vägkrog/serviceområde'
-  if (tags.tourism === 'caravan_site') return 'Ställplats/campingplats'
+  if (tags.tourism === 'caravan_site') return 'Ställplats för husbil'
   if (tags.tourism === 'camp_site') return 'Camping'
   if (tags.leisure === 'marina' || tags.mooring) return 'Gästhamn/marina'
+  if (tags.shop === 'gas') return 'Gasolförsäljning'
   if (tags.amenity === 'fuel') return 'Drivmedelsstation'
   if (tags.amenity === 'sanitary_dump_station') return 'Tömningsstation'
   if (tags.amenity === 'water_point') return 'Vattenpåfyllning'
@@ -100,12 +115,16 @@ export async function fetchOsmStations(bounds: LatLngBounds): Promise<Station[]>
     bounds.getEast(),
   ].join(',')
   const query = `
-    [out:json][timeout:40];
+    [out:json][timeout:60];
     (
       nwr["amenity"="sanitary_dump_station"](${bbox});
       nwr["sanitary_dump_station"]["sanitary_dump_station"!="no"](${bbox});
       nwr["amenity"="water_point"](${bbox});
       node["amenity"="drinking_water"](${bbox});
+      nwr["tourism"="caravan_site"](${bbox});
+      nwr["tourism"="camp_site"](${bbox});
+      nwr["amenity"="fuel"]["fuel:lpg"="yes"](${bbox});
+      nwr["shop"="gas"](${bbox});
     );
     out center tags;
   `

@@ -16,12 +16,22 @@ import {
 import type { ServiceType, Station } from './types'
 import { SERVICE_LABELS } from './types'
 
-const ALL_SERVICES: ServiceType[] = ['gravatten', 'latrin', 'vatten']
+const ALL_SERVICES: ServiceType[] = [
+  'gravatten',
+  'latrin',
+  'vatten',
+  'stallplats',
+  'camping',
+  'gasol',
+]
 
 const SERVICE_ICONS: Record<ServiceType, string> = {
   gravatten: '🚿',
   latrin: '🚽',
   vatten: '🚰',
+  stallplats: '🚐',
+  camping: '⛺',
+  gasol: '🔥',
 }
 
 /** Slår ihop stationer som ligger på (nästan) samma plats; mer tillförlitliga källor vinner. */
@@ -222,7 +232,7 @@ export default function App() {
           <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" width="34" height="34" />
           <div>
             <h1>Tömningskartan</h1>
-            <p>Gråvatten · latrin · färskvatten för husbil &amp; husvagn</p>
+            <p>Ställplatser · tömning · vatten · gasol – för husbil &amp; husvagn</p>
           </div>
           <button
             type="button"

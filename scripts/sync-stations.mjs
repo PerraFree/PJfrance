@@ -35,12 +35,16 @@ const USER_AGENT = 'Tomningskartan-sync/0.1 (+https://github.com/PerraFree/PJfra
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 const OSM_QUERY = `
-[out:json][timeout:300];
+[out:json][timeout:600];
 area["ISO3166-1"="SE"][admin_level=2]->.se;
 (
   nwr["amenity"="sanitary_dump_station"](area.se);
   nwr["sanitary_dump_station"]["sanitary_dump_station"!="no"](area.se);
   nwr["amenity"="water_point"](area.se);
+  nwr["tourism"="caravan_site"](area.se);
+  nwr["tourism"="camp_site"](area.se);
+  nwr["amenity"="fuel"]["fuel:lpg"="yes"](area.se);
+  nwr["shop"="gas"](area.se);
 );
 out center tags;
 `
@@ -71,15 +75,21 @@ function servicesFromTags(tags) {
   if (tags.amenity === 'water_point' || tags.water_point === 'yes' || tags.drinking_water === 'yes') {
     services.add('vatten')
   }
+  if (tags.tourism === 'caravan_site') services.add('stallplats')
+  if (tags.tourism === 'camp_site') services.add('camping')
+  if (tags['fuel:lpg'] === 'yes' || tags.shop === 'gas' || tags['service:vehicle:lpg'] === 'yes') {
+    services.add('gasol')
+  }
   return [...services]
 }
 
 function placeKind(tags) {
   if (tags.highway === 'rest_area') return 'Rastplats'
   if (tags.highway === 'services') return 'Vägkrog/serviceområde'
-  if (tags.tourism === 'caravan_site') return 'Ställplats/campingplats'
+  if (tags.tourism === 'caravan_site') return 'Ställplats för husbil'
   if (tags.tourism === 'camp_site') return 'Camping'
   if (tags.leisure === 'marina' || tags.mooring) return 'Gästhamn/marina'
+  if (tags.shop === 'gas') return 'Gasolförsäljning'
   if (tags.amenity === 'fuel') return 'Drivmedelsstation'
   if (tags.amenity === 'sanitary_dump_station') return 'Tömningsstation'
   if (tags.amenity === 'water_point') return 'Vattenpåfyllning'
