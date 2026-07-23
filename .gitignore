@@ -3,3 +3,14 @@ dist
 *.log
 .DS_Store
 tsconfig.tsbuildinfo
+
+# Capacitor – genereras av "npx cap sync"
+android/app/src/main/assets/public
+android/app/src/main/assets/capacitor.config.json
+android/app/src/main/assets/capacitor.plugins.json
+android/.gradle
+android/build
+android/app/build
+android/capacitor-cordova-android-plugins
+ios/App/App/public
+ios/App/Pods
