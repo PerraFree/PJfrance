@@ -132,7 +132,8 @@ function popupHtml(
   const report = canReport
     ? `<button type="button" class="report-btn" data-station-id="${escapeAttr(station.id)}" data-station-name="${escapeAttr(station.name)}">⚠ Rapportera fel</button>`
     : ''
-  return `<div class="popup"><h3>${esc(station.name)}</h3><div class="badges">${services}</div>${rows.join('')}${links}<p class="source">${sourceNote}</p>${report}</div>`
+  const accent = SERVICE_COLORS[station.services[0]] ?? 'var(--green-700)'
+  return `<div class="popup" style="--accent:${accent}"><h3>${esc(station.name)}</h3><div class="badges">${services}</div>${rows.join('')}${links}<p class="source">${sourceNote}</p>${report}</div>`
 }
 
 function readSavedView(): { lat: number; lon: number; zoom: number } | null {

@@ -260,6 +260,8 @@ export default function App() {
         onReport={setReportTarget}
       />
 
+      {loading && <div className="loading-bar" aria-hidden="true" />}
+
       <div className="panel">
         <header className="brand">
           <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" width="34" height="34" />
