@@ -150,9 +150,30 @@ async function fetchOsmFrom(url) {
       fee: tags.fee === 'yes' ? (tags.charge ?? 'Avgift') : tags.fee === 'no' ? 'Gratis' : undefined,
       openingHours: tags.opening_hours,
       osmUrl: `https://www.openstreetmap.org/${el.type}/${el.id}`,
+      ...amenityFields(tags),
     })
   }
   return stations
+}
+
+/** Plockar ut bekvämligheter och kontaktuppgifter ur OSM-taggar. */
+function amenityFields(tags) {
+  const amenities = {
+    el: 'power_supply' in tags && tags.power_supply !== 'no',
+    dusch: tags.shower === 'yes',
+    wc: tags.toilets === 'yes' || tags.toilet === 'yes',
+    wifi: ['yes', 'wlan', 'wifi'].includes(tags.internet_access ?? ''),
+    hund: tags.dog === 'yes' || tags.dog === 'leashed',
+  }
+  const hasAmenity = Object.values(amenities).some(Boolean)
+  const out = {}
+  if (hasAmenity) out.amenities = amenities
+  if (tags.capacity) out.capacity = tags.capacity
+  if (tags.operator) out.operator = tags.operator
+  if (tags.phone || tags['contact:phone']) out.phone = tags.phone ?? tags['contact:phone']
+  if (tags.website || tags['contact:website'])
+    out.website = tags.website ?? tags['contact:website']
+  return out
 }
 
 // ---------- Trafikverket ----------

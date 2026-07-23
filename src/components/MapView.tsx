@@ -3,8 +3,9 @@ import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet.markercluster'
 import 'leaflet.markercluster/dist/MarkerCluster.css'
-import type { ServiceType, Station } from '../types'
-import { SERVICE_COLORS, SERVICE_LABELS } from '../types'
+import type { Amenities, ServiceType, Station } from '../types'
+import { AMENITY_LABELS, SERVICE_COLORS, SERVICE_LABELS } from '../types'
+import { openNow } from '../lib/openingHours'
 
 const MIN_FETCH_ZOOM = 7
 const VIEW_KEY = 'tomningskartan.view'
@@ -21,6 +22,23 @@ interface Props {
 
 function escapeAttr(value: string): string {
   return value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
+}
+
+function esc(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+}
+
+function amenityChips(amenities: Amenities | undefined): string {
+  if (!amenities) return ''
+  const chips = (Object.keys(AMENITY_LABELS) as (keyof Amenities)[])
+    .filter((k) => amenities[k])
+    .map((k) => `<span class="amenity">${AMENITY_LABELS[k]}</span>`)
+    .join('')
+  return chips ? `<div class="amenities">${chips}</div>` : ''
 }
 
 /** Avstånd fågelvägen i km (haversine). */
@@ -68,10 +86,31 @@ function popupHtml(
     const dist = km < 1 ? `${Math.round(km * 1000)} m` : `${km.toFixed(km < 10 ? 1 : 0)} km`
     rows.push(`<p class="dist">📍 ${dist} härifrån (fågelvägen)</p>`)
   }
-  if (station.description) rows.push(`<p class="desc">${station.description}</p>`)
-  if (station.fee) rows.push(`<p class="meta"><strong>Avgift</strong>${station.fee}</p>`)
-  if (station.openingHours)
-    rows.push(`<p class="meta"><strong>Öppettider</strong>${station.openingHours}</p>`)
+  if (station.description) rows.push(`<p class="desc">${esc(station.description)}</p>`)
+  rows.push(amenityChips(station.amenities))
+  if (station.fee) rows.push(`<p class="meta"><strong>Avgift</strong>${esc(station.fee)}</p>`)
+  if (station.capacity)
+    rows.push(`<p class="meta"><strong>Platser</strong>${esc(station.capacity)}</p>`)
+  if (station.openingHours) {
+    const state = openNow(station.openingHours)
+    const tag =
+      state === 'open'
+        ? '<span class="open-now open">Öppet nu</span>'
+        : state === 'closed'
+          ? '<span class="open-now closed">Stängt nu</span>'
+          : ''
+    rows.push(`<p class="meta"><strong>Öppettider</strong>${esc(station.openingHours)} ${tag}</p>`)
+  }
+  if (station.operator)
+    rows.push(`<p class="meta"><strong>Drivs av</strong>${esc(station.operator)}</p>`)
+  const contact: string[] = []
+  if (station.phone)
+    contact.push(`<a href="tel:${escapeAttr(station.phone)}">📞 Ring</a>`)
+  if (station.website)
+    contact.push(
+      `<a href="${escapeAttr(station.website)}" target="_blank" rel="noopener">🌐 Webbplats</a>`,
+    )
+  if (contact.length) rows.push(`<p class="contact">${contact.join(' · ')}</p>`)
   const nav = `https://www.google.com/maps/dir/?api=1&destination=${station.lat},${station.lon}`
   const links =
     `<div class="links"><a class="primary" href="${nav}" target="_blank" rel="noopener">Vägbeskrivning →</a>` +
@@ -92,7 +131,7 @@ function popupHtml(
   const report = canReport
     ? `<button type="button" class="report-btn" data-station-id="${escapeAttr(station.id)}" data-station-name="${escapeAttr(station.name)}">⚠ Rapportera fel</button>`
     : ''
-  return `<div class="popup"><h3>${station.name}</h3><div class="badges">${services}</div>${rows.join('')}${links}<p class="source">${sourceNote}</p>${report}</div>`
+  return `<div class="popup"><h3>${esc(station.name)}</h3><div class="badges">${services}</div>${rows.join('')}${links}<p class="source">${sourceNote}</p>${report}</div>`
 }
 
 function readSavedView(): { lat: number; lon: number; zoom: number } | null {

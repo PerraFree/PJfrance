@@ -6,6 +6,15 @@ export type ServiceType =
   | 'camping'
   | 'gasol'
 
+/** Extra bekvämligheter, mest relevanta för ställplatser/campingar. */
+export interface Amenities {
+  el?: boolean
+  dusch?: boolean
+  wc?: boolean
+  wifi?: boolean
+  hund?: boolean
+}
+
 export interface Station {
   id: string
   name: string
@@ -22,6 +31,19 @@ export interface Station {
   fee?: string
   openingHours?: string
   osmUrl?: string
+  amenities?: Amenities
+  capacity?: string
+  operator?: string
+  phone?: string
+  website?: string
+}
+
+export const AMENITY_LABELS: Record<keyof Amenities, string> = {
+  el: '🔌 El',
+  dusch: '🚿 Dusch',
+  wc: '🚻 WC',
+  wifi: '📶 Wifi',
+  hund: '🐕 Hund ok',
 }
 
 export const SERVICE_LABELS: Record<ServiceType, string> = {

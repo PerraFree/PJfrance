@@ -103,6 +103,26 @@ function toStation(el: OverpassElement): Station | null {
     fee: tags.fee === 'yes' ? tags.charge ?? 'Avgift' : tags.fee === 'no' ? 'Gratis' : undefined,
     openingHours: tags.opening_hours,
     osmUrl: `https://www.openstreetmap.org/${el.type}/${el.id}`,
+    ...amenityFields(tags),
+  }
+}
+
+/** Plockar ut bekvämligheter och kontaktuppgifter ur OSM-taggar. */
+function amenityFields(tags: Record<string, string>) {
+  const amenities = {
+    el: 'power_supply' in tags && tags.power_supply !== 'no',
+    dusch: tags.shower === 'yes',
+    wc: tags.toilets === 'yes' || tags.toilet === 'yes',
+    wifi: ['yes', 'wlan', 'wifi'].includes(tags.internet_access ?? ''),
+    hund: tags.dog === 'yes' || tags.dog === 'leashed',
+  }
+  const hasAmenity = Object.values(amenities).some(Boolean)
+  return {
+    amenities: hasAmenity ? amenities : undefined,
+    capacity: tags.capacity,
+    operator: tags.operator,
+    phone: tags.phone ?? tags['contact:phone'],
+    website: tags.website ?? tags['contact:website'],
   }
 }
 

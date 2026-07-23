@@ -607,6 +607,57 @@ body {
   font-size: 0.85rem;
 }
 
+.popup .amenities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 6px 0;
+}
+
+.popup .amenity {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #3a4a3b;
+  background: var(--field, #f1f5f1);
+  border: 1px solid #d6e0d6;
+  border-radius: 7px;
+  padding: 2px 7px;
+}
+
+.popup .open-now {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 1px 7px;
+  border-radius: 999px;
+}
+
+.popup .open-now.open {
+  background: #e4f4e4;
+  color: #1b7a2e;
+}
+
+.popup .open-now.closed {
+  background: #fdeceb;
+  color: #b3261e;
+}
+
+.popup .contact {
+  margin: 6px 0 0;
+  font-size: 0.82rem;
+}
+
+.popup .contact a {
+  color: var(--green-700);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.popup .contact a:hover {
+  text-decoration: underline;
+}
+
 .popup .meta {
   margin: 3px 0;
   font-size: 0.82rem;
