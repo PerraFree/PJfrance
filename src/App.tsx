@@ -49,6 +49,7 @@ export default function App() {
     new Set(ALL_SERVICES),
   )
   const [flyTo, setFlyTo] = useState<{ lat: number; lon: number; zoom?: number } | null>(null)
+  const [userLoc, setUserLoc] = useState<{ lat: number; lon: number } | null>(null)
   const [query, setQuery] = useState('')
   const [status, setStatus] = useState('Zooma in eller sök på en ort för att hämta stationer.')
   const [loading, setLoading] = useState(false)
@@ -183,8 +184,10 @@ export default function App() {
     setStatus('Hämtar din position …')
     navigator.geolocation.getCurrentPosition(
       (pos) => {
-        setFlyTo({ lat: pos.coords.latitude, lon: pos.coords.longitude, zoom: 11 })
-        setStatus('Visar stationer nära dig.')
+        const loc = { lat: pos.coords.latitude, lon: pos.coords.longitude }
+        setUserLoc(loc)
+        setFlyTo({ ...loc, zoom: 11 })
+        setStatus('Visar stationer nära dig – avstånd visas i varje plats.')
       },
       () => setStatus('Kunde inte hämta din position.'),
     )
@@ -208,6 +211,7 @@ export default function App() {
         stations={stations}
         activeFilters={activeFilters}
         flyTo={flyTo}
+        userLoc={userLoc}
         onBoundsChange={handleBoundsChange}
         canReport={communityEnabled}
         onReport={setReportTarget}

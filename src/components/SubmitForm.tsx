@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { searchPlace } from '../lib/geocode'
 import { submitPlace } from '../lib/community'
+import { useModal } from '../lib/useModal'
 import type { ServiceType } from '../types'
 import { SERVICE_LABELS } from '../types'
 
@@ -21,6 +22,7 @@ export default function SubmitForm({ onClose, onSubmitted }: Props) {
   const [description, setDescription] = useState('')
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState('')
+  const modalRef = useModal(onClose)
 
   const toggle = (s: ServiceType) => {
     setServices((prev) => {
@@ -75,6 +77,7 @@ export default function SubmitForm({ onClose, onSubmitted }: Props) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="submit-title"
+        ref={modalRef}
         onClick={(e) => e.stopPropagation()}
       >
         <button className="modal-close" type="button" onClick={onClose} aria-label="Stäng">

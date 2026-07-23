@@ -1,15 +1,19 @@
 import { useEffect, useRef } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+import 'leaflet.markercluster'
+import 'leaflet.markercluster/dist/MarkerCluster.css'
 import type { ServiceType, Station } from '../types'
 import { SERVICE_COLORS, SERVICE_LABELS } from '../types'
 
 const MIN_FETCH_ZOOM = 7
+const VIEW_KEY = 'tomningskartan.view'
 
 interface Props {
   stations: Station[]
   activeFilters: Set<ServiceType>
   flyTo: { lat: number; lon: number; zoom?: number } | null
+  userLoc: { lat: number; lon: number } | null
   onBoundsChange: (bounds: L.LatLngBounds, zoom: number) => void
   canReport: boolean
   onReport: (station: { id: string; name: string }) => void
@@ -17,6 +21,18 @@ interface Props {
 
 function escapeAttr(value: string): string {
   return value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
+}
+
+/** Avstånd fågelvägen i km (haversine). */
+function distanceKm(a: { lat: number; lon: number }, b: { lat: number; lon: number }): number {
+  const R = 6371
+  const dLat = ((b.lat - a.lat) * Math.PI) / 180
+  const dLon = ((b.lon - a.lon) * Math.PI) / 180
+  const lat1 = (a.lat * Math.PI) / 180
+  const lat2 = (b.lat * Math.PI) / 180
+  const h =
+    Math.sin(dLat / 2) ** 2 + Math.sin(dLon / 2) ** 2 * Math.cos(lat1) * Math.cos(lat2)
+  return 2 * R * Math.asin(Math.sqrt(h))
 }
 
 function pinIcon(color: string): L.DivIcon {
@@ -35,7 +51,11 @@ function pinIcon(color: string): L.DivIcon {
   })
 }
 
-function popupHtml(station: Station, canReport: boolean): string {
+function popupHtml(
+  station: Station,
+  canReport: boolean,
+  userLoc: { lat: number; lon: number } | null,
+): string {
   const services = station.services
     .map(
       (s) =>
@@ -43,6 +63,11 @@ function popupHtml(station: Station, canReport: boolean): string {
     )
     .join('')
   const rows: string[] = []
+  if (userLoc) {
+    const km = distanceKm(userLoc, station)
+    const dist = km < 1 ? `${Math.round(km * 1000)} m` : `${km.toFixed(km < 10 ? 1 : 0)} km`
+    rows.push(`<p class="dist">📍 ${dist} härifrån (fågelvägen)</p>`)
+  }
   if (station.description) rows.push(`<p class="desc">${station.description}</p>`)
   if (station.fee) rows.push(`<p class="meta"><strong>Avgift</strong>${station.fee}</p>`)
   if (station.openingHours)
@@ -70,33 +95,72 @@ function popupHtml(station: Station, canReport: boolean): string {
   return `<div class="popup"><h3>${station.name}</h3><div class="badges">${services}</div>${rows.join('')}${links}<p class="source">${sourceNote}</p>${report}</div>`
 }
 
+function readSavedView(): { lat: number; lon: number; zoom: number } | null {
+  try {
+    const raw = localStorage.getItem(VIEW_KEY)
+    if (!raw) return null
+    const v = JSON.parse(raw)
+    if (typeof v.lat === 'number' && typeof v.lon === 'number' && typeof v.zoom === 'number') {
+      return v
+    }
+  } catch {
+    /* ignorera trasigt värde */
+  }
+  return null
+}
+
 export default function MapView({
   stations,
   activeFilters,
   flyTo,
+  userLoc,
   onBoundsChange,
   canReport,
   onReport,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<L.Map | null>(null)
-  const layerRef = useRef<L.LayerGroup | null>(null)
+  const clusterRef = useRef<L.MarkerClusterGroup | null>(null)
+  const userMarkerRef = useRef<L.CircleMarker | null>(null)
   const onReportRef = useRef(onReport)
   onReportRef.current = onReport
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return
-    const map = L.map(containerRef.current, { zoomControl: false }).setView([62.0, 15.0], 5)
+    const saved = readSavedView()
+    const map = L.map(containerRef.current, { zoomControl: false }).setView(
+      saved ? [saved.lat, saved.lon] : [62.0, 15.0],
+      saved ? saved.zoom : 5,
+    )
     L.control.zoom({ position: 'bottomright' }).addTo(map)
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-bidragsgivare',
       maxZoom: 19,
     }).addTo(map)
-    layerRef.current = L.layerGroup().addTo(map)
+
+    const cluster = L.markerClusterGroup({
+      maxClusterRadius: 55,
+      spiderfyOnMaxZoom: true,
+      showCoverageOnHover: false,
+      chunkedLoading: true,
+    })
+    map.addLayer(cluster)
+    clusterRef.current = cluster
     mapRef.current = map
 
-    const notify = () => onBoundsChange(map.getBounds(), map.getZoom())
+    const notify = () => {
+      onBoundsChange(map.getBounds(), map.getZoom())
+      const c = map.getCenter()
+      try {
+        localStorage.setItem(
+          VIEW_KEY,
+          JSON.stringify({ lat: c.lat, lon: c.lng, zoom: map.getZoom() }),
+        )
+      } catch {
+        /* privat läge m.m. */
+      }
+    }
     map.on('moveend', notify)
     notify()
 
@@ -118,7 +182,8 @@ export default function MapView({
       container.removeEventListener('click', onPopupClick)
       map.remove()
       mapRef.current = null
-      layerRef.current = null
+      clusterRef.current = null
+      userMarkerRef.current = null
     }
     // onBoundsChange är stabil via useCallback i App
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -130,18 +195,44 @@ export default function MapView({
     }
   }, [flyTo])
 
+  // "Du är här"-markör
   useEffect(() => {
-    const layer = layerRef.current
-    if (!layer) return
-    layer.clearLayers()
+    const map = mapRef.current
+    if (!map) return
+    if (userMarkerRef.current) {
+      map.removeLayer(userMarkerRef.current)
+      userMarkerRef.current = null
+    }
+    if (userLoc) {
+      userMarkerRef.current = L.circleMarker([userLoc.lat, userLoc.lon], {
+        radius: 8,
+        color: '#fff',
+        weight: 3,
+        fillColor: '#1976d2',
+        fillOpacity: 1,
+      })
+        .bindPopup('Din position')
+        .addTo(map)
+    }
+  }, [userLoc])
+
+  useEffect(() => {
+    const cluster = clusterRef.current
+    if (!cluster) return
+    cluster.clearLayers()
+    const markers: L.Marker[] = []
     for (const station of stations) {
       if (!station.services.some((s) => activeFilters.has(s))) continue
       const primary = station.services.find((s) => activeFilters.has(s)) ?? station.services[0]
-      L.marker([station.lat, station.lon], { icon: pinIcon(SERVICE_COLORS[primary]) })
-        .bindPopup(popupHtml(station, canReport), { maxWidth: 300, className: 'station-popup' })
-        .addTo(layer)
+      markers.push(
+        L.marker([station.lat, station.lon], { icon: pinIcon(SERVICE_COLORS[primary]) }).bindPopup(
+          popupHtml(station, canReport, userLoc),
+          { maxWidth: 300, className: 'station-popup' },
+        ),
+      )
     }
-  }, [stations, activeFilters, canReport])
+    cluster.addLayers(markers)
+  }, [stations, activeFilters, canReport, userLoc])
 
   return <div ref={containerRef} className="map" />
 }

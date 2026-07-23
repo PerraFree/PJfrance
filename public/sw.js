@@ -1,9 +1,17 @@
-/* Enkel service worker: cachar appskalet så att appen startar även offline. */
-const CACHE = 'tomningskartan-v1'
-const APP_SHELL = ['./', './manifest.webmanifest', './icon.svg']
+/* Enkel service worker: cachar appskal + stationsdata så appen fungerar offline. */
+const CACHE = 'tomningskartan-v2'
+const APP_SHELL = [
+  './',
+  './manifest.webmanifest',
+  './icon.svg',
+  './data/stations-seed.json',
+]
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(CACHE).then((c) => c.addAll(APP_SHELL)))
+  event.waitUntil(
+    // Enskilda filer får saknas utan att hela installationen fallerar
+    caches.open(CACHE).then((c) => Promise.allSettled(APP_SHELL.map((u) => c.add(u)))),
+  )
   self.skipWaiting()
 })
 

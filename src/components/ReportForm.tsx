@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { submitReport } from '../lib/community'
+import { useModal } from '../lib/useModal'
 
 interface Props {
   stationId: string
@@ -21,6 +22,7 @@ export default function ReportForm({ stationId, stationName, onClose }: Props) {
   const [note, setNote] = useState('')
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState('')
+  const modalRef = useModal(onClose)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -51,6 +53,7 @@ export default function ReportForm({ stationId, stationName, onClose }: Props) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="report-title"
+        ref={modalRef}
         onClick={(e) => e.stopPropagation()}
       >
         <button className="modal-close" type="button" onClick={onClose} aria-label="Stäng">
