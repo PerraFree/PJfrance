@@ -6,15 +6,6 @@ export type ServiceType =
   | 'camping'
   | 'gasol'
 
-/** Extra bekvämligheter, mest relevanta för ställplatser/campingar. */
-export interface Amenities {
-  el?: boolean
-  dusch?: boolean
-  wc?: boolean
-  wifi?: boolean
-  hund?: boolean
-}
-
 export interface Station {
   id: string
   name: string
@@ -32,19 +23,38 @@ export interface Station {
   fee?: string
   openingHours?: string
   osmUrl?: string
-  amenities?: Amenities
+  /** Nycklar ur FACILITY_LABELS – exakt vad som finns på platsen. */
+  facilities?: string[]
   capacity?: string
+  maxstay?: string
+  payment?: string[]
   operator?: string
   phone?: string
   website?: string
 }
 
-export const AMENITY_LABELS: Record<keyof Amenities, string> = {
-  el: '🔌 El',
-  dusch: '🚿 Dusch',
-  wc: '🚻 WC',
-  wifi: '📶 Wifi',
-  hund: '🐕 Hund ok',
+/** Allt appen kan visa "finns här" – nycklar matchar det synkskriptet plockar ur OSM. */
+export const FACILITY_LABELS: Record<string, string> = {
+  gravatten_tomning: 'Gråvattentömning',
+  kassett_tomning: 'Kassett-/latrintömning',
+  svartvatten_tomning: 'Svartvattentömning',
+  dricksvatten: 'Dricksvatten',
+  el: 'El/ström',
+  dusch: 'Dusch',
+  wc: 'Toalett',
+  tvatt: 'Tvätt',
+  avfall: 'Sopor/avfall',
+  wifi: 'Wifi',
+  hund: 'Hundar tillåtna',
+  grill: 'Grill/eldplats',
+  lekplats: 'Lekplats',
+  restaurang: 'Restaurang',
+  butik: 'Butik/kiosk',
+  belyst: 'Belyst',
+  tillganglig: 'Tillgänglig',
+  husbil: 'Husbil',
+  husvagn: 'Husvagn',
+  talt: 'Tält',
 }
 
 export const SERVICE_LABELS: Record<ServiceType, string> = {

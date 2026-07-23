@@ -3,12 +3,12 @@ import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet.markercluster'
 import 'leaflet.markercluster/dist/MarkerCluster.css'
-import type { Amenities, ServiceType, Station } from '../types'
+import type { ServiceType, Station } from '../types'
 import { SERVICE_COLORS, SERVICE_LABELS } from '../types'
 import { openNow } from '../lib/openingHours'
 import { reverseGeocode } from '../lib/reverse'
 import { sharePlace as nativeShare } from '../lib/native'
-import { amenityChip } from '../lib/icons'
+import { facilityChip } from '../lib/icons'
 
 const MIN_FETCH_ZOOM = 7
 const VIEW_KEY = 'tomningskartan.view'
@@ -36,14 +36,11 @@ function esc(value: string): string {
     .replace(/"/g, '&quot;')
 }
 
-const AMENITY_KEYS: (keyof Amenities)[] = ['el', 'dusch', 'wc', 'wifi', 'hund']
-
-function amenityChips(amenities: Amenities | undefined): string {
-  if (!amenities) return ''
-  const chips = AMENITY_KEYS.filter((k) => amenities[k])
-    .map((k) => amenityChip(k))
-    .join('')
-  return chips ? `<div class="amenities">${chips}</div>` : ''
+function facilityList(station: Station): string {
+  const keys = station.facilities ?? []
+  if (keys.length === 0) return ''
+  const chips = keys.map((k) => facilityChip(k)).join('')
+  return `<div class="facilities"><p class="facilities-h">Finns här</p><div class="amenities">${chips}</div></div>`
 }
 
 /** Avstånd fågelvägen i km (haversine). */
@@ -100,10 +97,14 @@ function popupHtml(
     rows.push(`<p class="dist">${dist} härifrån (fågelvägen)</p>`)
   }
   if (station.description) rows.push(`<p class="desc">${esc(station.description)}</p>`)
-  rows.push(amenityChips(station.amenities))
+  rows.push(facilityList(station))
   if (station.fee) rows.push(`<p class="meta"><strong>Avgift</strong>${esc(station.fee)}</p>`)
+  if (station.payment?.length)
+    rows.push(`<p class="meta"><strong>Betalning</strong>${esc(station.payment.join(', '))}</p>`)
   if (station.capacity)
     rows.push(`<p class="meta"><strong>Platser</strong>${esc(station.capacity)}</p>`)
+  if (station.maxstay)
+    rows.push(`<p class="meta"><strong>Max övernattning</strong>${esc(station.maxstay)}</p>`)
   if (station.openingHours) {
     // Öppet-nu-status fylls i asynkront när popupen öppnas (se popupopen nedan)
     rows.push(

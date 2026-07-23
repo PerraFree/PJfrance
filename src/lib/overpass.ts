@@ -107,24 +107,63 @@ function toStation(el: OverpassElement): Station | null {
   }
 }
 
-/** Plockar ut bekvämligheter och kontaktuppgifter ur OSM-taggar. */
+/** Plockar ut allt som finns på platsen samt kontaktuppgifter ur OSM-taggar. */
 function amenityFields(tags: Record<string, string>) {
-  const amenities = {
-    el: 'power_supply' in tags && tags.power_supply !== 'no',
-    dusch: tags.shower === 'yes',
-    wc: tags.toilets === 'yes' || tags.toilet === 'yes',
-    wifi: ['yes', 'wlan', 'wifi'].includes(tags.internet_access ?? ''),
-    hund: tags.dog === 'yes' || tags.dog === 'leashed',
-  }
-  const hasAmenity = Object.values(amenities).some(Boolean)
+  const facilities = facilitiesFromTags(tags)
+  const payment = paymentFromTags(tags)
   return {
-    amenities: hasAmenity ? amenities : undefined,
+    facilities: facilities.length ? facilities : undefined,
+    payment: payment.length ? payment : undefined,
     address: addressFromTags(tags),
-    capacity: tags.capacity,
+    capacity:
+      tags.capacity ?? tags['capacity:pitches'] ?? tags['capacity:caravans'] ?? tags['capacity:persons'],
+    maxstay: tags.maxstay,
     operator: tags.operator,
     phone: tags.phone ?? tags['contact:phone'],
     website: tags.website ?? tags['contact:website'],
   }
+}
+
+const yes = (v?: string) => v === 'yes' || v === 'designated' || v === 'customers'
+
+/** Nycklar (matchar FACILITY_LABELS) för exakt vad som finns på platsen. */
+export function facilitiesFromTags(tags: Record<string, string>): string[] {
+  const f: string[] = []
+  if (yes(tags['sanitary_dump_station:grey_water'])) f.push('gravatten_tomning')
+  if (yes(tags['sanitary_dump_station:chemical_toilet'])) f.push('kassett_tomning')
+  if (yes(tags['sanitary_dump_station:black_water'])) f.push('svartvatten_tomning')
+  if (yes(tags.drinking_water) || tags.amenity === 'drinking_water') f.push('dricksvatten')
+  if ('power_supply' in tags && tags.power_supply !== 'no') f.push('el')
+  if (yes(tags.shower)) f.push('dusch')
+  if (yes(tags.toilets) || yes(tags.toilet)) f.push('wc')
+  if (yes(tags.laundry) || yes(tags.washing_machine)) f.push('tvatt')
+  if (yes(tags.waste_disposal) || yes(tags.trash) || yes(tags.recycling)) f.push('avfall')
+  if (['yes', 'wlan', 'wifi'].includes(tags.internet_access ?? '')) f.push('wifi')
+  if (tags.dog === 'yes' || tags.dog === 'leashed') f.push('hund')
+  if (yes(tags.bbq) || yes(tags.openfire) || yes(tags.fireplace)) f.push('grill')
+  if (yes(tags.playground) || tags.leisure === 'playground') f.push('lekplats')
+  if (yes(tags.restaurant) || tags.amenity === 'restaurant') f.push('restaurang')
+  if (tags.shop || yes(tags.kiosk)) f.push('butik')
+  if (yes(tags.lit)) f.push('belyst')
+  if (yes(tags.wheelchair)) f.push('tillganglig')
+  if (yes(tags.motorhome) || yes(tags.motor_vehicle)) f.push('husbil')
+  if (yes(tags.caravan) || yes(tags.caravans)) f.push('husvagn')
+  if (yes(tags.tents)) f.push('talt')
+  return f
+}
+
+export function paymentFromTags(tags: Record<string, string>): string[] {
+  const p: string[] = []
+  if (yes(tags['payment:cash']) || yes(tags['payment:coins'])) p.push('Kontant')
+  if (
+    yes(tags['payment:cards']) ||
+    yes(tags['payment:credit_cards']) ||
+    yes(tags['payment:debit_cards'])
+  )
+    p.push('Kort')
+  if (yes(tags['payment:swish'])) p.push('Swish')
+  if (yes(tags['payment:app'])) p.push('App')
+  return p
 }
 
 /** Bygger en läsbar adress ur OSM:s addr-taggar (om de finns). */

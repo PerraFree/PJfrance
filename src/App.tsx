@@ -45,8 +45,15 @@ function dedupe(stations: Station[]): Station[] {
     if (!existing) {
       byCell.set(key, s)
     } else {
-      const merged = new Set([...existing.services, ...s.services])
-      byCell.set(key, { ...existing, services: [...merged] })
+      const services = [...new Set([...existing.services, ...s.services])]
+      const facilities = [
+        ...new Set([...(existing.facilities ?? []), ...(s.facilities ?? [])]),
+      ]
+      byCell.set(key, {
+        ...existing,
+        services,
+        facilities: facilities.length ? facilities : undefined,
+      })
     }
   }
   return [...byCell.values()]

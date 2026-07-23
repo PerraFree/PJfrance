@@ -156,24 +156,58 @@ async function fetchOsmFrom(url) {
   return stations
 }
 
-/** Plockar ut bekvämligheter och kontaktuppgifter ur OSM-taggar. */
+const yes = (v) => v === 'yes' || v === 'designated' || v === 'customers'
+
+/** Nycklar för exakt vad som finns på platsen (matchar FACILITY_LABELS i appen). */
+function facilitiesFromTags(tags) {
+  const f = []
+  if (yes(tags['sanitary_dump_station:grey_water'])) f.push('gravatten_tomning')
+  if (yes(tags['sanitary_dump_station:chemical_toilet'])) f.push('kassett_tomning')
+  if (yes(tags['sanitary_dump_station:black_water'])) f.push('svartvatten_tomning')
+  if (yes(tags.drinking_water) || tags.amenity === 'drinking_water') f.push('dricksvatten')
+  if ('power_supply' in tags && tags.power_supply !== 'no') f.push('el')
+  if (yes(tags.shower)) f.push('dusch')
+  if (yes(tags.toilets) || yes(tags.toilet)) f.push('wc')
+  if (yes(tags.laundry) || yes(tags.washing_machine)) f.push('tvatt')
+  if (yes(tags.waste_disposal) || yes(tags.trash) || yes(tags.recycling)) f.push('avfall')
+  if (['yes', 'wlan', 'wifi'].includes(tags.internet_access ?? '')) f.push('wifi')
+  if (tags.dog === 'yes' || tags.dog === 'leashed') f.push('hund')
+  if (yes(tags.bbq) || yes(tags.openfire) || yes(tags.fireplace)) f.push('grill')
+  if (yes(tags.playground) || tags.leisure === 'playground') f.push('lekplats')
+  if (yes(tags.restaurant) || tags.amenity === 'restaurant') f.push('restaurang')
+  if (tags.shop || yes(tags.kiosk)) f.push('butik')
+  if (yes(tags.lit)) f.push('belyst')
+  if (yes(tags.wheelchair)) f.push('tillganglig')
+  if (yes(tags.motorhome) || yes(tags.motor_vehicle)) f.push('husbil')
+  if (yes(tags.caravan) || yes(tags.caravans)) f.push('husvagn')
+  if (yes(tags.tents)) f.push('talt')
+  return f
+}
+
+function paymentFromTags(tags) {
+  const p = []
+  if (yes(tags['payment:cash']) || yes(tags['payment:coins'])) p.push('Kontant')
+  if (yes(tags['payment:cards']) || yes(tags['payment:credit_cards']) || yes(tags['payment:debit_cards'])) p.push('Kort')
+  if (yes(tags['payment:swish'])) p.push('Swish')
+  if (yes(tags['payment:app'])) p.push('App')
+  return p
+}
+
+/** Plockar ut allt som finns på platsen samt kontaktuppgifter ur OSM-taggar. */
 function amenityFields(tags) {
-  const amenities = {
-    el: 'power_supply' in tags && tags.power_supply !== 'no',
-    dusch: tags.shower === 'yes',
-    wc: tags.toilets === 'yes' || tags.toilet === 'yes',
-    wifi: ['yes', 'wlan', 'wifi'].includes(tags.internet_access ?? ''),
-    hund: tags.dog === 'yes' || tags.dog === 'leashed',
-  }
-  const hasAmenity = Object.values(amenities).some(Boolean)
   const out = {}
-  if (hasAmenity) out.amenities = amenities
+  const facilities = facilitiesFromTags(tags)
+  if (facilities.length) out.facilities = facilities
+  const payment = paymentFromTags(tags)
+  if (payment.length) out.payment = payment
   const street = tags['addr:street']
   const place = tags['addr:city'] || tags['addr:place'] || tags['addr:municipality'] || tags['addr:hamlet']
   const line1 = street ? `${street}${tags['addr:housenumber'] ? ' ' + tags['addr:housenumber'] : ''}` : ''
   const addr = [line1, place].filter(Boolean).join(', ')
   if (addr) out.address = addr
-  if (tags.capacity) out.capacity = tags.capacity
+  const cap = tags.capacity || tags['capacity:pitches'] || tags['capacity:caravans'] || tags['capacity:persons']
+  if (cap) out.capacity = cap
+  if (tags.maxstay) out.maxstay = tags.maxstay
   if (tags.operator) out.operator = tags.operator
   if (tags.phone || tags['contact:phone']) out.phone = tags.phone ?? tags['contact:phone']
   if (tags.website || tags['contact:website'])

@@ -1006,18 +1006,31 @@ button {
   color: var(--text);
 }
 
+.popup .facilities {
+  margin: 9px 0;
+}
+
+.popup .facilities-h {
+  margin: 0 0 5px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
 .popup .amenities {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
-  margin: 8px 0;
 }
 
 .popup .amenity {
-  font-size: 0.73rem;
+  font-size: 0.74rem;
   font-weight: 650;
   color: var(--green-900);
   background: var(--green-100);
+  border: 1px solid rgba(28, 107, 46, 0.14);
   border-radius: 8px;
   padding: 3px 9px;
 }

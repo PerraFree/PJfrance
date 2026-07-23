@@ -1,5 +1,5 @@
 import type { ServiceType } from '../types'
-import type { Amenities } from '../types'
+import { FACILITY_LABELS } from '../types'
 
 /**
  * Rena linjeikoner (currentColor) i stället för emoji – ger ett professionellt,
@@ -42,14 +42,7 @@ export function serviceIcon(service: ServiceType): string {
   return SERVICE_ICON[service]
 }
 
-const AMENITY_TEXT: Record<keyof Amenities, string> = {
-  el: 'El',
-  dusch: 'Dusch',
-  wc: 'WC',
-  wifi: 'Wifi',
-  hund: 'Hund ok',
-}
-
-export function amenityChip(key: keyof Amenities): string {
-  return `<span class="amenity">${AMENITY_TEXT[key]}</span>`
+export function facilityChip(key: string): string {
+  const label = FACILITY_LABELS[key] ?? key
+  return `<span class="amenity">${label}</span>`
 }
