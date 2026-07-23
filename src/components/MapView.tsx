@@ -6,6 +6,7 @@ import 'leaflet.markercluster/dist/MarkerCluster.css'
 import type { Amenities, ServiceType, Station } from '../types'
 import { AMENITY_LABELS, SERVICE_COLORS, SERVICE_LABELS } from '../types'
 import { openNow } from '../lib/openingHours'
+import { sharePlace as nativeShare } from '../lib/native'
 
 const MIN_FETCH_ZOOM = 7
 const VIEW_KEY = 'tomningskartan.view'
@@ -146,24 +147,15 @@ function readSavedView(): { lat: number; lon: number; zoom: number } | null {
   return null
 }
 
-async function sharePlace(name: string, lat: number, lon: number) {
-  const url = `${location.origin}${location.pathname}?at=${lat.toFixed(5)},${lon.toFixed(5)},16`
-  const shareData = { title: name, text: `${name} – Tömningskartan`, url }
-  try {
-    if (navigator.share) {
-      await navigator.share(shareData)
-      return
-    }
-  } catch {
-    /* användaren avbröt */
-    return
-  }
-  try {
-    await navigator.clipboard.writeText(url)
-    alert('Länk kopierad!')
-  } catch {
-    prompt('Kopiera länken:', url)
-  }
+const SHARE_BASE = 'https://perrafree.github.io/PJfrance/'
+
+function sharePlace(name: string, lat: number, lon: number) {
+  // På webben pekar länken på appens URL; i native-appen på den publika webben.
+  const base = location.protocol.startsWith('http')
+    ? `${location.origin}${location.pathname}`
+    : SHARE_BASE
+  const url = `${base}?at=${lat.toFixed(5)},${lon.toFixed(5)},16`
+  void nativeShare(name, url)
 }
 
 export default function MapView({

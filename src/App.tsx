@@ -10,6 +10,7 @@ import { OWN_STATIONS } from './data/stations'
 import { fetchApprovedPlaces } from './lib/community'
 import { searchPlace } from './lib/geocode'
 import { fetchOsmStations } from './lib/overpass'
+import { getPosition, tap } from './lib/native'
 import {
   fetchTrafikverketStations,
   getTrafikverketKey,
@@ -227,22 +228,18 @@ export default function App() {
     }
   }
 
-  const handleLocate = () => {
-    if (!navigator.geolocation) {
-      setStatus('Din webbläsare stödjer inte platstjänster.')
-      return
-    }
+  const handleLocate = async () => {
     setStatus('Hämtar din position …')
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        const loc = { lat: pos.coords.latitude, lon: pos.coords.longitude }
-        setUserLoc(loc)
-        setFlyTo({ ...loc, zoom: 11 })
-        setShowNearest(true)
-        setStatus('Visar platser nära dig – avstånd visas i varje plats.')
-      },
-      () => setStatus('Kunde inte hämta din position.'),
-    )
+    void tap()
+    try {
+      const loc = await getPosition()
+      setUserLoc(loc)
+      setFlyTo({ ...loc, zoom: 11 })
+      setShowNearest(true)
+      setStatus('Visar platser nära dig – avstånd visas i varje plats.')
+    } catch {
+      setStatus('Kunde inte hämta din position.')
+    }
   }
 
   const handleSaveKey = (e: React.FormEvent) => {
