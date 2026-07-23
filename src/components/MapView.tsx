@@ -187,9 +187,15 @@ export default function MapView({
     )
     L.control.zoom({ position: 'bottomright' }).addTo(map)
 
+    const osmAttr =
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-bidragsgivare'
+    // Ljus, avskalad baskarta – gör de färgade markörerna framträdande
+    const ljus = L.tileLayer(
+      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+      { attribution: `${osmAttr}, &copy; <a href="https://carto.com/attributions">CARTO</a>`, maxZoom: 20 },
+    )
     const standard = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-bidragsgivare',
+      attribution: osmAttr,
       maxZoom: 19,
     })
     const satellit = L.tileLayer(
@@ -200,10 +206,10 @@ export default function MapView({
       attribution: '&copy; OpenTopoMap (CC-BY-SA), &copy; OpenStreetMap-bidragsgivare',
       maxZoom: 17,
     })
-    standard.addTo(map)
+    ljus.addTo(map)
     L.control
       .layers(
-        { Karta: standard, Satellit: satellit, Terräng: terrang },
+        { Ljus: ljus, Detaljerad: standard, Satellit: satellit, Terräng: terrang },
         {},
         { position: 'topright', collapsed: true },
       )
