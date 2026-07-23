@@ -35,6 +35,11 @@ const SERVICE_ICONS: Record<ServiceType, string> = {
   gasol: '🔥',
 }
 
+const FREE_RE = /gratis|free|ingår|kostnadsfri|utan avgift/i
+function isFree(s: Station): boolean {
+  return s.source === 'trafikverket' || (s.fee ? FREE_RE.test(s.fee) : false)
+}
+
 /** Slår ihop stationer som ligger på (nästan) samma plats; mer tillförlitliga källor vinner. */
 function dedupe(stations: Station[]): Station[] {
   const priority = { egen: 0, kommun: 1, trafikverket: 2, community: 3, osm: 4 }
@@ -70,6 +75,8 @@ export default function App() {
   const cacheRef = useRef(new Map<string, Station>())
 
   const [seedStations, setSeedStations] = useState<Station[]>([])
+  const [seedUpdated, setSeedUpdated] = useState<string | null>(null)
+  const [freeOnly, setFreeOnly] = useState(false)
   const [communityStations, setCommunityStations] = useState<Station[]>([])
   const [showSubmit, setShowSubmit] = useState(false)
   const [reportTarget, setReportTarget] = useState<{ id: string; name: string } | null>(null)
@@ -88,6 +95,25 @@ export default function App() {
     [osmStations, tvStations, seedStations, communityStations],
   )
 
+  const shownStations = useMemo(
+    () => (freeOnly ? stations.filter(isFree) : stations),
+    [stations, freeOnly],
+  )
+
+  // Antal per kategori (utifrån det som är inläst)
+  const counts = useMemo(() => {
+    const c: Record<ServiceType, number> = {
+      gravatten: 0,
+      latrin: 0,
+      vatten: 0,
+      stallplats: 0,
+      camping: 0,
+      gasol: 0,
+    }
+    for (const s of shownStations) for (const sv of s.services) c[sv]++
+    return c
+  }, [shownStations])
+
   const loadCommunity = useCallback(() => {
     if (!communityEnabled) return
     fetchApprovedPlaces()
@@ -101,9 +127,10 @@ export default function App() {
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}data/stations-seed.json`)
       .then((res) => (res.ok ? res.json() : null))
-      .then((json: { stations?: Station[] } | null) => {
+      .then((json: { stations?: Station[]; updatedAt?: string } | null) => {
         if (json?.stations?.length) {
           setSeedStations(json.stations)
+          if (json.updatedAt) setSeedUpdated(json.updatedAt)
           setStatus(`${json.stations.length} platser i hela Sverige inlästa.`)
         }
       })
@@ -232,7 +259,7 @@ export default function App() {
   return (
     <div className="app">
       <MapView
-        stations={stations}
+        stations={shownStations}
         activeFilters={activeFilters}
         flyTo={flyTo}
         userLoc={userLoc}
@@ -290,8 +317,24 @@ export default function App() {
             >
               <span aria-hidden="true">{SERVICE_ICONS[service]}</span>
               {SERVICE_LABELS[service]}
+              {counts[service] > 0 && <span className="chip-count">{counts[service]}</span>}
             </button>
           ))}
+        </div>
+
+        <div className="filter-extras">
+          <button
+            type="button"
+            className={freeOnly ? 'free-toggle active' : 'free-toggle'}
+            aria-pressed={freeOnly}
+            onClick={() => setFreeOnly((v) => !v)}
+          >
+            💰 Endast gratis
+          </button>
+          <span className="stats">
+            {shownStations.length.toLocaleString('sv-SE')} platser
+            {seedUpdated && ` · uppdaterad ${new Date(seedUpdated).toLocaleDateString('sv-SE', { day: 'numeric', month: 'short' })}`}
+          </span>
         </div>
 
         {showSettings && (
@@ -369,7 +412,7 @@ export default function App() {
 
       {userLoc && showNearest && (
         <NearestList
-          stations={stations}
+          stations={shownStations}
           activeFilters={activeFilters}
           userLoc={userLoc}
           onPick={(s) => {

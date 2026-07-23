@@ -93,14 +93,10 @@ function popupHtml(
   if (station.capacity)
     rows.push(`<p class="meta"><strong>Platser</strong>${esc(station.capacity)}</p>`)
   if (station.openingHours) {
-    const state = openNow(station.openingHours)
-    const tag =
-      state === 'open'
-        ? '<span class="open-now open">Öppet nu</span>'
-        : state === 'closed'
-          ? '<span class="open-now closed">Stängt nu</span>'
-          : ''
-    rows.push(`<p class="meta"><strong>Öppettider</strong>${esc(station.openingHours)} ${tag}</p>`)
+    // Öppet-nu-status fylls i asynkront när popupen öppnas (se popupopen nedan)
+    rows.push(
+      `<p class="meta"><strong>Öppettider</strong>${esc(station.openingHours)} <span class="open-now-slot" data-oh="${escapeAttr(station.openingHours)}"></span></p>`,
+    )
   }
   if (station.operator)
     rows.push(`<p class="meta"><strong>Drivs av</strong>${esc(station.operator)}</p>`)
@@ -196,11 +192,28 @@ export default function MapView({
       saved ? saved.zoom : 5,
     )
     L.control.zoom({ position: 'bottomright' }).addTo(map)
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+
+    const standard = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-bidragsgivare',
       maxZoom: 19,
-    }).addTo(map)
+    })
+    const satellit = L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      { attribution: '&copy; Esri, Maxar, Earthstar Geographics', maxZoom: 19 },
+    )
+    const terrang = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenTopoMap (CC-BY-SA), &copy; OpenStreetMap-bidragsgivare',
+      maxZoom: 17,
+    })
+    standard.addTo(map)
+    L.control
+      .layers(
+        { Karta: standard, Satellit: satellit, Terräng: terrang },
+        {},
+        { position: 'topright', collapsed: true },
+      )
+      .addTo(map)
 
     const cluster = L.markerClusterGroup({
       maxClusterRadius: 55,
@@ -248,6 +261,19 @@ export default function MapView({
     }
     const container = map.getContainer()
     container.addEventListener('click', onPopupClick)
+
+    // Fyll i "öppet nu"-status asynkront när en popup öppnas (lat-laddar opening_hours)
+    map.on('popupopen', (e) => {
+      const el = (e as L.PopupEvent).popup.getElement()
+      const slot = el?.querySelector<HTMLElement>('.open-now-slot')
+      const oh = slot?.dataset.oh
+      if (!slot || !oh) return
+      void openNow(oh).then((state) => {
+        if (state === 'open') slot.outerHTML = '<span class="open-now open">Öppet nu</span>'
+        else if (state === 'closed')
+          slot.outerHTML = '<span class="open-now closed">Stängt nu</span>'
+      })
+    })
 
     return () => {
       container.removeEventListener('click', onPopupClick)
@@ -298,7 +324,7 @@ export default function MapView({
       const primary = station.services.find((s) => activeFilters.has(s)) ?? station.services[0]
       const marker = L.marker([station.lat, station.lon], {
         icon: pinIcon(SERVICE_COLORS[primary]),
-      }).bindPopup(popupHtml(station, canReport, userLoc), {
+      }).bindPopup(() => popupHtml(station, canReport, userLoc), {
         maxWidth: 300,
         className: 'station-popup',
       })

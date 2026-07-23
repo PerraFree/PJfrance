@@ -450,6 +450,62 @@ body {
   background: var(--gasol);
 }
 
+.chip-count {
+  font-size: 0.72rem;
+  font-weight: 700;
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+}
+
+.chip.active .chip-count {
+  opacity: 0.85;
+}
+
+.filter-extras {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.free-toggle {
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border, #d6e0d6);
+  background: var(--field, #f6f9f6);
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.free-toggle.active {
+  background: #2e7d32;
+  border-color: transparent;
+  color: #fff;
+}
+
+.stats {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Leaflet lagerväxlare */
+.leaflet-control-layers {
+  border: none !important;
+  border-radius: 12px !important;
+  box-shadow: var(--shadow) !important;
+  margin-top: 12px !important;
+  margin-right: 12px !important;
+}
+
+.leaflet-control-layers-toggle {
+  border-radius: 12px !important;
+}
+
 /* ---------- Flytande knappar & status ---------- */
 
 /* ---------- Närmaste-lista ---------- */
