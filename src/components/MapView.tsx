@@ -6,6 +6,7 @@ import 'leaflet.markercluster/dist/MarkerCluster.css'
 import type { Amenities, ServiceType, Station } from '../types'
 import { SERVICE_COLORS, SERVICE_LABELS } from '../types'
 import { openNow } from '../lib/openingHours'
+import { reverseGeocode } from '../lib/reverse'
 import { sharePlace as nativeShare } from '../lib/native'
 import { amenityChip } from '../lib/icons'
 
@@ -85,10 +86,18 @@ function popupHtml(
     )
     .join('')
   const rows: string[] = []
+  // Var ligger platsen? Adress om den finns, annars fylls orten i när popupen öppnas.
+  if (station.address) {
+    rows.push(`<p class="loc">📍 ${esc(station.address)}</p>`)
+  } else {
+    rows.push(
+      `<p class="loc"><span class="loc-slot" data-lat="${station.lat}" data-lon="${station.lon}">📍 Hämtar plats …</span></p>`,
+    )
+  }
   if (userLoc) {
     const km = distanceKm(userLoc, station)
     const dist = km < 1 ? `${Math.round(km * 1000)} m` : `${km.toFixed(km < 10 ? 1 : 0)} km`
-    rows.push(`<p class="dist">📍 ${dist} härifrån (fågelvägen)</p>`)
+    rows.push(`<p class="dist">${dist} härifrån (fågelvägen)</p>`)
   }
   if (station.description) rows.push(`<p class="desc">${esc(station.description)}</p>`)
   rows.push(amenityChips(station.amenities))
@@ -263,17 +272,30 @@ export default function MapView({
     const container = map.getContainer()
     container.addEventListener('click', onPopupClick)
 
-    // Fyll i "öppet nu"-status asynkront när en popup öppnas (lat-laddar opening_hours)
+    // Fyll i öppet-nu och ortsnamn asynkront när en popup öppnas
     map.on('popupopen', (e) => {
       const el = (e as L.PopupEvent).popup.getElement()
-      const slot = el?.querySelector<HTMLElement>('.open-now-slot')
-      const oh = slot?.dataset.oh
-      if (!slot || !oh) return
-      void openNow(oh).then((state) => {
-        if (state === 'open') slot.outerHTML = '<span class="open-now open">Öppet nu</span>'
-        else if (state === 'closed')
-          slot.outerHTML = '<span class="open-now closed">Stängt nu</span>'
-      })
+      if (!el) return
+
+      const ohSlot = el.querySelector<HTMLElement>('.open-now-slot')
+      const oh = ohSlot?.dataset.oh
+      if (ohSlot && oh) {
+        void openNow(oh).then((state) => {
+          if (state === 'open') ohSlot.outerHTML = '<span class="open-now open">Öppet nu</span>'
+          else if (state === 'closed')
+            ohSlot.outerHTML = '<span class="open-now closed">Stängt nu</span>'
+        })
+      }
+
+      const locSlot = el.querySelector<HTMLElement>('.loc-slot')
+      if (locSlot && locSlot.dataset.lat && locSlot.dataset.lon) {
+        void reverseGeocode(
+          parseFloat(locSlot.dataset.lat),
+          parseFloat(locSlot.dataset.lon),
+        ).then((place) => {
+          locSlot.textContent = place ? `📍 ${place}` : '📍 Plats på kartan'
+        })
+      }
     })
 
     return () => {

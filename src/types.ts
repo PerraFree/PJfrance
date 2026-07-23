@@ -28,6 +28,7 @@ export interface Station {
    */
   source: 'osm' | 'egen' | 'trafikverket' | 'kommun' | 'community'
   description?: string
+  address?: string
   fee?: string
   openingHours?: string
   osmUrl?: string

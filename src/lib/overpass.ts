@@ -119,11 +119,23 @@ function amenityFields(tags: Record<string, string>) {
   const hasAmenity = Object.values(amenities).some(Boolean)
   return {
     amenities: hasAmenity ? amenities : undefined,
+    address: addressFromTags(tags),
     capacity: tags.capacity,
     operator: tags.operator,
     phone: tags.phone ?? tags['contact:phone'],
     website: tags.website ?? tags['contact:website'],
   }
+}
+
+/** Bygger en läsbar adress ur OSM:s addr-taggar (om de finns). */
+function addressFromTags(tags: Record<string, string>): string | undefined {
+  const street = tags['addr:street']
+  const num = tags['addr:housenumber']
+  const place =
+    tags['addr:city'] ?? tags['addr:place'] ?? tags['addr:municipality'] ?? tags['addr:hamlet']
+  const line1 = street ? `${street}${num ? ' ' + num : ''}` : ''
+  const addr = [line1, place].filter(Boolean).join(', ')
+  return addr || undefined
 }
 
 /** Hämtar stationer från OpenStreetMap inom kartvyns gränser. */

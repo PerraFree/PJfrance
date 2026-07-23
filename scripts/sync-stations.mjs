@@ -168,6 +168,11 @@ function amenityFields(tags) {
   const hasAmenity = Object.values(amenities).some(Boolean)
   const out = {}
   if (hasAmenity) out.amenities = amenities
+  const street = tags['addr:street']
+  const place = tags['addr:city'] || tags['addr:place'] || tags['addr:municipality'] || tags['addr:hamlet']
+  const line1 = street ? `${street}${tags['addr:housenumber'] ? ' ' + tags['addr:housenumber'] : ''}` : ''
+  const addr = [line1, place].filter(Boolean).join(', ')
+  if (addr) out.address = addr
   if (tags.capacity) out.capacity = tags.capacity
   if (tags.operator) out.operator = tags.operator
   if (tags.phone || tags['contact:phone']) out.phone = tags.phone ?? tags['contact:phone']
