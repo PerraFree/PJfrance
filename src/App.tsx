@@ -21,14 +21,12 @@ import {
 import type { ServiceType, Station } from './types'
 import { SERVICE_LABELS, FACILITY_LABELS } from './types'
 
-const ALL_SERVICES: ServiceType[] = [
-  'gravatten',
-  'latrin',
-  'vatten',
-  'stallplats',
-  'camping',
-  'gasol',
-]
+/**
+ * Valbara kategorier = det man faktiskt åker till en plats för: tömma
+ * gråvatten/latrin, fylla färskvatten eller gasol. Ställplats och camping är
+ * inte egna filter – de visas som märkning på platser som erbjuder ovanstående.
+ */
+const ALL_SERVICES: ServiceType[] = ['gravatten', 'latrin', 'vatten', 'gasol']
 
 /** Faciliteter man kan filtrera på (de mest efterfrågade av husbilsfolk). */
 const FILTERABLE_FACILITIES = [
@@ -355,20 +353,32 @@ export default function App() {
     })
   }
 
+  // Har inget valts ännu? Slå på alla kategorier så sökträffen faktiskt syns.
+  const ensureCategories = () =>
+    setActiveFilters((prev) => (prev.size === 0 ? new Set(ALL_SERVICES) : prev))
+
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault()
     const q = query.trim()
     if (!q) return
-    // 1) Matcha först en namngiven plats i datat (t.ex. "Borås Golfklubb").
+    // 1) Matcha först en namngiven plats i datat som faktiskt går att välja.
     const ql = q.toLowerCase()
-    const named = shownStations.find((s) => s.name.toLowerCase().includes(ql))
-    if (named && q.length >= 3) {
+    const named =
+      q.length >= 3
+        ? shownStations.find(
+            (s) =>
+              s.services.some((sv) => ALL_SERVICES.includes(sv)) &&
+              s.name.toLowerCase().includes(ql),
+          )
+        : undefined
+    if (named) {
+      ensureCategories()
       setFlyTo({ lat: named.lat, lon: named.lon, zoom: 14 })
       setFocus({ id: named.id, nonce: Date.now() })
       setStatus(named.name)
       return
     }
-    // 2) Annars ortsökning via Nominatim.
+    // 2) Annars ortsökning (Nominatim med Photon som reserv, båda med timeout).
     setStatus(`Söker efter ”${q}” …`)
     try {
       const results = await searchPlace(q)
@@ -377,10 +387,11 @@ export default function App() {
         return
       }
       const hit = results[0]
+      ensureCategories()
       setStatus(hit.name.split(',').slice(0, 2).join(','))
       setFlyTo({ lat: hit.lat, lon: hit.lon, zoom: 11 })
     } catch {
-      setStatus('Sökningen misslyckades – försök igen.')
+      setStatus('Sökningen misslyckades – kontrollera nätet och försök igen.')
     }
   }
 
@@ -445,7 +456,7 @@ export default function App() {
           <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" width="34" height="34" />
           <div>
             <h1>Tömningskartan</h1>
-            <p>Ställplatser · tömning · vatten · gasol – för husbil &amp; husvagn</p>
+            <p>Tömning · latrin · färskvatten · gasol – för husbil &amp; husvagn</p>
           </div>
           {!collapsed && (
             <button
