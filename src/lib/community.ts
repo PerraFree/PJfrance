@@ -82,14 +82,22 @@ export async function fetchApprovedPlaces(): Promise<Station[]> {
   const res = await fetch(url, { headers })
   if (!res.ok) throw new Error(`Kunde inte hämta community-platser (${res.status}).`)
   const rows = (await res.json()) as SubmissionRow[]
-  return rows.map((r) => ({
-    id: `community-${r.id}`,
-    name: r.name,
-    lat: r.lat,
-    lon: r.lon,
-    services: r.services,
-    source: 'community' as const,
-    description: r.description ?? r.address,
-    fee: r.fee ?? undefined,
-  }))
+  return rows
+    .filter(
+      (r) =>
+        typeof r.lat === 'number' &&
+        typeof r.lon === 'number' &&
+        Array.isArray(r.services) &&
+        r.services.length > 0,
+    )
+    .map((r) => ({
+      id: `community-${r.id}`,
+      name: r.name || 'Inskickad plats',
+      lat: r.lat,
+      lon: r.lon,
+      services: r.services,
+      source: 'community' as const,
+      description: r.description ?? r.address,
+      fee: r.fee ?? undefined,
+    }))
 }

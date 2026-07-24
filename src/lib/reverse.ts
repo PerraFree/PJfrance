@@ -5,8 +5,25 @@
  */
 const cache = new Map<string, string>()
 
+// Serialiserad kö med ≥1 s mellan anrop – håller oss inom Nominatims policy
+// även om användaren snabbt öppnar flera popups.
+let queue: Promise<unknown> = Promise.resolve()
+function throttled<T>(fn: () => Promise<T>): Promise<T> {
+  const run = queue.then(fn)
+  queue = run.then(
+    () => new Promise((r) => setTimeout(r, 1100)),
+    () => new Promise((r) => setTimeout(r, 1100)),
+  )
+  return run
+}
+
 export async function reverseGeocode(lat: number, lon: number): Promise<string> {
   const key = `${lat.toFixed(4)},${lon.toFixed(4)}`
+  if (cache.has(key)) return cache.get(key) as string
+  return throttled(() => lookup(lat, lon, key))
+}
+
+async function lookup(lat: number, lon: number, key: string): Promise<string> {
   if (cache.has(key)) return cache.get(key) as string
   try {
     const url =

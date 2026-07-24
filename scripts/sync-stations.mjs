@@ -54,12 +54,12 @@ out center tags;
 `
 
 function isBoatStation(tags) {
+  // motorhome=no exkluderas inte längre (husvagns-/kassettplats kan ändå vara relevant).
   return (
     tags.waterway === 'sanitary_dump_station' ||
     'seamark:type' in tags ||
     tags['sanitary_dump_station:suction'] === 'yes' ||
-    tags.boat === 'yes' ||
-    tags.motorhome === 'no'
+    tags.boat === 'yes'
   )
 }
 
@@ -80,7 +80,21 @@ function servicesFromTags(tags) {
     services.add('vatten')
   }
   if (tags.tourism === 'caravan_site') services.add('stallplats')
-  if (tags.tourism === 'camp_site') services.add('camping')
+  if (tags.tourism === 'camp_site') {
+    const husbilOk =
+      tags.motorhome === 'yes' ||
+      tags.motorhome === 'designated' ||
+      tags.caravan === 'yes' ||
+      tags.caravan === 'designated' ||
+      tags.caravans === 'yes' ||
+      'power_supply' in tags ||
+      tags.sanitary_dump_station === 'yes' ||
+      tags.amenity === 'sanitary_dump_station'
+    if (tags.tents !== 'only' && tags.access !== 'private' && tags.access !== 'no') {
+      services.add('camping')
+    }
+    if (husbilOk) services.add('stallplats')
+  }
   if (
     (tags.leisure === 'golf_course' || tags.leisure === 'sports_centre') &&
     (tags.caravan === 'yes' ||
@@ -183,16 +197,18 @@ function facilitiesFromTags(tags) {
   if (yes(tags.shower)) f.push('dusch')
   if (yes(tags.toilets) || yes(tags.toilet)) f.push('wc')
   if (yes(tags.laundry) || yes(tags.washing_machine)) f.push('tvatt')
-  if (yes(tags.waste_disposal) || yes(tags.trash) || yes(tags.recycling)) f.push('avfall')
-  if (['yes', 'wlan', 'wifi'].includes(tags.internet_access ?? '')) f.push('wifi')
+  if (yes(tags.waste_disposal) || tags.amenity === 'recycling' || 'waste_basket' in tags)
+    f.push('avfall')
+  if (['yes', 'wlan', 'terminal'].includes(tags.internet_access ?? '')) f.push('wifi')
   if (tags.dog === 'yes' || tags.dog === 'leashed') f.push('hund')
-  if (yes(tags.bbq) || yes(tags.openfire) || yes(tags.fireplace)) f.push('grill')
+  if (yes(tags.bbq) || yes(tags.fireplace)) f.push('grill')
   if (yes(tags.playground) || tags.leisure === 'playground') f.push('lekplats')
   if (yes(tags.restaurant) || tags.amenity === 'restaurant') f.push('restaurang')
-  if (tags.shop || yes(tags.kiosk)) f.push('butik')
+  if ((tags.shop && tags.shop !== 'gas' && tags.shop !== 'fuel') || tags.shop === 'kiosk')
+    f.push('butik')
   if (yes(tags.lit)) f.push('belyst')
   if (yes(tags.wheelchair)) f.push('tillganglig')
-  if (yes(tags.motorhome) || yes(tags.motor_vehicle)) f.push('husbil')
+  if (yes(tags.motorhome)) f.push('husbil')
   if (yes(tags.caravan) || yes(tags.caravans)) f.push('husvagn')
   if (yes(tags.tents)) f.push('talt')
   return f
@@ -232,7 +248,7 @@ function amenityFields(tags) {
 // ---------- Trafikverket ----------
 
 const LATRIN_RE = /latrin|sanit|dump|toalettöm/i
-const WATER_RE = /f[äa]rskvatten|freshwater|drinking|dricksvatten/i
+const WATER_RE = /f[äa]rskvatten|s[öo]tvatten|freshwater|drinking|dricksvatten|tappst[äa]lle|vattenp[åa]fyllning/i
 
 async function fetchTrafikverket(apiKey) {
   const body = `

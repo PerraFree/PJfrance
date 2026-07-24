@@ -45,7 +45,7 @@ function parseWgs84(wkt: string | undefined): { lat: number; lon: number } | nul
 }
 
 const LATRIN_RE = /latrin|sanit|dump|toalettöm/i
-const WATER_RE = /f[äa]rskvatten|freshwater|drinking|dricksvatten/i
+const WATER_RE = /f[äa]rskvatten|s[öo]tvatten|freshwater|drinking|dricksvatten|tappst[äa]lle|vattenp[åa]fyllning/i
 
 function toStation(p: TvParking): Station | null {
   const pos = parseWgs84(p.Geometry?.WGS84)

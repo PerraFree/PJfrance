@@ -66,11 +66,15 @@ export const SERVICE_LABELS: Record<ServiceType, string> = {
   gasol: 'Gasol/LPG',
 }
 
+/**
+ * En enda källa för kategorifärgerna (speglas i CSS-variablerna --gravatten
+ * m.fl. i styles.css). Alla klarar WCAG AA (≥4.5:1) med vit text på badge/pin.
+ */
 export const SERVICE_COLORS: Record<ServiceType, string> = {
   gravatten: '#6d4c41',
   latrin: '#7b1fa2',
-  vatten: '#0277bd',
-  stallplats: '#e65100',
+  vatten: '#01659b',
+  stallplats: '#c14a00',
   camping: '#00695c',
   gasol: '#c62828',
 }

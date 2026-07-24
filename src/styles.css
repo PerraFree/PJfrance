@@ -21,13 +21,14 @@
   --shadow: 0 6px 16px rgba(16, 42, 20, 0.1), 0 14px 40px rgba(16, 42, 20, 0.14);
   --radius: var(--r-card);
 
-  /* Kategorifärger (semantiska) */
+  /* Kategorifärger (semantiska) – speglar SERVICE_COLORS i src/types.ts.
+     Alla klarar WCAG AA med vit text på badge/pin. */
   --gravatten: #6d4c41;
-  --latrin: #8226b0;
-  --vatten: #0277bd;
-  --stallplats: #e65100;
-  --camping: #00796b;
-  --gasol: #d32f2f;
+  --latrin: #7b1fa2;
+  --vatten: #01659b;
+  --stallplats: #c14a00;
+  --camping: #00695c;
+  --gasol: #c62828;
 }
 
 * {
@@ -100,9 +101,12 @@ button {
 .panel {
   position: absolute;
   top: max(14px, env(safe-area-inset-top));
-  left: 14px;
+  left: max(14px, env(safe-area-inset-left));
   z-index: 1100;
   width: min(400px, calc(100vw - 28px));
+  max-height: calc(100dvh - max(28px, env(safe-area-inset-top)) - 84px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   background: rgba(255, 255, 255, 0.82);
   backdrop-filter: blur(20px) saturate(1.3);
   -webkit-backdrop-filter: blur(20px) saturate(1.3);
@@ -114,6 +118,34 @@ button {
   flex-direction: column;
   gap: 10px;
   animation: panel-fade 0.35s ease both;
+}
+
+/* Hopfällt läge – bara varumärke + sök syns, resten döljs */
+.panel.collapsed .filters,
+.panel.collapsed .filter-extras,
+.panel.collapsed .facility-filter,
+.panel.collapsed .settings,
+.panel.collapsed .submit-place-btn {
+  display: none;
+}
+
+.collapse-btn {
+  margin-left: 6px;
+  align-self: flex-start;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-control);
+  background: var(--field);
+  color: var(--text-dim);
+  cursor: pointer;
+  font-size: 0.9rem;
+  line-height: 1;
+  transition: background 0.15s;
+}
+
+.collapse-btn:hover {
+  background: var(--surface);
 }
 
 @supports not (backdrop-filter: blur(1px)) {
@@ -678,7 +710,7 @@ button {
 
 .nearest {
   position: absolute;
-  left: 14px;
+  left: max(14px, env(safe-area-inset-left));
   bottom: calc(14px + env(safe-area-inset-bottom));
   z-index: 1100;
   width: min(340px, calc(100vw - 28px));
@@ -806,7 +838,7 @@ button {
 
 .locate-btn {
   position: absolute;
-  right: 12px;
+  right: max(12px, env(safe-area-inset-right));
   bottom: calc(112px + env(safe-area-inset-bottom));
   z-index: 1100;
   width: 48px;
@@ -1293,4 +1325,185 @@ button {
   .leaflet-control-attribution {
     font-size: 0.62rem;
   }
+}
+
+/* ---------- Tillägg: notiser, tomt läge, felläge ---------- */
+
+/* "Begränsad information" i popup */
+.popup .sparse {
+  margin: 8px 0 0;
+  padding: 7px 9px;
+  font-size: 0.76rem;
+  line-height: 1.35;
+  color: var(--text-dim);
+  background: var(--field);
+  border: 1px dashed var(--border-strong);
+  border-radius: 10px;
+}
+
+/* Större, lättklickad stängknapp i stationspopupen */
+.station-popup .leaflet-popup-close-button {
+  width: 30px;
+  height: 30px;
+  font-size: 22px;
+  line-height: 28px;
+  padding: 0;
+  color: var(--text-dim);
+}
+.station-popup .leaflet-popup-close-button:hover {
+  color: var(--text);
+}
+
+/* Locate-knappen medan GPS-fix väntas */
+.locate-btn:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+.locate-btn.busy svg {
+  animation: locate-spin 0.9s linear infinite;
+}
+@keyframes locate-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .locate-btn.busy svg {
+    animation: none;
+  }
+}
+
+/* Tomt läge – inga platser i valda filter */
+.map-empty {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 900;
+  max-width: min(320px, calc(100vw - 40px));
+  padding: 14px 18px;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow);
+}
+
+/* Felläge (ErrorBoundary) */
+.app-error {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  text-align: center;
+  background: var(--surface, #f4f8f1);
+  color: var(--text, #1a2b1e);
+}
+.app-error h1 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+.app-error button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: var(--green-700, #1c6b2e);
+  color: #fff;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+/* ---------- Facilitetsfilter ---------- */
+
+.facility-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.facility-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-control);
+  background: var(--field);
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.facility-toggle:hover,
+.facility-toggle.open {
+  border-color: var(--green-500);
+}
+
+.facility-toggle .fac-count {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--green-700);
+  color: #fff;
+  font-size: 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.facility-toggle .chev {
+  margin-left: auto;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+}
+
+.facility-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.fac-chip {
+  padding: 6px 11px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 550;
+  cursor: pointer;
+  transition: all 0.14s;
+}
+
+.fac-chip:hover {
+  border-color: var(--green-500);
+}
+
+.fac-chip.active {
+  background: var(--green-700);
+  border-color: var(--green-700);
+  color: #fff;
+}
+
+.fac-clear {
+  padding: 6px 11px;
+  border: none;
+  background: none;
+  color: var(--green-700);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
 }

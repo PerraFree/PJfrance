@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import type { ServiceType, Station } from '../types'
 import { SERVICE_COLORS, SERVICE_LABELS } from '../types'
 
@@ -36,14 +36,25 @@ export default function NearestList({
       .slice(0, 12)
   }, [stations, activeFilters, userLoc])
 
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [onClose])
+
   return (
-    <div className="nearest">
+    <div className="nearest" role="dialog" aria-label="Platser närmast dig">
       <div className="nearest-head">
         <h2>Närmast dig</h2>
         <button type="button" onClick={onClose} aria-label="Stäng listan">
           ×
         </button>
       </div>
+      {nearest.length === 0 && (
+        <p className="nearest-empty">Inga platser i valda filter nära dig.</p>
+      )}
       <ul>
         {nearest.map(({ s, km }) => (
           <li key={s.id}>

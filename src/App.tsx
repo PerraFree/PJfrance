@@ -18,7 +18,7 @@ import {
   setTrafikverketKey,
 } from './lib/trafikverket'
 import type { ServiceType, Station } from './types'
-import { SERVICE_LABELS } from './types'
+import { SERVICE_LABELS, FACILITY_LABELS } from './types'
 
 const ALL_SERVICES: ServiceType[] = [
   'gravatten',
@@ -29,34 +29,111 @@ const ALL_SERVICES: ServiceType[] = [
   'gasol',
 ]
 
+/** Faciliteter man kan filtrera på (de mest efterfrågade av husbilsfolk). */
+const FILTERABLE_FACILITIES = [
+  'el',
+  'dricksvatten',
+  'dusch',
+  'wc',
+  'tvatt',
+  'wifi',
+  'avfall',
+  'hund',
+  'restaurang',
+  'tillganglig',
+]
+
 const FREE_RE = /gratis|free|ingår|kostnadsfri|utan avgift/i
 function isFree(s: Station): boolean {
   return s.source === 'trafikverket' || (s.fee ? FREE_RE.test(s.fee) : false)
 }
 
-/** Slår ihop stationer som ligger på (nästan) samma plats; mer tillförlitliga källor vinner. */
+const SOURCE_PRIORITY: Record<Station['source'], number> = {
+  egen: 0,
+  kommun: 1,
+  trafikverket: 2,
+  community: 3,
+  osm: 4,
+}
+
+/** Meter mellan två punkter (haversine). */
+function distMeters(a: Station, b: Station): number {
+  const R = 6371000
+  const dLat = ((b.lat - a.lat) * Math.PI) / 180
+  const dLon = ((b.lon - a.lon) * Math.PI) / 180
+  const lat1 = (a.lat * Math.PI) / 180
+  const lat2 = (b.lat * Math.PI) / 180
+  const h = Math.sin(dLat / 2) ** 2 + Math.sin(dLon / 2) ** 2 * Math.cos(lat1) * Math.cos(lat2)
+  return 2 * R * Math.asin(Math.sqrt(h))
+}
+
+const MERGE_FIELDS: (keyof Station)[] = [
+  'address',
+  'fee',
+  'openingHours',
+  'operator',
+  'phone',
+  'website',
+  'capacity',
+  'maxstay',
+  'description',
+  'payment',
+  'osmUrl',
+]
+
+/** Fyller på det som redan behållits (högre prioritet) med det som saknas från en dubblett. */
+function mergeInto(target: Station, s: Station): void {
+  target.services = [...new Set([...target.services, ...s.services])]
+  const fac = [...new Set([...(target.facilities ?? []), ...(s.facilities ?? [])])]
+  target.facilities = fac.length ? fac : undefined
+  for (const k of MERGE_FIELDS) {
+    if (target[k] == null && s[k] != null) (target[k] as unknown) = s[k]
+  }
+}
+
+/**
+ * Slår ihop stationer som ligger inom ~100 m av varandra – oavsett om de
+ * hamnar i samma rutnätscell – så att samma fysiska plats bara får en pin.
+ * Mer tillförlitliga källor vinner och kompletteras med detaljer från övriga.
+ */
 function dedupe(stations: Station[]): Station[] {
-  const priority = { egen: 0, kommun: 1, trafikverket: 2, community: 3, osm: 4 }
-  const byCell = new Map<string, Station>()
-  const sorted = [...stations].sort((a, b) => priority[a.source] - priority[b.source])
+  const sorted = [...stations].sort(
+    (a, b) => (SOURCE_PRIORITY[a.source] ?? 9) - (SOURCE_PRIORITY[b.source] ?? 9),
+  )
+  const CELL = 0.003 // ~200–330 m; grannceller täcker 100 m-radien
+  const grid = new Map<string, Station[]>()
+  const kept: Station[] = []
   for (const s of sorted) {
-    const key = `${s.lat.toFixed(3)},${s.lon.toFixed(3)}`
-    const existing = byCell.get(key)
-    if (!existing) {
-      byCell.set(key, s)
-    } else {
-      const services = [...new Set([...existing.services, ...s.services])]
-      const facilities = [
-        ...new Set([...(existing.facilities ?? []), ...(s.facilities ?? [])]),
-      ]
-      byCell.set(key, {
-        ...existing,
-        services,
-        facilities: facilities.length ? facilities : undefined,
-      })
+    const cx = Math.round(s.lat / CELL)
+    const cy = Math.round(s.lon / CELL)
+    let merged = false
+    for (let dx = -1; dx <= 1 && !merged; dx++) {
+      for (let dy = -1; dy <= 1 && !merged; dy++) {
+        const bucket = grid.get(`${cx + dx},${cy + dy}`)
+        if (!bucket) continue
+        for (const ex of bucket) {
+          if (distMeters(ex, s) <= 100) {
+            mergeInto(ex, s)
+            merged = true
+            break
+          }
+        }
+      }
+    }
+    if (!merged) {
+      const copy: Station = {
+        ...s,
+        services: [...s.services],
+        facilities: s.facilities ? [...s.facilities] : undefined,
+      }
+      const key = `${cx},${cy}`
+      const bucket = grid.get(key)
+      if (bucket) bucket.push(copy)
+      else grid.set(key, [copy])
+      kept.push(copy)
     }
   }
-  return [...byCell.values()]
+  return kept
 }
 
 export default function App() {
@@ -74,6 +151,7 @@ export default function App() {
   const [tvKey, setTvKey] = useState(getTrafikverketKey)
   const fetchTimer = useRef<ReturnType<typeof setTimeout>>()
   const cacheRef = useRef(new Map<string, Station>())
+  const reqIdRef = useRef(0)
 
   const [seedStations, setSeedStations] = useState<Station[]>([])
   const [seedUpdated, setSeedUpdated] = useState<string | null>(null)
@@ -83,6 +161,11 @@ export default function App() {
   const [reportTarget, setReportTarget] = useState<{ id: string; name: string } | null>(null)
   const [focus, setFocus] = useState<{ id: string; nonce: number } | null>(null)
   const [showNearest, setShowNearest] = useState(false)
+  const [collapsed, setCollapsed] = useState(false)
+  const [locating, setLocating] = useState(false)
+  const [facilityFilters, setFacilityFilters] = useState<Set<string>>(new Set())
+  const [showFacilityFilter, setShowFacilityFilter] = useState(false)
+  const dataCountRef = useRef(0)
 
   const stations = useMemo(
     () =>
@@ -96,9 +179,26 @@ export default function App() {
     [osmStations, tvStations, seedStations, communityStations],
   )
 
-  const shownStations = useMemo(
-    () => (freeOnly ? stations.filter(isFree) : stations),
-    [stations, freeOnly],
+  useEffect(() => {
+    dataCountRef.current = stations.length
+  }, [stations])
+
+  const shownStations = useMemo(() => {
+    let list = freeOnly ? stations.filter(isFree) : stations
+    if (facilityFilters.size) {
+      list = list.filter((s) => {
+        const have = new Set(s.facilities ?? [])
+        for (const need of facilityFilters) if (!have.has(need)) return false
+        return true
+      })
+    }
+    return list
+  }, [stations, freeOnly, facilityFilters])
+
+  // Antal synliga pins med hänsyn till aktiva kategorifilter (för tomt-läge)
+  const visibleCount = useMemo(
+    () => shownStations.filter((s) => s.services.some((sv) => activeFilters.has(sv))).length,
+    [shownStations, activeFilters],
   )
 
   // Antal per kategori (utifrån det som är inläst)
@@ -180,24 +280,39 @@ export default function App() {
   const handleBoundsChange = useCallback((bounds: L.LatLngBounds, zoom: number) => {
     clearTimeout(fetchTimer.current)
     if (zoom < MIN_FETCH_ZOOM) {
-      setStatus('Zooma in eller sök på en ort för att hämta stationer.')
+      // Seed-datan täcker hela Sverige, så visa inte en missvisande "zooma in"-text.
+      setStatus(
+        dataCountRef.current > 0
+          ? `${dataCountRef.current.toLocaleString('sv-SE')} platser i hela Sverige`
+          : 'Zooma in eller sök på en ort för att hämta stationer.',
+      )
       return
     }
     fetchTimer.current = setTimeout(async () => {
+      const reqId = ++reqIdRef.current
       setLoading(true)
       setStatus('Hämtar stationer …')
       try {
         const fetched = await fetchOsmStations(bounds)
+        if (reqId !== reqIdRef.current) return // en nyare hämtning har startat
         const cache = cacheRef.current
         for (const s of fetched) cache.set(s.id, s)
+        // Håll cachen rimlig under långa sessioner (behåll de senaste).
+        const CACHE_CAP = 4000
+        if (cache.size > CACHE_CAP) {
+          for (const key of [...cache.keys()].slice(0, cache.size - CACHE_CAP)) {
+            cache.delete(key)
+          }
+        }
         setOsmStations([...cache.values()])
         setStatus(`${cache.size} stationer från OpenStreetMap i minnet.`)
       } catch {
+        if (reqId !== reqIdRef.current) return
         // Seed-datan täcker hela Sverige, så en misslyckad live-uppdatering
         // är inte kritisk – visa ett lugnt meddelande i stället för ett fel.
         setStatus('Visar sparade platser – live-uppdatering från OpenStreetMap gick inte just nu.')
       } finally {
-        setLoading(false)
+        if (reqId === reqIdRef.current) setLoading(false)
       }
     }, 600)
   }, [])
@@ -211,14 +326,34 @@ export default function App() {
     })
   }
 
+  const toggleFacility = (key: string) => {
+    setFacilityFilters((prev) => {
+      const next = new Set(prev)
+      if (next.has(key)) next.delete(key)
+      else next.add(key)
+      return next
+    })
+  }
+
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!query.trim()) return
-    setStatus(`Söker efter ”${query}” …`)
+    const q = query.trim()
+    if (!q) return
+    // 1) Matcha först en namngiven plats i datat (t.ex. "Borås Golfklubb").
+    const ql = q.toLowerCase()
+    const named = shownStations.find((s) => s.name.toLowerCase().includes(ql))
+    if (named && q.length >= 3) {
+      setFlyTo({ lat: named.lat, lon: named.lon, zoom: 14 })
+      setFocus({ id: named.id, nonce: Date.now() })
+      setStatus(named.name)
+      return
+    }
+    // 2) Annars ortsökning via Nominatim.
+    setStatus(`Söker efter ”${q}” …`)
     try {
-      const results = await searchPlace(query)
+      const results = await searchPlace(q)
       if (results.length === 0) {
-        setStatus('Ingen ort hittades – prova en annan sökning.')
+        setStatus('Ingen träff – prova en ort eller ett platsnamn.')
         return
       }
       const hit = results[0]
@@ -230,6 +365,8 @@ export default function App() {
   }
 
   const handleLocate = async () => {
+    if (locating) return
+    setLocating(true)
     setStatus('Hämtar din position …')
     void tap()
     try {
@@ -240,6 +377,8 @@ export default function App() {
       setStatus('Visar platser nära dig – avstånd visas i varje plats.')
     } catch {
       setStatus('Kunde inte hämta din position.')
+    } finally {
+      setLocating(false)
     }
   }
 
@@ -254,6 +393,12 @@ export default function App() {
     setShowSettings(false)
     if (!value) setStatus('Trafikverket-nyckeln borttagen.')
   }
+
+  // PWA-genväg "Nära mig" (manifestets shortcut ?nara=1)
+  useEffect(() => {
+    if (new URLSearchParams(location.search).get('nara') === '1') void handleLocate()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className="app">
@@ -271,22 +416,34 @@ export default function App() {
 
       {loading && <div className="loading-bar" aria-hidden="true" />}
 
-      <div className="panel">
+      <div className={collapsed ? 'panel collapsed' : 'panel'}>
         <header className="brand">
           <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" width="34" height="34" />
           <div>
             <h1>Tömningskartan</h1>
             <p>Ställplatser · tömning · vatten · gasol – för husbil &amp; husvagn</p>
           </div>
+          {!collapsed && (
+            <button
+              type="button"
+              className="settings-btn"
+              onClick={() => setShowSettings((v) => !v)}
+              aria-expanded={showSettings}
+              aria-label="Datakällor och inställningar"
+              title="Datakällor"
+            >
+              ⚙
+            </button>
+          )}
           <button
             type="button"
-            className="settings-btn"
-            onClick={() => setShowSettings((v) => !v)}
-            aria-expanded={showSettings}
-            aria-label="Datakällor och inställningar"
-            title="Datakällor"
+            className="collapse-btn"
+            onClick={() => setCollapsed((v) => !v)}
+            aria-expanded={!collapsed}
+            aria-label={collapsed ? 'Visa filter' : 'Fäll ihop panelen'}
+            title={collapsed ? 'Visa filter' : 'Fäll ihop'}
           >
-            ⚙
+            {collapsed ? '▾' : '▴'}
           </button>
         </header>
 
@@ -343,6 +500,43 @@ export default function App() {
           </span>
         </div>
 
+        <div className="facility-filter">
+          <button
+            type="button"
+            className={showFacilityFilter ? 'facility-toggle open' : 'facility-toggle'}
+            aria-expanded={showFacilityFilter}
+            onClick={() => setShowFacilityFilter((v) => !v)}
+          >
+            Filtrera på vad som finns
+            {facilityFilters.size > 0 && <span className="fac-count">{facilityFilters.size}</span>}
+            <span className="chev" aria-hidden="true">{showFacilityFilter ? '▴' : '▾'}</span>
+          </button>
+          {showFacilityFilter && (
+            <div className="facility-chips" role="group" aria-label="Filtrera på faciliteter">
+              {FILTERABLE_FACILITIES.map((key) => (
+                <button
+                  key={key}
+                  type="button"
+                  className={facilityFilters.has(key) ? 'fac-chip active' : 'fac-chip'}
+                  aria-pressed={facilityFilters.has(key)}
+                  onClick={() => toggleFacility(key)}
+                >
+                  {FACILITY_LABELS[key] ?? key}
+                </button>
+              ))}
+              {facilityFilters.size > 0 && (
+                <button
+                  type="button"
+                  className="fac-clear"
+                  onClick={() => setFacilityFilters(new Set())}
+                >
+                  Rensa
+                </button>
+              )}
+            </div>
+          )}
+        </div>
+
         {showSettings && (
           <form className="settings" onSubmit={handleSaveKey}>
             <p>
@@ -377,7 +571,23 @@ export default function App() {
         )}
       </div>
 
-      <button className="locate-btn" type="button" onClick={handleLocate} aria-label="Visa min position">
+      {visibleCount === 0 && dataCountRef.current > 0 && (
+        <div className="map-empty" role="status">
+          {activeFilters.size === 0
+            ? 'Slå på minst en kategori för att se platser.'
+            : facilityFilters.size > 0
+              ? 'Inga platser matchar valda faciliteter – prova att ta bort något villkor.'
+              : 'Inga platser i valda filter här.'}
+        </div>
+      )}
+
+      <button
+        className={locating ? 'locate-btn busy' : 'locate-btn'}
+        type="button"
+        onClick={handleLocate}
+        disabled={locating}
+        aria-label="Visa platser nära mig"
+      >
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path
             d="M12 8a4 4 0 1 0 4 4 4 4 0 0 0-4-4zm8.94 3A8.99 8.99 0 0 0 13 3.06V1h-2v2.06A8.99 8.99 0 0 0 3.06 11H1v2h2.06A8.99 8.99 0 0 0 11 20.94V23h2v-2.06A8.99 8.99 0 0 0 20.94 13H23v-2zM12 19a7 7 0 1 1 7-7 7 7 0 0 1-7 7z"

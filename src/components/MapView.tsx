@@ -36,6 +36,18 @@ function esc(value: string): string {
     .replace(/"/g, '&quot;')
 }
 
+/**
+ * Släpper bara igenom säkra länkscheman (http/https/tel). Skyddar mot t.ex.
+ * javascript:-URL:er som kan komma från extern OSM-data.
+ */
+function safeUrl(value: string | undefined): string | null {
+  if (!value) return null
+  const v = value.trim()
+  if (/^(https?:|tel:)/i.test(v)) return v
+  if (/^www\./i.test(v)) return `https://${v}`
+  return null
+}
+
 function facilityList(station: Station): string {
   const keys = station.facilities ?? []
   if (keys.length === 0) return ''
@@ -114,19 +126,36 @@ function popupHtml(
   if (station.operator)
     rows.push(`<p class="meta"><strong>Drivs av</strong>${esc(station.operator)}</p>`)
   const contact: string[] = []
-  if (station.phone)
-    contact.push(`<a href="tel:${escapeAttr(station.phone)}">📞 Ring</a>`)
-  if (station.website)
+  const phone = station.phone ? safeUrl(`tel:${station.phone.replace(/[^\d+]/g, '')}`) : null
+  if (phone) contact.push(`<a href="${escapeAttr(phone)}">📞 Ring</a>`)
+  const website = safeUrl(station.website)
+  if (website)
     contact.push(
-      `<a href="${escapeAttr(station.website)}" target="_blank" rel="noopener">🌐 Webbplats</a>`,
+      `<a href="${escapeAttr(website)}" target="_blank" rel="noopener">🌐 Webbplats</a>`,
     )
   if (contact.length) rows.push(`<p class="contact">${contact.join(' · ')}</p>`)
+  // Magra platser (bara koordinat + kategori) märks upp så användaren vet.
+  const sparse =
+    !station.facilities?.length &&
+    !station.fee &&
+    !station.openingHours &&
+    !website &&
+    !phone &&
+    !station.operator &&
+    !station.capacity &&
+    !station.description
+  if (sparse) {
+    rows.push(
+      `<p class="sparse">ℹ Begränsad information – hjälp gärna till att komplettera via “Rapportera fel”.</p>`,
+    )
+  }
   const nav = `https://www.google.com/maps/dir/?api=1&destination=${station.lat},${station.lon}`
+  const osmUrl = safeUrl(station.osmUrl)
   const links =
     `<div class="links"><a class="primary" href="${nav}" target="_blank" rel="noopener">Vägbeskrivning →</a>` +
     `<button type="button" class="share-btn" data-lat="${station.lat}" data-lon="${station.lon}" data-name="${escapeAttr(station.name)}">Dela</button>` +
-    (station.osmUrl
-      ? `<a href="${station.osmUrl}" target="_blank" rel="noopener">OpenStreetMap</a>`
+    (osmUrl
+      ? `<a href="${escapeAttr(osmUrl)}" target="_blank" rel="noopener">OpenStreetMap</a>`
       : '') +
     '</div>'
   const sourceNote =
