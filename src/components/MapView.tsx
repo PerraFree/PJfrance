@@ -22,6 +22,8 @@ interface Props {
   onBoundsChange: (bounds: L.LatLngBounds, zoom: number) => void
   canReport: boolean
   onReport: (station: { id: string; name: string }) => void
+  favoriteIds: Set<string>
+  onToggleFavorite: (id: string) => void
 }
 
 function escapeAttr(value: string): string {
@@ -83,10 +85,16 @@ function pinIcon(color: string): L.DivIcon {
   })
 }
 
+/** 'year-round' från datan, annars härledd ur 24/7-öppettider. */
+function stationSeason(station: Station): Station['season'] {
+  return station.season ?? (station.openingHours === '24/7' ? 'year-round' : undefined)
+}
+
 function popupHtml(
   station: Station,
   canReport: boolean,
   userLoc: { lat: number; lon: number } | null,
+  isFav: boolean,
 ): string {
   const services = station.services
     .map(
@@ -94,6 +102,13 @@ function popupHtml(
         `<span class="badge" style="--badge:${SERVICE_COLORS[s]}">${SERVICE_LABELS[s]}</span>`,
     )
     .join('')
+  const season = stationSeason(station)
+  const seasonBadge =
+    season === 'year-round'
+      ? '<span class="badge season">Öppet året runt</span>'
+      : season === 'seasonal'
+        ? '<span class="badge season seasonal">Säsongsöppet</span>'
+        : ''
   const rows: string[] = []
   // Var ligger platsen? Adress om den finns, annars fylls orten i när popupen öppnas.
   if (station.address) {
@@ -151,6 +166,7 @@ function popupHtml(
   }
   const nav = `https://www.google.com/maps/dir/?api=1&destination=${station.lat},${station.lon}`
   const osmUrl = safeUrl(station.osmUrl)
+  const coords = `${station.lat.toFixed(5)}, ${station.lon.toFixed(5)}`
   const links =
     `<div class="links"><a class="primary" href="${nav}" target="_blank" rel="noopener">Vägbeskrivning →</a>` +
     `<button type="button" class="share-btn" data-lat="${station.lat}" data-lon="${station.lon}" data-name="${escapeAttr(station.name)}">Dela</button>` +
@@ -158,6 +174,11 @@ function popupHtml(
       ? `<a href="${escapeAttr(osmUrl)}" target="_blank" rel="noopener">OpenStreetMap</a>`
       : '') +
     '</div>'
+  const actions =
+    `<div class="pop-actions">` +
+    `<button type="button" class="fav-btn${isFav ? ' active' : ''}" data-fav-id="${escapeAttr(station.id)}" aria-pressed="${isFav}">${isFav ? '★ Sparad' : '☆ Spara'}</button>` +
+    `<button type="button" class="copy-btn" data-coords="${escapeAttr(coords)}">⧉ Kopiera koordinater</button>` +
+    `</div>`
   const sourceNote =
     station.source === 'osm'
       ? 'Källa: OpenStreetMap'
@@ -172,7 +193,7 @@ function popupHtml(
     ? `<button type="button" class="report-btn" data-station-id="${escapeAttr(station.id)}" data-station-name="${escapeAttr(station.name)}">⚠ Rapportera fel</button>`
     : ''
   const accent = SERVICE_COLORS[station.services[0]] ?? 'var(--green-700)'
-  return `<div class="popup" style="--accent:${accent}"><h3>${esc(station.name)}</h3><div class="badges">${services}</div>${rows.join('')}${links}<p class="source">${sourceNote}</p>${report}</div>`
+  return `<div class="popup" style="--accent:${accent}"><h3>${esc(station.name)}</h3><div class="badges">${services}${seasonBadge}</div>${rows.join('')}${links}${actions}<p class="source">${sourceNote}</p>${report}</div>`
 }
 
 function readSavedView(): { lat: number; lon: number; zoom: number } | null {
@@ -209,6 +230,8 @@ export default function MapView({
   onBoundsChange,
   canReport,
   onReport,
+  favoriteIds,
+  onToggleFavorite,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<L.Map | null>(null)
@@ -217,6 +240,10 @@ export default function MapView({
   const markersById = useRef<Map<string, L.Marker>>(new Map())
   const onReportRef = useRef(onReport)
   onReportRef.current = onReport
+  const onToggleFavoriteRef = useRef(onToggleFavorite)
+  onToggleFavoriteRef.current = onToggleFavorite
+  const favoritesRef = useRef(favoriteIds)
+  favoritesRef.current = favoriteIds
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return
@@ -297,6 +324,34 @@ export default function MapView({
       if (share) {
         const { lat, lon, name } = share.dataset
         if (lat && lon && name) sharePlace(name, parseFloat(lat), parseFloat(lon))
+        return
+      }
+      const fav = target.closest('.fav-btn') as HTMLButtonElement | null
+      if (fav) {
+        const id = fav.dataset.favId
+        if (id) {
+          const nowFav = !fav.classList.contains('active')
+          onToggleFavoriteRef.current(id)
+          fav.classList.toggle('active', nowFav)
+          fav.setAttribute('aria-pressed', String(nowFav))
+          fav.textContent = nowFav ? '★ Sparad' : '☆ Spara'
+        }
+        return
+      }
+      const copy = target.closest('.copy-btn') as HTMLButtonElement | null
+      if (copy) {
+        const coords = copy.dataset.coords ?? ''
+        void navigator.clipboard?.writeText(coords).then(
+          () => {
+            copy.textContent = '✓ Kopierat!'
+            window.setTimeout(() => {
+              copy.textContent = '⧉ Kopiera koordinater'
+            }, 1600)
+          },
+          () => {
+            copy.textContent = coords
+          },
+        )
       }
     }
     const container = map.getContainer()
@@ -385,7 +440,7 @@ export default function MapView({
       const primary = station.services.find((s) => activeFilters.has(s)) ?? station.services[0]
       const marker = L.marker([station.lat, station.lon], {
         icon: pinIcon(SERVICE_COLORS[primary]),
-      }).bindPopup(() => popupHtml(station, canReport, userLoc), {
+      }).bindPopup(() => popupHtml(station, canReport, userLoc, favoritesRef.current.has(station.id)), {
         maxWidth: 300,
         className: 'station-popup',
         autoPanPaddingTopLeft: padTopLeft,

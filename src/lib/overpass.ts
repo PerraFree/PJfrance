@@ -117,6 +117,13 @@ function isBoatStation(tags: Record<string, string>): boolean {
   )
 }
 
+function seasonFromTags(tags: Record<string, string>): Station['season'] {
+  if (tags.seasonal === 'no') return 'year-round'
+  if (tags.seasonal === 'yes') return 'seasonal'
+  if (tags.opening_hours === '24/7') return 'year-round'
+  return undefined
+}
+
 function toStation(el: OverpassElement): Station | null {
   const lat = el.lat ?? el.center?.lat
   const lon = el.lon ?? el.center?.lon
@@ -136,6 +143,7 @@ function toStation(el: OverpassElement): Station | null {
     description: tags.name && kind ? kind : undefined,
     fee: tags.fee === 'yes' ? tags.charge ?? 'Avgift' : tags.fee === 'no' ? 'Gratis' : undefined,
     openingHours: tags.opening_hours,
+    season: seasonFromTags(tags),
     osmUrl: `https://www.openstreetmap.org/${el.type}/${el.id}`,
     ...amenityFields(tags),
   }

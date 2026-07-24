@@ -1507,3 +1507,50 @@ button {
   cursor: pointer;
   text-decoration: underline;
 }
+
+/* ---------- Favoriter, kopiera koordinater, säsong ---------- */
+
+/* Säsongsbadge i popup (bredvid kategoribadges) */
+.popup .badge.season {
+  --badge: #2e7d32;
+  background: #eaf5eb;
+  color: #1e5a24;
+  border: 1px solid #bfe0c2;
+}
+.popup .badge.season.seasonal {
+  background: #fdf1dc;
+  color: #8a5300;
+  border-color: #f0d3a0;
+}
+
+/* Åtgärdsrad: spara + kopiera koordinater */
+.pop-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.pop-actions .fav-btn,
+.pop-actions .copy-btn {
+  padding: 7px 11px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-control);
+  background: var(--field);
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.14s;
+}
+
+.pop-actions .fav-btn:hover,
+.pop-actions .copy-btn:hover {
+  border-color: var(--green-500);
+}
+
+.pop-actions .fav-btn.active {
+  background: #fff6df;
+  border-color: #e8b84b;
+  color: #8a5a00;
+}

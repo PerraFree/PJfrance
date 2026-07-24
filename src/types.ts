@@ -31,6 +31,8 @@ export interface Station {
   operator?: string
   phone?: string
   website?: string
+  /** 'year-round' = öppet året runt, 'seasonal' = säsongsöppet, annars okänt. */
+  season?: 'year-round' | 'seasonal'
 }
 
 /** Allt appen kan visa "finns här" – nycklar matchar det synkskriptet plockar ur OSM. */

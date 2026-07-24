@@ -8,6 +8,7 @@ import IntroHint from './components/IntroHint'
 import { communityEnabled } from './config'
 import { OWN_STATIONS } from './data/stations'
 import { fetchApprovedPlaces } from './lib/community'
+import { loadFavorites, saveFavorites } from './lib/favorites'
 import { searchPlace } from './lib/geocode'
 import { fetchOsmStations } from './lib/overpass'
 import { getPosition, tap } from './lib/native'
@@ -79,6 +80,7 @@ const MERGE_FIELDS: (keyof Station)[] = [
   'description',
   'payment',
   'osmUrl',
+  'season',
 ]
 
 /** Fyller på det som redan behållits (högre prioritet) med det som saknas från en dubblett. */
@@ -164,7 +166,20 @@ export default function App() {
   const [locating, setLocating] = useState(false)
   const [facilityFilters, setFacilityFilters] = useState<Set<string>>(new Set())
   const [showFacilityFilter, setShowFacilityFilter] = useState(false)
+  const [favorites, setFavorites] = useState<Set<string>>(loadFavorites)
+  const [favOnly, setFavOnly] = useState(false)
+  const [yearRoundOnly, setYearRoundOnly] = useState(false)
   const dataCountRef = useRef(0)
+
+  const toggleFavorite = useCallback((id: string) => {
+    setFavorites((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) next.delete(id)
+      else next.add(id)
+      saveFavorites(next)
+      return next
+    })
+  }, [])
 
   const stations = useMemo(
     () =>
@@ -184,6 +199,12 @@ export default function App() {
 
   const shownStations = useMemo(() => {
     let list = freeOnly ? stations.filter(isFree) : stations
+    if (favOnly) list = list.filter((s) => favorites.has(s.id))
+    if (yearRoundOnly) {
+      list = list.filter(
+        (s) => s.season === 'year-round' || s.openingHours === '24/7',
+      )
+    }
     if (facilityFilters.size) {
       list = list.filter((s) => {
         const have = new Set(s.facilities ?? [])
@@ -192,7 +213,7 @@ export default function App() {
       })
     }
     return list
-  }, [stations, freeOnly, facilityFilters])
+  }, [stations, freeOnly, favOnly, favorites, yearRoundOnly, facilityFilters])
 
   // Antal synliga pins med hänsyn till aktiva kategorifilter (för tomt-läge)
   const visibleCount = useMemo(
@@ -411,6 +432,8 @@ export default function App() {
         onBoundsChange={handleBoundsChange}
         canReport={communityEnabled}
         onReport={setReportTarget}
+        favoriteIds={favorites}
+        onToggleFavorite={toggleFavorite}
       />
 
       {loading && <div className="loading-bar" aria-hidden="true" />}
@@ -493,6 +516,26 @@ export default function App() {
           >
             Endast gratis
           </button>
+          <button
+            type="button"
+            className={yearRoundOnly ? 'free-toggle active' : 'free-toggle'}
+            aria-pressed={yearRoundOnly}
+            onClick={() => setYearRoundOnly((v) => !v)}
+          >
+            Öppet året runt
+          </button>
+          <button
+            type="button"
+            className={favOnly ? 'free-toggle active' : 'free-toggle'}
+            aria-pressed={favOnly}
+            onClick={() => setFavOnly((v) => !v)}
+            title="Visa bara dina sparade platser"
+          >
+            ★ Favoriter
+            {favorites.size > 0 && <span className="fac-count">{favorites.size}</span>}
+          </button>
+        </div>
+        <div className="filter-extras">
           <span className="stats">
             {shownStations.length.toLocaleString('sv-SE')} platser
             {seedUpdated && ` · uppdaterad ${new Date(seedUpdated).toLocaleDateString('sv-SE', { day: 'numeric', month: 'short' })}`}
@@ -572,11 +615,13 @@ export default function App() {
 
       {visibleCount === 0 && dataCountRef.current > 0 && (
         <div className="map-empty" role="status">
-          {activeFilters.size === 0
-            ? 'Vad letar du efter? Välj en eller flera kategorier ovan för att visa platser.'
-            : facilityFilters.size > 0
-              ? 'Inga platser matchar valda faciliteter – prova att ta bort något villkor.'
-              : 'Inga platser i valda filter här.'}
+          {favOnly && favorites.size === 0
+            ? 'Du har inga sparade platser än – tryck ★ Spara i en plats för att lägga till den här.'
+            : activeFilters.size === 0
+              ? 'Vad letar du efter? Välj en eller flera kategorier ovan för att visa platser.'
+              : facilityFilters.size > 0
+                ? 'Inga platser matchar valda faciliteter – prova att ta bort något villkor.'
+                : 'Inga platser i valda filter här.'}
         </div>
       )}
 

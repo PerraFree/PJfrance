@@ -177,11 +177,19 @@ async function fetchOsmFrom(url) {
       description: tags.name && kind ? kind : undefined,
       fee: tags.fee === 'yes' ? (tags.charge ?? 'Avgift') : tags.fee === 'no' ? 'Gratis' : undefined,
       openingHours: tags.opening_hours,
+      season: seasonFromTags(tags),
       osmUrl: `https://www.openstreetmap.org/${el.type}/${el.id}`,
       ...amenityFields(tags),
     })
   }
   return stations
+}
+
+function seasonFromTags(tags) {
+  if (tags.seasonal === 'no') return 'year-round'
+  if (tags.seasonal === 'yes') return 'seasonal'
+  if (tags.opening_hours === '24/7') return 'year-round'
+  return undefined
 }
 
 const yes = (v) => v === 'yes' || v === 'designated' || v === 'customers'
