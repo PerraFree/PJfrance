@@ -167,6 +167,8 @@ export default function App() {
   const [favorites, setFavorites] = useState<Set<string>>(loadFavorites)
   const [favOnly, setFavOnly] = useState(false)
   const [yearRoundOnly, setYearRoundOnly] = useState(false)
+  const [searching, setSearching] = useState(false)
+  const searchAbortRef = useRef<AbortController | null>(null)
   const dataCountRef = useRef(0)
 
   const toggleFavorite = useCallback((id: string) => {
@@ -386,10 +388,15 @@ export default function App() {
       setStatus(named.name)
       return
     }
-    // 2) Annars ortsökning (Nominatim med Photon som reserv, båda med timeout).
+    // 2) Annars ortsökning (Nominatim + Photon parallellt, avbrytbar).
+    searchAbortRef.current?.abort()
+    const ac = new AbortController()
+    searchAbortRef.current = ac
+    setSearching(true)
     setStatus(`Söker efter ”${q}” …`)
     try {
-      const results = await searchPlace(q)
+      const results = await searchPlace(q, ac.signal)
+      if (ac.signal.aborted) return
       if (results.length === 0) {
         setStatus('Ingen träff – prova en ort eller ett platsnamn.')
         return
@@ -399,8 +406,22 @@ export default function App() {
       setStatus(hit.name.split(',').slice(0, 2).join(','))
       setFlyTo({ lat: hit.lat, lon: hit.lon, zoom: 11 })
     } catch {
-      setStatus('Sökningen misslyckades – kontrollera nätet och försök igen.')
+      if (!ac.signal.aborted) {
+        setStatus('Sökningen misslyckades – kontrollera nätet och försök igen.')
+      }
+    } finally {
+      if (searchAbortRef.current === ac) {
+        searchAbortRef.current = null
+        setSearching(false)
+      }
     }
+  }
+
+  const cancelSearch = () => {
+    searchAbortRef.current?.abort()
+    searchAbortRef.current = null
+    setSearching(false)
+    setStatus('Sökning avbruten.')
   }
 
   const handleLocate = async () => {
@@ -504,7 +525,15 @@ export default function App() {
             onChange={(e) => setQuery(e.target.value)}
             aria-label="Sök ort eller plats"
           />
-          <button type="submit">Sök</button>
+          {searching ? (
+            <button key="cancel" type="button" className="cancel-btn" onClick={cancelSearch}>
+              Avbryt
+            </button>
+          ) : (
+            <button key="search" type="submit">
+              Sök
+            </button>
+          )}
         </form>
 
         <button

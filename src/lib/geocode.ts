@@ -14,15 +14,23 @@ function timeoutSignal(ms: number): AbortSignal | undefined {
     : undefined
 }
 
-/** Ortsökning via Nominatim, med timeout så UI:t aldrig fastnar i "söker …". */
-async function nominatim(query: string): Promise<GeocodeResult[]> {
+/** Kombinerar användarens avbryt-signal med en timeout. */
+function combinedSignal(external: AbortSignal | undefined, ms: number): AbortSignal | undefined {
+  const t = timeoutSignal(ms)
+  const signals = [external, t].filter(Boolean) as AbortSignal[]
+  if (signals.length === 0) return undefined
+  if (signals.length === 1) return signals[0]
+  return typeof AbortSignal !== 'undefined' && 'any' in AbortSignal
+    ? AbortSignal.any(signals)
+    : signals[0]
+}
+
+/** Ortsökning via Nominatim. */
+async function nominatim(query: string, signal?: AbortSignal): Promise<GeocodeResult[]> {
   const url =
     'https://nominatim.openstreetmap.org/search?format=jsonv2&countrycodes=se&limit=5&q=' +
     encodeURIComponent(query)
-  const res = await fetch(url, {
-    headers: { 'Accept-Language': 'sv' },
-    signal: timeoutSignal(9000),
-  })
+  const res = await fetch(url, { headers: { 'Accept-Language': 'sv' }, signal })
   if (!res.ok) throw new Error(`Nominatim svarade ${res.status}`)
   const json = (await res.json()) as Array<{ display_name: string; lat: string; lon: string }>
   return json.map((r) => ({
@@ -32,14 +40,14 @@ async function nominatim(query: string): Promise<GeocodeResult[]> {
   }))
 }
 
-/** Reserv-geokodning via Photon (Komoot) om Nominatim är nere/blockerad. */
-async function photon(query: string): Promise<GeocodeResult[]> {
+/** Reserv-geokodning via Photon (Komoot). */
+async function photon(query: string, signal?: AbortSignal): Promise<GeocodeResult[]> {
   const url =
     'https://photon.komoot.io/api/?lang=sv&limit=5' +
     `&bbox=${SE_BBOX.west},${SE_BBOX.south},${SE_BBOX.east},${SE_BBOX.north}` +
     '&q=' +
     encodeURIComponent(query)
-  const res = await fetch(url, { signal: timeoutSignal(9000) })
+  const res = await fetch(url, { signal })
   if (!res.ok) throw new Error(`Photon svarade ${res.status}`)
   const json = (await res.json()) as {
     features?: Array<{
@@ -52,24 +60,30 @@ async function photon(query: string): Promise<GeocodeResult[]> {
     .map((f) => {
       const p = f.properties ?? {}
       const [lon, lat] = f.geometry!.coordinates!
-      return {
-        name: [p.name, p.city, p.state].filter(Boolean).join(', ') || query,
-        lat,
-        lon,
-      }
+      return { name: [p.name, p.city, p.state].filter(Boolean).join(', ') || query, lat, lon }
     })
 }
 
+/** Resolver på första löftet som ger en icke-tom lista; annars tom när alla klara. */
+function firstNonEmpty<T>(promises: Promise<T[]>[]): Promise<T[]> {
+  return new Promise((resolve) => {
+    let remaining = promises.length
+    if (remaining === 0) resolve([])
+    const done = (r: T[] | null) => {
+      if (r && r.length) return resolve(r)
+      if (--remaining === 0) resolve([])
+    }
+    for (const p of promises) p.then(done, () => done(null))
+  })
+}
+
 /**
- * Ortsökning begränsad till Sverige. Provar Nominatim först och faller
- * tillbaka på Photon om Nominatim är långsam, blockerad eller tom.
+ * Ortsökning begränsad till Sverige. Kör Nominatim och Photon PARALLELLT och
+ * tar det första svaret med träff – snabbt även om den ena tjänsten hänger.
+ * Går att avbryta via `signal`.
  */
-export async function searchPlace(query: string): Promise<GeocodeResult[]> {
-  try {
-    const results = await nominatim(query)
-    if (results.length) return results
-  } catch {
-    /* faller tillbaka på Photon nedan */
-  }
-  return photon(query)
+export async function searchPlace(query: string, signal?: AbortSignal): Promise<GeocodeResult[]> {
+  const nom = nominatim(query, combinedSignal(signal, 8000)).catch(() => [] as GeocodeResult[])
+  const pho = photon(query, combinedSignal(signal, 8000)).catch(() => [] as GeocodeResult[])
+  return firstNonEmpty([nom, pho])
 }

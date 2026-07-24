@@ -1601,3 +1601,19 @@ button {
     animation: none;
   }
 }
+
+/* Avbryt-knapp under pågående sökning (ersätter "Sök") */
+.search .cancel-btn {
+  padding: 0 16px;
+  border: 1px solid #d98a86;
+  border-radius: var(--r-control);
+  background: #fbecea;
+  color: #a6291f;
+  font-size: 0.92rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.search .cancel-btn:hover {
+  background: #f7dcd9;
+}
