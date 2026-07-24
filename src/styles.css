@@ -1554,3 +1554,50 @@ button {
   border-color: #e8b84b;
   color: #8a5a00;
 }
+
+/* ---------- "Sök där jag är"-knapp i panelen ---------- */
+
+.here-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--green-500);
+  border-radius: var(--r-control);
+  background: var(--green-100);
+  color: var(--green-900);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.here-btn:hover {
+  background: #d9ecdb;
+}
+
+.here-btn:active {
+  transform: translateY(1px);
+}
+
+.here-btn:disabled {
+  cursor: progress;
+  opacity: 0.85;
+}
+
+.here-btn svg {
+  color: var(--green-700);
+  flex-shrink: 0;
+}
+
+.here-btn.busy svg {
+  animation: locate-spin 0.9s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .here-btn.busy svg {
+    animation: none;
+  }
+}

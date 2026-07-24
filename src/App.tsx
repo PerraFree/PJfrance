@@ -394,6 +394,8 @@ export default function App() {
       setUserLoc(loc)
       setFlyTo({ ...loc, zoom: 11 })
       setShowNearest(true)
+      // Har inget valts ännu? Visa alla kategorier så man genast ser vad som finns nära.
+      setActiveFilters((prev) => (prev.size === 0 ? new Set(ALL_SERVICES) : prev))
       setStatus('Visar platser nära dig – avstånd visas i varje plats.')
     } catch {
       setStatus('Kunde inte hämta din position.')
@@ -478,13 +480,28 @@ export default function App() {
           </svg>
           <input
             type="search"
-            placeholder="Sök ort, t.ex. Mora"
+            placeholder="Sök ort eller plats, t.ex. Mora"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            aria-label="Sök ort"
+            aria-label="Sök ort eller plats"
           />
           <button type="submit">Sök</button>
         </form>
+
+        <button
+          type="button"
+          className={locating ? 'here-btn busy' : 'here-btn'}
+          onClick={handleLocate}
+          disabled={locating}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18">
+            <path
+              d="M12 8a4 4 0 1 0 4 4 4 4 0 0 0-4-4zm8.94 3A8.99 8.99 0 0 0 13 3.06V1h-2v2.06A8.99 8.99 0 0 0 3.06 11H1v2h2.06A8.99 8.99 0 0 0 11 20.94V23h2v-2.06A8.99 8.99 0 0 0 20.94 13H23v-2zM12 19a7 7 0 1 1 7-7 7 7 0 0 1-7 7z"
+              fill="currentColor"
+            />
+          </svg>
+          {locating ? 'Hämtar din position …' : 'Sök där jag är'}
+        </button>
 
         <div className="filters" role="group" aria-label="Filtrera tjänster">
           {ALL_SERVICES.map((service) => (
