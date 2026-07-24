@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet.markercluster'
@@ -246,6 +246,81 @@ export default function MapView({
   onToggleFavoriteRef.current = onToggleFavorite
   const favoritesRef = useRef(favoriteIds)
   favoritesRef.current = favoriteIds
+  const stationsRef = useRef(stations)
+  stationsRef.current = stations
+  const activeFiltersRef = useRef(activeFilters)
+  activeFiltersRef.current = activeFilters
+  const canReportRef = useRef(canReport)
+  canReportRef.current = canReport
+  const userLocRef = useRef(userLoc)
+  userLocRef.current = userLoc
+  const pendingFocusRef = useRef<string | null>(null)
+  const focusingRef = useRef(false)
+
+  /**
+   * Bygger bara markörer i (och nära) den synliga kartvyn, med ett tak – i
+   * stället för hela Sveriges ~2800 platser. Det är skillnaden mellan ~1,3 s
+   * och ~30 ms markörbygge på mobil. Öppnar även ett väntande fokus.
+   */
+  const rebuildMarkers = useCallback(() => {
+    const map = mapRef.current
+    const cluster = clusterRef.current
+    if (!map || !cluster) return
+    // Riv inte markörerna mitt under en pågående fokus-zoom (skulle göra
+    // markörreferensen ogiltig så att popupen inte öppnas).
+    if (focusingRef.current) return
+    cluster.clearLayers()
+    markersById.current.clear()
+    const active = activeFiltersRef.current
+    if (active.size === 0) return
+    const bounds = map.getBounds().pad(0.5)
+    const center = map.getCenter()
+    let list = stationsRef.current.filter(
+      (s) => bounds.contains([s.lat, s.lon]) && s.services.some((sv) => active.has(sv)),
+    )
+    const CAP = 600
+    if (list.length > CAP) {
+      list = list
+        .map((s) => ({ s, d: (s.lat - center.lat) ** 2 + (s.lon - center.lng) ** 2 }))
+        .sort((a, b) => a.d - b.d)
+        .slice(0, CAP)
+        .map((x) => x.s)
+    }
+    const panelBottom = document.querySelector('.panel')?.getBoundingClientRect().bottom ?? 260
+    const padTopLeft = L.point(16, Math.round(panelBottom) + 14)
+    const padBottomRight = L.point(16, 116)
+    const canReportNow = canReportRef.current
+    const userLocNow = userLocRef.current
+    const markers = list.map((station) => {
+      const primary = station.services.find((s) => active.has(s)) ?? station.services[0]
+      const marker = L.marker([station.lat, station.lon], {
+        icon: pinIcon(SERVICE_COLORS[primary]),
+      }).bindPopup(
+        () => popupHtml(station, canReportNow, userLocNow, favoritesRef.current.has(station.id)),
+        {
+          maxWidth: 300,
+          className: 'station-popup',
+          autoPanPaddingTopLeft: padTopLeft,
+          autoPanPaddingBottomRight: padBottomRight,
+        },
+      )
+      markersById.current.set(station.id, marker)
+      return marker
+    })
+    cluster.addLayers(markers)
+    if (pendingFocusRef.current) {
+      const m = markersById.current.get(pendingFocusRef.current)
+      if (m) {
+        pendingFocusRef.current = null
+        // Spärra ombyggnad tills fokus-zoomen lagt sig, öppna sedan popupen.
+        focusingRef.current = true
+        window.setTimeout(() => {
+          focusingRef.current = false
+        }, 1500)
+        cluster.zoomToShowLayer(m, () => m.openPopup())
+      }
+    }
+  }, [])
 
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return
@@ -298,6 +373,7 @@ export default function MapView({
 
     const notify = () => {
       onBoundsChange(map.getBounds(), map.getZoom())
+      rebuildMarkers() // rendera om markörer för den nya vyn
       const c = map.getCenter()
       try {
         localStorage.setItem(
@@ -430,43 +506,18 @@ export default function MapView({
     }
   }, [userLoc])
 
+  // Rendera om markörer när data, filter, favoriter eller position ändras.
   useEffect(() => {
-    const cluster = clusterRef.current
-    if (!cluster) return
-    cluster.clearLayers()
-    markersById.current.clear()
-    // Håll popupen fri från den flytande panelen (uppe till vänster) och
-    // statusraden/knapparna (nere) genom att auto-panorera med marginal.
-    const panelBottom =
-      document.querySelector('.panel')?.getBoundingClientRect().bottom ?? 260
-    const padTopLeft = L.point(16, Math.round(panelBottom) + 14)
-    const padBottomRight = L.point(16, 116)
-    const markers: L.Marker[] = []
-    for (const station of stations) {
-      if (!station.services.some((s) => activeFilters.has(s))) continue
-      const primary = station.services.find((s) => activeFilters.has(s)) ?? station.services[0]
-      const marker = L.marker([station.lat, station.lon], {
-        icon: pinIcon(SERVICE_COLORS[primary]),
-      }).bindPopup(() => popupHtml(station, canReport, userLoc, favoritesRef.current.has(station.id)), {
-        maxWidth: 300,
-        className: 'station-popup',
-        autoPanPaddingTopLeft: padTopLeft,
-        autoPanPaddingBottomRight: padBottomRight,
-      })
-      markersById.current.set(station.id, marker)
-      markers.push(marker)
-    }
-    cluster.addLayers(markers)
-  }, [stations, activeFilters, canReport, userLoc])
+    rebuildMarkers()
+  }, [stations, activeFilters, canReport, userLoc, rebuildMarkers])
 
-  // Fokusera en plats från närmaste-listan: zooma in ur klustret och öppna popupen
+  // Fokusera en plats (från närmaste-listan/sök): markören kanske inte finns
+  // förrän kartan flugit dit och byggt om – då öppnar rebuildMarkers fokuset.
   useEffect(() => {
-    const cluster = clusterRef.current
-    if (!focus || !cluster) return
-    const marker = markersById.current.get(focus.id)
-    if (!marker) return
-    cluster.zoomToShowLayer(marker, () => marker.openPopup())
-  }, [focus])
+    if (!focus) return
+    pendingFocusRef.current = focus.id
+    rebuildMarkers()
+  }, [focus, rebuildMarkers])
 
   return <div ref={containerRef} className="map" />
 }
