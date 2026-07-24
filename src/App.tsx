@@ -139,9 +139,8 @@ function dedupe(stations: Station[]): Station[] {
 export default function App() {
   const [osmStations, setOsmStations] = useState<Station[]>([])
   const [tvStations, setTvStations] = useState<Station[]>([])
-  const [activeFilters, setActiveFilters] = useState<Set<ServiceType>>(
-    new Set(ALL_SERVICES),
-  )
+  // Inget förvalt – användaren väljer själv vad hen vill hitta.
+  const [activeFilters, setActiveFilters] = useState<Set<ServiceType>>(new Set())
   const [flyTo, setFlyTo] = useState<{ lat: number; lon: number; zoom?: number } | null>(null)
   const [userLoc, setUserLoc] = useState<{ lat: number; lon: number } | null>(null)
   const [query, setQuery] = useState('')
@@ -574,7 +573,7 @@ export default function App() {
       {visibleCount === 0 && dataCountRef.current > 0 && (
         <div className="map-empty" role="status">
           {activeFilters.size === 0
-            ? 'Slå på minst en kategori för att se platser.'
+            ? 'Vad letar du efter? Välj en eller flera kategorier ovan för att visa platser.'
             : facilityFilters.size > 0
               ? 'Inga platser matchar valda faciliteter – prova att ta bort något villkor.'
               : 'Inga platser i valda filter här.'}

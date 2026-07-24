@@ -27,10 +27,11 @@ export default function IntroHint() {
   return (
     <div className="intro" role="dialog" aria-label="Välkommen">
       <p>
-        <strong>Välkommen!</strong> Kartan visar ställplatser, campingar och platser
+        <strong>Välkommen!</strong> Här hittar du ställplatser, campingar och platser
         för att tömma gråvatten &amp; latrin och fylla på färskvatten och gasol i hela
-        Sverige. Filtrera med knapparna, använd <strong>Nära mig</strong> för de
-        närmaste platserna, och <strong>Föreslå en plats</strong> om något saknas.
+        Sverige. <strong>Välj vad du letar efter</strong> med kategoriknapparna, använd{' '}
+        <strong>Nära mig</strong> för de närmaste platserna, och{' '}
+        <strong>Föreslå en plats</strong> om något saknas.
       </p>
       <button type="button" onClick={dismiss}>
         Kom igång
