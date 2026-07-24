@@ -109,10 +109,10 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: var(--r-card);
   box-shadow: var(--shadow);
-  padding: 16px;
+  padding: 13px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
   animation: panel-fade 0.35s ease both;
 }
 
@@ -157,8 +157,8 @@ button {
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding-bottom: 14px;
+  gap: 10px;
+  padding-bottom: 10px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -170,16 +170,16 @@ button {
 
 .brand h1 {
   margin: 0;
-  font-size: 1.22rem;
+  font-size: 1.14rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--green-900);
 }
 
 .brand p {
-  margin: 2px 0 0;
-  font-size: 0.75rem;
-  line-height: 1.35;
+  margin: 1px 0 0;
+  font-size: 0.72rem;
+  line-height: 1.3;
   color: var(--text-dim);
 }
 
@@ -458,7 +458,7 @@ button {
 .search input {
   flex: 1;
   min-width: 0;
-  padding: 11px 12px 11px 38px;
+  padding: 10px 12px 10px 38px;
   border: 1px solid var(--border-strong);
   border-radius: var(--r-control);
   font-size: 0.95rem;
@@ -943,6 +943,11 @@ button {
   margin: 13px 15px;
   font-family: inherit;
   line-height: 1.45;
+  /* Långa platser (många faciliteter) får rulla i popupen i stället för
+     att bli högre än skärmen och hamna delvis utanför vyn. */
+  max-height: min(60vh, 460px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
 
 .popup h3 {

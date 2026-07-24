@@ -1,7 +1,12 @@
 import type { LatLngBounds } from 'leaflet'
 import type { ServiceType, Station } from '../types'
 
-const OVERPASS_URL = 'https://overpass-api.de/api/interpreter'
+// Flera speglar – om en är överbelastad (429/504) provas nästa.
+const OVERPASS_MIRRORS = [
+  'https://overpass-api.de/api/interpreter',
+  'https://overpass.kumi.systems/api/interpreter',
+  'https://overpass.private.coffee/api/interpreter',
+]
 
 interface OverpassElement {
   type: 'node' | 'way' | 'relation'
@@ -212,14 +217,21 @@ export async function fetchOsmStations(bounds: LatLngBounds): Promise<Station[]>
     );
     out center tags;
   `
-  const res = await fetch(OVERPASS_URL, {
-    method: 'POST',
-    body: 'data=' + encodeURIComponent(query),
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-  })
-  if (!res.ok) throw new Error(`Overpass svarade ${res.status}`)
-  const json = (await res.json()) as { elements: OverpassElement[] }
-  return json.elements
-    .map(toStation)
-    .filter((s): s is Station => s !== null)
+  let lastError: unknown
+  for (const url of OVERPASS_MIRRORS) {
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        body: 'data=' + encodeURIComponent(query),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        signal: AbortSignal.timeout(30_000),
+      })
+      if (!res.ok) throw new Error(`Overpass svarade ${res.status}`)
+      const json = (await res.json()) as { elements: OverpassElement[] }
+      return json.elements.map(toStation).filter((s): s is Station => s !== null)
+    } catch (err) {
+      lastError = err
+    }
+  }
+  throw lastError instanceof Error ? lastError : new Error('Overpass ej nåbar')
 }

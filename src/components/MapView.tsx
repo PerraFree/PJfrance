@@ -344,6 +344,12 @@ export default function MapView({
     if (!cluster) return
     cluster.clearLayers()
     markersById.current.clear()
+    // Håll popupen fri från den flytande panelen (uppe till vänster) och
+    // statusraden/knapparna (nere) genom att auto-panorera med marginal.
+    const panelBottom =
+      document.querySelector('.panel')?.getBoundingClientRect().bottom ?? 260
+    const padTopLeft = L.point(16, Math.round(panelBottom) + 14)
+    const padBottomRight = L.point(16, 116)
     const markers: L.Marker[] = []
     for (const station of stations) {
       if (!station.services.some((s) => activeFilters.has(s))) continue
@@ -353,6 +359,8 @@ export default function MapView({
       }).bindPopup(() => popupHtml(station, canReport, userLoc), {
         maxWidth: 300,
         className: 'station-popup',
+        autoPanPaddingTopLeft: padTopLeft,
+        autoPanPaddingBottomRight: padBottomRight,
       })
       markersById.current.set(station.id, marker)
       markers.push(marker)

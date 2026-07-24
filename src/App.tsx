@@ -193,7 +193,9 @@ export default function App() {
         setOsmStations([...cache.values()])
         setStatus(`${cache.size} stationer från OpenStreetMap i minnet.`)
       } catch {
-        setStatus('Kunde inte hämta data just nu – försök igen om en stund.')
+        // Seed-datan täcker hela Sverige, så en misslyckad live-uppdatering
+        // är inte kritisk – visa ett lugnt meddelande i stället för ett fel.
+        setStatus('Visar sparade platser – live-uppdatering från OpenStreetMap gick inte just nu.')
       } finally {
         setLoading(false)
       }
