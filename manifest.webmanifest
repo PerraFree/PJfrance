@@ -1,5 +1,5 @@
 {
-  "id": "/",
+  "id": "./",
   "name": "Tömningskartan – gråvatten, latrin & vatten i Sverige",
   "short_name": "Tömningskartan",
   "description": "Hitta ställplatser, campingplatser, tömning av gråvatten och latrin, färskvatten och gasol i Sverige – för husbil och husvagn.",
@@ -12,6 +12,14 @@
   "dir": "ltr",
   "orientation": "portrait-primary",
   "categories": ["travel", "navigation", "utilities"],
+  "shortcuts": [
+    {
+      "name": "Nära mig",
+      "short_name": "Nära mig",
+      "description": "Visa tömning och service närmast din position",
+      "url": "./?nara=1"
+    }
+  ],
   "icons": [
     {
       "src": "./icon.svg",
