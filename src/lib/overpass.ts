@@ -230,7 +230,7 @@ export async function fetchOsmStations(bounds: LatLngBounds): Promise<Station[]>
     bounds.getEast(),
   ].join(',')
   const query = `
-    [out:json][timeout:60];
+    [out:json][timeout:25];
     (
       nwr["amenity"="sanitary_dump_station"](${bbox});
       nwr["sanitary_dump_station"]["sanitary_dump_station"!="no"](${bbox});
@@ -245,6 +245,11 @@ export async function fetchOsmStations(bounds: LatLngBounds): Promise<Station[]>
     );
     out center tags;
   `
+  // Kort timeout så en trög spegel inte får appen att kännas långsam.
+  const withTimeout =
+    typeof AbortSignal !== 'undefined' && 'timeout' in AbortSignal
+      ? () => AbortSignal.timeout(12_000)
+      : () => undefined
   let lastError: unknown
   for (const url of OVERPASS_MIRRORS) {
     try {
@@ -252,7 +257,7 @@ export async function fetchOsmStations(bounds: LatLngBounds): Promise<Station[]>
         method: 'POST',
         body: 'data=' + encodeURIComponent(query),
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        signal: AbortSignal.timeout(30_000),
+        signal: withTimeout(),
       })
       if (!res.ok) throw new Error(`Overpass svarade ${res.status}`)
       const json = (await res.json()) as { elements: OverpassElement[] }

@@ -170,6 +170,8 @@ export default function App() {
   const [searching, setSearching] = useState(false)
   const searchAbortRef = useRef<AbortController | null>(null)
   const dataCountRef = useRef(0)
+  const activeFiltersRef = useRef(activeFilters)
+  activeFiltersRef.current = activeFilters
 
   const toggleFavorite = useCallback((id: string) => {
     setFavorites((prev) => {
@@ -299,6 +301,8 @@ export default function App() {
 
   const handleBoundsChange = useCallback((bounds: L.LatLngBounds, zoom: number) => {
     clearTimeout(fetchTimer.current)
+    // Inget valt = inget att visa; hämta då inte live (undviker onödig spinner).
+    if (activeFiltersRef.current.size === 0) return
     if (zoom < MIN_FETCH_ZOOM) {
       // Seed-datan täcker hela Sverige, så visa inte en missvisande "zooma in"-text.
       setStatus(

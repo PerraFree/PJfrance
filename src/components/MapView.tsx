@@ -10,7 +10,9 @@ import { reverseGeocode } from '../lib/reverse'
 import { sharePlace as nativeShare } from '../lib/native'
 import { facilityChip } from '../lib/icons'
 
-const MIN_FETCH_ZOOM = 7
+// Seed-datan täcker hela Sverige, så live-hämtning behövs bara när man zoomat
+// in nära (för färsk detalj). Håller "Hämtar stationer …" borta vid ort-zoom.
+const MIN_FETCH_ZOOM = 12
 const VIEW_KEY = 'tomningskartan.view'
 
 interface Props {
