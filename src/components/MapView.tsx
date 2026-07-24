@@ -274,11 +274,13 @@ export default function MapView({
       maxZoom: 17,
     })
     ljus.addTo(map)
+    // Nere till vänster – fri yta som aldrig hamnar bakom panelen (uppe) eller
+    // krockar med zoom/lokaliseringsknapparna (nere till höger).
     L.control
       .layers(
         { Ljus: ljus, Detaljerad: standard, Satellit: satellit, Terräng: terrang },
         {},
-        { position: 'topright', collapsed: true },
+        { position: 'bottomleft', collapsed: true },
       )
       .addTo(map)
 
@@ -341,17 +343,20 @@ export default function MapView({
       const copy = target.closest('.copy-btn') as HTMLButtonElement | null
       if (copy) {
         const coords = copy.dataset.coords ?? ''
-        void navigator.clipboard?.writeText(coords).then(
-          () => {
-            copy.textContent = '✓ Kopierat!'
-            window.setTimeout(() => {
-              copy.textContent = '⧉ Kopiera koordinater'
-            }, 1600)
-          },
-          () => {
-            copy.textContent = coords
-          },
-        )
+        const confirmCopied = () => {
+          copy.textContent = '✓ Kopierat!'
+          window.setTimeout(() => {
+            copy.textContent = '⧉ Kopiera koordinater'
+          }, 1600)
+        }
+        if (navigator.clipboard?.writeText) {
+          void navigator.clipboard.writeText(coords).then(confirmCopied, () => {
+            window.prompt('Kopiera koordinater:', coords)
+          })
+        } else {
+          // Osäker kontext (http) eller äldre webbläsare – visa för manuell kopiering.
+          window.prompt('Kopiera koordinater:', coords)
+        }
       }
     }
     const container = map.getContainer()

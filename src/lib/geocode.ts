@@ -7,6 +7,13 @@ export interface GeocodeResult {
 // Ungefärlig bounding box för Sverige (väst, syd, öst, nord) – biasar sökningen.
 const SE_BBOX = { west: 10.5, south: 55.0, east: 24.5, north: 69.2 }
 
+/** AbortSignal.timeout finns inte i äldre webbläsare – fall tillbaka utan signal. */
+function timeoutSignal(ms: number): AbortSignal | undefined {
+  return typeof AbortSignal !== 'undefined' && 'timeout' in AbortSignal
+    ? AbortSignal.timeout(ms)
+    : undefined
+}
+
 /** Ortsökning via Nominatim, med timeout så UI:t aldrig fastnar i "söker …". */
 async function nominatim(query: string): Promise<GeocodeResult[]> {
   const url =
@@ -14,7 +21,7 @@ async function nominatim(query: string): Promise<GeocodeResult[]> {
     encodeURIComponent(query)
   const res = await fetch(url, {
     headers: { 'Accept-Language': 'sv' },
-    signal: AbortSignal.timeout(9000),
+    signal: timeoutSignal(9000),
   })
   if (!res.ok) throw new Error(`Nominatim svarade ${res.status}`)
   const json = (await res.json()) as Array<{ display_name: string; lat: string; lon: string }>
@@ -32,7 +39,7 @@ async function photon(query: string): Promise<GeocodeResult[]> {
     `&bbox=${SE_BBOX.west},${SE_BBOX.south},${SE_BBOX.east},${SE_BBOX.north}` +
     '&q=' +
     encodeURIComponent(query)
-  const res = await fetch(url, { signal: AbortSignal.timeout(9000) })
+  const res = await fetch(url, { signal: timeoutSignal(9000) })
   if (!res.ok) throw new Error(`Photon svarade ${res.status}`)
   const json = (await res.json()) as {
     features?: Array<{

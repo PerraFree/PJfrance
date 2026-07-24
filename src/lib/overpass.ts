@@ -48,7 +48,9 @@ function servicesFromTags(tags: Record<string, string>): ServiceType[] {
   if (tags.tourism === 'camp_site') {
     // En camping räknas som ställplats om den uttryckligen tar husbil/husvagn
     // eller har husbilsinfrastruktur (el, tömning). Rena tältplatser och
-    // privata/stängda platser filtreras bort.
+    // privata/stängda platser filtreras bort – för BÅDA tjänsterna.
+    const openToPublic = tags.access !== 'private' && tags.access !== 'no'
+    const notTentOnly = tags.tents !== 'only'
     const husbilOk =
       tags.motorhome === 'yes' ||
       tags.motorhome === 'designated' ||
@@ -58,14 +60,12 @@ function servicesFromTags(tags: Record<string, string>): ServiceType[] {
       'power_supply' in tags ||
       tags.sanitary_dump_station === 'yes' ||
       tags.amenity === 'sanitary_dump_station'
-    if (tags.tents !== 'only' && tags.access !== 'private' && tags.access !== 'no') {
-      services.add('camping')
-    }
-    if (husbilOk) services.add('stallplats')
+    if (notTentOnly && openToPublic) services.add('camping')
+    if (husbilOk && notTentOnly && openToPublic) services.add('stallplats')
   }
-  // Golfklubbar och liknande som uttryckligen tillåter husbil/husvagn
+  // Golfklubbar som uttryckligen tillåter husbil/husvagn
   if (
-    (tags.leisure === 'golf_course' || tags.leisure === 'sports_centre') &&
+    tags.leisure === 'golf_course' &&
     (tags.caravan === 'yes' ||
       tags.caravan === 'designated' ||
       tags.motorhome === 'yes' ||
@@ -186,9 +186,8 @@ export function facilitiesFromTags(tags: Record<string, string>): string[] {
   if (yes(tags.bbq) || yes(tags.fireplace)) f.push('grill')
   if (yes(tags.playground) || tags.leisure === 'playground') f.push('lekplats')
   if (yes(tags.restaurant) || tags.amenity === 'restaurant') f.push('restaurang')
-  // shop=gas/fuel är LPG-/drivmedelskällan – inte en butik.
-  if ((tags.shop && tags.shop !== 'gas' && tags.shop !== 'fuel') || tags.shop === 'kiosk')
-    f.push('butik')
+  // shop=gas/fuel är LPG-/drivmedelskällan – inte en butik; shop=no är ingen butik.
+  if (tags.shop && !['no', 'gas', 'fuel'].includes(tags.shop)) f.push('butik')
   if (yes(tags.lit)) f.push('belyst')
   if (yes(tags.wheelchair)) f.push('tillganglig')
   if (yes(tags.motorhome)) f.push('husbil')

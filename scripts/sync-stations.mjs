@@ -81,6 +81,8 @@ function servicesFromTags(tags) {
   }
   if (tags.tourism === 'caravan_site') services.add('stallplats')
   if (tags.tourism === 'camp_site') {
+    const openToPublic = tags.access !== 'private' && tags.access !== 'no'
+    const notTentOnly = tags.tents !== 'only'
     const husbilOk =
       tags.motorhome === 'yes' ||
       tags.motorhome === 'designated' ||
@@ -90,13 +92,11 @@ function servicesFromTags(tags) {
       'power_supply' in tags ||
       tags.sanitary_dump_station === 'yes' ||
       tags.amenity === 'sanitary_dump_station'
-    if (tags.tents !== 'only' && tags.access !== 'private' && tags.access !== 'no') {
-      services.add('camping')
-    }
-    if (husbilOk) services.add('stallplats')
+    if (notTentOnly && openToPublic) services.add('camping')
+    if (husbilOk && notTentOnly && openToPublic) services.add('stallplats')
   }
   if (
-    (tags.leisure === 'golf_course' || tags.leisure === 'sports_centre') &&
+    tags.leisure === 'golf_course' &&
     (tags.caravan === 'yes' ||
       tags.caravan === 'designated' ||
       tags.motorhome === 'yes' ||
@@ -212,8 +212,7 @@ function facilitiesFromTags(tags) {
   if (yes(tags.bbq) || yes(tags.fireplace)) f.push('grill')
   if (yes(tags.playground) || tags.leisure === 'playground') f.push('lekplats')
   if (yes(tags.restaurant) || tags.amenity === 'restaurant') f.push('restaurang')
-  if ((tags.shop && tags.shop !== 'gas' && tags.shop !== 'fuel') || tags.shop === 'kiosk')
-    f.push('butik')
+  if (tags.shop && !['no', 'gas', 'fuel'].includes(tags.shop)) f.push('butik')
   if (yes(tags.lit)) f.push('belyst')
   if (yes(tags.wheelchair)) f.push('tillganglig')
   if (yes(tags.motorhome)) f.push('husbil')
@@ -286,6 +285,7 @@ async function fetchTrafikverket(apiKey) {
     if (!m) continue
     const lon = parseFloat(m[1].replace(',', '.'))
     const lat = parseFloat(m[2].replace(',', '.'))
+    if (Number.isNaN(lat) || Number.isNaN(lon)) continue
     const types = (p.Equipment ?? []).map((e) => e.Type ?? '')
     const hasLatrin = types.some((t) => LATRIN_RE.test(t))
     const hasWater = types.some((t) => WATER_RE.test(t))
@@ -333,6 +333,11 @@ async function fetchCurated() {
   }
   const stations = []
   for (const [i, e] of entries.entries()) {
+    // Hoppa över trasiga poster så de aldrig kan krascha appens dedupe.
+    if (!Array.isArray(e.services) || e.services.length === 0 || !e.name) {
+      console.warn(`Register: hoppar över post utan namn/tjänster (#${i})`)
+      continue
+    }
     try {
       // Ange lat/lon direkt i posten för att hoppa över geokodning.
       const pos =
@@ -365,6 +370,7 @@ async function fetchCurated() {
         'operator',
         'phone',
         'openingHours',
+        'season',
       ]) {
         if (e[key] !== undefined) station[key] = e[key]
       }

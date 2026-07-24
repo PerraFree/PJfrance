@@ -314,8 +314,12 @@ export default function App() {
         const fetched = await fetchOsmStations(bounds)
         if (reqId !== reqIdRef.current) return // en nyare hämtning har startat
         const cache = cacheRef.current
-        for (const s of fetched) cache.set(s.id, s)
-        // Håll cachen rimlig under långa sessioner (behåll de senaste).
+        // Radera först så att nyss sedda stationer flyttas sist (senast = nyast).
+        for (const s of fetched) {
+          cache.delete(s.id)
+          cache.set(s.id, s)
+        }
+        // Håll cachen rimlig under långa sessioner (vräk de äldst sedda).
         const CACHE_CAP = 4000
         if (cache.size > CACHE_CAP) {
           for (const key of [...cache.keys()].slice(0, cache.size - CACHE_CAP)) {
@@ -372,7 +376,11 @@ export default function App() {
           )
         : undefined
     if (named) {
-      ensureCategories()
+      // Slå på just den träffens kategori(er) så pinnen faktiskt visas,
+      // även om användaren redan smalnat av filtren.
+      setActiveFilters(
+        (prev) => new Set([...prev, ...named.services.filter((s) => ALL_SERVICES.includes(s))]),
+      )
       setFlyTo({ lat: named.lat, lon: named.lon, zoom: 14 })
       setFocus({ id: named.id, nonce: Date.now() })
       setStatus(named.name)
@@ -641,7 +649,7 @@ export default function App() {
         )}
       </div>
 
-      {visibleCount === 0 && dataCountRef.current > 0 && (
+      {visibleCount === 0 && stations.length > 0 && (
         <div className="map-empty" role="status">
           {favOnly && favorites.size === 0
             ? 'Du har inga sparade platser än – tryck ★ Spara i en plats för att lägga till den här.'
