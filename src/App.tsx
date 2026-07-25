@@ -163,7 +163,7 @@ export default function App() {
   const [collapsed, setCollapsed] = useState(false)
   const [locating, setLocating] = useState(false)
   const [facilityFilters, setFacilityFilters] = useState<Set<string>>(new Set())
-  const [showFacilityFilter, setShowFacilityFilter] = useState(false)
+  const [showMore, setShowMore] = useState(false)
   const [favorites, setFavorites] = useState<Set<string>>(loadFavorites)
   const [favOnly, setFavOnly] = useState(false)
   const [yearRoundOnly, setYearRoundOnly] = useState(false)
@@ -361,6 +361,17 @@ export default function App() {
       else next.add(key)
       return next
     })
+  }
+
+  // Antal aktiva sekundärfilter (visas som räknare på "Fler filter").
+  const secondaryCount =
+    (freeOnly ? 1 : 0) + (yearRoundOnly ? 1 : 0) + (favOnly ? 1 : 0) + facilityFilters.size
+
+  const clearSecondaryFilters = () => {
+    setFreeOnly(false)
+    setYearRoundOnly(false)
+    setFavOnly(false)
+    setFacilityFilters(new Set())
   }
 
   // Har inget valts ännu? Slå på alla kategorier så sökträffen faktiskt syns.
@@ -579,72 +590,76 @@ export default function App() {
           ))}
         </div>
 
-        <div className="filter-extras">
-          <button
-            type="button"
-            className={freeOnly ? 'free-toggle active' : 'free-toggle'}
-            aria-pressed={freeOnly}
-            onClick={() => setFreeOnly((v) => !v)}
-          >
-            Endast gratis
-          </button>
-          <button
-            type="button"
-            className={yearRoundOnly ? 'free-toggle active' : 'free-toggle'}
-            aria-pressed={yearRoundOnly}
-            onClick={() => setYearRoundOnly((v) => !v)}
-          >
-            Öppet året runt
-          </button>
-          <button
-            type="button"
-            className={favOnly ? 'free-toggle active' : 'free-toggle'}
-            aria-pressed={favOnly}
-            onClick={() => setFavOnly((v) => !v)}
-            title="Visa bara dina sparade platser"
-          >
-            ★ Favoriter
-            {favorites.size > 0 && <span className="fac-count">{favorites.size}</span>}
-          </button>
-        </div>
-        <div className="filter-extras">
-          <span className="stats">
-            {shownStations.length.toLocaleString('sv-SE')} platser
-            {seedUpdated && ` · uppdaterad ${new Date(seedUpdated).toLocaleDateString('sv-SE', { day: 'numeric', month: 'short' })}`}
-          </span>
-        </div>
+        <div className="more-filters">
+          <div className="more-filters-head">
+            <button
+              type="button"
+              className={showMore ? 'more-toggle open' : 'more-toggle'}
+              aria-expanded={showMore}
+              onClick={() => setShowMore((v) => !v)}
+            >
+              Fler filter
+              {secondaryCount > 0 && <span className="fac-count">{secondaryCount}</span>}
+              <span className="chev" aria-hidden="true">
+                {showMore ? '▴' : '▾'}
+              </span>
+            </button>
+            <span className="stats">
+              {shownStations.length.toLocaleString('sv-SE')} platser
+              {seedUpdated &&
+                ` · uppd. ${new Date(seedUpdated).toLocaleDateString('sv-SE', { day: 'numeric', month: 'short' })}`}
+            </span>
+          </div>
 
-        <div className="facility-filter">
-          <button
-            type="button"
-            className={showFacilityFilter ? 'facility-toggle open' : 'facility-toggle'}
-            aria-expanded={showFacilityFilter}
-            onClick={() => setShowFacilityFilter((v) => !v)}
-          >
-            Filtrera på vad som finns
-            {facilityFilters.size > 0 && <span className="fac-count">{facilityFilters.size}</span>}
-            <span className="chev" aria-hidden="true">{showFacilityFilter ? '▴' : '▾'}</span>
-          </button>
-          {showFacilityFilter && (
-            <div className="facility-chips" role="group" aria-label="Filtrera på faciliteter">
-              {FILTERABLE_FACILITIES.map((key) => (
+          {showMore && (
+            <div className="more-filters-body">
+              <div className="toggle-row">
                 <button
-                  key={key}
                   type="button"
-                  className={facilityFilters.has(key) ? 'fac-chip active' : 'fac-chip'}
-                  aria-pressed={facilityFilters.has(key)}
-                  onClick={() => toggleFacility(key)}
+                  className={freeOnly ? 'free-toggle active' : 'free-toggle'}
+                  aria-pressed={freeOnly}
+                  onClick={() => setFreeOnly((v) => !v)}
                 >
-                  {FACILITY_LABELS[key] ?? key}
+                  Endast gratis
                 </button>
-              ))}
-              {facilityFilters.size > 0 && (
                 <button
                   type="button"
-                  className="fac-clear"
-                  onClick={() => setFacilityFilters(new Set())}
+                  className={yearRoundOnly ? 'free-toggle active' : 'free-toggle'}
+                  aria-pressed={yearRoundOnly}
+                  onClick={() => setYearRoundOnly((v) => !v)}
                 >
-                  Rensa
+                  Öppet året runt
+                </button>
+                <button
+                  type="button"
+                  className={favOnly ? 'free-toggle active' : 'free-toggle'}
+                  aria-pressed={favOnly}
+                  onClick={() => setFavOnly((v) => !v)}
+                  title="Visa bara dina sparade platser"
+                >
+                  ★ Favoriter
+                  {favorites.size > 0 && <span className="fac-count">{favorites.size}</span>}
+                </button>
+              </div>
+
+              <p className="filter-sub">Har på platsen</p>
+              <div className="facility-chips" role="group" aria-label="Filtrera på faciliteter">
+                {FILTERABLE_FACILITIES.map((key) => (
+                  <button
+                    key={key}
+                    type="button"
+                    className={facilityFilters.has(key) ? 'fac-chip active' : 'fac-chip'}
+                    aria-pressed={facilityFilters.has(key)}
+                    onClick={() => toggleFacility(key)}
+                  >
+                    {FACILITY_LABELS[key] ?? key}
+                  </button>
+                ))}
+              </div>
+
+              {secondaryCount > 0 && (
+                <button type="button" className="fac-clear" onClick={clearSecondaryFilters}>
+                  Rensa alla filter
                 </button>
               )}
             </div>
