@@ -390,6 +390,7 @@ export default function App() {
       setFlyTo({ lat: named.lat, lon: named.lon, zoom: 14 })
       setFocus({ id: named.id, nonce: Date.now() })
       setStatus(named.name)
+      setCollapsed(true) // ge kartan plats efter sökning
       return
     }
     // 2) Annars ortsökning (Nominatim + Photon parallellt, avbrytbar).
@@ -409,6 +410,7 @@ export default function App() {
       ensureCategories()
       setStatus(hit.name.split(',').slice(0, 2).join(','))
       setFlyTo({ lat: hit.lat, lon: hit.lon, zoom: 11 })
+      setCollapsed(true) // ge kartan plats efter sökning
     } catch {
       if (!ac.signal.aborted) {
         setStatus('Sökningen misslyckades – kontrollera nätet och försök igen.')
@@ -440,6 +442,7 @@ export default function App() {
       setShowNearest(true)
       // Har inget valts ännu? Visa alla kategorier så man genast ser vad som finns nära.
       setActiveFilters((prev) => (prev.size === 0 ? new Set(ALL_SERVICES) : prev))
+      setCollapsed(true) // ge kartan plats
       setStatus('Visar platser nära dig – avstånd visas i varje plats.')
     } catch {
       setStatus('Kunde inte hämta din position.')

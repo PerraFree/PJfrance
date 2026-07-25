@@ -120,13 +120,24 @@ button {
   animation: panel-fade 0.35s ease both;
 }
 
-/* Hopfällt läge – bara varumärke + sök syns, resten döljs */
+/* Hopfällt läge – bara logga, titel och sökrad; allt annat döljs */
 .panel.collapsed .filters,
 .panel.collapsed .filter-extras,
 .panel.collapsed .facility-filter,
 .panel.collapsed .settings,
-.panel.collapsed .submit-place-btn {
+.panel.collapsed .submit-place-btn,
+.panel.collapsed .here-btn,
+.panel.collapsed .brand p {
   display: none;
+}
+
+/* Tightare header när panelen är hopfälld */
+.panel.collapsed {
+  gap: 9px;
+}
+.panel.collapsed .brand {
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 .collapse-btn {
