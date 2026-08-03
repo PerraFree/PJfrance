@@ -88,6 +88,25 @@ du vilken plats (`station_name`), vad som är fel (`reason`) och ev. kommentar.
 Åtgärda platsen (t.ex. i kommunregistret eller genom att avpublicera ett
 community-förslag) och sätt `status` till `resolved`.
 
+## 4b. "Stämmer fortfarande"-verifieringar
+
+Knappen **✓ Stämmer fortfarande** i platspopupen låter användare bekräfta att
+en plats finns kvar och fungerar; senaste datumet visas för alla ("Bekräftad
+av användare för 3 dagar sedan"). Kör denna SQL en gång i **SQL Editor**:
+
+```sql
+create table verifications (
+  id uuid primary key default gen_random_uuid(),
+  station_id text not null,
+  created_at timestamptz not null default now()
+);
+alter table verifications enable row level security;
+create policy "anon kan verifiera" on verifications
+  for insert to anon with check (true);
+create policy "anon kan läsa verifieringar" on verifications
+  for select to anon using (true);
+```
+
 ## 5. Granska via mejl + "godkänn" (rekommenderat)
 
 Repo:t har två workflows som gör granskningen enkel:

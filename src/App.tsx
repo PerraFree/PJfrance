@@ -10,6 +10,7 @@ import { OWN_STATIONS } from './data/stations'
 import { fetchApprovedPlaces } from './lib/community'
 import { loadFavorites, saveFavorites } from './lib/favorites'
 import { loadMyPlaces, saveMyPlaces } from './lib/myplaces'
+import { fetchVerifications, submitVerification } from './lib/verify'
 import { searchPlace } from './lib/geocode'
 import { fetchOsmStations } from './lib/overpass'
 import { getPosition, tap } from './lib/native'
@@ -171,6 +172,27 @@ export default function App() {
   const mapCenterRef = useRef<{ lat: number; lon: number } | null>(null)
 
   const [myPlaces, setMyPlaces] = useState<Station[]>(loadMyPlaces)
+  const [verifications, setVerifications] = useState<Map<string, string>>(new Map())
+
+  // Senaste "stämmer fortfarande"-datum per plats (delas av alla användare)
+  useEffect(() => {
+    fetchVerifications()
+      .then(setVerifications)
+      .catch(() => {
+        /* valfritt lager */
+      })
+  }, [])
+
+  const handleVerify = useCallback((id: string) => {
+    void submitVerification(id).catch(() => {
+      /* bäst-möjligt – det lokala kvittot visas ändå */
+    })
+    setVerifications((prev) => {
+      const next = new Map(prev)
+      next.set(id, new Date().toISOString())
+      return next
+    })
+  }, [])
 
   const addMyPlace = useCallback((station: Station) => {
     setMyPlaces((prev) => {
@@ -490,6 +512,9 @@ export default function App() {
         favoriteIds={favorites}
         onToggleFavorite={toggleFavorite}
         onDeleteMyPlace={deleteMyPlace}
+        verifications={verifications}
+        onVerify={handleVerify}
+        canVerify={communityEnabled}
       />
 
       {loading && <div className="loading-bar" aria-hidden="true" />}

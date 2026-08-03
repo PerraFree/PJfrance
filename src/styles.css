@@ -1778,3 +1778,33 @@ button {
   text-transform: uppercase;
   color: var(--text-dim);
 }
+
+/* ---------- "Stämmer fortfarande"-verifiering ---------- */
+
+.popup .verified-line {
+  margin: 6px 0 2px;
+  font-size: 0.78rem;
+  font-weight: 650;
+  color: #1e6b2e;
+}
+
+.pop-actions .verify-btn {
+  padding: 7px 11px;
+  border: 1px solid var(--green-500);
+  border-radius: var(--r-control);
+  background: var(--green-100);
+  color: var(--green-900);
+  font-size: 0.82rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition: all 0.14s;
+}
+.pop-actions .verify-btn:hover:not(:disabled) {
+  background: #d9ecdb;
+}
+.pop-actions .verify-btn.done {
+  background: var(--field);
+  border-color: var(--border-strong);
+  color: var(--text-dim);
+  cursor: default;
+}

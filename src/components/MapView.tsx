@@ -10,6 +10,7 @@ import { reverseGeocode } from '../lib/reverse'
 import { sharePlace as nativeShare } from '../lib/native'
 import { facilityChip } from '../lib/icons'
 import { MY_PLACE_PREFIX } from '../lib/myplaces'
+import { markSelfVerified, selfVerifiedRecently } from '../lib/verify'
 
 // Seed-datan täcker hela Sverige, så live-hämtning behövs bara när man zoomat
 // in nära (för färsk detalj). Håller "Hämtar stationer …" borta vid ort-zoom.
@@ -28,6 +29,10 @@ interface Props {
   favoriteIds: Set<string>
   onToggleFavorite: (id: string) => void
   onDeleteMyPlace: (id: string) => void
+  /** Senaste "stämmer fortfarande"-datum (ISO) per plats-id. */
+  verifications: Map<string, string>
+  onVerify: (id: string) => void
+  canVerify: boolean
 }
 
 function escapeAttr(value: string): string {
@@ -94,11 +99,28 @@ function stationSeason(station: Station): Station['season'] {
   return station.season ?? (station.openingHours === '24/7' ? 'year-round' : undefined)
 }
 
+/** "idag", "för 5 dagar sedan" eller datum – för verifieringsraden. */
+function fmtVerified(iso: string): string {
+  const then = new Date(iso).getTime()
+  if (Number.isNaN(then)) return ''
+  const days = Math.floor((Date.now() - then) / 86_400_000)
+  if (days <= 0) return 'idag'
+  if (days === 1) return 'igår'
+  if (days < 30) return `för ${days} dagar sedan`
+  return new Date(iso).toLocaleDateString('sv-SE', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  })
+}
+
 function popupHtml(
   station: Station,
   canReport: boolean,
   userLoc: { lat: number; lon: number } | null,
   isFav: boolean,
+  verifiedAt: string | undefined,
+  canVerify: boolean,
 ): string {
   const services = station.services
     .map(
@@ -178,8 +200,14 @@ function popupHtml(
       ? `<a href="${escapeAttr(osmUrl)}" target="_blank" rel="noopener">OpenStreetMap</a>`
       : '') +
     '</div>'
+  const verifyBtn = canVerify
+    ? selfVerifiedRecently(station.id)
+      ? `<button type="button" class="verify-btn done" disabled>✓ Du har bekräftat</button>`
+      : `<button type="button" class="verify-btn" data-verify-id="${escapeAttr(station.id)}">✓ Stämmer fortfarande</button>`
+    : ''
   const actions =
     `<div class="pop-actions">` +
+    verifyBtn +
     `<button type="button" class="fav-btn${isFav ? ' active' : ''}" data-fav-id="${escapeAttr(station.id)}" aria-pressed="${isFav}">${isFav ? '★ Sparad' : '☆ Spara'}</button>` +
     `<button type="button" class="copy-btn" data-coords="${escapeAttr(coords)}">⧉ Kopiera koordinater</button>` +
     `</div>`
@@ -202,8 +230,11 @@ function popupHtml(
     ? `<button type="button" class="delete-btn" data-del-id="${escapeAttr(station.id)}">🗑 Ta bort plats</button>`
     : ''
   const sourceLine = isMine ? 'Din egen plats' : sourceNote
+  const verifiedLine = verifiedAt
+    ? `<p class="verified-line">✓ Bekräftad av användare ${fmtVerified(verifiedAt)}</p>`
+    : ''
   const accent = SERVICE_COLORS[station.services[0]] ?? 'var(--green-700)'
-  return `<div class="popup" style="--accent:${accent}"><h3>${esc(station.name)}</h3><div class="badges">${services}${seasonBadge}</div>${rows.join('')}${links}${actions}<p class="source">${sourceLine}</p>${report}${del}</div>`
+  return `<div class="popup" style="--accent:${accent}"><h3>${esc(station.name)}</h3><div class="badges">${services}${seasonBadge}</div>${verifiedLine}${rows.join('')}${links}${actions}<p class="source">${sourceLine}</p>${report}${del}</div>`
 }
 
 function readSavedView(): { lat: number; lon: number; zoom: number } | null {
@@ -243,6 +274,9 @@ export default function MapView({
   favoriteIds,
   onToggleFavorite,
   onDeleteMyPlace,
+  verifications,
+  onVerify,
+  canVerify,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<L.Map | null>(null)
@@ -255,6 +289,12 @@ export default function MapView({
   onToggleFavoriteRef.current = onToggleFavorite
   const onDeleteMyPlaceRef = useRef(onDeleteMyPlace)
   onDeleteMyPlaceRef.current = onDeleteMyPlace
+  const verificationsRef = useRef(verifications)
+  verificationsRef.current = verifications
+  const onVerifyRef = useRef(onVerify)
+  onVerifyRef.current = onVerify
+  const canVerifyRef = useRef(canVerify)
+  canVerifyRef.current = canVerify
   const favoritesRef = useRef(favoriteIds)
   favoritesRef.current = favoriteIds
   const stationsRef = useRef(stations)
@@ -319,7 +359,15 @@ export default function MapView({
       const marker = L.marker([station.lat, station.lon], {
         icon: pinIcon(SERVICE_COLORS[primary]),
       }).bindPopup(
-        () => popupHtml(station, canReportNow, userLocNow, favoritesRef.current.has(station.id)),
+        () =>
+          popupHtml(
+            station,
+            canReportNow,
+            userLocNow,
+            favoritesRef.current.has(station.id),
+            verificationsRef.current.get(station.id),
+            canVerifyRef.current,
+          ),
         {
           maxWidth: 300,
           className: 'station-popup',
@@ -447,6 +495,29 @@ export default function MapView({
           fav.classList.toggle('active', nowFav)
           fav.setAttribute('aria-pressed', String(nowFav))
           fav.textContent = nowFav ? '★ Sparad' : '☆ Spara'
+        }
+        return
+      }
+      const verify = target.closest('.verify-btn') as HTMLButtonElement | null
+      if (verify && !verify.disabled) {
+        const id = verify.dataset.verifyId
+        if (id) {
+          markSelfVerified(id)
+          onVerifyRef.current(id)
+          verify.disabled = true
+          verify.classList.add('done')
+          verify.textContent = '✓ Tack!'
+          // Uppdatera/injicera bekräftelseraden i den öppna popupen
+          const pop = verify.closest('.popup')
+          const line = pop?.querySelector('.verified-line')
+          if (line) line.textContent = '✓ Bekräftad av användare idag'
+          else
+            pop
+              ?.querySelector('.badges')
+              ?.insertAdjacentHTML(
+                'afterend',
+                '<p class="verified-line">✓ Bekräftad av användare idag</p>',
+              )
         }
         return
       }
