@@ -77,31 +77,32 @@ jobs:
               core.info(`Hittade Supabase-projektet "${proj.name}" (${ref}).`)
             }
 
-            // 1b) Kolla att projektet är igång – väck det om det är pausat
+            // 1b) Kolla att projektet är igång – väck det om det är pausat och
+            // vänta tålmodigt (uppvaknande kan ta 5–10 minuter).
             let info = await mgmt(`/projects/${ref}`)
             core.info(`Projekt: ${info.name} · status: ${info.status}`)
             if (String(info.status).startsWith('INACTIVE')) {
-              core.info('Projektet är pausat – väcker det nu (tar ett par minuter) …')
+              core.info('Projektet är pausat – väcker det nu …')
               await mgmtPost(`/projects/${ref}/restore`)
-              for (let i = 0; i < 24 && !String(info.status).includes('ACTIVE_HEALTHY'); i++) {
-                await sleep(10_000)
-                info = await mgmt(`/projects/${ref}`)
-                core.info(`  … status: ${info.status}`)
-              }
-            } else if (info.status === 'COMING_UP') {
-              for (let i = 0; i < 18 && info.status === 'COMING_UP'; i++) {
-                await sleep(10_000)
-                info = await mgmt(`/projects/${ref}`)
-                core.info(`  … status: ${info.status}`)
+            }
+            for (let i = 0; i < 60 && !String(info.status).includes('ACTIVE_HEALTHY'); i++) {
+              await sleep(15_000)
+              info = await mgmt(`/projects/${ref}`)
+              core.info(`  … väntar (${Math.round(((i + 1) * 15) / 60)} min): ${info.status}`)
+              // Om restore-anropet inte tog: prova igen en gång efter en stund
+              if (i === 8 && String(info.status).startsWith('INACTIVE')) {
+                core.info('Provar väcka projektet igen …')
+                await mgmtPost(`/projects/${ref}/restore`)
               }
             }
             if (!String(info.status).includes('ACTIVE_HEALTHY')) {
               core.setFailed(
-                `Projektet "${info.name}" är inte igång (status: ${info.status}). ` +
-                  'Öppna https://supabase.com/dashboard → klicka på projektet → "Restore project" om det erbjuds, vänta tills det är igång och kör sedan denna workflow igen.',
+                `Projektet "${info.name}" blev inte igång i tid (status: ${info.status}). ` +
+                  'Vänta 5 minuter och kör denna workflow igen – den fortsätter där den slutade.',
               )
               return
             }
+            core.info('✅ Projektet är igång.')
 
             // 2) Hämta besöksnyckeln (gamla "anon" ELLER nya "publishable")
             const pickKey = (keys) =>
