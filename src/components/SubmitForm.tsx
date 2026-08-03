@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { communityEnabled } from '../config'
+import { submitPlace } from '../lib/community'
 import { searchPlace } from '../lib/geocode'
 import { useModal } from '../lib/useModal'
 import { MY_PLACE_PREFIX } from '../lib/myplaces'
@@ -80,6 +82,21 @@ export default function SubmitForm({ onClose, onAdd, mapCenter }: Props) {
         description: description.trim() || undefined,
       }
       onAdd(station)
+      // Hybrid: skicka samtidigt in förslaget för granskning – godkänns det
+      // visas platsen för ALLA. Blockerar inte den lokala sparningen.
+      if (communityEnabled) {
+        void submitPlace({
+          name: station.name,
+          address: station.address ?? `${lat.toFixed(5)}, ${lon.toFixed(5)}`,
+          services: station.services,
+          fee: station.fee,
+          description: station.description,
+          lat,
+          lon,
+        }).catch(() => {
+          /* granskningskön är bäst-möjligt – platsen är ändå sparad lokalt */
+        })
+      }
       setStatus('done')
     } catch {
       setStatus('error')
@@ -104,7 +121,11 @@ export default function SubmitForm({ onClose, onAdd, mapCenter }: Props) {
         {status === 'done' ? (
           <div className="submit-done">
             <h2 id="submit-title">Tillagd! 📍</h2>
-            <p>Platsen är sparad och syns nu på kartan. Den finns kvar i din webbläsare.</p>
+            <p>
+              Platsen är sparad och syns nu på kartan hos dig.
+              {communityEnabled &&
+                ' Den har också skickats in för granskning – godkänns den visas den för alla.'}
+            </p>
             <button type="button" className="primary-btn" onClick={onClose}>
               Klart
             </button>
@@ -113,8 +134,10 @@ export default function SubmitForm({ onClose, onAdd, mapCenter }: Props) {
           <form onSubmit={handleSubmit}>
             <h2 id="submit-title">Lägg till en plats</h2>
             <p className="modal-intro">
-              Lägg till en plats som saknas. Den sparas i din webbläsare och visas direkt
-              på kartan – bara du ser den.
+              Lägg till en plats som saknas. Den visas direkt på kartan hos dig
+              {communityEnabled
+                ? ' och skickas samtidigt in för granskning – godkänns den syns den för alla.'
+                : '.'}
             </p>
 
             <label>

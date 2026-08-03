@@ -1,0 +1,92 @@
+name: Bevaka platsförslag
+
+# Kollar Supabase efter nya platsförslag och öppnar ett GitHub-ärende per
+# förslag. GitHub mejlar dig automatiskt (Inställningar → Notifications).
+# Godkänn genom att kommentera "godkänn" i ärendet (se hantera-platsforslag.yml).
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */3 * * *'
+
+permissions:
+  issues: write
+
+concurrency:
+  group: platsforslag
+  cancel-in-progress: false
+
+jobs:
+  bevaka:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        env:
+          SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        with:
+          script: |
+            const url = (process.env.SUPABASE_URL || '').replace(/\/$/, '')
+            const key = process.env.SUPABASE_SERVICE_KEY
+            if (!url || !key) {
+              core.notice('SUPABASE_URL eller SUPABASE_SERVICE_KEY saknas – hoppar över.')
+              return
+            }
+            const res = await fetch(
+              `${url}/rest/v1/submissions?status=eq.pending&select=id,name,address,services,fee,description,lat,lon,created_at&order=created_at.asc`,
+              { headers: { apikey: key, Authorization: `Bearer ${key}` } },
+            )
+            if (!res.ok) {
+              core.setFailed(`Supabase svarade ${res.status}`)
+              return
+            }
+            const rows = await res.json()
+            if (!rows.length) {
+              core.info('Inga väntande förslag.')
+              return
+            }
+            // Hämta befintliga ärenden så samma förslag inte får dubbla ärenden
+            const existing = await github.paginate(github.rest.issues.listForRepo, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: 'platsförslag',
+              state: 'all',
+              per_page: 100,
+            })
+            let created = 0
+            for (const r of rows) {
+              const marker = `<!-- submission:${r.id} -->`
+              if (existing.some((i) => (i.body || '').includes(marker))) continue
+              const services = Array.isArray(r.services) ? r.services.join(', ') : String(r.services)
+              const mapLink = `https://www.google.com/maps?q=${r.lat},${r.lon}`
+              const appLink = `https://perrafree.github.io/PJfrance/?at=${r.lat},${r.lon},15`
+              const body = [
+                marker,
+                `**Nytt platsförslag väntar på granskning**`,
+                ``,
+                `| | |`,
+                `|---|---|`,
+                `| **Namn** | ${r.name} |`,
+                `| **Adress** | ${r.address ?? '–'} |`,
+                `| **Tjänster** | ${services} |`,
+                `| **Avgift** | ${r.fee ?? '–'} |`,
+                `| **Kommentar** | ${r.description ?? '–'} |`,
+                `| **Koordinater** | ${r.lat}, ${r.lon} |`,
+                ``,
+                `[📍 Visa på Google Maps](${mapLink}) · [🗺 Visa i Tömningskartan](${appLink})`,
+                ``,
+                `---`,
+                `**Svara med en kommentar:**`,
+                `- Skriv \`godkänn\` för att publicera platsen för alla`,
+                `- Skriv \`neka\` för att avslå`,
+              ].join('\n')
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `Nytt platsförslag: ${r.name}`,
+                body,
+                labels: ['platsförslag'],
+              })
+              created++
+            }
+            core.info(`${created} nya ärenden skapade (${rows.length} väntande totalt).`)

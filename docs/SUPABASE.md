@@ -88,5 +88,20 @@ du vilken plats (`station_name`), vad som är fel (`reason`) och ev. kommentar.
 Åtgärda platsen (t.ex. i kommunregistret eller genom att avpublicera ett
 community-förslag) och sätt `status` till `resolved`.
 
-> Tips: du kan få mejl vid nya förslag via Supabase **Database Webhooks**
-> eller genom att titta i Table Editor då och då.
+## 5. Granska via mejl + "godkänn" (rekommenderat)
+
+Repo:t har två workflows som gör granskningen enkel:
+
+- **Bevaka platsförslag** kollar Supabase var tredje timme. Varje nytt förslag
+  blir ett GitHub-ärende med all info + kartlänkar – och **GitHub mejlar dig
+  automatiskt** (kontrollera att din mejladress är rätt under
+  GitHub → Settings → Notifications).
+- **Hantera platsförslag**: öppna länken i mejlet och skriv en kommentar –
+  `godkänn` publicerar platsen för alla direkt, `neka` avslår. Ärendet stängs
+  automatiskt.
+
+**Engångssteg för att aktivera:** lägg in Supabase-nyckeln `service_role`
+(Supabase → Project Settings → API → service_role) som en repo-**secret** med
+namnet `SUPABASE_SERVICE_KEY` (GitHub → Settings → Secrets and variables →
+Actions → New repository secret). Den nyckeln är hemlig – den läggs ALDRIG i
+frontend, bara som secret.

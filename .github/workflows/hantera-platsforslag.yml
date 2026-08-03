@@ -1,0 +1,78 @@
+name: Hantera platsförslag
+
+# När du kommenterar "godkänn" eller "neka" i ett platsförslags-ärende
+# uppdateras förslaget i Supabase. Godkända platser visas direkt för alla
+# (appen läser godkända platser live – ingen omdeploy behövs).
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  issues: write
+
+jobs:
+  hantera:
+    # Bara ärenden med etiketten platsförslag och kommentarer från repo-ägare/medarbetare
+    if: >
+      contains(github.event.issue.labels.*.name, 'platsförslag') &&
+      contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        env:
+          SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        with:
+          script: |
+            const comment = (context.payload.comment.body || '').trim().toLowerCase()
+            let status = null
+            if (/^(godkänn|godkänd|ok|approve)\b/.test(comment)) status = 'approved'
+            else if (/^(neka|nekad|avslå|reject)\b/.test(comment)) status = 'rejected'
+            if (!status) {
+              core.info('Kommentaren är varken godkänn eller neka – ignorerar.')
+              return
+            }
+            const body = context.payload.issue.body || ''
+            const m = body.match(/<!-- submission:([^ >]+) -->/)
+            if (!m) {
+              core.setFailed('Hittade inget förslags-id i ärendet.')
+              return
+            }
+            const id = m[1]
+            const url = (process.env.SUPABASE_URL || '').replace(/\/$/, '')
+            const key = process.env.SUPABASE_SERVICE_KEY
+            if (!url || !key) {
+              core.setFailed('SUPABASE_URL eller SUPABASE_SERVICE_KEY saknas.')
+              return
+            }
+            const res = await fetch(`${url}/rest/v1/submissions?id=eq.${encodeURIComponent(id)}`, {
+              method: 'PATCH',
+              headers: {
+                apikey: key,
+                Authorization: `Bearer ${key}`,
+                'Content-Type': 'application/json',
+                Prefer: 'return=minimal',
+              },
+              body: JSON.stringify({ status }),
+            })
+            if (!res.ok) {
+              core.setFailed(`Supabase svarade ${res.status}`)
+              return
+            }
+            const svar =
+              status === 'approved'
+                ? '✅ Godkänd – platsen visas nu för alla i appen.'
+                : '❌ Nekad – platsen publiceras inte.'
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              body: svar,
+            })
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.issue.number,
+              state: 'closed',
+            })
