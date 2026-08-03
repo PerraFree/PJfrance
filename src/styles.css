@@ -1889,3 +1889,130 @@ button {
   font-size: 0.76rem;
   color: var(--text-dim);
 }
+
+/* ---------- Adminstatus-sidan (?admin=1) ---------- */
+
+.admin {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 24px 16px calc(40px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.admin-head h1 {
+  margin: 0 0 6px;
+  font-size: 1.35rem;
+  color: var(--green-900);
+}
+.admin-head p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-dim);
+}
+.admin-head code,
+.admin-card code {
+  background: var(--field);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1px 5px;
+  font-size: 0.84em;
+}
+
+.admin-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  box-shadow: var(--shadow-sm);
+  padding: 16px 18px;
+}
+.admin-card h2 {
+  margin: 0 0 10px;
+  font-size: 1.02rem;
+  color: var(--green-900);
+}
+.admin-card p {
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+.admin-card a {
+  color: var(--green-700);
+  font-weight: 600;
+}
+
+.adm-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.adm-list li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.adm-list strong {
+  font-size: 0.9rem;
+}
+.adm-list p {
+  margin: 2px 0 0;
+  color: var(--text-dim);
+}
+
+.adm-ic {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+.adm-ic.ok {
+  background: #e2f3e4;
+  color: #1c6b2e;
+}
+.adm-ic.fail {
+  background: #fbe7e5;
+  color: #b3261e;
+}
+.adm-ic.wait {
+  background: var(--field);
+  color: var(--text-dim);
+}
+.adm-ic.manual {
+  background: #fdf1dc;
+  color: #8a5300;
+}
+
+.adm-fix {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  background: #fdf3f2;
+  border: 1px solid #e3c9c6;
+  border-radius: 10px;
+}
+
+.adm-steps {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.adm-links {
+  margin: 12px 0 0;
+}
+
+.adm-back {
+  text-align: center;
+}
+.adm-back a {
+  color: var(--green-700);
+  font-weight: 650;
+}

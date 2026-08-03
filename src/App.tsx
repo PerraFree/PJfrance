@@ -13,6 +13,7 @@ import { loadMyPlaces, saveMyPlaces } from './lib/myplaces'
 import { fetchVerifications, submitVerification } from './lib/verify'
 import { fetchReviews, type StationReviews } from './lib/reviews'
 import ReviewForm from './components/ReviewForm'
+import AdminPanel from './components/AdminPanel'
 import { searchPlace } from './lib/geocode'
 import { fetchOsmStations } from './lib/overpass'
 import { getPosition, tap } from './lib/native'
@@ -520,6 +521,11 @@ export default function App() {
     if (new URLSearchParams(location.search).get('nara') === '1') void handleLocate()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  // Adminstatus-sidan (?admin=1) – självkontroll av installationen
+  if (new URLSearchParams(location.search).get('admin') === '1') {
+    return <AdminPanel />
+  }
 
   return (
     <div className="app">
