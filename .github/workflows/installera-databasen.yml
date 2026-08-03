@@ -68,13 +68,20 @@ jobs:
               core.info(`Hittade Supabase-projektet "${proj.name}" (${ref}).`)
             }
 
-            // 2) Hämta anon-nyckeln och spara variablerna i repot
-            const keys = await mgmt(`/projects/${ref}/api-keys`)
-            const anon = keys.find((k) => k.name === 'anon')?.api_key
+            // 2) Hämta besöksnyckeln (gamla "anon" ELLER nya "publishable")
+            const keys = await mgmt(`/projects/${ref}/api-keys?reveal=true`)
+            const anon =
+              keys.find((k) => k.name === 'anon' && k.api_key)?.api_key ??
+              keys.find((k) => k.type === 'publishable' && k.api_key)?.api_key ??
+              keys.find((k) => (k.api_key || '').startsWith('sb_publishable_'))?.api_key
             if (!anon) {
-              core.setFailed('Hittade ingen anon-nyckel i projektet.')
+              core.setFailed(
+                'Hittade ingen användbar besöksnyckel. Nycklar i projektet: ' +
+                  JSON.stringify(keys.map((k) => ({ name: k.name, type: k.type }))),
+              )
               return
             }
+            core.info(`Besöksnyckel hittad (${anon.startsWith('sb_publishable_') ? 'nya formatet' : 'anon'}).`)
             const setVar = async (name, value) => {
               try {
                 await github.request('POST /repos/{owner}/{repo}/actions/variables', {
