@@ -32,11 +32,24 @@ jobs:
         continue-on-error: true
         env:
           TRV_API_KEY: ${{ secrets.TRV_API_KEY }}
+      - name: Läs Supabase-koppling (supabase.env eller repo-variabler)
+        run: |
+          if [ -f supabase.env ]; then
+            cat supabase.env >> "$GITHUB_ENV"
+            echo "Använder supabase.env"
+          elif [ -n "$FALLBACK_URL" ]; then
+            echo "VITE_SUPABASE_URL=$FALLBACK_URL" >> "$GITHUB_ENV"
+            echo "VITE_SUPABASE_ANON_KEY=$FALLBACK_KEY" >> "$GITHUB_ENV"
+            echo "Använder repo-variabler"
+          else
+            echo "Ingen Supabase-koppling – community-funktioner döljs"
+          fi
+        env:
+          FALLBACK_URL: ${{ vars.SUPABASE_URL }}
+          FALLBACK_KEY: ${{ vars.SUPABASE_ANON_KEY }}
       - run: npm run build
         env:
           BASE_PATH: /PJfrance/
-          VITE_SUPABASE_URL: ${{ vars.SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ vars.SUPABASE_ANON_KEY }}
       - name: Publicera till gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:

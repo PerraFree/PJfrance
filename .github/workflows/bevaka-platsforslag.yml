@@ -31,9 +31,13 @@ jobs:
           script: |
             const fs = require('fs')
             const token = process.env.SUPABASE_ACCESS_TOKEN
-            const urlVar = process.env.SUPABASE_URL
+            let urlVar = process.env.SUPABASE_URL
+            if (!urlVar && fs.existsSync('supabase.env')) {
+              const m = fs.readFileSync('supabase.env', 'utf8').match(/VITE_SUPABASE_URL=(.+)/)
+              if (m) urlVar = m[1].trim()
+            }
             if (!token || !urlVar) {
-              core.notice('SUPABASE_ACCESS_TOKEN eller SUPABASE_URL saknas – hoppar över. Se docs/ADMIN.md.')
+              core.notice('SUPABASE_ACCESS_TOKEN eller Supabase-koppling saknas – hoppar över. Kör "Installera databasen" först (se docs/ADMIN.md).')
               return
             }
             const ref = new URL(urlVar).hostname.split('.')[0]

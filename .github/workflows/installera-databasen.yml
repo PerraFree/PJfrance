@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   actions: write
 
 jobs:
@@ -48,8 +48,12 @@ jobs:
             }
             const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
-            // 1) Hitta projektet (använd befintlig variabel om den finns)
+            // 1) Hitta projektet (befintlig variabel/fil om den finns)
             let url = process.env.SUPABASE_URL
+            if (!url && fs.existsSync('supabase.env')) {
+              const m = fs.readFileSync('supabase.env', 'utf8').match(/VITE_SUPABASE_URL=(.+)/)
+              if (m) url = m[1].trim()
+            }
             let ref
             if (url) {
               ref = new URL(url).hostname.split('.')[0]
@@ -135,26 +139,32 @@ jobs:
               return
             }
             core.info(`Besöksnyckel klar (${anon.startsWith('sb_publishable_') ? 'nya formatet' : 'anon'}).`)
-            const setVar = async (name, value) => {
-              try {
-                await github.request('POST /repos/{owner}/{repo}/actions/variables', {
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  name,
-                  value,
-                })
-              } catch {
-                await github.request('PATCH /repos/{owner}/{repo}/actions/variables/{name}', {
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  name,
-                  value,
-                })
-              }
+            // Spara kopplingen som fil i repot (besöksnyckeln är publik per
+            // design – den ligger ändå öppet i appens byggda kod).
+            const BRANCH = 'claude/gravatten-latrin-app-sverige-aed0qg'
+            const envContent = `VITE_SUPABASE_URL=${url}\nVITE_SUPABASE_ANON_KEY=${anon}\n`
+            let existingSha
+            try {
+              const cur = await github.rest.repos.getContent({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                path: 'supabase.env',
+                ref: BRANCH,
+              })
+              existingSha = cur.data.sha
+            } catch {
+              /* filen finns inte ännu */
             }
-            await setVar('SUPABASE_URL', url)
-            await setVar('SUPABASE_ANON_KEY', anon)
-            core.info('✅ Repo-variablerna SUPABASE_URL och SUPABASE_ANON_KEY är satta.')
+            await github.rest.repos.createOrUpdateFileContents({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              path: 'supabase.env',
+              message: 'Koppla Supabase automatiskt (supabase.env)',
+              content: Buffer.from(envContent).toString('base64'),
+              branch: BRANCH,
+              ...(existingSha ? { sha: existingSha } : {}),
+            })
+            core.info('✅ Kopplingen sparad i repot (supabase.env).')
 
             // 3) Installera databasen (idempotent)
             const sql = fs.readFileSync('supabase/schema.sql', 'utf8')
