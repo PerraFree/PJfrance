@@ -13,11 +13,6 @@ import { searchPlace } from './lib/geocode'
 import { fetchOsmStations } from './lib/overpass'
 import { getPosition, tap } from './lib/native'
 import { serviceIcon } from './lib/icons'
-import {
-  fetchTrafikverketStations,
-  getTrafikverketKey,
-  setTrafikverketKey,
-} from './lib/trafikverket'
 import type { ServiceType, Station } from './types'
 import { SERVICE_LABELS, FACILITY_LABELS } from './types'
 
@@ -138,7 +133,6 @@ function dedupe(stations: Station[]): Station[] {
 
 export default function App() {
   const [osmStations, setOsmStations] = useState<Station[]>([])
-  const [tvStations, setTvStations] = useState<Station[]>([])
   // Inget förvalt – användaren väljer själv vad hen vill hitta.
   const [activeFilters, setActiveFilters] = useState<Set<ServiceType>>(new Set())
   const [flyTo, setFlyTo] = useState<{ lat: number; lon: number; zoom?: number } | null>(null)
@@ -146,8 +140,6 @@ export default function App() {
   const [query, setQuery] = useState('')
   const [status, setStatus] = useState('Zooma in eller sök på en ort för att hämta stationer.')
   const [loading, setLoading] = useState(false)
-  const [showSettings, setShowSettings] = useState(false)
-  const [tvKey, setTvKey] = useState(getTrafikverketKey)
   const fetchTimer = useRef<ReturnType<typeof setTimeout>>()
   const cacheRef = useRef(new Map<string, Station>())
   const reqIdRef = useRef(0)
@@ -185,14 +177,8 @@ export default function App() {
 
   const stations = useMemo(
     () =>
-      dedupe([
-        ...OWN_STATIONS,
-        ...communityStations,
-        ...tvStations,
-        ...osmStations,
-        ...seedStations,
-      ]),
-    [osmStations, tvStations, seedStations, communityStations],
+      dedupe([...OWN_STATIONS, ...communityStations, ...osmStations, ...seedStations]),
+    [osmStations, seedStations, communityStations],
   )
 
   useEffect(() => {
@@ -276,28 +262,6 @@ export default function App() {
   useEffect(() => {
     loadCommunity()
   }, [loadCommunity])
-
-  // Trafikverkets rastplatser hämtas en gång för hela landet när nyckel finns
-  useEffect(() => {
-    if (!tvKey) {
-      setTvStations([])
-      return
-    }
-    let cancelled = false
-    fetchTrafikverketStations(tvKey)
-      .then((result) => {
-        if (cancelled) return
-        setTvStations(result)
-        setStatus(`${result.length} rastplatser hämtade från Trafikverket.`)
-      })
-      .catch(() => {
-        if (cancelled) return
-        setStatus('Kunde inte hämta från Trafikverket – kontrollera API-nyckeln.')
-      })
-    return () => {
-      cancelled = true
-    }
-  }, [tvKey])
 
   const handleBoundsChange = useCallback((bounds: L.LatLngBounds, zoom: number) => {
     clearTimeout(fetchTimer.current)
@@ -462,18 +426,6 @@ export default function App() {
     }
   }
 
-  const handleSaveKey = (e: React.FormEvent) => {
-    e.preventDefault()
-    const input = (e.currentTarget as HTMLFormElement).elements.namedItem(
-      'tvkey',
-    ) as HTMLInputElement
-    const value = input.value.trim()
-    setTrafikverketKey(value)
-    setTvKey(value)
-    setShowSettings(false)
-    if (!value) setStatus('Trafikverket-nyckeln borttagen.')
-  }
-
   // PWA-genväg "Nära mig" (manifestets shortcut ?nara=1)
   useEffect(() => {
     if (new URLSearchParams(location.search).get('nara') === '1') void handleLocate()
@@ -505,18 +457,6 @@ export default function App() {
             <h1>Tömningskartan</h1>
             <p>Tömning · latrin · färskvatten · gasol – för husbil &amp; husvagn</p>
           </div>
-          {!collapsed && (
-            <button
-              type="button"
-              className="settings-btn"
-              onClick={() => setShowSettings((v) => !v)}
-              aria-expanded={showSettings}
-              aria-label="Datakällor och inställningar"
-              title="Datakällor"
-            >
-              ⚙
-            </button>
-          )}
           <button
             type="button"
             className="collapse-btn"
@@ -665,29 +605,6 @@ export default function App() {
             </div>
           )}
         </div>
-
-        {showSettings && (
-          <form className="settings" onSubmit={handleSaveKey}>
-            <p>
-              <strong>Trafikverkets rastplatser</strong> (~205 st med gratis
-              latrintömning) hämtas med en kostnadsfri API-nyckel från{' '}
-              <a href="https://data.trafikverket.se" target="_blank" rel="noopener noreferrer">
-                data.trafikverket.se
-              </a>
-              . Nyckeln sparas bara i din webbläsare.
-            </p>
-            <div className="settings-row">
-              <input
-                name="tvkey"
-                type="text"
-                defaultValue={tvKey}
-                placeholder="API-nyckel för Trafikverket"
-                aria-label="API-nyckel för Trafikverket"
-              />
-              <button type="submit">Spara</button>
-            </div>
-          </form>
-        )}
 
         {communityEnabled && (
           <button
