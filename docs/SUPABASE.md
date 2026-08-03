@@ -107,6 +107,34 @@ create policy "anon kan läsa verifieringar" on verifications
   for select to anon using (true);
 ```
 
+## 4c. Betyg & kommentarer
+
+Knappen **★ Betygsätt** i popupen låter användare ge 1–5 stjärnor och skriva
+en kommentar. Betyg utan text publiceras direkt; kommentarer granskas via
+mejl-flödet i avsnitt 5. Kör denna SQL en gång i **SQL Editor**:
+
+```sql
+create table reviews (
+  id uuid primary key default gen_random_uuid(),
+  station_id text not null,
+  station_name text,
+  rating int not null check (rating between 1 and 5),
+  comment text,
+  status text not null default 'approved',
+  created_at timestamptz not null default now()
+);
+alter table reviews enable row level security;
+create policy "anon kan lämna omdöme" on reviews
+  for insert to anon with check (
+    rating between 1 and 5 and (
+      status = 'pending'
+      or (status = 'approved' and coalesce(comment, '') = '')
+    )
+  );
+create policy "anon läser godkända omdömen" on reviews
+  for select to anon using (status = 'approved');
+```
+
 ## 5. Granska via mejl + "godkänn" (rekommenderat)
 
 Repo:t har två workflows som gör granskningen enkel:

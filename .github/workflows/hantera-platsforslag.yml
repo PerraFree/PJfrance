@@ -13,9 +13,10 @@ permissions:
 
 jobs:
   hantera:
-    # Bara ärenden med etiketten platsförslag och kommentarer från repo-ägare/medarbetare
+    # Bara gransknings-ärenden och kommentarer från repo-ägare/medarbetare
     if: >
-      contains(github.event.issue.labels.*.name, 'platsförslag') &&
+      (contains(github.event.issue.labels.*.name, 'platsförslag') ||
+       contains(github.event.issue.labels.*.name, 'omdöme')) &&
       contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association)
     runs-on: ubuntu-latest
     steps:
@@ -34,19 +35,22 @@ jobs:
               return
             }
             const body = context.payload.issue.body || ''
-            const m = body.match(/<!-- submission:([^ >]+) -->/)
-            if (!m) {
+            // Ärendet gäller antingen ett platsförslag eller en kommentar
+            const sub = body.match(/<!-- submission:([^ >]+) -->/)
+            const rev = body.match(/<!-- review:([^ >]+) -->/)
+            const table = sub ? 'submissions' : rev ? 'reviews' : null
+            const id = sub?.[1] ?? rev?.[1]
+            if (!table || !id) {
               core.setFailed('Hittade inget förslags-id i ärendet.')
               return
             }
-            const id = m[1]
             const url = (process.env.SUPABASE_URL || '').replace(/\/$/, '')
             const key = process.env.SUPABASE_SERVICE_KEY
             if (!url || !key) {
               core.setFailed('SUPABASE_URL eller SUPABASE_SERVICE_KEY saknas.')
               return
             }
-            const res = await fetch(`${url}/rest/v1/submissions?id=eq.${encodeURIComponent(id)}`, {
+            const res = await fetch(`${url}/rest/v1/${table}?id=eq.${encodeURIComponent(id)}`, {
               method: 'PATCH',
               headers: {
                 apikey: key,
@@ -60,10 +64,11 @@ jobs:
               core.setFailed(`Supabase svarade ${res.status}`)
               return
             }
+            const vad = table === 'reviews' ? 'kommentaren' : 'platsen'
             const svar =
               status === 'approved'
-                ? '✅ Godkänd – platsen visas nu för alla i appen.'
-                : '❌ Nekad – platsen publiceras inte.'
+                ? `✅ Godkänd – ${vad} visas nu för alla i appen.`
+                : `❌ Nekad – ${vad} publiceras inte.`
             await github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,

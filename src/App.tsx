@@ -11,6 +11,8 @@ import { fetchApprovedPlaces } from './lib/community'
 import { loadFavorites, saveFavorites } from './lib/favorites'
 import { loadMyPlaces, saveMyPlaces } from './lib/myplaces'
 import { fetchVerifications, submitVerification } from './lib/verify'
+import { fetchReviews, type StationReviews } from './lib/reviews'
+import ReviewForm from './components/ReviewForm'
 import { searchPlace } from './lib/geocode'
 import { fetchOsmStations } from './lib/overpass'
 import { getPosition, tap } from './lib/native'
@@ -181,6 +183,28 @@ export default function App() {
       .catch(() => {
         /* valfritt lager */
       })
+  }, [])
+
+  const [reviews, setReviews] = useState<Map<string, StationReviews>>(new Map())
+  const [rateTarget, setRateTarget] = useState<{ id: string; name: string } | null>(null)
+
+  // Godkända betyg & kommentarer (delas av alla)
+  useEffect(() => {
+    fetchReviews()
+      .then(setReviews)
+      .catch(() => {
+        /* valfritt lager */
+      })
+  }, [])
+
+  const handleReviewed = useCallback((stationId: string, rating: number, published: boolean) => {
+    if (!published) return
+    setReviews((prev) => {
+      const next = new Map(prev)
+      const e = next.get(stationId) ?? { sum: 0, count: 0, comments: [] }
+      next.set(stationId, { ...e, sum: e.sum + rating, count: e.count + 1 })
+      return next
+    })
   }, [])
 
   const handleVerify = useCallback((id: string) => {
@@ -515,6 +539,9 @@ export default function App() {
         verifications={verifications}
         onVerify={handleVerify}
         canVerify={communityEnabled}
+        reviews={reviews}
+        onRate={(s) => setRateTarget(s)}
+        canRate={communityEnabled}
       />
 
       {loading && <div className="loading-bar" aria-hidden="true" />}
@@ -729,6 +756,15 @@ export default function App() {
           stationId={reportTarget.id}
           stationName={reportTarget.name}
           onClose={() => setReportTarget(null)}
+        />
+      )}
+
+      {rateTarget && (
+        <ReviewForm
+          stationId={rateTarget.id}
+          stationName={rateTarget.name}
+          onClose={() => setRateTarget(null)}
+          onSubmitted={(rating, published) => handleReviewed(rateTarget.id, rating, published)}
         />
       )}
 

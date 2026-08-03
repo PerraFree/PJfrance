@@ -11,6 +11,7 @@ import { sharePlace as nativeShare } from '../lib/native'
 import { facilityChip } from '../lib/icons'
 import { MY_PLACE_PREFIX } from '../lib/myplaces'
 import { markSelfVerified, selfVerifiedRecently } from '../lib/verify'
+import type { StationReviews } from '../lib/reviews'
 
 // Seed-datan täcker hela Sverige, så live-hämtning behövs bara när man zoomat
 // in nära (för färsk detalj). Håller "Hämtar stationer …" borta vid ort-zoom.
@@ -33,6 +34,10 @@ interface Props {
   verifications: Map<string, string>
   onVerify: (id: string) => void
   canVerify: boolean
+  /** Godkända betyg/kommentarer per plats-id. */
+  reviews: Map<string, StationReviews>
+  onRate: (station: { id: string; name: string }) => void
+  canRate: boolean
 }
 
 function escapeAttr(value: string): string {
@@ -114,6 +119,11 @@ function fmtVerified(iso: string): string {
   })
 }
 
+function starRow(avg: number): string {
+  const filled = Math.round(avg)
+  return '★'.repeat(filled) + '☆'.repeat(5 - filled)
+}
+
 function popupHtml(
   station: Station,
   canReport: boolean,
@@ -121,6 +131,8 @@ function popupHtml(
   isFav: boolean,
   verifiedAt: string | undefined,
   canVerify: boolean,
+  review: StationReviews | undefined,
+  canRate: boolean,
 ): string {
   const services = station.services
     .map(
@@ -205,9 +217,13 @@ function popupHtml(
       ? `<button type="button" class="verify-btn done" disabled>✓ Du har bekräftat</button>`
       : `<button type="button" class="verify-btn" data-verify-id="${escapeAttr(station.id)}">✓ Stämmer fortfarande</button>`
     : ''
+  const rateBtn = canRate
+    ? `<button type="button" class="rate-btn" data-rate-id="${escapeAttr(station.id)}" data-rate-name="${escapeAttr(station.name)}">★ Betygsätt</button>`
+    : ''
   const actions =
     `<div class="pop-actions">` +
     verifyBtn +
+    rateBtn +
     `<button type="button" class="fav-btn${isFav ? ' active' : ''}" data-fav-id="${escapeAttr(station.id)}" aria-pressed="${isFav}">${isFav ? '★ Sparad' : '☆ Spara'}</button>` +
     `<button type="button" class="copy-btn" data-coords="${escapeAttr(coords)}">⧉ Kopiera koordinater</button>` +
     `</div>`
@@ -233,8 +249,22 @@ function popupHtml(
   const verifiedLine = verifiedAt
     ? `<p class="verified-line">✓ Bekräftad av användare ${fmtVerified(verifiedAt)}</p>`
     : ''
+  const avg = review && review.count > 0 ? review.sum / review.count : 0
+  const ratingLine =
+    review && review.count > 0
+      ? `<p class="rating-line"><span class="stars">${starRow(avg)}</span> ${avg.toFixed(1)} · ${review.count} ${review.count === 1 ? 'omdöme' : 'omdömen'}</p>`
+      : ''
+  const commentBlock =
+    review && review.comments.length
+      ? `<div class="pop-comments">${review.comments
+          .map(
+            (c) =>
+              `<p class="pop-comment">“${esc(c.comment)}” <span class="pc-meta">★ ${c.rating}</span></p>`,
+          )
+          .join('')}</div>`
+      : ''
   const accent = SERVICE_COLORS[station.services[0]] ?? 'var(--green-700)'
-  return `<div class="popup" style="--accent:${accent}"><h3>${esc(station.name)}</h3><div class="badges">${services}${seasonBadge}</div>${verifiedLine}${rows.join('')}${links}${actions}<p class="source">${sourceLine}</p>${report}${del}</div>`
+  return `<div class="popup" style="--accent:${accent}"><h3>${esc(station.name)}</h3><div class="badges">${services}${seasonBadge}</div>${ratingLine}${verifiedLine}${rows.join('')}${commentBlock}${links}${actions}<p class="source">${sourceLine}</p>${report}${del}</div>`
 }
 
 function readSavedView(): { lat: number; lon: number; zoom: number } | null {
@@ -277,6 +307,9 @@ export default function MapView({
   verifications,
   onVerify,
   canVerify,
+  reviews,
+  onRate,
+  canRate,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<L.Map | null>(null)
@@ -295,6 +328,12 @@ export default function MapView({
   onVerifyRef.current = onVerify
   const canVerifyRef = useRef(canVerify)
   canVerifyRef.current = canVerify
+  const reviewsRef = useRef(reviews)
+  reviewsRef.current = reviews
+  const onRateRef = useRef(onRate)
+  onRateRef.current = onRate
+  const canRateRef = useRef(canRate)
+  canRateRef.current = canRate
   const favoritesRef = useRef(favoriteIds)
   favoritesRef.current = favoriteIds
   const stationsRef = useRef(stations)
@@ -367,6 +406,8 @@ export default function MapView({
             favoritesRef.current.has(station.id),
             verificationsRef.current.get(station.id),
             canVerifyRef.current,
+            reviewsRef.current.get(station.id),
+            canRateRef.current,
           ),
         {
           maxWidth: 300,
@@ -495,6 +536,16 @@ export default function MapView({
           fav.classList.toggle('active', nowFav)
           fav.setAttribute('aria-pressed', String(nowFav))
           fav.textContent = nowFav ? '★ Sparad' : '☆ Spara'
+        }
+        return
+      }
+      const rate = target.closest('.rate-btn') as HTMLElement | null
+      if (rate) {
+        const id = rate.dataset.rateId
+        const name = rate.dataset.rateName
+        if (id && name) {
+          map.closePopup()
+          onRateRef.current({ id, name })
         }
         return
       }

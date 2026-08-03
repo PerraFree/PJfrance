@@ -1808,3 +1808,84 @@ button {
   color: var(--text-dim);
   cursor: default;
 }
+
+/* ---------- Betyg & kommentarer ---------- */
+
+.popup .rating-line {
+  margin: 6px 0 0;
+  font-size: 0.82rem;
+  font-weight: 650;
+  color: var(--text);
+}
+.popup .rating-line .stars {
+  color: #d99a00;
+  letter-spacing: 1px;
+}
+
+.popup .pop-comments {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.popup .pop-comment {
+  margin: 0;
+  padding: 7px 9px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  font-style: italic;
+  color: var(--text);
+  background: var(--field);
+  border-radius: 10px;
+}
+.popup .pop-comment .pc-meta {
+  font-style: normal;
+  font-weight: 650;
+  color: #b57f00;
+  white-space: nowrap;
+}
+
+.pop-actions .rate-btn {
+  padding: 7px 11px;
+  border: 1px solid #e0c890;
+  border-radius: var(--r-control);
+  background: #fdf7e8;
+  color: #8a5a00;
+  font-size: 0.82rem;
+  font-weight: 650;
+  cursor: pointer;
+  transition: all 0.14s;
+}
+.pop-actions .rate-btn:hover {
+  background: #faefd2;
+}
+
+/* Stjärnväljare i betygsformuläret */
+.star-picker {
+  display: flex;
+  gap: 6px;
+  margin: 6px 0 12px;
+}
+.star-picker .star {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: var(--field);
+  color: #c9c2ae;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.star-picker .star.active {
+  color: #d99a00;
+  border-color: #e0c890;
+  background: #fdf7e8;
+}
+
+.modal-note {
+  margin: 0 0 10px;
+  font-size: 0.76rem;
+  color: var(--text-dim);
+}

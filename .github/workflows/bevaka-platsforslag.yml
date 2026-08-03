@@ -1,8 +1,9 @@
 name: Bevaka platsförslag
 
-# Kollar Supabase efter nya platsförslag och öppnar ett GitHub-ärende per
-# förslag. GitHub mejlar dig automatiskt (Inställningar → Notifications).
-# Godkänn genom att kommentera "godkänn" i ärendet (se hantera-platsforslag.yml).
+# Kollar Supabase efter nya platsförslag OCH nya kommentarer (omdömen med
+# text) och öppnar ett GitHub-ärende per post. GitHub mejlar dig automatiskt
+# (Inställningar → Notifications). Godkänn genom att kommentera "godkänn" i
+# ärendet (se hantera-platsforslag.yml).
 
 on:
   workflow_dispatch:
@@ -32,61 +33,93 @@ jobs:
               core.notice('SUPABASE_URL eller SUPABASE_SERVICE_KEY saknas – hoppar över.')
               return
             }
-            const res = await fetch(
-              `${url}/rest/v1/submissions?status=eq.pending&select=id,name,address,services,fee,description,lat,lon,created_at&order=created_at.asc`,
-              { headers: { apikey: key, Authorization: `Bearer ${key}` } },
-            )
-            if (!res.ok) {
-              core.setFailed(`Supabase svarade ${res.status}`)
-              return
-            }
-            const rows = await res.json()
-            if (!rows.length) {
-              core.info('Inga väntande förslag.')
-              return
-            }
-            // Hämta befintliga ärenden så samma förslag inte får dubbla ärenden
-            const existing = await github.paginate(github.rest.issues.listForRepo, {
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: 'platsförslag',
-              state: 'all',
-              per_page: 100,
-            })
-            let created = 0
-            for (const r of rows) {
-              const marker = `<!-- submission:${r.id} -->`
-              if (existing.some((i) => (i.body || '').includes(marker))) continue
-              const services = Array.isArray(r.services) ? r.services.join(', ') : String(r.services)
-              const mapLink = `https://www.google.com/maps?q=${r.lat},${r.lon}`
-              const appLink = `https://perrafree.github.io/PJfrance/?at=${r.lat},${r.lon},15`
-              const body = [
-                marker,
-                `**Nytt platsförslag väntar på granskning**`,
-                ``,
-                `| | |`,
-                `|---|---|`,
-                `| **Namn** | ${r.name} |`,
-                `| **Adress** | ${r.address ?? '–'} |`,
-                `| **Tjänster** | ${services} |`,
-                `| **Avgift** | ${r.fee ?? '–'} |`,
-                `| **Kommentar** | ${r.description ?? '–'} |`,
-                `| **Koordinater** | ${r.lat}, ${r.lon} |`,
-                ``,
-                `[📍 Visa på Google Maps](${mapLink}) · [🗺 Visa i Tömningskartan](${appLink})`,
-                ``,
-                `---`,
-                `**Svara med en kommentar:**`,
-                `- Skriv \`godkänn\` för att publicera platsen för alla`,
-                `- Skriv \`neka\` för att avslå`,
-              ].join('\n')
-              await github.rest.issues.create({
+            const sb = (path) =>
+              fetch(`${url}/rest/v1/${path}`, {
+                headers: { apikey: key, Authorization: `Bearer ${key}` },
+              })
+            // Befintliga gransknings-ärenden (dedup)
+            const labels = ['platsförslag', 'omdöme']
+            const existing = []
+            for (const label of labels) {
+              const found = await github.paginate(github.rest.issues.listForRepo, {
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                title: `Nytt platsförslag: ${r.name}`,
-                body,
-                labels: ['platsförslag'],
+                labels: label,
+                state: 'all',
+                per_page: 100,
               })
-              created++
+              existing.push(...found)
             }
-            core.info(`${created} nya ärenden skapade (${rows.length} väntande totalt).`)
+            const seen = (marker) => existing.some((i) => (i.body || '').includes(marker))
+            const skapa = (title, body, label) =>
+              github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                labels: [label],
+              })
+            const fotter = [
+              ``,
+              `---`,
+              `**Svara med en kommentar:**`,
+              `- Skriv \`godkänn\` för att publicera`,
+              `- Skriv \`neka\` för att avslå`,
+            ]
+            let created = 0
+
+            // 1) Platsförslag
+            const subRes = await sb(
+              'submissions?status=eq.pending&select=id,name,address,services,fee,description,lat,lon&order=created_at.asc',
+            )
+            if (subRes.ok) {
+              for (const r of await subRes.json()) {
+                const marker = `<!-- submission:${r.id} -->`
+                if (seen(marker)) continue
+                const services = Array.isArray(r.services) ? r.services.join(', ') : String(r.services)
+                const body = [
+                  marker,
+                  `**Nytt platsförslag väntar på granskning**`,
+                  ``,
+                  `| | |`,
+                  `|---|---|`,
+                  `| **Namn** | ${r.name} |`,
+                  `| **Adress** | ${r.address ?? '–'} |`,
+                  `| **Tjänster** | ${services} |`,
+                  `| **Avgift** | ${r.fee ?? '–'} |`,
+                  `| **Kommentar** | ${r.description ?? '–'} |`,
+                  `| **Koordinater** | ${r.lat}, ${r.lon} |`,
+                  ``,
+                  `[📍 Google Maps](https://www.google.com/maps?q=${r.lat},${r.lon}) · [🗺 Tömningskartan](https://perrafree.github.io/PJfrance/?at=${r.lat},${r.lon},15)`,
+                  ...fotter,
+                ].join('\n')
+                await skapa(`Nytt platsförslag: ${r.name}`, body, 'platsförslag')
+                created++
+              }
+            }
+
+            // 2) Kommentarer/omdömen med text
+            const revRes = await sb(
+              'reviews?status=eq.pending&select=id,station_id,station_name,rating,comment&order=created_at.asc',
+            )
+            if (revRes.ok) {
+              for (const r of await revRes.json()) {
+                const marker = `<!-- review:${r.id} -->`
+                if (seen(marker)) continue
+                const body = [
+                  marker,
+                  `**Ny kommentar väntar på granskning**`,
+                  ``,
+                  `| | |`,
+                  `|---|---|`,
+                  `| **Plats** | ${r.station_name ?? r.station_id} |`,
+                  `| **Betyg** | ${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)} (${r.rating}/5) |`,
+                  ``,
+                  `> ${(r.comment || '').replace(/\n/g, '\n> ')}`,
+                  ...fotter,
+                ].join('\n')
+                await skapa(`Ny kommentar: ${r.station_name ?? r.station_id}`, body, 'omdöme')
+                created++
+              }
+            }
+            core.info(`${created} nya gransknings-ärenden skapade.`)
