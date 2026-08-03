@@ -38,6 +38,15 @@ jobs:
               if (!res.ok) throw new Error(`Supabase ${path} svarade ${res.status}: ${await res.text()}`)
               return res.json()
             }
+            const mgmtPost = async (path, body) => {
+              const res = await fetch(`https://api.supabase.com/v1${path}`, {
+                method: 'POST',
+                headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+                body: body ? JSON.stringify(body) : undefined,
+              })
+              return res
+            }
+            const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
             // 1) Hitta projektet (använd befintlig variabel om den finns)
             let url = process.env.SUPABASE_URL
@@ -68,12 +77,55 @@ jobs:
               core.info(`Hittade Supabase-projektet "${proj.name}" (${ref}).`)
             }
 
+            // 1b) Kolla att projektet är igång – väck det om det är pausat
+            let info = await mgmt(`/projects/${ref}`)
+            core.info(`Projekt: ${info.name} · status: ${info.status}`)
+            if (String(info.status).startsWith('INACTIVE')) {
+              core.info('Projektet är pausat – väcker det nu (tar ett par minuter) …')
+              await mgmtPost(`/projects/${ref}/restore`)
+              for (let i = 0; i < 24 && !String(info.status).includes('ACTIVE_HEALTHY'); i++) {
+                await sleep(10_000)
+                info = await mgmt(`/projects/${ref}`)
+                core.info(`  … status: ${info.status}`)
+              }
+            } else if (info.status === 'COMING_UP') {
+              for (let i = 0; i < 18 && info.status === 'COMING_UP'; i++) {
+                await sleep(10_000)
+                info = await mgmt(`/projects/${ref}`)
+                core.info(`  … status: ${info.status}`)
+              }
+            }
+            if (!String(info.status).includes('ACTIVE_HEALTHY')) {
+              core.setFailed(
+                `Projektet "${info.name}" är inte igång (status: ${info.status}). ` +
+                  'Öppna https://supabase.com/dashboard → klicka på projektet → "Restore project" om det erbjuds, vänta tills det är igång och kör sedan denna workflow igen.',
+              )
+              return
+            }
+
             // 2) Hämta besöksnyckeln (gamla "anon" ELLER nya "publishable")
-            const keys = await mgmt(`/projects/${ref}/api-keys?reveal=true`)
-            const anon =
+            const pickKey = (keys) =>
               keys.find((k) => k.name === 'anon' && k.api_key)?.api_key ??
               keys.find((k) => k.type === 'publishable' && k.api_key)?.api_key ??
               keys.find((k) => (k.api_key || '').startsWith('sb_publishable_'))?.api_key
+            let keys = await mgmt(`/projects/${ref}/api-keys?reveal=true`)
+            let anon = pickKey(keys)
+            if (!anon) {
+              // Inga nycklar? Skapa en publishable-nyckel automatiskt.
+              core.info('Ingen besöksnyckel hittades – skapar en …')
+              const created = await mgmtPost(`/projects/${ref}/api-keys?reveal=true`, {
+                type: 'publishable',
+                name: 'tomningskartan',
+              })
+              if (created.ok) {
+                const k = await created.json()
+                anon = k.api_key
+              } else {
+                core.info(`Kunde inte skapa nyckel (${created.status}): ${await created.text()}`)
+                keys = await mgmt(`/projects/${ref}/api-keys?reveal=true`)
+                anon = pickKey(keys)
+              }
+            }
             if (!anon) {
               core.setFailed(
                 'Hittade ingen användbar besöksnyckel. Nycklar i projektet: ' +
@@ -81,7 +133,7 @@ jobs:
               )
               return
             }
-            core.info(`Besöksnyckel hittad (${anon.startsWith('sb_publishable_') ? 'nya formatet' : 'anon'}).`)
+            core.info(`Besöksnyckel klar (${anon.startsWith('sb_publishable_') ? 'nya formatet' : 'anon'}).`)
             const setVar = async (name, value) => {
               try {
                 await github.request('POST /repos/{owner}/{repo}/actions/variables', {
