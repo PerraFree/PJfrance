@@ -133,8 +133,9 @@ export default function AdminPanel() {
             <a href={`${REPO}/actions/workflows/installera-databasen.yml`} target="_blank" rel="noopener noreferrer">
               Öppna denna sida
             </a>{' '}
-            → klicka <em>Run workflow</em> (grön knapp, två gånger) → vänta en minut → ladda
-            om den här sidan. Alla rader ska nu vara gröna.
+            → klicka <em>Run workflow</em> (grön knapp, två gånger). Den hittar ditt
+            Supabase-projekt, kopplar ihop allt och bygger om appen automatiskt. Vänta
+            ett par minuter → ladda om den här sidan. Alla rader ska nu vara gröna.
           </li>
         </ol>
         <p>

@@ -1,13 +1,18 @@
 name: Installera databasen
 
-# Skapar alla tabeller och regler i Supabase automatiskt (supabase/schema.sql).
-# Säker att köra flera gånger – skapar bara det som saknas.
-# Kräver secret SUPABASE_ACCESS_TOKEN (supabase.com/dashboard/account/tokens).
+# Gör ALLT automatiskt med en enda nyckel (secret SUPABASE_ACCESS_TOKEN):
+#  1. Hittar ditt Supabase-projekt och hämtar adress + besöksnyckel
+#  2. Sparar dem som repo-variabler (SUPABASE_URL, SUPABASE_ANON_KEY)
+#  3. Skapar alla tabeller och regler (supabase/schema.sql, idempotent)
+#  4. Startar en ny deploy så appen får kopplingen inbakad
+# Säker att köra flera gånger.
 
 on:
   workflow_dispatch:
 
-permissions: {}
+permissions:
+  contents: read
+  actions: write
 
 jobs:
   installera:
@@ -22,16 +27,76 @@ jobs:
           script: |
             const fs = require('fs')
             const token = process.env.SUPABASE_ACCESS_TOKEN
-            const urlVar = process.env.SUPABASE_URL
             if (!token) {
-              core.setFailed('Secret SUPABASE_ACCESS_TOKEN saknas. Skapa en token på supabase.com/dashboard/account/tokens och lägg den som repository secret.')
+              core.setFailed('Secret SUPABASE_ACCESS_TOKEN saknas. Gör steg 1–2 på adminsidan (?admin=1).')
               return
             }
-            if (!urlVar) {
-              core.setFailed('Repo-variabeln SUPABASE_URL saknas.')
+            const mgmt = async (path) => {
+              const res = await fetch(`https://api.supabase.com/v1${path}`, {
+                headers: { Authorization: `Bearer ${token}` },
+              })
+              if (!res.ok) throw new Error(`Supabase ${path} svarade ${res.status}: ${await res.text()}`)
+              return res.json()
+            }
+
+            // 1) Hitta projektet (använd befintlig variabel om den finns)
+            let url = process.env.SUPABASE_URL
+            let ref
+            if (url) {
+              ref = new URL(url).hostname.split('.')[0]
+              core.info(`Använder befintlig SUPABASE_URL (${ref}).`)
+            } else {
+              const projects = await mgmt('/projects')
+              if (!projects.length) {
+                core.setFailed('Inga Supabase-projekt hittades på kontot som skapade nyckeln.')
+                return
+              }
+              const byName = projects.find((p) => {
+                const n = (p.name || '').toLowerCase()
+                return n.includes('tomningskarta') || n.includes('tömningskarta')
+              })
+              const proj = byName ?? (projects.length === 1 ? projects[0] : null)
+              if (!proj) {
+                core.setFailed(
+                  `Flera projekt hittades (${projects.map((p) => p.name).join(', ')}). ` +
+                    'Döp rätt projekt till "tomningskartan" i Supabase och kör igen.',
+                )
+                return
+              }
+              ref = proj.id
+              url = `https://${ref}.supabase.co`
+              core.info(`Hittade Supabase-projektet "${proj.name}" (${ref}).`)
+            }
+
+            // 2) Hämta anon-nyckeln och spara variablerna i repot
+            const keys = await mgmt(`/projects/${ref}/api-keys`)
+            const anon = keys.find((k) => k.name === 'anon')?.api_key
+            if (!anon) {
+              core.setFailed('Hittade ingen anon-nyckel i projektet.')
               return
             }
-            const ref = new URL(urlVar).hostname.split('.')[0]
+            const setVar = async (name, value) => {
+              try {
+                await github.request('POST /repos/{owner}/{repo}/actions/variables', {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name,
+                  value,
+                })
+              } catch {
+                await github.request('PATCH /repos/{owner}/{repo}/actions/variables/{name}', {
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  name,
+                  value,
+                })
+              }
+            }
+            await setVar('SUPABASE_URL', url)
+            await setVar('SUPABASE_ANON_KEY', anon)
+            core.info('✅ Repo-variablerna SUPABASE_URL och SUPABASE_ANON_KEY är satta.')
+
+            // 3) Installera databasen (idempotent)
             const sql = fs.readFileSync('supabase/schema.sql', 'utf8')
             const res = await fetch(`https://api.supabase.com/v1/projects/${ref}/database/query`, {
               method: 'POST',
@@ -39,7 +104,19 @@ jobs:
               body: JSON.stringify({ query: sql }),
             })
             if (!res.ok) {
-              core.setFailed(`Supabase svarade ${res.status}: ${await res.text()}`)
+              core.setFailed(`Databasinstallationen misslyckades (${res.status}): ${await res.text()}`)
               return
             }
-            core.info('✅ Databasen är installerad/uppdaterad. Alla tabeller och regler finns nu.')
+            core.info('✅ Databasen är installerad (alla tabeller och regler finns).')
+
+            // 4) Bygg om appen så kopplingen bakas in
+            await github.request(
+              'POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches',
+              {
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                workflow_id: 'deploy.yml',
+                ref: 'claude/gravatten-latrin-app-sverige-aed0qg',
+              },
+            )
+            core.info('🚀 Ny deploy startad – om några minuter är allt grönt på adminsidan.')

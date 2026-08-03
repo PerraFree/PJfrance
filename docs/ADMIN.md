@@ -18,7 +18,9 @@ aldrig skriva SQL eller pilla i Supabase.
    → Name: `SUPABASE_ACCESS_TOKEN` → Secret: klistra in → *Add secret*.
 3. **Starta:** öppna
    https://github.com/PerraFree/PJfrance/actions/workflows/installera-databasen.yml
-   → *Run workflow* → vänta en minut. Klart!
+   → *Run workflow*. Den hittar ditt Supabase-projekt, kopplar ihop allt
+   (adress + besöksnyckel läggs in automatiskt), skapar tabellerna och bygger
+   om appen. Vänta ett par minuter. Klart!
 
 Kontrollera resultatet på adminsidan (?admin=1) – alla rader ska vara gröna.
 Kolla även att rätt mejladress står på https://github.com/settings/notifications.
