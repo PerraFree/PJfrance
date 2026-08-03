@@ -1195,6 +1195,22 @@ button {
   background: #fbe7e5;
 }
 
+.popup .delete-btn {
+  margin-top: 8px;
+  padding: 5px 10px;
+  border: 1px solid #e3c9c6;
+  border-radius: 8px;
+  background: #fdf3f2;
+  color: #b3261e;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+}
+.popup .delete-btn:hover {
+  background: #fbe7e5;
+}
+
 .reason-list {
   display: flex;
   flex-direction: column;

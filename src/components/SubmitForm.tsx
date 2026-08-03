@@ -1,20 +1,22 @@
 import { useState } from 'react'
 import { searchPlace } from '../lib/geocode'
-import { submitPlace } from '../lib/community'
 import { useModal } from '../lib/useModal'
-import type { ServiceType } from '../types'
+import { MY_PLACE_PREFIX } from '../lib/myplaces'
+import type { ServiceType, Station } from '../types'
 import { SERVICE_LABELS } from '../types'
 
-const ALL_SERVICES: ServiceType[] = ['gravatten', 'latrin', 'vatten']
+const ALL_SERVICES: ServiceType[] = ['gravatten', 'latrin', 'vatten', 'gasol']
 
 interface Props {
   onClose: () => void
-  onSubmitted: () => void
+  onAdd: (station: Station) => void
+  /** Kartans mittpunkt – används om ingen adress anges. */
+  mapCenter: { lat: number; lon: number } | null
 }
 
-type Status = 'idle' | 'submitting' | 'done' | 'error'
+type Status = 'idle' | 'saving' | 'done' | 'error'
 
-export default function SubmitForm({ onClose, onSubmitted }: Props) {
+export default function SubmitForm({ onClose, onAdd, mapCenter }: Props) {
   const [name, setName] = useState('')
   const [address, setAddress] = useState('')
   const [services, setServices] = useState<Set<ServiceType>>(new Set())
@@ -36,37 +38,52 @@ export default function SubmitForm({ onClose, onSubmitted }: Props) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
-    if (!name.trim() || !address.trim()) {
-      setError('Fyll i namn och adress.')
+    if (!name.trim()) {
+      setError('Fyll i ett namn på platsen.')
       return
     }
     if (services.size === 0) {
       setError('Välj minst en tjänst.')
       return
     }
-    setStatus('submitting')
+    setStatus('saving')
     try {
-      // Geokoda adressen så förslaget får koordinater direkt
-      const hits = await searchPlace(address)
-      if (hits.length === 0) {
+      let lat: number | undefined
+      let lon: number | undefined
+      if (address.trim()) {
+        const hits = await searchPlace(address.trim())
+        if (hits.length === 0) {
+          setStatus('error')
+          setError('Hittade inte adressen. Prova en mer exakt adress, eller lämna tom för att använda kartans mittpunkt.')
+          return
+        }
+        lat = hits[0].lat
+        lon = hits[0].lon
+      } else if (mapCenter) {
+        lat = mapCenter.lat
+        lon = mapCenter.lon
+      }
+      if (lat === undefined || lon === undefined) {
         setStatus('error')
-        setError('Hittade inte adressen. Prova en mer exakt adress eller ort.')
+        setError('Ange en adress eller flytta kartan till platsen först.')
         return
       }
-      await submitPlace({
+      const station: Station = {
+        id: `${MY_PLACE_PREFIX}${Date.now()}`,
         name: name.trim(),
-        address: address.trim(),
+        lat,
+        lon,
         services: [...services],
+        source: 'egen',
+        address: address.trim() || undefined,
         fee: fee.trim() || undefined,
         description: description.trim() || undefined,
-        lat: hits[0].lat,
-        lon: hits[0].lon,
-      })
+      }
+      onAdd(station)
       setStatus('done')
-      onSubmitted()
-    } catch (err) {
+    } catch {
       setStatus('error')
-      setError(err instanceof Error ? err.message : 'Något gick fel. Försök igen.')
+      setError('Något gick fel. Försök igen.')
     }
   }
 
@@ -86,21 +103,18 @@ export default function SubmitForm({ onClose, onSubmitted }: Props) {
 
         {status === 'done' ? (
           <div className="submit-done">
-            <h2 id="submit-title">Tack! 🙌</h2>
-            <p>
-              Ditt förslag är inskickat och dyker upp på kartan när det granskats.
-              Du hjälper alla husbilsägare i Sverige.
-            </p>
+            <h2 id="submit-title">Tillagd! 📍</h2>
+            <p>Platsen är sparad och syns nu på kartan. Den finns kvar i din webbläsare.</p>
             <button type="button" className="primary-btn" onClick={onClose}>
               Klart
             </button>
           </div>
         ) : (
           <form onSubmit={handleSubmit}>
-            <h2 id="submit-title">Föreslå en plats</h2>
+            <h2 id="submit-title">Lägg till en plats</h2>
             <p className="modal-intro">
-              Känner du till en tömnings- eller vattenplats som saknas? Fyll i så
-              geokodas adressen och förslaget granskas innan det visas.
+              Lägg till en plats som saknas. Den sparas i din webbläsare och visas direkt
+              på kartan – bara du ser den.
             </p>
 
             <label>
@@ -109,19 +123,18 @@ export default function SubmitForm({ onClose, onSubmitted }: Props) {
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="t.ex. Ställplats Storgatan"
+                placeholder="t.ex. Tömning vid Storgatan"
                 required
               />
             </label>
 
             <label>
-              Adress eller plats
+              Adress eller ort (valfritt)
               <input
                 type="text"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                placeholder="t.ex. Storgatan 5, Svenljunga"
-                required
+                placeholder="Lämna tom för att använda kartans mittpunkt"
               />
             </label>
 
@@ -130,11 +143,7 @@ export default function SubmitForm({ onClose, onSubmitted }: Props) {
               <div className="service-checks">
                 {ALL_SERVICES.map((s) => (
                   <label key={s} className="service-check">
-                    <input
-                      type="checkbox"
-                      checked={services.has(s)}
-                      onChange={() => toggle(s)}
-                    />
+                    <input type="checkbox" checked={services.has(s)} onChange={() => toggle(s)} />
                     {SERVICE_LABELS[s]}
                   </label>
                 ))}
@@ -163,8 +172,8 @@ export default function SubmitForm({ onClose, onSubmitted }: Props) {
 
             {error && <p className="form-error">{error}</p>}
 
-            <button type="submit" className="primary-btn" disabled={status === 'submitting'}>
-              {status === 'submitting' ? 'Skickar …' : 'Skicka förslag'}
+            <button type="submit" className="primary-btn" disabled={status === 'saving'}>
+              {status === 'saving' ? 'Sparar …' : 'Lägg till plats'}
             </button>
           </form>
         )}

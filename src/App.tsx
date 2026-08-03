@@ -9,6 +9,7 @@ import { communityEnabled } from './config'
 import { OWN_STATIONS } from './data/stations'
 import { fetchApprovedPlaces } from './lib/community'
 import { loadFavorites, saveFavorites } from './lib/favorites'
+import { loadMyPlaces, saveMyPlaces } from './lib/myplaces'
 import { searchPlace } from './lib/geocode'
 import { fetchOsmStations } from './lib/overpass'
 import { getPosition, tap } from './lib/native'
@@ -164,6 +165,27 @@ export default function App() {
   const dataCountRef = useRef(0)
   const activeFiltersRef = useRef(activeFilters)
   activeFiltersRef.current = activeFilters
+  const mapCenterRef = useRef<{ lat: number; lon: number } | null>(null)
+
+  const [myPlaces, setMyPlaces] = useState<Station[]>(loadMyPlaces)
+
+  const addMyPlace = useCallback((station: Station) => {
+    setMyPlaces((prev) => {
+      const next = [...prev, station]
+      saveMyPlaces(next)
+      return next
+    })
+    setActiveFilters((prev) => new Set([...prev, ...station.services]))
+    setFlyTo({ lat: station.lat, lon: station.lon, zoom: 14 })
+  }, [])
+
+  const deleteMyPlace = useCallback((id: string) => {
+    setMyPlaces((prev) => {
+      const next = prev.filter((p) => p.id !== id)
+      saveMyPlaces(next)
+      return next
+    })
+  }, [])
 
   const toggleFavorite = useCallback((id: string) => {
     setFavorites((prev) => {
@@ -177,13 +199,28 @@ export default function App() {
 
   const stations = useMemo(
     () =>
-      dedupe([...OWN_STATIONS, ...communityStations, ...osmStations, ...seedStations]),
-    [osmStations, seedStations, communityStations],
+      dedupe([
+        ...myPlaces,
+        ...OWN_STATIONS,
+        ...communityStations,
+        ...osmStations,
+        ...seedStations,
+      ]),
+    [osmStations, seedStations, communityStations, myPlaces],
   )
 
   useEffect(() => {
     dataCountRef.current = stations.length
   }, [stations])
+
+  // När grunddatan laddats: visa det DEDUPLICERADE antalet (samma siffra som
+  // panelen), så statusraden och panelen aldrig visar olika antal.
+  useEffect(() => {
+    if (seedStations.length > 0) {
+      setStatus(`${stations.length.toLocaleString('sv-SE')} platser tillgängliga`)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [seedStations])
 
   const shownStations = useMemo(() => {
     let list = freeOnly ? stations.filter(isFree) : stations
@@ -240,7 +277,8 @@ export default function App() {
         if (json?.stations?.length) {
           setSeedStations(json.stations)
           if (json.updatedAt) setSeedUpdated(json.updatedAt)
-          setStatus(`${json.stations.length} platser i hela Sverige inlästa.`)
+          // Antalet visas via effekten nedan – med DEDUPLICERAT antal så det
+          // stämmer med panelens siffra (inte råantalet före sammanslagning).
         }
       })
       .catch(() => {
@@ -265,13 +303,15 @@ export default function App() {
 
   const handleBoundsChange = useCallback((bounds: L.LatLngBounds, zoom: number) => {
     clearTimeout(fetchTimer.current)
+    const c = bounds.getCenter()
+    mapCenterRef.current = { lat: c.lat, lon: c.lng }
     // Inget valt = inget att visa; hämta då inte live (undviker onödig spinner).
     if (activeFiltersRef.current.size === 0) return
     if (zoom < MIN_FETCH_ZOOM) {
       // Seed-datan täcker hela Sverige, så visa inte en missvisande "zooma in"-text.
       setStatus(
         dataCountRef.current > 0
-          ? `${dataCountRef.current.toLocaleString('sv-SE')} platser i hela Sverige`
+          ? `${dataCountRef.current.toLocaleString('sv-SE')} platser tillgängliga`
           : 'Zooma in eller sök på en ort för att hämta stationer.',
       )
       return
@@ -297,7 +337,7 @@ export default function App() {
           }
         }
         setOsmStations([...cache.values()])
-        setStatus(`${cache.size} stationer från OpenStreetMap i minnet.`)
+        setStatus(`${dataCountRef.current.toLocaleString('sv-SE')} platser tillgängliga`)
       } catch {
         if (reqId !== reqIdRef.current) return
         // Seed-datan täcker hela Sverige, så en misslyckad live-uppdatering
@@ -446,6 +486,7 @@ export default function App() {
         onReport={setReportTarget}
         favoriteIds={favorites}
         onToggleFavorite={toggleFavorite}
+        onDeleteMyPlace={deleteMyPlace}
       />
 
       {loading && <div className="loading-bar" aria-hidden="true" />}
@@ -606,15 +647,13 @@ export default function App() {
           )}
         </div>
 
-        {communityEnabled && (
-          <button
-            type="button"
-            className="submit-place-btn"
-            onClick={() => setShowSubmit(true)}
-          >
-            Föreslå en plats som saknas
-          </button>
-        )}
+        <button
+          type="button"
+          className="submit-place-btn"
+          onClick={() => setShowSubmit(true)}
+        >
+          ➕ Lägg till en plats
+        </button>
       </div>
 
       {visibleCount === 0 && stations.length > 0 && (
@@ -652,7 +691,8 @@ export default function App() {
       {showSubmit && (
         <SubmitForm
           onClose={() => setShowSubmit(false)}
-          onSubmitted={loadCommunity}
+          onAdd={addMyPlace}
+          mapCenter={mapCenterRef.current}
         />
       )}
 

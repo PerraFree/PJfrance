@@ -9,6 +9,7 @@ import { openNow } from '../lib/openingHours'
 import { reverseGeocode } from '../lib/reverse'
 import { sharePlace as nativeShare } from '../lib/native'
 import { facilityChip } from '../lib/icons'
+import { MY_PLACE_PREFIX } from '../lib/myplaces'
 
 // Seed-datan täcker hela Sverige, så live-hämtning behövs bara när man zoomat
 // in nära (för färsk detalj). Håller "Hämtar stationer …" borta vid ort-zoom.
@@ -26,6 +27,7 @@ interface Props {
   onReport: (station: { id: string; name: string }) => void
   favoriteIds: Set<string>
   onToggleFavorite: (id: string) => void
+  onDeleteMyPlace: (id: string) => void
 }
 
 function escapeAttr(value: string): string {
@@ -191,11 +193,17 @@ function popupHtml(
           : station.source === 'community'
             ? 'Inskickad av en användare'
             : 'Källa: eget register'
-  const report = canReport
-    ? `<button type="button" class="report-btn" data-station-id="${escapeAttr(station.id)}" data-station-name="${escapeAttr(station.name)}">⚠ Rapportera fel</button>`
+  const isMine = station.id.startsWith(MY_PLACE_PREFIX)
+  const report =
+    canReport && !isMine
+      ? `<button type="button" class="report-btn" data-station-id="${escapeAttr(station.id)}" data-station-name="${escapeAttr(station.name)}">⚠ Rapportera fel</button>`
+      : ''
+  const del = isMine
+    ? `<button type="button" class="delete-btn" data-del-id="${escapeAttr(station.id)}">🗑 Ta bort plats</button>`
     : ''
+  const sourceLine = isMine ? 'Din egen plats' : sourceNote
   const accent = SERVICE_COLORS[station.services[0]] ?? 'var(--green-700)'
-  return `<div class="popup" style="--accent:${accent}"><h3>${esc(station.name)}</h3><div class="badges">${services}${seasonBadge}</div>${rows.join('')}${links}${actions}<p class="source">${sourceNote}</p>${report}</div>`
+  return `<div class="popup" style="--accent:${accent}"><h3>${esc(station.name)}</h3><div class="badges">${services}${seasonBadge}</div>${rows.join('')}${links}${actions}<p class="source">${sourceLine}</p>${report}${del}</div>`
 }
 
 function readSavedView(): { lat: number; lon: number; zoom: number } | null {
@@ -234,6 +242,7 @@ export default function MapView({
   onReport,
   favoriteIds,
   onToggleFavorite,
+  onDeleteMyPlace,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<L.Map | null>(null)
@@ -244,6 +253,8 @@ export default function MapView({
   onReportRef.current = onReport
   const onToggleFavoriteRef = useRef(onToggleFavorite)
   onToggleFavoriteRef.current = onToggleFavorite
+  const onDeleteMyPlaceRef = useRef(onDeleteMyPlace)
+  onDeleteMyPlaceRef.current = onDeleteMyPlace
   const favoritesRef = useRef(favoriteIds)
   favoritesRef.current = favoriteIds
   const stationsRef = useRef(stations)
@@ -397,6 +408,15 @@ export default function MapView({
         if (id && name) {
           map.closePopup()
           onReportRef.current({ id, name })
+        }
+        return
+      }
+      const del = target.closest('.delete-btn') as HTMLElement | null
+      if (del) {
+        const id = del.dataset.delId
+        if (id) {
+          map.closePopup()
+          onDeleteMyPlaceRef.current(id)
         }
         return
       }
