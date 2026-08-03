@@ -1,0 +1,45 @@
+name: Installera databasen
+
+# Skapar alla tabeller och regler i Supabase automatiskt (supabase/schema.sql).
+# Säker att köra flera gånger – skapar bara det som saknas.
+# Kräver secret SUPABASE_ACCESS_TOKEN (supabase.com/dashboard/account/tokens).
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  installera:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/github-script@v7
+        env:
+          SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        with:
+          script: |
+            const fs = require('fs')
+            const token = process.env.SUPABASE_ACCESS_TOKEN
+            const urlVar = process.env.SUPABASE_URL
+            if (!token) {
+              core.setFailed('Secret SUPABASE_ACCESS_TOKEN saknas. Skapa en token på supabase.com/dashboard/account/tokens och lägg den som repository secret.')
+              return
+            }
+            if (!urlVar) {
+              core.setFailed('Repo-variabeln SUPABASE_URL saknas.')
+              return
+            }
+            const ref = new URL(urlVar).hostname.split('.')[0]
+            const sql = fs.readFileSync('supabase/schema.sql', 'utf8')
+            const res = await fetch(`https://api.supabase.com/v1/projects/${ref}/database/query`, {
+              method: 'POST',
+              headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+              body: JSON.stringify({ query: sql }),
+            })
+            if (!res.ok) {
+              core.setFailed(`Supabase svarade ${res.status}: ${await res.text()}`)
+              return
+            }
+            core.info('✅ Databasen är installerad/uppdaterad. Alla tabeller och regler finns nu.')

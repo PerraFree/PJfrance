@@ -1,9 +1,9 @@
 name: Bevaka platsförslag
 
-# Kollar Supabase efter nya platsförslag OCH nya kommentarer (omdömen med
-# text) och öppnar ett GitHub-ärende per post. GitHub mejlar dig automatiskt
-# (Inställningar → Notifications). Godkänn genom att kommentera "godkänn" i
-# ärendet (se hantera-platsforslag.yml).
+# Ser till att databasen är installerad, kollar sedan efter nya platsförslag
+# och kommentarer, och öppnar ett GitHub-ärende per post. GitHub mejlar dig
+# automatiskt. Godkänn genom att kommentera "godkänn" i ärendet.
+# Kräver secret SUPABASE_ACCESS_TOKEN (supabase.com/dashboard/account/tokens).
 
 on:
   workflow_dispatch:
@@ -12,6 +12,7 @@ on:
 
 permissions:
   issues: write
+  contents: read
 
 concurrency:
   group: platsforslag
@@ -21,22 +22,34 @@ jobs:
   bevaka:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - uses: actions/github-script@v7
         env:
           SUPABASE_URL: ${{ vars.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
         with:
           script: |
-            const url = (process.env.SUPABASE_URL || '').replace(/\/$/, '')
-            const key = process.env.SUPABASE_SERVICE_KEY
-            if (!url || !key) {
-              core.notice('SUPABASE_URL eller SUPABASE_SERVICE_KEY saknas – hoppar över.')
+            const fs = require('fs')
+            const token = process.env.SUPABASE_ACCESS_TOKEN
+            const urlVar = process.env.SUPABASE_URL
+            if (!token || !urlVar) {
+              core.notice('SUPABASE_ACCESS_TOKEN eller SUPABASE_URL saknas – hoppar över. Se docs/ADMIN.md.')
               return
             }
-            const sb = (path) =>
-              fetch(`${url}/rest/v1/${path}`, {
-                headers: { apikey: key, Authorization: `Bearer ${key}` },
+            const ref = new URL(urlVar).hostname.split('.')[0]
+            const q = async (query) => {
+              const res = await fetch(`https://api.supabase.com/v1/projects/${ref}/database/query`, {
+                method: 'POST',
+                headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query }),
               })
+              if (!res.ok) throw new Error(`Supabase svarade ${res.status}: ${await res.text()}`)
+              return res.json()
+            }
+
+            // 0) Självläkning: se till att alla tabeller/regler finns (idempotent)
+            await q(fs.readFileSync('supabase/schema.sql', 'utf8'))
+
             // Befintliga gransknings-ärenden (dedup)
             const labels = ['platsförslag', 'omdöme']
             const existing = []
@@ -69,57 +82,53 @@ jobs:
             let created = 0
 
             // 1) Platsförslag
-            const subRes = await sb(
-              'submissions?status=eq.pending&select=id,name,address,services,fee,description,lat,lon&order=created_at.asc',
+            const subs = await q(
+              `select id,name,address,services,fee,description,lat,lon from submissions where status = 'pending' order by created_at asc`,
             )
-            if (subRes.ok) {
-              for (const r of await subRes.json()) {
-                const marker = `<!-- submission:${r.id} -->`
-                if (seen(marker)) continue
-                const services = Array.isArray(r.services) ? r.services.join(', ') : String(r.services)
-                const body = [
-                  marker,
-                  `**Nytt platsförslag väntar på granskning**`,
-                  ``,
-                  `| | |`,
-                  `|---|---|`,
-                  `| **Namn** | ${r.name} |`,
-                  `| **Adress** | ${r.address ?? '–'} |`,
-                  `| **Tjänster** | ${services} |`,
-                  `| **Avgift** | ${r.fee ?? '–'} |`,
-                  `| **Kommentar** | ${r.description ?? '–'} |`,
-                  `| **Koordinater** | ${r.lat}, ${r.lon} |`,
-                  ``,
-                  `[📍 Google Maps](https://www.google.com/maps?q=${r.lat},${r.lon}) · [🗺 Tömningskartan](https://perrafree.github.io/PJfrance/?at=${r.lat},${r.lon},15)`,
-                  ...fotter,
-                ].join('\n')
-                await skapa(`Nytt platsförslag: ${r.name}`, body, 'platsförslag')
-                created++
-              }
+            for (const r of subs) {
+              const marker = `<!-- submission:${r.id} -->`
+              if (seen(marker)) continue
+              const services = Array.isArray(r.services) ? r.services.join(', ') : String(r.services)
+              const body = [
+                marker,
+                `**Nytt platsförslag väntar på granskning**`,
+                ``,
+                `| | |`,
+                `|---|---|`,
+                `| **Namn** | ${r.name} |`,
+                `| **Adress** | ${r.address ?? '–'} |`,
+                `| **Tjänster** | ${services} |`,
+                `| **Avgift** | ${r.fee ?? '–'} |`,
+                `| **Kommentar** | ${r.description ?? '–'} |`,
+                `| **Koordinater** | ${r.lat}, ${r.lon} |`,
+                ``,
+                `[📍 Google Maps](https://www.google.com/maps?q=${r.lat},${r.lon}) · [🗺 Tömningskartan](https://perrafree.github.io/PJfrance/?at=${r.lat},${r.lon},15)`,
+                ...fotter,
+              ].join('\n')
+              await skapa(`Nytt platsförslag: ${r.name}`, body, 'platsförslag')
+              created++
             }
 
             // 2) Kommentarer/omdömen med text
-            const revRes = await sb(
-              'reviews?status=eq.pending&select=id,station_id,station_name,rating,comment&order=created_at.asc',
+            const revs = await q(
+              `select id,station_id,station_name,rating,comment from reviews where status = 'pending' order by created_at asc`,
             )
-            if (revRes.ok) {
-              for (const r of await revRes.json()) {
-                const marker = `<!-- review:${r.id} -->`
-                if (seen(marker)) continue
-                const body = [
-                  marker,
-                  `**Ny kommentar väntar på granskning**`,
-                  ``,
-                  `| | |`,
-                  `|---|---|`,
-                  `| **Plats** | ${r.station_name ?? r.station_id} |`,
-                  `| **Betyg** | ${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)} (${r.rating}/5) |`,
-                  ``,
-                  `> ${(r.comment || '').replace(/\n/g, '\n> ')}`,
-                  ...fotter,
-                ].join('\n')
-                await skapa(`Ny kommentar: ${r.station_name ?? r.station_id}`, body, 'omdöme')
-                created++
-              }
+            for (const r of revs) {
+              const marker = `<!-- review:${r.id} -->`
+              if (seen(marker)) continue
+              const body = [
+                marker,
+                `**Ny kommentar väntar på granskning**`,
+                ``,
+                `| | |`,
+                `|---|---|`,
+                `| **Plats** | ${r.station_name ?? r.station_id} |`,
+                `| **Betyg** | ${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)} (${r.rating}/5) |`,
+                ``,
+                `> ${(r.comment || '').replace(/\n/g, '\n> ')}`,
+                ...fotter,
+              ].join('\n')
+              await skapa(`Ny kommentar: ${r.station_name ?? r.station_id}`, body, 'omdöme')
+              created++
             }
             core.info(`${created} nya gransknings-ärenden skapade.`)

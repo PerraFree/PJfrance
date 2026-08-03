@@ -1,8 +1,9 @@
 name: Hantera platsförslag
 
-# När du kommenterar "godkänn" eller "neka" i ett platsförslags-ärende
-# uppdateras förslaget i Supabase. Godkända platser visas direkt för alla
-# (appen läser godkända platser live – ingen omdeploy behövs).
+# När du kommenterar "godkänn" eller "neka" i ett gransknings-ärende
+# uppdateras posten i Supabase. Godkända platser/kommentarer visas direkt
+# för alla (appen läser godkänt live – ingen omdeploy behövs).
+# Kräver secret SUPABASE_ACCESS_TOKEN.
 
 on:
   issue_comment:
@@ -23,7 +24,7 @@ jobs:
       - uses: actions/github-script@v7
         env:
           SUPABASE_URL: ${{ vars.SUPABASE_URL }}
-          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
         with:
           script: |
             const comment = (context.payload.comment.body || '').trim().toLowerCase()
@@ -35,33 +36,30 @@ jobs:
               return
             }
             const body = context.payload.issue.body || ''
-            // Ärendet gäller antingen ett platsförslag eller en kommentar
             const sub = body.match(/<!-- submission:([^ >]+) -->/)
             const rev = body.match(/<!-- review:([^ >]+) -->/)
             const table = sub ? 'submissions' : rev ? 'reviews' : null
             const id = sub?.[1] ?? rev?.[1]
-            if (!table || !id) {
-              core.setFailed('Hittade inget förslags-id i ärendet.')
+            if (!table || !id || !/^[0-9a-f-]{36}$/i.test(id)) {
+              core.setFailed('Hittade inget giltigt förslags-id i ärendet.')
               return
             }
-            const url = (process.env.SUPABASE_URL || '').replace(/\/$/, '')
-            const key = process.env.SUPABASE_SERVICE_KEY
-            if (!url || !key) {
-              core.setFailed('SUPABASE_URL eller SUPABASE_SERVICE_KEY saknas.')
+            const token = process.env.SUPABASE_ACCESS_TOKEN
+            const urlVar = process.env.SUPABASE_URL
+            if (!token || !urlVar) {
+              core.setFailed('SUPABASE_ACCESS_TOKEN eller SUPABASE_URL saknas. Se docs/ADMIN.md.')
               return
             }
-            const res = await fetch(`${url}/rest/v1/${table}?id=eq.${encodeURIComponent(id)}`, {
-              method: 'PATCH',
-              headers: {
-                apikey: key,
-                Authorization: `Bearer ${key}`,
-                'Content-Type': 'application/json',
-                Prefer: 'return=minimal',
-              },
-              body: JSON.stringify({ status }),
+            const ref = new URL(urlVar).hostname.split('.')[0]
+            const res = await fetch(`https://api.supabase.com/v1/projects/${ref}/database/query`, {
+              method: 'POST',
+              headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                query: `update ${table} set status = '${status}' where id = '${id}'`,
+              }),
             })
             if (!res.ok) {
-              core.setFailed(`Supabase svarade ${res.status}`)
+              core.setFailed(`Supabase svarade ${res.status}: ${await res.text()}`)
               return
             }
             const vad = table === 'reviews' ? 'kommentaren' : 'platsen'

@@ -5,19 +5,23 @@ Spara den här sidan. Allt du behöver som ägare finns här.
 **Snabbaste vägen:** öppna adminsidan som kollar allt åt dig automatiskt:
 **https://perrafree.github.io/PJfrance/?admin=1** (spara som bokmärke)
 
-## Engångs-checklista
+## Engångsfix (3 steg, ca 3 minuter)
 
-| # | Steg | Var | Klart? |
-|---|---|---|---|
-| 1 | Supabase-konto + projekt | supabase.com | ✅ (din vän gjorde detta) |
-| 2 | `SUPABASE_URL` + `SUPABASE_ANON_KEY` som repo-variabler | GitHub → Settings → Secrets and variables → Actions → Variables | ✅ (gjort) |
-| 3 | Kör SQL-texten som skapar tabellerna | Supabase → SQL Editor → New query → klistra in från `docs/SUPABASE.md` → Run | ⬜ |
-| 4 | `service_role`-nyckeln som **secret** `SUPABASE_SERVICE_KEY` | Supabase → Project Settings → API (kopiera) → GitHub → Settings → Secrets and variables → Actions → **New repository secret** | ⬜ |
-| 5 | Rätt mejladress för notiser | github.com/settings/notifications | ⬜ |
+Ett enda "lösenord" (en nyckel) behövs för att GitHub ska sköta databasen åt
+dig – skapa tabeller, läsa förslag och publicera det du godkänner. Du behöver
+aldrig skriva SQL eller pilla i Supabase.
 
-Adminsidan (?admin=1) visar grönt/rött för steg 1–3 automatiskt.
-Steg 4 testar du genom att köra workflown **"Bevaka platsförslag"**
-(GitHub → Actions → Bevaka platsförslag → Run workflow) – grön körning = rätt nyckel.
+1. **Hämta nyckeln:** öppna https://supabase.com/dashboard/account/tokens
+   → *Generate new token* → döp den till `tomningskartan` → kopiera texten.
+2. **Ge den till GitHub:** öppna
+   https://github.com/PerraFree/PJfrance/settings/secrets/actions/new
+   → Name: `SUPABASE_ACCESS_TOKEN` → Secret: klistra in → *Add secret*.
+3. **Starta:** öppna
+   https://github.com/PerraFree/PJfrance/actions/workflows/installera-databasen.yml
+   → *Run workflow* → vänta en minut. Klart!
+
+Kontrollera resultatet på adminsidan (?admin=1) – alla rader ska vara gröna.
+Kolla även att rätt mejladress står på https://github.com/settings/notifications.
 
 ## Din vardagsrutin (allt sköts via mejl)
 
@@ -27,8 +31,7 @@ Steg 4 testar du genom att köra workflown **"Bevaka platsförslag"**
 3. **Skriv en kommentar:** `godkänn` (publiceras för alla direkt) eller `neka`.
    Ärendet stängs automatiskt.
 
-Betyg utan text publiceras direkt – inget att göra.
-"✓ Stämmer fortfarande"-bekräftelser publiceras direkt – inget att göra.
+Betyg utan text och ✓-bekräftelser publiceras direkt – inget att göra.
 
 ## Bra länkar
 

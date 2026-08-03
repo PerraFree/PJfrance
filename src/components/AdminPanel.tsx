@@ -75,81 +75,75 @@ export default function AdminPanel() {
             <Icon state={submissions} />
             <div>
               <strong>Tabell: platsförslag</strong>
-              <p>{submissions === 'ok' ? 'Finns – "Lägg till en plats" kan skicka förslag.' : 'Saknas – kör SQL-texten i docs/SUPABASE.md (avsnitt 2).'}</p>
+              <p>{submissions === 'ok' ? 'Finns – "Lägg till en plats" kan skicka förslag.' : 'Saknas – gör engångsfixen i rutan nedan.'}</p>
             </div>
           </li>
           <li>
             <Icon state={reports} />
             <div>
               <strong>Tabell: felrapporter</strong>
-              <p>{reports === 'ok' ? 'Finns – "Rapportera fel" fungerar.' : 'Saknas – kör SQL-texten i docs/SUPABASE.md (avsnitt 2).'}</p>
+              <p>{reports === 'ok' ? 'Finns – "Rapportera fel" fungerar.' : 'Saknas – gör engångsfixen i rutan nedan.'}</p>
             </div>
           </li>
           <li>
             <Icon state={verifications} />
             <div>
               <strong>Tabell: bekräftelser (✓ Stämmer fortfarande)</strong>
-              <p>{verifications === 'ok' ? 'Finns – bekräftelser delas mellan alla användare.' : 'Saknas – kör SQL-texten (avsnitt 4b).'}</p>
+              <p>{verifications === 'ok' ? 'Finns – bekräftelser delas mellan alla användare.' : 'Saknas – gör engångsfixen i rutan nedan.'}</p>
             </div>
           </li>
           <li>
             <Icon state={reviews} />
             <div>
               <strong>Tabell: betyg &amp; kommentarer</strong>
-              <p>{reviews === 'ok' ? 'Finns – betyg och kommentarer fungerar.' : 'Saknas – kör SQL-texten (avsnitt 4c).'}</p>
+              <p>{reviews === 'ok' ? 'Finns – betyg och kommentarer fungerar.' : 'Saknas – gör engångsfixen i rutan nedan.'}</p>
             </div>
           </li>
         </ul>
         {sqlNeeded && (
           <p className="adm-fix">
-            <strong>Så fixar du de röda:</strong> supabase.com → ditt projekt →{' '}
-            <em>SQL Editor</em> → <em>New query</em> → klistra in SQL-texten från{' '}
-            <a href={`${REPO}/blob/claude/gravatten-latrin-app-sverige-aed0qg/docs/SUPABASE.md`} target="_blank" rel="noopener noreferrer">
-              docs/SUPABASE.md
-            </a>{' '}
-            → tryck <em>Run</em>. Ladda sedan om den här sidan.
+            <strong>Röda rader?</strong> Gör de tre stegen i rutan nedan – då skapas
+            tabellerna automatiskt och raderna blir gröna. Du behöver aldrig skriva SQL.
           </p>
         )}
       </section>
 
       <section className="admin-card">
-        <h2>Mejlgranskning</h2>
+        <h2>Engångsfix: koppla ihop GitHub och Supabase</h2>
         <p>
-          Två saker som inte går att kontrollera härifrån (de är hemliga/personliga) –
-          bocka av manuellt:
+          Ett enda "lösenord" (en nyckel) behövs för att GitHub ska kunna sköta databasen åt
+          dig. Tre steg, ca 3 minuter:
         </p>
-        <ul className="adm-list">
+        <ol className="adm-steps">
           <li>
-            <span className="adm-ic manual">?</span>
-            <div>
-              <strong>Huvudnyckeln som GitHub-secret</strong>
-              <p>
-                Supabase → Project Settings → API → kopiera <code>service_role</code>. Lägg den{' '}
-                <a href={`${REPO}/settings/secrets/actions`} target="_blank" rel="noopener noreferrer">
-                  här som secret
-                </a>{' '}
-                med namnet <code>SUPABASE_SERVICE_KEY</code>.{' '}
-                <a href={`${REPO}/actions/workflows/bevaka-platsforslag.yml`} target="_blank" rel="noopener noreferrer">
-                  Testa genom att köra "Bevaka platsförslag"
-                </a>{' '}
-                (knappen <em>Run workflow</em>) – blir den grön är nyckeln rätt.
-              </p>
-            </div>
+            <a href="https://supabase.com/dashboard/account/tokens" target="_blank" rel="noopener noreferrer">
+              Öppna denna sida hos Supabase
+            </a>{' '}
+            → klicka <em>Generate new token</em> → döp den till <code>tomningskartan</code> →
+            kopiera den långa texten som visas.
           </li>
           <li>
-            <span className="adm-ic manual">?</span>
-            <div>
-              <strong>Din mejladress i GitHub</strong>
-              <p>
-                Kolla att rätt adress står under{' '}
-                <a href="https://github.com/settings/notifications" target="_blank" rel="noopener noreferrer">
-                  GitHub → Settings → Notifications
-                </a>{' '}
-                – dit skickas granskningsmejlen.
-              </p>
-            </div>
+            <a href={`${REPO}/settings/secrets/actions/new`} target="_blank" rel="noopener noreferrer">
+              Öppna denna sida hos GitHub
+            </a>{' '}
+            → i fältet <em>Name</em> skriv <code>SUPABASE_ACCESS_TOKEN</code> → i fältet{' '}
+            <em>Secret</em> klistra in texten → klicka <em>Add secret</em>.
           </li>
-        </ul>
+          <li>
+            <a href={`${REPO}/actions/workflows/installera-databasen.yml`} target="_blank" rel="noopener noreferrer">
+              Öppna denna sida
+            </a>{' '}
+            → klicka <em>Run workflow</em> (grön knapp, två gånger) → vänta en minut → ladda
+            om den här sidan. Alla rader ska nu vara gröna.
+          </li>
+        </ol>
+        <p>
+          Kolla också att din mejladress stämmer under{' '}
+          <a href="https://github.com/settings/notifications" target="_blank" rel="noopener noreferrer">
+            GitHub → Settings → Notifications
+          </a>{' '}
+          – dit skickas granskningsmejlen.
+        </p>
       </section>
 
       <section className="admin-card">
