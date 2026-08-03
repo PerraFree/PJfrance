@@ -1306,24 +1306,68 @@ button {
 /* ---------- Mobil ---------- */
 
 @media (max-width: 640px) {
+  /* ---- Mobil: panelen blir en bottensheet (som kart-appar) ---- */
   .panel {
-    top: max(10px, env(safe-area-inset-top));
-    left: 10px;
-    width: calc(100vw - 20px);
-    padding: 12px 13px 10px;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: none;
+    max-height: 82dvh;
+    padding: 8px 14px calc(14px + env(safe-area-inset-bottom));
     gap: 10px;
+    border: none;
+    border-top: 1px solid var(--border);
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 -8px 30px rgba(16, 42, 20, 0.16);
+    animation: sheet-up 0.32s cubic-bezier(0.2, 0.75, 0.25, 1) both;
+  }
+
+  /* Draghandtag högst upp i arket */
+  .panel::before {
+    content: '';
+    display: block;
+    width: 38px;
+    height: 4px;
+    margin: 2px auto 6px;
+    border-radius: 999px;
+    background: var(--border-strong);
+    flex-shrink: 0;
+  }
+
+  @keyframes sheet-up {
+    from {
+      transform: translateY(12px);
+      opacity: 0;
+    }
+  }
+
+  /* Startanimationens nth-child-delays hoppar vi över på mobil */
+  .panel > * {
+    animation: none;
   }
 
   .brand h1 {
     font-size: 1.05rem;
   }
 
+  /* Peek-läge på mobil: varumärke (kompakt) + sökrad + kategorier syns,
+     resten (Sök där jag är, Fler filter, Lägg till plats) fälls ut. */
+  .panel.collapsed .filters {
+    display: flex;
+  }
+  .panel.collapsed .brand {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
   .filters {
     flex-wrap: nowrap;
     overflow-x: auto;
     scrollbar-width: none;
-    margin: 0 -13px;
-    padding: 0 13px;
+    margin: 0 -14px;
+    padding: 2px 14px;
   }
 
   .filters::-webkit-scrollbar {
@@ -1339,13 +1383,27 @@ button {
     display: none;
   }
 
+  /* Flytande GPS-knapp ovanför arkets peek-höjd; göms när arket fällts ut
+     (då finns "Sök där jag är" i panelen i stället). */
   .locate-btn {
-    bottom: calc(64px + env(safe-area-inset-bottom));
+    bottom: calc(200px + env(safe-area-inset-bottom));
+  }
+  .panel:not(.collapsed) ~ .locate-btn {
+    display: none;
   }
 
+  /* Lagerväljaren göms på mobil för att hålla det rent (standardkartan används) */
+  .leaflet-control-layers {
+    display: none;
+  }
+
+  /* Statusraden ligger annars bakom arket – panelen visar antalet ändå */
   .status {
-    max-width: calc(100vw - 24px);
-    bottom: calc(14px + env(safe-area-inset-bottom));
+    display: none;
+  }
+
+  .map-empty {
+    top: 38%;
   }
 
   .leaflet-control-attribution {

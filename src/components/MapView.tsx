@@ -297,9 +297,21 @@ export default function MapView({
         .slice(0, CAP)
         .map((x) => x.s)
     }
-    const panelBottom = document.querySelector('.panel')?.getBoundingClientRect().bottom ?? 260
-    const padTopLeft = L.point(16, Math.round(panelBottom) + 14)
-    const padBottomRight = L.point(16, 116)
+    // Håll popupen fri från panelen – som är en topp-panel på desktop men en
+    // bottensheet på mobil.
+    const panelRect = document.querySelector('.panel')?.getBoundingClientRect()
+    const vh = window.innerHeight || 800
+    let padTopLeft = L.point(16, 260)
+    let padBottomRight = L.point(16, 116)
+    if (panelRect) {
+      if (panelRect.top > vh / 2) {
+        // Bottensheet: håll popupen ovanför arket.
+        padTopLeft = L.point(16, 64)
+        padBottomRight = L.point(16, Math.round(vh - panelRect.top) + 16)
+      } else {
+        padTopLeft = L.point(16, Math.round(panelRect.bottom) + 14)
+      }
+    }
     const canReportNow = canReportRef.current
     const userLocNow = userLocRef.current
     const markers = list.map((station) => {

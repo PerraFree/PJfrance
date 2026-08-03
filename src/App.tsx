@@ -153,7 +153,10 @@ export default function App() {
   const [reportTarget, setReportTarget] = useState<{ id: string; name: string } | null>(null)
   const [focus, setFocus] = useState<{ id: string; nonce: number } | null>(null)
   const [showNearest, setShowNearest] = useState(false)
-  const [collapsed, setCollapsed] = useState(false)
+  // På mobil startar panelen som en hopfälld bottensheet (karta i fokus).
+  const [collapsed, setCollapsed] = useState(
+    () => typeof window !== 'undefined' && !!window.matchMedia?.('(max-width: 640px)').matches,
+  )
   const [locating, setLocating] = useState(false)
   const [facilityFilters, setFacilityFilters] = useState<Set<string>>(new Set())
   const [showMore, setShowMore] = useState(false)
