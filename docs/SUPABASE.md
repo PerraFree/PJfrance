@@ -4,6 +4,11 @@
 vattenplatser. Förslagen granskas innan de visas på kartan. Backend är
 [Supabase](https://supabase.com) (gratis, ingen kortuppgift).
 
+> **Genväg:** stegen 2–3 nedan (tabeller + koppling) görs numera helt
+> automatiskt av workflowen **Installera databasen** – se
+> [docs/ADMIN.md](ADMIN.md). Avsnitten nedan finns kvar som referens om du
+> hellre gör det för hand.
+
 ## 1. Skapa projekt (engång, ~3 min)
 
 1. Gå till [supabase.com](https://supabase.com) → **Start your project** → logga in
@@ -147,8 +152,14 @@ Repo:t har två workflows som gör granskningen enkel:
   `godkänn` publicerar platsen för alla direkt, `neka` avslår. Ärendet stängs
   automatiskt.
 
-**Engångssteg för att aktivera:** lägg in Supabase-nyckeln `service_role`
-(Supabase → Project Settings → API → service_role) som en repo-**secret** med
-namnet `SUPABASE_SERVICE_KEY` (GitHub → Settings → Secrets and variables →
-Actions → New repository secret). Den nyckeln är hemlig – den läggs ALDRIG i
-frontend, bara som secret.
+**Engångssteg för att aktivera** (samma nyckel som installationen använder):
+
+1. Skapa en personlig åtkomstnyckel på
+   [supabase.com/dashboard/account/tokens](https://supabase.com/dashboard/account/tokens)
+   → **Generate new token**.
+2. Lägg in den som repo-**secret** med namnet `SUPABASE_ACCESS_TOKEN`
+   (GitHub → Settings → Secrets and variables → Actions → New repository
+   secret). Nyckeln är hemlig – den läggs ALDRIG i frontend, bara som secret.
+3. Kör workflowen **Installera databasen** (Actions-fliken) en gång.
+
+Hela flödet finns steg-för-steg i [docs/ADMIN.md](ADMIN.md).

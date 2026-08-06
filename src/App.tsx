@@ -723,6 +723,8 @@ export default function App() {
         >
           ➕ Lägg till en plats
         </button>
+
+        <p className="version-line">Version {import.meta.env.VITE_BUILD_ID}</p>
       </div>
 
       {visibleCount === 0 && stations.length > 0 && (
@@ -733,7 +735,7 @@ export default function App() {
               ? 'Vad letar du efter? Välj en eller flera kategorier ovan för att visa platser.'
               : facilityFilters.size > 0
                 ? 'Inga platser matchar valda faciliteter – prova att ta bort något villkor.'
-                : 'Inga platser i valda filter här.'}
+                : 'Inga platser matchar valda filter.'}
         </div>
       )}
 

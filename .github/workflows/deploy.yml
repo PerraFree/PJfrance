@@ -35,7 +35,8 @@ jobs:
       - name: Läs Supabase-koppling (supabase.env eller repo-variabler)
         run: |
           if [ -f supabase.env ]; then
-            cat supabase.env >> "$GITHUB_ENV"
+            # Släpp bara igenom VITE_-rader och rensa bort CR/blanksteg i slutet
+            grep -E '^VITE_[A-Z_]+=' supabase.env | sed 's/[[:space:]\r]*$//' >> "$GITHUB_ENV"
             echo "Använder supabase.env"
           elif [ -n "$FALLBACK_URL" ]; then
             echo "VITE_SUPABASE_URL=$FALLBACK_URL" >> "$GITHUB_ENV"

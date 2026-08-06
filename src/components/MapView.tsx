@@ -344,10 +344,39 @@ export default function MapView({
   canReportRef.current = canReport
   const userLocRef = useRef(userLoc)
   userLocRef.current = userLoc
-  const pendingFocusRef = useRef<string | null>(null)
+  const pendingFocusRef = useRef<{ id: string; expires: number } | null>(null)
   const focusingRef = useRef(false)
   const popupOpenRef = useRef(false)
   const rebuildPendingRef = useRef(false)
+
+  /**
+   * Auto-panoreringsmarginaler som håller popupen fri från panelen – topp-
+   * panel på desktop, bottensheet på mobil. Beräknas färskt varje gång en
+   * popup ska öppnas (panelen kan ha fällts ut/ihop sedan markören byggdes).
+   */
+  const computePopupPadding = () => {
+    const panelRect = document.querySelector('.panel')?.getBoundingClientRect()
+    const vh = window.innerHeight || 800
+    let padTopLeft = L.point(16, 260)
+    let padBottomRight = L.point(16, 116)
+    if (panelRect) {
+      if (panelRect.top > vh / 2) {
+        // Bottensheet: håll popupen ovanför arket.
+        padTopLeft = L.point(16, 64)
+        padBottomRight = L.point(16, Math.round(vh - panelRect.top) + 16)
+      } else {
+        padTopLeft = L.point(16, Math.round(panelRect.bottom) + 14)
+      }
+    }
+    return { padTopLeft, padBottomRight }
+  }
+  const refreshPopupPadding = (marker: L.Marker) => {
+    const popup = marker.getPopup()
+    if (!popup) return
+    const { padTopLeft, padBottomRight } = computePopupPadding()
+    popup.options.autoPanPaddingTopLeft = padTopLeft
+    popup.options.autoPanPaddingBottomRight = padBottomRight
+  }
 
   /**
    * Bygger bara markörer i (och nära) den synliga kartvyn, med ett tak – i
@@ -359,8 +388,12 @@ export default function MapView({
     const cluster = clusterRef.current
     if (!map || !cluster) return
     // Riv inte markörerna mitt under en pågående fokus-zoom (skulle göra
-    // markörreferensen ogiltig så att popupen inte öppnas).
-    if (focusingRef.current) return
+    // markörreferensen ogiltig så att popupen inte öppnas). Kom ihåg att en
+    // ombyggnad behövs så att vyn inte blir stående med gamla markörer.
+    if (focusingRef.current) {
+      rebuildPendingRef.current = true
+      return
+    }
     // Riv aldrig en ÖPPEN popup – t.ex. när kartans auto-panorering efter
     // popup-öppning triggar moveend. Ombyggnaden körs när popupen stängts.
     if (popupOpenRef.current) {
@@ -384,28 +417,18 @@ export default function MapView({
         .slice(0, CAP)
         .map((x) => x.s)
     }
-    // Håll popupen fri från panelen – som är en topp-panel på desktop men en
-    // bottensheet på mobil.
-    const panelRect = document.querySelector('.panel')?.getBoundingClientRect()
-    const vh = window.innerHeight || 800
-    let padTopLeft = L.point(16, 260)
-    let padBottomRight = L.point(16, 116)
-    if (panelRect) {
-      if (panelRect.top > vh / 2) {
-        // Bottensheet: håll popupen ovanför arket.
-        padTopLeft = L.point(16, 64)
-        padBottomRight = L.point(16, Math.round(vh - panelRect.top) + 16)
-      } else {
-        padTopLeft = L.point(16, Math.round(panelRect.bottom) + 14)
-      }
-    }
+    const { padTopLeft, padBottomRight } = computePopupPadding()
     const canReportNow = canReportRef.current
     const userLocNow = userLocRef.current
     const markers = list.map((station) => {
       const primary = station.services.find((s) => active.has(s)) ?? station.services[0]
       const marker = L.marker([station.lat, station.lon], {
         icon: pinIcon(SERVICE_COLORS[primary]),
-      }).bindPopup(
+      })
+      // Registreras FÖRE bindPopup så att marginalerna hinner uppdateras
+      // innan Leaflet öppnar popupen på klicket.
+      marker.on('click', () => refreshPopupPadding(marker))
+      marker.bindPopup(
         () =>
           popupHtml(
             station,
@@ -429,15 +452,27 @@ export default function MapView({
     })
     cluster.addLayers(markers)
     if (pendingFocusRef.current) {
-      const m = markersById.current.get(pendingFocusRef.current)
-      if (m) {
+      // Ett fokus som aldrig hittar sin markör (t.ex. filtret stängdes av
+      // under flygningen) får inte ligga kvar och kapa kartan senare.
+      if (performance.now() > pendingFocusRef.current.expires) {
         pendingFocusRef.current = null
-        // Spärra ombyggnad tills fokus-zoomen lagt sig, öppna sedan popupen.
-        focusingRef.current = true
-        window.setTimeout(() => {
-          focusingRef.current = false
-        }, 1500)
-        cluster.zoomToShowLayer(m, () => m.openPopup())
+      } else {
+        const m = markersById.current.get(pendingFocusRef.current.id)
+        if (m) {
+          pendingFocusRef.current = null
+          refreshPopupPadding(m)
+          // Spärra ombyggnad tills fokus-zoomen lagt sig, öppna sedan popupen
+          // och kör ev. uppskjuten ombyggnad när popupen ändå är stängd.
+          focusingRef.current = true
+          window.setTimeout(() => {
+            focusingRef.current = false
+            if (rebuildPendingRef.current && !popupOpenRef.current) {
+              rebuildPendingRef.current = false
+              rebuildMarkers()
+            }
+          }, 1500)
+          cluster.zoomToShowLayer(m, () => m.openPopup())
+        }
       }
     }
   }, [])
@@ -616,8 +651,11 @@ export default function MapView({
 
     // Fyll i öppet-nu och ortsnamn asynkront när en popup öppnas
     map.on('popupopen', (e) => {
-      popupOpenRef.current = true
-      const el = (e as L.PopupEvent).popup.getElement()
+      const popup = (e as L.PopupEvent).popup
+      // Bara plats-popuper ska pausa markörbygget – "Din position"-bubblan
+      // får inte frysa kartan när man panorerar vidare.
+      if (popup.options.className === 'station-popup') popupOpenRef.current = true
+      const el = popup.getElement()
       if (!el) return
 
       const ohSlot = el.querySelector<HTMLElement>('.open-now-slot')
@@ -676,10 +714,23 @@ export default function MapView({
         fillColor: '#1976d2',
         fillOpacity: 1,
       })
-        .bindPopup('Din position')
+        .bindPopup('Din position', { className: 'user-popup' })
         .addTo(map)
     }
   }, [userLoc])
+
+  // Byter användaren filter medan en popup är öppen stängs den – annars kan
+  // kartan visa markörer som inte längre matchar filtren (ombyggnaden skjuts
+  // ju upp så länge en popup är öppen). Ett filterbyte är ett aktivt val, så
+  // att popupen stängs är väntat – till skillnad från panorering/datahämtning
+  // som aldrig ska stänga den.
+  const prevFiltersRef = useRef(activeFilters)
+  useEffect(() => {
+    if (prevFiltersRef.current !== activeFilters) {
+      prevFiltersRef.current = activeFilters
+      if (popupOpenRef.current) mapRef.current?.closePopup()
+    }
+  }, [activeFilters])
 
   // Rendera om markörer när data, filter, favoriter eller position ändras.
   useEffect(() => {
@@ -693,7 +744,9 @@ export default function MapView({
     // Stäng ev. öppen popup så ombyggnaden inte skjuts upp av den.
     popupOpenRef.current = false
     mapRef.current?.closePopup()
-    pendingFocusRef.current = focus.id
+    // Fokus gäller i högst 10 s – hittas markören inte inom den tiden (t.ex.
+    // för att filtret ändrats) glöms det i stället för att slå till senare.
+    pendingFocusRef.current = { id: focus.id, expires: performance.now() + 10_000 }
     rebuildMarkers()
   }, [focus, rebuildMarkers])
 

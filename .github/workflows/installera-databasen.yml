@@ -85,9 +85,13 @@ jobs:
             // vänta tålmodigt (uppvaknande kan ta 5–10 minuter).
             let info = await mgmt(`/projects/${ref}`)
             core.info(`Projekt: ${info.name} · status: ${info.status}`)
+            const restore = async () => {
+              const r = await mgmtPost(`/projects/${ref}/restore`)
+              if (!r.ok) core.info(`  (restore svarade ${r.status}: ${await r.text()})`)
+            }
             if (String(info.status).startsWith('INACTIVE')) {
               core.info('Projektet är pausat – väcker det nu …')
-              await mgmtPost(`/projects/${ref}/restore`)
+              await restore()
             }
             for (let i = 0; i < 60 && !String(info.status).includes('ACTIVE_HEALTHY'); i++) {
               await sleep(15_000)
@@ -96,7 +100,7 @@ jobs:
               // Om restore-anropet inte tog: prova igen en gång efter en stund
               if (i === 8 && String(info.status).startsWith('INACTIVE')) {
                 core.info('Provar väcka projektet igen …')
-                await mgmtPost(`/projects/${ref}/restore`)
+                await restore()
               }
             }
             if (!String(info.status).includes('ACTIVE_HEALTHY')) {
@@ -141,7 +145,7 @@ jobs:
             core.info(`Besöksnyckel klar (${anon.startsWith('sb_publishable_') ? 'nya formatet' : 'anon'}).`)
             // Spara kopplingen som fil i repot (besöksnyckeln är publik per
             // design – den ligger ändå öppet i appens byggda kod).
-            const BRANCH = 'claude/gravatten-latrin-app-sverige-aed0qg'
+            const BRANCH = context.payload.repository?.default_branch ?? 'claude/gravatten-latrin-app-sverige-aed0qg'
             const envContent = `VITE_SUPABASE_URL=${url}\nVITE_SUPABASE_ANON_KEY=${anon}\n`
             let existingSha
             try {
@@ -186,7 +190,7 @@ jobs:
                 owner: context.repo.owner,
                 repo: context.repo.repo,
                 workflow_id: 'deploy.yml',
-                ref: 'claude/gravatten-latrin-app-sverige-aed0qg',
+                ref: BRANCH,
               },
             )
             core.info('🚀 Ny deploy startad – om några minuter är allt grönt på adminsidan.')

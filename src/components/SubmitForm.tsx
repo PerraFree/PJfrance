@@ -53,7 +53,15 @@ export default function SubmitForm({ onClose, onAdd, mapCenter }: Props) {
       let lat: number | undefined
       let lon: number | undefined
       if (address.trim()) {
-        const hits = await searchPlace(address.trim())
+        // searchPlace avvisar när nätet är nere – skilj det från "ingen träff"
+        let hits
+        try {
+          hits = await searchPlace(address.trim())
+        } catch {
+          setStatus('error')
+          setError('Kunde inte slå upp adressen – kontrollera nätet och försök igen.')
+          return
+        }
         if (hits.length === 0) {
           setStatus('error')
           setError('Hittade inte adressen. Prova en mer exakt adress, eller lämna tom för att använda kartans mittpunkt.')

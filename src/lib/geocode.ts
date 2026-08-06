@@ -20,9 +20,18 @@ function combinedSignal(external: AbortSignal | undefined, ms: number): AbortSig
   const signals = [external, t].filter(Boolean) as AbortSignal[]
   if (signals.length === 0) return undefined
   if (signals.length === 1) return signals[0]
-  return typeof AbortSignal !== 'undefined' && 'any' in AbortSignal
-    ? AbortSignal.any(signals)
-    : signals[0]
+  if (typeof AbortSignal !== 'undefined' && 'any' in AbortSignal) return AbortSignal.any(signals)
+  // Äldre webbläsare utan AbortSignal.any: kombinera för hand så att BÅDE
+  // avbryt-knappen och timeouten fungerar.
+  const ctrl = new AbortController()
+  for (const s of signals) {
+    if (s.aborted) {
+      ctrl.abort(s.reason)
+      break
+    }
+    s.addEventListener('abort', () => ctrl.abort(s.reason), { once: true })
+  }
+  return ctrl.signal
 }
 
 /** Ortsökning via Nominatim. */
@@ -64,16 +73,32 @@ async function photon(query: string, signal?: AbortSignal): Promise<GeocodeResul
     })
 }
 
-/** Resolver på första löftet som ger en icke-tom lista; annars tom när alla klara. */
+/**
+ * Resolver på första löftet som ger en icke-tom lista; tom lista när alla är
+ * klara och minst en tjänst svarade. Om ALLA misslyckades (nätet nere,
+ * avbrutet) avvisas löftet så att anroparen kan skilja fel från "ingen träff".
+ */
 function firstNonEmpty<T>(promises: Promise<T[]>[]): Promise<T[]> {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     let remaining = promises.length
+    let anySucceeded = false
+    let lastError: unknown
     if (remaining === 0) resolve([])
-    const done = (r: T[] | null) => {
-      if (r && r.length) return resolve(r)
-      if (--remaining === 0) resolve([])
+    const settle = () => {
+      if (--remaining === 0) (anySucceeded ? resolve([]) : reject(lastError))
     }
-    for (const p of promises) p.then(done, () => done(null))
+    for (const p of promises)
+      p.then(
+        (r) => {
+          anySucceeded = true
+          if (r.length) resolve(r)
+          else settle()
+        },
+        (e) => {
+          lastError = e
+          settle()
+        },
+      )
   })
 }
 
@@ -83,7 +108,8 @@ function firstNonEmpty<T>(promises: Promise<T[]>[]): Promise<T[]> {
  * Går att avbryta via `signal`.
  */
 export async function searchPlace(query: string, signal?: AbortSignal): Promise<GeocodeResult[]> {
-  const nom = nominatim(query, combinedSignal(signal, 8000)).catch(() => [] as GeocodeResult[])
-  const pho = photon(query, combinedSignal(signal, 8000)).catch(() => [] as GeocodeResult[])
-  return firstNonEmpty([nom, pho])
+  return firstNonEmpty([
+    nominatim(query, combinedSignal(signal, 8000)),
+    photon(query, combinedSignal(signal, 8000)),
+  ])
 }

@@ -41,6 +41,22 @@ jobs:
               return
             }
             const ref = new URL(urlVar).hostname.split('.')[0]
+            const mgmtHeaders = { Authorization: `Bearer ${token}` }
+            // Väck databasen om den är pausad (gratisprojekt somnar)
+            let proj = await (await fetch(`https://api.supabase.com/v1/projects/${ref}`, { headers: mgmtHeaders })).json()
+            if (String(proj.status).startsWith('INACTIVE')) {
+              core.info('Databasen är pausad – väcker den …')
+              await fetch(`https://api.supabase.com/v1/projects/${ref}/restore`, { method: 'POST', headers: mgmtHeaders })
+            }
+            for (let i = 0; i < 40 && !String(proj.status).includes('ACTIVE_HEALTHY'); i++) {
+              await new Promise((r) => setTimeout(r, 15_000))
+              proj = await (await fetch(`https://api.supabase.com/v1/projects/${ref}`, { headers: mgmtHeaders })).json()
+              if (i % 4 === 0) core.info(`  … väntar på databasen: ${proj.status}`)
+            }
+            if (!String(proj.status).includes('ACTIVE_HEALTHY')) {
+              core.setFailed(`Databasen vaknade inte i tid (${proj.status}). Nästa körning försöker igen.`)
+              return
+            }
             const q = async (query) => {
               const res = await fetch(`https://api.supabase.com/v1/projects/${ref}/database/query`, {
                 method: 'POST',
@@ -67,7 +83,16 @@ jobs:
               })
               existing.push(...found)
             }
-            const seen = (marker) => existing.some((i) => (i.body || '').includes(marker))
+            // Markören ligger alltid FÖRST i ärendet – matcha bara där, så att
+            // användartext aldrig kan förfalska/blockera en markör.
+            const seen = (marker) => existing.some((i) => (i.body || '').startsWith(marker))
+            // Sanera användartext: ta bort HTML-kommentarer och gör den säker
+            // i markdown-tabellceller (| och radbrytningar).
+            const cell = (v) =>
+              String(v ?? '–')
+                .replace(/<!--|-->/g, '')
+                .replace(/\|/g, '\\|')
+                .replace(/\r?\n/g, '<br>') || '–'
             const skapa = (title, body, label) =>
               github.rest.issues.create({
                 owner: context.repo.owner,
@@ -92,24 +117,27 @@ jobs:
             for (const r of subs) {
               const marker = `<!-- submission:${r.id} -->`
               if (seen(marker)) continue
-              const services = Array.isArray(r.services) ? r.services.join(', ') : String(r.services)
+              // services kan komma som JS-array eller Postgres-literal "{a,b}"
+              const services = Array.isArray(r.services)
+                ? r.services.join(', ')
+                : String(r.services ?? '').replace(/^\{|\}$/g, '').split(',').filter(Boolean).join(', ')
               const body = [
                 marker,
                 `**Nytt platsförslag väntar på granskning**`,
                 ``,
                 `| | |`,
                 `|---|---|`,
-                `| **Namn** | ${r.name} |`,
-                `| **Adress** | ${r.address ?? '–'} |`,
-                `| **Tjänster** | ${services} |`,
-                `| **Avgift** | ${r.fee ?? '–'} |`,
-                `| **Kommentar** | ${r.description ?? '–'} |`,
+                `| **Namn** | ${cell(r.name)} |`,
+                `| **Adress** | ${cell(r.address)} |`,
+                `| **Tjänster** | ${cell(services)} |`,
+                `| **Avgift** | ${cell(r.fee)} |`,
+                `| **Kommentar** | ${cell(r.description)} |`,
                 `| **Koordinater** | ${r.lat}, ${r.lon} |`,
                 ``,
                 `[📍 Google Maps](https://www.google.com/maps?q=${r.lat},${r.lon}) · [🗺 Tömningskartan](https://perrafree.github.io/PJfrance/?at=${r.lat},${r.lon},15)`,
                 ...fotter,
               ].join('\n')
-              await skapa(`Nytt platsförslag: ${r.name}`, body, 'platsförslag')
+              await skapa(`Nytt platsförslag: ${cell(r.name)}`, body, 'platsförslag')
               created++
             }
 
@@ -126,13 +154,13 @@ jobs:
                 ``,
                 `| | |`,
                 `|---|---|`,
-                `| **Plats** | ${r.station_name ?? r.station_id} |`,
+                `| **Plats** | ${cell(r.station_name ?? r.station_id)} |`,
                 `| **Betyg** | ${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)} (${r.rating}/5) |`,
                 ``,
-                `> ${(r.comment || '').replace(/\n/g, '\n> ')}`,
+                `> ${String(r.comment || '').replace(/<!--|-->/g, '').replace(/\n/g, '\n> ')}`,
                 ...fotter,
               ].join('\n')
-              await skapa(`Ny kommentar: ${r.station_name ?? r.station_id}`, body, 'omdöme')
+              await skapa(`Ny kommentar: ${cell(r.station_name ?? r.station_id)}`, body, 'omdöme')
               created++
             }
             core.info(`${created} nya gransknings-ärenden skapade.`)

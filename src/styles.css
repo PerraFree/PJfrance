@@ -825,6 +825,13 @@ button {
   font-size: 0.85rem;
 }
 
+.version-line {
+  margin: 6px 0 0;
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
 .nearest-toggle {
   position: absolute;
   left: 14px;
@@ -1401,6 +1408,14 @@ button {
     bottom: calc(200px + env(safe-area-inset-bottom));
   }
   .panel:not(.collapsed) ~ .locate-btn {
+    display: none;
+  }
+
+  /* "Närmast dig"-pillret lyfts ovanför arket så det inte täcker filterchipsen */
+  .nearest-toggle {
+    bottom: calc(200px + env(safe-area-inset-bottom));
+  }
+  .panel:not(.collapsed) ~ .nearest-toggle {
     display: none;
   }
 
@@ -2010,6 +2025,10 @@ button {
   color: #b3261e;
 }
 .adm-ic.wait {
+  background: var(--field);
+  color: var(--text-dim);
+}
+.adm-ic.na {
   background: var(--field);
   color: var(--text-dim);
 }

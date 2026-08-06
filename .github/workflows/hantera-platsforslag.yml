@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: claude/gravatten-latrin-app-sverige-aed0qg
+          ref: ${{ github.event.repository.default_branch }}
       - uses: actions/github-script@v7
         env:
           SUPABASE_URL: ${{ vars.SUPABASE_URL }}
@@ -32,23 +32,37 @@ jobs:
         with:
           script: |
             const fs = require('fs')
-            const comment = (context.payload.comment.body || '').trim().toLowerCase()
+            // Redan avgjorda ärenden ändras inte (skydd mot senare "neka" på
+            // en publicerad plats).
+            if (context.payload.issue.state === 'closed') {
+              core.info('Ärendet är redan stängt/avgjort – ignorerar.')
+              return
+            }
+            // Första ordet avgör (utan skiljetecken). OBS: \b fungerar inte
+            // med å/ä/ö i JS-regex, därför ord-jämförelse i stället.
+            const word = (context.payload.comment.body || '')
+              .trim()
+              .toLowerCase()
+              .split(/\s+/)[0]
+              .replace(/[!.,:;)]+$/, '')
             let status = null
-            if (/^(godkänn|godkänd|ok|approve)\b/.test(comment)) status = 'approved'
-            else if (/^(neka|nekad|avslå|reject)\b/.test(comment)) status = 'rejected'
+            if (['godkänn', 'godkänd', 'godkänns', 'approve'].includes(word)) status = 'approved'
+            else if (['neka', 'nekad', 'nekas', 'avslå', 'avslås', 'reject'].includes(word))
+              status = 'rejected'
             if (!status) {
               core.info('Kommentaren är varken godkänn eller neka – ignorerar.')
               return
             }
+            // Markören står alltid på ärendets FÖRSTA rad (skydd mot att
+            // användartext i beskrivningen innehåller en förfalskad markör).
             const body = context.payload.issue.body || ''
-            const sub = body.match(/<!-- submission:([^ >]+) -->/)
-            const rev = body.match(/<!-- review:([^ >]+) -->/)
-            const table = sub ? 'submissions' : rev ? 'reviews' : null
-            const id = sub?.[1] ?? rev?.[1]
-            if (!table || !id || !/^[0-9a-f-]{36}$/i.test(id)) {
+            const m = body.match(/^<!-- (submission|review):([0-9a-f-]{36}) -->/i)
+            if (!m) {
               core.setFailed('Hittade inget giltigt förslags-id i ärendet.')
               return
             }
+            const table = m[1] === 'review' ? 'reviews' : 'submissions'
+            const id = m[2]
             const token = process.env.SUPABASE_ACCESS_TOKEN
             let urlVar = process.env.SUPABASE_URL
             if (!urlVar && fs.existsSync('supabase.env')) {
@@ -60,6 +74,23 @@ jobs:
               return
             }
             const ref = new URL(urlVar).hostname.split('.')[0]
+            const mgmtHeaders = { Authorization: `Bearer ${token}` }
+            // Väck databasen om den är pausad (gratisprojekt somnar av sig
+            // själva) så att godkännandet inte tappas bort.
+            let proj = await (await fetch(`https://api.supabase.com/v1/projects/${ref}`, { headers: mgmtHeaders })).json()
+            if (String(proj.status).startsWith('INACTIVE')) {
+              core.info('Databasen är pausad – väcker den …')
+              await fetch(`https://api.supabase.com/v1/projects/${ref}/restore`, { method: 'POST', headers: mgmtHeaders })
+            }
+            for (let i = 0; i < 40 && !String(proj.status).includes('ACTIVE_HEALTHY'); i++) {
+              await new Promise((r) => setTimeout(r, 15_000))
+              proj = await (await fetch(`https://api.supabase.com/v1/projects/${ref}`, { headers: mgmtHeaders })).json()
+              if (i % 4 === 0) core.info(`  … väntar på databasen: ${proj.status}`)
+            }
+            if (!String(proj.status).includes('ACTIVE_HEALTHY')) {
+              core.setFailed(`Databasen vaknade inte i tid (${proj.status}). Kommentera "${word}" igen om en stund.`)
+              return
+            }
             const res = await fetch(`https://api.supabase.com/v1/projects/${ref}/database/query`, {
               method: 'POST',
               headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },

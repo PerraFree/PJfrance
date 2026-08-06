@@ -9,7 +9,7 @@ import { SUPABASE_ANON_KEY, SUPABASE_URL, communityEnabled } from '../config'
 
 const REPO = 'https://github.com/PerraFree/PJfrance'
 
-type CheckState = 'checking' | 'ok' | 'missing' | 'na'
+type CheckState = 'checking' | 'ok' | 'missing' | 'denied' | 'unreachable' | 'na'
 
 function useTableCheck(table: string): CheckState {
   const [state, setState] = useState<CheckState>(communityEnabled ? 'checking' : 'na')
@@ -20,10 +20,14 @@ function useTableCheck(table: string): CheckState {
       headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` },
     })
       .then((res) => {
-        if (!cancelled) setState(res.status === 404 ? 'missing' : 'ok')
+        if (cancelled) return
+        if (res.ok) setState('ok')
+        else if (res.status === 404) setState('missing')
+        else if (res.status === 401 || res.status === 403) setState('denied')
+        else setState('unreachable')
       })
       .catch(() => {
-        if (!cancelled) setState('missing')
+        if (!cancelled) setState('unreachable')
       })
     return () => {
       cancelled = true
@@ -35,8 +39,26 @@ function useTableCheck(table: string): CheckState {
 function Icon({ state }: { state: CheckState }) {
   if (state === 'checking') return <span className="adm-ic wait">…</span>
   if (state === 'ok') return <span className="adm-ic ok">✓</span>
-  if (state === 'na') return <span className="adm-ic fail">✗</span>
+  if (state === 'na') return <span className="adm-ic na">–</span>
   return <span className="adm-ic fail">✗</span>
+}
+
+/** Förklaringstext för en tabellrad, per tillstånd. */
+function tableText(state: CheckState, okText: string): string {
+  switch (state) {
+    case 'ok':
+      return okText
+    case 'checking':
+      return 'Kollar …'
+    case 'missing':
+      return 'Saknas – gör engångsfixen i rutan nedan.'
+    case 'denied':
+      return 'Nyckeln nekades av databasen – kör "Installera databasen" igen så hämtas en färsk nyckel.'
+    case 'unreachable':
+      return 'Kunde inte nå databasen just nu (nätet eller pausat projekt). Ladda om sidan om en stund.'
+    case 'na':
+      return 'Kollas när Supabase-kopplingen finns.'
+  }
 }
 
 export default function AdminPanel() {
@@ -45,7 +67,7 @@ export default function AdminPanel() {
   const verifications = useTableCheck('verifications')
   const reviews = useTableCheck('reviews')
 
-  const sqlNeeded = verifications === 'missing' || reviews === 'missing'
+  const sqlNeeded = [submissions, reports, verifications, reviews].some((s) => s === 'missing')
 
   return (
     <div className="admin">
@@ -67,7 +89,7 @@ export default function AdminPanel() {
               <p>
                 {communityEnabled
                   ? 'Adress och besöksnyckel finns i bygget – appen kan prata med databasen.'
-                  : 'Saknas: lägg SUPABASE_URL och SUPABASE_ANON_KEY som repo-variabler i GitHub och kör deployen igen.'}
+                  : 'Saknas ännu: gör engångsfixen i rutan nedan (tre steg) så ordnas kopplingen helt automatiskt.'}
               </p>
             </div>
           </li>
@@ -75,28 +97,28 @@ export default function AdminPanel() {
             <Icon state={submissions} />
             <div>
               <strong>Tabell: platsförslag</strong>
-              <p>{submissions === 'ok' ? 'Finns – "Lägg till en plats" kan skicka förslag.' : 'Saknas – gör engångsfixen i rutan nedan.'}</p>
+              <p>{tableText(submissions, 'Finns – "Lägg till en plats" kan skicka förslag.')}</p>
             </div>
           </li>
           <li>
             <Icon state={reports} />
             <div>
               <strong>Tabell: felrapporter</strong>
-              <p>{reports === 'ok' ? 'Finns – "Rapportera fel" fungerar.' : 'Saknas – gör engångsfixen i rutan nedan.'}</p>
+              <p>{tableText(reports, 'Finns – "Rapportera fel" fungerar.')}</p>
             </div>
           </li>
           <li>
             <Icon state={verifications} />
             <div>
               <strong>Tabell: bekräftelser (✓ Stämmer fortfarande)</strong>
-              <p>{verifications === 'ok' ? 'Finns – bekräftelser delas mellan alla användare.' : 'Saknas – gör engångsfixen i rutan nedan.'}</p>
+              <p>{tableText(verifications, 'Finns – bekräftelser delas mellan alla användare.')}</p>
             </div>
           </li>
           <li>
             <Icon state={reviews} />
             <div>
               <strong>Tabell: betyg &amp; kommentarer</strong>
-              <p>{reviews === 'ok' ? 'Finns – betyg och kommentarer fungerar.' : 'Saknas – gör engångsfixen i rutan nedan.'}</p>
+              <p>{tableText(reviews, 'Finns – betyg och kommentarer fungerar.')}</p>
             </div>
           </li>
         </ul>
