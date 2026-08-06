@@ -1414,6 +1414,22 @@ button {
     display: none;
   }
 
+  /* Närmast-listan blir en egen bottensheet OVANPÅ panelen (annars rörig
+     överlappning). Stängs med krysset eller Escape. */
+  .nearest {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: 62dvh;
+    border-radius: 18px 18px 0 0;
+    border: none;
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -8px 30px rgba(16, 42, 20, 0.18);
+    z-index: 1200;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
   .map-empty {
     top: 38%;
   }
