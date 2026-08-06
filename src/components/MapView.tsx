@@ -346,6 +346,8 @@ export default function MapView({
   userLocRef.current = userLoc
   const pendingFocusRef = useRef<string | null>(null)
   const focusingRef = useRef(false)
+  const popupOpenRef = useRef(false)
+  const rebuildPendingRef = useRef(false)
 
   /**
    * Bygger bara markörer i (och nära) den synliga kartvyn, med ett tak – i
@@ -359,6 +361,12 @@ export default function MapView({
     // Riv inte markörerna mitt under en pågående fokus-zoom (skulle göra
     // markörreferensen ogiltig så att popupen inte öppnas).
     if (focusingRef.current) return
+    // Riv aldrig en ÖPPEN popup – t.ex. när kartans auto-panorering efter
+    // popup-öppning triggar moveend. Ombyggnaden körs när popupen stängts.
+    if (popupOpenRef.current) {
+      rebuildPendingRef.current = true
+      return
+    }
     cluster.clearLayers()
     markersById.current.clear()
     const active = activeFiltersRef.current
@@ -437,7 +445,9 @@ export default function MapView({
   useEffect(() => {
     if (!containerRef.current || mapRef.current) return
     const saved = readSavedView()
-    const map = L.map(containerRef.current, { zoomControl: false }).setView(
+    // closePopupOnClick: false – popupen stängs bara med krysset (eller när en
+    // annan plats öppnas), inte av ett råkat kartklick.
+    const map = L.map(containerRef.current, { zoomControl: false, closePopupOnClick: false }).setView(
       saved ? [saved.lat, saved.lon] : [62.0, 15.0],
       saved ? saved.zoom : 5,
     )
@@ -594,8 +604,19 @@ export default function MapView({
     const container = map.getContainer()
     container.addEventListener('click', onPopupClick)
 
+    // Popupen ska stanna tills användaren själv stänger den: flagga öppen
+    // popup så att markör-ombyggnad väntar, och kör ombyggnaden vid stängning.
+    map.on('popupclose', () => {
+      popupOpenRef.current = false
+      if (rebuildPendingRef.current) {
+        rebuildPendingRef.current = false
+        window.setTimeout(() => rebuildMarkers(), 80)
+      }
+    })
+
     // Fyll i öppet-nu och ortsnamn asynkront när en popup öppnas
     map.on('popupopen', (e) => {
+      popupOpenRef.current = true
       const el = (e as L.PopupEvent).popup.getElement()
       if (!el) return
 
@@ -669,6 +690,9 @@ export default function MapView({
   // förrän kartan flugit dit och byggt om – då öppnar rebuildMarkers fokuset.
   useEffect(() => {
     if (!focus) return
+    // Stäng ev. öppen popup så ombyggnaden inte skjuts upp av den.
+    popupOpenRef.current = false
+    mapRef.current?.closePopup()
     pendingFocusRef.current = focus.id
     rebuildMarkers()
   }, [focus, rebuildMarkers])

@@ -553,22 +553,21 @@ export default function App() {
       {loading && <div className="loading-bar" aria-hidden="true" />}
 
       <div className={collapsed ? 'panel collapsed' : 'panel'}>
+        <button
+          type="button"
+          className="sheet-handle"
+          aria-expanded={!collapsed}
+          aria-label={collapsed ? 'Visa hela menyn' : 'Fäll ihop menyn'}
+          onClick={() => setCollapsed((v) => !v)}
+        >
+          <span aria-hidden="true" />
+        </button>
         <header className="brand">
           <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" width="34" height="34" />
           <div>
             <h1>Tömningskartan</h1>
             <p>Tömning · latrin · färskvatten · gasol – för husbil &amp; husvagn</p>
           </div>
-          <button
-            type="button"
-            className="collapse-btn"
-            onClick={() => setCollapsed((v) => !v)}
-            aria-expanded={!collapsed}
-            aria-label={collapsed ? 'Visa filter' : 'Fäll ihop panelen'}
-            title={collapsed ? 'Visa filter' : 'Fäll ihop'}
-          >
-            {collapsed ? '▾' : '▴'}
-          </button>
         </header>
 
         <form className="search" onSubmit={handleSearch} role="search">
@@ -595,6 +594,15 @@ export default function App() {
             </button>
           )}
         </form>
+
+        <button
+          type="button"
+          className="panel-toggle"
+          aria-expanded={!collapsed}
+          onClick={() => setCollapsed((v) => !v)}
+        >
+          {collapsed ? 'Visa filter och fler val ▾' : 'Fäll ihop menyn ▴'}
+        </button>
 
         <button
           type="button"
