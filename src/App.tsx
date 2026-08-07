@@ -568,6 +568,16 @@ export default function App() {
             <h1>Tömningskartan</h1>
             <p>Tömning · latrin · färskvatten · gasol – för husbil &amp; husvagn</p>
           </div>
+          <button
+            type="button"
+            className={collapsed ? 'panel-toggle' : 'panel-toggle open'}
+            aria-expanded={!collapsed}
+            aria-label={collapsed ? 'Visa filter och fler val' : 'Fäll ihop menyn'}
+            title={collapsed ? 'Visa filter och fler val' : 'Fäll ihop menyn'}
+            onClick={() => setCollapsed((v) => !v)}
+          >
+            +
+          </button>
         </header>
 
         <form className="search" onSubmit={handleSearch} role="search">
@@ -594,15 +604,6 @@ export default function App() {
             </button>
           )}
         </form>
-
-        <button
-          type="button"
-          className="panel-toggle"
-          aria-expanded={!collapsed}
-          onClick={() => setCollapsed((v) => !v)}
-        >
-          {collapsed ? 'Visa filter och fler val ▾' : 'Fäll ihop menyn ▴'}
-        </button>
 
         <button
           type="button"

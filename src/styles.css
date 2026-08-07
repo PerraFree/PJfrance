@@ -2073,17 +2073,31 @@ button {
   }
 }
 
+/* Kompakt +-knapp till höger om appnamnet: + = visa filter och fler val,
+   roterar till ett kryss när menyn är utfälld. */
 .panel-toggle {
-  width: 100%;
-  padding: 9px 12px;
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--border-strong);
-  border-radius: var(--r-control);
+  border-radius: 50%;
   background: var(--field);
   color: var(--green-700);
-  font-size: 0.86rem;
+  font-size: 1.55rem;
   font-weight: 650;
+  line-height: 1;
+  padding: 0 0 2px;
   cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
+  transition: border-color 0.15s, background 0.15s, transform 0.2s;
+}
+.panel-toggle.open {
+  transform: rotate(45deg);
+  background: var(--green-100);
+  border-color: var(--green-500);
 }
 .panel-toggle:hover {
   border-color: var(--green-500);
