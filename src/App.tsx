@@ -576,7 +576,12 @@ export default function App() {
             title={collapsed ? 'Visa filter och fler val' : 'Fäll ihop menyn'}
             onClick={() => setCollapsed((v) => !v)}
           >
-            +
+            <span className="pt-plus" aria-hidden="true">
+              {collapsed ? '+' : '×'}
+            </span>
+            <span className="pt-arrow" aria-hidden="true">
+              {collapsed ? '▾' : '▴'}
+            </span>
           </button>
         </header>
 
