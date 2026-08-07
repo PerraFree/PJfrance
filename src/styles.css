@@ -2073,41 +2073,35 @@ button {
   }
 }
 
-/* Menyknapp i samma stil som appens logga (mörkgrön rundad ruta), direkt
-   till höger om namnet: blått + och en nedåtpil = visa filter och fler val.
-   Utfälld meny: × och uppåtpil. */
+/* Menyknapp direkt till höger om appnamnet: en stor tydlig nedåtpil i en
+   mellangrön rundad ruta (passar paletten men förväxlas inte med loggan).
+   Pilen roterar mjukt uppåt när menyn är utfälld. */
 .panel-toggle {
   margin-left: 10px;
   flex-shrink: 0;
-  width: 40px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 1px;
   border: none;
   border-radius: 10px;
-  background: #1b5e20;
+  background: var(--green-500);
+  color: #fff;
   box-shadow: var(--shadow-sm);
   cursor: pointer;
   padding: 0;
-  transition: filter 0.15s, transform 0.1s;
+  transition: background 0.15s, transform 0.1s;
 }
-.panel-toggle .pt-plus {
-  color: #4fc3f7;
-  font-size: 1.35rem;
-  font-weight: 800;
-  line-height: 1;
-  margin-top: -2px;
+.panel-toggle svg {
+  transition: transform 0.2s;
 }
-.panel-toggle .pt-arrow {
-  color: #4fc3f7;
-  font-size: 0.72rem;
-  line-height: 1;
+.panel-toggle.open svg {
+  transform: rotate(180deg);
 }
 .panel-toggle:hover {
-  filter: brightness(1.15);
+  background: var(--green-700);
 }
 .panel-toggle:active {
-  transform: scale(0.95);
+  transform: scale(0.94);
 }

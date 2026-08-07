@@ -576,12 +576,16 @@ export default function App() {
             title={collapsed ? 'Visa filter och fler val' : 'Fäll ihop menyn'}
             onClick={() => setCollapsed((v) => !v)}
           >
-            <span className="pt-plus" aria-hidden="true">
-              {collapsed ? '+' : '×'}
-            </span>
-            <span className="pt-arrow" aria-hidden="true">
-              {collapsed ? '▾' : '▴'}
-            </span>
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+              <path
+                d="M6 9l6 6 6-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </button>
         </header>
 
