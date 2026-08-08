@@ -115,5 +115,407 @@
     ],
     "fee": "Gratis (rastplats)",
     "description": "Rastplats vid väg 31/47 söder om Vetlanda med latrintömning och sopkärl."
+  },
+  {
+    "name": "Axvalls IF:s Familjecamping",
+    "query": "Axvalls IF idrottsplats, Axvall, Skara kommun",
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "el",
+      "dusch",
+      "wc",
+      "dricksvatten"
+    ],
+    "description": "Ställplats/camping vid idrottsplatsen i Axvall, drivs av Axvalls IF. 15 platser med el. Nära Skara Sommarland.",
+    "url": "https://www.axvallsif.se/?SID=50223",
+    "source": "egen"
+  },
+  {
+    "name": "Dala-Järna Idrottsplats (Dala-Järna IK)",
+    "query": "Dala-Järna idrottsplats, Dala-Järna, Vansbro kommun",
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "wc",
+      "dusch"
+    ],
+    "description": "20 platser utan el vid idrottsplatsen, drivs av Dala-Järna IK.",
+    "url": "https://www.visitdalarna.se/boende/anlaggning/dala-jarna-idrottsplats",
+    "source": "egen"
+  },
+  {
+    "name": "Mjölkeröds Golfklubb ställplats",
+    "query": "Mjölkeröds golfklubb, Mjölkeröd 22, Tanumshede",
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "el"
+    ],
+    "fee": "200 kr/natt med bokad golf, 250 kr/natt utan",
+    "description": "Ställplatser med el vid golfbanan nära Grebbestad.",
+    "url": "https://mjolkerodgk.se/stallplatser-for-husbil/",
+    "source": "egen"
+  },
+  {
+    "name": "Skepparslövs Golfklubb ställplats",
+    "query": "Skepparslövs Golfklubb, Sätesvägen 14, Kristianstad",
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "el",
+      "dusch",
+      "wc"
+    ],
+    "fee": "200 kr/natt inkl el (gratis vid golfspel)",
+    "description": "12 platser med eluttag. Dusch och toalett i klubbhuset maj–september.",
+    "url": "https://skepparslovsgk.se/husvagnsparkering/",
+    "source": "egen"
+  },
+  {
+    "name": "Koberg Golfklubb ställplats",
+    "query": "Koberg GK, Stora Ekeskogen, Sollebrunn",
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "el",
+      "wc",
+      "dusch",
+      "dricksvatten"
+    ],
+    "fee": "150 kr/natt vid golfspel, 250 kr/natt utan golf",
+    "description": "13 platser med el nära klubbhuset. WC/dusch, dricksvatten; ingen tömning.",
+    "url": "https://koberggk.se/boende/husbil-husvagnsplatser/",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplats BK Najaden",
+    "query": "BK Najaden, Strandgatan 3, Tullkammarkajen, Halmstad",
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "el",
+      "dricksvatten",
+      "wc",
+      "dusch"
+    ],
+    "fee": "från 220 kr/dygn",
+    "description": "13 platser längs Nissan i centrala Halmstad, drivs av båtklubben BK Najaden.",
+    "url": "https://bknajaden.se/st%C3%A4llplats",
+    "source": "egen"
+  },
+  {
+    "name": "Höganäs Båtsällskap ställplats",
+    "query": "Höganäs hamn, Höganäs",
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "el",
+      "wc",
+      "dusch",
+      "dricksvatten",
+      "gravatten_tomning",
+      "kassett_tomning"
+    ],
+    "fee": "220 kr/dygn inkl el",
+    "description": "33 platser med el i Höganäs hamn. Servicehus med dusch, WC, tvättstuga, grå-/svartvattentömning. Öppen 1/6–31/8, endast husbilar.",
+    "url": "https://hbs.se/g-stb-t/stallplats",
+    "source": "egen"
+  },
+  {
+    "name": "Falsterbokanalens Båtklubb ställplats",
+    "query": "Falsterbokanalens båtklubb, Västra Hamnplan 1, Höllviken",
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "el",
+      "dusch",
+      "wc",
+      "kassett_tomning"
+    ],
+    "fee": "200 kr/dygn",
+    "description": "12 husbilsplatser med el vid Falsterbokanalen. Dusch, toaletter och latrintömning vid klubbhuset.",
+    "url": "https://falsterbokanalen.se/husbilar/",
+    "source": "egen"
+  },
+  {
+    "name": "Påskallaviks hamn ställplats",
+    "query": "Påskallaviks hamn, Påskallavik, Oskarshamns kommun",
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "el"
+    ],
+    "fee": "250 kr/dygn med el, 200 kr/dygn utan el",
+    "description": "13 platser vid havet i hamnen, drivs av Påskallaviks Båtklubb.",
+    "url": "https://www.pvbk.se/sallplats-husbil/",
+    "source": "egen"
+  },
+  {
+    "name": "Hällekis Ställplats",
+    "query": "Hällekis småbåtshamn, Hällekis, Götene kommun",
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "el",
+      "dusch",
+      "wc",
+      "kassett_tomning"
+    ],
+    "fee": "125 kr/dygn, 150 kr/dygn med el",
+    "description": "Ställplats vid småbåtshamnen nedanför Kinnekulle, drivs av Hällekis Båtklubb. 14 platser med el, latrintömning. Endast husbilar.",
+    "url": "https://www.hallekisbatklubb.se/stallplats.html",
+    "source": "egen"
+  },
+  {
+    "name": "Köpmanholmens Båtklubb ställplats",
+    "query": "Köpmanholmens båtklubb, Köpmanholmen, Örnsköldsviks kommun",
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "el",
+      "dricksvatten",
+      "dusch",
+      "wc"
+    ],
+    "fee": "från 150 kr/dygn",
+    "description": "10 platser vid Sanningssundet i Höga Kusten. Servicehus med dusch, WC.",
+    "url": "https://husbilskompisar.se/stallplatskartan/koepmanholmens-baatklubb",
+    "source": "egen"
+  },
+  {
+    "name": "Galvens Bygdegård ställplats",
+    "query": "Galvens bygdegård, Galven, Alfta, Ovanåkers kommun",
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "el",
+      "dricksvatten",
+      "wc",
+      "dusch"
+    ],
+    "fee": "från 150 kr/dygn",
+    "description": "4 platser med el vid bygdegården norr om Alfta. Öppet året runt.",
+    "url": "https://www.husbil.se/stallplatser/p/306/",
+    "source": "egen"
+  },
+  {
+    "name": "Gräsmyrs Bygdegård ställplats",
+    "query": "Gräsmyr loge och bygdegård, Gräsmyr, Nordmalings kommun",
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "el"
+    ],
+    "fee": "200 kr/natt med el, 150 kr utan",
+    "description": "25 ställplatser vid Gräsmyr loge/bygdegård. Swish.",
+    "url": "https://visitnordmaling.se/en/listing/stallplatser-grasmyr-bygdegard/",
+    "source": "egen"
+  },
+  {
+    "name": "Kalvsviks Bygdegård ställplats",
+    "query": "Kalvsviks bygdegård, Kalvsvik, Växjö kommun",
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "el",
+      "dricksvatten",
+      "dusch",
+      "wc",
+      "wifi"
+    ],
+    "description": "Ställplatser vid bygdegården söder om Växjö, med vatten, dusch, toalett, el och wifi.",
+    "url": "https://bygdegardarna.se/kalvsviks/stallplatser/",
+    "source": "egen"
+  },
+  {
+    "name": "Älgå Hembygdsgård ställplats",
+    "query": "Älgå hembygdsgård, Älgå, Arvika kommun",
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "el",
+      "wc",
+      "dricksvatten"
+    ],
+    "description": "10–12 platser vid hembygdsgården intill Glafsfjorden med badplats, toalett, färskvatten och el.",
+    "url": "https://visitvarmland.com/arvika/boende/camping/stallplats-for-husbilar-vid-alga-hembygdsgard",
+    "source": "egen"
+  },
+  {
+    "name": "Gräsmarks Hembygdsgård ställplats",
+    "query": "Gräsmarks hembygdsgård, Rottnavägen 7, Gräsmark, Sunne kommun",
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "el",
+      "wc",
+      "dusch",
+      "dricksvatten",
+      "kassett_tomning"
+    ],
+    "fee": "från 100 kr/dygn",
+    "description": "25 platser varav 8 med el vid hembygdsgården. Toalett, dusch, dricksvatten och kassettömning. Säsong 1/4–31/10.",
+    "url": "https://www.husbil.se/stallplatser/p/820/",
+    "source": "egen"
+  },
+  {
+    "name": "Rastplats Kiruna",
+    "query": "Rastplats Kiruna, Luossavaara",
+    "services": [
+      "latrin"
+    ],
+    "fee": "Gratis (rastplats)",
+    "description": "Vid E10 nedanför Luossavaara i Kiruna, toaletter och latrintömning.",
+    "url": "https://www.trafikverket.se/vara-projekt/projekt-i-norrbottens-lan/e10-ny-rastplats-kiruna/rastplats-kiruna-invigd/",
+    "source": "egen"
+  },
+  {
+    "name": "Rastplats Blåviksjön",
+    "query": "Rastplats Blåviksjön, Lycksele",
+    "services": [
+      "latrin"
+    ],
+    "fee": "Gratis (rastplats)",
+    "description": "Vid E12 mot Storuman. Latrintömning finns.",
+    "url": "https://www.husbilhusvagn.se/stallplats/blaviksjons-rastplats",
+    "source": "egen"
+  },
+  {
+    "name": "Tömningsstation Åmåls västra infart",
+    "query": "Rastplatsen vid västra infarten, Åmål",
+    "services": [
+      "latrin"
+    ],
+    "description": "Kommunal tömningsstation för husbilslatrin vid Åmåls västra infart. Källa: Åmåls kommun.",
+    "url": "https://amal.se/bygga-bo-och-leva-hallbart/avfall-och-atervinning/slamtomning-och-latrin/latrin-och-husbilslatrin",
+    "source": "egen"
+  },
+  {
+    "name": "Tömningsstation Säffle",
+    "query": "Olov Trätäljagatan 49, Säffle",
+    "services": [
+      "latrin"
+    ],
+    "description": "Tömningsstation för husbilslatrin vid Herrgårdsgymnasiet. Källa: Säffle kommun.",
+    "url": "https://saffle.se/boende-trafik-och-miljo/avfall-och-atervinning/slamtomning-och-latrin/latrin-och-husbilslatrin.html",
+    "source": "egen"
+  },
+  {
+    "name": "Svinö tömningsstation",
+    "query": "Svinö, Kalmar",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten"
+    ],
+    "description": "Vid ställplatsen på Svinö (Ölandsbrons fäste): färskvatten och tömning av latrin och gråvatten. Vinterstängd. Källa: Kalmar kommun.",
+    "url": "https://kalmar.se/trafik-och-resor/parkering/stallplatser-i-kalmar.html",
+    "source": "egen"
+  },
+  {
+    "name": "Borgholms tömningsstation",
+    "query": "Kapellvägen, Borgholm",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten"
+    ],
+    "description": "Central tömningsstation på Öland: färskvatten, gråvatten samt latrin (kassett och fast tank). Källa: Borgholms kommun.",
+    "url": "https://www.oland.se/en/latrine-emptying-borgholm-emptying-station",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplatsen Karlskoga",
+    "query": "Grönfeltsudden, Karlskoga",
+    "services": [
+      "stallplats",
+      "latrin",
+      "gravatten",
+      "vatten"
+    ],
+    "fee": "200 kr/dygn (100 kr lågsäsong)",
+    "description": "Kommunal ställplats med tömning för tank och toalett samt dricks- och gråvattenkranar. Öppen ca 1/4–31/10. Källa: Karlskoga kommun.",
+    "url": "https://karlskoga.se/trafik--resor/stallplatsen.html",
+    "source": "egen"
+  },
+  {
+    "name": "Bodele ställplats Uddevalla",
+    "query": "Bodele, Uddevalla",
+    "services": [
+      "stallplats",
+      "latrin",
+      "gravatten",
+      "vatten"
+    ],
+    "fee": "Tömning 100 kr, ingår för ställplatsgäster",
+    "description": "Kommunal ställplats med servicebyggnad: toalett, färskvatten, latrin- och gråvattentömning. Källa: Uddevalla kommun.",
+    "url": "https://www.uddevalla.se/kommun-och-politik/nyheter/nyhetsarkiv/2024-06-18-nu-oppnar-stallplatsen-for-husbilar-pa-bodele.html",
+    "source": "egen"
+  },
+  {
+    "name": "Visby avloppsreningsverk tömningsstation",
+    "query": "Färjeleden 5, Visby",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten"
+    ],
+    "fee": "Gratis",
+    "description": "Husbilar kan tömma latrin (kassett och tank) och gråvatten samt fylla färskvatten. Parkering ej tillåten. Källa: Region Gotland.",
+    "url": "https://hplats.se/listning/latrintomning-visby-avloppsreningsverk/",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplats Oset Huskvarna",
+    "query": "Alviksvägen, Huskvarna",
+    "services": [
+      "stallplats",
+      "latrin",
+      "gravatten",
+      "vatten"
+    ],
+    "description": "Kommunal ställplats vid Vättern med el, vatten, gråvattenbrunn och latrintömning. Källa: Jönköpings kommun.",
+    "url": "https://www.jonkoping.se/trafik--stadsplanering/parkering/parkeringar-i-jonkoping-huskvarna-och-granna/stallplats-pa-oset-huskvarna",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplats Stenhamra Västervik",
+    "query": "Stenhamra, Västervik",
+    "services": [
+      "stallplats",
+      "latrin",
+      "gravatten",
+      "vatten"
+    ],
+    "description": "Kommunal ställplats, 32 platser: färskvatten, avfallshantering, latrin- och gråvattentömning. Öppen maj–september. Källa: Västerviks kommun.",
+    "url": "https://www.vastervik.se/Trafik-och-gator/Parkering/parkering-for-husbilar/",
+    "source": "egen"
+  },
+  {
+    "name": "Skillinge hamn latrintömning",
+    "query": "Skillinge hamn, Skillinge",
+    "services": [
+      "latrin"
+    ],
+    "description": "Kommunal latrintömning vid hamnen. Källa: Simrishamns kommun.",
+    "url": "https://www.simrishamn.se/gata-park-och-natur/trafik/husbilar",
+    "source": "egen"
   }
 ]
