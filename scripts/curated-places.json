@@ -598,7 +598,6 @@
   },
   {
     "name": "Solängens Ställplats Perstorp",
-    "query": "Solängens ställplats, Perstorp",
     "services": [
       "latrin",
       "stallplats",
@@ -606,7 +605,9 @@
     ],
     "description": "Ställplats med toalett, dusch, kök, vatten samt latrin- och tanktömning. Källa: Hollistay.",
     "url": "https://www.hollistay.com/Sweden/perstorp/solangens-stallplats",
-    "source": "egen"
+    "source": "egen",
+    "lat": 56.153,
+    "lon": 13.4163
   },
   {
     "name": "Småbåtshamnen Simrishamn ställplats",
@@ -779,7 +780,6 @@
   },
   {
     "name": "Kyrkviken småbåtshamn Filipstad",
-    "query": "Kyrkviken, Filipstad",
     "services": [
       "latrin",
       "vatten",
@@ -787,7 +787,9 @@
     ],
     "description": "Latrintömning (lösa kassetter) 1/6–15/10, sex elplatser, vatten maj–oktober. Källa: Filipstads kommun.",
     "url": "https://www.filipstad.se/toppmeny/bogataochmiljo/avfallochrenhallning/slamochlatrintomning/latrin.3130.html",
-    "source": "egen"
+    "source": "egen",
+    "lat": 59.711985,
+    "lon": 14.172515
   },
   {
     "name": "Forshagaforsens Camping",
@@ -802,7 +804,6 @@
   },
   {
     "name": "Ställplats Degerfors Möckeln",
-    "query": "Strandbadet, Degerfors",
     "services": [
       "latrin",
       "vatten",
@@ -810,7 +811,9 @@
     ],
     "description": "Ställplatser med el, WC, dusch, latrintömning och färskvatten, 1/4–31/10. Källa: Visit Värmland.",
     "url": "https://www.kt-kuriren.se/2025/07/12/nya-stallplatser-for-husbil-i-degerfors-har-finns-el-toa-dusch-och-latrintomning-b0cf0",
-    "source": "egen"
+    "source": "egen",
+    "lat": 59.25673,
+    "lon": 14.452561
   },
   {
     "name": "Latrintömning Hällefors",
@@ -908,7 +911,6 @@
   },
   {
     "name": "Ställplats Göta kanal Söderköping",
-    "query": "Kanalhamnen, Söderköping",
     "services": [
       "latrin",
       "gravatten",
@@ -916,7 +918,9 @@
     ],
     "description": "Servicehus med tömning av grå-/svartvatten och kassettömningsmaskin, 500 m från centrum. Källa: Söderköpings kommun.",
     "url": "https://www.soderkoping.se/turism/ata--sova/stallplatser/",
-    "source": "egen"
+    "source": "egen",
+    "lat": 58.481282,
+    "lon": 16.33356
   },
   {
     "name": "Valdemarsviks gästhamn ställplats",
@@ -955,7 +959,6 @@
   },
   {
     "name": "Sjötorpets Camping Markaryd",
-    "query": "Sjötorpet, Markaryd",
     "services": [
       "latrin",
       "vatten",
@@ -963,11 +966,12 @@
     ],
     "description": "El, färskvatten, latrintömning, wifi. Källa: stallplatskartan.se.",
     "url": "https://stallplatskartan.se/sv/stallplats-markaryd/",
-    "source": "egen"
+    "source": "egen",
+    "lat": 56.464488,
+    "lon": 13.602297
   },
   {
     "name": "Den Sovande Älgen Markaryd",
-    "query": "Den Sovande Älgen, Markaryd",
     "services": [
       "latrin",
       "stallplats"
@@ -975,7 +979,9 @@
     "fee": "Från 200 kr/natt",
     "description": "15 platser med el, mars–november, latrintömning. Källa: husbil.se.",
     "url": "https://www.husbil.se/stallplatser/p/121/",
-    "source": "egen"
+    "source": "egen",
+    "lat": 56.49628,
+    "lon": 13.4557043
   },
   {
     "name": "Ställplats Askelövsgatan Växjö",
@@ -1071,7 +1077,6 @@
   },
   {
     "name": "Kårehamn ställplats",
-    "query": "Kårehamn, Öland",
     "services": [
       "latrin",
       "gravatten",
@@ -1079,29 +1084,21 @@
     ],
     "description": "Kommunal ställplats i hamnen med latrin- och gråvattentömning. Källa: Borgholms kommun.",
     "url": "https://www.borgholm.se/karehamn-stallplats/",
-    "source": "egen"
+    "source": "egen",
+    "lat": 56.9565264,
+    "lon": 16.8872577
   },
   {
     "name": "Ställplats Lillstrand Älvsbyn",
-    "query": "Lillstrand, Älvsbyn",
     "services": [
       "latrin",
       "stallplats"
     ],
     "description": "Ställplats med latrintömning. Källa: husbil.se.",
     "url": "https://www.husbil.se/stallplatser/p/1078/",
-    "source": "egen"
-  },
-  {
-    "name": "Tömningsstation Vilhelmina infocenter",
-    "query": "Turistinformationen, Vilhelmina",
-    "services": [
-      "latrin",
-      "gravatten"
-    ],
-    "description": "Tömning av svart- och gråvatten vid infocentret, för betalande campinggäster. Källa: stallplatserna.se.",
-    "url": "https://stallplatserna.se/vilhelmina/",
-    "source": "egen"
+    "source": "egen",
+    "lat": 65.6672127,
+    "lon": 20.9172169
   },
   {
     "name": "ÅVC Ljusnedal latrintömning",
