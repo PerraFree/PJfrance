@@ -1143,5 +1143,18 @@
     ],
     "description": "9 platser med el samt serviceanläggning med vattenpåfyllning och latrintömning vid Hanaslövsberget. Källa: Visit Alvesta.",
     "url": "https://www.husbil.se/stallplatser/o/Alvesta/"
+  },
+  {
+    "name": "Ställplats Haparandahamn",
+    "lat": 65.7719026,
+    "lon": 23.9045298,
+    "source": "egen",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "description": "Ställplats i Haparanda hamn med toalett, dusch, dricksvatten och latrintömning. Källa: husbil.se.",
+    "url": "https://www.husbil.se/stallplatser/p/308/"
   }
 ]
