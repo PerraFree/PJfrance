@@ -45,6 +45,19 @@ function servicesFromTags(tags: Record<string, string>): ServiceType[] {
 
   // Övernattning
   if (tags.tourism === 'caravan_site') services.add('stallplats')
+  // Parkeringar där husbil/husvagn uttryckligen är tillåten = ställplats
+  // (vanlig taggning för kommunala och föreningsdrivna ställplatser).
+  if (
+    tags.amenity === 'parking' &&
+    (tags.motorhome === 'yes' ||
+      tags.motorhome === 'designated' ||
+      tags.caravan === 'yes' ||
+      tags.caravan === 'designated') &&
+    tags.access !== 'private' &&
+    tags.access !== 'no'
+  ) {
+    services.add('stallplats')
+  }
   if (tags.tourism === 'camp_site') {
     // En camping räknas som ställplats om den uttryckligen tar husbil/husvagn
     // eller har husbilsinfrastruktur (el, tömning). Rena tältplatser och
@@ -106,6 +119,7 @@ function placeKind(tags: Record<string, string>): string | undefined {
   if (tags.tourism === 'caravan_site') return 'Ställplats för husbil'
   if (tags.tourism === 'camp_site') return 'Camping'
   if (tags.leisure === 'golf_course') return 'Ställplats vid golfklubb'
+  if (tags.amenity === 'parking') return 'Ställplats (parkering för husbil)'
   if (tags.leisure === 'marina' || tags.mooring) return 'Gästhamn/marina'
   if (tags.shop === 'gas') return 'Gasolförsäljning'
   if (tags.amenity === 'fuel') return 'Drivmedelsstation'
@@ -261,6 +275,8 @@ export async function fetchOsmStations(bounds: LatLngBounds): Promise<Station[]>
       nwr["amenity"="waste_disposal"](${bbox});
       nwr["amenity"="recycling"]["recycling_type"="centre"](${bbox});
       nwr["highway"="rest_area"](${bbox});
+      nwr["amenity"="parking"]["motorhome"~"^(yes|designated)$"](${bbox});
+      nwr["amenity"="parking"]["caravan"~"^(yes|designated)$"](${bbox});
     );
     out center tags;
   `

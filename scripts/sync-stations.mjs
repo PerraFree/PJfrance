@@ -52,6 +52,8 @@ area["ISO3166-1"="SE"][admin_level=2]->.se;
   nwr["amenity"="waste_disposal"](area.se);
   nwr["amenity"="recycling"]["recycling_type"="centre"](area.se);
   nwr["highway"="rest_area"](area.se);
+  nwr["amenity"="parking"]["motorhome"~"^(yes|designated)$"](area.se);
+  nwr["amenity"="parking"]["caravan"~"^(yes|designated)$"](area.se);
 );
 out center tags;
 `
@@ -83,6 +85,19 @@ function servicesFromTags(tags) {
     services.add('vatten')
   }
   if (tags.tourism === 'caravan_site') services.add('stallplats')
+  // Parkeringar där husbil/husvagn uttryckligen är tillåten = ställplats
+  // (vanlig taggning för kommunala och föreningsdrivna ställplatser).
+  if (
+    tags.amenity === 'parking' &&
+    (tags.motorhome === 'yes' ||
+      tags.motorhome === 'designated' ||
+      tags.caravan === 'yes' ||
+      tags.caravan === 'designated') &&
+    tags.access !== 'private' &&
+    tags.access !== 'no'
+  ) {
+    services.add('stallplats')
+  }
   if (tags.tourism === 'camp_site') {
     const openToPublic = tags.access !== 'private' && tags.access !== 'no'
     const notTentOnly = tags.tents !== 'only'
@@ -129,6 +144,7 @@ function placeKind(tags) {
   if (tags.tourism === 'caravan_site') return 'Ställplats för husbil'
   if (tags.tourism === 'camp_site') return 'Camping'
   if (tags.leisure === 'golf_course') return 'Ställplats vid golfklubb'
+  if (tags.amenity === 'parking') return 'Ställplats (parkering för husbil)'
   if (tags.leisure === 'marina' || tags.mooring) return 'Gästhamn/marina'
   if (tags.shop === 'gas') return 'Gasolförsäljning'
   if (tags.amenity === 'fuel') return 'Drivmedelsstation'
