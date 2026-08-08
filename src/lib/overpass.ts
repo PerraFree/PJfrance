@@ -83,6 +83,19 @@ function servicesFromTags(tags: Record<string, string>): ServiceType[] {
     services.add('gasol')
   }
 
+  // Sopor: sopstationer, återvinningscentraler och platser (rastplatser,
+  // ställplatser …) som uttryckligen har sopkärl/avfallshantering.
+  // Glas-/pappersigloos (recycling_type=container) tas inte med – där får
+  // man inte slänga hushållssopor.
+  if (
+    tags.amenity === 'waste_disposal' ||
+    tags.waste_disposal === 'yes' ||
+    (tags.amenity === 'recycling' && tags.recycling_type === 'centre') ||
+    (tags.highway === 'rest_area' && (tags.waste_basket === 'yes' || tags.bin === 'yes'))
+  ) {
+    services.add('sopor')
+  }
+
   return [...services]
 }
 
@@ -99,6 +112,9 @@ function placeKind(tags: Record<string, string>): string | undefined {
   if (tags.amenity === 'sanitary_dump_station') return 'Tömningsstation'
   if (tags.amenity === 'water_point') return 'Vattenpåfyllning'
   if (tags.amenity === 'drinking_water') return 'Dricksvatten'
+  if (tags.amenity === 'recycling' && tags.recycling_type === 'centre')
+    return 'Återvinningscentral'
+  if (tags.amenity === 'waste_disposal') return 'Sopstation'
   return undefined
 }
 
@@ -242,6 +258,9 @@ export async function fetchOsmStations(bounds: LatLngBounds): Promise<Station[]>
       nwr["leisure"="golf_course"]["motorhome"~"^(yes|designated)$"](${bbox});
       nwr["amenity"="fuel"]["fuel:lpg"="yes"](${bbox});
       nwr["shop"="gas"](${bbox});
+      nwr["amenity"="waste_disposal"](${bbox});
+      nwr["amenity"="recycling"]["recycling_type"="centre"](${bbox});
+      nwr["highway"="rest_area"](${bbox});
     );
     out center tags;
   `

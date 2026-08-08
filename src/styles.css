@@ -29,6 +29,7 @@
   --stallplats: #c14a00;
   --camping: #00695c;
   --gasol: #c62828;
+  --sopor: #455a64;
 }
 
 * {
@@ -579,6 +580,7 @@ button {
 .chip[data-service='stallplats'] .chip-ic { color: var(--stallplats); }
 .chip[data-service='camping'] .chip-ic { color: var(--camping); }
 .chip[data-service='gasol'] .chip-ic { color: var(--gasol); }
+.chip[data-service='sopor'] .chip-ic { color: var(--sopor); }
 
 .chip:hover {
   border-color: var(--border-strong);
@@ -604,6 +606,7 @@ button {
 .chip.active[data-service='stallplats'] { background: var(--stallplats); }
 .chip.active[data-service='camping'] { background: var(--camping); }
 .chip.active[data-service='gasol'] { background: var(--gasol); }
+.chip.active[data-service='sopor'] { background: var(--sopor); }
 
 .chip-count {
   font-size: 0.72rem;

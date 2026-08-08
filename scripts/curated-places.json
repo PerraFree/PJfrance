@@ -2,7 +2,11 @@
   {
     "name": "Svenljunga tömningsplats (Moga Returen)",
     "query": "Kyrkogatan 34, Svenljunga",
-    "services": ["gravatten", "latrin", "vatten"],
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
     "fee": "Gratis, inget abonnemang",
     "description": "Vid infarten till återvinningscentralen Moga Returen. Källa: Svenljunga kommun.",
     "url": "https://www.svenljunga.se/bygga-bo-miljo--trafik/vatten-och-avlopp/tomningsplats-for-husbilar"
@@ -10,7 +14,10 @@
   {
     "name": "Alvesta tömningsplats",
     "query": "Björnstorpsvägen 1, 342 30 Alvesta",
-    "services": ["gravatten", "latrin"],
+    "services": [
+      "gravatten",
+      "latrin"
+    ],
     "fee": "Gratis",
     "description": "Tömning av gråvatten och latrin för husbil/husvagn. Källa: Alvesta kommun.",
     "url": "https://www.alvesta.se/Bostad--Miljo/Vatten--avlopp/tomningsplats-for-husbilar-m.m.1/"
@@ -18,7 +25,10 @@
   {
     "name": "Vetlanda – Östanå Camping",
     "query": "Östanå Camping, Vetlanda",
-    "services": ["latrin", "vatten"],
+    "services": [
+      "latrin",
+      "vatten"
+    ],
     "fee": "Gratis",
     "description": "Latrintömning och färskvatten. Källa: Vetlanda kommun.",
     "url": "https://vetlanda.se/uppleva-och-gora/tips-och-inspiration/upplev-vetlanda-med-husbil/tomningsplats"
@@ -26,7 +36,10 @@
   {
     "name": "Norrköping – Inre hamnen",
     "query": "Inre hamnen, Norrköping",
-    "services": ["gravatten", "latrin"],
+    "services": [
+      "gravatten",
+      "latrin"
+    ],
     "fee": "Gratis",
     "description": "Tömning av gråvatten och latrin vid parkeringen i Inre hamnen. Källa: Norrköpings kommun.",
     "url": "https://norrkoping.se/boende-trafik-och-miljo/vatten-avlopp-dagvatten-och-avfall/latrintomning"
@@ -34,7 +47,10 @@
   {
     "name": "Gnesta tömningsstation",
     "query": "Ågatan, Gnesta",
-    "services": ["gravatten", "latrin"],
+    "services": [
+      "gravatten",
+      "latrin"
+    ],
     "fee": "Gratis under vår och sommar",
     "description": "Kommunal tömningsstation på Ågatan. Källa: Gnesta kommun.",
     "url": "https://www.gnesta.se/bostadmiljo/vattenochavlopp/kommunaltvattenochavlopp/tomningsstation.4.41b1e6ca165854d52266e477.html"
@@ -42,7 +58,9 @@
   {
     "name": "Härnösand latrintömning",
     "query": "Jaktstigen 3, Härnösand",
-    "services": ["latrin"],
+    "services": [
+      "latrin"
+    ],
     "fee": "Gratis",
     "description": "Latrintömning för husbil/husvagn. Källa: HEMAB, Härnösand.",
     "url": "https://www.hemab.se/atervinning/latrintomninghusbilhusvagn.4.8575e6181a2a345d3fc4f.html"
@@ -50,7 +68,11 @@
   {
     "name": "Åtvidaberg serviceställe för husbilar",
     "query": "Eksågsvägen, Åtvidaberg",
-    "services": ["gravatten", "latrin", "vatten"],
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
     "fee": "Gratis",
     "description": "Ca 350 m från väg 35. Tömning av gråvatten och latrintank samt färskvatten. Källa: Åtvidabergs kommun.",
     "url": "https://www.atvidaberg.se/nyheter/uppleva-och-gora/2024-07-29-servicestalle-for-husbilar"
@@ -59,9 +81,39 @@
     "name": "Borås Golfklubb – ställplats",
     "query": "Borås Golfklubb, Borås",
     "source": "egen",
-    "services": ["stallplats"],
-    "facilities": ["restaurang"],
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "restaurang"
+    ],
     "description": "Ställplats för husbil vid golfklubben, med restaurang. Se webbplatsen för el, vatten och avgift.",
     "url": "https://www.borasgolfklubb.se/restaurang-boende/stallplats"
+  },
+  {
+    "name": "Ginstavallen ställplats",
+    "query": "Ginstavallen, Vinberg, Falkenberg",
+    "source": "egen",
+    "services": [
+      "stallplats"
+    ],
+    "facilities": [
+      "wc",
+      "el",
+      "husbil",
+      "husvagn"
+    ],
+    "description": "Ställplats vid Ginstavallen (Vinbergs IF) utanför Falkenberg, nära väg 154."
+  },
+  {
+    "name": "Rastplats Illharjen",
+    "query": "Rastplats Illharjen, Vetlanda",
+    "source": "egen",
+    "services": [
+      "latrin",
+      "sopor"
+    ],
+    "fee": "Gratis (rastplats)",
+    "description": "Rastplats vid väg 31/47 söder om Vetlanda med latrintömning och sopkärl."
   }
 ]

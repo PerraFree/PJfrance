@@ -26,7 +26,7 @@ import { SERVICE_LABELS, FACILITY_LABELS } from './types'
  * gråvatten/latrin, fylla färskvatten eller gasol. Ställplats och camping är
  * inte egna filter – de visas som märkning på platser som erbjuder ovanstående.
  */
-const ALL_SERVICES: ServiceType[] = ['gravatten', 'latrin', 'vatten', 'gasol']
+const ALL_SERVICES: ServiceType[] = ['gravatten', 'latrin', 'vatten', 'sopor', 'gasol']
 
 /** Faciliteter man kan filtrera på (de mest efterfrågade av husbilsfolk). */
 const FILTERABLE_FACILITIES = [
@@ -302,6 +302,7 @@ export default function App() {
       gravatten: 0,
       latrin: 0,
       vatten: 0,
+      sopor: 0,
       stallplats: 0,
       camping: 0,
       gasol: 0,
@@ -566,7 +567,7 @@ export default function App() {
           <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" width="34" height="34" />
           <div>
             <h1>Tömningskartan</h1>
-            <p>Tömning · latrin · färskvatten · gasol – för husbil &amp; husvagn</p>
+            <p>Tömning · vatten · sopor · gasol – för husbil &amp; husvagn</p>
           </div>
           <button
             type="button"

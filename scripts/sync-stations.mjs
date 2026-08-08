@@ -49,6 +49,9 @@ area["ISO3166-1"="SE"][admin_level=2]->.se;
   nwr["leisure"="golf_course"]["motorhome"~"^(yes|designated)$"](area.se);
   nwr["amenity"="fuel"]["fuel:lpg"="yes"](area.se);
   nwr["shop"="gas"](area.se);
+  nwr["amenity"="waste_disposal"](area.se);
+  nwr["amenity"="recycling"]["recycling_type"="centre"](area.se);
+  nwr["highway"="rest_area"](area.se);
 );
 out center tags;
 `
@@ -107,6 +110,16 @@ function servicesFromTags(tags) {
   if (tags['fuel:lpg'] === 'yes' || tags.shop === 'gas' || tags['service:vehicle:lpg'] === 'yes') {
     services.add('gasol')
   }
+  // Sopor: sopstationer, återvinningscentraler och rastplatser med sopkärl.
+  // Glas-/pappersigloos (recycling_type=container) tas inte med.
+  if (
+    tags.amenity === 'waste_disposal' ||
+    tags.waste_disposal === 'yes' ||
+    (tags.amenity === 'recycling' && tags.recycling_type === 'centre') ||
+    (tags.highway === 'rest_area' && (tags.waste_basket === 'yes' || tags.bin === 'yes'))
+  ) {
+    services.add('sopor')
+  }
   return [...services]
 }
 
@@ -121,6 +134,9 @@ function placeKind(tags) {
   if (tags.amenity === 'fuel') return 'Drivmedelsstation'
   if (tags.amenity === 'sanitary_dump_station') return 'Tömningsstation'
   if (tags.amenity === 'water_point') return 'Vattenpåfyllning'
+  if (tags.amenity === 'recycling' && tags.recycling_type === 'centre')
+    return 'Återvinningscentral'
+  if (tags.amenity === 'waste_disposal') return 'Sopstation'
   return undefined
 }
 
@@ -254,8 +270,11 @@ function amenityFields(tags) {
 
 // ---------- Trafikverket ----------
 
-const LATRIN_RE = /latrin|sanit|dump|toalettöm/i
+// Bredare mönster så att inga varianter av Trafikverkets utrustningsnamn
+// missas ("Latrintömning", "Toalettömning", "Tömningsstation", "Sanitet" …).
+const LATRIN_RE = /latrin|sanit|dump|töm/i
 const WATER_RE = /f[äa]rskvatten|s[öo]tvatten|freshwater|drinking|dricksvatten|tappst[äa]lle|vattenp[åa]fyllning/i
+const WASTE_RE = /sop|avfall|återvinning|waste|refuse/i
 
 async function fetchTrafikverket(apiKey) {
   const body = `
@@ -289,11 +308,13 @@ async function fetchTrafikverket(apiKey) {
     const types = (p.Equipment ?? []).map((e) => e.Type ?? '')
     const hasLatrin = types.some((t) => LATRIN_RE.test(t))
     const hasWater = types.some((t) => WATER_RE.test(t))
-    if (!hasLatrin && !hasWater) continue
+    const hasWaste = types.some((t) => WASTE_RE.test(t))
+    if (!hasLatrin && !hasWater && !hasWaste) continue
     const services = []
     // Endast portabla toaletter enligt Trafikverket – inte gråvatten.
     if (hasLatrin) services.push('latrin')
     if (hasWater) services.push('vatten')
+    if (hasWaste) services.push('sopor')
     stations.push({
       id: `tv-${p.Id ?? `${lat},${lon}`}`,
       name: p.Name ? `Rastplats ${p.Name}` : 'Rastplats',

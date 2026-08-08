@@ -2,6 +2,7 @@ export type ServiceType =
   | 'gravatten'
   | 'latrin'
   | 'vatten'
+  | 'sopor'
   | 'stallplats'
   | 'camping'
   | 'gasol'
@@ -63,6 +64,7 @@ export const SERVICE_LABELS: Record<ServiceType, string> = {
   gravatten: 'Gråvatten',
   latrin: 'Latrin/toalett',
   vatten: 'Färskvatten',
+  sopor: 'Sopor',
   stallplats: 'Ställplats',
   camping: 'Camping',
   gasol: 'Gasol/LPG',
@@ -76,6 +78,7 @@ export const SERVICE_COLORS: Record<ServiceType, string> = {
   gravatten: '#6d4c41',
   latrin: '#7b1fa2',
   vatten: '#01659b',
+  sopor: '#455a64',
   stallplats: '#c14a00',
   camping: '#00695c',
   gasol: '#c62828',
