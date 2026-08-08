@@ -148,7 +148,7 @@
   },
   {
     "name": "Mjölkeröds Golfklubb ställplats",
-    "query": "Mjölkeröds golfklubb, Mjölkeröd 22, Tanumshede",
+    "query": "Mjölkeröd, Tanumshede",
     "services": [
       "stallplats"
     ],
@@ -162,7 +162,7 @@
   },
   {
     "name": "Skepparslövs Golfklubb ställplats",
-    "query": "Skepparslövs Golfklubb, Sätesvägen 14, Kristianstad",
+    "query": "Sätesvägen 14, Kristianstad",
     "services": [
       "stallplats"
     ],
@@ -178,7 +178,7 @@
   },
   {
     "name": "Koberg Golfklubb ställplats",
-    "query": "Koberg GK, Stora Ekeskogen, Sollebrunn",
+    "query": "Koberg, Sollebrunn",
     "services": [
       "stallplats"
     ],
@@ -195,7 +195,7 @@
   },
   {
     "name": "Ställplats BK Najaden",
-    "query": "BK Najaden, Strandgatan 3, Tullkammarkajen, Halmstad",
+    "query": "Strandgatan 3, Halmstad",
     "services": [
       "stallplats"
     ],
@@ -231,7 +231,7 @@
   },
   {
     "name": "Falsterbokanalens Båtklubb ställplats",
-    "query": "Falsterbokanalens båtklubb, Västra Hamnplan 1, Höllviken",
+    "query": "Falsterbokanalen, Höllviken",
     "services": [
       "stallplats"
     ],
@@ -296,7 +296,7 @@
   },
   {
     "name": "Galvens Bygdegård ställplats",
-    "query": "Galvens bygdegård, Galven, Alfta, Ovanåkers kommun",
+    "query": "Galven, Alfta",
     "services": [
       "stallplats"
     ],
@@ -399,7 +399,7 @@
   },
   {
     "name": "Tömningsstation Åmåls västra infart",
-    "query": "Rastplatsen vid västra infarten, Åmål",
+    "query": "Västra infarten, Åmål",
     "services": [
       "latrin"
     ],
