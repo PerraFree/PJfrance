@@ -148,7 +148,6 @@
   },
   {
     "name": "Mjölkeröds Golfklubb ställplats",
-    "query": "Mjölkeröd, Tanumshede",
     "services": [
       "stallplats"
     ],
@@ -158,7 +157,9 @@
     "fee": "200 kr/natt med bokad golf, 250 kr/natt utan",
     "description": "Ställplatser med el vid golfbanan nära Grebbestad.",
     "url": "https://mjolkerodgk.se/stallplatser-for-husbil/",
-    "source": "egen"
+    "source": "egen",
+    "lat": 58.7528877,
+    "lon": 11.2409342
   },
   {
     "name": "Skepparslövs Golfklubb ställplats",
@@ -178,7 +179,6 @@
   },
   {
     "name": "Koberg Golfklubb ställplats",
-    "query": "Koberg, Sollebrunn",
     "services": [
       "stallplats"
     ],
@@ -191,7 +191,9 @@
     "fee": "150 kr/natt vid golfspel, 250 kr/natt utan golf",
     "description": "13 platser med el nära klubbhuset. WC/dusch, dricksvatten; ingen tömning.",
     "url": "https://koberggk.se/boende/husbil-husvagnsplatser/",
-    "source": "egen"
+    "source": "egen",
+    "lat": 58.165738,
+    "lon": 12.394815
   },
   {
     "name": "Ställplats BK Najaden",
@@ -296,7 +298,6 @@
   },
   {
     "name": "Galvens Bygdegård ställplats",
-    "query": "Galven, Alfta",
     "services": [
       "stallplats"
     ],
@@ -309,7 +310,9 @@
     "fee": "från 150 kr/dygn",
     "description": "4 platser med el vid bygdegården norr om Alfta. Öppet året runt.",
     "url": "https://www.husbil.se/stallplatser/p/306/",
-    "source": "egen"
+    "source": "egen",
+    "lat": 61.4612378,
+    "lon": 16.1763898
   },
   {
     "name": "Gräsmyrs Bygdegård ställplats",
@@ -399,13 +402,14 @@
   },
   {
     "name": "Tömningsstation Åmåls västra infart",
-    "query": "Västra infarten, Åmål",
     "services": [
       "latrin"
     ],
     "description": "Kommunal tömningsstation för husbilslatrin vid Åmåls västra infart. Källa: Åmåls kommun.",
     "url": "https://amal.se/bygga-bo-och-leva-hallbart/avfall-och-atervinning/slamtomning-och-latrin/latrin-och-husbilslatrin",
-    "source": "egen"
+    "source": "egen",
+    "lat": 59.054979,
+    "lon": 12.676764
   },
   {
     "name": "Tömningsstation Säffle",
@@ -443,7 +447,6 @@
   },
   {
     "name": "Ställplatsen Karlskoga",
-    "query": "Grönfeltsudden, Karlskoga",
     "services": [
       "stallplats",
       "latrin",
@@ -453,7 +456,9 @@
     "fee": "200 kr/dygn (100 kr lågsäsong)",
     "description": "Kommunal ställplats med tömning för tank och toalett samt dricks- och gråvattenkranar. Öppen ca 1/4–31/10. Källa: Karlskoga kommun.",
     "url": "https://karlskoga.se/trafik--resor/stallplatsen.html",
-    "source": "egen"
+    "source": "egen",
+    "lat": 59.3211642,
+    "lon": 14.536561
   },
   {
     "name": "Bodele ställplats Uddevalla",
