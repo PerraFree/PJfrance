@@ -332,17 +332,37 @@ async function fetchTrafikverket(apiKey) {
 // ---------- Kommunala platser (geokodas via Nominatim) ----------
 
 async function geocode(query) {
-  const url =
-    'https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=se&q=' +
-    encodeURIComponent(query)
-  const res = await fetch(url, {
-    headers: { 'User-Agent': USER_AGENT, 'Accept-Language': 'sv' },
+  // 1) Nominatim (exakta adresser)
+  try {
+    const url =
+      'https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=se&q=' +
+      encodeURIComponent(query)
+    const res = await fetch(url, {
+      headers: { 'User-Agent': USER_AGENT, 'Accept-Language': 'sv' },
+      signal: AbortSignal.timeout(30_000),
+    })
+    if (res.ok) {
+      const json = await res.json()
+      if (json.length) return { lat: parseFloat(json[0].lat), lon: parseFloat(json[0].lon) }
+    }
+  } catch {
+    /* prova reserven */
+  }
+  // 2) Photon (Komoot) – bättre på namn som "Ginstavallen" utan gatuadress
+  const purl =
+    'https://photon.komoot.io/api/?limit=1&bbox=10.5,55.0,24.5,69.2&q=' + encodeURIComponent(query)
+  const pres = await fetch(purl, {
+    headers: { 'User-Agent': USER_AGENT },
     signal: AbortSignal.timeout(30_000),
   })
-  if (!res.ok) throw new Error(`Nominatim svarade ${res.status}`)
-  const json = await res.json()
-  if (!json.length) return null
-  return { lat: parseFloat(json[0].lat), lon: parseFloat(json[0].lon) }
+  if (!pres.ok) throw new Error(`Photon svarade ${pres.status}`)
+  const pjson = await pres.json()
+  const hit = (pjson.features ?? []).find(
+    (f) => f.properties?.countrycode === 'SE' && f.geometry?.coordinates,
+  )
+  if (!hit) return null
+  const [lon, lat] = hit.geometry.coordinates
+  return { lat, lon }
 }
 
 async function fetchCurated() {

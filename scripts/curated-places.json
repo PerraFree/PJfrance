@@ -92,7 +92,7 @@
   },
   {
     "name": "Ginstavallen ställplats",
-    "query": "Ginstavallen, Vinberg, Falkenberg",
+    "query": "Ginstavallen, Falkenberg",
     "source": "egen",
     "services": [
       "stallplats"
@@ -107,7 +107,7 @@
   },
   {
     "name": "Rastplats Illharjen",
-    "query": "Rastplats Illharjen, Vetlanda",
+    "query": "Illharjen, Vetlanda",
     "source": "egen",
     "services": [
       "latrin",
