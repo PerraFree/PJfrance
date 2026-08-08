@@ -524,5 +524,627 @@
     "description": "Kommunal latrintömning vid hamnen. Källa: Simrishamns kommun.",
     "url": "https://www.simrishamn.se/gata-park-och-natur/trafik/husbilar",
     "source": "egen"
+  },
+  {
+    "name": "Ställplats Burlövs egnahem",
+    "query": "Burlövs egnahem, Burlöv",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "fee": "188 kr",
+    "description": "Ställplats med latrintömning. Källa: stallplatserna.se.",
+    "url": "https://stallplatserna.se/burl%C3%B6vs-egnahem/",
+    "source": "egen"
+  },
+  {
+    "name": "Rovelyckan ställplats",
+    "query": "Rovelyckan, Höör",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "fee": "Från 200 kr",
+    "description": "Ställplats vid väg 13, 7 platser med el, öppen året runt. Gråvatten- och latrintömning, vatten och sophantering. Källa: Husbil.se.",
+    "url": "https://www.husbil.se/stallplatser/p/516/",
+    "source": "egen"
+  },
+  {
+    "name": "Kristianstads Ställplats",
+    "query": "Kanalgatan 100, Kristianstad",
+    "services": [
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "description": "Kommunal ställplats vid Sommarlust med avloppstömning och vatten dygnet runt. Källa: Kristianstads kommun.",
+    "url": "https://www.kristianstad.se/trafikochresor/trafikochgator/parkering/husbil.4469.html",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplats Lagunen Limhamn",
+    "query": "Vaktgatan 9, Limhamn, Malmö",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "description": "Ställplats vid Ribersborgsfältet. El, toalett, dricksvatten och latrintömning. Källa: Husbil.se.",
+    "url": "https://www.husbil.se/stallplatser/p/18/",
+    "source": "egen"
+  },
+  {
+    "name": "Limhamns gästhamn latrintömning",
+    "query": "Limhamns småbåtshamn, Malmö",
+    "services": [
+      "latrin"
+    ],
+    "description": "Latrintömning i gästhamnen. Källa: Husbilsklubben.se.",
+    "url": "https://www.husbilsklubben.se/threads/latrint%C3%B6mning-malm%C3%B6.73804/",
+    "source": "egen"
+  },
+  {
+    "name": "Osby Camping",
+    "query": "Ebbarpsvägen 84, Osby",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "description": "Camping med latrintömningsautomat och servicehus. Källa: stallplatskartan.se.",
+    "url": "https://www.stallplatskartan.se/sv/osby-camping/",
+    "source": "egen"
+  },
+  {
+    "name": "Solängens Ställplats Perstorp",
+    "query": "Solängens ställplats, Perstorp",
+    "services": [
+      "latrin",
+      "stallplats",
+      "vatten"
+    ],
+    "description": "Ställplats med toalett, dusch, kök, vatten samt latrin- och tanktömning. Källa: Hollistay.",
+    "url": "https://www.hollistay.com/Sweden/perstorp/solangens-stallplats",
+    "source": "egen"
+  },
+  {
+    "name": "Småbåtshamnen Simrishamn ställplats",
+    "query": "Småbåtshamnen, Simrishamn",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "description": "7 platser, öppen året runt. Latrintömning i hamnen, servicehus och dusch. Källa: Simrishamns kommun.",
+    "url": "https://www.simrishamn.se/gata-park-och-natur/trafik/husbilar",
+    "source": "egen"
+  },
+  {
+    "name": "Skåne Camp Bara",
+    "query": "Bara, Svedala kommun",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "description": "Ställplats med kassett- och gråvattentömning samt färskvatten. Källa: stallplatserna.se.",
+    "url": "https://stallplatserna.se/bara/",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplats Bengtsfors",
+    "query": "Ekagatan, Bengtsfors",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "description": "10 platser nära Dalslands kanal. Dusch, toalett, latrintömning, tvätt och vatten. Källa: vastsverige.com.",
+    "url": "https://www.vastsverige.com/en/bengtsfors/produkter/parking-area-for-mobile-homes-bengtsfors/",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplats CSS Karlsborg",
+    "query": "Västra Varvsgatan 6, Karlsborg",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "description": "32 platser med el nära centrum. Tömning av svart- och gråvatten samt kassett. Källa: vastsverige.com.",
+    "url": "https://www.vastsverige.com/karlsborg/produkter/stallplats-css/",
+    "source": "egen"
+  },
+  {
+    "name": "Husbilsplats Koön Marstrand",
+    "query": "Koön, Marstrand, Kungälv",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "fee": "180 kr/dygn",
+    "description": "Kommunala platser med färskvatten och latrintömning 1/5–30/9. Källa: kungalv.se.",
+    "url": "https://www.kungalv.se/trafik--gator/parkering/parkera-stora-fordon/",
+    "source": "egen"
+  },
+  {
+    "name": "Hamnservice Lysekil tömning",
+    "query": "Havsbadet, Lysekil",
+    "services": [
+      "latrin",
+      "gravatten"
+    ],
+    "description": "Kommunal tömning av latrin och gråvatten nära havsbadet. Källa: hamn.lysekil.se.",
+    "url": "https://hamn.lysekil.se/sv/TomningLatrin",
+    "source": "egen"
+  },
+  {
+    "name": "Kinna resecentrum husbilsplatser",
+    "query": "Kinna station, Kinna",
+    "services": [
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "fee": "Gratis",
+    "description": "Fyra platser vid resecentrum med gratis dricksvatten och avloppstömning. Källa: upplevmark.com.",
+    "url": "https://www.upplevmark.com/sv/boende/stallplats-for-husbil/",
+    "source": "egen"
+  },
+  {
+    "name": "Sunnanå hamn",
+    "query": "Sunnanå hamn, Mellerud",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "description": "Hamnområde vid Vänern: toaletter, dusch, latrintömning, färskvatten. April–september. Källa: Caravan Club.",
+    "url": "https://caravanclub.se/fmc/artikel/harlig-sommarstallplats/",
+    "source": "egen"
+  },
+  {
+    "name": "Melleruds Golfbana ställplats",
+    "query": "Melleruds golfbana, Mellerud",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "description": "6 platser med el norr om Mellerud. Latrintömning. Maj–september. Källa: husbil.se.",
+    "url": "https://www.husbil.se/stallplatser/p/756/",
+    "source": "egen"
+  },
+  {
+    "name": "Avesta gästhamn",
+    "query": "Avesta gästhamn, Avesta",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "description": "Latrin- och gråvattentömning vid gästhamnen. Källa: dalarna.nu.",
+    "url": "https://dalarna.nu/latrintomning-dalarna/",
+    "source": "egen"
+  },
+  {
+    "name": "Sjösidan Främby Udde",
+    "query": "Främby Udde 20, Falun",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "description": "Ställplats vid Runn med latrin- och gråvattentömning. Källa: husbil.se.",
+    "url": "https://www.husbil.se/stallplatser/p/938/",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplats Skuthamn Ludvika",
+    "query": "Skuthamn, Ludvika",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "description": "Kommunal ställplats vid Väsman: svart- och gråvattentömning samt färskvatten. Källa: Husbilskompisar.",
+    "url": "https://husbilsresorochaventyr.se/stallplats-skuthamn-ludvika/",
+    "source": "egen"
+  },
+  {
+    "name": "First Camp Orsa tömningsstation",
+    "query": "Bowlingvägen 1, Orsa",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "fee": "60 kr för passerande, gratis för gäster",
+    "description": "Latrin- och gråvattentömning samt färskvatten, året runt. Källa: First Camp.",
+    "url": "https://firstcamp.se/destinationer/orsa-dalarna",
+    "source": "egen"
+  },
+  {
+    "name": "OKQ8 Rättvik latrintömning",
+    "query": "OKQ8, Rättvik",
+    "services": [
+      "latrin"
+    ],
+    "description": "Latrintömning för husbil vid macken. Källa: dalarna.nu.",
+    "url": "https://dalarna.nu/latrintomning-dalarna/",
+    "source": "egen"
+  },
+  {
+    "name": "Kyrkviken småbåtshamn Filipstad",
+    "query": "Kyrkviken, Filipstad",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "description": "Latrintömning (lösa kassetter) 1/6–15/10, sex elplatser, vatten maj–oktober. Källa: Filipstads kommun.",
+    "url": "https://www.filipstad.se/toppmeny/bogataochmiljo/avfallochrenhallning/slamochlatrintomning/latrin.3130.html",
+    "source": "egen"
+  },
+  {
+    "name": "Forshagaforsens Camping",
+    "query": "Forshagaforsens Camping, Forshaga",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "description": "Camping i centrala Forshaga med latrintömning. Källa: Husbil & Husvagn.",
+    "url": "https://www.husbilhusvagn.se/camping/forshagaforsens-camping",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplats Degerfors Möckeln",
+    "query": "Strandbadet, Degerfors",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "description": "Ställplatser med el, WC, dusch, latrintömning och färskvatten, 1/4–31/10. Källa: Visit Värmland.",
+    "url": "https://www.kt-kuriren.se/2025/07/12/nya-stallplatser-for-husbil-i-degerfors-har-finns-el-toa-dusch-och-latrintomning-b0cf0",
+    "source": "egen"
+  },
+  {
+    "name": "Latrintömning Hällefors",
+    "query": "Sikforsvägen, Hällefors",
+    "services": [
+      "latrin",
+      "vatten"
+    ],
+    "fee": "Gratis",
+    "description": "Uppställningsyta med gratis vatten och latrintömning. Källa: bergslagen.se.",
+    "url": "https://www.bergslagen.se/boende/stallplats.html",
+    "source": "egen"
+  },
+  {
+    "name": "Tömningsstation Gärdet Stockholm",
+    "query": "Lindarängsvägen, Gärdet, Stockholm",
+    "services": [
+      "latrin",
+      "gravatten"
+    ],
+    "fee": "Gratis",
+    "description": "Öppen tömningsstation för bussar och husbilar: gråvatten och kassett. Källa: husbilsplats.se.",
+    "url": "https://husbilsplats.se/locations/tomningsplats-stockholm/",
+    "source": "egen"
+  },
+  {
+    "name": "Sigtuna gästhamn tömningsstation",
+    "query": "Sigtuna gästhamn, Sigtuna",
+    "services": [
+      "latrin",
+      "vatten"
+    ],
+    "fee": "280 kr/natt inkl tömning vid övernattning",
+    "description": "Tömningsstation vid gästhamnspiren; servicehus med latrintömning och vatten. Källa: stallplatserna.se.",
+    "url": "https://stallplatserna.se/sigtuna/",
+    "source": "egen"
+  },
+  {
+    "name": "Norrtälje Sportcentrum ställplats",
+    "query": "Sportcentrum, Norrtälje",
+    "services": [
+      "stallplats"
+    ],
+    "description": "Fem kommunala husbilsplatser med el, gångavstånd till centrum. Källa: Norrtälje kommun.",
+    "url": "https://www.norrtalje.se/info/trafik-gator-parker/resa-parkera-och-ladda/stallplatser/",
+    "source": "egen"
+  },
+  {
+    "name": "Petes EKOgård ställplats",
+    "query": "Petes, Hablingbo, Gotland",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "description": "Ställplats på södra Gotland – en av få som tar emot fast toatank. Dusch och toalett. Källa: petesekogard.se.",
+    "url": "https://www.petesekogard.se/service-f%C3%B6r-fricamping",
+    "source": "egen"
+  },
+  {
+    "name": "Skogssjö Bad & Camping",
+    "query": "Skogssjön, Mjölby",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "description": "Husbilsplatser med el, dusch, toalett och latrintömning. Källa: stallplatskartan.se.",
+    "url": "https://stallplatskartan.se/sv/stallplats-mjolby/",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplats Södra Allén Motala",
+    "query": "Södra Allén, Motala",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "description": "El 10 A, wifi, färskvatten samt tömning av gråvatten och toatank. Källa: sodraallen.se.",
+    "url": "https://www.sodraallen.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplats Motala Verkstad",
+    "query": "Motala Verkstad, Motala",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "description": "Vid Göta kanal med drive over-tömning av svart- och gråvatten. Källa: gotakanal.se.",
+    "url": "https://www.gotakanal.se/sv/boka/boende/2655246/st%C3%A4llplats-motala-verkstad/detaljer",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplats Göta kanal Söderköping",
+    "query": "Kanalhamnen, Söderköping",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "description": "Servicehus med tömning av grå-/svartvatten och kassettömningsmaskin, 500 m från centrum. Källa: Söderköpings kommun.",
+    "url": "https://www.soderkoping.se/turism/ata--sova/stallplatser/",
+    "source": "egen"
+  },
+  {
+    "name": "Valdemarsviks gästhamn ställplats",
+    "query": "Valdemarsviks gästhamn, Valdemarsvik",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "fee": "Från 175 kr/natt",
+    "description": "24 platser med el i centrala Valdemarsvik, året runt, latrintömning. Källa: husbil.se.",
+    "url": "https://www.husbil.se/stallplatser/p/379/",
+    "source": "egen"
+  },
+  {
+    "name": "Rasta Eksjö tömningsstation",
+    "query": "Rasta, Eksjö",
+    "services": [
+      "latrin"
+    ],
+    "fee": "50 kr",
+    "description": "Latrintömning vid Rasta ca 3,5 km från centrum. Källa: psidan.se.",
+    "url": "https://www.psidan.se/sv/eksjo",
+    "source": "egen"
+  },
+  {
+    "name": "Brohagen ställplats Habo",
+    "query": "Brohagen, Habo",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "description": "Serviceplats vid Habo kyrka med tömning och vatten dygnet runt. Källa: husbil.se.",
+    "url": "https://www.husbil.se/stallplatser/o/Habo/",
+    "source": "egen"
+  },
+  {
+    "name": "Sjötorpets Camping Markaryd",
+    "query": "Sjötorpet, Markaryd",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "description": "El, färskvatten, latrintömning, wifi. Källa: stallplatskartan.se.",
+    "url": "https://stallplatskartan.se/sv/stallplats-markaryd/",
+    "source": "egen"
+  },
+  {
+    "name": "Den Sovande Älgen Markaryd",
+    "query": "Den Sovande Älgen, Markaryd",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "fee": "Från 200 kr/natt",
+    "description": "15 platser med el, mars–november, latrintömning. Källa: husbil.se.",
+    "url": "https://www.husbil.se/stallplatser/p/121/",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplats Askelövsgatan Växjö",
+    "query": "Askelövsgatan, Växjö",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "description": "Central ställplats med tömningsmöjlighet. Källa: husbil.se.",
+    "url": "https://www.husbil.se/stallplatser/o/Vaxjo/",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplats Ringvägen Högsby",
+    "query": "Ringvägen 4, Högsby",
+    "services": [
+      "stallplats"
+    ],
+    "description": "Fyra platser bakom kommunhuset, dygnet runt. Källa: Högsby kommun.",
+    "url": "https://hogsby.se/uppleva-och-goera/turism/staellplatser-foer-husbilar/",
+    "source": "egen"
+  },
+  {
+    "name": "Mönsterås Gästhamn",
+    "query": "Mönsterås gästhamn, Mönsterås",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "description": "12 platser varav 8 med el, latrintömning. Källa: husbil.se.",
+    "url": "https://www.husbil.se/stallplatser/p/108/",
+    "source": "egen"
+  },
+  {
+    "name": "Oskarshamns Gästhamn",
+    "query": "Brädholmen, Oskarshamn",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "description": "Latrintömning vid gästhamnen för betalande gäster. Källa: Oskarshamns kommun.",
+    "url": "https://www.husvagnochcamping.se/artiklar/artikel/20220414/oskarshamns-gasthamn-centralt-lage-i-stan/",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplats Tuna Torg",
+    "query": "Tuna, Vimmerby kommun",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "description": "El, toalett, dusch, dricksvatten, latrintömning. Källa: husbil.se.",
+    "url": "https://www.husbil.se/stallplatser/p/507/",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplats Väggaviken Karlshamn",
+    "query": "Väggaviken, Karlshamn",
+    "services": [
+      "stallplats",
+      "vatten"
+    ],
+    "fee": "200 kr/dygn",
+    "description": "1 maj–30 sept, el, vatten, servicehus i Väggahamnen. Källa: Visit Karlshamn.",
+    "url": "https://visitkarlshamn.se/resa/husbil/",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplats Jönköping City",
+    "query": "Herkulesvägen 25, Jönköping",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "description": "Central ställplats med CamperClean, gråvattentömning och färskvatten. Källa: husbil.se.",
+    "url": "https://www.husbil.se/stallplatser/p/758/",
+    "source": "egen"
+  },
+  {
+    "name": "Böda ställplats",
+    "query": "Böda hamn, Öland",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "description": "Kommunal ställplats med latrin- och gråvattentömning. Källa: Borgholms kommun.",
+    "url": "https://www.borgholm.se/boda-stallplats/",
+    "source": "egen"
+  },
+  {
+    "name": "Kårehamn ställplats",
+    "query": "Kårehamn, Öland",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "description": "Kommunal ställplats i hamnen med latrin- och gråvattentömning. Källa: Borgholms kommun.",
+    "url": "https://www.borgholm.se/karehamn-stallplats/",
+    "source": "egen"
+  },
+  {
+    "name": "Ställplats Lillstrand Älvsbyn",
+    "query": "Lillstrand, Älvsbyn",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "description": "Ställplats med latrintömning. Källa: husbil.se.",
+    "url": "https://www.husbil.se/stallplatser/p/1078/",
+    "source": "egen"
+  },
+  {
+    "name": "Tömningsstation Vilhelmina infocenter",
+    "query": "Turistinformationen, Vilhelmina",
+    "services": [
+      "latrin",
+      "gravatten"
+    ],
+    "description": "Tömning av svart- och gråvatten vid infocentret, för betalande campinggäster. Källa: stallplatserna.se.",
+    "url": "https://stallplatserna.se/vilhelmina/",
+    "source": "egen"
+  },
+  {
+    "name": "ÅVC Ljusnedal latrintömning",
+    "query": "Industrivägen, Ljusnedal",
+    "services": [
+      "latrin"
+    ],
+    "description": "Latrintömning vid återvinningscentralen. Källa: Vatten och miljöresurs (Härjedalen).",
+    "url": "https://www.vattenmiljoresurs.se/bracke/avfall-och-atervinning/slamtomning/latrin",
+    "source": "egen"
+  },
+  {
+    "name": "Sundsvalls Gästhamn latrintömning",
+    "query": "Sundsvalls gästhamn, Sundsvall",
+    "services": [
+      "latrin"
+    ],
+    "fee": "Avgift",
+    "description": "Latrintömning samt toalett/dusch mot avgift. Källa: Sundsvalls kommun.",
+    "url": "https://sundsvall.se/kommun/samhallsplanering-och-trafik/bilparkering/hitta-parkering/parkering-for-husbil",
+    "source": "egen"
+  },
+  {
+    "name": "Öjestrand GK ställplats",
+    "query": "Öjestrands golfklubb, Njurunda",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "description": "El, servicehus och latrintömning. Källa: stallplatskartan.se.",
+    "url": "https://stallplatskartan.se/sv/stallplats-sundsvall/",
+    "source": "egen"
+  },
+  {
+    "name": "Hanaslöv ställplats",
+    "query": "Hanaslöv, Alvesta",
+    "source": "egen",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "description": "9 platser med el samt serviceanläggning med vattenpåfyllning och latrintömning vid Hanaslövsberget. Källa: Visit Alvesta.",
+    "url": "https://www.husbil.se/stallplatser/o/Alvesta/"
   }
 ]
