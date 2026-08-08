@@ -134,7 +134,6 @@
   },
   {
     "name": "Dala-Järna Idrottsplats (Dala-Järna IK)",
-    "query": "Dala-Järna idrottsplats, Dala-Järna, Vansbro kommun",
     "services": [
       "stallplats"
     ],
@@ -144,7 +143,9 @@
     ],
     "description": "20 platser utan el vid idrottsplatsen, drivs av Dala-Järna IK.",
     "url": "https://www.visitdalarna.se/boende/anlaggning/dala-jarna-idrottsplats",
-    "source": "egen"
+    "source": "egen",
+    "lat": 60.553,
+    "lon": 14.341
   },
   {
     "name": "Mjölkeröds Golfklubb ställplats",
@@ -502,16 +503,17 @@
   },
   {
     "name": "Ställplats Stenhamra Västervik",
-    "query": "Stenhamra, Västervik",
     "services": [
       "stallplats",
       "latrin",
       "gravatten",
       "vatten"
     ],
-    "description": "Kommunal ställplats, 32 platser: färskvatten, avfallshantering, latrin- och gråvattentömning. Öppen maj–september. Källa: Västerviks kommun.",
+    "description": "Kommunal ställplats vid Stenhamraparkeringen, Gamla Norr – 5–7 min promenad till centrum. 32 platser: färskvatten, avfallshantering, latrin- och gråvattentömning. Öppen maj–september. Källa: Västerviks kommun.",
     "url": "https://www.vastervik.se/Trafik-och-gator/Parkering/parkering-for-husbilar/",
-    "source": "egen"
+    "source": "egen",
+    "lat": 57.766,
+    "lon": 16.633
   },
   {
     "name": "Skillinge hamn latrintömning",
