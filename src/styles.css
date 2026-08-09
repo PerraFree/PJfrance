@@ -1182,6 +1182,18 @@ button {
   text-decoration: none;
 }
 
+/* Foto av platsen i popupen (från OSM/registret när det finns).
+   Innehållets marginal är 13px 15px (se .station-popup ovan) – fotot går
+   kant i kant upptill och rundas som popupen. */
+.popup-photo {
+  display: block;
+  width: calc(100% + 30px);
+  margin: -13px -15px 10px;
+  max-height: 150px;
+  object-fit: cover;
+  border-radius: 11px 11px 0 0;
+}
+
 .popup .source {
   margin: 6px 0 0;
   font-size: 0.7rem;
@@ -1389,6 +1401,19 @@ button {
     flex-wrap: wrap;
     gap: 6px;
     padding: 2px 0;
+  }
+
+  /* Minimalt läge när en plats är vald: bara handtaget + appnamnet syns,
+     så kartan och popupen får hela ytan. Tryck på sheeten återställer. */
+  .panel.mini > *:not(.sheet-handle):not(.brand) {
+    display: none !important;
+  }
+  .panel.mini .brand {
+    padding-top: 0;
+    padding-bottom: 4px;
+  }
+  .panel.mini .brand p {
+    display: none;
   }
 
   .chip {

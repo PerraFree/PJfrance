@@ -217,6 +217,7 @@ async function fetchOsmFrom(url) {
             : undefined,
       openingHours: tags.opening_hours,
       season: seasonFromTags(tags),
+      image: imageFromTags(tags),
       osmUrl: `https://www.openstreetmap.org/${el.type}/${el.id}`,
       ...amenityFields(tags),
     })
@@ -388,6 +389,22 @@ async function geocode(query) {
   return { lat, lon }
 }
 
+/** Foto-URL från OSM-taggar: wikimedia_commons (File:…) eller image (https).
+ *  Speglas i src/lib/overpass.ts – ändra alltid båda. */
+function imageFromTags(tags) {
+  const wm = tags.wikimedia_commons
+  if (wm && /^File:/i.test(wm)) {
+    return (
+      'https://commons.wikimedia.org/wiki/Special:FilePath/' +
+      encodeURIComponent(wm.replace(/^File:/i, '')) +
+      '?width=480'
+    )
+  }
+  const img = tags.image
+  if (img && /^https?:\/\//i.test(img)) return img.replace(/^http:\/\//i, 'https://')
+  return undefined
+}
+
 function distanceKm(lat1, lon1, lat2, lon2) {
   const rad = Math.PI / 180
   const dLat = (lat2 - lat1) * rad
@@ -449,6 +466,7 @@ async function fetchCurated() {
       }
       // Valfria, rika fält – tas bara med om de anges i posten.
       for (const key of [
+        'image',
         'facilities',
         'capacity',
         'maxstay',

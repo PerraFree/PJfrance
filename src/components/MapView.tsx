@@ -38,6 +38,8 @@ interface Props {
   reviews: Map<string, StationReviews>
   onRate: (station: { id: string; name: string }) => void
   canRate: boolean
+  /** Anropas när en plats-popup öppnas – panelen kan då minimeras. */
+  onStationPopupOpen?: () => void
 }
 
 function escapeAttr(value: string): string {
@@ -273,7 +275,12 @@ function popupHtml(
           .join('')}</div>`
       : ''
   const accent = SERVICE_COLORS[station.services[0]] ?? 'var(--green-700)'
-  return `<div class="popup" style="--accent:${accent}"><h3>${esc(station.name)}</h3><div class="badges">${services}${seasonBadge}</div>${ratingLine}${verifiedLine}${rows.join('')}${commentBlock}${links}${actions}<p class="source">${sourceLine}</p>${report}${del}</div>`
+  // Foto av platsen (om källan har ett) – laddas lätt och tas bort om URL:en är död.
+  const photo =
+    station.image && /^https:\/\//i.test(station.image)
+      ? `<img class="popup-photo" src="${escapeAttr(station.image)}" alt="" loading="lazy" onerror="this.remove()">`
+      : ''
+  return `<div class="popup" style="--accent:${accent}">${photo}<h3>${esc(station.name)}</h3><div class="badges">${services}${seasonBadge}</div>${ratingLine}${verifiedLine}${rows.join('')}${commentBlock}${links}${actions}<p class="source">${sourceLine}</p>${report}${del}</div>`
 }
 
 function readSavedView(): { lat: number; lon: number; zoom: number } | null {
@@ -319,6 +326,7 @@ export default function MapView({
   reviews,
   onRate,
   canRate,
+  onStationPopupOpen,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<L.Map | null>(null)
@@ -327,6 +335,8 @@ export default function MapView({
   const markersById = useRef<Map<string, L.Marker>>(new Map())
   const onReportRef = useRef(onReport)
   onReportRef.current = onReport
+  const onStationPopupOpenRef = useRef(onStationPopupOpen)
+  onStationPopupOpenRef.current = onStationPopupOpen
   const onToggleFavoriteRef = useRef(onToggleFavorite)
   onToggleFavoriteRef.current = onToggleFavorite
   const onDeleteMyPlaceRef = useRef(onDeleteMyPlace)
@@ -663,7 +673,10 @@ export default function MapView({
       const popup = (e as L.PopupEvent).popup
       // Bara plats-popuper ska pausa markörbygget – "Din position"-bubblan
       // får inte frysa kartan när man panorerar vidare.
-      if (popup.options.className === 'station-popup') popupOpenRef.current = true
+      if (popup.options.className === 'station-popup') {
+        popupOpenRef.current = true
+        onStationPopupOpenRef.current?.()
+      }
       const el = popup.getElement()
       if (!el) return
 

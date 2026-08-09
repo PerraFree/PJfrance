@@ -19,6 +19,8 @@ export interface Station {
    * 'community' = inskickad av användare (crowdsourcing)
    */
   source: 'osm' | 'egen' | 'trafikverket' | 'kommun' | 'community'
+  /** Foto av platsen (https-URL), t.ex. från OSM:s image/wikimedia_commons-taggar. */
+  image?: string
   description?: string
   address?: string
   fee?: string
