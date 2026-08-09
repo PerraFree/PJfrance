@@ -1384,16 +1384,11 @@ button {
     border-bottom: none;
   }
 
+  /* Chipsen bryter till 2–3 rader i stället för att scrollas i sidled. */
   .filters {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-    margin: 0 -14px;
-    padding: 2px 14px;
-  }
-
-  .filters::-webkit-scrollbar {
-    display: none;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 2px 0;
   }
 
   .chip {

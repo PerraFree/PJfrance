@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css'
 import 'leaflet.markercluster'
 import 'leaflet.markercluster/dist/MarkerCluster.css'
 import type { ServiceType, Station } from '../types'
-import { SERVICE_COLORS, SERVICE_LABELS } from '../types'
+import { SERVICE_COLORS, SERVICE_ICONS, SERVICE_LABELS } from '../types'
 import { openNow } from '../lib/openingHours'
 import { reverseGeocode } from '../lib/reverse'
 import { sharePlace as nativeShare } from '../lib/native'
@@ -83,12 +83,13 @@ function distanceKm(a: { lat: number; lon: number }, b: { lat: number; lon: numb
   return 2 * R * Math.asin(Math.sqrt(h))
 }
 
-function pinIcon(color: string): L.DivIcon {
+function pinIcon(color: string, glyph: string): L.DivIcon {
   const svg = `
     <svg width="34" height="44" viewBox="0 0 34 44" xmlns="http://www.w3.org/2000/svg">
       <path d="M17 1C8.7 1 2 7.7 2 16c0 10.5 12.2 24.2 14.1 26.3a1.2 1.2 0 0 0 1.8 0C19.8 40.2 32 26.5 32 16 32 7.7 25.3 1 17 1z"
             fill="${color}" stroke="#ffffff" stroke-width="2"/>
-      <circle cx="17" cy="16" r="6" fill="#ffffff"/>
+      <circle cx="17" cy="16" r="8.5" fill="#ffffff"/>
+      <text x="17" y="20.5" font-size="11" text-anchor="middle">${glyph}</text>
     </svg>`
   return L.divIcon({
     className: 'pin',
@@ -137,7 +138,7 @@ function popupHtml(
   const services = station.services
     .map(
       (s) =>
-        `<span class="badge" style="--badge:${SERVICE_COLORS[s]}">${SERVICE_LABELS[s]}</span>`,
+        `<span class="badge" style="--badge:${SERVICE_COLORS[s]}">${SERVICE_ICONS[s]} ${SERVICE_LABELS[s]}</span>`,
     )
     .join('')
   const season = stationSeason(station)
@@ -431,7 +432,7 @@ export default function MapView({
     const markers = list.map((station) => {
       const primary = station.services.find((s) => active.has(s)) ?? station.services[0]
       const marker = L.marker([station.lat, station.lon], {
-        icon: pinIcon(SERVICE_COLORS[primary]),
+        icon: pinIcon(SERVICE_COLORS[primary], SERVICE_ICONS[primary]),
       })
       // Registreras FÖRE bindPopup så att marginalerna hinner uppdateras
       // innan Leaflet öppnar popupen på klicket.

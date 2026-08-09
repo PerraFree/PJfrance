@@ -62,7 +62,7 @@ export const FACILITY_LABELS: Record<string, string> = {
 
 export const SERVICE_LABELS: Record<ServiceType, string> = {
   gravatten: 'Gråvatten',
-  latrin: 'Latrin/toalett',
+  latrin: 'Latrin',
   vatten: 'Färskvatten',
   sopor: 'Sopor',
   stallplats: 'Ställplats',
@@ -74,6 +74,18 @@ export const SERVICE_LABELS: Record<ServiceType, string> = {
  * En enda källa för kategorifärgerna (speglas i CSS-variablerna --gravatten
  * m.fl. i styles.css). Alla klarar WCAG AA (≥4.5:1) med vit text på badge/pin.
  */
+/** Liten symbol per platstyp – visas i kartnålen och i popup-badgen så att
+ *  platserna går att känna igen direkt på kartan. */
+export const SERVICE_ICONS: Record<ServiceType, string> = {
+  gravatten: '🚱',
+  latrin: '🚽',
+  vatten: '🚰',
+  sopor: '🗑',
+  stallplats: '🚐',
+  camping: '⛺',
+  gasol: '🔥',
+}
+
 export const SERVICE_COLORS: Record<ServiceType, string> = {
   gravatten: '#6d4c41',
   latrin: '#7b1fa2',
