@@ -44,7 +44,17 @@ const FILTERABLE_FACILITIES = [
 
 const FREE_RE = /gratis|free|ingår|kostnadsfri|utan avgift/i
 function isFree(s: Station): boolean {
+  // Gasol är alltid ett köp – en plats som bara säljer gasol kan aldrig
+  // räknas som gratis, oavsett vad avgiftsfältet råkar säga.
+  if (!s.services.some((sv) => sv !== 'gasol')) return false
   return s.source === 'trafikverket' || (s.fee ? FREE_RE.test(s.fee) : false)
+}
+
+/** Platser som bara säljer gasol är butiker – de ska aldrig slås ihop med
+ *  tömningsplatser/ställplatser intill, annars smittar tjänster och avgifter
+ *  mellan olika verksamheter ("gratis gasol"-buggen). */
+function gasolOnly(s: Station): boolean {
+  return s.services.length > 0 && s.services.every((sv) => sv === 'gasol')
 }
 
 const SOURCE_PRIORITY: Record<Station['source'], number> = {
@@ -112,7 +122,7 @@ function dedupe(stations: Station[]): Station[] {
         const bucket = grid.get(`${cx + dx},${cy + dy}`)
         if (!bucket) continue
         for (const ex of bucket) {
-          if (distMeters(ex, s) <= 100) {
+          if (distMeters(ex, s) <= 100 && gasolOnly(ex) === gasolOnly(s)) {
             mergeInto(ex, s)
             merged = true
             break

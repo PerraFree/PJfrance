@@ -171,7 +171,14 @@ function toStation(el: OverpassElement): Station | null {
     services,
     source: 'osm',
     description: tags.name && kind ? kind : undefined,
-    fee: tags.fee === 'yes' ? tags.charge ?? 'Avgift' : tags.fee === 'no' ? 'Gratis' : undefined,
+    // fee=no på en gasolbutik/mack betyder inte gratis gasol (gasol är alltid
+    // ett köp) – sätt aldrig "Gratis" på platser som bara har gasol.
+    fee:
+      tags.fee === 'yes'
+        ? tags.charge ?? 'Avgift'
+        : tags.fee === 'no' && !(services.length === 1 && services[0] === 'gasol')
+          ? 'Gratis'
+          : undefined,
     openingHours: tags.opening_hours,
     season: seasonFromTags(tags),
     osmUrl: `https://www.openstreetmap.org/${el.type}/${el.id}`,

@@ -163,7 +163,15 @@ function popupHtml(
   }
   if (station.description) rows.push(`<p class="desc">${esc(station.description)}</p>`)
   rows.push(facilityList(station))
-  if (station.fee) rows.push(`<p class="meta"><strong>Avgift</strong>${esc(station.fee)}</p>`)
+  if (station.fee) {
+    // "Gratis" på en plats som även har gasol avser tömning/vatten – gasol
+    // är alltid ett köp. Förtydliga så ingen läser det som gratis gasol.
+    const gratisMedGasol =
+      /gratis|free|ingår|kostnadsfri|utan avgift/i.test(station.fee) &&
+      station.services.includes('gasol')
+    const feeText = gratisMedGasol ? `${station.fee} (gäller ej gasolköp)` : station.fee
+    rows.push(`<p class="meta"><strong>Avgift</strong>${esc(feeText)}</p>`)
+  }
   if (station.payment?.length)
     rows.push(`<p class="meta"><strong>Betalning</strong>${esc(station.payment.join(', '))}</p>`)
   if (station.capacity)
