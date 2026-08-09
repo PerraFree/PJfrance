@@ -1403,6 +1403,17 @@ button {
     padding: 2px 0;
   }
 
+  /* Hopfälld sheet: visa en liten "Sök där jag är"-knapp under sökrutan */
+  .panel.collapsed .here-btn {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: 7px 12px;
+    font-size: 0.85rem;
+  }
+  .panel.collapsed.mini .here-btn {
+    display: none;
+  }
+
   /* Minimalt läge när en plats är vald: bara handtaget + appnamnet syns,
      så kartan och popupen får hela ytan. Tryck på sheeten återställer. */
   .panel.mini > *:not(.sheet-handle):not(.brand) {

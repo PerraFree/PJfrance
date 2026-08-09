@@ -89,6 +89,9 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    (rimlighetskontrollen kasserar >30 km-missar, se synkloggen i Actions).
 2. **Tjänsteberikning** – många campingar på kartan HAR tömning utan att det
    syns (visas bara som "camping"). Kräver berikning per plats.
+   Pers fälttips (aug 2026): majoriteten av golfklubbar har färskvatten-
+   påfyllning – ett golfklubbssvep vore värdefullt (Götaström tillagd
+   efter besök på plats).
 3. **Öppettider/vinterstängt** saknas för många platser.
 4. Vilhelmina-tömningsstationen togs bort i väntan på bekräftat läge.
 5. AdminPanel: 'na'-läget och tabellkontroller är fixade; håll texterna i
