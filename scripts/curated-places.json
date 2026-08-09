@@ -3355,5 +3355,18 @@
     "source": "egen",
     "nearLat": 56.51,
     "nearLon": 13.05
+  },
+  {
+    "name": "Götaströms Golfklubb – färskvatten",
+    "query": "Götaströms Golfklubb, Skillingaryd",
+    "services": [
+      "vatten"
+    ],
+    "description": "Påfyllning av färskvatten för husbil/husvagn vid golfklubben. Uppgift från besök på plats (aug 2026). Många golfklubbar erbjuder vattenpåfyllning – fråga i receptionen.",
+    "url": "https://gotastromsgk.se/",
+    "source": "egen",
+    "nearLat": 57.47,
+    "nearLon": 14.07,
+    "maxKm": 15
   }
 ]
