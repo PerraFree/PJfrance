@@ -214,14 +214,12 @@ function popupHtml(
     )
   }
   const nav = `https://www.google.com/maps/dir/?api=1&destination=${station.lat},${station.lon}`
-  const osmUrl = safeUrl(station.osmUrl)
   const coords = `${station.lat.toFixed(5)}, ${station.lon.toFixed(5)}`
+  // OSM-länken togs bort ur popupen – den förvirrade mer än den hjälpte.
+  // Källtexten ("Källa: OpenStreetMap") finns kvar längst ner.
   const links =
     `<div class="links"><a class="primary" href="${nav}" target="_blank" rel="noopener">Vägbeskrivning →</a>` +
     `<button type="button" class="share-btn" data-lat="${station.lat}" data-lon="${station.lon}" data-name="${escapeAttr(station.name)}">Dela</button>` +
-    (osmUrl
-      ? `<a href="${escapeAttr(osmUrl)}" target="_blank" rel="noopener">OpenStreetMap</a>`
-      : '') +
     '</div>'
   const verifyBtn = canVerify
     ? selfVerifiedRecently(station.id)
