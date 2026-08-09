@@ -154,6 +154,22 @@ function seasonFromTags(tags: Record<string, string>): Station['season'] {
   return undefined
 }
 
+/** Foto-URL från OSM-taggar: wikimedia_commons (File:…) eller image (https).
+ *  Speglas i scripts/sync-stations.mjs – ändra alltid båda. */
+function imageFromTags(tags: Record<string, string>): string | undefined {
+  const wm = tags.wikimedia_commons
+  if (wm && /^File:/i.test(wm)) {
+    return (
+      'https://commons.wikimedia.org/wiki/Special:FilePath/' +
+      encodeURIComponent(wm.replace(/^File:/i, '')) +
+      '?width=480'
+    )
+  }
+  const img = tags.image
+  if (img && /^https?:\/\//i.test(img)) return img.replace(/^http:\/\//i, 'https://')
+  return undefined
+}
+
 function toStation(el: OverpassElement): Station | null {
   const lat = el.lat ?? el.center?.lat
   const lon = el.lon ?? el.center?.lon
@@ -181,6 +197,7 @@ function toStation(el: OverpassElement): Station | null {
           : undefined,
     openingHours: tags.opening_hours,
     season: seasonFromTags(tags),
+    image: imageFromTags(tags),
     osmUrl: `https://www.openstreetmap.org/${el.type}/${el.id}`,
     ...amenityFields(tags),
   }

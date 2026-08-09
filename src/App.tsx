@@ -77,6 +77,7 @@ function distMeters(a: Station, b: Station): number {
 }
 
 const MERGE_FIELDS: (keyof Station)[] = [
+  'image',
   'address',
   'fee',
   'openingHours',
@@ -171,6 +172,9 @@ export default function App() {
   const [collapsed, setCollapsed] = useState(
     () => typeof window !== 'undefined' && !!window.matchMedia?.('(max-width: 640px)').matches,
   )
+  // Minimalt läge: när en plats valts krymper sheeten till bara handtaget +
+  // appnamnet så att kartan och popupen får plats. Återställs vid tryck.
+  const [mini, setMini] = useState(false)
   const [locating, setLocating] = useState(false)
   const [facilityFilters, setFacilityFilters] = useState<Set<string>>(new Set())
   const [showMore, setShowMore] = useState(false)
@@ -559,17 +563,27 @@ export default function App() {
         reviews={reviews}
         onRate={(s) => setRateTarget(s)}
         canRate={communityEnabled}
+        onStationPopupOpen={() => {
+          setCollapsed(true)
+          setMini(true)
+        }}
       />
 
       {loading && <div className="loading-bar" aria-hidden="true" />}
 
-      <div className={collapsed ? 'panel collapsed' : 'panel'}>
+      <div
+        className={`panel${collapsed ? ' collapsed' : ''}${mini ? ' mini' : ''}`}
+        onClickCapture={mini ? () => setMini(false) : undefined}
+      >
         <button
           type="button"
           className="sheet-handle"
           aria-expanded={!collapsed}
           aria-label={collapsed ? 'Visa hela menyn' : 'Fäll ihop menyn'}
-          onClick={() => setCollapsed((v) => !v)}
+          onClick={() => {
+            if (mini) setMini(false)
+            else setCollapsed((v) => !v)
+          }}
         >
           <span aria-hidden="true" />
         </button>
