@@ -77,12 +77,16 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
 
 ## Backlog (nästa att göra, i prioritetsordning)
 
-1. **Gasolsvep** – DELVIS KLART (aug 2026): 86 platser från Lindes katalog
-   (forsaljningsstallen.linde.se) tillagda i registret – gasolautomater (24/7)
-   och AGA-återförsäljare. Metod: WebSearch med `allowed_domains` mot katalogen
-   (direkthämtning är egress-blockad; adress+ort ligger i katalog-URL:erna).
-   Återstår: andra nät (Primagaz, Flogas, OKQ8:s egna stationslista) samt
-   koordinatverifiering efter deploy.
+1. **Gasolsvep** – KLART (aug 2026): 148 gasolplatser i registret.
+   86 från Lindes katalog (forsaljningsstallen.linde.se): gasolautomater
+   (24/7) + AGA-återförsäljare. 62 från Primagaz/Norbro Energis katalog
+   (primagaz.se, SEO-sidor med namn+postnr+ort+gata i URL:en – å/ä/ö är
+   bortstrippade i slugarna, gatunamnen är rekonstruerade). Metod: WebSearch
+   med `allowed_domains` mot katalogerna (direkthämtning är egress-blockad).
+   Flogas har ingen offentlig återförsäljarlista; OKQ8:s stationssidor går
+   inte att verifiera per station – väntar. VIKTIGT efter deploy: verifiera
+   att geokodningen gick bra via `git show origin/gh-pages:data/stations-seed.json`
+   (rimlighetskontrollen kasserar >30 km-missar, se synkloggen i Actions).
 2. **Tjänsteberikning** – många campingar på kartan HAR tömning utan att det
    syns (visas bara som "camping"). Kräver berikning per plats.
 3. **Öppettider/vinterstängt** saknas för många platser.

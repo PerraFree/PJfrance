@@ -2611,5 +2611,749 @@
     "source": "egen",
     "nearLat": 57.75,
     "nearLon": 14.21
+  },
+  {
+    "name": "Gasol – Gasolexperten, Liljeholmen (Stockholm)",
+    "query": "Liljeholmsvägen 1, 117 61 Stockholm",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Gasolexperten-11761-Stockholm-Liljeholmsvgen-1-0012000000oXJaLAAW",
+    "source": "egen",
+    "nearLat": 59.31,
+    "nearLon": 18.02
+  },
+  {
+    "name": "Gasol – ÖoB, Uppsala",
+    "query": "Bolandsgatan 18, 753 23 Uppsala",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/042-oB-Uppsala-75323-Uppsala-Bolandsgatan-18-0010O0000239miPQAQ",
+    "source": "egen",
+    "nearLat": 59.85,
+    "nearLon": 17.68
+  },
+  {
+    "name": "Gasol – Bauhaus, Uppsala",
+    "query": "Verkstadsgatan 16, 753 23 Uppsala",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Bauhaus-75323-Uppsala-Verkstadsgatan-16-0012000000oXJfsAAG",
+    "source": "egen",
+    "nearLat": 59.85,
+    "nearLon": 17.68
+  },
+  {
+    "name": "Gasol – Industriverktyg, Uppsala",
+    "query": "Söderforsgatan 1, 752 28 Uppsala",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Industriverktyg-i-Uppsala-AB-75228-Uppsala-Sderforsgatan-1-0012000000oXJWQAA4",
+    "source": "egen",
+    "nearLat": 59.86,
+    "nearLon": 17.6
+  },
+  {
+    "name": "Gasol – Gasservice i Stockholm, Hägersten",
+    "query": "Telemarksgränd 14, 129 48 Hägersten",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Gasservice-i-Stockholm-AB-12948-Hgersten-Telemarksgrnd-14-001P60000049Fk6IAE",
+    "source": "egen",
+    "nearLat": 59.3,
+    "nearLon": 17.97
+  },
+  {
+    "name": "Gasol – ÖoB, Jönköping",
+    "query": "Bangårdsgatan 1, 553 03 Jönköping",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/068-oB-Jnkping-55303-Jnkping-Bangrdsgatan-1-0010O00001vsYd4QAE",
+    "source": "egen",
+    "nearLat": 57.78,
+    "nearLon": 14.16
+  },
+  {
+    "name": "Gasol – Byggmax, Borås",
+    "query": "Getängsvägen 36, 504 68 Borås",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-50468-Bors-Getngsvgen-36-0012000001Z2OFuAAN",
+    "source": "egen",
+    "nearLat": 57.73,
+    "nearLon": 12.93
+  },
+  {
+    "name": "Gasol – Hornbach, Göteborg",
+    "query": "Minelundsvägen 8, 417 05 Göteborg",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Hornbach-Byggmarknad---770-Gteborg-41705-Gteborg-Minelundsvgen-8-001P600000AOosPIAT",
+    "source": "egen",
+    "nearLat": 57.73,
+    "nearLon": 11.9
+  },
+  {
+    "name": "Gasol – Circle K Halvorsäng, Göteborg",
+    "query": "Halvorsäng 20, 418 78 Göteborg",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-41878-Gteborg-Halvorsng-20-0013X00002gz5z7QAA",
+    "source": "egen",
+    "nearLat": 57.71,
+    "nearLon": 11.85
+  },
+  {
+    "name": "Gasol – Svetscenter, Jönköping",
+    "query": "Porfyrvägen 9, 553 03 Jönköping",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Svetscenter-i-Jnkping-AB-55303-Jnkping-Porfyrvgen-9-0012000000oXJzfAAG",
+    "source": "egen",
+    "nearLat": 57.78,
+    "nearLon": 14.16
+  },
+  {
+    "name": "Gasol – Hornbach, Kristianstad",
+    "query": "Fundationsvägen 7A, 291 28 Kristianstad",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Hornbach-Byggmarknad---776-Kristianstad-29128-Kristianstad-Fundationsvgen-7A-001P600000AQFIiIAP",
+    "source": "egen",
+    "nearLat": 56.03,
+    "nearLon": 14.15
+  },
+  {
+    "name": "Gasol – Byggmax, Kristianstad",
+    "query": "Industrigatan 2, 291 36 Kristianstad",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-29136-Kristianstad-Industrigatan-2-0012000001Z2OFdAAN",
+    "source": "egen",
+    "nearLat": 56.03,
+    "nearLon": 14.15
+  },
+  {
+    "name": "Gasol – Eldabutiken, Malmö",
+    "query": "Arlövsvägen 16, 211 24 Malmö",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Eldabutiken-Malm-21124-Malm-Arlvsvgen-16-0012000000zn1gSAAQ",
+    "source": "egen",
+    "nearLat": 55.61,
+    "nearLon": 13.03
+  },
+  {
+    "name": "Gasol – Campea, Arlöv",
+    "query": "Testvägen 5, 232 37 Arlöv",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Campea-Malm-AB-23237-Arlv-Testvgen-5-0012000000xMbsmAAC",
+    "source": "egen",
+    "nearLat": 55.64,
+    "nearLon": 13.07
+  },
+  {
+    "name": "Gasol – Hornbach, Helsingborg",
+    "query": "Dioritgatan 12, 254 64 Helsingborg",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Hornbach-Byggmarknad---774-Helsingborg-25464-Helsingborg-Dioritgatan-12-001P600000AQFYpIAP",
+    "source": "egen",
+    "nearLat": 56.08,
+    "nearLon": 12.75
+  },
+  {
+    "name": "Gasol – Circle K, Örebro",
+    "query": "Hjälmarvägen 2, 702 83 Örebro",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-70283-rebro-Hjlmarvgen-2-0012000001RSId1AAH",
+    "source": "egen",
+    "nearLat": 59.26,
+    "nearLon": 15.24
+  },
+  {
+    "name": "Gasol – Cramo, Landvetter",
+    "query": "Västra Björrödsvägen 4, 438 93 Landvetter",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Cramo-AB-43893-Landvetter-Vstra-Bjrredsvgen-4-0012000000oXK31AAG",
+    "source": "egen",
+    "nearLat": 57.68,
+    "nearLon": 12.22
+  },
+  {
+    "name": "Gasol – Air Liquide, Västerås",
+    "query": "Energigatan 5, 721 37 Västerås",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Air-Liquide-Gas-72137-Vsters-Energigatan-5-0012000000oXIxfAAG",
+    "source": "egen",
+    "nearLat": 59.6,
+    "nearLon": 16.5
+  },
+  {
+    "name": "Gasol – Byggmax, Norrköping",
+    "query": "Lindåkersgatan 12, 602 23 Norrköping",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-60223-Norrkping-Lindkersgatan-12-0012000001Z2OFyAAN",
+    "source": "egen",
+    "nearLat": 58.6,
+    "nearLon": 16.16
+  },
+  {
+    "name": "Gasol – Byggmax, Luleå",
+    "query": "Betongvägen 5, 973 45 Luleå",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-97345-Lule-Betongvgen-5-0012000001Z2OGdAAN",
+    "source": "egen",
+    "nearLat": 65.6,
+    "nearLon": 22.12
+  },
+  {
+    "name": "Gasol – Larssons Service, Sundsvall",
+    "query": "Värdshusbacken 6, 856 50 Sundsvall",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Larssons-Service-AB-85650-Sundsvall-Vrdshusbacken-6-0010O00002MnqefQAB",
+    "source": "egen",
+    "nearLat": 62.37,
+    "nearLon": 17.35
+  },
+  {
+    "name": "Gasol – ÖoB, Umeå",
+    "query": "Illervägen 3, 906 21 Umeå",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/087-oB-Ume-90621-Ume-Illervgen-3-0013X00002lAXs2QAG",
+    "source": "egen",
+    "nearLat": 63.82,
+    "nearLon": 20.3
+  },
+  {
+    "name": "Gasol – Byggmax, Östersund",
+    "query": "Hagvägen 28, 831 48 Östersund",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-83148-stersund-Hagvgen-28-0012000001Z2OGeAAN",
+    "source": "egen",
+    "nearLat": 63.19,
+    "nearLon": 14.66
+  },
+  {
+    "name": "Gasol – Sandbergs i Jämtland, Östersund",
+    "query": "Storlienvägen 46, 831 52 Östersund",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Sandbergs-i-Jmtland-AB-83152-stersund-Storlienvgen-46-0012000001565dVAAQ",
+    "source": "egen",
+    "nearLat": 63.18,
+    "nearLon": 14.6
+  },
+  {
+    "name": "Gasol – Circle K, Gävle",
+    "query": "Gävlebrovägen 25, 802 93 Gävle",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-80293-Gvle-Gvlebrovgen-25-0012000000p5dPWAAY",
+    "source": "egen",
+    "nearLat": 60.67,
+    "nearLon": 17.16
+  },
+  {
+    "name": "Gasol – Circle K, Karlstad",
+    "query": "Svegatan 2, 654 63 Karlstad",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-65463-Karlstad-Svegatan-2-0012000000p5eBoAAI",
+    "source": "egen",
+    "nearLat": 59.39,
+    "nearLon": 13.47
+  },
+  {
+    "name": "Gasol – Granngården, Karlstad",
+    "query": "Axgatan 2, 653 43 Karlstad",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Granngrden-65343-Karlstad-Axgatan-2-0012000000rSkrUAAS",
+    "source": "egen",
+    "nearLat": 59.38,
+    "nearLon": 13.46
+  },
+  {
+    "name": "Gasol – Peter Bergkvist Service, Karlskoga",
+    "query": "Filipstadsvägen 1, 691 33 Karlskoga",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Peter-Bergkvist-Service-AB-69133-Karlskoga-Filipstadsvgen-1-0012000000oXKJ8AAO",
+    "source": "egen",
+    "nearLat": 59.34,
+    "nearLon": 14.51
+  },
+  {
+    "name": "Gasol – Elgiganten, Falun",
+    "query": "Trossvägen 16, 791 41 Falun",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Elgiganten-79141-Falun-Trossvgen-16-0013X00002yL0mkQAC",
+    "source": "egen",
+    "nearLat": 60.61,
+    "nearLon": 15.65
+  },
+  {
+    "name": "Gasol – Elgiganten, Mora",
+    "query": "Stålmyrsvägen 48B, 792 50 Mora",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Elgiganten-79250-Mora-Stlmyrsvgen-48b-0013X00002QBpg8QAD",
+    "source": "egen",
+    "nearLat": 61,
+    "nearLon": 14.56
+  },
+  {
+    "name": "Gasol – Karl Hedin Bygghandel, Mora",
+    "query": "Kråkbergsvägen 70, 792 33 Mora",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Karl-Hedin-Bygghandel-79233-Mora-Krkbergsvgen-70-0012000000p5dSkAAI",
+    "source": "egen",
+    "nearLat": 61.02,
+    "nearLon": 14.52
+  },
+  {
+    "name": "Gasol – Byggmax, Karlskrona",
+    "query": "Uranvägen, 371 49 Karlskrona",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-37149-Karlskrona-Uranvgen-0012000001Z2OFiAAN",
+    "source": "egen",
+    "nearLat": 56.19,
+    "nearLon": 15.63
+  },
+  {
+    "name": "Gasol – Byggmax, Borlänge",
+    "query": "Tyllsnäsvägen 4, 784 61 Borlänge",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-78461-Borlnge-Tyllsnsvgen-4-0012000001Z2OGjAAN",
+    "source": "egen",
+    "nearLat": 60.47,
+    "nearLon": 15.42
+  },
+  {
+    "name": "Gasol – Elgiganten, Karlshamn",
+    "query": "Nyemöllevägen 3, 374 32 Karlshamn",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Elgiganten-37432-Karlshamn-Nyemllevgen-3-0013X00002QBrQ7QAL",
+    "source": "egen",
+    "nearLat": 56.19,
+    "nearLon": 14.86
+  },
+  {
+    "name": "Gasol – Granngården, Kalmar",
+    "query": "Wismarsvägen 6, 393 56 Kalmar",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Granngrden-39356-Kalmar-Wismarsvgen-6-0010O00001qgRmWQAU",
+    "source": "egen",
+    "nearLat": 56.68,
+    "nearLon": 16.33
+  },
+  {
+    "name": "Gasol – Circle K, Kalmar",
+    "query": "Dragonvägen 7, 392 39 Kalmar",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-39239-Kalmar-Dragonvgen-7-001200000155sNkAAI",
+    "source": "egen",
+    "nearLat": 56.67,
+    "nearLon": 16.34
+  },
+  {
+    "name": "Gasol – Byggmax, Visby",
+    "query": "Färjeleden 5, 621 58 Visby",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-62158-Visby-Frjeleden-5-0012000001Z2OGQAA3",
+    "source": "egen",
+    "nearLat": 57.63,
+    "nearLon": 18.29
+  },
+  {
+    "name": "Gasol – Circle K, Karlskrona",
+    "query": "August Palmgrens Väg 5, 371 47 Karlskrona",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-37147-Karlskrona-August-Palmgrens-Vg-5-0012000000p5e2zAAA",
+    "source": "egen",
+    "nearLat": 56.18,
+    "nearLon": 15.61
+  },
+  {
+    "name": "Gasol – Byggmax, Kalmar",
+    "query": "Tyska vägen 2, 393 54 Kalmar",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-39354-Kalmar-Tyska-vgen-2-0012000001Z2OFeAAN",
+    "source": "egen",
+    "nearLat": 56.68,
+    "nearLon": 16.33
+  },
+  {
+    "name": "Gasol – Gasolbolaget Ygdevik, Växjö",
+    "query": "Sandvägen 17, 352 45 Växjö",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Gasolbolaget-Johnny-Ygdevik-AB-35245-Vxj-Sandvgen-17-0013X000044O0FYQA0",
+    "source": "egen",
+    "nearLat": 56.89,
+    "nearLon": 14.82
+  },
+  {
+    "name": "Gasol – Byggmax, Karlstad",
+    "query": "Faktorigatan 5, 652 21 Karlstad",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-65221-Karlstad-Faktorigatan-5-0012000001Z2OGJAA3",
+    "source": "egen",
+    "nearLat": 59.39,
+    "nearLon": 13.49
+  },
+  {
+    "name": "Gasol – Byggmax, Halmstad",
+    "query": "Fyllebrovägen 20, 302 63 Halmstad",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-30263-Halmstad-Fyllebrovgen-20-0012000001Z2OFfAAN",
+    "source": "egen",
+    "nearLat": 56.66,
+    "nearLon": 12.89
+  },
+  {
+    "name": "Gasol – Circle K, Varberg",
+    "query": "Lassabacka, 432 32 Varberg",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-43232-Varberg-Lassabacka-0012000000p5eacAAA",
+    "source": "egen",
+    "nearLat": 57.12,
+    "nearLon": 12.26
+  },
+  {
+    "name": "Gasol – Byggmax, Skövde",
+    "query": "Norregårdsvägen 25, 541 34 Skövde",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-54134-Skvde-Norregrdsvgen-25-0012000001Z2OG0AAN",
+    "source": "egen",
+    "nearLat": 58.4,
+    "nearLon": 13.86
+  },
+  {
+    "name": "Gasol – Renta, Uddevalla",
+    "query": "Frölandsvägen 2, 451 76 Uddevalla",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Renta-45176-Uddevalla-Frlandsvgen-2-0013X000035Ap9JQAS",
+    "source": "egen",
+    "nearLat": 58.34,
+    "nearLon": 11.87
+  },
+  {
+    "name": "Gasol – Circle K, Halmstad",
+    "query": "Växjövägen 70, 302 44 Halmstad",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-30244-Halmstad-Vxjvgen-70-0013X00003URTYeQAP",
+    "source": "egen",
+    "nearLat": 56.68,
+    "nearLon": 12.9
+  },
+  {
+    "name": "Gasol – Byggmax, Hudiksvall",
+    "query": "Finnflovägen 14, 824 92 Hudiksvall",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-82492-Hudiksvall-Hede-Finnflovgen-14-0012000001Z2OGgAAN",
+    "source": "egen",
+    "nearLat": 61.72,
+    "nearLon": 17.08
+  },
+  {
+    "name": "Gasol – Piteå Transport, Öjebyn",
+    "query": "Bjälkvägen 4, 943 36 Öjebyn",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Pite-Transport-AB-94336-jebyn-Bjlkvgen-4-0012000000p5cVLAAY",
+    "source": "egen",
+    "nearLat": 65.35,
+    "nearLon": 21.41
+  },
+  {
+    "name": "Gasol – Byggmax, Kiruna",
+    "query": "Lastvägen 54, 981 38 Kiruna",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-98138-Kiruna-Lastvgen-54-0013X00002e4H1jQAE",
+    "source": "egen",
+    "nearLat": 67.85,
+    "nearLon": 20.25
+  },
+  {
+    "name": "Gasol – jem & fix, Ludvika",
+    "query": "Gonäsvägen 21, 771 41 Ludvika",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/jem--fix-77141-Ludvika-Gonsvgen-21-0012000001hDMsFAAW",
+    "source": "egen",
+    "nearLat": 60.14,
+    "nearLon": 15.17
+  },
+  {
+    "name": "Gasol – ÖoB, Nyköping",
+    "query": "Idbäcksvägen 8B, 611 38 Nyköping",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/034-oB-Nykping-61138-Nykping-Idbcksvgen-8b-0013X00002QDOM7QAP",
+    "source": "egen",
+    "nearLat": 58.75,
+    "nearLon": 17
+  },
+  {
+    "name": "Gasol – Circle K, Södertälje",
+    "query": "Grödingevägen 56, 152 57 Södertälje",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-15257-Sdertlje-Grdingevgen-56-0012000001NheW9AAJ",
+    "source": "egen",
+    "nearLat": 59.2,
+    "nearLon": 17.65
+  },
+  {
+    "name": "Gasol – Byggmax, Enköping",
+    "query": "Skälbygatan 8, 745 37 Enköping",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-74537-Enkping-Sklbygatan-8-0012000001Z2OGVAA3",
+    "source": "egen",
+    "nearLat": 59.64,
+    "nearLon": 17.09
+  },
+  {
+    "name": "Gasol – Samuelssons Hyr & Trädgårdsmaskiner, Nysättra",
+    "query": "Vätövägen 513, 761 76 Nysättra",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Samuelssons-Hyr--Trdgrdsmaskiner-AB-76176-Norrtlje-Vtvgen-513-Nysttra-0013X00004KLrvKQAT",
+    "source": "egen",
+    "nearLat": 59.79,
+    "nearLon": 18.88
+  },
+  {
+    "name": "Gasol – Dragsviks Husvagnsklubb, Nyköping",
+    "query": "Dragsviks Husvagnsklubb, Nyköping",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Dragsviks-Husvagnsklubb-61199-Nykping-Hnmogen-0012000000oXJCyAAO",
+    "source": "egen",
+    "nearLat": 58.7,
+    "nearLon": 17.05
+  },
+  {
+    "name": "Gasol – jem & fix, Trelleborg",
+    "query": "Karbingatan 2, 231 66 Trelleborg",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/jem--fix-23166-Trelleborg-Karbingatan-2-0012000000p5eGBAAY",
+    "source": "egen",
+    "nearLat": 55.38,
+    "nearLon": 13.15
+  },
+  {
+    "name": "Gasol – jem & fix, Ängelholm",
+    "query": "Nordalagatan 2C, 262 73 Ängelholm",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/jem--fix-26273-ngelholm-Nordalagatn-2-C-0012000001Cu6WCAAZ",
+    "source": "egen",
+    "nearLat": 56.24,
+    "nearLon": 12.86
+  },
+  {
+    "name": "Gasol – Circle K, Trelleborg",
+    "query": "Hesekillegatan 3, 231 53 Trelleborg",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-23153-Trelleborg-Hesekillegatan-3-00120000018Tla6AAC",
+    "source": "egen",
+    "nearLat": 55.38,
+    "nearLon": 13.14
+  },
+  {
+    "name": "Gasol – Byggmax, Hässleholm",
+    "query": "Stjärneholmsvägen 2, 281 52 Hässleholm",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-28152-Hssleholm-Stjrneholmsvgen-2-0012000001Z2OFlAAN",
+    "source": "egen",
+    "nearLat": 56.16,
+    "nearLon": 13.77
+  },
+  {
+    "name": "Gasol – jem & fix, Ystad",
+    "query": "Herrestadsgatan 23, 271 39 Ystad",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/jem--fix-27139-Ystad-Herrestadsgatan-23-0012000000p5eOgAAI",
+    "source": "egen",
+    "nearLat": 55.43,
+    "nearLon": 13.83
+  },
+  {
+    "name": "Gasol – Husmacken, Åhus",
+    "query": "Fregattvägen 1, 296 37 Åhus",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/husmacken-AB-29637-hus-Fregattvgen-1-0010O00001nO1qnQAC",
+    "source": "egen",
+    "nearLat": 55.92,
+    "nearLon": 14.31
+  },
+  {
+    "name": "Gasol – Liljekvist Motor, Laholm",
+    "query": "Industrigatan 14A, 312 34 Laholm",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Liljekvist-Motor-Laholm-AB-31234-Laholm-Industrigatan-14a-0012000001Wjqc2AAB",
+    "source": "egen",
+    "nearLat": 56.51,
+    "nearLon": 13.05
   }
 ]
