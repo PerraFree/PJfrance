@@ -1516,5 +1516,1100 @@
     ],
     "description": "10 platser med el; gråvatten- och toatömning, vatten och servicehus med dusch. Källa: Vingåkers kommun.",
     "url": "https://vingaker.se/visit-vingaker/boende"
+  },
+  {
+    "name": "Gasolautomat Elon Lidingö",
+    "query": "Södra Kungsvägen 64, Lidingö",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/liding%C3%B6/s%C3%B6dra-kungsv%C3%A4gen-64/aga-gasolautomat-elon",
+    "source": "egen",
+    "nearLat": 59.366,
+    "nearLon": 18.132,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat OKQ8 Tyresö",
+    "query": "Vendelsövägen 48, Tyresö",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/tyres%C3%B6/vendels%C3%B6v%C3%A4gen-48/aga-gasolautomat-okq8-automatstation",
+    "source": "egen",
+    "nearLat": 59.244,
+    "nearLon": 18.229,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Mölnlycke",
+    "query": "Lövskogsvägen 1, Mölnlycke",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/m%C3%B6lnlycke/l%C3%B6vskogsv%C3%A4gen-1/aga-gasolautomat-m%C3%B6lnlycke",
+    "source": "egen",
+    "nearLat": 57.659,
+    "nearLon": 12.117,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat ICA Supermarket Tornet, Stocksund",
+    "query": "Stockholmsvägen 43, Stocksund",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/stocksund/stockholmsv%C3%A4gen-43/aga-gasolautomat-ica-supermarket-tornet",
+    "source": "egen",
+    "nearLat": 59.383,
+    "nearLon": 18.055,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Byggarna i Ale, Älvängen",
+    "query": "Svestorpsvägen 10, Älvängen",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/%C3%A4lv%C3%A4ngen/svestorpsv%C3%A4gen-10/aga-gasolautomat-byggarna-i-ale",
+    "source": "egen",
+    "nearLat": 57.958,
+    "nearLon": 12.119,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Gulf Dösjebro",
+    "query": "Centralvägen 2, Dösjebro",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/d%C3%B6sjebro/centralv%C3%A4gen-2/aga-gasolautomat-gulf-och-handlarn",
+    "source": "egen",
+    "nearLat": 55.808,
+    "nearLon": 13.011,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Sjöbo",
+    "query": "Planteringsgatan 52, Sjöbo",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/sj%C3%B6bo/planteringsgatan-52/aga-gasolautomat-sj%C3%B6bo",
+    "source": "egen",
+    "nearLat": 55.633,
+    "nearLon": 13.708,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Sälen",
+    "query": "Postvägen 2, Sälen",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/s%C3%A4len/postv%C3%A4gen-2/aga-gasolautomat-s%C3%A4len",
+    "source": "egen",
+    "nearLat": 61.157,
+    "nearLon": 13.263,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Snickeriet, Stenungsund",
+    "query": "Sävgatan 6, Stenungsund",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/stenungsund/s%C3%A4vgatan-6/aga-gasolautomat-snickeriet",
+    "source": "egen",
+    "nearLat": 58.071,
+    "nearLon": 11.818,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Kullen, Stenungsund",
+    "query": "Kullen 34, Stenungsund",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/stenungsund/kullen-stenungsund-34/aga-gasolautomat-stenungsund",
+    "source": "egen",
+    "nearLat": 58.071,
+    "nearLon": 11.818,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Grimboåsen, Göteborg",
+    "query": "Grimboåsen 6, Göteborg",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/g%C3%B6teborg/grimbo%C3%A5sen-6/aga-gasolautomat-grimbo%C3%A5se",
+    "source": "egen",
+    "nearLat": 57.753,
+    "nearLon": 11.93,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Fjällbacken, Gävle",
+    "query": "Atlasgatan 44, Gävle",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/g%C3%A4vle/atlasgatan-44/aga-gasolautomat-fj%C3%A4llbacken",
+    "source": "egen",
+    "nearLat": 60.675,
+    "nearLon": 17.142,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Bergsnäs, Växjö",
+    "query": "Stora Vägen 6, Växjö",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/v%C3%A4xj%C3%B6/stora-v%C3%A4gen-6/aga-gasolautomat-v%C3%A4xj%C3%B6/bergsn%C3%A4s",
+    "source": "egen",
+    "nearLat": 56.877,
+    "nearLon": 14.809,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Höganäs",
+    "query": "Prins Carlsgatan 26, Höganäs",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/h%C3%B6ganas/prins-carlsgatan-26/aga-gasolautomat-h%C3%B6ganas",
+    "source": "egen",
+    "nearLat": 56.2,
+    "nearLon": 12.558,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Åkersberga",
+    "query": "Rallarvägen 7, Åkersberga",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/%C3%A5kersberga/rallarv%C3%A4gen-7/aga-gasolautomat-%C3%A5kersberga",
+    "source": "egen",
+    "nearLat": 59.48,
+    "nearLon": 18.299,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Huddinge",
+    "query": "Musseronvägen 1A, Huddinge",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/huddinge/musseronv%C3%A4gen-1a/aga-gasolautomat-huddinge",
+    "source": "egen",
+    "nearLat": 59.237,
+    "nearLon": 17.982,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Borgeby Biltvätt, Bjärred",
+    "query": "Desideriavägen 21, Bjärred",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/bj%C3%A4rred/desideriav%C3%A4gen-21/aga-gasolautomat-borgeby-biltv%C3%A4tt",
+    "source": "egen",
+    "nearLat": 55.728,
+    "nearLon": 13.036,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat ICA Supermarket Skanör",
+    "query": "Södergatan 12, Skanör",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/skan%C3%B6r/s%C3%B6dergatan-12/aga-gasolautomat-ica-supermarket-skan%C3%B6r",
+    "source": "egen",
+    "nearLat": 55.416,
+    "nearLon": 12.85,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Ystad",
+    "query": "Almelundsvägen 4, Ystad",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/ystad/almelundsv%C3%A4gen-4/aga-gasolautomat-ystad",
+    "source": "egen",
+    "nearLat": 55.43,
+    "nearLon": 13.82,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat ICA Kållekärr, Tjörn",
+    "query": "Kållekärr 50, Kållekärr",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/k%C3%A5llek%C3%A4rr/k%C3%A5llek%C3%A4rr-50/aga-gasolautomat-ica-supermarket",
+    "source": "egen",
+    "nearLat": 58.024,
+    "nearLon": 11.643,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Skillingaryd",
+    "query": "Artillerigatan 28, Skillingaryd",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/skillingaryd/artillerigatan-28/aga-gasolautomat-skillingaryd",
+    "source": "egen",
+    "nearLat": 57.43,
+    "nearLon": 14.088,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Almunge",
+    "query": "Lilla Väsby 110, Almunge",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/almunge/lilla-v%C3%A4sby-110/aga-gasolautomat-almunge",
+    "source": "egen",
+    "nearLat": 59.874,
+    "nearLon": 18.062,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat ICA Nära Lomma",
+    "query": "Strandvägen 167, Lomma",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/lomma/strandv%C3%A4gen-167/aga-gasolautomat-ica-n%C3%A4ra",
+    "source": "egen",
+    "nearLat": 55.673,
+    "nearLon": 13.069,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Tvååker",
+    "query": "Alvägen 5, Tvååker",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/tv%C3%A5%C3%A5ker/alv%C3%A4gen-5/aga-gasolautomat-tv%C3%A5%C3%A5ker",
+    "source": "egen",
+    "nearLat": 57.045,
+    "nearLon": 12.399,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat ICA Maxi Asarum, Karlshamn",
+    "query": "Korpadalsvägen 3, Asarum",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/asarum/korpadalsv%C3%A4gen-3/aga-gasolautomat-ica-maxi",
+    "source": "egen",
+    "nearLat": 56.204,
+    "nearLon": 14.84,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Sundbyberg",
+    "query": "Brogatan 1, Sundbyberg",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/sundbyberg/brogatan-1/aga-gasolautomat-sundbyberg",
+    "source": "egen",
+    "nearLat": 59.361,
+    "nearLon": 17.971,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Västerås",
+    "query": "Kvastbruket 2, Västerås",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/v%C3%A4steras/kvastbruket-2/aga-gasolautomat-v%C3%A4steras",
+    "source": "egen",
+    "nearLat": 59.611,
+    "nearLon": 16.546,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Elon Västerås",
+    "query": "Kranbyggargatan 5, Västerås",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/v%C3%A4ster%C3%A5s/kranbyggargatan-5/aga-gasolautomat-elon-v%C3%A4ster%C3%A5s",
+    "source": "egen",
+    "nearLat": 59.611,
+    "nearLon": 16.546,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat ICA Lindbacken, Uppsala",
+    "query": "Hagtorpsvägen 5, Uppsala",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/uppsala/hagtorpsv%C3%A4gen-5/aga-gasolautomat-ica-lindbacken-uppsala",
+    "source": "egen",
+    "nearLat": 59.881,
+    "nearLon": 17.756,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Uppsala",
+    "query": "Marmorvägen 2, Uppsala",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/uppsala/marmorv%C3%A4gen-2/aga-gasolautomat-uppsala",
+    "source": "egen",
+    "nearLat": 59.858,
+    "nearLon": 17.639,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Örebro",
+    "query": "Smedstorpsvägen 2, Örebro",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/%C3%B6rebro/smedstorpsv%C3%A4gen-2/aga-gasolautomat-%C3%B6rebro",
+    "source": "egen",
+    "nearLat": 59.275,
+    "nearLon": 15.213,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Barkarö, Västerås",
+    "query": "Barkarö bygata 18, Barkarö",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/barkar%C3%B6/barkar%C3%B6-bygata-18/aga-gasolautomat-v%C3%A4ster%C3%A5s-barkar%C3%B6",
+    "source": "egen",
+    "nearLat": 59.565,
+    "nearLon": 16.472,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Enhörna",
+    "query": "Bäverstigen 1, Enhörna",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/enh%C3%B6rna/b%C3%A4verstigen-1/aga-gasolautomat-enh%C3%B6rna",
+    "source": "egen",
+    "nearLat": 59.266,
+    "nearLon": 17.553,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Karlskoga",
+    "query": "Tranbärsvägen 2, Karlskoga",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/karlskoga/tranb%C3%A4rsv%C3%A4gen-2/aga-gasolautomat-karlsko",
+    "source": "egen",
+    "nearLat": 59.327,
+    "nearLon": 14.524,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Huskvarna",
+    "query": "Tunnlandsvägen 5, Huskvarna",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/huskvarna/tunnlandsv%C3%A4gen-5/aga-gasolautomat-huskvarna",
+    "source": "egen",
+    "nearLat": 57.79,
+    "nearLon": 14.276,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Norrtälje",
+    "query": "Stora Björknäsvägen 2, Norrtälje",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/norrt%C3%A4lje/stora-bj%C3%B6rkn%C3%A4sv%C3%A4gen-2/aga-gasolautomat-norrt%C3%A4lje",
+    "source": "egen",
+    "nearLat": 59.758,
+    "nearLon": 18.705,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Bilhuset, Lindome",
+    "query": "Smidesvägen 1, Lindome",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/lindome/smidesv%C3%A4gen-1/aga-gasolautomat-bilhuset",
+    "source": "egen",
+    "nearLat": 57.573,
+    "nearLon": 12.089,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Gånghester, Borås",
+    "query": "Gånghestersvägen 138, Borås",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/bor%C3%A5s/g%C3%A5nghestersv%C3%A4gen-138/aga-gasolautomat-mobilen-bor%C3%A5s",
+    "source": "egen",
+    "nearLat": 57.703,
+    "nearLon": 13.008,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat NetOnNet, Borås",
+    "query": "Viaredsvägen 14A, Borås",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/bor%C3%A5s/viaredsv%C3%A4gen-14a/aga-gasolautomat-netonnet",
+    "source": "egen",
+    "nearLat": 57.702,
+    "nearLon": 12.87,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Åre (Björnänge)",
+    "query": "Björnänge 825, Åre",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/%C3%A5re/bj%C3%B6rn%C3%A4nge-825/aga-gasolautomat-%C3%A5re",
+    "source": "egen",
+    "nearLat": 63.394,
+    "nearLon": 13.155,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat ICA Nära Hovslätt, Jönköping",
+    "query": "Hammarvägen 140, Jönköping",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/j%C3%B6nk%C3%B6ping/hammarv%C3%A4gen-140/aga-gasolautomat-ica-n%C3%A4ra-hovsl%C3%A4tt",
+    "source": "egen",
+    "nearLat": 57.733,
+    "nearLon": 14.13,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Jönköping",
+    "query": "Batterigatan 2, Jönköping",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/j%C3%B6nk%C3%B6ping/batterigatan-2/aga-gasolautomat-j%C3%B6nk%C3%B6ping",
+    "source": "egen",
+    "nearLat": 57.783,
+    "nearLon": 14.161,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat ICA Flamman, Linköping",
+    "query": "Hjulsbrovägen 43, Linköping",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/link%C3%B6ping/hjulsbrov%C3%A4gen-43/aga-gasolautomat-ica-flamman",
+    "source": "egen",
+    "nearLat": 58.383,
+    "nearLon": 15.664,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Himnahallen, Linghem",
+    "query": "Himnavägen 155, Linghem",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/linghem/himnav%C3%A4gen-155/aga-gasolautomat-himnahallen",
+    "source": "egen",
+    "nearLat": 58.428,
+    "nearLon": 15.79,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Söderköping",
+    "query": "Margaretagatan 40, Söderköping",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/s%C3%B6derk%C3%B6ping/margaretagatan-40/aga-gasolautomat-s%C3%B6derk%C3%B6ping",
+    "source": "egen",
+    "nearLat": 58.481,
+    "nearLon": 16.322,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Kalmar",
+    "query": "Verkstadsgatan 26, Kalmar",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/kalmar/verkstadsgatan-26/aga-gasolautomat-kalmar",
+    "source": "egen",
+    "nearLat": 56.661,
+    "nearLon": 16.362,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Haverdal",
+    "query": "Klövervägen 1A, Haverdal",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/haverdal/kl%C3%B6verv%C3%A4gen-1a/aga-gasolautomat-haverdal",
+    "source": "egen",
+    "nearLat": 56.723,
+    "nearLon": 12.678,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Wash a car, Helsingborg",
+    "query": "Hortensiagatan 2, Helsingborg",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/helsingborg/hortensiagatan-2/aga-gasolautomat-wash-a-car",
+    "source": "egen",
+    "nearLat": 56.047,
+    "nearLon": 12.694,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasol självservice Linde, Helsingborg",
+    "query": "Torbornavägen 36, Helsingborg",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/helsingborg/torbornav%C3%A4gen-36/linde-gas-24/7-sj%C3%A4lvservicest%C3%A4lle-helsingborg",
+    "source": "egen",
+    "nearLat": 56.047,
+    "nearLon": 12.694,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Skövde",
+    "query": "Henriksbergsgatan 20, Skövde",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/sk%C3%B6vde/henriksbergsgatan-20/aga-gasolautomat-sk%C3%B6vde",
+    "source": "egen",
+    "nearLat": 58.391,
+    "nearLon": 13.845,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Preem Bollebygd",
+    "query": "Stationsvägen 14, Bollebygd",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/bollebygd/stationsv%C3%A4gen-14/aga-gasolautomat-volvo/preem",
+    "source": "egen",
+    "nearLat": 57.667,
+    "nearLon": 12.573,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Skurup",
+    "query": "Korrehusgatan 3, Skurup",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/skurup/korrehusgatan-3/aga-gasolautomat-skurup",
+    "source": "egen",
+    "nearLat": 55.48,
+    "nearLon": 13.5,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Magasin 136, Köpingsvik (Öland)",
+    "query": "Klintagatan 19, Köpingsvik",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/k%C3%B6pingsvik/klintagatan-19/aga-gasolautomat-magasin-136",
+    "source": "egen",
+    "nearLat": 56.878,
+    "nearLon": 16.72,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Shell Edsberg, Sollentuna",
+    "query": "Rudbecks väg 141, Sollentuna",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/sollentuna/rudbecks-v%C3%A4g-141/aga-gasolautomat-shell-edsberga",
+    "source": "egen",
+    "nearLat": 59.443,
+    "nearLon": 17.976,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Kragsta Grill, Vallentuna",
+    "query": "Bällstabergsvägen 2, Vallentuna",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/vallentuna/b%C3%A4llstabergsv%C3%A4gen-2/aga-gasolautomat-kragsta-grill",
+    "source": "egen",
+    "nearLat": 59.52,
+    "nearLon": 18.078,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat ICA Kvantum Ekängen, Eskilstuna",
+    "query": "Strängnäsvägen 11, Eskilstuna",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/eskilstuna/str%C3%A4ngn%C3%A4sv%C3%A4gen-11/gasolautomat-ica-kvantum-ek%C3%A4ngen",
+    "source": "egen",
+    "nearLat": 59.386,
+    "nearLon": 16.55,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Strängnäs",
+    "query": "Kvartsgatan 6, Strängnäs",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/str%C3%A4ngn%C3%A4s/kvartsgatan-6/aga-gasolautomat-str%C3%A4ngn%C3%A4s",
+    "source": "egen",
+    "nearLat": 59.377,
+    "nearLon": 17.031,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Uddevalla",
+    "query": "Fasserödsvägen 2, Uddevalla",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/uddevalla/fasser%C3%B6dsv%C3%A4gen-2/aga-gasolautomat-uddevalla",
+    "source": "egen",
+    "nearLat": 58.349,
+    "nearLon": 11.936,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Motala",
+    "query": "Moränvägen 1B, Motala",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/motala/mor%C3%A4nv%C3%A4gen-1b/aga-gasolautomat-motala",
+    "source": "egen",
+    "nearLat": 58.537,
+    "nearLon": 15.036,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat ICA Kvantum Knivsta",
+    "query": "Centralvägen 56, Knivsta",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/knivsta/centralv%C3%A4gen-56/aga-gasolautomat-ica-kvantum-knivsta",
+    "source": "egen",
+    "nearLat": 59.725,
+    "nearLon": 17.787,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat Coop Torsby",
+    "query": "Berggårdsvägen 39, Torsby",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/torsby/bergg%C3%A5rdsv%C3%A4gen-39/aga-gasolautomat-coop-torsby",
+    "source": "egen",
+    "nearLat": 60.135,
+    "nearLon": 12.999,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat ICA Skrea Strand, Falkenberg",
+    "query": "Ljungholmsgatan 20, Falkenberg",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/falkenberg/ljungholmsgatan-20/aga-gasolautomat-ica-supermarket-skrea-strand",
+    "source": "egen",
+    "nearLat": 56.884,
+    "nearLon": 12.505,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasolautomat GO Biltvätt, Landskrona",
+    "query": "Pjäsgatan 1, Landskrona",
+    "services": [
+      "gasol"
+    ],
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/landskrona/pj%C3%A4sgatan-1/aga-gasolautomat-go-biltv%C3%A4tt",
+    "source": "egen",
+    "nearLat": 55.871,
+    "nearLon": 12.831,
+    "openingHours": "Dygnet runt"
+  },
+  {
+    "name": "Gasol – Uppsala Handelsstål",
+    "query": "Grafikgatan 15, Uppsala",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/uppsala/grafikgatan-15/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-uppsala-handelsst%C3%A5l-ab",
+    "source": "egen",
+    "nearLat": 59.858,
+    "nearLon": 17.68
+  },
+  {
+    "name": "Gasol – Svetshuset Örebro",
+    "query": "Osmundgatan 5, Örebro",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/%C3%B6rebro/osmundgatan-5/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-svetshuset-%C3%B6rebro",
+    "source": "egen",
+    "nearLat": 59.29,
+    "nearLon": 15.24
+  },
+  {
+    "name": "Gasol – Brantestigs, Västerås",
+    "query": "Omformargatan 10, Västerås",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/v%C3%A4ster%C3%A5s/omformargatan-10/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-brantestigs-svetsmaskinservice-ab",
+    "source": "egen",
+    "nearLat": 59.611,
+    "nearLon": 16.51
+  },
+  {
+    "name": "Gasol – Kalles Bud & Transport, Kiruna",
+    "query": "Fasadvägen 21, Kiruna",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/kiruna/fasadv%C3%A4gen-21/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-kalles-bud-&-transport-i-norr-ab",
+    "source": "egen",
+    "nearLat": 67.856,
+    "nearLon": 20.226
+  },
+  {
+    "name": "Gasol – Ergocraft Maskin, Falun",
+    "query": "Krontallsvägen 24B, Falun",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/falun/krontallsv%C3%A4gen-24-b/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-ergocraft-maskin-ab",
+    "source": "egen",
+    "nearLat": 60.607,
+    "nearLon": 15.626
+  },
+  {
+    "name": "Gasol – Handelsstål i Norrland, Sundsvall",
+    "query": "Fyrspannsvägen 4, Sundsvall",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/sundsvall/fyrspannsv%C3%A4gen-4/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-handelsst%C3%A5l-i-norrland-ab",
+    "source": "egen",
+    "nearLat": 62.39,
+    "nearLon": 17.306
+  },
+  {
+    "name": "Gasol – Svenska Elektrod, Älvsjö",
+    "query": "Varuvägen 2, Älvsjö",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/%C3%A4lvsj%C3%B6/varuv%C3%A4gen-2-10/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-svenska-elektrod-ab",
+    "source": "egen",
+    "nearLat": 59.278,
+    "nearLon": 18.011
+  },
+  {
+    "name": "Gasol – Telge Stålcenter, Södertälje",
+    "query": "Sydhamnsvägen 46, Södertälje",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/s%C3%B6dert%C3%A4lje/sydhamnsv%C3%A4gen-46/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-telge-st%C3%A5lcenter-ab",
+    "source": "egen",
+    "nearLat": 59.17,
+    "nearLon": 17.65
+  },
+  {
+    "name": "Gasol – Woody Bygghandel, Nyköping",
+    "query": "Arnöleden 1, Nyköping",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/nyk%C3%B6ping/arn%C3%B6leden-1/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-n-a-svensson/-woody-bygghandel-stockholm-syd-ab",
+    "source": "egen",
+    "nearLat": 58.753,
+    "nearLon": 17.008
+  },
+  {
+    "name": "Gasol – Lantmännen Maskin, Uddevalla",
+    "query": "Kurödsvägen 24A, Uddevalla",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/uddevalla/kur%C3%B6dsv%C3%A4gen-24a/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-lantm%C3%A4nnen-maskin-ab",
+    "source": "egen",
+    "nearLat": 58.349,
+    "nearLon": 11.96
+  },
+  {
+    "name": "Gasol – Plastmodeller K&R Johansson, Trollhättan",
+    "query": "Magnetvägen 12, Trollhättan",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/trollh%C3%A4ttan/magnetv%C3%A4gen-12/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-plastmodeller-k&r-johansson-ab",
+    "source": "egen",
+    "nearLat": 58.284,
+    "nearLon": 12.289
+  },
+  {
+    "name": "Gasol – Beijer Byggmaterial, Strömstad",
+    "query": "Tångenvägen 3, Strömstad",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/str%C3%B6mstad/t%C3%A5ngenv%C3%A4gen-3/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-beijer-byggmaterial-ab",
+    "source": "egen",
+    "nearLat": 58.938,
+    "nearLon": 11.171
+  },
+  {
+    "name": "Gasol – Kristianstads Kylservice",
+    "query": "Industrigatan 96, Kristianstad",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/kristianstad/industrigatan-96/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-ab-kristianstads-kylservice",
+    "source": "egen",
+    "nearLat": 56.031,
+    "nearLon": 14.152
+  },
+  {
+    "name": "Gasol – Cramo, Karlstad",
+    "query": "Blekegatan 3, Karlstad",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/karlstad/blekegatan-3/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-cramo-sverige-ab",
+    "source": "egen",
+    "nearLat": 59.379,
+    "nearLon": 13.504
+  },
+  {
+    "name": "Gasol – Järn AB Södertorg, Visby",
+    "query": "Byrumsgatan 4, Visby",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/visby/byrumsgatan-4/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-j%C3%A4rn-ab-s%C3%B6dertorg",
+    "source": "egen",
+    "nearLat": 57.635,
+    "nearLon": 18.295
+  },
+  {
+    "name": "Gasol – Snicken Slite Järn, Gotland",
+    "query": "Boge Mojner 826, Slite",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/slite/boge-mojner-826/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-snicken/-slite-j%C3%A4rn",
+    "source": "egen",
+    "nearLat": 57.68,
+    "nearLon": 18.75
+  },
+  {
+    "name": "Gasol – Connys Skog & Trädgård, Motala",
+    "query": "Turbinvägen 3, Motala",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/motala/turbinv%C3%A4gen-3/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-connys-skog-&-tr%C3%A4dg%C3%A5rd",
+    "source": "egen",
+    "nearLat": 58.537,
+    "nearLon": 15.06
+  },
+  {
+    "name": "Gasol – Gustafsson Uthyrning, Oskarshamn",
+    "query": "Klämnavägen 5, Oskarshamn",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/oskarshamn/kl%C3%A4mnav%C3%A4gen-5/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-gustafsson-uthyrning-ab",
+    "source": "egen",
+    "nearLat": 57.265,
+    "nearLon": 16.448
+  },
+  {
+    "name": "Gasol – Laitis, Umeå",
+    "query": "Björnvägen 11, Umeå",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/ume%C3%A5/bj%C3%B6rnv%C3%A4gen-11/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-laitis-handels-ab",
+    "source": "egen",
+    "nearLat": 63.826,
+    "nearLon": 20.263
+  },
+  {
+    "name": "Gasol – Skene Järn, Varberg",
+    "query": "Äckregårdsvägen 2, Varberg",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/varberg/%C3%A4ckreg%C3%A5rdsv%C3%A4gen-2/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-skene-j%C3%A4rn-varberg",
+    "source": "egen",
+    "nearLat": 57.106,
+    "nearLon": 12.251
+  },
+  {
+    "name": "Gasol – Dahl, Bromma",
+    "query": "Bryggerivägen 8, Bromma",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/bromma/bryggeriv%C3%A4gen-8/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-dahl-sverige-ab",
+    "source": "egen",
+    "nearLat": 59.348,
+    "nearLon": 17.958
+  },
+  {
+    "name": "Gasol – Svetsexperten, Kalmar",
+    "query": "Polhemsgatan 22, Kalmar",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/kalmar/polhemsgatan-22/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-svetsexperten-i-kalmar-ab",
+    "source": "egen",
+    "nearLat": 56.67,
+    "nearLon": 16.32
+  },
+  {
+    "name": "Gasol – Gasolspecialisten, Jönköping",
+    "query": "Mogölsvägen 16, Jönköping",
+    "services": [
+      "gasol"
+    ],
+    "description": "Återförsäljare av AGA gasol (Linde försäljningsställe) – köp och byte av gasolflaskor under butikens öppettider. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/j%C3%B6nk%C3%B6ping/mog%C3%B6lsv%C3%A4gen-16/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-gasolspecialisten-ab",
+    "source": "egen",
+    "nearLat": 57.75,
+    "nearLon": 14.21
   }
 ]

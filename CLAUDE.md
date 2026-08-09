@@ -31,7 +31,7 @@ bumpa `CACHE`-versionen vid behov). Capacitor/Android finns förberett
 | `src/types.ts` | `ServiceType` (gravatten, latrin, vatten, **sopor**, stallplats, camping, gasol), färger, etiketter |
 | `src/lib/overpass.ts` | Live-hämtning per kartvy (zoom ≥ 12). Speglar synkskriptets taggtolkning – ändra ALLTID båda |
 | `scripts/sync-stations.mjs` | CI-synk: OSM (Overpass) + Trafikverket + `scripts/curated-places.json` → `public/data/stations-seed.json` |
-| `scripts/curated-places.json` | Eget register (~120 platser). Föredra `lat`/`lon` framför `query` (adressuppslag har gett felplaceringar!) |
+| `scripts/curated-places.json` | Eget register (~207 platser). Föredra `lat`/`lon` framför `query` (adressuppslag har gett felplaceringar!). Nya fält: `nearLat`/`nearLon` (+ ev. `maxKm`, standard 30) – geokodningar som hamnar längre bort än så kasseras av synkskriptet |
 | `src/components/AdminPanel.tsx` | Adminstatus + engångsfix-guide |
 | `supabase/schema.sql` | Idempotent schema: submissions, reports, verifications, reviews (RLS) |
 | `supabase.env` | Publik Supabase-koppling (skrivs av installer-workflowen; anon-nyckeln är publik per design) |
@@ -77,8 +77,12 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
 
 ## Backlog (nästa att göra, i prioritetsordning)
 
-1. **Gasolsvep** – bara 42 platser; OSM taggar sällan gasolförsäljning.
-   Websvep mot återförsäljarlistor (OKQ8, Gasolbutiken m.fl.) skulle ge 100+.
+1. **Gasolsvep** – DELVIS KLART (aug 2026): 86 platser från Lindes katalog
+   (forsaljningsstallen.linde.se) tillagda i registret – gasolautomater (24/7)
+   och AGA-återförsäljare. Metod: WebSearch med `allowed_domains` mot katalogen
+   (direkthämtning är egress-blockad; adress+ort ligger i katalog-URL:erna).
+   Återstår: andra nät (Primagaz, Flogas, OKQ8:s egna stationslista) samt
+   koordinatverifiering efter deploy.
 2. **Tjänsteberikning** – många campingar på kartan HAR tömning utan att det
    syns (visas bara som "camping"). Kräver berikning per plats.
 3. **Öppettider/vinterstängt** saknas för många platser.

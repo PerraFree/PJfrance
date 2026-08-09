@@ -381,6 +381,16 @@ async function geocode(query) {
   return { lat, lon }
 }
 
+function distanceKm(lat1, lon1, lat2, lon2) {
+  const rad = Math.PI / 180
+  const dLat = (lat2 - lat1) * rad
+  const dLon = (lon2 - lon1) * rad
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(lat1 * rad) * Math.cos(lat2 * rad) * Math.sin(dLon / 2) ** 2
+  return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
+}
+
 async function fetchCurated() {
   let entries
   try {
@@ -404,6 +414,19 @@ async function fetchCurated() {
       if (!pos) {
         console.warn(`Register: kunde inte geokoda "${e.query}" (${e.name})`)
         continue
+      }
+      // Rimlighetskontroll: om posten anger nearLat/nearLon (ungefärligt läge för
+      // rätt ort) kasseras platsen när geokodningen hamnar för långt bort.
+      // Hellre bortfall än felplacering (jfr Åmål-i-Skåne-incidenten).
+      if (typeof e.nearLat === 'number' && typeof e.nearLon === 'number') {
+        const km = distanceKm(pos.lat, pos.lon, e.nearLat, e.nearLon)
+        const maxKm = typeof e.maxKm === 'number' ? e.maxKm : 30
+        if (km > maxKm) {
+          console.warn(
+            `Register: "${e.name}" geokodades ${km.toFixed(0)} km från förväntat läge (max ${maxKm}) – hoppar över`,
+          )
+          continue
+        }
       }
       const station = {
         id: `curated-${i}-${(e.query ?? e.name).replace(/\s+/g, '-').toLowerCase()}`,
