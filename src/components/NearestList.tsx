@@ -47,7 +47,7 @@ export default function NearestList({
   return (
     <div className="nearest" role="dialog" aria-label="Platser närmast dig">
       <div className="nearest-head">
-        <h2>Närmast dig</h2>
+        <h2>Närmaste platser</h2>
         <button type="button" onClick={onClose} aria-label="Stäng listan">
           ×
         </button>

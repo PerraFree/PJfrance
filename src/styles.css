@@ -1438,18 +1438,25 @@ button {
 
   /* Flytande GPS-knapp ovanför arkets peek-höjd; göms när arket fällts ut
      (då finns "Sök där jag är" i panelen i stället). */
+  /* Flytande GPS-knappen göms helt på mobil – "Sök där jag är" finns nu
+     alltid i sheeten och den runda knappen krockade med sökrutan. */
   .locate-btn {
-    bottom: calc(200px + env(safe-area-inset-bottom));
-  }
-  .panel:not(.collapsed) ~ .locate-btn {
     display: none;
   }
 
-  /* "Närmast dig"-pillret lyfts ovanför arket så det inte täcker filterchipsen */
+  /* "Närmaste platser"-pillret ligger högst upp på kartan där inget annat
+     finns – sheetens höjd varierar, så bottenpositionen krockade. */
   .nearest-toggle {
-    bottom: calc(200px + env(safe-area-inset-bottom));
+    bottom: auto;
+    top: calc(10px + env(safe-area-inset-top));
+    left: 50%;
+    transform: translateX(-50%);
   }
-  .panel:not(.collapsed) ~ .nearest-toggle {
+  .nearest-toggle:active {
+    transform: translateX(-50%) scale(0.97);
+  }
+  .panel:not(.collapsed) ~ .nearest-toggle,
+  .panel.mini ~ .nearest-toggle {
     display: none;
   }
 
