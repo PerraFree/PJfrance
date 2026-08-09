@@ -825,7 +825,7 @@ export default function App() {
           type="button"
           onClick={() => setShowNearest(true)}
         >
-          Närmast dig
+          Närmaste platser
         </button>
       )}
 
