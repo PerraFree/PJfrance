@@ -4072,5 +4072,434 @@
     "nearLat": 64.95,
     "nearLon": 21.21,
     "maxKm": 15
+  },
+  {
+    "name": "Grebbestad Fjorden",
+    "lat": 58.6817179,
+    "lon": 11.2652969,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.grebbestadfjorden.com/",
+    "source": "egen"
+  },
+  {
+    "name": "Ramsvik Stugby & Camping",
+    "query": "Ramsvik Stugby & Camping, Hunnebostrand",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.ramsvik.nu/",
+    "source": "egen",
+    "nearLat": 58.47,
+    "nearLon": 11.24,
+    "maxKm": 20
+  },
+  {
+    "name": "Johannesvik Camping & Stugby",
+    "lat": 58.3692817,
+    "lon": 11.2818459,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.johannesvik.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Siviks camping",
+    "lat": 58.2980626,
+    "lon": 11.4498875,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.sivikscamping.com/",
+    "source": "egen"
+  },
+  {
+    "name": "Gullbrannagården",
+    "lat": 56.5925505,
+    "lon": 12.9455413,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.gullbrannagarden.se/",
+    "source": "egen"
+  },
+  {
+    "name": "First Camp Mellbystrand",
+    "query": "First Camp Mellbystrand, Laholm",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/mellbystrand-halmstad/",
+    "source": "egen",
+    "nearLat": 56.49,
+    "nearLon": 12.94,
+    "maxKm": 20
+  },
+  {
+    "name": "First Camp Torekov",
+    "lat": 56.4315095,
+    "lon": 12.6339949,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/torekov-bastad/",
+    "source": "egen"
+  },
+  {
+    "name": "Råå Vallar",
+    "lat": 56.0044085,
+    "lon": 12.7257004,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/raa-vallar-helsingborg/",
+    "source": "egen"
+  },
+  {
+    "name": "Röstånga Bad & Camping",
+    "lat": 55.9938839,
+    "lon": 13.2777453,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.rostangacamping.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Skånes Djurparks Camping",
+    "query": "Skånes Djurparks Camping, Höör",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/skanes-djurpark-hoor/",
+    "source": "egen",
+    "nearLat": 55.97,
+    "nearLon": 13.53,
+    "maxKm": 20
+  },
+  {
+    "name": "Löderups Strandbad Camping",
+    "query": "Löderups Strandbad Camping, Löderup",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.loderupsstrandbad.se/",
+    "source": "egen",
+    "nearLat": 55.38,
+    "nearLon": 14.05,
+    "maxKm": 20
+  },
+  {
+    "name": "Kiviks Familjecamping",
+    "query": "Kiviks Familjecamping, Kivik",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.kivikscamping.se/",
+    "source": "egen",
+    "nearLat": 55.7,
+    "nearLon": 14.19,
+    "maxKm": 20
+  },
+  {
+    "name": "Tingsryd Resort",
+    "query": "Tingsryd Resort, Tingsryd",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.tingsrydresort.se/",
+    "source": "egen",
+    "nearLat": 56.53,
+    "nearLon": 14.99,
+    "maxKm": 20
+  },
+  {
+    "name": "Sjöstugans Camping",
+    "query": "Sjöstugans Camping, Älmhult",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.sjostugan.com/",
+    "source": "egen",
+    "nearLat": 56.55,
+    "nearLon": 14.13,
+    "maxKm": 20
+  },
+  {
+    "name": "Grännastrandens Camping",
+    "lat": 58.0297125,
+    "lon": 14.4602112,
+    "services": [
+      "stallplats",
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.grannacamping.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Jönköping SweCamp Villa Björkhagen",
+    "lat": 57.7873712,
+    "lon": 14.2170967,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.villabjorkhagen.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Ekuddens Camping",
+    "query": "Ekuddens Camping, Mariestad",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.ekuddenscamping.se/",
+    "source": "egen",
+    "nearLat": 58.7,
+    "nearLon": 13.8,
+    "maxKm": 20
+  },
+  {
+    "name": "Frykenbadens Camping",
+    "query": "Frykenbadens Camping, Kil",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.frykenbaden.se/",
+    "source": "egen",
+    "nearLat": 59.55,
+    "nearLon": 13.31,
+    "maxKm": 20
+  },
+  {
+    "name": "Herrfallets Camping",
+    "query": "Herrfallets Camping, Arboga",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.herrfallet.se/",
+    "source": "egen",
+    "nearLat": 59.32,
+    "nearLon": 15.93,
+    "maxKm": 20
+  },
+  {
+    "name": "Skantzö Bad & Camping",
+    "lat": 59.6111264,
+    "lon": 16.2162897,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.hallstahammar.se/skantzo",
+    "source": "egen"
+  },
+  {
+    "name": "First Camp Lugnet Stugby",
+    "lat": 60.6220222,
+    "lon": 15.6537116,
+    "services": [
+      "vatten",
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://lugnetscamping.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Engesbergs Camping",
+    "query": "Engesbergs Camping, Gävle",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.engesbergscamping.se/",
+    "source": "egen",
+    "nearLat": 60.73,
+    "nearLon": 17.2,
+    "maxKm": 20
+  },
+  {
+    "name": "Norrfällsvikens Camping & Stugby",
+    "lat": 62.9729427,
+    "lon": 18.5288099,
+    "services": [
+      "gravatten",
+      "latrin",
+      "camping",
+      "stallplats",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.norrfallsviken.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Strömsunds Camping",
+    "lat": 63.8462622,
+    "lon": 15.5332175,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.stromsund.se/camping",
+    "source": "egen"
+  },
+  {
+    "name": "First Camp Ansia",
+    "lat": 64.5961953,
+    "lon": 18.6985208,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/ansia-lycksele/",
+    "source": "egen"
+  },
+  {
+    "name": "Jokkmokks Camping Center",
+    "query": "Jokkmokks Camping Center, Jokkmokk",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.jokkmokkscampingcenter.com/",
+    "source": "egen",
+    "nearLat": 66.6,
+    "nearLon": 19.83,
+    "maxKm": 20
+  },
+  {
+    "name": "Kukkolaforsens camping",
+    "lat": 65.9612994,
+    "lon": 24.0390895,
+    "services": [
+      "gravatten",
+      "latrin",
+      "camping",
+      "stallplats",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.kukkolaforsen.se/",
+    "source": "egen"
   }
 ]
