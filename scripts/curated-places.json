@@ -3892,23 +3892,6 @@
     "maxKm": 20
   },
   {
-    "name": "Sundsvalls Camping Fläsian",
-    "query": "Sundsvalls Camping Fläsian, Sundsvall",
-    "services": [
-      "camping",
-      "stallplats",
-      "gravatten",
-      "latrin",
-      "vatten"
-    ],
-    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
-    "url": "https://www.sundsvallscamping.se/",
-    "source": "egen",
-    "nearLat": 62.35,
-    "nearLon": 17.33,
-    "maxKm": 20
-  },
-  {
     "name": "First Camp Umeå",
     "query": "First Camp Umeå, Umeå",
     "services": [
@@ -5356,6 +5339,222 @@
     ],
     "description": "Erbjuder latrintömning för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "http://www.annaboda.com/",
+    "source": "egen"
+  },
+  {
+    "name": "Camping Branäs",
+    "lat": 60.6628949,
+    "lon": 12.9607652,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "http://www.branas.se/boende/omraden/camping-2/",
+    "source": "egen"
+  },
+  {
+    "name": "Medskogssjöns camping",
+    "lat": 60.7753706,
+    "lon": 16.728653,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.medskogssjon.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Våmåbadets Camping",
+    "lat": 61.1164642,
+    "lon": 14.4937885,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://vamabadetscamping.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Svegs Camping",
+    "lat": 62.0318599,
+    "lon": 14.3647577,
+    "services": [
+      "camping",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.svegscamping.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Sunnanö Camping",
+    "lat": 60.3216,
+    "lon": 18.45087,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.sunnanocamping.com/",
+    "source": "egen"
+  },
+  {
+    "name": "Björkebo Camping",
+    "lat": 60.3470545,
+    "lon": 13.3380558,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.bjoerkebo-camping.com/",
+    "source": "egen"
+  },
+  {
+    "name": "Rörholmsbadet Camping",
+    "lat": 60.3825421,
+    "lon": 17.2331511,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://rorholmsbadet.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Vansbro Camping",
+    "lat": 60.5074763,
+    "lon": 14.2313689,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "http://www.nordiccamping.se/vara-anlaggningar/vansbro-camping/",
+    "source": "egen"
+  },
+  {
+    "name": "Dalarna Älvcamping",
+    "lat": 60.5504567,
+    "lon": 15.2226628,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://dalarnarivercamp.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Rätans Camping",
+    "lat": 62.479511,
+    "lon": 14.538117,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.ratanscamping.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Borka camping & stugby",
+    "lat": 61.5477915,
+    "lon": 17.0422972,
+    "services": [
+      "camping",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "http://www.borkacamping.se",
+    "source": "egen"
+  },
+  {
+    "name": "First Camp Fläsian",
+    "lat": 62.3592252,
+    "lon": 17.3713938,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destinationer/flasian-sundsvall",
+    "source": "egen"
+  },
+  {
+    "name": "Lits Camping/Stugby - Little Lake Hill Canoecenter",
+    "lat": 63.3196753,
+    "lon": 14.8664984,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.litscamping.com/",
+    "source": "egen"
+  },
+  {
+    "name": "First Camp Nydala - Umeå",
+    "lat": 63.8438462,
+    "lon": 20.3445644,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.de/destination/nydala-umea/",
+    "source": "egen"
+  },
+  {
+    "name": "Norrmjöle camping",
+    "lat": 63.672769,
+    "lon": 20.1154098,
+    "services": [
+      "camping",
+      "latrin"
+    ],
+    "description": "Erbjuder latrintömning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://norrmjole.com/norrmjole-camping/",
+    "source": "egen"
+  },
+  {
+    "name": "Bräcke Strand Tältplats",
+    "lat": 62.7474025,
+    "lon": 15.4168633,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.brackestrand.se",
     "source": "egen"
   }
 ]
