@@ -151,15 +151,19 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    De 420 namngivna delades i 42 grupper à ~10, samma agent-mönster som
    FAS 1 men med namnbaserad WebSearch (ort behöver ofta identifieras
    från koordinaten först) i stället för direkt URL → lägre träffsäkerhet,
-   fler "unclear". **24 av 42 grupper klara** (våg 1–3, ~240 platser
-   granskade): 86 fick verifierad service. Våg 4 (grupp 36–41, ~60
-   platser i övre Norrland/fjällen) blockerades helt av att sessionens
-   WebSearch-kvot (`CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION`, delas av
-   alla agenter i samma session) tog slut – flera av de sista platserna
-   visade sig dessutom vara obebodd fjällterräng/OSM-brus, så förlusten
-   är sannolikt liten. **Fortsätt från nw-group-36.json i en ny session**
-   (grupp 00–35-filerna och resultaten finns redan, ingen anledning att
-   göra om dem) när kvoten återställts.
+   fler "unclear". **24 av 42 grupper klara (3 av ~5 planerade vågor)**:
+   86 fick verifierad service. Våg 4 (grupp 36–41, ~60 platser, mest
+   övre Norrland/fjällen) kunde INTE granskas – sessionens WebSearch-kvot
+   (`CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION`, delas av alla agenter i
+   samma session) tog slut mitt i vågen (grupp 41 testad separat efter
+   pausen som kontroll – samma resultat: 0/200 kvar, alla "unclear").
+   Flera av de sista platserna visade sig dessutom vara OSM-genererade
+   platshållarnamn utan verkligt innehåll att söka på ("good place for
+   camping", "Possible Camping" osv.), så förlusten är sannolikt liten.
+   Inga nya fynd från grupp 36–41 är tillagda i registret. **Fortsätt
+   från nw-group-36.json i en ny session** (grupp 00–35-filerna och
+   resultaten finns redan, ingen anledning att göra om dem) när kvoten
+   återställts – en ny session ger en fräsch kvot.
 
    Per fältrapport (aug 2026): Lygnareds Camping (campingalingsas.com,
    Alingsås) saknas fortfarande – granskad två gånger, webbplatsen går
