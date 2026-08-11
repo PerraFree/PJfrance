@@ -8,6 +8,10 @@ const OVERPASS_MIRRORS = [
   'https://overpass.private.coffee/api/interpreter',
 ]
 
+// Se säkringen i fetchOsmStations: pausar live-hämtning när alla speglar felar.
+let failedFetches = 0
+let backoffUntil = 0
+
 interface OverpassElement {
   type: 'node' | 'way' | 'relation'
   id: number
@@ -317,6 +321,10 @@ export async function fetchOsmStations(bounds: LatLngBounds): Promise<Station[]>
     typeof AbortSignal !== 'undefined' && 'timeout' in AbortSignal
       ? () => AbortSignal.timeout(12_000)
       : () => undefined
+  // Säkring: när Overpass är nere tuggade appen 3 speglar × 12 s vid VARJE
+  // kartrörelse. Efter två helt misslyckade hämtningar pausas live-flödet i
+  // fem minuter – seed-datan täcker hela Sverige under tiden.
+  if (Date.now() < backoffUntil) throw new Error('Overpass pausad (backoff)')
   let lastError: unknown
   for (const url of OVERPASS_MIRRORS) {
     try {
@@ -328,10 +336,13 @@ export async function fetchOsmStations(bounds: LatLngBounds): Promise<Station[]>
       })
       if (!res.ok) throw new Error(`Overpass svarade ${res.status}`)
       const json = (await res.json()) as { elements: OverpassElement[] }
+      failedFetches = 0
       return json.elements.map(toStation).filter((s): s is Station => s !== null)
     } catch (err) {
       lastError = err
     }
   }
+  failedFetches++
+  if (failedFetches >= 2) backoffUntil = Date.now() + 5 * 60_000
   throw lastError instanceof Error ? lastError : new Error('Overpass ej nåbar')
 }
