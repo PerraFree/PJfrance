@@ -151,21 +151,23 @@ function popupHtml(
         ? '<span class="badge season seasonal">Säsongsöppet</span>'
         : ''
   const rows: string[] = []
-  // Var ligger platsen? Adress om den finns, annars fylls orten i när popupen öppnas.
-  if (station.address) {
-    rows.push(`<p class="loc">📍 ${esc(station.address)}</p>`)
-  } else {
-    rows.push(
-      `<p class="loc"><span class="loc-slot" data-lat="${station.lat}" data-lon="${station.lon}">📍 Hämtar plats …</span></p>`,
-    )
-  }
+  // Var ligger platsen + avstånd på samma rad ("Växjö · 4,2 km").
+  // Adress om den finns, annars fylls orten i när popupen öppnas.
+  let distSuffix = ''
   if (userLoc) {
     const km = distanceKm(userLoc, station)
     const dist = km < 1 ? `${Math.round(km * 1000)} m` : `${km.toFixed(km < 10 ? 1 : 0)} km`
-    rows.push(`<p class="dist">${dist} härifrån (fågelvägen)</p>`)
+    distSuffix = ` · ${dist}`
   }
-  if (station.description) rows.push(`<p class="desc">${esc(station.description)}</p>`)
-  rows.push(facilityList(station))
+  if (station.address) {
+    rows.push(`<p class="loc">📍 ${esc(station.address)}${distSuffix}</p>`)
+  } else {
+    rows.push(
+      `<p class="loc"><span class="loc-slot" data-lat="${station.lat}" data-lon="${station.lon}">📍 Hämtar plats …</span>${distSuffix}</p>`,
+    )
+  }
+  // Avgift och öppettider som två tydliga rutor (à la platskort).
+  const cards: string[] = []
   if (station.fee) {
     // "Gratis" på en plats som även har gasol avser tömning/vatten – gasol
     // är alltid ett köp. Förtydliga så ingen läser det som gratis gasol.
@@ -173,20 +175,25 @@ function popupHtml(
       /gratis|free|ingår|kostnadsfri|utan avgift/i.test(station.fee) &&
       station.services.includes('gasol')
     const feeText = gratisMedGasol ? `${station.fee} (gäller ej gasolköp)` : station.fee
-    rows.push(`<p class="meta"><strong>Avgift</strong>${esc(feeText)}</p>`)
+    cards.push(
+      `<div class="info-card"><span class="info-label">Avgift</span><span class="info-value">${esc(feeText)}</span></div>`,
+    )
   }
+  if (station.openingHours) {
+    // Öppet-nu-status fylls i asynkront när popupen öppnas (se popupopen nedan)
+    cards.push(
+      `<div class="info-card"><span class="info-label">Öppettider</span><span class="info-value">${esc(station.openingHours)} <span class="open-now-slot" data-oh="${escapeAttr(station.openingHours)}"></span></span></div>`,
+    )
+  }
+  if (cards.length) rows.push(`<div class="info-cards">${cards.join('')}</div>`)
+  if (station.description) rows.push(`<p class="desc">${esc(station.description)}</p>`)
+  rows.push(facilityList(station))
   if (station.payment?.length)
     rows.push(`<p class="meta"><strong>Betalning</strong>${esc(station.payment.join(', '))}</p>`)
   if (station.capacity)
     rows.push(`<p class="meta"><strong>Platser</strong>${esc(station.capacity)}</p>`)
   if (station.maxstay)
     rows.push(`<p class="meta"><strong>Max övernattning</strong>${esc(station.maxstay)}</p>`)
-  if (station.openingHours) {
-    // Öppet-nu-status fylls i asynkront när popupen öppnas (se popupopen nedan)
-    rows.push(
-      `<p class="meta"><strong>Öppettider</strong>${esc(station.openingHours)} <span class="open-now-slot" data-oh="${escapeAttr(station.openingHours)}"></span></p>`,
-    )
-  }
   if (station.operator)
     rows.push(`<p class="meta"><strong>Drivs av</strong>${esc(station.operator)}</p>`)
   const contact: string[] = []
