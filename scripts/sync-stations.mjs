@@ -489,6 +489,85 @@ async function fetchCurated() {
   return stations
 }
 
+// ---------- Foton från Wikimedia Commons (geosearch per koordinat) ----------
+// Fritt att länka och kostar inget. Resultaten cachas i en committad fil så
+// att varje plats bara slås upp en gång; tomma svar cachas också.
+const IMAGE_CACHE = new URL('./commons-image-cache.json', import.meta.url)
+// För icke-rastplatser krävs att filnamnet tyder på rätt sorts motiv – ett
+// foto på grannhuset 80 m bort vore värre än ingen bild alls.
+const IMAGE_KEYWORDS =
+  /rastplats|st[äa]llplats|stellplatz|camping|campsite|husbil|motorhome|caravan|husvagn|marina|g[äa]sthamn|sm[åa]b[åa]tshamn|t[öo]mning|dump.?station|latrin/i
+
+async function commonsImageFor(station) {
+  const url =
+    'https://commons.wikimedia.org/w/api.php?action=query&list=geosearch' +
+    `&gscoord=${station.lat}%7C${station.lon}&gsradius=140&gsnamespace=6&gslimit=10&format=json`
+  const res = await fetch(url, {
+    headers: { 'User-Agent': USER_AGENT },
+    signal: AbortSignal.timeout(15_000),
+  })
+  if (!res.ok) throw new Error(`Commons svarade ${res.status}`)
+  const json = await res.json()
+  for (const hit of json?.query?.geosearch ?? []) {
+    const title = hit.title ?? ''
+    if (!/\.(jpe?g|png|webp)$/i.test(title)) continue
+    // Trafikverkets rastplatser: närmsta foto duger (omgivningen ÄR platsen).
+    // Övriga: bara foton vars filnamn tyder på rätt motiv.
+    if (station.source !== 'trafikverket' && !IMAGE_KEYWORDS.test(title)) continue
+    const name = title.replace(/^File:/i, '')
+    return (
+      'https://commons.wikimedia.org/wiki/Special:FilePath/' +
+      encodeURIComponent(name) +
+      '?width=480'
+    )
+  }
+  return ''
+}
+
+async function enrichImagesFromCommons(stations) {
+  let cache = {}
+  try {
+    cache = JSON.parse(await readFile(IMAGE_CACHE, 'utf8'))
+  } catch {
+    /* första körningen – tom cache */
+  }
+  // Sopor/gasol hoppas över: en bild på en soptunna eller butiksfasad
+  // tillför inget. Övriga platstyper kan ha meningsfulla foton.
+  const eligible = stations.filter(
+    (s) =>
+      !s.image &&
+      (s.source === 'trafikverket' ||
+        s.services.some((sv) =>
+          ['stallplats', 'camping', 'gravatten', 'latrin', 'vatten'].includes(sv),
+        )),
+  )
+  const MAX_LOOKUPS = 800 // håll körtiden nere – resten tas nästa körning
+  let queried = 0
+  let added = 0
+  for (const s of eligible) {
+    const key = `${s.lat.toFixed(4)},${s.lon.toFixed(4)}`
+    if (!(key in cache)) {
+      if (queried >= MAX_LOOKUPS) continue
+      try {
+        cache[key] = await commonsImageFor(s)
+        queried++
+        await sleep(120)
+      } catch {
+        continue // inte cachat – nytt försök nästa körning
+      }
+    }
+    if (cache[key]) {
+      s.image = cache[key]
+      added++
+    }
+  }
+  await writeFile(IMAGE_CACHE, JSON.stringify(cache, null, 1) + '\n')
+  const kvar = eligible.length - Object.keys(cache).length
+  console.log(
+    `Commons-foton: ${added} platser har bild (${queried} nya uppslag${kvar > 0 ? `, ~${kvar} kvar till nästa körning` : ''})`,
+  )
+}
+
 // ---------- Kör ----------
 
 const stations = []
@@ -525,6 +604,12 @@ try {
 if (stations.length === 0) {
   console.error('Ingen data hämtad – behåller befintlig seed-fil.')
   process.exit(1)
+}
+
+try {
+  await enrichImagesFromCommons(stations)
+} catch (err) {
+  console.warn(`Commons-bildberikning misslyckades: ${err.message}`)
 }
 
 await mkdir(new URL('../public/data/', import.meta.url), { recursive: true })
