@@ -151,19 +151,29 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    De 420 namngivna delades i 42 grupper à ~10, samma agent-mönster som
    FAS 1 men med namnbaserad WebSearch (ort behöver ofta identifieras
    från koordinaten först) i stället för direkt URL → lägre träffsäkerhet,
-   fler "unclear". **24 av 42 grupper klara (3 av ~5 planerade vågor)**:
-   86 fick verifierad service. Våg 4 (grupp 36–41, ~60 platser, mest
-   övre Norrland/fjällen) kunde INTE granskas – sessionens WebSearch-kvot
-   (`CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION`, delas av alla agenter i
-   samma session) tog slut mitt i vågen (grupp 41 testad separat efter
-   pausen som kontroll – samma resultat: 0/200 kvar, alla "unclear").
-   Flera av de sista platserna visade sig dessutom vara OSM-genererade
-   platshållarnamn utan verkligt innehåll att söka på ("good place for
-   camping", "Possible Camping" osv.), så förlusten är sannolikt liten.
-   Inga nya fynd från grupp 36–41 är tillagda i registret. **Fortsätt
-   från nw-group-36.json i en ny session** (grupp 00–35-filerna och
-   resultaten finns redan, ingen anledning att göra om dem) när kvoten
-   återställts – en ny session ger en fräsch kvot.
+   fler "unclear". **FAS 2 KLAR (aug 2026), alla 42 grupper granskade.**
+   Grupp 00–35 (36010fc–48cc4b6): 86 fick verifierad service. Grupp 36–41
+   (~60 platser, mest övre Norrland/fjällen) blockerades två gånger av
+   sessionens delade WebSearch-kvot; **granskades klart i en tredje,
+   fristående session (aug 2026)** eftersom föregående sessions
+   gruppfiler (nw-group-*.json) inte överlevde till den nya containern –
+   listan rekonstruerades i stället genom att filtrera om aktuell
+   seed-data mot samma kriterier (camping/stallplats utan kärntjänst,
+   utan `website`, namn som inte är en OSM-genererad platshållartext) och
+   ta de ~70 nordligaste träffarna, vilket gav samma population som den
+   ursprungliga grupp 36–41. 13 fick verifierad service (Fredrika
+   Camping, Norets Camping, Kärleksuddens camping, Meselefors Vandrarhem
+   & Camping, Bureå Camping, Kattisavans Camping, Skellefteå Camping,
+   Bovikens Havsbad, Rännuddens camping, Trollforsen Camping vid
+   Moskosel, Udden Fritidsområde/Pajala Camping och Vandrarhem,
+   Karesuando Camping, Sandlövs camping). Resten gav bara låg/oklar
+   evidens – många är fjällvandringsleders tältplatser (Kungsleden,
+   Padjelanta, Sarek) helt utan operatör, som väntat.
+
+   **Kvarstående öppen lucka:** de ~382 campingarna vars namn bara är
+   "Camping" eller en OSM-genererad platshållartext ("good place for
+   camping", "(may be wet)", "Möglichkeit zu zelten") går inte att söka
+   fram alls – kräver crowdsourcing eller manuell koll, inte samma metod.
 
    Per fältrapport (aug 2026): Lygnareds Camping (campingalingsas.com,
    Alingsås) saknas fortfarande – granskad två gånger, webbplatsen går
