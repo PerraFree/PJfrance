@@ -126,11 +126,26 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    4. Dedupe mot befintliga curated-poster (samma tjänster inom ~400 m)
       innan de skrivs – annars dubbelpinnar man samma fysiska camping.
 
-   **Kvar att göra** (i prioritetsordning): övriga Sveriges regioner med
-   samma metod (Västra Götaland var första regionen; ~382 campingar med
-   website kvar i resten av landet), sedan de ~826 campingarna och ~900
-   ställplatserna som saknar website i data (kräver namn-sökning i
-   stället för direkt URL – lägre träffsäkerhet, gör sist).
+   **FAS 1 KLAR (aug 2026): alla campingar med `website` i data granskade,
+   riksomfattande.** Västra Götaland (55 platser) + fyra nationella vågor
+   (405 platser i 41 grupper à ~10, geografiskt sorterat syd→nord, Skåne
+   till Norrbotten) = 460 platser granskade totalt. 89 fick verifierad
+   service tillagd (14 VG + 26+20+16+13 nationellt), resten gav bara
+   osäkra/svaga träffar och lades INTE till (sparade inte namn per plats,
+   men mönstret: sajter med "servicehus/dusch/toalett" men inget konkret
+   om tömning för HUSBIL ger nästan alltid "unclear" – riktig service
+   nämns nästan alltid explicit ("gråvattentömning", "latrintömning",
+   "CamperClean" etc.). Två dubbletter upptäcktes och slogs ihop under
+   vägen (samma camping hade fått både en tidig query-baserad post och en
+   ny exakt-koordinat-post – kolla ALLTID efter "First Camp X"/kedjenamn
+   som kan redan finnas under annat namn innan de läggs till).
+
+   **FAS 2 – NÄSTA STEG:** de ~826 campingarna och ~900 ställplatserna som
+   saknar `website` i seed-datan (räkna om exakt med skriptet i
+   "Faktisk omfattning" ovan – siffrorna ändras varje synk). Kräver
+   namnbaserad WebSearch i stället för direkt URL → lägre träffsäkerhet,
+   räkna med fler "unclear". Samma regel gäller: bara "high confidence"
+   med citat läggs till.
 
    Pers fälttips (aug 2026): majoriteten av golfklubbar har färskvatten-
    påfyllning – ett golfklubbssvep vore värdefullt (Götaström tillagd
