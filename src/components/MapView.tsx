@@ -285,7 +285,7 @@ function popupHtml(
     station.image && /^https:\/\//i.test(station.image)
       ? `<img class="popup-photo" src="${escapeAttr(station.image)}" alt="" loading="lazy" onerror="this.remove()">`
       : ''
-  return `<div class="popup" style="--accent:${accent}">${photo}<h3>${esc(station.name)}</h3><div class="badges">${services}${seasonBadge}</div>${ratingLine}${verifiedLine}${rows.join('')}${commentBlock}${links}${actions}<p class="source">${sourceLine}</p>${report}${del}</div>`
+  return `<div class="popup" style="--accent:${accent}">${photo}<h3>${esc(station.name)}</h3>${ratingLine}<div class="badges">${services}${seasonBadge}</div>${verifiedLine}${rows.join('')}${commentBlock}${links}${actions}<p class="source">${sourceLine}</p>${report}${del}</div>`
 }
 
 function readSavedView(): { lat: number; lon: number; zoom: number } | null {

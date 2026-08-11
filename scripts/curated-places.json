@@ -3368,5 +3368,707 @@
     "nearLat": 57.47,
     "nearLon": 14.07,
     "maxKm": 15
+  },
+  {
+    "name": "Gekås Ställplats",
+    "lat": 57.1319916,
+    "lon": 12.7359102,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.gekas.se/bo/camping/",
+    "source": "egen"
+  },
+  {
+    "name": "First Camp Böda Sand",
+    "query": "First Camp Böda Sand, Böda, Öland",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/boda-sand-oland/",
+    "source": "egen",
+    "nearLat": 57.29,
+    "nearLon": 17.05,
+    "maxKm": 20
+  },
+  {
+    "name": "Pite Havsbad",
+    "query": "Pite Havsbad, Piteå",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.pite-havsbad.se/",
+    "source": "egen",
+    "nearLat": 65.24,
+    "nearLon": 21.42,
+    "maxKm": 20
+  },
+  {
+    "name": "Gustavsvik",
+    "lat": 59.2573247,
+    "lon": 15.1914992,
+    "services": [
+      "gravatten",
+      "latrin",
+      "stallplats",
+      "camping",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/gustavsvik-orebro/",
+    "source": "egen"
+  },
+  {
+    "name": "Vastanviksbadets Camping Leksand",
+    "lat": 60.7302022,
+    "lon": 14.9533005,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.leksandresort.se/",
+    "source": "egen"
+  },
+  {
+    "name": "First Camp Moraparken",
+    "lat": 61.0093594,
+    "lon": 14.5317929,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.moracamping.se/",
+    "source": "egen"
+  },
+  {
+    "name": "First Camp Tylösand",
+    "lat": 56.6595108,
+    "lon": 12.7385929,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/tylosand-halmstad/",
+    "source": "egen"
+  },
+  {
+    "name": "Apelvikens Camping",
+    "lat": 57.0864294,
+    "lon": 12.2491973,
+    "services": [
+      "gravatten",
+      "latrin",
+      "camping",
+      "stallplats",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.apelviken.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Skrea camping och vandrarhem",
+    "lat": 56.8822799,
+    "lon": 12.5146901,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/skrea-strand-falkenberg/",
+    "source": "egen"
+  },
+  {
+    "name": "Hagöns Camping",
+    "lat": 56.635294,
+    "lon": 12.9016781,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.hagonscamping.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Daftö Resort",
+    "lat": 58.9037461,
+    "lon": 11.2003064,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://dafto.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Lagunen Camping",
+    "query": "Lagunen Camping, Strömstad",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.lagunen.se/",
+    "source": "egen",
+    "nearLat": 58.95,
+    "nearLon": 11.2,
+    "maxKm": 20
+  },
+  {
+    "name": "Hafsten Resort",
+    "lat": 58.3164678,
+    "lon": 11.7211032,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.hafsten.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Lisebergs camping Askim Strand",
+    "lat": 57.6277456,
+    "lon": 11.9196927,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.liseberg.se/boende/askim-strand/",
+    "source": "egen"
+  },
+  {
+    "name": "Vita Sandars Camping",
+    "query": "Vita Sandars Camping, Mellerud",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.vitasandarscamping.se/",
+    "source": "egen",
+    "nearLat": 58.69,
+    "nearLon": 12.45,
+    "maxKm": 20
+  },
+  {
+    "name": "Ursand Resort & Camping",
+    "lat": 58.4152005,
+    "lon": 12.3232191,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://ursand.se/",
+    "source": "egen"
+  },
+  {
+    "name": "First Camp Skutberget",
+    "query": "First Camp Skutberget, Karlstad",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/skutberget-karlstad/",
+    "source": "egen",
+    "nearLat": 59.36,
+    "nearLon": 13.4,
+    "maxKm": 20
+  },
+  {
+    "name": "Årjäng SweCamp Resort Sommarvik",
+    "lat": 59.3678286,
+    "lon": 12.1396401,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.sommarvik.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Duse Udde Camping",
+    "query": "Duse Udde Camping, Säffle",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.duseudde.se/",
+    "source": "egen",
+    "nearLat": 59.15,
+    "nearLon": 12.91,
+    "maxKm": 20
+  },
+  {
+    "name": "Lysingsbadet Västervik Resort",
+    "lat": 57.7368146,
+    "lon": 16.6703266,
+    "services": [
+      "gravatten",
+      "latrin",
+      "camping",
+      "stallplats",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.vastervikresort.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Gunnarsö Camping",
+    "lat": 57.2517,
+    "lon": 16.49207,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/gunnarso-oskarshamn/",
+    "source": "egen"
+  },
+  {
+    "name": "Kneippbyn",
+    "lat": 57.609486,
+    "lon": 18.2411417,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.kneippbyn.se/",
+    "source": "egen"
+  },
+  {
+    "name": "First Camp Tofta",
+    "query": "First Camp Tofta, Gotland",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/tofta-gotland/",
+    "source": "egen",
+    "nearLat": 57.53,
+    "nearLon": 18.11,
+    "maxKm": 20
+  },
+  {
+    "name": "Norje Boke Camping",
+    "query": "Norje Boke Camping, Sölvesborg",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.norjebokecamping.se/",
+    "source": "egen",
+    "nearLat": 56.07,
+    "nearLon": 14.66,
+    "maxKm": 20
+  },
+  {
+    "name": "First Camp Åhus",
+    "query": "First Camp Åhus, Åhus",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/ahus-kristianstad/",
+    "source": "egen",
+    "nearLat": 55.9,
+    "nearLon": 14.3,
+    "maxKm": 20
+  },
+  {
+    "name": "Ystad Camping",
+    "lat": 55.4336304,
+    "lon": 13.8643634,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.ystadcamping.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Borstahusens Camping",
+    "query": "Borstahusens Camping, Landskrona",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.borstahusenscamping.se/",
+    "source": "egen",
+    "nearLat": 55.89,
+    "nearLon": 12.8,
+    "maxKm": 20
+  },
+  {
+    "name": "First Camp Malmö Sibbarp",
+    "lat": 55.5718265,
+    "lon": 12.908289,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/sibbarp-malmo/",
+    "source": "egen"
+  },
+  {
+    "name": "First Camp Mölle",
+    "query": "First Camp Mölle, Höganäs",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/molle-hoganas/",
+    "source": "egen",
+    "nearLat": 56.28,
+    "nearLon": 12.5,
+    "maxKm": 20
+  },
+  {
+    "name": "First Camp Kolmården",
+    "lat": 58.6593026,
+    "lon": 16.4029339,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/kolmarden-norrkoping/",
+    "source": "egen"
+  },
+  {
+    "name": "Flottsbro Camping",
+    "query": "Flottsbro Camping, Huddinge",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.flottsbro.se/",
+    "source": "egen",
+    "nearLat": 59.22,
+    "nearLon": 17.91,
+    "maxKm": 20
+  },
+  {
+    "name": "Ängby camping",
+    "lat": 59.3364948,
+    "lon": 17.9024485,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.angbycamping.se/",
+    "source": "egen"
+  },
+  {
+    "name": "First Camp Malnbaden",
+    "query": "First Camp Malnbaden, Hudiksvall",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/malnbaden-hudiksvall/",
+    "source": "egen",
+    "nearLat": 61.72,
+    "nearLon": 17.15,
+    "maxKm": 20
+  },
+  {
+    "name": "Sundsvalls Camping Fläsian",
+    "query": "Sundsvalls Camping Fläsian, Sundsvall",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.sundsvallscamping.se/",
+    "source": "egen",
+    "nearLat": 62.35,
+    "nearLon": 17.33,
+    "maxKm": 20
+  },
+  {
+    "name": "First Camp Umeå",
+    "query": "First Camp Umeå, Umeå",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/umea/",
+    "source": "egen",
+    "nearLat": 63.83,
+    "nearLon": 20.33,
+    "maxKm": 20
+  },
+  {
+    "name": "First Camp Arcus",
+    "query": "First Camp Arcus, Luleå",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://firstcamp.se/destination/arcus-lulea/",
+    "source": "egen",
+    "nearLat": 65.55,
+    "nearLon": 22.05,
+    "maxKm": 20
+  },
+  {
+    "name": "Camp Ripan",
+    "lat": 67.86052,
+    "lon": 20.24338,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://ripan.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Östersunds camping",
+    "lat": 63.1596747,
+    "lon": 14.6770303,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.ostersundscamping.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Isaberg Mountain Resort",
+    "query": "Isaberg Mountain Resort, Hestra",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.isaberg.com/",
+    "source": "egen",
+    "nearLat": 57.43,
+    "nearLon": 13.61,
+    "maxKm": 20
+  },
+  {
+    "name": "Skara Sommarlands camping",
+    "lat": 58.4121582,
+    "lon": 13.5538564,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.sommarland.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Ekerum Resort Öland",
+    "query": "Ekerum Resort Öland, Borgholm",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.ekerum.com/",
+    "source": "egen",
+    "nearLat": 56.79,
+    "nearLon": 16.54,
+    "maxKm": 20
+  },
+  {
+    "name": "Sunne Camping Kolsnäs",
+    "query": "Sunne Camping Kolsnäs, Sunne",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.sunnecamping.se/",
+    "source": "egen",
+    "nearLat": 59.83,
+    "nearLon": 13.14,
+    "maxKm": 20
+  },
+  {
+    "name": "Leksand Strand Camping",
+    "query": "Leksand Strand, Leksand",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.leksandresort.se/",
+    "source": "egen",
+    "nearLat": 60.72,
+    "nearLon": 14.98,
+    "maxKm": 15
+  },
+  {
+    "name": "Byske Havsbad",
+    "query": "Byske Havsbad, Byske",
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "url": "https://www.byskehavsbad.se/",
+    "source": "egen",
+    "nearLat": 64.95,
+    "nearLon": 21.21,
+    "maxKm": 15
   }
 ]
