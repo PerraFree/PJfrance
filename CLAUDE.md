@@ -87,11 +87,55 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    inte att verifiera per station – väntar. VIKTIGT efter deploy: verifiera
    att geokodningen gick bra via `git show origin/gh-pages:data/stations-seed.json`
    (rimlighetskontrollen kasserar >30 km-missar, se synkloggen i Actions).
-2. **Tjänsteberikning** – många campingar på kartan HAR tömning utan att det
-   syns (visas bara som "camping"). Kräver berikning per plats.
+2. **Tjänsteberikning – PÅGÅENDE, STOR OMFATTNING (viktigast just nu).**
+   Många campingar/ställplatser på kartan HAR tömning/vatten utan att det
+   syns (visas bara som "camping"/"stallplats" – OSM saknar taggen, men
+   anläggningen har servicen i verkligheten). Upptäckt aug 2026 när Per
+   stack in fingret på flera slumpvalda platser (Gekås, Alingsås,
+   Vårgårda) och alla visade sig sakna service.
+
+   **Faktisk omfattning** (mät alltid om på nytt mot senaste seed – detta
+   är ett ögonblicksfoto från aug 2026):
+   ```
+   git show origin/gh-pages:data/stations-seed.json > /tmp/seed.json
+   node -e "const j=require('/tmp/seed.json'); const st=j.stations??j;
+     console.log('camping utan tömning/vatten:',
+       st.filter(s=>s.services.includes('camping')&&!s.services.some(x=>['gravatten','latrin','vatten'].includes(x))).length);
+     console.log('stallplats utan tömning/vatten:',
+       st.filter(s=>s.services.includes('stallplats')&&!s.services.some(x=>['gravatten','latrin','vatten'].includes(x))).length);"
+   ```
+   Läget aug 2026: ~1250 campingar + ~900 ställplatser saknar service.
+   Ett svep av "kända stora namn" (storcamping-sweep, ~70 platser) räcker
+   INTE och gav en falsk känsla av heltäckning – varje ny stickprovskoll
+   hittade nya hål. **Gör aldrig om det misstaget:** kör i stället
+   systematiskt, region för region, mot den fulla listan ovan.
+
+   **Metod som fungerar** (körd för Västra Götaland aug 2026, 14 av 55
+   platser fick verifierad service tillagd):
+   1. Filtrera fram camping/stallplats-only-poster i seed som HAR
+      `website` i datan (regionalt, t.ex. bbox) – de går att verifiera
+      mot källan i stället för att gissas fram.
+   2. Kör flera Agent-anrop parallellt (Agent-tool, general-purpose),
+      ~9 platser per agent, som var och en hämtar webbplatsen (WebFetch,
+      med WebSearch+allowed_domains som fallback – WebFetch är ofta
+      egress-blockad mot enskilda campingdomäner i den här miljön) och
+      kräver konkret belägg/citat för gravatten/latrin/vatten.
+   3. Lägg BARA till poster med confidence "high" (tydligt citat). "low"/
+      "unclear" ska INTE läggas till – spara namnen och kolla manuellt
+      senare i stället för att gissa.
+   4. Dedupe mot befintliga curated-poster (samma tjänster inom ~400 m)
+      innan de skrivs – annars dubbelpinnar man samma fysiska camping.
+
+   **Kvar att göra** (i prioritetsordning): övriga Sveriges regioner med
+   samma metod (Västra Götaland var första regionen; ~382 campingar med
+   website kvar i resten av landet), sedan de ~826 campingarna och ~900
+   ställplatserna som saknar website i data (kräver namn-sökning i
+   stället för direkt URL – lägre träffsäkerhet, gör sist).
+
    Pers fälttips (aug 2026): majoriteten av golfklubbar har färskvatten-
    påfyllning – ett golfklubbssvep vore värdefullt (Götaström tillagd
-   efter besök på plats).
+   efter besök på plats). Samma "verifiera innan du lägger till"-metod
+   gäller där.
 3. **Öppettider/vinterstängt** saknas för många platser.
 4. Vilhelmina-tömningsstationen togs bort i väntan på bekräftat läge.
 5. AdminPanel: 'na'-läget och tabellkontroller är fixade; håll texterna i
