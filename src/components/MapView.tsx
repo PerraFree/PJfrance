@@ -7,6 +7,7 @@ import type { ServiceType, Station } from '../types'
 import { SERVICE_COLORS, SERVICE_ICONS, SERVICE_LABELS } from '../types'
 import { openNow } from '../lib/openingHours'
 import { reverseGeocode } from '../lib/reverse'
+import { fetchWeather, WEATHER_ICONS } from '../lib/weather'
 import { sharePlace as nativeShare } from '../lib/native'
 import { facilityChip } from '../lib/icons'
 import { MY_PLACE_PREFIX } from '../lib/myplaces'
@@ -186,6 +187,11 @@ function popupHtml(
     )
   }
   if (cards.length) rows.push(`<div class="info-cards">${cards.join('')}</div>`)
+  // Väderprognos fylls i asynkront när popupen öppnas (se popupopen nedan) –
+  // hämtas bara på klick, inte i förväg, samma mönster som öppet-nu/ortsnamn.
+  rows.push(
+    `<div class="weather-slot" data-lat="${station.lat}" data-lon="${station.lon}"><span class="info-label">Väder kommande dagar</span><div class="weather-body">Hämtar prognos …</div></div>`,
+  )
   if (station.description) rows.push(`<p class="desc">${esc(station.description)}</p>`)
   rows.push(facilityList(station))
   if (station.payment?.length)
@@ -702,6 +708,32 @@ export default function MapView({
           parseFloat(locSlot.dataset.lon),
         ).then((place) => {
           locSlot.textContent = place ? `📍 ${place}` : '📍 Plats på kartan'
+        })
+      }
+
+      const weatherSlot = el.querySelector<HTMLElement>('.weather-slot')
+      if (weatherSlot && weatherSlot.dataset.lat && weatherSlot.dataset.lon) {
+        const wLat = parseFloat(weatherSlot.dataset.lat)
+        const wLon = parseFloat(weatherSlot.dataset.lon)
+        const body = weatherSlot.querySelector<HTMLElement>('.weather-body')
+        void fetchWeather(wLat, wLon).then((days) => {
+          if (!body) return
+          if (!days.length) {
+            body.textContent = 'Prognos ej tillgänglig just nu.'
+            return
+          }
+          const chips = days
+            .map(
+              (d) =>
+                `<span class="weather-day"><span class="weather-day-wd">${esc(d.weekday)}</span>` +
+                `<span class="weather-day-icon">${WEATHER_ICONS[d.symbol] ?? '·'}</span>` +
+                `<span class="weather-day-temp">${d.tMax}°/${d.tMin}°</span></span>`,
+            )
+            .join('')
+          const windyUrl = `https://www.windy.com/?${wLat.toFixed(4)},${wLon.toFixed(4)},10`
+          body.innerHTML =
+            `<div class="weather-days">${chips}</div>` +
+            `<a class="weather-windy" href="${escapeAttr(windyUrl)}" target="_blank" rel="noopener">Vind &amp; nederbörd på Windy →</a>`
         })
       }
     })

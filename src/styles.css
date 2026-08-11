@@ -1182,6 +1182,67 @@ button {
   font-size: 0.88rem;
 }
 
+.popup .weather-slot {
+  background: var(--field);
+  border-radius: 12px;
+  padding: 9px 12px;
+  margin: 10px 0;
+}
+
+.popup .weather-body {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+.popup .weather-days {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.popup .weather-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 44px;
+  flex: 0 0 auto;
+}
+
+.popup .weather-day-wd {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.popup .weather-day-icon {
+  font-size: 1.15rem;
+  line-height: 1.2;
+}
+
+.popup .weather-day-temp {
+  font-size: 0.72rem;
+  font-weight: 650;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.popup .weather-windy {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--green-700);
+  text-decoration: none;
+}
+
+.popup .weather-windy:hover {
+  text-decoration: underline;
+}
+
 .popup .links {
   display: flex;
   gap: 12px;
