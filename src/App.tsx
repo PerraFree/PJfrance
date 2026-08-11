@@ -564,6 +564,10 @@ export default function App() {
         onRate={(s) => setRateTarget(s)}
         canRate={communityEnabled}
         onStationPopupOpen={() => {
+          // Minimalt läge är bara till för mobilens bottensheet – på
+          // desktop skulle det annars fälla ihop hela sidopanelen
+          // (filter, "Fler filter", "Lägg till en plats") vid varje klick.
+          if (!window.matchMedia?.('(max-width: 640px)').matches) return
           setCollapsed(true)
           setMini(true)
         }}

@@ -62,15 +62,19 @@ function servicesFromTags(tags: Record<string, string>): ServiceType[] {
   ) {
     services.add('stallplats')
   }
-  // Camp_sites som heter "Ställplats …" ÄR ställplatser även utan motorhome-tagg
-  // (t.ex. Gekås Ställplats). Speglas i scripts/sync-stations.mjs.
-  if (
+  // Camp_sites som HETER "Ställplats …" utan ordet "camping" i namnet är i
+  // praktiken en ren uppställningsplats, inte en campinganläggning – trots
+  // OSM-taggen tourism=camp_site. Sådana ska bara få 'stallplats', aldrig
+  // 'camping' (annars visas fel/dubbla märken, t.ex. "Gekås Ställplats").
+  // Speglas i scripts/sync-stations.mjs.
+  const nameIsPureStallplats =
     tags.tourism === 'camp_site' &&
-    /st[äa]llplats|stellplatz|husbilsplats|husbilscamping/i.test(tags.name ?? '')
-  ) {
+    /st[äa]llplats|stellplatz|husbilsplats/i.test(tags.name ?? '') &&
+    !/camping|camp\b/i.test(tags.name ?? '')
+  if (nameIsPureStallplats && tags.access !== 'private' && tags.access !== 'no') {
     services.add('stallplats')
   }
-  if (tags.tourism === 'camp_site') {
+  if (tags.tourism === 'camp_site' && !nameIsPureStallplats) {
     // En camping räknas som ställplats om den uttryckligen tar husbil/husvagn
     // eller har husbilsinfrastruktur (el, tömning). Rena tältplatser och
     // privata/stängda platser filtreras bort – för BÅDA tjänsterna.
@@ -129,6 +133,12 @@ function placeKind(tags: Record<string, string>): string | undefined {
   if (tags.highway === 'rest_area') return 'Rastplats'
   if (tags.highway === 'services') return 'Vägkrog/serviceområde'
   if (tags.tourism === 'caravan_site') return 'Ställplats för husbil'
+  if (
+    tags.tourism === 'camp_site' &&
+    /st[äa]llplats|stellplatz|husbilsplats/i.test(tags.name ?? '') &&
+    !/camping|camp\b/i.test(tags.name ?? '')
+  )
+    return 'Ställplats för husbil'
   if (tags.tourism === 'camp_site') return 'Camping'
   if (tags.leisure === 'golf_course') return 'Ställplats vid golfklubb'
   if (tags.amenity === 'parking') return 'Ställplats (parkering för husbil)'
