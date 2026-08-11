@@ -31,7 +31,8 @@ bumpa `CACHE`-versionen vid behov). Capacitor/Android finns förberett
 | `src/types.ts` | `ServiceType` (gravatten, latrin, vatten, **sopor**, stallplats, camping, gasol), färger, etiketter |
 | `src/lib/overpass.ts` | Live-hämtning per kartvy (zoom ≥ 12). Speglar synkskriptets taggtolkning – ändra ALLTID båda |
 | `scripts/sync-stations.mjs` | CI-synk: OSM (Overpass) + Trafikverket + `scripts/curated-places.json` → `public/data/stations-seed.json` |
-| `scripts/curated-places.json` | Eget register (~207 platser). Föredra `lat`/`lon` framför `query` (adressuppslag har gett felplaceringar!). Nya fält: `nearLat`/`nearLon` (+ ev. `maxKm`, standard 30) – geokodningar som hamnar längre bort än så kasseras av synkskriptet |
+| `scripts/curated-places.json` | Eget register (~530 platser). Föredra `lat`/`lon` framför `query` (adressuppslag har gett felplaceringar!). Nya fält: `nearLat`/`nearLon` (+ ev. `maxKm`, standard 30) – geokodningar som hamnar längre bort än så kasseras av synkskriptet |
+| `src/lib/weather.ts` | Väderprognos (6 dagar) per plats via SMHIs öppna prognos-API, ingen nyckel/backend. Hämtas när popupen öppnas (samma mönster som öppet-nu/ortsnamn i MapView), cache 30 min. Länk till Windy för visuell vind/nederbörd finns i popupen bredvid |
 | `src/components/AdminPanel.tsx` | Adminstatus + engångsfix-guide |
 | `supabase/schema.sql` | Idempotent schema: submissions, reports, verifications, reviews (RLS) |
 | `supabase.env` | Publik Supabase-koppling (skrivs av installer-workflowen; anon-nyckeln är publik per design) |
