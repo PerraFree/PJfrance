@@ -3386,7 +3386,6 @@
   },
   {
     "name": "First Camp Böda Sand",
-    "query": "First Camp Böda Sand, Böda, Öland",
     "services": [
       "camping",
       "stallplats",
@@ -3399,7 +3398,9 @@
     "source": "egen",
     "nearLat": 57.29,
     "nearLon": 17.05,
-    "maxKm": 20
+    "maxKm": 20,
+    "lat": 57.257,
+    "lon": 17.05
   },
   {
     "name": "Pite Havsbad",
@@ -3713,7 +3714,6 @@
   },
   {
     "name": "First Camp Tofta",
-    "query": "First Camp Tofta, Gotland",
     "services": [
       "camping",
       "stallplats",
@@ -3726,7 +3726,9 @@
     "source": "egen",
     "nearLat": 57.53,
     "nearLon": 18.11,
-    "maxKm": 20
+    "maxKm": 20,
+    "lat": 57.525,
+    "lon": 18.105
   },
   {
     "name": "Norje Boke Camping",
