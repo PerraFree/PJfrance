@@ -5714,5 +5714,449 @@
     "description": "Erbjuder gråvattentömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "http://lakeosterjorn.com/",
     "source": "egen"
+  },
+  {
+    "name": "Fredriksbergs Kursgård",
+    "lat": 55.4620384,
+    "lon": 13.8916165,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Väla Camping",
+    "lat": 55.5452528,
+    "lon": 13.9577331,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Orebackens Camping",
+    "lat": 55.6259947,
+    "lon": 13.7220714,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Ekerödsrasten",
+    "lat": 55.8996645,
+    "lon": 13.7305073,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Vinslövs Camping",
+    "lat": 56.1104736,
+    "lon": 13.9130949,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Kvidingebadets Camping",
+    "lat": 56.1320942,
+    "lon": 13.0446021,
+    "services": [
+      "camping",
+      "gravatten",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Lerbergets Camping",
+    "lat": 56.1818135,
+    "lon": 12.5580382,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Ljungby Camping",
+    "lat": 56.8419789,
+    "lon": 13.9540359,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Kosta Bad & Camping",
+    "lat": 56.8434231,
+    "lon": 15.3909204,
+    "services": [
+      "camping",
+      "gravatten",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Vallsnäs Camping",
+    "lat": 56.9396319,
+    "lon": 13.5361274,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Björkängs Camping",
+    "lat": 57.0093014,
+    "lon": 12.3483225,
+    "services": [
+      "camping",
+      "latrin"
+    ],
+    "description": "Erbjuder latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Getteröns camping",
+    "lat": 57.1137889,
+    "lon": 12.2121852,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Mullsjö camping",
+    "lat": 57.9008384,
+    "lon": 13.850812,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "BauerGården",
+    "lat": 57.935483,
+    "lon": 14.4919348,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Sjöbacka camping",
+    "lat": 58.0438185,
+    "lon": 14.1879778,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Stenrösets Camping Trollhättan",
+    "lat": 58.2401396,
+    "lon": 12.2350547,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Hjo Camping",
+    "lat": 58.3098901,
+    "lon": 14.3047953,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Unda Camping",
+    "lat": 58.329093,
+    "lon": 11.8216458,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Åkroken",
+    "lat": 56.2023332,
+    "lon": 14.751511,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Harasjömåla Fiskecamp",
+    "lat": 56.3109128,
+    "lon": 14.4511305,
+    "services": [
+      "camping",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Snapphanen Störsavången Naturistcamping",
+    "lat": 56.3872276,
+    "lon": 14.471534,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Gösjön Camping & Bad",
+    "lat": 57.2354768,
+    "lon": 16.0283854,
+    "services": [
+      "camping",
+      "latrin"
+    ],
+    "description": "Erbjuder latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Kvarnsjön camping",
+    "lat": 57.3679808,
+    "lon": 13.2821543,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Haverdals Camping",
+    "lat": 56.7265412,
+    "lon": 12.6748897,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Gökaskratts camping",
+    "lat": 56.7837348,
+    "lon": 15.1314561,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Ugglarps Camping",
+    "lat": 56.8239216,
+    "lon": 12.6104861,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Destination Kosta",
+    "lat": 56.8356586,
+    "lon": 15.4005675,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Björkhaga By",
+    "lat": 57.4055715,
+    "lon": 18.1781625,
+    "services": [
+      "camping",
+      "gravatten",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Isabergs Camping och Stugby",
+    "lat": 57.4375993,
+    "lon": 13.6240409,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Kroksjöns Fiskecamp Tranemo",
+    "lat": 57.4719054,
+    "lon": 13.3754731,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Tofta Camping",
+    "lat": 57.4843249,
+    "lon": 18.128362,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Visby Gustavsvik",
+    "lat": 57.6618042,
+    "lon": 18.3216744,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Vegby Camping",
+    "lat": 57.6776815,
+    "lon": 13.3744845,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Solgrinde",
+    "lat": 57.7358493,
+    "lon": 18.8857919,
+    "services": [
+      "camping",
+      "gravatten"
+    ],
+    "description": "Erbjuder gråvattentömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Målsånna Gård",
+    "lat": 57.8029214,
+    "lon": 14.8339965,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
+  },
+  {
+    "name": "Ragelunds-Camping",
+    "lat": 57.3348238,
+    "lon": 12.1514542,
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "source": "egen"
   }
 ]
