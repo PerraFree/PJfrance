@@ -140,12 +140,32 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    ny exakt-koordinat-post – kolla ALLTID efter "First Camp X"/kedjenamn
    som kan redan finnas under annat namn innan de läggs till).
 
-   **FAS 2 – NÄSTA STEG:** de ~826 campingarna och ~900 ställplatserna som
-   saknar `website` i seed-datan (räkna om exakt med skriptet i
-   "Faktisk omfattning" ovan – siffrorna ändras varje synk). Kräver
-   namnbaserad WebSearch i stället för direkt URL → lägre träffsäkerhet,
-   räkna med fler "unclear". Samma regel gäller: bara "high confidence"
-   med citat läggs till.
+   **FAS 2 – PÅGÅENDE, PAUSAD VID SÖKBUDGETENS GRÄNS (aug 2026).**
+   De ~802 campingarna utan `website` i seed-datan delades i 420 med ett
+   sökbart namn ("Väla Camping" etc.) och 382 som bara heter "Camping"
+   (eller är OSM-genererade platshållartexter som "good place for
+   camping", "(may be wet)", "Möglichkeit zu zelten") – de senare går
+   INTE att söka fram och är en egen, öppen lucka (kräver annan metod,
+   t.ex. crowdsourcing eller manuell koll).
+
+   De 420 namngivna delades i 42 grupper à ~10, samma agent-mönster som
+   FAS 1 men med namnbaserad WebSearch (ort behöver ofta identifieras
+   från koordinaten först) i stället för direkt URL → lägre träffsäkerhet,
+   fler "unclear". **24 av 42 grupper klara** (våg 1–3, ~240 platser
+   granskade): 86 fick verifierad service. Våg 4 (grupp 36–41, ~60
+   platser i övre Norrland/fjällen) blockerades helt av att sessionens
+   WebSearch-kvot (`CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION`, delas av
+   alla agenter i samma session) tog slut – flera av de sista platserna
+   visade sig dessutom vara obebodd fjällterräng/OSM-brus, så förlusten
+   är sannolikt liten. **Fortsätt från nw-group-36.json i en ny session**
+   (grupp 00–35-filerna och resultaten finns redan, ingen anledning att
+   göra om dem) när kvoten återställts.
+
+   Per fältrapport (aug 2026): Lygnareds Camping (campingalingsas.com,
+   Alingsås) saknas fortfarande – granskad två gånger, webbplatsen går
+   inte att läsa härifrån (egress-blockad) och inga tredjekällor
+   bekräftar specifika tjänster. Kräver antingen höjd sökbudget eller att
+   någon läser sidan manuellt och rapporterar vad den säger.
 
    Pers fälttips (aug 2026): majoriteten av golfklubbar har färskvatten-
    påfyllning – ett golfklubbssvep vore värdefullt (Götaström tillagd
