@@ -1152,6 +1152,36 @@ button {
   margin-right: 6px;
 }
 
+/* Avgift/Öppettider som två rutor sida vid sida (en ruta tar hela bredden) */
+.popup .info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.popup .info-card {
+  background: var(--field);
+  border-radius: 12px;
+  padding: 9px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.popup .info-label {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.popup .info-value {
+  font-weight: 600;
+  font-size: 0.88rem;
+}
+
 .popup .links {
   display: flex;
   gap: 12px;
@@ -1173,8 +1203,10 @@ button {
 .popup .links a.primary {
   background: var(--green-700);
   color: #fff;
-  padding: 6px 12px;
-  border-radius: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  flex: 1;
+  text-align: center;
 }
 
 .popup .links a.primary:hover {
