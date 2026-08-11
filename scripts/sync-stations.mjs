@@ -98,6 +98,14 @@ function servicesFromTags(tags) {
   ) {
     services.add('stallplats')
   }
+  // Camp_sites som heter "Ställplats …" ÄR ställplatser även utan motorhome-tagg
+  // (t.ex. Gekås Ställplats). Speglas i src/lib/overpass.ts.
+  if (
+    tags.tourism === 'camp_site' &&
+    /st[äa]llplats|stellplatz|husbilsplats|husbilscamping/i.test(tags.name ?? '')
+  ) {
+    services.add('stallplats')
+  }
   if (tags.tourism === 'camp_site') {
     const openToPublic = tags.access !== 'private' && tags.access !== 'no'
     const notTentOnly = tags.tents !== 'only'

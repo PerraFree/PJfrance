@@ -58,6 +58,14 @@ function servicesFromTags(tags: Record<string, string>): ServiceType[] {
   ) {
     services.add('stallplats')
   }
+  // Camp_sites som heter "Ställplats …" ÄR ställplatser även utan motorhome-tagg
+  // (t.ex. Gekås Ställplats). Speglas i scripts/sync-stations.mjs.
+  if (
+    tags.tourism === 'camp_site' &&
+    /st[äa]llplats|stellplatz|husbilsplats|husbilscamping/i.test(tags.name ?? '')
+  ) {
+    services.add('stallplats')
+  }
   if (tags.tourism === 'camp_site') {
     // En camping räknas som ställplats om den uttryckligen tar husbil/husvagn
     // eller har husbilsinfrastruktur (el, tömning). Rena tältplatser och
