@@ -4516,5 +4516,41 @@
     "nearLat": 57.127,
     "nearLon": 12.72,
     "maxKm": 5
+  },
+  {
+    "name": "Lövekulle camping",
+    "lat": 57.9256503,
+    "lon": 12.4864801,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping vid Mjörn: gråvatten-, latrin- och kassett-tömning, färskvatten, dusch, tvätt. Källa: lovekullecamping.se.",
+    "url": "https://lovekullecamping.se/",
+    "source": "egen",
+    "address": "Badplatsvägen 121, Alingsås",
+    "phone": "0322-123 72",
+    "season": "seasonal"
+  },
+  {
+    "name": "Tånga Heds Camping",
+    "lat": 58.029742,
+    "lon": 12.8297308,
+    "services": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Fullservicecamping: tömning av tank/gråvatten, kassett-/latrintömning, färskvatten, dusch. Öppet dygnet runt. Källa: tangahed.se.",
+    "url": "https://www.tangahed.se/boende/",
+    "source": "egen",
+    "address": "Campingvägen 22, Vårgårda",
+    "phone": "0322-62 43 11",
+    "openingHours": "24/7"
   }
 ]
