@@ -3370,18 +3370,17 @@
     "maxKm": 15
   },
   {
-    "name": "Gekås Ställplats",
+    "name": "Gekås Ställplats Sönneräng",
     "lat": 57.1319916,
     "lon": 12.7359102,
     "services": [
-      "camping",
       "stallplats",
       "gravatten",
       "latrin",
       "vatten"
     ],
-    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
-    "url": "https://www.gekas.se/bo/camping/",
+    "description": "Gekås ställplats vid centrallagret Sönneräng, väg 153, 1,5 km öster om Ullared. Tömning och färskvatten. Källa: gekas.se.",
+    "url": "https://www.gekas.se/bo/camping/stallplats/",
     "source": "egen"
   },
   {
@@ -4501,5 +4500,21 @@
     "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "https://www.kukkolaforsen.se/",
     "source": "egen"
+  },
+  {
+    "name": "Gekås Camping (Gekåsbyn)",
+    "query": "Ulla Smidjes väg 21, Ullared",
+    "services": [
+      "camping",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Gekås camping strax söder om varuhuset: 300 platser för husvagn/husbil, servicehus med tömning och färskvatten. Källa: gekas.se.",
+    "url": "https://www.gekas.se/bo/camping/",
+    "source": "egen",
+    "nearLat": 57.127,
+    "nearLon": 12.72,
+    "maxKm": 5
   }
 ]
