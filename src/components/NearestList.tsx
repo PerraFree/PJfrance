@@ -28,13 +28,21 @@ export default function NearestList({
   onPick,
   onClose,
 }: Props) {
+  // Sopor är så vanligt förekommande (papperskorgar överallt) att det annars
+  // svämmar över listan och tränger undan mer relevanta träffar – döljs här
+  // oavsett om filtret är ikryssat.
+  const listFilters = useMemo(
+    () => new Set<ServiceType>([...activeFilters].filter((sv) => sv !== 'sopor')),
+    [activeFilters],
+  )
+
   const nearest = useMemo(() => {
     return stations
-      .filter((s) => s.services.some((sv) => activeFilters.has(sv)))
+      .filter((s) => s.services.some((sv) => listFilters.has(sv)))
       .map((s) => ({ s, km: distanceKm(userLoc, s) }))
       .sort((a, b) => a.km - b.km)
       .slice(0, 12)
-  }, [stations, activeFilters, userLoc])
+  }, [stations, listFilters, userLoc])
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -61,7 +69,7 @@ export default function NearestList({
             <button type="button" onClick={() => onPick(s)}>
               <span className="dots">
                 {s.services
-                  .filter((sv) => activeFilters.has(sv))
+                  .filter((sv) => listFilters.has(sv))
                   .slice(0, 4)
                   .map((sv) => (
                     <span

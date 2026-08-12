@@ -6964,23 +6964,5 @@
     "description": "13 platser (5 med el) vid herrgården i Länghem. Tömning av kassettoalett och färskvattenpåfyllning (sommartid vid gaveln på närmsta byggnad). Kafé/restaurang och gårdsbutik på plats.",
     "url": "https://www.hofsnas.se/event/stallplatser/",
     "source": "egen"
-  },
-  {
-    "name": "Åsundsholm Golf & Country Club ställplats",
-    "lat": 57.667142,
-    "lon": 13.327726,
-    "services": [
-      "stallplats"
-    ],
-    "facilities": [
-      "el",
-      "dusch",
-      "wc",
-      "dricksvatten"
-    ],
-    "fee": "Från 200 kr/natt",
-    "description": "12 platser med el vid klubbhuset, invid sjön Åsunden. Ingen tömning eller vattenpåfyllning till tank enligt klubbens egen info – dricksvatten kan hämtas i dunk på vägen upp till drivingrangen.",
-    "url": "https://asundsholm.se/upplevelser-paket/",
-    "source": "egen"
   }
 ]
