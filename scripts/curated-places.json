@@ -300,7 +300,8 @@
   {
     "name": "Galvens Bygdegård ställplats",
     "services": [
-      "stallplats"
+      "stallplats",
+      "vatten"
     ],
     "facilities": [
       "el",
@@ -308,9 +309,9 @@
       "wc",
       "dusch"
     ],
-    "fee": "från 150 kr/dygn",
-    "description": "4 platser med el vid bygdegården norr om Alfta. Öppet året runt.",
-    "url": "https://www.husbil.se/stallplatser/p/306/",
+    "fee": "250 kr/dygn (el ingår)",
+    "description": "6 platser med el vid bygdegården norr om Alfta, bad/fiske. Öppet året runt. Färskvattenpåfyllning bekräftad av Ovanåkers kommuns egen webbplats.",
+    "url": "https://www.ovanaker.se/kulturochfritid/upplevovanakerskommun/boende/stallplatshusvagnhusbil.8565.html",
     "source": "egen",
     "lat": 61.4612378,
     "lon": 16.1763898
@@ -6963,6 +6964,32 @@
     "fee": "100–200 kr/natt (utan/med el)",
     "description": "13 platser (5 med el) vid herrgården i Länghem. Tömning av kassettoalett och färskvattenpåfyllning (sommartid vid gaveln på närmsta byggnad). Kafé/restaurang och gårdsbutik på plats.",
     "url": "https://www.hofsnas.se/event/stallplatser/",
+    "source": "egen"
+  },
+  {
+    "name": "Massarbäcksgårdens ställplatser",
+    "lat": 60.8919844,
+    "lon": 15.140495,
+    "services": [
+      "gravatten",
+      "latrin",
+      "stallplats",
+      "vatten"
+    ],
+    "description": "El, vatten, toalett, dusch, tvättmaskin, latrin- och gråvattentömning i Rättvik. Kompletterar OSM-posten med bekräftad färskvattenpåfyllning. Källa: anläggningens egen webbplats och Visit Rättvik.",
+    "url": "https://www.massarbacksgarden.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Ragvaldsträsk ställplats",
+    "lat": 64.633395,
+    "lon": 20.83332,
+    "services": [
+      "stallplats",
+      "vatten"
+    ],
+    "description": "Färskvattenpåfyllning på plats, ny ställplats i Skellefteå kommun. Tömningsplatser finns i närheten men inte bekräftat på själva platsen. Källa: nyhetsartikel (husbilhusvagn.se) utöver husbilsplats.se.",
+    "url": "https://www.husbilhusvagn.se/nyheter/ny-stallplats-i-skelleftea",
     "source": "egen"
   }
 ]

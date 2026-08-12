@@ -186,12 +186,32 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    påfyllning – ett golfklubbssvep vore värdefullt (Götaström tillagd
    efter besök på plats). Samma "verifiera innan du lägger till"-metod
    gäller där.
-3. **Öppettider/vinterstängt** saknas för många platser.
-4. Vilhelmina-tömningsstationen togs bort i väntan på bekräftat läge.
-5. AdminPanel: 'na'-läget och tabellkontroller är fixade; håll texterna i
+3. **Helt saknade platser (nya, ej bara "tjänsteberikning")** – upptäckt
+   aug 2026 efter att Hofsnäs Herrgård (fullservice-ställplats) visade sig
+   saknas helt (varken OSM, TRV eller vårt register hade den – bara
+   nischade "hitta ställplats"-sajter som husbilsplats.se/park4night.com
+   kände till). Ett nationellt discovery-svep kördes (7 parallella agenter,
+   ett per landsdel) mot husbilsplats.se + park4night.com/en, se
+   `docs/kandidatplatser-husbilsplats-park4night.md` för full rådata och
+   metod/begränsningar. Resultat: ~470 kandidatplatser hittade, men nästan
+   alla saknar en oberoende källa (husbilsplats.se/park4night räknas INTE
+   som oberoende, inte ens tillsammans) – bara 3 höll måttet direkt:
+   Ragvaldsträsk ställplats (ny post) samt komplettering av
+   Massarbäcksgårdens ställplatser och Galvens Bygdegård ställplats med
+   bekräftad färskvattenpåfyllning. Resten ligger kvar overifierat i
+   kandidatfilen. **Kronoberg, Örebro och Värmland är helt osökta** (0
+   sökningar, sessionens delade WebSearch-budget tog slut) – liksom ~35
+   kommuner i Västra Götaland/Halland och delar av Öland/Gotland. Nästa
+   session bör täcka dessa luckor och sedan verifiera de mest lovande
+   kandidaterna (tydligt citat om gråvatten/latrin/vatten) mot en
+   oberoende primärkälla innan tillägg.
+4. **Öppettider/vinterstängt** saknas för många platser.
+5. Vilhelmina-tömningsstationen togs bort i väntan på bekräftat läge.
+6. AdminPanel: 'na'-läget och tabellkontroller är fixade; håll texterna i
    synk med installer-flödet vid ändringar.
 
 ## Dokumentation
 
 `docs/ADMIN.md` (Pers guide), `docs/SUPABASE.md`, `docs/DATAKALLOR.md`,
-`docs/BUILD-MOBILE.md`.
+`docs/BUILD-MOBILE.md`, `docs/kandidatplatser-husbilsplats-park4night.md`
+(overifierad kandidatlista från discovery-svepet, aug 2026).
