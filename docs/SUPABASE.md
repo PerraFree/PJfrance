@@ -140,6 +140,37 @@ create policy "anon läser godkända omdömen" on reviews
   for select to anon using (status = 'approved');
 ```
 
+## 4d. Foton
+
+Knappen **📷 Lägg till foto** (i popupen på befintliga platser, och som ett
+valfritt fält i "Lägg till en plats") låter användare ladda upp en bild.
+Bilden skalas ner till max 1600px och laddas upp till en Storage-bucket
+(`place-photos`) innan URL:en sparas. **Foton publiceras direkt – ingen
+granskningskö**, till skillnad från platsförslag och kommentarer (beslut
+aug 2026: Per hinner inte bevaka ännu en kö). Olämpliga foton flaggas i
+stället via "Rapportera fel". Kör denna SQL en gång i **SQL Editor**:
+
+```sql
+create table photos (
+  id uuid primary key default gen_random_uuid(),
+  created_at timestamptz not null default now(),
+  station_id text not null,
+  station_name text,
+  url text not null,
+  status text not null default 'approved'
+);
+alter table photos enable row level security;
+create policy "anon kan lägga till foto" on photos
+  for insert to anon with check (status = 'approved');
+create policy "anon läser foton" on photos
+  for select to anon using (status = 'approved');
+
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('place-photos', 'place-photos', true, 8388608, array['image/jpeg', 'image/png', 'image/webp']);
+create policy "anon kan ladda upp foton" on storage.objects
+  for insert to anon with check (bucket_id = 'place-photos');
+```
+
 ## 5. Granska via mejl + "godkänn" (rekommenderat)
 
 Repo:t har två workflows som gör granskningen enkel:

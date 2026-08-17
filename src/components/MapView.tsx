@@ -39,6 +39,10 @@ interface Props {
   reviews: Map<string, StationReviews>
   onRate: (station: { id: string; name: string }) => void
   canRate: boolean
+  /** Senaste community-foto (URL) per plats-id. */
+  photos: Map<string, string>
+  onPhoto: (station: { id: string; name: string }) => void
+  canAddPhoto: boolean
   /** Anropas när en plats-popup öppnas – panelen kan då minimeras. */
   onStationPopupOpen?: () => void
 }
@@ -137,6 +141,8 @@ function popupHtml(
   canVerify: boolean,
   review: StationReviews | undefined,
   canRate: boolean,
+  communityPhoto: string | undefined,
+  canAddPhoto: boolean,
 ): string {
   const services = station.services
     .map(
@@ -242,10 +248,14 @@ function popupHtml(
   const rateBtn = canRate
     ? `<button type="button" class="rate-btn" data-rate-id="${escapeAttr(station.id)}" data-rate-name="${escapeAttr(station.name)}">★ Betygsätt</button>`
     : ''
+  const photoBtn = canAddPhoto
+    ? `<button type="button" class="photo-btn" data-photo-id="${escapeAttr(station.id)}" data-photo-name="${escapeAttr(station.name)}">📷 Lägg till foto</button>`
+    : ''
   const actions =
     `<div class="pop-actions">` +
     verifyBtn +
     rateBtn +
+    photoBtn +
     `<button type="button" class="fav-btn${isFav ? ' active' : ''}" data-fav-id="${escapeAttr(station.id)}" aria-pressed="${isFav}">${isFav ? '★ Sparad' : '☆ Spara'}</button>` +
     `<button type="button" class="copy-btn" data-coords="${escapeAttr(coords)}">⧉ Kopiera koordinater</button>` +
     `</div>`
@@ -286,11 +296,13 @@ function popupHtml(
           .join('')}</div>`
       : ''
   const accent = SERVICE_COLORS[station.services[0]] ?? 'var(--green-700)'
-  // Foto av platsen (om källan har ett) – laddas lätt och tas bort om URL:en är död.
-  const photo =
-    station.image && /^https:\/\//i.test(station.image)
-      ? `<img class="popup-photo" src="${escapeAttr(station.image)}" alt="" loading="lazy" onerror="this.remove()">`
-      : ''
+  // Foto av platsen: ett community-inskickat foto (nyast) går före källans
+  // eget, eftersom det oftast är färskare och tagit på plats.
+  const photoUrl =
+    communityPhoto ?? (station.image && /^https:\/\//i.test(station.image) ? station.image : undefined)
+  const photo = photoUrl
+    ? `<img class="popup-photo" src="${escapeAttr(photoUrl)}" alt="" loading="lazy" onerror="this.remove()">`
+    : ''
   return `<div class="popup" style="--accent:${accent}">${photo}<h3>${esc(station.name)}</h3>${ratingLine}<div class="badges">${services}${seasonBadge}</div>${verifiedLine}${rows.join('')}${commentBlock}${links}${actions}<p class="source">${sourceLine}</p>${report}${del}</div>`
 }
 
@@ -337,6 +349,9 @@ export default function MapView({
   reviews,
   onRate,
   canRate,
+  photos,
+  onPhoto,
+  canAddPhoto,
   onStationPopupOpen,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -364,6 +379,12 @@ export default function MapView({
   onRateRef.current = onRate
   const canRateRef = useRef(canRate)
   canRateRef.current = canRate
+  const photosRef = useRef(photos)
+  photosRef.current = photos
+  const onPhotoRef = useRef(onPhoto)
+  onPhotoRef.current = onPhoto
+  const canAddPhotoRef = useRef(canAddPhoto)
+  canAddPhotoRef.current = canAddPhoto
   const favoritesRef = useRef(favoriteIds)
   favoritesRef.current = favoriteIds
   const stationsRef = useRef(stations)
@@ -469,6 +490,8 @@ export default function MapView({
             canVerifyRef.current,
             reviewsRef.current.get(station.id),
             canRateRef.current,
+            photosRef.current.get(station.id),
+            canAddPhotoRef.current,
           ),
         {
           maxWidth: 300,
@@ -621,6 +644,16 @@ export default function MapView({
         if (id && name) {
           map.closePopup()
           onRateRef.current({ id, name })
+        }
+        return
+      }
+      const photoBtn = target.closest('.photo-btn') as HTMLElement | null
+      if (photoBtn) {
+        const id = photoBtn.dataset.photoId
+        const name = photoBtn.dataset.photoName
+        if (id && name) {
+          map.closePopup()
+          onPhotoRef.current({ id, name })
         }
         return
       }

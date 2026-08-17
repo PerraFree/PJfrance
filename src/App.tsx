@@ -13,6 +13,8 @@ import { loadMyPlaces, saveMyPlaces } from './lib/myplaces'
 import { fetchVerifications, submitVerification } from './lib/verify'
 import { fetchReviews, type StationReviews } from './lib/reviews'
 import ReviewForm from './components/ReviewForm'
+import { fetchPhotos } from './lib/photos'
+import PhotoForm from './components/PhotoForm'
 import AdminPanel from './components/AdminPanel'
 import { searchPlace } from './lib/geocode'
 import { fetchOsmStations } from './lib/overpass'
@@ -210,6 +212,27 @@ export default function App() {
       .catch(() => {
         /* valfritt lager */
       })
+  }, [])
+
+  const [photos, setPhotos] = useState<Map<string, string>>(new Map())
+  const [photoTarget, setPhotoTarget] = useState<{ id: string; name: string } | null>(null)
+
+  // Godkända community-foton (delas av alla) – publiceras direkt, se
+  // supabase/schema.sql för varför det INTE går via granskningskön.
+  useEffect(() => {
+    fetchPhotos()
+      .then(setPhotos)
+      .catch(() => {
+        /* valfritt lager */
+      })
+  }, [])
+
+  const handlePhotoUploaded = useCallback((stationId: string, url: string) => {
+    setPhotos((prev) => {
+      const next = new Map(prev)
+      next.set(stationId, url)
+      return next
+    })
   }, [])
 
   const handleReviewed = useCallback((stationId: string, rating: number, published: boolean) => {
@@ -563,6 +586,9 @@ export default function App() {
         reviews={reviews}
         onRate={(s) => setRateTarget(s)}
         canRate={communityEnabled}
+        photos={photos}
+        onPhoto={(s) => setPhotoTarget(s)}
+        canAddPhoto={communityEnabled}
         onStationPopupOpen={() => {
           // Minimalt läge är bara till för mobilens bottensheet – på
           // desktop skulle det annars fälla ihop hela sidopanelen
@@ -803,6 +829,7 @@ export default function App() {
           onClose={() => setShowSubmit(false)}
           onAdd={addMyPlace}
           mapCenter={mapCenterRef.current}
+          onPhotoUploaded={handlePhotoUploaded}
         />
       )}
 
@@ -820,6 +847,15 @@ export default function App() {
           stationName={rateTarget.name}
           onClose={() => setRateTarget(null)}
           onSubmitted={(rating, published) => handleReviewed(rateTarget.id, rating, published)}
+        />
+      )}
+
+      {photoTarget && (
+        <PhotoForm
+          stationId={photoTarget.id}
+          stationName={photoTarget.name}
+          onClose={() => setPhotoTarget(null)}
+          onUploaded={handlePhotoUploaded}
         />
       )}
 

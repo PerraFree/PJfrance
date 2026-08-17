@@ -34,7 +34,8 @@ bumpa `CACHE`-versionen vid behov). Capacitor/Android finns förberett
 | `scripts/curated-places.json` | Eget register (~530 platser). Föredra `lat`/`lon` framför `query` (adressuppslag har gett felplaceringar!). Nya fält: `nearLat`/`nearLon` (+ ev. `maxKm`, standard 30) – geokodningar som hamnar längre bort än så kasseras av synkskriptet |
 | `src/lib/weather.ts` | Väderprognos (6 dagar) per plats via SMHIs öppna prognos-API, ingen nyckel/backend. Hämtas när popupen öppnas (samma mönster som öppet-nu/ortsnamn i MapView), cache 30 min. Länk till Windy för visuell vind/nederbörd finns i popupen bredvid. **OBS:** SMHI bytte API 2026-03-31 (pmp3g → snow1g, platt `data`-objekt i stället för `parameters`-array) – parsern hanterar båda formaten defensivt, men kan inte testas live härifrån (domänen är egress-blockad i sandboxen) – verifiera i webbläsaren efter deploy om vädret slutar visas igen |
 | `src/components/AdminPanel.tsx` | Adminstatus + engångsfix-guide |
-| `supabase/schema.sql` | Idempotent schema: submissions, reports, verifications, reviews (RLS) |
+| `src/lib/photos.ts` + `src/components/PhotoForm.tsx` | Community-foton ("📷 Lägg till foto", på befintliga OCH nya platser). Skalas ner klientsidan (max 1600px, JPEG) innan uppladdning till Supabase Storage (`place-photos`-bucket). **Publiceras direkt, INGEN granskningskö** (beslut aug 2026 – Per hinner inte bevaka ännu en kö). Olämpligt innehåll flaggas i stället via befintliga "Rapportera fel" |
+| `supabase/schema.sql` | Idempotent schema: submissions, reports, verifications, reviews, photos (RLS) + `place-photos`-storage-bucket |
 | `supabase.env` | Publik Supabase-koppling (skrivs av installer-workflowen; anon-nyckeln är publik per design) |
 
 ## Workflows (.github/workflows/)

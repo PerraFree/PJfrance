@@ -4,6 +4,7 @@ import { submitPlace } from '../lib/community'
 import { searchPlace } from '../lib/geocode'
 import { useModal } from '../lib/useModal'
 import { MY_PLACE_PREFIX } from '../lib/myplaces'
+import { submitPhoto } from '../lib/photos'
 import type { ServiceType, Station } from '../types'
 import { SERVICE_LABELS } from '../types'
 
@@ -14,19 +15,31 @@ interface Props {
   onAdd: (station: Station) => void
   /** Kartans mittpunkt – används om ingen adress anges. */
   mapCenter: { lat: number; lon: number } | null
+  /** Anropas om ett foto laddades upp samtidigt (visas direkt för alla). */
+  onPhotoUploaded: (stationId: string, url: string) => void
 }
 
 type Status = 'idle' | 'saving' | 'done' | 'error'
 
-export default function SubmitForm({ onClose, onAdd, mapCenter }: Props) {
+export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded }: Props) {
   const [name, setName] = useState('')
   const [address, setAddress] = useState('')
   const [services, setServices] = useState<Set<ServiceType>>(new Set())
   const [fee, setFee] = useState('')
   const [description, setDescription] = useState('')
+  const [photoFile, setPhotoFile] = useState<File | null>(null)
+  const [photoPreview, setPhotoPreview] = useState('')
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState('')
   const modalRef = useModal(onClose)
+
+  const handlePhotoFile = (f: File | null) => {
+    setPhotoFile(f)
+    setPhotoPreview((prev) => {
+      if (prev) URL.revokeObjectURL(prev)
+      return f ? URL.createObjectURL(f) : ''
+    })
+  }
 
   const toggle = (s: ServiceType) => {
     setServices((prev) => {
@@ -104,6 +117,13 @@ export default function SubmitForm({ onClose, onAdd, mapCenter }: Props) {
         }).catch(() => {
           /* granskningskön är bäst-möjligt – platsen är ändå sparad lokalt */
         })
+      }
+      if (communityEnabled && photoFile) {
+        void submitPhoto({ stationId: station.id, stationName: station.name, file: photoFile })
+          .then((url) => onPhotoUploaded(station.id, url))
+          .catch(() => {
+            /* fotot är trevligt att ha men inte kritiskt – platsen är ändå sparad */
+          })
       }
       setStatus('done')
     } catch {
@@ -200,6 +220,24 @@ export default function SubmitForm({ onClose, onAdd, mapCenter }: Props) {
                 rows={2}
               />
             </label>
+
+            {communityEnabled && (
+              <label>
+                Foto (valfritt)
+                <label className="photo-picker">
+                  {photoPreview ? (
+                    <img src={photoPreview} alt="" className="photo-preview" />
+                  ) : (
+                    <span className="photo-picker-placeholder">📷 Välj bild</span>
+                  )}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => handlePhotoFile(e.target.files?.[0] ?? null)}
+                  />
+                </label>
+              </label>
+            )}
 
             {error && <p className="form-error">{error}</p>}
 

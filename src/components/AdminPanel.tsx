@@ -66,8 +66,11 @@ export default function AdminPanel() {
   const reports = useTableCheck('reports')
   const verifications = useTableCheck('verifications')
   const reviews = useTableCheck('reviews')
+  const photos = useTableCheck('photos')
 
-  const sqlNeeded = [submissions, reports, verifications, reviews].some((s) => s === 'missing')
+  const sqlNeeded = [submissions, reports, verifications, reviews, photos].some(
+    (s) => s === 'missing',
+  )
 
   return (
     <div className="admin">
@@ -119,6 +122,13 @@ export default function AdminPanel() {
             <div>
               <strong>Tabell: betyg &amp; kommentarer</strong>
               <p>{tableText(reviews, 'Finns – betyg och kommentarer fungerar.')}</p>
+            </div>
+          </li>
+          <li>
+            <Icon state={photos} />
+            <div>
+              <strong>Tabell: foton</strong>
+              <p>{tableText(photos, 'Finns – "Lägg till foto" fungerar (publiceras direkt, ingen granskning).')}</p>
             </div>
           </li>
         </ul>
