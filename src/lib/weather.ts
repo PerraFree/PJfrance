@@ -1,7 +1,10 @@
 /**
  * Väderprognos för en koordinat via SMHIs öppna prognos-API (gratis, ingen
  * nyckel, ingen egen backend behövs). Täcker Sverige och närområdet.
- * https://opendata.smhi.se/apidocs/metfcst/
+ * https://opendata.smhi.se/apidocs/metfcst/ – OBS: SMHI lade ner det gamla
+ * pmp3g-API:et 2026-03-31 till förmån för snow1g (platt "data"-objekt med
+ * fältnamn som air_temperature/symbol_code i stället för en parameters-
+ * array). Parsern nedan hanterar båda formaten defensivt.
  */
 export interface DayForecast {
   date: string
@@ -13,7 +16,7 @@ export interface DayForecast {
 }
 
 const SMHI_URL = (lat: number, lon: number) =>
-  `https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/${lon.toFixed(4)}/lat/${lat.toFixed(4)}/data.json`
+  `https://opendata-download-metfcst.smhi.se/api/category/snow1g/version/1/geotype/point/lon/${lon.toFixed(4)}/lat/${lat.toFixed(4)}/data.json`
 
 // Väderikonkoder enligt SMHIs Wsymb2 (1–27). Grupperade till emoji-nivåer.
 export const WEATHER_ICONS: Record<number, string> = {
@@ -68,20 +71,33 @@ export function fetchWeather(lat: number, lon: number): Promise<DayForecast[]> {
 async function lookup(lat: number, lon: number): Promise<DayForecast[]> {
   try {
     const res = await fetch(SMHI_URL(lat, lon))
-    if (!res.ok) return []
+    if (!res.ok) {
+      console.warn(`SMHI-prognos: HTTP ${res.status} för ${lat},${lon}`)
+      return []
+    }
     const json = (await res.json()) as {
       timeSeries?: Array<{
-        validTime: string
-        parameters: Array<{ name: string; values: number[] }>
+        // Nya snow1g-formatet
+        time?: string
+        data?: Record<string, number>
+        // Gamla pmp3g-formatet (utfasat 2026-03-31) – kvar som fallback
+        validTime?: string
+        parameters?: Array<{ name: string; values: number[] }>
       }>
     }
     const series = json.timeSeries ?? []
     const byDate = new Map<string, { temps: number[]; symbols: number[]; precip: number[] }>()
     for (const entry of series) {
-      const dt = new Date(entry.validTime)
+      const timeStr = entry.time ?? entry.validTime
+      if (!timeStr) continue
+      const dt = new Date(timeStr)
       const date = dt.toISOString().slice(0, 10)
-      const get = (name: string) => entry.parameters.find((p) => p.name === name)?.values[0]
-      const t = get('t')
+      const get = (newKey: string, oldKey: string): number | undefined => {
+        const flat = entry.data?.[newKey]
+        if (flat !== undefined) return flat
+        return entry.parameters?.find((p) => p.name === oldKey)?.values[0]
+      }
+      const t = get('air_temperature', 't')
       if (t === undefined) continue
       let bucket = byDate.get(date)
       if (!bucket) {
@@ -89,9 +105,9 @@ async function lookup(lat: number, lon: number): Promise<DayForecast[]> {
         byDate.set(date, bucket)
       }
       bucket.temps.push(t)
-      const symbol = get('Wsymb2')
+      const symbol = get('symbol_code', 'Wsymb2')
       if (symbol !== undefined) bucket.symbols.push(symbol)
-      const pmean = get('pmean')
+      const pmean = get('precipitation_amount_mean', 'pmean')
       if (pmean !== undefined) bucket.precip.push(pmean)
     }
     const weekdayFmt = new Intl.DateTimeFormat('sv-SE', { weekday: 'short' })
@@ -105,7 +121,8 @@ async function lookup(lat: number, lon: number): Promise<DayForecast[]> {
       // uppskattning av dygnsnederbörden, inte exakt.
       precipMm: Math.round(b.precip.reduce((sum, v) => sum + v, 0) * 10) / 10,
     }))
-  } catch {
+  } catch (err) {
+    console.warn('SMHI-prognos: kunde inte hämta/tolka svaret', err)
     return []
   }
 }

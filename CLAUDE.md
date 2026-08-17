@@ -32,7 +32,7 @@ bumpa `CACHE`-versionen vid behov). Capacitor/Android finns förberett
 | `src/lib/overpass.ts` | Live-hämtning per kartvy (zoom ≥ 12). Speglar synkskriptets taggtolkning – ändra ALLTID båda |
 | `scripts/sync-stations.mjs` | CI-synk: OSM (Overpass) + Trafikverket + `scripts/curated-places.json` → `public/data/stations-seed.json` |
 | `scripts/curated-places.json` | Eget register (~530 platser). Föredra `lat`/`lon` framför `query` (adressuppslag har gett felplaceringar!). Nya fält: `nearLat`/`nearLon` (+ ev. `maxKm`, standard 30) – geokodningar som hamnar längre bort än så kasseras av synkskriptet |
-| `src/lib/weather.ts` | Väderprognos (6 dagar) per plats via SMHIs öppna prognos-API, ingen nyckel/backend. Hämtas när popupen öppnas (samma mönster som öppet-nu/ortsnamn i MapView), cache 30 min. Länk till Windy för visuell vind/nederbörd finns i popupen bredvid |
+| `src/lib/weather.ts` | Väderprognos (6 dagar) per plats via SMHIs öppna prognos-API, ingen nyckel/backend. Hämtas när popupen öppnas (samma mönster som öppet-nu/ortsnamn i MapView), cache 30 min. Länk till Windy för visuell vind/nederbörd finns i popupen bredvid. **OBS:** SMHI bytte API 2026-03-31 (pmp3g → snow1g, platt `data`-objekt i stället för `parameters`-array) – parsern hanterar båda formaten defensivt, men kan inte testas live härifrån (domänen är egress-blockad i sandboxen) – verifiera i webbläsaren efter deploy om vädret slutar visas igen |
 | `src/components/AdminPanel.tsx` | Adminstatus + engångsfix-guide |
 | `supabase/schema.sql` | Idempotent schema: submissions, reports, verifications, reviews (RLS) |
 | `supabase.env` | Publik Supabase-koppling (skrivs av installer-workflowen; anon-nyckeln är publik per design) |
