@@ -32,6 +32,8 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
   const [photoPreview, setPhotoPreview] = useState('')
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState('')
+  const [photoStatus, setPhotoStatus] = useState<'idle' | 'uploading' | 'done' | 'error'>('idle')
+  const [photoError, setPhotoError] = useState('')
   const modalRef = useModal(onClose)
 
   const handlePhotoFile = (f: File | null) => {
@@ -132,10 +134,17 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
         })
       }
       if (communityEnabled && photoFile) {
+        setPhotoStatus('uploading')
         void submitPhoto({ stationId: station.id, stationName: station.name, file: photoFile })
-          .then((url) => onPhotoUploaded(station.id, url))
-          .catch(() => {
-            /* fotot är trevligt att ha men inte kritiskt – platsen är ändå sparad */
+          .then((url) => {
+            onPhotoUploaded(station.id, url)
+            setPhotoStatus('done')
+          })
+          .catch((err) => {
+            // Fotot är trevligt att ha men inte kritiskt – platsen är ändå
+            // sparad. Visa ändå felet så det inte försvinner spårlöst.
+            setPhotoStatus('error')
+            setPhotoError(err instanceof Error ? err.message : 'Okänt fel.')
           })
       }
       setStatus('done')
@@ -167,6 +176,10 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
               {communityEnabled &&
                 ' Den har också skickats in för granskning – godkänns den visas den för alla.'}
             </p>
+            {photoStatus === 'uploading' && <p className="modal-intro">Laddar upp fotot …</p>}
+            {photoStatus === 'error' && (
+              <p className="form-error">Fotot kunde tyvärr inte laddas upp: {photoError}</p>
+            )}
             <button type="button" className="primary-btn" onClick={onClose}>
               Klart
             </button>

@@ -97,9 +97,9 @@ drop policy if exists "anon läser foton" on photos;
 create policy "anon läser foton" on photos
   for select to anon using (status = 'approved');
 
--- Lagringsyta för uppladdade foton (publikt läsbar, max 8 MB, bara bilder)
+-- Lagringsyta för uppladdade foton (publikt läsbar, max 6 MB, bara bilder)
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
-values ('place-photos', 'place-photos', true, 8388608, array['image/jpeg', 'image/png', 'image/webp'])
+values ('place-photos', 'place-photos', true, 6291456, array['image/jpeg', 'image/png', 'image/webp'])
 on conflict (id) do update set
   public = excluded.public,
   file_size_limit = excluded.file_size_limit,

@@ -3,8 +3,9 @@ import { SUPABASE_ANON_KEY, SUPABASE_URL, communityEnabled } from '../config'
 /**
  * Community-foton ("📷 Lägg till foto"). Publiceras direkt (ingen
  * granskningskö, beslut aug 2026) – olämpligt innehåll flaggas i stället via
- * "Rapportera fel". Bilder skalas ner klientsidan (max 1600px, JPEG) innan
- * uppladdning för snabbare uppladdning på mobildata och lägre lagringskostnad.
+ * "Rapportera fel". Bilder skalas ner klientsidan (max 1280px, JPEG) innan
+ * uppladdning för snabbare uppladdning på mobildata och lägre lagringskostnad
+ * (Supabase gratisnivå har begränsad lagring – hålls medvetet litet).
  */
 
 const base = SUPABASE_URL.replace(/\/$/, '')
@@ -16,9 +17,9 @@ const headers = {
   Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
 }
 
-const MAX_DIMENSION = 1600
-const JPEG_QUALITY = 0.82
-const MAX_UPLOAD_BYTES = 8 * 1024 * 1024
+const MAX_DIMENSION = 1280
+const JPEG_QUALITY = 0.72
+const MAX_UPLOAD_BYTES = 6 * 1024 * 1024
 
 /** Senaste godkända community-foto per plats-id. */
 export async function fetchPhotos(): Promise<Map<string, string>> {
@@ -37,7 +38,7 @@ export async function fetchPhotos(): Promise<Map<string, string>> {
   return map
 }
 
-/** Skalar ner en bild till max 1600px och komprimerar som JPEG. */
+/** Skalar ner en bild till max 1280px och komprimerar som JPEG. */
 function resizeImage(file: File): Promise<Blob> {
   return new Promise((resolve, reject) => {
     const img = new Image()
@@ -86,7 +87,7 @@ export async function submitPhoto(input: NewPhoto): Promise<string> {
     throw new Error('Filen måste vara en bild.')
   }
   if (input.file.size > MAX_UPLOAD_BYTES) {
-    throw new Error('Bilden är för stor (max 8 MB).')
+    throw new Error('Bilden är för stor (max 6 MB).')
   }
   const blob = await resizeImage(input.file)
   const safeId = input.stationId.replace(/[^a-zA-Z0-9_-]/g, '_')
