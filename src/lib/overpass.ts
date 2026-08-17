@@ -1,6 +1,16 @@
 import type { LatLngBounds } from 'leaflet'
 import type { ServiceType, Station } from '../types'
 
+// OSM-element som bekräftats felaktiga/dubbletter av Per (fältkoll) men som
+// vi inte kan rätta i själva OpenStreetMap härifrån. Speglar samma lista i
+// scripts/sync-stations.mjs – ändra ALLTID båda.
+const EXCLUDED_OSM_ELEMENTS = new Set([
+  // "Tömningsstation" (namnlös nod) ~106 m från Borås Camping Saltemad –
+  // Per bekräftade aug 2026 att det bara finns EN tömning där.
+  // https://www.openstreetmap.org/node/12907898116
+  'node/12907898116',
+])
+
 // Flera speglar – om en är överbelastad (429/504) provas nästa.
 const OVERPASS_MIRRORS = [
   'https://overpass-api.de/api/interpreter',
@@ -193,6 +203,7 @@ function imageFromTags(tags: Record<string, string>): string | undefined {
 }
 
 function toStation(el: OverpassElement): Station | null {
+  if (EXCLUDED_OSM_ELEMENTS.has(`${el.type}/${el.id}`)) return null
   const lat = el.lat ?? el.center?.lat
   const lon = el.lon ?? el.center?.lon
   if (lat === undefined || lon === undefined) return null

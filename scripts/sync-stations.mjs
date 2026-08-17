@@ -23,6 +23,16 @@ import { writeFile, readFile, mkdir } from 'node:fs/promises'
 const OUT = new URL('../public/data/stations-seed.json', import.meta.url)
 const CURATED = new URL('./curated-places.json', import.meta.url)
 
+// OSM-element som bekräftats felaktiga/dubbletter av Per (fältkoll) men som
+// vi inte kan rätta i själva OpenStreetMap härifrån. Format: "<type>/<id>".
+// Ta bort raden här OM/när OSM-datan rättas uppströms.
+const EXCLUDED_OSM_ELEMENTS = new Set([
+  // "Tömningsstation" (namnlös nod) ~106 m från Borås Camping Saltemad –
+  // Per bekräftade aug 2026 att det bara finns EN tömning där (campingens
+  // egen), inte två. https://www.openstreetmap.org/node/12907898116
+  'node/12907898116',
+])
+
 // ---------- OpenStreetMap ----------
 
 const OVERPASS_MIRRORS = [
@@ -209,6 +219,7 @@ async function fetchOsmFrom(url) {
   const json = await res.json()
   const stations = []
   for (const el of json.elements ?? []) {
+    if (EXCLUDED_OSM_ELEMENTS.has(`${el.type}/${el.id}`)) continue
     const lat = el.lat ?? el.center?.lat
     const lon = el.lon ?? el.center?.lon
     if (lat === undefined || lon === undefined) continue

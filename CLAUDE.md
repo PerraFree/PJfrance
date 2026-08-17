@@ -210,6 +210,13 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
 5. Vilhelmina-tömningsstationen togs bort i väntan på bekräftat läge.
 6. AdminPanel: 'na'-läget och tabellkontroller är fixade; håll texterna i
    synk med installer-flödet vid ändringar.
+7. **OSM-uteslutningslista** (aug 2026): `EXCLUDED_OSM_ELEMENTS` i
+   `scripts/sync-stations.mjs` OCH `src/lib/overpass.ts` (speglar
+   varandra, ändra ALLTID båda) – för OSM-element som Per bekräftat är
+   fel/dubbletter men som vi inte kan rätta i själva OpenStreetMap
+   härifrån. Första posten: `node/12907898116` ("Tömningsstation",
+   namnlös nod ~106 m från Borås Camping Saltemad – bara en tömning
+   finns där enligt fältkoll). Ta bort raden om/när OSM rättas uppströms.
 
 ## Dokumentation
 
