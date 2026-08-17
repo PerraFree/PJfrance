@@ -246,7 +246,7 @@ function popupHtml(
       : `<button type="button" class="verify-btn" data-verify-id="${escapeAttr(station.id)}">✓ Stämmer fortfarande</button>`
     : ''
   const rateBtn = canRate
-    ? `<button type="button" class="rate-btn" data-rate-id="${escapeAttr(station.id)}" data-rate-name="${escapeAttr(station.name)}">★ Betygsätt</button>`
+    ? `<button type="button" class="rate-btn" data-rate-id="${escapeAttr(station.id)}" data-rate-name="${escapeAttr(station.name)}">★ Omdöme/Info</button>`
     : ''
   const photoBtn = canAddPhoto
     ? `<button type="button" class="photo-btn" data-photo-id="${escapeAttr(station.id)}" data-photo-name="${escapeAttr(station.name)}">📷 Lägg till foto</button>`
