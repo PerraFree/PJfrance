@@ -5,6 +5,7 @@ import { searchPlace } from '../lib/geocode'
 import { useModal } from '../lib/useModal'
 import { MY_PLACE_PREFIX } from '../lib/myplaces'
 import { submitPhoto } from '../lib/photos'
+import { reverseGeocode } from '../lib/reverse'
 import type { ServiceType, Station } from '../types'
 import { SERVICE_LABELS } from '../types'
 
@@ -106,15 +107,27 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
       // Hybrid: skicka samtidigt in förslaget för granskning – godkänns det
       // visas platsen för ALLA. Blockerar inte den lokala sparningen.
       if (communityEnabled) {
-        void submitPlace({
-          name: station.name,
-          address: station.address ?? `${lat.toFixed(5)}, ${lon.toFixed(5)}`,
-          services: station.services,
-          fee: station.fee,
-          description: station.description,
-          lat,
-          lon,
-        }).catch(() => {
+        void (async () => {
+          // Ingen adress angiven av användaren: slå upp ett riktigt ortsnamn
+          // i stället för att visa rå koordinat-text i granskningsärendet.
+          let submittedAddress = station.address
+          if (!submittedAddress) {
+            try {
+              submittedAddress = (await reverseGeocode(lat, lon)) || undefined
+            } catch {
+              /* faller tillbaka på koordinater nedan */
+            }
+          }
+          await submitPlace({
+            name: station.name,
+            address: submittedAddress ?? `${lat.toFixed(5)}, ${lon.toFixed(5)}`,
+            services: station.services,
+            fee: station.fee,
+            description: station.description,
+            lat,
+            lon,
+          })
+        })().catch(() => {
           /* granskningskön är bäst-möjligt – platsen är ändå sparad lokalt */
         })
       }
