@@ -166,7 +166,7 @@ create policy "anon läser foton" on photos
   for select to anon using (status = 'approved');
 
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
-values ('place-photos', 'place-photos', true, 6291456, array['image/jpeg', 'image/png', 'image/webp']);
+values ('place-photos', 'place-photos', true, 3145728, array['image/jpeg', 'image/png', 'image/webp']);
 create policy "anon kan ladda upp foton" on storage.objects
   for insert to anon with check (bucket_id = 'place-photos');
 ```

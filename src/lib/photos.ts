@@ -19,7 +19,7 @@ const headers = {
 
 const MAX_DIMENSION = 1280
 const JPEG_QUALITY = 0.72
-const MAX_UPLOAD_BYTES = 6 * 1024 * 1024
+const MAX_UPLOAD_BYTES = 3 * 1024 * 1024
 
 /** Senaste godkända community-foto per plats-id. */
 export async function fetchPhotos(): Promise<Map<string, string>> {
@@ -87,7 +87,7 @@ export async function submitPhoto(input: NewPhoto): Promise<string> {
     throw new Error('Filen måste vara en bild.')
   }
   if (input.file.size > MAX_UPLOAD_BYTES) {
-    throw new Error('Bilden är för stor (max 6 MB).')
+    throw new Error('Bilden är för stor (max 3 MB).')
   }
   const blob = await resizeImage(input.file)
   const safeId = input.stationId.replace(/[^a-zA-Z0-9_-]/g, '_')
