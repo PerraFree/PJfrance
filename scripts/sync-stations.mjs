@@ -630,8 +630,29 @@ try {
   console.error(`Register-geokodning misslyckades: ${err.message}`)
 }
 
+// Skydd mot att en tillfällig störning hos en källa (t.ex. att alla tre
+// Overpass-speglar är nere samtidigt) skriver över en bra seed-fil med en
+// kraftigt ofullständig – hände 31 aug 2026 (5414 → 846 platser, alla
+// OSM-speglar svarade 5xx samtidigt). Jämför mot den redan committade filen
+// och avbryter (utan att skriva) om resultatet ser trasigt ut.
+let previousCount = 0
+try {
+  const prev = JSON.parse(await readFile(OUT, 'utf8'))
+  previousCount = (prev.stations ?? prev).length
+} catch {
+  /* ingen tidigare fil (första körningen) – inget att jämföra mot */
+}
+
 if (stations.length === 0) {
   console.error('Ingen data hämtad – behåller befintlig seed-fil.')
+  process.exit(1)
+}
+if (previousCount > 0 && stations.length < previousCount * 0.5) {
+  console.error(
+    `Avbryter: resultatet (${stations.length} platser) är mer än hälften mindre än förra körningen (${previousCount}). ` +
+      'Troligen ett tillfälligt fel hos en datakälla (t.ex. alla Overpass-speglar nere samtidigt) snarare än en ' +
+      'verklig minskning. Behåller befintlig seed-fil i stället för att skriva över med ofullständig data.',
+  )
   process.exit(1)
 }
 
