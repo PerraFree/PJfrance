@@ -42,15 +42,31 @@ jobs:
             }
             const ref = new URL(urlVar).hostname.split('.')[0]
             const mgmtHeaders = { Authorization: `Bearer ${token}` }
+            // Hämtar projektstatus och loggar HTTP-felet rakt av om anropet inte
+            // lyckas (t.ex. ogiltig/utgången token) – annars blir `proj.status`
+            // bara "undefined" i tysthet och man tror felaktigt att databasen
+            // aldrig vaknar (hände sep 2026, se CLAUDE.md).
+            const getProj = async () => {
+              const res = await fetch(`https://api.supabase.com/v1/projects/${ref}`, { headers: mgmtHeaders })
+              const body = await res.json().catch(() => ({}))
+              if (!res.ok) {
+                throw new Error(
+                  `Supabase Management API svarade ${res.status} för projekt "${ref}": ` +
+                    `${JSON.stringify(body).slice(0, 300)}. Kontrollera att SUPABASE_ACCESS_TOKEN ` +
+                    `fortfarande är giltig (supabase.com/dashboard/account/tokens).`,
+                )
+              }
+              return body
+            }
             // Väck databasen om den är pausad (gratisprojekt somnar)
-            let proj = await (await fetch(`https://api.supabase.com/v1/projects/${ref}`, { headers: mgmtHeaders })).json()
+            let proj = await getProj()
             if (String(proj.status).startsWith('INACTIVE')) {
               core.info('Databasen är pausad – väcker den …')
               await fetch(`https://api.supabase.com/v1/projects/${ref}/restore`, { method: 'POST', headers: mgmtHeaders })
             }
             for (let i = 0; i < 40 && !String(proj.status).includes('ACTIVE_HEALTHY'); i++) {
               await new Promise((r) => setTimeout(r, 15_000))
-              proj = await (await fetch(`https://api.supabase.com/v1/projects/${ref}`, { headers: mgmtHeaders })).json()
+              proj = await getProj()
               if (i % 4 === 0) core.info(`  … väntar på databasen: ${proj.status}`)
             }
             if (!String(proj.status).includes('ACTIVE_HEALTHY')) {
