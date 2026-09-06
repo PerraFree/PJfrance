@@ -210,7 +210,17 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
 5. Vilhelmina-tömningsstationen togs bort i väntan på bekräftat läge.
 6. AdminPanel: 'na'-läget och tabellkontroller är fixade; håll texterna i
    synk med installer-flödet vid ändringar.
-7. **OSM-uteslutningslista** (aug 2026): `EXCLUDED_OSM_ELEMENTS` i
+7. **Baskartlager (sep 2026):** CARTO stängde av gratis, nyckelfri åtkomst
+   till `basemaps.cartocdn.com` (Voyager-stilen som var default-kartan
+   "Ljus") – visade "API KEY REQUIRED"-vattenstämplar i stället för kartan
+   för ALLA användare. Bytt till Esris nyckelfria `World_Street_Map`
+   (samma ArcGIS-tjänst som Satellit-lagret redan använde utan problem).
+   Lade också till ett generellt säkerhetsnät i `MapView.tsx`: om det
+   aktiva baskartlagret ger ≥6 tile-fel byts det automatiskt till
+   OpenStreetMaps egna tiles (`tile.openstreetmap.org`, aldrig kräver
+   nyckel) i stället för att kartan tyst förblir trasig tills någon
+   session rättar koden. Kolla `console.warn`/statistik om det slår till.
+8. **OSM-uteslutningslista** (aug 2026): `EXCLUDED_OSM_ELEMENTS` i
    `scripts/sync-stations.mjs` OCH `src/lib/overpass.ts` (speglar
    varandra, ändra ALLTID båda) – för OSM-element som Per bekräftat är
    fel/dubbletter men som vi inte kan rätta i själva OpenStreetMap

@@ -543,10 +543,14 @@ export default function MapView({
 
     const osmAttr =
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-bidragsgivare'
-    // Ljus, avskalad baskarta – gör de färgade markörerna framträdande
+    // Ljus, avskalad baskarta – gör de färgade markörerna framträdande.
+    // OBS: CARTO's tidigare gratis basemaps.cartocdn.com-tiles (Voyager) började
+    // sep 2026 kräva en API-nyckel ("API KEY REQUIRED"-vattenstämpel i stället
+    // för kartan) – bytt till Esris World_Street_Map (samma nyckelfria
+    // ArcGIS-tjänst som Satellit-lagret redan använder utan problem).
     const ljus = L.tileLayer(
-      'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
-      { attribution: `${osmAttr}, &copy; <a href="https://carto.com/attributions">CARTO</a>`, maxZoom: 20 },
+      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}',
+      { attribution: '&copy; Esri, HERE, Garmin, FAO, NOAA, USGS', maxZoom: 19 },
     )
     const standard = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: osmAttr,
@@ -561,14 +565,30 @@ export default function MapView({
       maxZoom: 17,
     })
     ljus.addTo(map)
+    // Säkerhetsnät: om det aktiva baskartlagret plötsligt börjar ge massvis med
+    // tile-fel (samma sorts leverantörsavbrott som CARTO-incidenten) byts det
+    // automatiskt till OpenStreetMaps egna tiles i stället för att appen tyst
+    // visar en trasig/blank karta för alla tills någon hinner rätta koden.
+    let tileErrors = 0
+    let fallbackDone = false
+    const layers = { Ljus: ljus, Detaljerad: standard, Satellit: satellit, Terräng: terrang }
+    for (const [namn, lager] of Object.entries(layers)) {
+      if (lager === standard) continue // inget att falla tillbaka på om denna felar
+      lager.on('tileerror', () => {
+        if (fallbackDone || !map.hasLayer(lager)) return
+        tileErrors++
+        if (tileErrors >= 6) {
+          fallbackDone = true
+          console.warn(`Kartlagret "${namn}" ger upprepade tile-fel – byter till OpenStreetMap.`)
+          map.removeLayer(lager)
+          standard.addTo(map)
+        }
+      })
+    }
     // Nere till vänster – fri yta som aldrig hamnar bakom panelen (uppe) eller
     // krockar med zoom/lokaliseringsknapparna (nere till höger).
     L.control
-      .layers(
-        { Ljus: ljus, Detaljerad: standard, Satellit: satellit, Terräng: terrang },
-        {},
-        { position: 'bottomleft', collapsed: true },
-      )
+      .layers(layers, {}, { position: 'bottomleft', collapsed: true })
       .addTo(map)
 
     const cluster = L.markerClusterGroup({
