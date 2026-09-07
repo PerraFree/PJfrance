@@ -45,6 +45,22 @@ bumpa `CACHE`-versionen vid behov). Capacitor/Android finns förberett
 - `bevaka-platsforslag.yml` – var 3:e timme: nya förslag/kommentarer → GitHub-ärenden (mejl till Per). Markör `<!-- submission:UUID -->` på FÖRSTA raden; användartext saneras via `cell()`.
 - `hantera-platsforslag.yml` – kommentar `godkänn`/`neka`/`avslå` i ärendet uppdaterar Supabase (ord-jämförelse, INTE `\b` – trasigt med å/ä/ö). Väcker pausad databas först.
 - Secrets: `SUPABASE_ACCESS_TOKEN`, `TRV_API_KEY`.
+- **`SUPABASE_ACCESS_TOKEN` går ut och MÅSTE bytas manuellt** – Supabases nya
+  scoped access-tokens (deras gamla "legacy" full-access-tokens gick aldrig
+  ut, men de nya scoped-tokens är begränsade till max ~90 dagar även om man
+  väljer "Custom"/längsta datum). Gick ut oväntat 2–7 sep 2026 → alla tre
+  ovanstående jobb fick `401 Unauthorized` (`bevaka-platsforslag.yml` visade
+  det tydligast, med "Databasen vaknade inte i tid" tills felsökningen
+  förbättrades att visa HTTP-status/svarstext direkt i stället för att bara
+  pollra blint i 10 minuter, se `getProj()` i `bevaka-platsforslag.yml`).
+  Ny token skapad 7 sep 2026 (giltig ~90 dagar, dvs ca 6 dec 2026) – en
+  påminnelse är schemalagd ~3 veckor innan, men om den missas: gå till
+  https://supabase.com/dashboard/account/tokens → *Generate new token* →
+  Resource access: **Project** → org **PerraFree's Org** → projekt
+  **Greywater** → Permissions: preset **Full access** → Expires in: längsta
+  tillåtna (just nu ~90 dagar) → *Review access* → *Create token* → kopiera
+  `sbp_…`-strängen → uppdatera secreten på
+  https://github.com/PerraFree/PJfrance/settings/secrets/actions.
 
 ## Dataflöde och principer
 
