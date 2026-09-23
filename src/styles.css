@@ -1771,34 +1771,6 @@ button {
   font-size: 0.8rem;
 }
 
-.facility-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.fac-chip {
-  padding: 6px 11px;
-  border-radius: var(--r-pill);
-  border: 1px solid var(--border-strong);
-  background: var(--surface);
-  color: var(--text);
-  font-size: 0.8rem;
-  font-weight: 550;
-  cursor: pointer;
-  transition: all 0.14s;
-}
-
-.fac-chip:hover {
-  border-color: var(--green-500);
-}
-
-.fac-chip.active {
-  background: var(--green-700);
-  border-color: var(--green-700);
-  color: #fff;
-}
-
 .fac-clear {
   padding: 6px 11px;
   border: none;
@@ -1986,15 +1958,6 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-}
-
-.filter-sub {
-  margin: 2px 0 0;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: var(--text-dim);
 }
 
 /* ---------- "Stämmer fortfarande"-verifiering ---------- */

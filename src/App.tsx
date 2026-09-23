@@ -21,7 +21,7 @@ import { fetchOsmStations } from './lib/overpass'
 import { getPosition, tap } from './lib/native'
 import { serviceIcon } from './lib/icons'
 import type { ServiceType, Station } from './types'
-import { SERVICE_LABELS, FACILITY_LABELS } from './types'
+import { SERVICE_LABELS } from './types'
 
 /**
  * Valbara kategorier = det man faktiskt åker till en plats för: tömma
@@ -29,20 +29,6 @@ import { SERVICE_LABELS, FACILITY_LABELS } from './types'
  * inte egna filter – de visas som märkning på platser som erbjuder ovanstående.
  */
 const ALL_SERVICES: ServiceType[] = ['gravatten', 'latrin', 'vatten', 'sopor', 'gasol']
-
-/** Faciliteter man kan filtrera på (de mest efterfrågade av husbilsfolk). */
-const FILTERABLE_FACILITIES = [
-  'el',
-  'dricksvatten',
-  'dusch',
-  'wc',
-  'tvatt',
-  'wifi',
-  'avfall',
-  'hund',
-  'restaurang',
-  'tillganglig',
-]
 
 const FREE_RE = /gratis|free|ingår|kostnadsfri|utan avgift/i
 function isFree(s: Station): boolean {
@@ -178,7 +164,6 @@ export default function App() {
   // appnamnet så att kartan och popupen får plats. Återställs vid tryck.
   const [mini, setMini] = useState(false)
   const [locating, setLocating] = useState(false)
-  const [facilityFilters, setFacilityFilters] = useState<Set<string>>(new Set())
   const [showMore, setShowMore] = useState(false)
   const [favorites, setFavorites] = useState<Set<string>>(loadFavorites)
   const [favOnly, setFavOnly] = useState(false)
@@ -317,15 +302,8 @@ export default function App() {
         (s) => s.season === 'year-round' || s.openingHours === '24/7',
       )
     }
-    if (facilityFilters.size) {
-      list = list.filter((s) => {
-        const have = new Set(s.facilities ?? [])
-        for (const need of facilityFilters) if (!have.has(need)) return false
-        return true
-      })
-    }
     return list
-  }, [stations, freeOnly, favOnly, favorites, yearRoundOnly, facilityFilters])
+  }, [stations, freeOnly, favOnly, favorites, yearRoundOnly])
 
   // Antal synliga pins med hänsyn till aktiva kategorifilter (för tomt-läge)
   const visibleCount = useMemo(
@@ -446,24 +424,13 @@ export default function App() {
     })
   }
 
-  const toggleFacility = (key: string) => {
-    setFacilityFilters((prev) => {
-      const next = new Set(prev)
-      if (next.has(key)) next.delete(key)
-      else next.add(key)
-      return next
-    })
-  }
-
   // Antal aktiva sekundärfilter (visas som räknare på "Fler filter").
-  const secondaryCount =
-    (freeOnly ? 1 : 0) + (yearRoundOnly ? 1 : 0) + (favOnly ? 1 : 0) + facilityFilters.size
+  const secondaryCount = (freeOnly ? 1 : 0) + (yearRoundOnly ? 1 : 0) + (favOnly ? 1 : 0)
 
   const clearSecondaryFilters = () => {
     setFreeOnly(false)
     setYearRoundOnly(false)
     setFavOnly(false)
-    setFacilityFilters(new Set())
   }
 
   // Har inget valts ännu? Slå på alla kategorier så sökträffen faktiskt syns.
@@ -757,21 +724,6 @@ export default function App() {
                 </button>
               </div>
 
-              <p className="filter-sub">Har på platsen</p>
-              <div className="facility-chips" role="group" aria-label="Filtrera på faciliteter">
-                {FILTERABLE_FACILITIES.map((key) => (
-                  <button
-                    key={key}
-                    type="button"
-                    className={facilityFilters.has(key) ? 'fac-chip active' : 'fac-chip'}
-                    aria-pressed={facilityFilters.has(key)}
-                    onClick={() => toggleFacility(key)}
-                  >
-                    {FACILITY_LABELS[key] ?? key}
-                  </button>
-                ))}
-              </div>
-
               {secondaryCount > 0 && (
                 <button type="button" className="fac-clear" onClick={clearSecondaryFilters}>
                   Rensa alla filter
@@ -798,9 +750,7 @@ export default function App() {
             ? 'Du har inga sparade platser än – tryck ★ Spara i en plats för att lägga till den här.'
             : activeFilters.size === 0
               ? 'Vad letar du efter? Välj en eller flera kategorier ovan för att visa platser.'
-              : facilityFilters.size > 0
-                ? 'Inga platser matchar valda faciliteter – prova att ta bort något villkor.'
-                : 'Inga platser matchar valda filter.'}
+              : 'Inga platser matchar valda filter.'}
         </div>
       )}
 
