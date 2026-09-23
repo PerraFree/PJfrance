@@ -355,6 +355,17 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    faller tillbaka på 🔥 (de flesta platser är byte). `pinIcon()` krymper
    fontstorleken när glyfen är två tecken så båda ryms i kartnålens cirkel.
 
+   **Egen FÄRG, inte bara symbol (sep 2026):** Per påpekade att skillnaden
+   fortfarande inte syntes tydligt nog – alla gasolnålar var röda oavsett
+   byte/påfyllning, bara den lilla glyfen skilde. `serviceFill()` i
+   `MapView.tsx` ger nu byte-platser röd nål (`SERVICE_COLORS.gasol`,
+   oförändrad) och renodlade påfyllningsplatser en egen vinröd/magenta färg
+   (`#ad1457`, kontrollerad ≥4.5:1 kontrast med vit text). Platser med BÅDA
+   tjänsterna får en tvåfärgad (delad vänster/höger) kartnål i stället för
+   att bara visas som röd byte-nål – `pinIcon()` klipper en andra kopia av
+   nål-formen till höger halva via SVG `clipPath`. Samma logik driver
+   badgefärgen i popupen (`linear-gradient` 50/50 för platser med båda).
+
    **Borås-komplettering (sep 2026):** Per efterlyste specifikt Verktygsboden
    och Svetskompaniet i Borås. Tillagda: Verktygsboden Borås (byte, PC10/
    komposit – bekräftat via återkommande prisomnämnanden på

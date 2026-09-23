@@ -90,11 +90,13 @@ function distanceKm(a: { lat: number; lon: number }, b: { lat: number; lon: numb
   return 2 * R * Math.asin(Math.sqrt(h))
 }
 
-// Gasol har två olika symboler så det syns direkt på kartnålen och i
-// badgen om man kan byta tub eller bara fylla på – annars samma glyf som
-// SERVICE_ICONS för alla tjänster. Se CLAUDE.md ("Gasol: byte vs. påfyllning").
+// Gasol: byte och påfyllning ska gå att skilja åt DIREKT på kartan, inte
+// bara i en liten glyf man måste kisa på – därför olika FÄRG också (inte
+// bara olika symbol som tidigare). Se CLAUDE.md ("Gasol: byte vs. påfyllning").
 const GASOL_BYTE_ICON = '🔥'
 const GASOL_PAFYLLNING_ICON = '⛽'
+const GASOL_BYTE_COLOR = SERVICE_COLORS.gasol // röd, som tidigare
+const GASOL_PAFYLLNING_COLOR = '#ad1457' // vinröd/magenta – tydligt skild från alla andra kategorifärger
 function serviceGlyph(station: Station, service: ServiceType): string {
   if (service !== 'gasol') return SERVICE_ICONS[service]
   const f = station.facilities ?? []
@@ -108,14 +110,35 @@ function serviceGlyph(station: Station, service: ServiceType): string {
   return GASOL_BYTE_ICON
 }
 
-function pinIcon(color: string, glyph: string): L.DivIcon {
+/** Pin-/badgefärg per tjänst – gasol får egen färg för byte vs. påfyllning
+ *  (delad färg, "split", om platsen har båda) i stället för samma röda för
+ *  alla gasolplatser. */
+function serviceFill(station: Station, service: ServiceType): { color: string; split?: string } {
+  if (service !== 'gasol') return { color: SERVICE_COLORS[service] }
+  const f = station.facilities ?? []
+  const byte = f.includes('gasol_byte')
+  const pafyllning = f.includes('gasol_pafyllning')
+  if (byte && pafyllning) return { color: GASOL_BYTE_COLOR, split: GASOL_PAFYLLNING_COLOR }
+  if (pafyllning) return { color: GASOL_PAFYLLNING_COLOR }
+  return { color: GASOL_BYTE_COLOR }
+}
+
+let pinIconIdCounter = 0
+function pinIcon(color: string, glyph: string, splitColor?: string): L.DivIcon {
   // Två ihopsatta glyfer (t.ex. gasol byte+påfyllning 🔥⛽) ryms inte i den
   // lilla cirkeln vid samma storlek som en enda – krymp texten då.
   const fontSize = Array.from(glyph).length > 1 ? 8 : 11
+  const pinPath =
+    'M17 1C8.7 1 2 7.7 2 16c0 10.5 12.2 24.2 14.1 26.3a1.2 1.2 0 0 0 1.8 0C19.8 40.2 32 26.5 32 16 32 7.7 25.3 1 17 1z'
+  // Plats med BÅDA gasoltjänsterna får en tvåfärgad nål (vänster/höger
+  // halva) i stället för att bara byte-färgen syns – annars ser den ut som
+  // en renodlad byte-plats trots att den även har påfyllning.
+  const clipId = splitColor ? `pin-split-${pinIconIdCounter++}` : ''
   const svg = `
     <svg width="34" height="44" viewBox="0 0 34 44" xmlns="http://www.w3.org/2000/svg">
-      <path d="M17 1C8.7 1 2 7.7 2 16c0 10.5 12.2 24.2 14.1 26.3a1.2 1.2 0 0 0 1.8 0C19.8 40.2 32 26.5 32 16 32 7.7 25.3 1 17 1z"
-            fill="${color}" stroke="#ffffff" stroke-width="2"/>
+      ${splitColor ? `<defs><clipPath id="${clipId}"><rect x="17" y="0" width="17" height="44"/></clipPath></defs>` : ''}
+      <path d="${pinPath}" fill="${color}" stroke="#ffffff" stroke-width="2"/>
+      ${splitColor ? `<path d="${pinPath}" fill="${splitColor}" clip-path="url(#${clipId})"/>` : ''}
       <circle cx="17" cy="16" r="8.5" fill="#ffffff"/>
       <text x="17" y="19.5" font-size="${fontSize}" text-anchor="middle">${glyph}</text>
     </svg>`
@@ -178,10 +201,13 @@ function popupHtml(
     return ''
   })()
   const services = station.services
-    .map(
-      (s) =>
-        `<span class="badge" style="--badge:${SERVICE_COLORS[s]}">${serviceGlyph(station, s)} ${SERVICE_LABELS[s]}${s === 'gasol' ? gasolQualifier : ''}</span>`,
-    )
+    .map((s) => {
+      const fill = serviceFill(station, s)
+      const badgeFill = fill.split
+        ? `linear-gradient(90deg, ${fill.color} 50%, ${fill.split} 50%)`
+        : fill.color
+      return `<span class="badge" style="--badge:${badgeFill}">${serviceGlyph(station, s)} ${SERVICE_LABELS[s]}${s === 'gasol' ? gasolQualifier : ''}</span>`
+    })
     .join('')
   const season = stationSeason(station)
   const seasonBadge =
@@ -506,8 +532,9 @@ export default function MapView({
     const userLocNow = userLocRef.current
     const markers = list.map((station) => {
       const primary = station.services.find((s) => active.has(s)) ?? station.services[0]
+      const fill = serviceFill(station, primary)
       const marker = L.marker([station.lat, station.lon], {
-        icon: pinIcon(SERVICE_COLORS[primary], serviceGlyph(station, primary)),
+        icon: pinIcon(fill.color, serviceGlyph(station, primary), fill.split),
       })
       // Registreras FÖRE bindPopup så att marginalerna hinner uppdateras
       // innan Leaflet öppnar popupen på klicket.
