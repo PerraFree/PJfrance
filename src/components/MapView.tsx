@@ -90,6 +90,21 @@ function distanceKm(a: { lat: number; lon: number }, b: { lat: number; lon: numb
   return 2 * R * Math.asin(Math.sqrt(h))
 }
 
+// Gasol har två olika symboler så det syns direkt på kartnålen och i
+// badgen om man kan byta tub eller bara fylla på – annars samma glyf som
+// SERVICE_ICONS för alla tjänster. Se CLAUDE.md ("Gasol: byte vs. påfyllning").
+const GASOL_BYTE_ICON = '🔥'
+const GASOL_PAFYLLNING_ICON = '⛽'
+function serviceGlyph(station: Station, service: ServiceType): string {
+  if (service !== 'gasol') return SERVICE_ICONS[service]
+  const f = station.facilities ?? []
+  // Rent påfyllningsställe (ingen byte-möjlighet) får pumpsymbolen; annars
+  // (byte, båda, eller okänt – de flesta platser är byte) den vanliga lågan.
+  return f.includes('gasol_pafyllning') && !f.includes('gasol_byte')
+    ? GASOL_PAFYLLNING_ICON
+    : GASOL_BYTE_ICON
+}
+
 function pinIcon(color: string, glyph: string): L.DivIcon {
   const svg = `
     <svg width="34" height="44" viewBox="0 0 34 44" xmlns="http://www.w3.org/2000/svg">
@@ -159,7 +174,7 @@ function popupHtml(
   const services = station.services
     .map(
       (s) =>
-        `<span class="badge" style="--badge:${SERVICE_COLORS[s]}">${SERVICE_ICONS[s]} ${SERVICE_LABELS[s]}${s === 'gasol' ? gasolQualifier : ''}</span>`,
+        `<span class="badge" style="--badge:${SERVICE_COLORS[s]}">${serviceGlyph(station, s)} ${SERVICE_LABELS[s]}${s === 'gasol' ? gasolQualifier : ''}</span>`,
     )
     .join('')
   const season = stationSeason(station)
@@ -486,7 +501,7 @@ export default function MapView({
     const markers = list.map((station) => {
       const primary = station.services.find((s) => active.has(s)) ?? station.services[0]
       const marker = L.marker([station.lat, station.lon], {
-        icon: pinIcon(SERVICE_COLORS[primary], SERVICE_ICONS[primary]),
+        icon: pinIcon(SERVICE_COLORS[primary], serviceGlyph(station, primary)),
       })
       // Registreras FÖRE bindPopup så att marginalerna hinner uppdateras
       // innan Leaflet öppnar popupen på klicket.

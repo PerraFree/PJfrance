@@ -258,7 +258,9 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    `gasol_byte` och `gasol_pafyllning` i BÅDE `scripts/sync-stations.mjs` och
    `src/lib/overpass.ts` (speglar varandra, ändra ALLTID båda). Visas direkt i
    platsbadgen i popupen ("Gasol/LPG – byt tub" / "– fyll på"), inte gömt i
-   "Finns här".
+   "Finns här". **Sep 2026:** även egen kartnåls-/badge-symbol per typ –
+   `serviceGlyph()` i `MapView.tsx` väljer 🔥 (byte/okänt) eller ⛽
+   (renodlad påfyllning) i stället för samma 🔥 för alla gasolplatser.
 
    **Viktig lärdom (första försöket var fel):** `shop=gas` är tillförlitligt
    för byte (återförsäljare), men OSM-taggen `fuel:lpg=yes` (bensinstationer)
