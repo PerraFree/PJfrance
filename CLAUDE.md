@@ -397,6 +397,30 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    202, ingen gasol-kategori vald → 0 nålar, precis som filterknapparnas
    siffror visar.
 
+   **Buggfixar vid extra granskning (sep 2026, på Pers begäran "kolla igenom
+   allt noggrant"):**
+   - `toggleGasolFacility` anropade `setActiveFilters` INUTI
+     `setGasolFacilities`-uppdateraren – en sidoeffekt i en uppdaterarfunktion
+     som React StrictMode (används i `main.tsx`) medvetet dubbelkör i dev för
+     att just avslöja såna buggar. Rättat: `next`-mängden beräknas synkront
+     från aktuellt state FÖRE de två (nu oberoende, icke-nästlade)
+     `setState`-anropen.
+   - `ensureCategories()` och `handleLocate()` anropade `ensureGasolFacilities()`
+     OKONDITIONERAT, trots att motsvarande `setActiveFilters`-anrop bara
+     faktiskt slår på 'gasol' när `activeFilters` var helt TOM sedan innan.
+     Om användaren redan hade valt t.ex. "Färskvatten" och sedan tryckte
+     "Sök där jag är", tändes gasol-knapparna i UI:t felaktigt (utan att
+     'gasol' någonsin lades till i `activeFilters`) – nästa klick på en
+     gasol-knapp stängde då AV den i stället för att slå PÅ, eftersom
+     `gasolFacilities` redan tyst blivit ifylld i bakgrunden. Rättat genom
+     att gate:a `ensureGasolFacilities()` med exakt samma villkor som
+     `setActiveFilters`-anropet (synkront: läs `activeFilters` direkt;
+     `handleLocate` är async och läser i stället `activeFiltersRef.current`,
+     eftersom en `await` kan hinna göra en closure-läst variabel inaktuell).
+   - Verifierat med Playwright: valde "Färskvatten" → tryckte "Sök där jag
+     är" → bekräftade att gasol-knapparna förblev INAKTIVA (innan fixen hade
+     de tänts felaktigt).
+
    **Borås-komplettering (sep 2026):** Per efterlyste specifikt Verktygsboden
    och Svetskompaniet i Borås. Tillagda: Verktygsboden Borås (byte, PC10/
    komposit – bekräftat via återkommande prisomnämnanden på

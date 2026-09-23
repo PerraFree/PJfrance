@@ -150,7 +150,7 @@ export default function App() {
   const [activeFilters, setActiveFilters] = useState<Set<ServiceType>>(new Set())
   // Vilken/vilka gasol-underkategorier som är valda (byt tub / fyll på egen
   // flaska). Tom mängd = ingen gasolplats visas, även om 'gasol' råkar finnas
-  // i activeFilters – hålls i synk via activateServices()/toggleGasolFacility().
+  // i activeFilters – hålls i synk via toggleGasolFacility()/ensureGasolFacilities().
   const [gasolFacilities, setGasolFacilities] = useState<Set<GasolFacility>>(new Set())
   const [flyTo, setFlyTo] = useState<{ lat: number; lon: number; zoom?: number } | null>(null)
   const [userLoc, setUserLoc] = useState<{ lat: number; lon: number } | null>(null)
@@ -456,18 +456,20 @@ export default function App() {
   // Gasol-filterknappen är delad i två (byt/fyll på) – slå på/av en enskild
   // gasol-underkategori, och håll 'gasol' i activeFilters i synk (borttagen
   // när inget av de två är valt längre, annars visas inga gasolnålar alls).
+  // OBS: "next" beräknas synkront från nuvarande state i stället för inuti
+  // setGasolFacilities-uppdateraren – annars körs setActiveFilters två gånger
+  // i React StrictMode (dev), som medvetet dubbelkör uppdaterarfunktioner för
+  // att avslöja just den sortens sidoeffekt.
   const toggleGasolFacility = (facility: GasolFacility) => {
-    setGasolFacilities((prev) => {
-      const next = new Set(prev)
-      if (next.has(facility)) next.delete(facility)
-      else next.add(facility)
-      setActiveFilters((prevAf) => {
-        const nextAf = new Set(prevAf)
-        if (next.size > 0) nextAf.add('gasol')
-        else nextAf.delete('gasol')
-        return nextAf
-      })
-      return next
+    const next = new Set(gasolFacilities)
+    if (next.has(facility)) next.delete(facility)
+    else next.add(facility)
+    setGasolFacilities(next)
+    setActiveFilters((prevAf) => {
+      const nextAf = new Set(prevAf)
+      if (next.size > 0) nextAf.add('gasol')
+      else nextAf.delete('gasol')
+      return nextAf
     })
   }
 
@@ -487,9 +489,14 @@ export default function App() {
   }
 
   // Har inget valts ännu? Slå på alla kategorier så sökträffen faktiskt syns.
+  // (Synkront anrop, så att läsa activeFilters direkt ur closuren är säkert
+  // – till skillnad från handleLocate nedan, som är async och därför måste
+  // läsa aktuellt värde via activeFiltersRef efter ett await.)
   const ensureCategories = () => {
-    setActiveFilters((prev) => (prev.size === 0 ? new Set(ALL_SERVICES) : prev))
-    ensureGasolFacilities()
+    if (activeFilters.size === 0) {
+      setActiveFilters(new Set(ALL_SERVICES))
+      ensureGasolFacilities()
+    }
   }
 
   const handleSearch = async (e: React.FormEvent) => {
@@ -567,8 +574,11 @@ export default function App() {
       setFlyTo({ ...loc, zoom: 11 })
       setShowNearest(true)
       // Har inget valts ännu? Visa alla kategorier så man genast ser vad som finns nära.
+      // async-funktion: läs activeFiltersRef (alltid färsk) i stället för att
+      // lita på "activeFilters" i closuren, som kan hinna bli inaktuell under
+      // await:en ovan (t.ex. om användaren hann klicka ett filter under tiden).
+      if (activeFiltersRef.current.size === 0) ensureGasolFacilities()
       setActiveFilters((prev) => (prev.size === 0 ? new Set(ALL_SERVICES) : prev))
-      ensureGasolFacilities()
       setCollapsed(true) // ge kartan plats
       setStatus('Visar platser nära dig – avstånd visas i varje plats.')
     } catch {
