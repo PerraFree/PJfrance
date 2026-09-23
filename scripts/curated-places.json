@@ -7733,5 +7733,93 @@
     "description": "Gasolpåfyllning i lösvikt – kontrollerar besiktningsdatum, väger flaskan och fyller mängden som saknas. Källa: gasspecialisten.se.",
     "url": "https://gasspecialisten.se/",
     "source": "egen"
+  },
+  {
+    "name": "Gasolfyllarna Linköping",
+    "lat": 58.42259,
+    "lon": 15.67365,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt – Safefill/GasBank-flaskor tillåtna. Del av kedjan Gasolfyllarna. Källa: myLPG.eu.",
+    "url": "https://www.mylpg.eu/stations/sweden/station/Gasolfyllarna-Linkoping-C6C8902B-0922-2298-8F9E-1777FC2D2966",
+    "source": "egen"
+  },
+  {
+    "name": "Gasolfyllarna Örebro",
+    "query": "Berglundavägen 12B, Örebro",
+    "nearLat": 59.27,
+    "nearLon": 15.21,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt – stödjer utomhusmonterad påfyllning. Del av kedjan Gasolfyllarna. Källa: myLPG.eu.",
+    "url": "https://www.mylpg.eu/stations/sweden/station/Gasolfyllarna-Orebro-B3047D51-B680-E014-AEF2-CE37E73B0911",
+    "source": "egen"
+  },
+  {
+    "name": "Barkmans",
+    "query": "Hejargatan 9, Eskilstuna",
+    "nearLat": 59.37,
+    "nearLon": 16.51,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolautomat 24/7 – fyller på lösa flaskor/tuber (även utländska typer), lägsta påfyllning 17 liter, annars 299 kr serviceavgift. Källa: myLPG.eu.",
+    "url": "https://www.mylpg.eu/stations/sweden/station/Barkmans-2D497D5B-D29F-E9E6-6A94-7C980ACBECAA",
+    "source": "egen"
+  },
+  {
+    "name": "Gasbolaget",
+    "query": "Ragvaldsberg 4, Falun",
+    "nearLat": 60.61,
+    "nearLon": 15.63,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt – utomhusmonterad påfyllning, Safefill-flaskor tillåtna. Ring +46 23 77 10 43 innan besök. Källa: myLPG.eu.",
+    "url": "https://www.mylpg.eu/stations/sweden/station/Gasbolaget-9E90E2E0-879A-35AE-5ADB-5A36ACA983AD",
+    "source": "egen"
+  },
+  {
+    "name": "Gasolbolaget",
+    "query": "Sandvägen 17, Växjö",
+    "nearLat": 56.88,
+    "nearLon": 14.81,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt – utomhusmonterad påfyllning. Källa: myLPG.eu.",
+    "url": "https://www.mylpg.eu/es/estaciones/suecia/estacion/Gasolbolaget-5A2BFF21-87B8-EDCF-33DF-020331FB9534",
+    "source": "egen"
+  },
+  {
+    "name": "Gasolstationen (Väla, Helsingborg)",
+    "lat": 56.093666,
+    "lon": 12.760121,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt (flyttade hit dec 2025, vid OKQ8 nära Väla) – Safefill/GasBank-flaskor tillåtna. Källa: myLPG.eu.",
+    "url": "https://www.mylpg.eu/stations/sweden/station/Gasolstationen-C46A2E2C-5A8B-CC9B-E8F1-1944B1DEA683",
+    "source": "egen"
   }
 ]

@@ -315,6 +315,22 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    riksomfattande täckning – detta var ett första djupdyk, inte en
    heltäckande kartläggning.
 
+   **myLPG.eu-svep (sep 2026):** kompletterande svep mot myLPG.eu (europeisk
+   LPG-stationsdatabas som uttryckligen skiljer på lösviktspåfyllning/
+   utomhusmonterad påfyllning/Safefill-Gasbank-flaskor kontra vanlig
+   fordonsgasautogas). 6 genuint nya platser tillagda som `gasol_pafyllning`
+   med citat: Gasolfyllarna Linköping, Gasolfyllarna Örebro, Barkmans
+   (Eskilstuna), Gasbolaget (Falun), Gasolbolaget (Växjö), Gasolstationen
+   (flyttad dec 2025 till Väla/Helsingborg). 2 träffar var dubbletter av
+   redan tillagda platser (Kalmar, Norrköping) och hoppades över.
+
+   **Egen ikon per typ (sep 2026):** utöver badgetexten ("– byt tub"/
+   "– fyll på") syns skillnaden nu direkt på kartnålen och i badgen som två
+   olika symboler – `serviceGlyph()` i `MapView.tsx` väljer 🔥 (byte, båda,
+   eller okänt) eller ⛽ (renodlad påfyllning, dvs `gasol_pafyllning` utan
+   `gasol_byte`) i stället för samma 🔥-glyf (`SERVICE_ICONS.gasol`) för
+   alla gasolplatser.
+
 ## Dokumentation
 
 `docs/ADMIN.md` (Pers guide), `docs/SUPABASE.md`, `docs/DATAKALLOR.md`,
