@@ -250,16 +250,68 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    härifrån. Första posten: `node/12907898116` ("Tömningsstation",
    namnlös nod ~106 m från Borås Camping Saltemad – bara en tömning
    finns där enligt fältkoll). Ta bort raden om/när OSM rättas uppströms.
-9. **Gasol: byte vs. påfyllning** (sep 2026) – Per påpekade att "Gasol/LPG"
-   ensamt inte säger om man kan byta tom tub mot full (automat/butik) eller
-   bara fylla på en FAST tank (de flesta husbilar har löstagbara tuber, inte
-   fast tank – viktig skillnad). Nya `facilities`-nycklar `gasol_byte`
-   (`shop=gas`) och `gasol_pafyllning` (`fuel:lpg=yes`/`service:vehicle:lpg=yes`)
-   i BÅDE `scripts/sync-stations.mjs` och `src/lib/overpass.ts` (speglar
-   varandra, ändra ALLTID båda). Visas nu direkt i platsbadgen i popupen
-   ("Gasol/LPG – byt tub" / "– fyll på"), inte bara gömt i "Finns här".
-   Alla 148 befintliga gasolposter i `curated-places.json` är taggade
-   `gasol_byte` (de är alla automater/återförsäljare, ingen påfyllning).
+9. **Gasol: byte vs. påfyllning av EGEN flaska** (sep 2026) – Per påpekade
+   att "Gasol/LPG" ensamt inte säger om man kan byta tom tub mot full
+   (automat/butik) eller fylla på sin EGEN löstagbara flaska (även halvfull)
+   utan att byta den. De flesta husbilar/husvagnar har löstagbara
+   komposit-/stålflaskor, inte en fast monterad tank. Nya `facilities`-nycklar
+   `gasol_byte` och `gasol_pafyllning` i BÅDE `scripts/sync-stations.mjs` och
+   `src/lib/overpass.ts` (speglar varandra, ändra ALLTID båda). Visas direkt i
+   platsbadgen i popupen ("Gasol/LPG – byt tub" / "– fyll på"), inte gömt i
+   "Finns här".
+
+   **Viktig lärdom (första försöket var fel):** `shop=gas` är tillförlitligt
+   för byte (återförsäljare), men OSM-taggen `fuel:lpg=yes` (bensinstationer)
+   är INTE tillförlitlig för byte/påfyllning – ett första försök att
+   automatiskt tolka den som "påfyllning" visade sig fel vid djupare koll
+   (se nedan). Borttagen från den automatiska tolkningen; hanteras i stället
+   plats-för-plats via `OSM_FACILITY_OVERRIDES` (samma "type/id"-mönster som
+   `EXCLUDED_OSM_ELEMENTS`, i BÅDA filerna).
+
+   **Research-genomgång sep 2026** (3 parallella agenter, regionvis Syd/
+   Väst+Öst/Stockholm+Norrland, WebSearch eftersom WebFetch är blockerat mot
+   nästan alla gasolsajter härifrån) av de 18 OSM-platser som tidigare
+   automatiskt fick "påfyllning":
+   - **3 borttagna helt** (`EXCLUDED_OSM_ELEMENTS`, fel data i OSM): "E.ON
+     Nobelv." Malmö (är E.ON:s huvudkontor, ingen publik gasolplats),
+     "FordonsGas Varberg" och "Härnösand Fordonsgas CNG" (båda är CNG/
+     biogas-stationer, helt annan gastyp än gasol/LPG – farligt att blanda
+     ihop, irrelevant för husbil/husvagn).
+   - **4 bekräftade BYTE** (`OSM_FACILITY_OVERRIDES` → `gasol_byte`): Preem
+     Västra Frölunda, OKQ8 Västra Frölunda, OKQ8 Stockholm, Circle K
+     Bandhagen Högdalen – citat från egna sajter/prisnamn ("Fyllning AGA…"
+     är bytessystemets namn, inte lösviktspåfyllning).
+   - **10 bekräftade PÅFYLLNING** (`OSM_FACILITY_OVERRIDES` → `gasol_pafyllning`):
+     Aniol Gasol AB, Gasol Depån i Svartvik, Gasolfyllarna (Norrköping),
+     Timmernabbens Karamellfabrik, Ahus Gas/GasolEsset Åhus, Nöbbelövs Gasol
+     & Entreprenad (ev. nu "Gasol Kungen" Kristianstad – verifiera vid
+     fältkoll), GasolEsset Ljungby, Kem och Gas AB (Jönköping), Örkelljunga
+     Gasol/GasolEsset, LPG Flygstadens Gasol (ev. flyttad/nu "Gasolstationen"
+     Verkstadsgatan 4 Halmstad enligt en källa – koordinat ej ändrad, kräver
+     OSM-rättning uppströms).
+   - **1 kvarstående oklar:** Preem, Nacka (Vattenverksvägen 2) – en
+     husbilsklubben-tråd antyder påfyllning men utan exakt citat (WebFetch
+     blockerad). Ingen override satt – visas som vanlig "Gasol/LPG" tills
+     vidare. Ring och verifiera om någon har möjlighet.
+
+   **20 nya påfyllningsplatser tillagda** i `curated-places.json`
+   (`gasol_pafyllning`, alla med källcitat) från samma research, spridda
+   över landet – bl.a. hela kedjan Gasolfyllarna (Göteborg, Trollhättan,
+   Tullinge, Järfälla, Jordbro, Norrtälje, Enköping, Gävle), GasolEsset
+   Trelleborg, Gasol Malmö LPG, Gasoldirekt Skepplanda, Gasolmacken Uppsala,
+   Gasspecialisten Kiruna m.fl. Se git-historiken för fullständig lista med
+   citat/källor.
+
+   **Medvetet INTE tillagda** (för osäkra/motstridiga källor – gissa inte):
+   Eslöv Gasol (misstänkt kopierad boilerplate-text, flera bolag hade
+   identisk formulering), ABC Gasol Vallentuna (motstridiga källor: en säger
+   lösviktspåfyllning, en säger fast pris per flaska = byte).
+
+   **Kvarstående luckor:** Skellefteå (en forumpost antyder påfyllning men
+   inget företagsnamn hittades), stora delar av Norrbotten/Västerbotten
+   utanför Kiruna, samt generellt inga garantier för fullständig
+   riksomfattande täckning – detta var ett första djupdyk, inte en
+   heltäckande kartläggning.
 
 ## Dokumentation
 

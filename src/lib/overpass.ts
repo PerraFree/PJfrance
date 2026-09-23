@@ -9,6 +9,37 @@ const EXCLUDED_OSM_ELEMENTS = new Set([
   // Per bekräftade aug 2026 att det bara finns EN tömning där.
   // https://www.openstreetmap.org/node/12907898116
   'node/12907898116',
+  // Gasol-utredning sep 2026 (research-verifierat, se CLAUDE.md):
+  // "E.ON Nobelv." – tillhör E.ON:s huvudkontor, inte en publik gasolplats.
+  // https://www.openstreetmap.org/node/253856437
+  'node/253856437',
+  // "FordonsGas Varberg" – fel bränsletyp: CNG/biogas, inte gasol/LPG.
+  // https://www.openstreetmap.org/node/1329458220
+  'node/1329458220',
+  // "Härnösand Fordonsgas CNG" – samma fel, CNG/biogas.
+  // https://www.openstreetmap.org/way/622172659
+  'way/622172659',
+])
+
+// Gasol-utredning sep 2026: fuel:lpg=yes/service:vehicle:lpg=yes särskiljer
+// INTE tillförlitligt "fyller lös flaska" (gasol_pafyllning) från ren
+// bilautogas eller flaskbyte – research-verifierat per plats (se CLAUDE.md).
+// Speglar scripts/sync-stations.mjs – ändra ALLTID båda.
+const OSM_FACILITY_OVERRIDES = new Map<string, string[]>([
+  ['node/833279910', ['gasol_pafyllning']], // LPG Flygstadens Gasol (Gasolstationen, Halmstad)
+  ['node/1376582241', ['gasol_pafyllning']], // Aniol Gasol AB
+  ['node/1376625607', ['gasol_pafyllning']], // Gasol Depån i Svartvik
+  ['node/1376659170', ['gasol_pafyllning']], // Gasolfyllarna (Norrköping)
+  ['node/1376663049', ['gasol_pafyllning']], // Timmernabbens Karamellfabrik
+  ['node/1376738365', ['gasol_pafyllning']], // Ahus Gas Ahus (GasolEsset)
+  ['node/1784412478', ['gasol_pafyllning']], // Nöbbelövs Gasol & Entreprenad
+  ['node/8746539042', ['gasol_pafyllning']], // GasolEsset Ljungby
+  ['node/9275773995', ['gasol_pafyllning']], // Kem och Gas AB (Jönköping)
+  ['node/9792176594', ['gasol_pafyllning']], // Örkelljunga Gasol (GasolEsset)
+  ['node/247135141', ['gasol_byte']], // Preem, Västra Frölunda
+  ['way/821117027', ['gasol_byte']], // OKQ8, Västra Frölunda
+  ['node/12258765678', ['gasol_byte']], // OKQ8, Stockholm
+  ['way/222140864', ['gasol_byte']], // Circle K Bandhagen Högdalen
 ])
 
 // Flera speglar – om en är överbelastad (429/504) provas nästa.
@@ -212,6 +243,9 @@ function toStation(el: OverpassElement): Station | null {
   const services = servicesFromTags(tags)
   if (services.length === 0) return null
   const kind = placeKind(tags)
+  const amenity = amenityFields(tags)
+  const override = OSM_FACILITY_OVERRIDES.get(`${el.type}/${el.id}`)
+  if (override) amenity.facilities = [...new Set([...(amenity.facilities ?? []), ...override])]
   return {
     id: `osm-${el.type}-${el.id}`,
     name: tags.name ?? kind ?? 'Tömningsstation',
@@ -232,7 +266,7 @@ function toStation(el: OverpassElement): Station | null {
     season: seasonFromTags(tags),
     image: imageFromTags(tags),
     osmUrl: `https://www.openstreetmap.org/${el.type}/${el.id}`,
-    ...amenityFields(tags),
+    ...amenity,
   }
 }
 
@@ -275,10 +309,11 @@ export function facilitiesFromTags(tags: Record<string, string>): string[] {
   if (yes(tags.restaurant) || tags.amenity === 'restaurant') f.push('restaurang')
   // shop=gas/fuel är LPG-/drivmedelskällan – inte en butik; shop=no är ingen butik.
   if (tags.shop && !['no', 'gas', 'fuel'].includes(tags.shop)) f.push('butik')
-  // Gasol: skilj på tubbyte (automat/butik) och påfyllning av fast tank
-  // (bensinstationer med fuel:lpg). Speglas i scripts/sync-stations.mjs.
+  // Gasol: shop=gas är tillförlitligt byte-tub (återförsäljare). fuel:lpg på
+  // bensinstationer är INTE tillförlitligt för byte/påfyllning (research-
+  // verifierat sep 2026, se OSM_FACILITY_OVERRIDES ovan + CLAUDE.md).
+  // Speglas i scripts/sync-stations.mjs.
   if (tags.shop === 'gas') f.push('gasol_byte')
-  if (tags['fuel:lpg'] === 'yes' || tags['service:vehicle:lpg'] === 'yes') f.push('gasol_pafyllning')
   if (yes(tags.lit)) f.push('belyst')
   if (yes(tags.wheelchair)) f.push('tillganglig')
   if (yes(tags.motorhome)) f.push('husbil')

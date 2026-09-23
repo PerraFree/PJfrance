@@ -7435,5 +7435,303 @@
     "description": "Färskvattenpåfyllning på plats, ny ställplats i Skellefteå kommun. Tömningsplatser finns i närheten men inte bekräftat på själva platsen. Källa: nyhetsartikel (husbilhusvagn.se) utöver husbilsplats.se.",
     "url": "https://www.husbilhusvagn.se/nyheter/ny-stallplats-i-skelleftea",
     "source": "egen"
+  },
+  {
+    "name": "GasolGöteborg",
+    "query": "Marieholmsgatan 60, Göteborg",
+    "nearLat": 57.72,
+    "nearLon": 11.98,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt (36 kr/kg) – fyller din egen flaska oavsett hur mycket gas som finns kvar. Gäller ej AGA-campingflaskor typ 2000/2012 (byts i stället). Källa: gasolgoteborg.se.",
+    "url": "https://gasolgoteborg.se/gasolflaskor-priser/",
+    "source": "egen"
+  },
+  {
+    "name": "Gasoldirekt i Väst AB",
+    "lat": 57.98384,
+    "lon": 12.19958,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning (25 kr/kg) – flaskan vägs och fylls, du betalar bara för mängden som faktiskt fylls på. Källa: husbilsklubben.se.",
+    "url": "https://www.husbilsklubben.se/threads/gasolfyllning-i-skepplanda.62718/",
+    "source": "egen"
+  },
+  {
+    "name": "Gasolfyllarna Göteborg/Hisings Backa",
+    "query": "Transportgatan 5B, Bäckebol, Göteborg",
+    "nearLat": 57.73,
+    "nearLon": 11.94,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
+    "url": "https://gasolfyllarna.se/fyllningsstation/goteborg-hisings-backa/",
+    "source": "egen"
+  },
+  {
+    "name": "Gasolfyllarna Trollhättan",
+    "query": "Ljungvägen 5, Trollhättan",
+    "nearLat": 58.28,
+    "nearLon": 12.29,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
+    "url": "https://gasolfyllarna.se/fyllningsstation/trollhattan/",
+    "source": "egen"
+  },
+  {
+    "name": "Husbilsprylen i Norden AB",
+    "query": "Varbergsvägen 25, Ullared",
+    "nearLat": 57.13,
+    "nearLon": 12.73,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Husbilstillbehörsbutik som fyller på gasolflaskor i lösvikt (ca 25–29 kr/kg). Källa: husbilsklubben.se.",
+    "url": "https://www.husbilsklubben.se/threads/gasol-p%C3%A5fyllning-ullared.119133/",
+    "source": "egen"
+  },
+  {
+    "name": "Gasolkungen Kalmar",
+    "query": "Gasolkungen, Kalmar",
+    "nearLat": 56.66,
+    "nearLon": 16.36,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt – fyller din flaska medan du väntar, du betalar bara för mängden som fylls på. Källa: gasolkungen.se.",
+    "url": "https://gasolkungen.se/gasol-i-kalmar/",
+    "source": "egen"
+  },
+  {
+    "name": "GasolEsset Trelleborg",
+    "query": "Sjöviksvägen 11, Trelleborg",
+    "nearLat": 55.375,
+    "nearLon": 13.156,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt – du kan alltid fylla på din gasolflaska även om den bara är halvtom, betalar bara för det som fylls på. Källa: gasolesset.se.",
+    "url": "https://www.gasolesset.se/gasolesset-trelleborg/",
+    "source": "egen"
+  },
+  {
+    "name": "Gasol Malmö LPG AB",
+    "lat": 55.629,
+    "lon": 13.045,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt – fyller de flesta europeiska propan-/butanflaskor på plats under öppettider, oavsett hur mycket gas som finns kvar. Källa: gasolmalmolpg.com / mylpg.eu.",
+    "url": "https://www.mylpg.eu/stations/sweden/",
+    "source": "egen"
+  },
+  {
+    "name": "Himlastallet i Slagtofta AB",
+    "query": "Slagtofta 4010, Hörby",
+    "nearLat": 55.85,
+    "nearLon": 13.65,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning – \"Välkomna med er gasolflaska, så fyller jag på den. Byt inte bort din goda kända flaska.\" Källa: himlastallet.se / Facebook.",
+    "url": "https://himlastallet.se/gasol",
+    "source": "egen"
+  },
+  {
+    "name": "Gasoldepån Simmelsberga",
+    "query": "Simmelsberga, Ekeby",
+    "nearLat": 56.05,
+    "nearLon": 12.95,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt (30 kr/kg). Källa: husvagnsdepan.se.",
+    "url": "https://husvagnsdepan.se/gasolpafyllning",
+    "source": "egen"
+  },
+  {
+    "name": "Husvagnsdepan/Gasoldepan Billesholm",
+    "query": "Billesholm",
+    "nearLat": 56.15,
+    "nearLon": 12.94,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt (30 kr/kg) eller bytesflaska. Källa: husvagnsdepan.se / gasoldepan.se.",
+    "url": "https://husvagnsdepan.se/gasolpafyllning",
+    "source": "egen"
+  },
+  {
+    "name": "GT-Petroleum / Gasoli Karlshamn",
+    "query": "Tenngränden 2, Karlshamn",
+    "nearLat": 56.17,
+    "nearLon": 14.86,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolstation som fyller även delvis fulla flaskor (29 kr/kg). Källa: gasolikarlshamn.se / husbilsklubben.se.",
+    "url": "https://gasolikarlshamn.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Gasolmacken Uppsala",
+    "query": "Gamla Uppsala 17, Uppsala",
+    "nearLat": 59.86,
+    "nearLon": 17.64,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt. Källa: gasolmacken.se.",
+    "url": "https://gasolmacken.se/uppsala/",
+    "source": "egen"
+  },
+  {
+    "name": "Gasolfyllarna Stockholm/Tullinge",
+    "query": "Hamringe företagspark, Tullinge",
+    "nearLat": 59.2,
+    "nearLon": 17.9,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
+    "url": "https://gasolfyllarna.se/fyllningsstation/stockholm-tullinge/",
+    "source": "egen"
+  },
+  {
+    "name": "Gasolfyllarna Stockholm/Järfälla",
+    "query": "Veddesta företagspark, Järfälla",
+    "nearLat": 59.4,
+    "nearLon": 17.83,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
+    "url": "https://gasolfyllarna.se/fyllningsstation/stockholm-jarfalla/",
+    "source": "egen"
+  },
+  {
+    "name": "Gasolfyllarna Stockholm/Jordbro",
+    "query": "Lillsjövägen 15, Jordbro",
+    "nearLat": 59.17,
+    "nearLon": 18.11,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
+    "url": "https://gasolfyllarna.se/fyllningsstationer/gasolpafyllning-stockholm-jordbro",
+    "source": "egen"
+  },
+  {
+    "name": "Gasolfyllarna Norrtälje",
+    "query": "Campus Roslagen, Norrtälje",
+    "nearLat": 59.76,
+    "nearLon": 18.7,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
+    "url": "https://gasolfyllarna.se/fyllningsstation/norrtalje/",
+    "source": "egen"
+  },
+  {
+    "name": "Gasolfyllarna Enköping",
+    "query": "Romgatan 16, Enköping",
+    "nearLat": 59.64,
+    "nearLon": 17.08,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
+    "url": "https://gasolfyllarna.se/fyllningsstation/enkoping/",
+    "source": "egen"
+  },
+  {
+    "name": "Gasolfyllarna Gävle",
+    "query": "Utmarksvägen 21, Gävle",
+    "nearLat": 60.67,
+    "nearLon": 17.14,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se / esbilservice.com.",
+    "url": "https://gasolfyllarna.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Gasspecialisten Kiruna",
+    "query": "Lastvägen 44, Kiruna",
+    "nearLat": 67.85,
+    "nearLon": 20.22,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "description": "Gasolpåfyllning i lösvikt – kontrollerar besiktningsdatum, väger flaskan och fyller mängden som saknas. Källa: gasspecialisten.se.",
+    "url": "https://gasspecialisten.se/",
+    "source": "egen"
   }
 ]
