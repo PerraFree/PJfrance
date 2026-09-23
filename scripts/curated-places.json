@@ -1529,7 +1529,10 @@
     "source": "egen",
     "nearLat": 59.366,
     "nearLon": 18.132,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat OKQ8 Tyresö",
@@ -1542,7 +1545,10 @@
     "source": "egen",
     "nearLat": 59.244,
     "nearLon": 18.229,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Mölnlycke",
@@ -1555,7 +1561,10 @@
     "source": "egen",
     "nearLat": 57.659,
     "nearLon": 12.117,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat ICA Supermarket Tornet, Stocksund",
@@ -1568,7 +1577,10 @@
     "source": "egen",
     "nearLat": 59.383,
     "nearLon": 18.055,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Byggarna i Ale, Älvängen",
@@ -1581,7 +1593,10 @@
     "source": "egen",
     "nearLat": 57.958,
     "nearLon": 12.119,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Gulf Dösjebro",
@@ -1594,7 +1609,10 @@
     "source": "egen",
     "nearLat": 55.808,
     "nearLon": 13.011,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Sjöbo",
@@ -1607,7 +1625,10 @@
     "source": "egen",
     "nearLat": 55.633,
     "nearLon": 13.708,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Sälen",
@@ -1620,7 +1641,10 @@
     "source": "egen",
     "nearLat": 61.157,
     "nearLon": 13.263,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Snickeriet, Stenungsund",
@@ -1633,7 +1657,10 @@
     "source": "egen",
     "nearLat": 58.071,
     "nearLon": 11.818,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Kullen, Stenungsund",
@@ -1646,7 +1673,10 @@
     "source": "egen",
     "nearLat": 58.071,
     "nearLon": 11.818,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Grimboåsen, Göteborg",
@@ -1659,7 +1689,10 @@
     "source": "egen",
     "nearLat": 57.753,
     "nearLon": 11.93,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Fjällbacken, Gävle",
@@ -1672,7 +1705,10 @@
     "source": "egen",
     "nearLat": 60.675,
     "nearLon": 17.142,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Bergsnäs, Växjö",
@@ -1685,7 +1721,10 @@
     "source": "egen",
     "nearLat": 56.877,
     "nearLon": 14.809,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Höganäs",
@@ -1698,7 +1737,10 @@
     "source": "egen",
     "nearLat": 56.2,
     "nearLon": 12.558,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Åkersberga",
@@ -1711,7 +1753,10 @@
     "source": "egen",
     "nearLat": 59.48,
     "nearLon": 18.299,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Huddinge",
@@ -1724,7 +1769,10 @@
     "source": "egen",
     "nearLat": 59.237,
     "nearLon": 17.982,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Borgeby Biltvätt, Bjärred",
@@ -1737,7 +1785,10 @@
     "source": "egen",
     "nearLat": 55.728,
     "nearLon": 13.036,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat ICA Supermarket Skanör",
@@ -1750,7 +1801,10 @@
     "source": "egen",
     "nearLat": 55.416,
     "nearLon": 12.85,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Ystad",
@@ -1763,7 +1817,10 @@
     "source": "egen",
     "nearLat": 55.43,
     "nearLon": 13.82,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat ICA Kållekärr, Tjörn",
@@ -1776,7 +1833,10 @@
     "source": "egen",
     "nearLat": 58.024,
     "nearLon": 11.643,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Skillingaryd",
@@ -1789,7 +1849,10 @@
     "source": "egen",
     "nearLat": 57.43,
     "nearLon": 14.088,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Almunge",
@@ -1802,7 +1865,10 @@
     "source": "egen",
     "nearLat": 59.874,
     "nearLon": 18.062,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat ICA Nära Lomma",
@@ -1815,7 +1881,10 @@
     "source": "egen",
     "nearLat": 55.673,
     "nearLon": 13.069,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Tvååker",
@@ -1828,7 +1897,10 @@
     "source": "egen",
     "nearLat": 57.045,
     "nearLon": 12.399,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat ICA Maxi Asarum, Karlshamn",
@@ -1841,7 +1913,10 @@
     "source": "egen",
     "nearLat": 56.204,
     "nearLon": 14.84,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Sundbyberg",
@@ -1854,7 +1929,10 @@
     "source": "egen",
     "nearLat": 59.361,
     "nearLon": 17.971,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Västerås",
@@ -1867,7 +1945,10 @@
     "source": "egen",
     "nearLat": 59.611,
     "nearLon": 16.546,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Elon Västerås",
@@ -1880,7 +1961,10 @@
     "source": "egen",
     "nearLat": 59.611,
     "nearLon": 16.546,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat ICA Lindbacken, Uppsala",
@@ -1893,7 +1977,10 @@
     "source": "egen",
     "nearLat": 59.881,
     "nearLon": 17.756,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Uppsala",
@@ -1906,7 +1993,10 @@
     "source": "egen",
     "nearLat": 59.858,
     "nearLon": 17.639,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Örebro",
@@ -1919,7 +2009,10 @@
     "source": "egen",
     "nearLat": 59.275,
     "nearLon": 15.213,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Barkarö, Västerås",
@@ -1932,7 +2025,10 @@
     "source": "egen",
     "nearLat": 59.565,
     "nearLon": 16.472,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Enhörna",
@@ -1945,7 +2041,10 @@
     "source": "egen",
     "nearLat": 59.266,
     "nearLon": 17.553,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Karlskoga",
@@ -1958,7 +2057,10 @@
     "source": "egen",
     "nearLat": 59.327,
     "nearLon": 14.524,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Huskvarna",
@@ -1971,7 +2073,10 @@
     "source": "egen",
     "nearLat": 57.79,
     "nearLon": 14.276,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Norrtälje",
@@ -1984,7 +2089,10 @@
     "source": "egen",
     "nearLat": 59.758,
     "nearLon": 18.705,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Bilhuset, Lindome",
@@ -1997,7 +2105,10 @@
     "source": "egen",
     "nearLat": 57.573,
     "nearLon": 12.089,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Gånghester, Borås",
@@ -2010,7 +2121,10 @@
     "source": "egen",
     "nearLat": 57.703,
     "nearLon": 13.008,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat NetOnNet, Borås",
@@ -2023,7 +2137,10 @@
     "source": "egen",
     "nearLat": 57.702,
     "nearLon": 12.87,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Åre (Björnänge)",
@@ -2036,7 +2153,10 @@
     "source": "egen",
     "nearLat": 63.394,
     "nearLon": 13.155,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat ICA Nära Hovslätt, Jönköping",
@@ -2049,7 +2169,10 @@
     "source": "egen",
     "nearLat": 57.733,
     "nearLon": 14.13,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Jönköping",
@@ -2062,7 +2185,10 @@
     "source": "egen",
     "nearLat": 57.783,
     "nearLon": 14.161,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat ICA Flamman, Linköping",
@@ -2075,7 +2201,10 @@
     "source": "egen",
     "nearLat": 58.383,
     "nearLon": 15.664,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Himnahallen, Linghem",
@@ -2088,7 +2217,10 @@
     "source": "egen",
     "nearLat": 58.428,
     "nearLon": 15.79,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Söderköping",
@@ -2101,7 +2233,10 @@
     "source": "egen",
     "nearLat": 58.481,
     "nearLon": 16.322,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Kalmar",
@@ -2114,7 +2249,10 @@
     "source": "egen",
     "nearLat": 56.661,
     "nearLon": 16.362,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Haverdal",
@@ -2127,7 +2265,10 @@
     "source": "egen",
     "nearLat": 56.723,
     "nearLon": 12.678,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Wash a car, Helsingborg",
@@ -2140,7 +2281,10 @@
     "source": "egen",
     "nearLat": 56.047,
     "nearLon": 12.694,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol självservice Linde, Helsingborg",
@@ -2153,7 +2297,10 @@
     "source": "egen",
     "nearLat": 56.047,
     "nearLon": 12.694,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Skövde",
@@ -2166,7 +2313,10 @@
     "source": "egen",
     "nearLat": 58.391,
     "nearLon": 13.845,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Preem Bollebygd",
@@ -2179,7 +2329,10 @@
     "source": "egen",
     "nearLat": 57.667,
     "nearLon": 12.573,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Skurup",
@@ -2192,7 +2345,10 @@
     "source": "egen",
     "nearLat": 55.48,
     "nearLon": 13.5,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Magasin 136, Köpingsvik (Öland)",
@@ -2205,7 +2361,10 @@
     "source": "egen",
     "nearLat": 56.878,
     "nearLon": 16.72,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Shell Edsberg, Sollentuna",
@@ -2218,7 +2377,10 @@
     "source": "egen",
     "nearLat": 59.443,
     "nearLon": 17.976,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Kragsta Grill, Vallentuna",
@@ -2231,7 +2393,10 @@
     "source": "egen",
     "nearLat": 59.52,
     "nearLon": 18.078,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat ICA Kvantum Ekängen, Eskilstuna",
@@ -2244,7 +2409,10 @@
     "source": "egen",
     "nearLat": 59.386,
     "nearLon": 16.55,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Strängnäs",
@@ -2257,7 +2425,10 @@
     "source": "egen",
     "nearLat": 59.377,
     "nearLon": 17.031,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Uddevalla",
@@ -2270,7 +2441,10 @@
     "source": "egen",
     "nearLat": 58.349,
     "nearLon": 11.936,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Motala",
@@ -2283,7 +2457,10 @@
     "source": "egen",
     "nearLat": 58.537,
     "nearLon": 15.036,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat ICA Kvantum Knivsta",
@@ -2296,7 +2473,10 @@
     "source": "egen",
     "nearLat": 59.725,
     "nearLon": 17.787,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat Coop Torsby",
@@ -2309,7 +2489,10 @@
     "source": "egen",
     "nearLat": 60.135,
     "nearLon": 12.999,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat ICA Skrea Strand, Falkenberg",
@@ -2322,7 +2505,10 @@
     "source": "egen",
     "nearLat": 56.884,
     "nearLon": 12.505,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasolautomat GO Biltvätt, Landskrona",
@@ -2335,7 +2521,10 @@
     "source": "egen",
     "nearLat": 55.871,
     "nearLon": 12.831,
-    "openingHours": "Dygnet runt"
+    "openingHours": "Dygnet runt",
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Uppsala Handelsstål",
@@ -2347,7 +2536,10 @@
     "url": "https://forsaljningsstallen.linde.se/uppsala/grafikgatan-15/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-uppsala-handelsst%C3%A5l-ab",
     "source": "egen",
     "nearLat": 59.858,
-    "nearLon": 17.68
+    "nearLon": 17.68,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Svetshuset Örebro",
@@ -2359,7 +2551,10 @@
     "url": "https://forsaljningsstallen.linde.se/%C3%B6rebro/osmundgatan-5/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-svetshuset-%C3%B6rebro",
     "source": "egen",
     "nearLat": 59.29,
-    "nearLon": 15.24
+    "nearLon": 15.24,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Brantestigs, Västerås",
@@ -2371,7 +2566,10 @@
     "url": "https://forsaljningsstallen.linde.se/v%C3%A4ster%C3%A5s/omformargatan-10/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-brantestigs-svetsmaskinservice-ab",
     "source": "egen",
     "nearLat": 59.611,
-    "nearLon": 16.51
+    "nearLon": 16.51,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Kalles Bud & Transport, Kiruna",
@@ -2383,7 +2581,10 @@
     "url": "https://forsaljningsstallen.linde.se/kiruna/fasadv%C3%A4gen-21/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-kalles-bud-&-transport-i-norr-ab",
     "source": "egen",
     "nearLat": 67.856,
-    "nearLon": 20.226
+    "nearLon": 20.226,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Ergocraft Maskin, Falun",
@@ -2395,7 +2596,10 @@
     "url": "https://forsaljningsstallen.linde.se/falun/krontallsv%C3%A4gen-24-b/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-ergocraft-maskin-ab",
     "source": "egen",
     "nearLat": 60.607,
-    "nearLon": 15.626
+    "nearLon": 15.626,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Handelsstål i Norrland, Sundsvall",
@@ -2407,7 +2611,10 @@
     "url": "https://forsaljningsstallen.linde.se/sundsvall/fyrspannsv%C3%A4gen-4/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-handelsst%C3%A5l-i-norrland-ab",
     "source": "egen",
     "nearLat": 62.39,
-    "nearLon": 17.306
+    "nearLon": 17.306,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Svenska Elektrod, Älvsjö",
@@ -2419,7 +2626,10 @@
     "url": "https://forsaljningsstallen.linde.se/%C3%A4lvsj%C3%B6/varuv%C3%A4gen-2-10/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-svenska-elektrod-ab",
     "source": "egen",
     "nearLat": 59.278,
-    "nearLon": 18.011
+    "nearLon": 18.011,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Telge Stålcenter, Södertälje",
@@ -2431,7 +2641,10 @@
     "url": "https://forsaljningsstallen.linde.se/s%C3%B6dert%C3%A4lje/sydhamnsv%C3%A4gen-46/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-telge-st%C3%A5lcenter-ab",
     "source": "egen",
     "nearLat": 59.17,
-    "nearLon": 17.65
+    "nearLon": 17.65,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Woody Bygghandel, Nyköping",
@@ -2443,7 +2656,10 @@
     "url": "https://forsaljningsstallen.linde.se/nyk%C3%B6ping/arn%C3%B6leden-1/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-n-a-svensson/-woody-bygghandel-stockholm-syd-ab",
     "source": "egen",
     "nearLat": 58.753,
-    "nearLon": 17.008
+    "nearLon": 17.008,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Lantmännen Maskin, Uddevalla",
@@ -2455,7 +2671,10 @@
     "url": "https://forsaljningsstallen.linde.se/uddevalla/kur%C3%B6dsv%C3%A4gen-24a/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-lantm%C3%A4nnen-maskin-ab",
     "source": "egen",
     "nearLat": 58.349,
-    "nearLon": 11.96
+    "nearLon": 11.96,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Plastmodeller K&R Johansson, Trollhättan",
@@ -2467,7 +2686,10 @@
     "url": "https://forsaljningsstallen.linde.se/trollh%C3%A4ttan/magnetv%C3%A4gen-12/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-plastmodeller-k&r-johansson-ab",
     "source": "egen",
     "nearLat": 58.284,
-    "nearLon": 12.289
+    "nearLon": 12.289,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Beijer Byggmaterial, Strömstad",
@@ -2479,7 +2701,10 @@
     "url": "https://forsaljningsstallen.linde.se/str%C3%B6mstad/t%C3%A5ngenv%C3%A4gen-3/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-beijer-byggmaterial-ab",
     "source": "egen",
     "nearLat": 58.938,
-    "nearLon": 11.171
+    "nearLon": 11.171,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Kristianstads Kylservice",
@@ -2491,7 +2716,10 @@
     "url": "https://forsaljningsstallen.linde.se/kristianstad/industrigatan-96/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-ab-kristianstads-kylservice",
     "source": "egen",
     "nearLat": 56.031,
-    "nearLon": 14.152
+    "nearLon": 14.152,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Cramo, Karlstad",
@@ -2503,7 +2731,10 @@
     "url": "https://forsaljningsstallen.linde.se/karlstad/blekegatan-3/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-cramo-sverige-ab",
     "source": "egen",
     "nearLat": 59.379,
-    "nearLon": 13.504
+    "nearLon": 13.504,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Järn AB Södertorg, Visby",
@@ -2515,7 +2746,10 @@
     "url": "https://forsaljningsstallen.linde.se/visby/byrumsgatan-4/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-j%C3%A4rn-ab-s%C3%B6dertorg",
     "source": "egen",
     "nearLat": 57.635,
-    "nearLon": 18.295
+    "nearLon": 18.295,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Snicken Slite Järn, Gotland",
@@ -2527,7 +2761,10 @@
     "url": "https://forsaljningsstallen.linde.se/slite/boge-mojner-826/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-snicken/-slite-j%C3%A4rn",
     "source": "egen",
     "nearLat": 57.68,
-    "nearLon": 18.75
+    "nearLon": 18.75,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Connys Skog & Trädgård, Motala",
@@ -2539,7 +2776,10 @@
     "url": "https://forsaljningsstallen.linde.se/motala/turbinv%C3%A4gen-3/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-connys-skog-&-tr%C3%A4dg%C3%A5rd",
     "source": "egen",
     "nearLat": 58.537,
-    "nearLon": 15.06
+    "nearLon": 15.06,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Gustafsson Uthyrning, Oskarshamn",
@@ -2551,7 +2791,10 @@
     "url": "https://forsaljningsstallen.linde.se/oskarshamn/kl%C3%A4mnav%C3%A4gen-5/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-gustafsson-uthyrning-ab",
     "source": "egen",
     "nearLat": 57.265,
-    "nearLon": 16.448
+    "nearLon": 16.448,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Laitis, Umeå",
@@ -2563,7 +2806,10 @@
     "url": "https://forsaljningsstallen.linde.se/ume%C3%A5/bj%C3%B6rnv%C3%A4gen-11/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-laitis-handels-ab",
     "source": "egen",
     "nearLat": 63.826,
-    "nearLon": 20.263
+    "nearLon": 20.263,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Skene Järn, Varberg",
@@ -2575,7 +2821,10 @@
     "url": "https://forsaljningsstallen.linde.se/varberg/%C3%A4ckreg%C3%A5rdsv%C3%A4gen-2/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-skene-j%C3%A4rn-varberg",
     "source": "egen",
     "nearLat": 57.106,
-    "nearLon": 12.251
+    "nearLon": 12.251,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Dahl, Bromma",
@@ -2587,7 +2836,10 @@
     "url": "https://forsaljningsstallen.linde.se/bromma/bryggeriv%C3%A4gen-8/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-dahl-sverige-ab",
     "source": "egen",
     "nearLat": 59.348,
-    "nearLon": 17.958
+    "nearLon": 17.958,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Svetsexperten, Kalmar",
@@ -2599,7 +2851,10 @@
     "url": "https://forsaljningsstallen.linde.se/kalmar/polhemsgatan-22/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-svetsexperten-i-kalmar-ab",
     "source": "egen",
     "nearLat": 56.67,
-    "nearLon": 16.32
+    "nearLon": 16.32,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Gasolspecialisten, Jönköping",
@@ -2611,7 +2866,10 @@
     "url": "https://forsaljningsstallen.linde.se/j%C3%B6nk%C3%B6ping/mog%C3%B6lsv%C3%A4gen-16/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-gasolspecialisten-ab",
     "source": "egen",
     "nearLat": 57.75,
-    "nearLon": 14.21
+    "nearLon": 14.21,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Gasolexperten, Liljeholmen (Stockholm)",
@@ -2623,7 +2881,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Gasolexperten-11761-Stockholm-Liljeholmsvgen-1-0012000000oXJaLAAW",
     "source": "egen",
     "nearLat": 59.31,
-    "nearLon": 18.02
+    "nearLon": 18.02,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – ÖoB, Uppsala",
@@ -2635,7 +2896,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/042-oB-Uppsala-75323-Uppsala-Bolandsgatan-18-0010O0000239miPQAQ",
     "source": "egen",
     "nearLat": 59.85,
-    "nearLon": 17.68
+    "nearLon": 17.68,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Bauhaus, Uppsala",
@@ -2647,7 +2911,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Bauhaus-75323-Uppsala-Verkstadsgatan-16-0012000000oXJfsAAG",
     "source": "egen",
     "nearLat": 59.85,
-    "nearLon": 17.68
+    "nearLon": 17.68,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Industriverktyg, Uppsala",
@@ -2659,7 +2926,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Industriverktyg-i-Uppsala-AB-75228-Uppsala-Sderforsgatan-1-0012000000oXJWQAA4",
     "source": "egen",
     "nearLat": 59.86,
-    "nearLon": 17.6
+    "nearLon": 17.6,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Gasservice i Stockholm, Hägersten",
@@ -2671,7 +2941,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Gasservice-i-Stockholm-AB-12948-Hgersten-Telemarksgrnd-14-001P60000049Fk6IAE",
     "source": "egen",
     "nearLat": 59.3,
-    "nearLon": 17.97
+    "nearLon": 17.97,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – ÖoB, Jönköping",
@@ -2683,7 +2956,10 @@
     "url": "https://primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/068-oB-Jnkping-55303-Jnkping-Bangrdsgatan-1-0010O00001vsYd4QAE",
     "source": "egen",
     "nearLat": 57.78,
-    "nearLon": 14.16
+    "nearLon": 14.16,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Byggmax, Borås",
@@ -2695,7 +2971,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-50468-Bors-Getngsvgen-36-0012000001Z2OFuAAN",
     "source": "egen",
     "nearLat": 57.73,
-    "nearLon": 12.93
+    "nearLon": 12.93,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Hornbach, Göteborg",
@@ -2707,7 +2986,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Hornbach-Byggmarknad---770-Gteborg-41705-Gteborg-Minelundsvgen-8-001P600000AOosPIAT",
     "source": "egen",
     "nearLat": 57.73,
-    "nearLon": 11.9
+    "nearLon": 11.9,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Circle K Halvorsäng, Göteborg",
@@ -2719,7 +3001,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-41878-Gteborg-Halvorsng-20-0013X00002gz5z7QAA",
     "source": "egen",
     "nearLat": 57.71,
-    "nearLon": 11.85
+    "nearLon": 11.85,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Svetscenter, Jönköping",
@@ -2731,7 +3016,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Svetscenter-i-Jnkping-AB-55303-Jnkping-Porfyrvgen-9-0012000000oXJzfAAG",
     "source": "egen",
     "nearLat": 57.78,
-    "nearLon": 14.16
+    "nearLon": 14.16,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Hornbach, Kristianstad",
@@ -2743,7 +3031,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Hornbach-Byggmarknad---776-Kristianstad-29128-Kristianstad-Fundationsvgen-7A-001P600000AQFIiIAP",
     "source": "egen",
     "nearLat": 56.03,
-    "nearLon": 14.15
+    "nearLon": 14.15,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Byggmax, Kristianstad",
@@ -2755,7 +3046,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-29136-Kristianstad-Industrigatan-2-0012000001Z2OFdAAN",
     "source": "egen",
     "nearLat": 56.03,
-    "nearLon": 14.15
+    "nearLon": 14.15,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Eldabutiken, Malmö",
@@ -2767,7 +3061,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Eldabutiken-Malm-21124-Malm-Arlvsvgen-16-0012000000zn1gSAAQ",
     "source": "egen",
     "nearLat": 55.61,
-    "nearLon": 13.03
+    "nearLon": 13.03,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Campea, Arlöv",
@@ -2779,7 +3076,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Campea-Malm-AB-23237-Arlv-Testvgen-5-0012000000xMbsmAAC",
     "source": "egen",
     "nearLat": 55.64,
-    "nearLon": 13.07
+    "nearLon": 13.07,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Hornbach, Helsingborg",
@@ -2791,7 +3091,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Hornbach-Byggmarknad---774-Helsingborg-25464-Helsingborg-Dioritgatan-12-001P600000AQFYpIAP",
     "source": "egen",
     "nearLat": 56.08,
-    "nearLon": 12.75
+    "nearLon": 12.75,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Circle K, Örebro",
@@ -2803,7 +3106,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-70283-rebro-Hjlmarvgen-2-0012000001RSId1AAH",
     "source": "egen",
     "nearLat": 59.26,
-    "nearLon": 15.24
+    "nearLon": 15.24,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Cramo, Landvetter",
@@ -2815,7 +3121,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Cramo-AB-43893-Landvetter-Vstra-Bjrredsvgen-4-0012000000oXK31AAG",
     "source": "egen",
     "nearLat": 57.68,
-    "nearLon": 12.22
+    "nearLon": 12.22,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Air Liquide, Västerås",
@@ -2827,7 +3136,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Air-Liquide-Gas-72137-Vsters-Energigatan-5-0012000000oXIxfAAG",
     "source": "egen",
     "nearLat": 59.6,
-    "nearLon": 16.5
+    "nearLon": 16.5,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Byggmax, Norrköping",
@@ -2839,7 +3151,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-60223-Norrkping-Lindkersgatan-12-0012000001Z2OFyAAN",
     "source": "egen",
     "nearLat": 58.6,
-    "nearLon": 16.16
+    "nearLon": 16.16,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Byggmax, Luleå",
@@ -2851,7 +3166,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-97345-Lule-Betongvgen-5-0012000001Z2OGdAAN",
     "source": "egen",
     "nearLat": 65.6,
-    "nearLon": 22.12
+    "nearLon": 22.12,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Larssons Service, Sundsvall",
@@ -2863,7 +3181,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Larssons-Service-AB-85650-Sundsvall-Vrdshusbacken-6-0010O00002MnqefQAB",
     "source": "egen",
     "nearLat": 62.37,
-    "nearLon": 17.35
+    "nearLon": 17.35,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – ÖoB, Umeå",
@@ -2875,7 +3196,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/087-oB-Ume-90621-Ume-Illervgen-3-0013X00002lAXs2QAG",
     "source": "egen",
     "nearLat": 63.82,
-    "nearLon": 20.3
+    "nearLon": 20.3,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Byggmax, Östersund",
@@ -2887,7 +3211,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-83148-stersund-Hagvgen-28-0012000001Z2OGeAAN",
     "source": "egen",
     "nearLat": 63.19,
-    "nearLon": 14.66
+    "nearLon": 14.66,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Sandbergs i Jämtland, Östersund",
@@ -2899,7 +3226,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Sandbergs-i-Jmtland-AB-83152-stersund-Storlienvgen-46-0012000001565dVAAQ",
     "source": "egen",
     "nearLat": 63.18,
-    "nearLon": 14.6
+    "nearLon": 14.6,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Circle K, Gävle",
@@ -2911,7 +3241,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-80293-Gvle-Gvlebrovgen-25-0012000000p5dPWAAY",
     "source": "egen",
     "nearLat": 60.67,
-    "nearLon": 17.16
+    "nearLon": 17.16,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Circle K, Karlstad",
@@ -2923,7 +3256,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-65463-Karlstad-Svegatan-2-0012000000p5eBoAAI",
     "source": "egen",
     "nearLat": 59.39,
-    "nearLon": 13.47
+    "nearLon": 13.47,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Granngården, Karlstad",
@@ -2935,7 +3271,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Granngrden-65343-Karlstad-Axgatan-2-0012000000rSkrUAAS",
     "source": "egen",
     "nearLat": 59.38,
-    "nearLon": 13.46
+    "nearLon": 13.46,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Peter Bergkvist Service, Karlskoga",
@@ -2947,7 +3286,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Peter-Bergkvist-Service-AB-69133-Karlskoga-Filipstadsvgen-1-0012000000oXKJ8AAO",
     "source": "egen",
     "nearLat": 59.34,
-    "nearLon": 14.51
+    "nearLon": 14.51,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Elgiganten, Falun",
@@ -2959,7 +3301,10 @@
     "url": "https://primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Elgiganten-79141-Falun-Trossvgen-16-0013X00002yL0mkQAC",
     "source": "egen",
     "nearLat": 60.61,
-    "nearLon": 15.65
+    "nearLon": 15.65,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Elgiganten, Mora",
@@ -2971,7 +3316,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Elgiganten-79250-Mora-Stlmyrsvgen-48b-0013X00002QBpg8QAD",
     "source": "egen",
     "nearLat": 61,
-    "nearLon": 14.56
+    "nearLon": 14.56,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Karl Hedin Bygghandel, Mora",
@@ -2983,7 +3331,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Karl-Hedin-Bygghandel-79233-Mora-Krkbergsvgen-70-0012000000p5dSkAAI",
     "source": "egen",
     "nearLat": 61.02,
-    "nearLon": 14.52
+    "nearLon": 14.52,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Byggmax, Karlskrona",
@@ -2995,7 +3346,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-37149-Karlskrona-Uranvgen-0012000001Z2OFiAAN",
     "source": "egen",
     "nearLat": 56.19,
-    "nearLon": 15.63
+    "nearLon": 15.63,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Byggmax, Borlänge",
@@ -3007,7 +3361,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-78461-Borlnge-Tyllsnsvgen-4-0012000001Z2OGjAAN",
     "source": "egen",
     "nearLat": 60.47,
-    "nearLon": 15.42
+    "nearLon": 15.42,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Elgiganten, Karlshamn",
@@ -3019,7 +3376,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Elgiganten-37432-Karlshamn-Nyemllevgen-3-0013X00002QBrQ7QAL",
     "source": "egen",
     "nearLat": 56.19,
-    "nearLon": 14.86
+    "nearLon": 14.86,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Granngården, Kalmar",
@@ -3031,7 +3391,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Granngrden-39356-Kalmar-Wismarsvgen-6-0010O00001qgRmWQAU",
     "source": "egen",
     "nearLat": 56.68,
-    "nearLon": 16.33
+    "nearLon": 16.33,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Circle K, Kalmar",
@@ -3043,7 +3406,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-39239-Kalmar-Dragonvgen-7-001200000155sNkAAI",
     "source": "egen",
     "nearLat": 56.67,
-    "nearLon": 16.34
+    "nearLon": 16.34,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Byggmax, Visby",
@@ -3055,7 +3421,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-62158-Visby-Frjeleden-5-0012000001Z2OGQAA3",
     "source": "egen",
     "nearLat": 57.63,
-    "nearLon": 18.29
+    "nearLon": 18.29,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Circle K, Karlskrona",
@@ -3067,7 +3436,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-37147-Karlskrona-August-Palmgrens-Vg-5-0012000000p5e2zAAA",
     "source": "egen",
     "nearLat": 56.18,
-    "nearLon": 15.61
+    "nearLon": 15.61,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Byggmax, Kalmar",
@@ -3079,7 +3451,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-39354-Kalmar-Tyska-vgen-2-0012000001Z2OFeAAN",
     "source": "egen",
     "nearLat": 56.68,
-    "nearLon": 16.33
+    "nearLon": 16.33,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Gasolbolaget Ygdevik, Växjö",
@@ -3091,7 +3466,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Gasolbolaget-Johnny-Ygdevik-AB-35245-Vxj-Sandvgen-17-0013X000044O0FYQA0",
     "source": "egen",
     "nearLat": 56.89,
-    "nearLon": 14.82
+    "nearLon": 14.82,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Byggmax, Karlstad",
@@ -3103,7 +3481,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-65221-Karlstad-Faktorigatan-5-0012000001Z2OGJAA3",
     "source": "egen",
     "nearLat": 59.39,
-    "nearLon": 13.49
+    "nearLon": 13.49,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Byggmax, Halmstad",
@@ -3115,7 +3496,10 @@
     "url": "https://primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-30263-Halmstad-Fyllebrovgen-20-0012000001Z2OFfAAN",
     "source": "egen",
     "nearLat": 56.66,
-    "nearLon": 12.89
+    "nearLon": 12.89,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Circle K, Varberg",
@@ -3127,7 +3511,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-43232-Varberg-Lassabacka-0012000000p5eacAAA",
     "source": "egen",
     "nearLat": 57.12,
-    "nearLon": 12.26
+    "nearLon": 12.26,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Byggmax, Skövde",
@@ -3139,7 +3526,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-54134-Skvde-Norregrdsvgen-25-0012000001Z2OG0AAN",
     "source": "egen",
     "nearLat": 58.4,
-    "nearLon": 13.86
+    "nearLon": 13.86,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Renta, Uddevalla",
@@ -3151,7 +3541,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Renta-45176-Uddevalla-Frlandsvgen-2-0013X000035Ap9JQAS",
     "source": "egen",
     "nearLat": 58.34,
-    "nearLon": 11.87
+    "nearLon": 11.87,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Circle K, Halmstad",
@@ -3163,7 +3556,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-30244-Halmstad-Vxjvgen-70-0013X00003URTYeQAP",
     "source": "egen",
     "nearLat": 56.68,
-    "nearLon": 12.9
+    "nearLon": 12.9,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Byggmax, Hudiksvall",
@@ -3175,7 +3571,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-82492-Hudiksvall-Hede-Finnflovgen-14-0012000001Z2OGgAAN",
     "source": "egen",
     "nearLat": 61.72,
-    "nearLon": 17.08
+    "nearLon": 17.08,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Piteå Transport, Öjebyn",
@@ -3187,7 +3586,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Pite-Transport-AB-94336-jebyn-Bjlkvgen-4-0012000000p5cVLAAY",
     "source": "egen",
     "nearLat": 65.35,
-    "nearLon": 21.41
+    "nearLon": 21.41,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Byggmax, Kiruna",
@@ -3199,7 +3601,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-98138-Kiruna-Lastvgen-54-0013X00002e4H1jQAE",
     "source": "egen",
     "nearLat": 67.85,
-    "nearLon": 20.25
+    "nearLon": 20.25,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – jem & fix, Ludvika",
@@ -3211,7 +3616,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/jem--fix-77141-Ludvika-Gonsvgen-21-0012000001hDMsFAAW",
     "source": "egen",
     "nearLat": 60.14,
-    "nearLon": 15.17
+    "nearLon": 15.17,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – ÖoB, Nyköping",
@@ -3223,7 +3631,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/034-oB-Nykping-61138-Nykping-Idbcksvgen-8b-0013X00002QDOM7QAP",
     "source": "egen",
     "nearLat": 58.75,
-    "nearLon": 17
+    "nearLon": 17,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Circle K, Södertälje",
@@ -3235,7 +3646,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-15257-Sdertlje-Grdingevgen-56-0012000001NheW9AAJ",
     "source": "egen",
     "nearLat": 59.2,
-    "nearLon": 17.65
+    "nearLon": 17.65,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Byggmax, Enköping",
@@ -3247,7 +3661,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-74537-Enkping-Sklbygatan-8-0012000001Z2OGVAA3",
     "source": "egen",
     "nearLat": 59.64,
-    "nearLon": 17.09
+    "nearLon": 17.09,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Samuelssons Hyr & Trädgårdsmaskiner, Nysättra",
@@ -3259,7 +3676,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Samuelssons-Hyr--Trdgrdsmaskiner-AB-76176-Norrtlje-Vtvgen-513-Nysttra-0013X00004KLrvKQAT",
     "source": "egen",
     "nearLat": 59.79,
-    "nearLon": 18.88
+    "nearLon": 18.88,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Dragsviks Husvagnsklubb, Nyköping",
@@ -3271,7 +3691,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Dragsviks-Husvagnsklubb-61199-Nykping-Hnmogen-0012000000oXJCyAAO",
     "source": "egen",
     "nearLat": 58.7,
-    "nearLon": 17.05
+    "nearLon": 17.05,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – jem & fix, Trelleborg",
@@ -3283,7 +3706,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/jem--fix-23166-Trelleborg-Karbingatan-2-0012000000p5eGBAAY",
     "source": "egen",
     "nearLat": 55.38,
-    "nearLon": 13.15
+    "nearLon": 13.15,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – jem & fix, Ängelholm",
@@ -3295,7 +3721,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/jem--fix-26273-ngelholm-Nordalagatn-2-C-0012000001Cu6WCAAZ",
     "source": "egen",
     "nearLat": 56.24,
-    "nearLon": 12.86
+    "nearLon": 12.86,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Circle K, Trelleborg",
@@ -3307,7 +3736,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Circle-K-23153-Trelleborg-Hesekillegatan-3-00120000018Tla6AAC",
     "source": "egen",
     "nearLat": 55.38,
-    "nearLon": 13.14
+    "nearLon": 13.14,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Byggmax, Hässleholm",
@@ -3319,7 +3751,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Byggmax-28152-Hssleholm-Stjrneholmsvgen-2-0012000001Z2OFlAAN",
     "source": "egen",
     "nearLat": 56.16,
-    "nearLon": 13.77
+    "nearLon": 13.77,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – jem & fix, Ystad",
@@ -3331,7 +3766,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/jem--fix-27139-Ystad-Herrestadsgatan-23-0012000000p5eOgAAI",
     "source": "egen",
     "nearLat": 55.43,
-    "nearLon": 13.83
+    "nearLon": 13.83,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Husmacken, Åhus",
@@ -3343,7 +3781,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/husmacken-AB-29637-hus-Fregattvgen-1-0010O00001nO1qnQAC",
     "source": "egen",
     "nearLat": 55.92,
-    "nearLon": 14.31
+    "nearLon": 14.31,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Gasol – Liljekvist Motor, Laholm",
@@ -3355,7 +3796,10 @@
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Liljekvist-Motor-Laholm-AB-31234-Laholm-Industrigatan-14a-0012000001Wjqc2AAB",
     "source": "egen",
     "nearLat": 56.51,
-    "nearLon": 13.05
+    "nearLon": 13.05,
+    "facilities": [
+      "gasol_byte"
+    ]
   },
   {
     "name": "Götaströms Golfklubb – färskvatten",

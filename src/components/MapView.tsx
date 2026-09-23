@@ -144,10 +144,22 @@ function popupHtml(
   communityPhoto: string | undefined,
   canAddPhoto: boolean,
 ): string {
+  // Gasol: "Gasol/LPG" ensamt säger inte om man kan byta tub eller bara fylla
+  // på en fast tank – viktig skillnad för husbilsägare, så den läggs direkt
+  // i badgen (mest synliga platsen) i stället för att gömmas i "Finns här".
+  const gasolQualifier = (() => {
+    const f = station.facilities ?? []
+    const byte = f.includes('gasol_byte')
+    const pafyllning = f.includes('gasol_pafyllning')
+    if (byte && pafyllning) return ' – byt tub & fyll på'
+    if (byte) return ' – byt tub'
+    if (pafyllning) return ' – fyll på'
+    return ''
+  })()
   const services = station.services
     .map(
       (s) =>
-        `<span class="badge" style="--badge:${SERVICE_COLORS[s]}">${SERVICE_ICONS[s]} ${SERVICE_LABELS[s]}</span>`,
+        `<span class="badge" style="--badge:${SERVICE_COLORS[s]}">${SERVICE_ICONS[s]} ${SERVICE_LABELS[s]}${s === 'gasol' ? gasolQualifier : ''}</span>`,
     )
     .join('')
   const season = stationSeason(station)

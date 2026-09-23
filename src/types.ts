@@ -60,6 +60,10 @@ export const FACILITY_LABELS: Record<string, string> = {
   husbil: 'Husbil',
   husvagn: 'Husvagn',
   talt: 'Tält',
+  // Gasol: två olika sorters "tanka" – viktigt att skilja på för husbilsägare
+  // (de flesta husbilar har löstagbara gasoltuber, inte en fast tank).
+  gasol_byte: 'Byt gasoltub (automat/butik)',
+  gasol_pafyllning: 'Fyll på gasoltub/fast tank',
 }
 
 export const SERVICE_LABELS: Record<ServiceType, string> = {

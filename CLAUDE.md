@@ -250,6 +250,16 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    härifrån. Första posten: `node/12907898116` ("Tömningsstation",
    namnlös nod ~106 m från Borås Camping Saltemad – bara en tömning
    finns där enligt fältkoll). Ta bort raden om/när OSM rättas uppströms.
+9. **Gasol: byte vs. påfyllning** (sep 2026) – Per påpekade att "Gasol/LPG"
+   ensamt inte säger om man kan byta tom tub mot full (automat/butik) eller
+   bara fylla på en FAST tank (de flesta husbilar har löstagbara tuber, inte
+   fast tank – viktig skillnad). Nya `facilities`-nycklar `gasol_byte`
+   (`shop=gas`) och `gasol_pafyllning` (`fuel:lpg=yes`/`service:vehicle:lpg=yes`)
+   i BÅDE `scripts/sync-stations.mjs` och `src/lib/overpass.ts` (speglar
+   varandra, ändra ALLTID båda). Visas nu direkt i platsbadgen i popupen
+   ("Gasol/LPG – byt tub" / "– fyll på"), inte bara gömt i "Finns här".
+   Alla 148 befintliga gasolposter i `curated-places.json` är taggade
+   `gasol_byte` (de är alla automater/återförsäljare, ingen påfyllning).
 
 ## Dokumentation
 

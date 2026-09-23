@@ -282,6 +282,10 @@ function facilitiesFromTags(tags) {
   if (yes(tags.playground) || tags.leisure === 'playground') f.push('lekplats')
   if (yes(tags.restaurant) || tags.amenity === 'restaurant') f.push('restaurang')
   if (tags.shop && !['no', 'gas', 'fuel'].includes(tags.shop)) f.push('butik')
+  // Gasol: skilj på tubbyte (automat/butik) och påfyllning av fast tank
+  // (bensinstationer med fuel:lpg). Speglas i src/lib/overpass.ts.
+  if (tags.shop === 'gas') f.push('gasol_byte')
+  if (tags['fuel:lpg'] === 'yes' || tags['service:vehicle:lpg'] === 'yes') f.push('gasol_pafyllning')
   if (yes(tags.lit)) f.push('belyst')
   if (yes(tags.wheelchair)) f.push('tillganglig')
   if (yes(tags.motorhome)) f.push('husbil')
