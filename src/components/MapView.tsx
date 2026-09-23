@@ -98,20 +98,26 @@ const GASOL_PAFYLLNING_ICON = '⛽'
 function serviceGlyph(station: Station, service: ServiceType): string {
   if (service !== 'gasol') return SERVICE_ICONS[service]
   const f = station.facilities ?? []
-  // Rent påfyllningsställe (ingen byte-möjlighet) får pumpsymbolen; annars
-  // (byte, båda, eller okänt – de flesta platser är byte) den vanliga lågan.
-  return f.includes('gasol_pafyllning') && !f.includes('gasol_byte')
-    ? GASOL_PAFYLLNING_ICON
-    : GASOL_BYTE_ICON
+  const byte = f.includes('gasol_byte')
+  const pafyllning = f.includes('gasol_pafyllning')
+  // Båda tjänsterna får varsin symbol synlig samtidigt, i stället för att
+  // bara den ena visas. Okänt (ingen facilities-data) faller tillbaka på
+  // lågan, eftersom de flesta platser är byte.
+  if (byte && pafyllning) return `${GASOL_BYTE_ICON}${GASOL_PAFYLLNING_ICON}`
+  if (pafyllning) return GASOL_PAFYLLNING_ICON
+  return GASOL_BYTE_ICON
 }
 
 function pinIcon(color: string, glyph: string): L.DivIcon {
+  // Två ihopsatta glyfer (t.ex. gasol byte+påfyllning 🔥⛽) ryms inte i den
+  // lilla cirkeln vid samma storlek som en enda – krymp texten då.
+  const fontSize = Array.from(glyph).length > 1 ? 8 : 11
   const svg = `
     <svg width="34" height="44" viewBox="0 0 34 44" xmlns="http://www.w3.org/2000/svg">
       <path d="M17 1C8.7 1 2 7.7 2 16c0 10.5 12.2 24.2 14.1 26.3a1.2 1.2 0 0 0 1.8 0C19.8 40.2 32 26.5 32 16 32 7.7 25.3 1 17 1z"
             fill="${color}" stroke="#ffffff" stroke-width="2"/>
       <circle cx="17" cy="16" r="8.5" fill="#ffffff"/>
-      <text x="17" y="20.5" font-size="11" text-anchor="middle">${glyph}</text>
+      <text x="17" y="19.5" font-size="${fontSize}" text-anchor="middle">${glyph}</text>
     </svg>`
   return L.divIcon({
     className: 'pin',

@@ -346,11 +346,23 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    redan tillagda platser (Kalmar, Norrköping) och hoppades över.
 
    **Egen ikon per typ (sep 2026):** utöver badgetexten ("– byt tub"/
-   "– fyll på") syns skillnaden nu direkt på kartnålen och i badgen som två
-   olika symboler – `serviceGlyph()` i `MapView.tsx` väljer 🔥 (byte, båda,
-   eller okänt) eller ⛽ (renodlad påfyllning, dvs `gasol_pafyllning` utan
-   `gasol_byte`) i stället för samma 🔥-glyf (`SERVICE_ICONS.gasol`) för
-   alla gasolplatser.
+   "– fyll på") syns skillnaden nu direkt på kartnålen och i badgen som
+   symboler i stället för samma 🔥-glyf (`SERVICE_ICONS.gasol`) för alla
+   gasolplatser. Första versionen visade bara 🔥 även på platser som hade
+   BÅDA tjänsterna (dolde påfyllningsmöjligheten) – rättat: `serviceGlyph()`
+   i `MapView.tsx` visar nu 🔥 (byte), ⛽ (renodlad påfyllning) eller båda
+   ihop `🔥⛽` (har man både byte och påfyllning). Okänt/ingen facilities-data
+   faller tillbaka på 🔥 (de flesta platser är byte). `pinIcon()` krymper
+   fontstorleken när glyfen är två tecken så båda ryms i kartnålens cirkel.
+
+   **Borås-komplettering (sep 2026):** Per efterlyste specifikt Verktygsboden
+   och Svetskompaniet i Borås. Tillagda: Verktygsboden Borås (byte, PC10/
+   komposit – bekräftat via återkommande prisomnämnanden på
+   husbilsklubben.se-forumet över flera år) och Svetskompaniet Borås
+   (Verkstadsgatan 5 – Air Liquide-återförsäljare, byte i butik SAMT
+   fredagar 08–15.30 påfyllning av FAST monterad gasoltank, ej lös flaska –
+   ovanlig kombination, taggad med båda facilities men beskrivningen
+   förklarar Fredags-/fasttank-begränsningen).
 
 ## Dokumentation
 

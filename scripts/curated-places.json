@@ -7947,5 +7947,38 @@
     "description": "El och färskvatten vid alla platser. Klubben anger explicit att man inte kan tömma toalett eller gråvatten där. Källa: Åkersberga GK.",
     "url": "https://www.akersbergagk.se/boka-stallplats/",
     "source": "egen"
+  },
+  {
+    "name": "Verktygsboden Borås",
+    "query": "Källbäcksrydsgatan 1, Borås",
+    "nearLat": 57.7211,
+    "nearLon": 12.9401,
+    "maxKm": 20,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "description": "Byte av gasoltub (t.ex. PC10/komposit) i butik. Bekräftat via flera års omnämnanden på husbilsklubben.se-forumet (priser för PC10/kompositflaska nämnda 2012 och 2014).",
+    "url": "https://verktygsboden.se/gasol",
+    "source": "egen"
+  },
+  {
+    "name": "Svetskompaniet Borås",
+    "query": "Verkstadsgatan 5, Borås",
+    "nearLat": 57.7211,
+    "nearLon": 12.9401,
+    "maxKm": 20,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte",
+      "gasol_pafyllning"
+    ],
+    "description": "Air Liquide-återförsäljare. Byte av gasoltub (butik). Dessutom fredagar 08.00–15.30 vid Verkstadsgatan 5: påfyllning av FAST monterad gasoltank i husbil (ej lös flaska). Källa: husbilsklubben.se-forumet + branschregister (Air Liquide återförsäljarlista).",
+    "url": "https://www.svetskompaniet.se/p/gasolpriser",
+    "source": "egen"
   }
 ]
