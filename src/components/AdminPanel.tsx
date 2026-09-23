@@ -78,7 +78,7 @@ export default function AdminPanel() {
         <h1>Tömningskartan – adminstatus</h1>
         <p>
           Den här sidan kollar själv vad som är klart. Spara adressen som
-          bokmärke: <code>…/PJfrance/?admin=1</code>
+          bokmärke: <code>tomningskartan.se/?admin=1</code>
         </p>
       </header>
 

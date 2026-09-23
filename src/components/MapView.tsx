@@ -320,7 +320,7 @@ function readSavedView(): { lat: number; lon: number; zoom: number } | null {
   return null
 }
 
-const SHARE_BASE = 'https://perrafree.github.io/PJfrance/'
+const SHARE_BASE = 'https://tomningskartan.se/'
 
 function sharePlace(name: string, lat: number, lon: number) {
   // På webben pekar länken på appens URL; i native-appen på den publika webben.

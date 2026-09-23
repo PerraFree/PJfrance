@@ -3,7 +3,7 @@
 Spara den här sidan. Allt du behöver som ägare finns här.
 
 **Snabbaste vägen:** öppna adminsidan som kollar allt åt dig automatiskt:
-**https://perrafree.github.io/PJfrance/?admin=1** (spara som bokmärke)
+**https://tomningskartan.se/?admin=1** (spara som bokmärke)
 
 ## Engångsfix (3 steg, ca 3 minuter)
 
@@ -37,7 +37,7 @@ Betyg utan text och ✓-bekräftelser publiceras direkt – inget att göra.
 
 ## Bra länkar
 
-- Adminstatus: https://perrafree.github.io/PJfrance/?admin=1
+- Adminstatus: https://tomningskartan.se/?admin=1
 - Väntande platsförslag: https://github.com/PerraFree/PJfrance/issues?q=is%3Aopen+label%3Aplatsf%C3%B6rslag
 - Väntande kommentarer: https://github.com/PerraFree/PJfrance/issues?q=is%3Aopen+label%3Aomd%C3%B6me
 - Databasen (titta i lådorna): https://supabase.com/dashboard → ditt projekt → Table Editor

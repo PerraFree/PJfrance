@@ -11,7 +11,14 @@ camping är sekundär info. Ägare: Per (GitHub **PerraFree**, begränsad teknis
 vana – förklara "för dummies", håll UI:t rent och enkelt). Mejl för
 granskningar: pej2727@gmail.com.
 
-- **Live:** https://perrafree.github.io/PJfrance/ (adminsida: `?admin=1`)
+- **Live:** https://tomningskartan.se/ (adminsida: `?admin=1`)
+  – egen domän (köpt hos Inleed, sep 2026) kopplad till GitHub Pages via
+  4 A-poster (185.199.108–111.153) + CNAME `www` → `perrafree.github.io`.
+  `BASE_PATH=/` i `deploy.yml` och `cname: tomningskartan.se` i
+  gh-pages-publiceringssteget håller domänen aktiv vid varje deploy. Repot
+  själva heter fortfarande `PerraFree/PJfrance` (ändras inte, bara den
+  publika adressen) – gamla `perrafree.github.io/PJfrance/`-länken funkar
+  inte längre.
 - **Default-branch = arbetsbranch:** `claude/gravatten-latrin-app-sverige-aed0qg`
 - Push till branchen → `deploy.yml` bygger och publicerar till `gh-pages` automatiskt.
 

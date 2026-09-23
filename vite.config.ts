@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  // Sätts till t.ex. /PJfrance/ vid deploy till GitHub Pages
+  // Serveras från domänens rot (tomningskartan.se) – BASE_PATH sätts till "/" i deploy.yml
   base: process.env.BASE_PATH ?? '/',
   define: {
     // Byggtidsstämpel som visas diskret i appen – gör det lätt att se om

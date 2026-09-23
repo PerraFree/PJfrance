@@ -150,7 +150,7 @@ jobs:
                 `| **Kommentar** | ${cell(r.description)} |`,
                 `| **Koordinater** | ${r.lat}, ${r.lon} |`,
                 ``,
-                `[📍 Google Maps](https://www.google.com/maps?q=${r.lat},${r.lon}) · [🗺 Tömningskartan](https://perrafree.github.io/PJfrance/?at=${r.lat},${r.lon},15)`,
+                `[📍 Google Maps](https://www.google.com/maps?q=${r.lat},${r.lon}) · [🗺 Tömningskartan](https://tomningskartan.se/?at=${r.lat},${r.lon},15)`,
                 ...fotter,
               ].join('\n')
               await skapa(`Nytt platsförslag: ${cell(r.name)}`, body, 'platsförslag')
