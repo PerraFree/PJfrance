@@ -7821,5 +7821,131 @@
     "description": "Gasolpåfyllning i lösvikt (flyttade hit dec 2025, vid OKQ8 nära Väla) – Safefill/GasBank-flaskor tillåtna. Källa: myLPG.eu.",
     "url": "https://www.mylpg.eu/stations/sweden/station/Gasolstationen-C46A2E2C-5A8B-CC9B-E8F1-1944B1DEA683",
     "source": "egen"
+  },
+  {
+    "name": "Läckö Golfklubb",
+    "query": "Läckö Golfklubb, Kållandsö, Lidköping",
+    "nearLat": 58.68,
+    "nearLon": 13.15,
+    "maxKm": 35,
+    "services": [
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Ställplats vid klubbhuset. Tillgång till tömning av latrin och gråvatten samt toalett/dusch i klubbhuset. Källa: Läckö GK/husbilskompisar.se.",
+    "url": "https://www.lackogk.se/gast/uppstallningsplats/",
+    "source": "egen"
+  },
+  {
+    "name": "Eskilstuna Golfklubb",
+    "query": "Eskilstuna Golfklubb, Eskilstuna",
+    "nearLat": 59.37,
+    "nearLon": 16.51,
+    "maxKm": 30,
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Tömning av gråvatten och latrin vid verkstaden. Vatten finns vid det lilla huset bredvid klubbhuset. Källa: Eskilstuna GK.",
+    "url": "https://www.eskilstunagk.se/relaxen-golfpaket/husvagn-och-husbil/",
+    "source": "egen"
+  },
+  {
+    "name": "Vara-Bjertorp Golfklubb",
+    "query": "Vara-Bjertorp Golfklubb, Vara",
+    "nearLat": 58.2667,
+    "nearLon": 12.95,
+    "maxKm": 30,
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Ställplats med el, färskvatten, tömning av toalett/latrin och gråvatten. Källa: Vara-Bjertorp GK.",
+    "url": "https://www.vara-bjertorpgk.se/?page_id=7080",
+    "source": "egen"
+  },
+  {
+    "name": "Ronneby Golfklubb",
+    "query": "Ronneby Golfklubb, Ronneby",
+    "nearLat": 56.2103,
+    "nearLon": 15.2762,
+    "maxKm": 30,
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "description": "Ställplats med el, färskvatten, toalett, dusch, tömning av gråvatten och latrin (kassett och tank). OBS: under lågsäsong är gråvattentömning och färskvattenpåfyllning inte tillgänglig. Källa: Ronneby GK.",
+    "url": "https://www.ronnebygk.se/stallplatser-2",
+    "source": "egen"
+  },
+  {
+    "name": "Skinnarebo Golf & Country Club",
+    "query": "Skinnarebo 12, Huskvarna",
+    "nearLat": 57.7833,
+    "nearLon": 14.2833,
+    "maxKm": 30,
+    "services": [
+      "gravatten",
+      "latrin"
+    ],
+    "description": "Ställplats med tömning av gråvatten och toalettkassetter. Källa: klubbens egen info (återgiven via hitta.se/stallplatsappen).",
+    "url": "https://www.skinnarebogolf.se/",
+    "source": "egen"
+  },
+  {
+    "name": "Strängnäs Golfklubb",
+    "query": "Strängnäs Golfklubb, Strängnäs",
+    "nearLat": 59.38,
+    "nearLon": 17.03,
+    "maxKm": 30,
+    "services": [
+      "latrin",
+      "vatten"
+    ],
+    "description": "Latrintömning säsong. Vatten kan fyllas på vid kiosken/klubbhuset. Gråvattentömning ej bekräftad. Källa: Strängnäs GK.",
+    "url": "https://www.strangnasgk.se/gast/stallplatser/",
+    "source": "egen"
+  },
+  {
+    "name": "Vadstena Golfklubb",
+    "query": "Kungs Starby 801, Vadstena",
+    "nearLat": 58.45,
+    "nearLon": 14.8833,
+    "maxKm": 30,
+    "services": [
+      "vatten"
+    ],
+    "description": "Endast färskvattenpåfyllning – klubben anger explicit ingen latrin- eller gråvattentömning. Källa: klubbens egen serviceinfo (husbilhusvagn.se).",
+    "url": "https://husbilhusvagn.se/stallplats/vadstena-golfklubb",
+    "source": "egen"
+  },
+  {
+    "name": "Norrfällsvikens Golfklubb",
+    "query": "Norrfällsvikens Golfklubb, Norrfällsviken",
+    "nearLat": 62.83,
+    "nearLon": 18.1,
+    "maxKm": 40,
+    "services": [
+      "vatten"
+    ],
+    "description": "Färskvattenpåfyllning vid klubbhus/servicehus. Klubben anger explicit ingen latrintömning. Källa: Norrfällsvikens GK.",
+    "url": "https://www.nvgk.se/487-2/",
+    "source": "egen"
+  },
+  {
+    "name": "Åkersberga Golfklubb",
+    "query": "Bränsle Gård, Åkersberga",
+    "nearLat": 59.4833,
+    "nearLon": 18.2833,
+    "maxKm": 30,
+    "services": [
+      "vatten"
+    ],
+    "description": "El och färskvatten vid alla platser. Klubben anger explicit att man inte kan tömma toalett eller gråvatten där. Källa: Åkersberga GK.",
+    "url": "https://www.akersbergagk.se/boka-stallplats/",
+    "source": "egen"
   }
 ]

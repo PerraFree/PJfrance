@@ -210,6 +210,27 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    påfyllning – ett golfklubbssvep vore värdefullt (Götaström tillagd
    efter besök på plats). Samma "verifiera innan du lägger till"-metod
    gäller där.
+
+   **Golfklubbssvep, del 1 (sep 2026):** Per flaggade att Borås Golfklubb
+   (befintlig post, bara `stallplats`) borde ha vatten/latrin. Kollat mot
+   git-historiken: posten har ALDRIG haft de tjänsterna – ingen regression,
+   bara en lucka. Verifierat på nytt mot klubbens egen sida + park4night:
+   Borås GK har uttryckligen INGEN gråvatten-/latrintömning (bara
+   dusch/toalett i klubbhuset) – posten är alltså korrekt som den är.
+   Djupdykning mot golfamore.com + klubbarnas egna sidor gav 9 nya poster
+   med konkret citat (`query`+`nearLat`/`nearLon`, ej exakt lat/lon – ingen
+   geokodning möjlig i sandboxen, verifiera läge efter deploy): Läckö GK
+   (gravatten+latrin), Eskilstuna GK (gravatten+latrin+vatten), Vara-Bjertorp
+   GK (gravatten+latrin+vatten), Ronneby GK (gravatten+latrin+vatten, OBS
+   säsongsbegränsat), Skinnarebo G&CC (gravatten+latrin), Strängnäs GK
+   (latrin+vatten), Vadstena GK (endast vatten), Norrfällsvikens GK (endast
+   vatten), Åkersberga GK (endast vatten). ~10 klubbar till gav bara svag/
+   oklar evidens (t.ex. Emmaboda, Jönåkers, Romeleåsens, Bosjökloster,
+   Lunds Akademiska, Torreby, Eksjö, Lerjedalens GK) och lades INTE till –
+   kräver oberoende källa utöver husbilsplats.se/park4night. Fyra klubbar
+   bekräftat UTAN service (Sjögärde, Mälarbadens, Ölands, Ängsö GK – den
+   sista uttryckligen förbjuder toatömning). Detta var ett första svep, inte
+   heltäckande – fler golfklubbar återstår att kontrollera.
 3. **Helt saknade platser (nya, ej bara "tjänsteberikning")** – upptäckt
    aug 2026 efter att Hofsnäs Herrgård (fullservice-ställplats) visade sig
    saknas helt (varken OSM, TRV eller vårt register hade den – bara
