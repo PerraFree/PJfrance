@@ -1,10 +1,11 @@
 import { useEffect, useMemo } from 'react'
-import type { ServiceType, Station } from '../types'
-import { SERVICE_COLORS, SERVICE_LABELS } from '../types'
+import type { GasolFacility, ServiceType, Station } from '../types'
+import { SERVICE_COLORS, SERVICE_LABELS, serviceIsActive } from '../types'
 
 interface Props {
   stations: Station[]
   activeFilters: Set<ServiceType>
+  gasolFacilities: Set<GasolFacility>
   userLoc: { lat: number; lon: number }
   onPick: (station: Station) => void
   onClose: () => void
@@ -24,6 +25,7 @@ function distanceKm(a: { lat: number; lon: number }, b: { lat: number; lon: numb
 export default function NearestList({
   stations,
   activeFilters,
+  gasolFacilities,
   userLoc,
   onPick,
   onClose,
@@ -38,11 +40,11 @@ export default function NearestList({
 
   const nearest = useMemo(() => {
     return stations
-      .filter((s) => s.services.some((sv) => listFilters.has(sv)))
+      .filter((s) => s.services.some((sv) => serviceIsActive(s, sv, listFilters, gasolFacilities)))
       .map((s) => ({ s, km: distanceKm(userLoc, s) }))
       .sort((a, b) => a.km - b.km)
       .slice(0, 12)
-  }, [stations, listFilters, userLoc])
+  }, [stations, listFilters, gasolFacilities, userLoc])
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {

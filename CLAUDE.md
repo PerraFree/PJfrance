@@ -373,6 +373,30 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    färgparet som finns, och funkar även för röd-grön-färgblinda (till
    skillnad från t.ex. rött/grönt eller rött/vinrött).
 
+   **Separata filterknappar (sep 2026):** även EGEN FÄRG på kartnålen räckte
+   inte enligt Per – man skulle kunna se/söka fram bara byte eller bara
+   påfyllning UTAN att öppna varje plats för sig. Den gemensamma
+   "Gasol/LPG"-filterknappen i huvudpanelen är nu delad i två separata
+   knappar med varsin ikon (flamma återanvänd för byte, ny pumpsymbol för
+   påfyllning i `src/lib/icons.ts`) och eget antal: "Gasol – byt tub" och
+   "Gasol – fyll på". Tom mängd (`gasolFacilities` i App.tsx) = ingen
+   gasolplats visas alls, oavsett om 'gasol' råkar finnas i den vanliga
+   `activeFilters`-mängden – de två hålls i synk automatiskt
+   (`toggleGasolFacility`/`ensureGasolFacilities` i App.tsx).
+
+   All klassificeringslogik (byte/påfyllning-status, färg, ikon, "räknas
+   platsen som aktiv med nuvarande filter?") flyttades till EN delad källa i
+   `src/types.ts` (`gasolFacilityStatus`, `serviceIsActive`,
+   `GASOL_BYTE_COLOR`/`GASOL_PAFYLLNING_COLOR`/-`ICON`) i stället för att
+   varje ställe (kartnål i MapView, filterknappar i App, "Sök där jag
+   är"-listan i NearestList) gissade var för sig – annars är risken stor att
+   de glider isär över tid (samma "ändra ALLTID båda"-problem som
+   `EXCLUDED_OSM_ELEMENTS`/`OSM_FACILITY_OVERRIDES`, fast för fler filer).
+   Verifierat med ett tillfälligt Playwright-skript (raderat efter test,
+   enligt projektregeln): byt-bara 173 platser, påfyllning-bara 36, båda
+   202, ingen gasol-kategori vald → 0 nålar, precis som filterknapparnas
+   siffror visar.
+
    **Borås-komplettering (sep 2026):** Per efterlyste specifikt Verktygsboden
    och Svetskompaniet i Borås. Tillagda: Verktygsboden Borås (byte, PC10/
    komposit – bekräftat via återkommande prisomnämnanden på

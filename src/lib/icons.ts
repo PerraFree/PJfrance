@@ -1,4 +1,4 @@
-import type { ServiceType } from '../types'
+import type { GasolFacility, ServiceType } from '../types'
 import { FACILITY_LABELS } from '../types'
 
 /**
@@ -44,6 +44,16 @@ const SERVICE_ICON: Record<ServiceType, string> = {
 
 export function serviceIcon(service: ServiceType): string {
   return SERVICE_ICON[service]
+}
+
+// Gasol-filterknapparna delas i byte/påfyllning – byt återanvänder gasol-lågan,
+// påfyllning får en egen pumpsymbol så de går att skilja åt utan att läsa texten.
+const GASOL_PAFYLLNING_SVG = svg(
+  '<path d="M5 21V6.5A1.5 1.5 0 0 1 6.5 5H12a1.5 1.5 0 0 1 1.5 1.5V21"/><path d="M3 21h12"/><path d="M13.5 9h1.8A1.5 1.5 0 0 1 16.8 10.5V17a1.7 1.7 0 0 0 3.4 0v-5.6a2 2 0 0 0-.6-1.4L17.5 8"/>',
+)
+
+export function gasolFacilityIcon(facility: GasolFacility): string {
+  return facility === 'gasol_pafyllning' ? GASOL_PAFYLLNING_SVG : SERVICE_ICON.gasol
 }
 
 export function facilityChip(key: string): string {

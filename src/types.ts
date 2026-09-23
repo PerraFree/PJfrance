@@ -101,3 +101,45 @@ export const SERVICE_COLORS: Record<ServiceType, string> = {
   camping: '#00695c',
   gasol: '#c62828',
 }
+
+/**
+ * Gasol: byt tub vs. fyll på egen flaska – EN källa för ikon/färg/klassning
+ * så att MapView (kartnål/badge) och App (filterknappar/antal) alltid är
+ * överens. Se CLAUDE.md ("Gasol: byte vs. påfyllning").
+ */
+export type GasolFacility = 'gasol_byte' | 'gasol_pafyllning'
+export const GASOL_BYTE_ICON = '🔥'
+export const GASOL_PAFYLLNING_ICON = '⛽'
+export const GASOL_BYTE_COLOR = SERVICE_COLORS.gasol // röd, som gasol i övrigt
+// Mörkblått – maximalt åtskilt från rött (funkar även för röd-grön-färgblinda),
+// till skillnad från det första försöket (vinrött #ad1457 som fortfarande lästes som rött.
+export const GASOL_PAFYLLNING_COLOR = '#1a237e'
+
+/** Byte/påfyllning för en plats, med "okänt räknas som byte"-fallback
+ *  (de flesta gasolplatser är byte; bara ~1,5% saknar facilities-data). */
+export function gasolFacilityStatus(station: Pick<Station, 'facilities'>): {
+  byte: boolean
+  pafyllning: boolean
+} {
+  const f = station.facilities ?? []
+  const byte = f.includes('gasol_byte')
+  const pafyllning = f.includes('gasol_pafyllning')
+  if (!byte && !pafyllning) return { byte: true, pafyllning: false }
+  return { byte, pafyllning }
+}
+
+/** Räknas tjänsten som "på" för den här platsen med nuvarande filter? Gasol
+ *  är extra kräsen – 'gasol' måste vara valt OCH platsens byte/påfyllning
+ *  måste matcha någon av de valda gasol-underkategorierna. Delad mellan
+ *  App.tsx (antal/tomt-läge) och MapView.tsx (vilka nålar som ritas). */
+export function serviceIsActive(
+  station: Pick<Station, 'facilities'>,
+  service: ServiceType,
+  active: Set<ServiceType>,
+  gasolFacilities: Set<GasolFacility>,
+): boolean {
+  if (service !== 'gasol') return active.has(service)
+  if (!active.has('gasol')) return false
+  const { byte, pafyllning } = gasolFacilityStatus(station)
+  return (byte && gasolFacilities.has('gasol_byte')) || (pafyllning && gasolFacilities.has('gasol_pafyllning'))
+}

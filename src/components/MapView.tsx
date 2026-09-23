@@ -3,8 +3,18 @@ import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet.markercluster'
 import 'leaflet.markercluster/dist/MarkerCluster.css'
-import type { ServiceType, Station } from '../types'
-import { SERVICE_COLORS, SERVICE_ICONS, SERVICE_LABELS } from '../types'
+import type { GasolFacility, ServiceType, Station } from '../types'
+import {
+  GASOL_BYTE_COLOR,
+  GASOL_BYTE_ICON,
+  GASOL_PAFYLLNING_COLOR,
+  GASOL_PAFYLLNING_ICON,
+  SERVICE_COLORS,
+  SERVICE_ICONS,
+  SERVICE_LABELS,
+  gasolFacilityStatus,
+  serviceIsActive,
+} from '../types'
 import { openNow } from '../lib/openingHours'
 import { reverseGeocode } from '../lib/reverse'
 import { fetchWeather, WEATHER_ICONS } from '../lib/weather'
@@ -22,6 +32,10 @@ const VIEW_KEY = 'tomningskartan.view'
 interface Props {
   stations: Station[]
   activeFilters: Set<ServiceType>
+  /** Vilken/vilka gasoltyper som får visas – byte, påfyllning, eller båda
+   *  (tom mängd = ingen gasolplats visas, oavsett om 'gasol' finns i
+   *  activeFilters). Styr filterknapparna i App.tsx. */
+  gasolFacilities: Set<GasolFacility>
   flyTo: { lat: number; lon: number; zoom?: number } | null
   userLoc: { lat: number; lon: number } | null
   focus: { id: string; nonce: number } | null
@@ -92,23 +106,13 @@ function distanceKm(a: { lat: number; lon: number }, b: { lat: number; lon: numb
 
 // Gasol: byte och påfyllning ska gå att skilja åt DIREKT på kartan, inte
 // bara i en liten glyf man måste kisa på – därför olika FÄRG också (inte
-// bara olika symbol som tidigare). Se CLAUDE.md ("Gasol: byte vs. påfyllning").
-const GASOL_BYTE_ICON = '🔥'
-const GASOL_PAFYLLNING_ICON = '⛽'
-const GASOL_BYTE_COLOR = SERVICE_COLORS.gasol // röd, som tidigare
-// Vinrött (#ad1457) visade sig fortfarande läsas som "rött" på liten kartnål
-// – för lika byte-röd för att synas som en tydlig skillnad utan att klicka
-// in sig. Mörkblått är den mest åtskilda färgen från rött som finns (och
-// enda paret som fortfarande går att skilja åt för röd-grön-färgblinda).
-const GASOL_PAFYLLNING_COLOR = '#1a237e'
+// bara olika symbol). Ikon/färg/klassning kommer från types.ts (delad med
+// App.tsx:s filterknappar). Se CLAUDE.md ("Gasol: byte vs. påfyllning").
 function serviceGlyph(station: Station, service: ServiceType): string {
   if (service !== 'gasol') return SERVICE_ICONS[service]
-  const f = station.facilities ?? []
-  const byte = f.includes('gasol_byte')
-  const pafyllning = f.includes('gasol_pafyllning')
+  const { byte, pafyllning } = gasolFacilityStatus(station)
   // Båda tjänsterna får varsin symbol synlig samtidigt, i stället för att
-  // bara den ena visas. Okänt (ingen facilities-data) faller tillbaka på
-  // lågan, eftersom de flesta platser är byte.
+  // bara den ena visas.
   if (byte && pafyllning) return `${GASOL_BYTE_ICON}${GASOL_PAFYLLNING_ICON}`
   if (pafyllning) return GASOL_PAFYLLNING_ICON
   return GASOL_BYTE_ICON
@@ -119,9 +123,7 @@ function serviceGlyph(station: Station, service: ServiceType): string {
  *  alla gasolplatser. */
 function serviceFill(station: Station, service: ServiceType): { color: string; split?: string } {
   if (service !== 'gasol') return { color: SERVICE_COLORS[service] }
-  const f = station.facilities ?? []
-  const byte = f.includes('gasol_byte')
-  const pafyllning = f.includes('gasol_pafyllning')
+  const { byte, pafyllning } = gasolFacilityStatus(station)
   if (byte && pafyllning) return { color: GASOL_BYTE_COLOR, split: GASOL_PAFYLLNING_COLOR }
   if (pafyllning) return { color: GASOL_PAFYLLNING_COLOR }
   return { color: GASOL_BYTE_COLOR }
@@ -397,6 +399,7 @@ function sharePlace(name: string, lat: number, lon: number) {
 export default function MapView({
   stations,
   activeFilters,
+  gasolFacilities,
   flyTo,
   userLoc,
   focus,
@@ -454,6 +457,8 @@ export default function MapView({
   stationsRef.current = stations
   const activeFiltersRef = useRef(activeFilters)
   activeFiltersRef.current = activeFilters
+  const gasolFacilitiesRef = useRef(gasolFacilities)
+  gasolFacilitiesRef.current = gasolFacilities
   const canReportRef = useRef(canReport)
   canReportRef.current = canReport
   const userLocRef = useRef(userLoc)
@@ -518,10 +523,13 @@ export default function MapView({
     markersById.current.clear()
     const active = activeFiltersRef.current
     if (active.size === 0) return
+    const gasolFacilitiesNow = gasolFacilitiesRef.current
     const bounds = map.getBounds().pad(0.5)
     const center = map.getCenter()
     let list = stationsRef.current.filter(
-      (s) => bounds.contains([s.lat, s.lon]) && s.services.some((sv) => active.has(sv)),
+      (s) =>
+        bounds.contains([s.lat, s.lon]) &&
+        s.services.some((sv) => serviceIsActive(s, sv, active, gasolFacilitiesNow)),
     )
     const CAP = 600
     if (list.length > CAP) {
@@ -535,7 +543,9 @@ export default function MapView({
     const canReportNow = canReportRef.current
     const userLocNow = userLocRef.current
     const markers = list.map((station) => {
-      const primary = station.services.find((s) => active.has(s)) ?? station.services[0]
+      const primary =
+        station.services.find((s) => serviceIsActive(station, s, active, gasolFacilitiesNow)) ??
+        station.services[0]
       const fill = serviceFill(station, primary)
       const marker = L.marker([station.lat, station.lon], {
         icon: pinIcon(fill.color, serviceGlyph(station, primary), fill.split),
@@ -901,17 +911,19 @@ export default function MapView({
   // att popupen stängs är väntat – till skillnad från panorering/datahämtning
   // som aldrig ska stänga den.
   const prevFiltersRef = useRef(activeFilters)
+  const prevGasolFacilitiesRef = useRef(gasolFacilities)
   useEffect(() => {
-    if (prevFiltersRef.current !== activeFilters) {
+    if (prevFiltersRef.current !== activeFilters || prevGasolFacilitiesRef.current !== gasolFacilities) {
       prevFiltersRef.current = activeFilters
+      prevGasolFacilitiesRef.current = gasolFacilities
       if (popupOpenRef.current) mapRef.current?.closePopup()
     }
-  }, [activeFilters])
+  }, [activeFilters, gasolFacilities])
 
   // Rendera om markörer när data, filter, favoriter eller position ändras.
   useEffect(() => {
     rebuildMarkers()
-  }, [stations, activeFilters, canReport, userLoc, rebuildMarkers])
+  }, [stations, activeFilters, gasolFacilities, canReport, userLoc, rebuildMarkers])
 
   // Fokusera en plats (från närmaste-listan/sök): markören kanske inte finns
   // förrän kartan flugit dit och byggt om – då öppnar rebuildMarkers fokuset.

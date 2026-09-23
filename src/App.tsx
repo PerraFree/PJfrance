@@ -19,9 +19,9 @@ import AdminPanel from './components/AdminPanel'
 import { searchPlace } from './lib/geocode'
 import { fetchOsmStations } from './lib/overpass'
 import { getPosition, tap } from './lib/native'
-import { serviceIcon } from './lib/icons'
-import type { ServiceType, Station } from './types'
-import { SERVICE_LABELS } from './types'
+import { gasolFacilityIcon, serviceIcon } from './lib/icons'
+import type { GasolFacility, ServiceType, Station } from './types'
+import { SERVICE_LABELS, gasolFacilityStatus, serviceIsActive } from './types'
 
 /**
  * Valbara kategorier = det man faktiskt åker till en plats för: tömma
@@ -29,6 +29,15 @@ import { SERVICE_LABELS } from './types'
  * inte egna filter – de visas som märkning på platser som erbjuder ovanstående.
  */
 const ALL_SERVICES: ServiceType[] = ['gravatten', 'latrin', 'vatten', 'sopor', 'gasol']
+
+// Gasol visas som TVÅ separata filterknappar i stället för en gemensam
+// "Gasol/LPG" – annars går det inte att se/söka fram bara byte eller bara
+// påfyllning utan att öppna varje plats för sig. Se CLAUDE.md.
+const GASOL_FACILITIES: GasolFacility[] = ['gasol_byte', 'gasol_pafyllning']
+const GASOL_FACILITY_LABELS: Record<GasolFacility, string> = {
+  gasol_byte: 'Gasol – byt tub',
+  gasol_pafyllning: 'Gasol – fyll på',
+}
 
 const FREE_RE = /gratis|free|ingår|kostnadsfri|utan avgift/i
 function isFree(s: Station): boolean {
@@ -139,6 +148,10 @@ export default function App() {
   const [osmStations, setOsmStations] = useState<Station[]>([])
   // Inget förvalt – användaren väljer själv vad hen vill hitta.
   const [activeFilters, setActiveFilters] = useState<Set<ServiceType>>(new Set())
+  // Vilken/vilka gasol-underkategorier som är valda (byt tub / fyll på egen
+  // flaska). Tom mängd = ingen gasolplats visas, även om 'gasol' råkar finnas
+  // i activeFilters – hålls i synk via activateServices()/toggleGasolFacility().
+  const [gasolFacilities, setGasolFacilities] = useState<Set<GasolFacility>>(new Set())
   const [flyTo, setFlyTo] = useState<{ lat: number; lon: number; zoom?: number } | null>(null)
   const [userLoc, setUserLoc] = useState<{ lat: number; lon: number } | null>(null)
   const [query, setQuery] = useState('')
@@ -248,6 +261,7 @@ export default function App() {
       return next
     })
     setActiveFilters((prev) => new Set([...prev, ...station.services]))
+    if (station.services.includes('gasol')) ensureGasolFacilities()
     setFlyTo({ lat: station.lat, lon: station.lon, zoom: 14 })
   }, [])
 
@@ -307,8 +321,11 @@ export default function App() {
 
   // Antal synliga pins med hänsyn till aktiva kategorifilter (för tomt-läge)
   const visibleCount = useMemo(
-    () => shownStations.filter((s) => s.services.some((sv) => activeFilters.has(sv))).length,
-    [shownStations, activeFilters],
+    () =>
+      shownStations.filter((s) =>
+        s.services.some((sv) => serviceIsActive(s, sv, activeFilters, gasolFacilities)),
+      ).length,
+    [shownStations, activeFilters, gasolFacilities],
   )
 
   // Antal per kategori (utifrån det som är inläst)
@@ -323,6 +340,18 @@ export default function App() {
       gasol: 0,
     }
     for (const s of shownStations) for (const sv of s.services) c[sv]++
+    return c
+  }, [shownStations])
+
+  // Antal per gasol-underkategori, för de två separata filterknapparna.
+  const gasolFacilityCounts = useMemo(() => {
+    const c: Record<GasolFacility, number> = { gasol_byte: 0, gasol_pafyllning: 0 }
+    for (const s of shownStations) {
+      if (!s.services.includes('gasol')) continue
+      const { byte, pafyllning } = gasolFacilityStatus(s)
+      if (byte) c.gasol_byte++
+      if (pafyllning) c.gasol_pafyllning++
+    }
     return c
   }, [shownStations])
 
@@ -424,6 +453,30 @@ export default function App() {
     })
   }
 
+  // Gasol-filterknappen är delad i två (byt/fyll på) – slå på/av en enskild
+  // gasol-underkategori, och håll 'gasol' i activeFilters i synk (borttagen
+  // när inget av de två är valt längre, annars visas inga gasolnålar alls).
+  const toggleGasolFacility = (facility: GasolFacility) => {
+    setGasolFacilities((prev) => {
+      const next = new Set(prev)
+      if (next.has(facility)) next.delete(facility)
+      else next.add(facility)
+      setActiveFilters((prevAf) => {
+        const nextAf = new Set(prevAf)
+        if (next.size > 0) nextAf.add('gasol')
+        else nextAf.delete('gasol')
+        return nextAf
+      })
+      return next
+    })
+  }
+
+  // Andra ställen som slår på 'gasol' i activeFilters i klump (sökträff,
+  // "sök där jag är", nyinskickad plats) måste också se till att minst en
+  // gasol-underkategori är vald – annars gäms platsen ändå av gasolFacilities.
+  const ensureGasolFacilities = () =>
+    setGasolFacilities((prev) => (prev.size === 0 ? new Set(GASOL_FACILITIES) : prev))
+
   // Antal aktiva sekundärfilter (visas som räknare på "Fler filter").
   const secondaryCount = (freeOnly ? 1 : 0) + (yearRoundOnly ? 1 : 0) + (favOnly ? 1 : 0)
 
@@ -434,8 +487,10 @@ export default function App() {
   }
 
   // Har inget valts ännu? Slå på alla kategorier så sökträffen faktiskt syns.
-  const ensureCategories = () =>
+  const ensureCategories = () => {
     setActiveFilters((prev) => (prev.size === 0 ? new Set(ALL_SERVICES) : prev))
+    ensureGasolFacilities()
+  }
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -457,6 +512,7 @@ export default function App() {
       setActiveFilters(
         (prev) => new Set([...prev, ...named.services.filter((s) => ALL_SERVICES.includes(s))]),
       )
+      if (named.services.includes('gasol')) ensureGasolFacilities()
       setFlyTo({ lat: named.lat, lon: named.lon, zoom: 14 })
       setFocus({ id: named.id, nonce: Date.now() })
       setStatus(named.name)
@@ -512,6 +568,7 @@ export default function App() {
       setShowNearest(true)
       // Har inget valts ännu? Visa alla kategorier så man genast ser vad som finns nära.
       setActiveFilters((prev) => (prev.size === 0 ? new Set(ALL_SERVICES) : prev))
+      ensureGasolFacilities()
       setCollapsed(true) // ge kartan plats
       setStatus('Visar platser nära dig – avstånd visas i varje plats.')
     } catch {
@@ -538,6 +595,7 @@ export default function App() {
       <MapView
         stations={shownStations}
         activeFilters={activeFilters}
+        gasolFacilities={gasolFacilities}
         flyTo={flyTo}
         userLoc={userLoc}
         focus={focus}
@@ -652,7 +710,7 @@ export default function App() {
         </button>
 
         <div className="filters" role="group" aria-label="Filtrera tjänster">
-          {ALL_SERVICES.map((service) => (
+          {ALL_SERVICES.filter((service) => service !== 'gasol').map((service) => (
             <button
               key={service}
               type="button"
@@ -668,6 +726,30 @@ export default function App() {
               />
               {SERVICE_LABELS[service]}
               {counts[service] > 0 && <span className="chip-count">{counts[service]}</span>}
+            </button>
+          ))}
+          {/* Gasol delad i två knappar (byt tub / fyll på egen flaska) i
+              stället för en gemensam "Gasol/LPG" – annars går det inte att
+              se eller söka fram bara den ena typen utan att öppna varje
+              plats för sig. Se CLAUDE.md ("Gasol: byte vs. påfyllning"). */}
+          {GASOL_FACILITIES.map((facility) => (
+            <button
+              key={facility}
+              type="button"
+              className={gasolFacilities.has(facility) ? 'chip active' : 'chip'}
+              data-service={facility}
+              aria-pressed={gasolFacilities.has(facility)}
+              onClick={() => toggleGasolFacility(facility)}
+            >
+              <span
+                className="chip-ic"
+                aria-hidden="true"
+                dangerouslySetInnerHTML={{ __html: gasolFacilityIcon(facility) }}
+              />
+              {GASOL_FACILITY_LABELS[facility]}
+              {gasolFacilityCounts[facility] > 0 && (
+                <span className="chip-count">{gasolFacilityCounts[facility]}</span>
+              )}
             </button>
           ))}
         </div>
@@ -823,6 +905,7 @@ export default function App() {
         <NearestList
           stations={shownStations}
           activeFilters={activeFilters}
+          gasolFacilities={gasolFacilities}
           userLoc={userLoc}
           onPick={(s) => {
             setFlyTo({ lat: s.lat, lon: s.lon, zoom: 14 })

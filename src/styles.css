@@ -29,6 +29,10 @@
   --stallplats: #c14a00;
   --camping: #00695c;
   --gasol: #c62828;
+  /* Gasol-påfyllning (egen flaska) – speglar GASOL_PAFYLLNING_COLOR i types.ts.
+     Mörkblått, maximalt åtskilt från --gasol (byte) så filterknapparna syns
+     tydligt isär utan att man behöver läsa texten. */
+  --gasol-pafyllning: #1a237e;
   --sopor: #455a64;
 }
 
@@ -621,6 +625,8 @@ button {
 .chip[data-service='stallplats'] .chip-ic { color: var(--stallplats); }
 .chip[data-service='camping'] .chip-ic { color: var(--camping); }
 .chip[data-service='gasol'] .chip-ic { color: var(--gasol); }
+.chip[data-service='gasol_byte'] .chip-ic { color: var(--gasol); }
+.chip[data-service='gasol_pafyllning'] .chip-ic { color: var(--gasol-pafyllning); }
 .chip[data-service='sopor'] .chip-ic { color: var(--sopor); }
 
 .chip:hover {
@@ -647,6 +653,8 @@ button {
 .chip.active[data-service='stallplats'] { background: var(--stallplats); }
 .chip.active[data-service='camping'] { background: var(--camping); }
 .chip.active[data-service='gasol'] { background: var(--gasol); }
+.chip.active[data-service='gasol_byte'] { background: var(--gasol); }
+.chip.active[data-service='gasol_pafyllning'] { background: var(--gasol-pafyllning); }
 .chip.active[data-service='sopor'] { background: var(--sopor); }
 
 .chip-count {
