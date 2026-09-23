@@ -96,7 +96,11 @@ function distanceKm(a: { lat: number; lon: number }, b: { lat: number; lon: numb
 const GASOL_BYTE_ICON = '🔥'
 const GASOL_PAFYLLNING_ICON = '⛽'
 const GASOL_BYTE_COLOR = SERVICE_COLORS.gasol // röd, som tidigare
-const GASOL_PAFYLLNING_COLOR = '#ad1457' // vinröd/magenta – tydligt skild från alla andra kategorifärger
+// Vinrött (#ad1457) visade sig fortfarande läsas som "rött" på liten kartnål
+// – för lika byte-röd för att synas som en tydlig skillnad utan att klicka
+// in sig. Mörkblått är den mest åtskilda färgen från rött som finns (och
+// enda paret som fortfarande går att skilja åt för röd-grön-färgblinda).
+const GASOL_PAFYLLNING_COLOR = '#1a237e'
 function serviceGlyph(station: Station, service: ServiceType): string {
   if (service !== 'gasol') return SERVICE_ICONS[service]
   const f = station.facilities ?? []

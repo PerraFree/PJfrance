@@ -366,6 +366,13 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    nål-formen till höger halva via SVG `clipPath`. Samma logik driver
    badgefärgen i popupen (`linear-gradient` 50/50 för platser med båda).
 
+   Första färgvalet (`#ad1457`, vinrött) lästes fortfarande som "rött" på en
+   liten kartnål – för nära byte-röd (`#c62828`) för att synas som en tydlig
+   skillnad utan att klicka in sig, vilket var exakt vad Per bad om att
+   slippa. Bytt till mörkblått `#1a237e` – rött/blått är det mest åtskilda
+   färgparet som finns, och funkar även för röd-grön-färgblinda (till
+   skillnad från t.ex. rött/grönt eller rött/vinrött).
+
    **Borås-komplettering (sep 2026):** Per efterlyste specifikt Verktygsboden
    och Svetskompaniet i Borås. Tillagda: Verktygsboden Borås (byte, PC10/
    komposit – bekräftat via återkommande prisomnämnanden på
