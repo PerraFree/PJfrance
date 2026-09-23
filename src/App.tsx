@@ -150,7 +150,9 @@ export default function App() {
   const [activeFilters, setActiveFilters] = useState<Set<ServiceType>>(new Set())
   // Vilken/vilka gasol-underkategorier som är valda (byt tub / fyll på egen
   // flaska). Tom mängd = ingen gasolplats visas, även om 'gasol' råkar finnas
-  // i activeFilters – hålls i synk via toggleGasolFacility()/ensureGasolFacilities().
+  // i activeFilters – hålls i synk via toggleGasolFacility() (klick),
+  // ensureGasolFacilities() (bred "slå på allt") och ensureGasolFacilityFor()
+  // (en specifik hittad plats, t.ex. namnsökning).
   const [gasolFacilities, setGasolFacilities] = useState<Set<GasolFacility>>(new Set())
   const [flyTo, setFlyTo] = useState<{ lat: number; lon: number; zoom?: number } | null>(null)
   const [userLoc, setUserLoc] = useState<{ lat: number; lon: number } | null>(null)
@@ -261,7 +263,7 @@ export default function App() {
       return next
     })
     setActiveFilters((prev) => new Set([...prev, ...station.services]))
-    if (station.services.includes('gasol')) ensureGasolFacilities()
+    ensureGasolFacilityFor(station)
     setFlyTo({ lat: station.lat, lon: station.lon, zoom: 14 })
   }, [])
 
@@ -473,11 +475,28 @@ export default function App() {
     })
   }
 
-  // Andra ställen som slår på 'gasol' i activeFilters i klump (sökträff,
-  // "sök där jag är", nyinskickad plats) måste också se till att minst en
-  // gasol-underkategori är vald – annars gäms platsen ändå av gasolFacilities.
+  // "Sök där jag är"/ensureCategories slår på ALLA kategorier i klump utan
+  // någon specifik plats i åtanke – där är "båda gasoltyperna om inget valt
+  // än" ett rimligt default.
   const ensureGasolFacilities = () =>
     setGasolFacilities((prev) => (prev.size === 0 ? new Set(GASOL_FACILITIES) : prev))
+
+  // Namnträff/nyinskickad plats är en ANNAN situation: en SPECIFIK station
+  // ska visas. Om användaren redan valt t.ex. bara "byt tub" och söker fram
+  // en renodlad påfyllningsplats räcker inte ensureGasolFacilities() (den
+  // gör inget alls när gasolFacilities redan är icke-tom) – flyTo skulle då
+  // flyga dit utan att nålen faktiskt visas. Lägg i stället till EXAKT den
+  // hittade platsens egna facilitet(er), oavsett vad som redan var valt.
+  const ensureGasolFacilityFor = (station: Station) => {
+    if (!station.services.includes('gasol')) return
+    const { byte, pafyllning } = gasolFacilityStatus(station)
+    setGasolFacilities((prev) => {
+      const next = new Set(prev)
+      if (byte) next.add('gasol_byte')
+      if (pafyllning) next.add('gasol_pafyllning')
+      return next
+    })
+  }
 
   // Antal aktiva sekundärfilter (visas som räknare på "Fler filter").
   const secondaryCount = (freeOnly ? 1 : 0) + (yearRoundOnly ? 1 : 0) + (favOnly ? 1 : 0)
@@ -519,7 +538,7 @@ export default function App() {
       setActiveFilters(
         (prev) => new Set([...prev, ...named.services.filter((s) => ALL_SERVICES.includes(s))]),
       )
-      if (named.services.includes('gasol')) ensureGasolFacilities()
+      ensureGasolFacilityFor(named)
       setFlyTo({ lat: named.lat, lon: named.lon, zoom: 14 })
       setFocus({ id: named.id, nonce: Date.now() })
       setStatus(named.name)

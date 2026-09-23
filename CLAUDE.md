@@ -421,6 +421,23 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
      är" → bekräftade att gasol-knapparna förblev INAKTIVA (innan fixen hade
      de tänts felaktigt).
 
+   **Tredje granskningsrundan (sep 2026, Per bad om ännu en koll) hittade
+   ytterligare en bugg av samma familj:** namnsökning och "Lägg till en
+   plats" (`addMyPlace`) anropade också bara `ensureGasolFacilities()`
+   ("slå på båda OM inget alls är valt sedan innan"). Det räcker inte när
+   en SPECIFIK plats hittas – om man redan valt t.ex. bara "byt tub" och
+   sökte fram en renodlad påfyllningsplats gjorde `ensureGasolFacilities()`
+   INGENTING (gasolFacilities var redan icke-tom), så kartan flög dit men
+   nålen visades aldrig. Ny funktion `ensureGasolFacilityFor(station)`
+   lägger i stället till EXAKT den hittade platsens egen facilitet
+   (byte/påfyllning/båda) till den redan valda mängden, oavsett vad som var
+   valt innan – används av namnträffen i `handleSearch` och `addMyPlace`.
+   `ensureGasolFacilities()` (bred "båda om inget valt") används fortfarande
+   av `ensureCategories`/`handleLocate`, där ingen specifik plats är målet.
+   Verifierat med Playwright: valde "byt tub" → sökte fram en känd renodlad
+   påfyllningsplats ("Aniol Gasol AB") → bekräftade att "fyll på"-knappen
+   nu tänds (innan fixen förblev den släckt).
+
    **Borås-komplettering (sep 2026):** Per efterlyste specifikt Verktygsboden
    och Svetskompaniet i Borås. Tillagda: Verktygsboden Borås (byte, PC10/
    komposit – bekräftat via återkommande prisomnämnanden på
