@@ -52,6 +52,15 @@ bumpa `CACHE`-versionen vid behov). Capacitor/Android finns förberett
 - `bevaka-platsforslag.yml` – var 3:e timme: nya förslag/kommentarer → GitHub-ärenden (mejl till Per). Markör `<!-- submission:UUID -->` på FÖRSTA raden; användartext saneras via `cell()`.
 - `hantera-platsforslag.yml` – kommentar `godkänn`/`neka`/`avslå` i ärendet uppdaterar Supabase (ord-jämförelse, INTE `\b` – trasigt med å/ä/ö). Väcker pausad databas först.
 - Secrets: `SUPABASE_ACCESS_TOKEN`, `TRV_API_KEY`.
+- **Claude-rutin (inte en GitHub-workflow):** "Tömningskartan – veckosvep
+  datakällor" (skapad 24 sep 2026, måndagar 05:00 UTC, fristående
+  Claude-session i Pers miljö). Läser `docs/svep-logg.md`, kör det
+  fokusområde som har äldst datum (tömning / gasol / låg-evidens-verifiering
+  / vatten+golf+tjänsteberikning), committar, pushar, verifierar efter
+  deploy och mejlar/pushar en rapport till Per. Hanteras i
+  claude.ai → Rutiner (pausa/ändra/ta bort där). Uppdatera alltid
+  `docs/svep-logg.md` när ett svep körs manuellt också, annars gör rutinen
+  om samma område i onödan.
 - **`SUPABASE_ACCESS_TOKEN` går ut och MÅSTE bytas manuellt** – Supabases nya
   scoped access-tokens (deras gamla "legacy" full-access-tokens gick aldrig
   ut, men de nya scoped-tokens är begränsade till max ~90 dagar även om man
