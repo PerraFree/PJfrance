@@ -12777,12 +12777,12 @@
   {
     "name": "Lokstallet ställplats, Hjo",
     "source": "egen",
-    "query": "Lokstallet, Hjo",
+    "query": "Hjo",
     "nearLat": 58.305,
     "nearLon": 14.29,
-    "maxKm": 4,
+    "maxKm": 2,
     "address": "Lokstallet (vid gamla järnvägsområdet), Hjo",
-    "description": "Källa (https://husbilskompisar.se/stallplatskartan/lokstallet): \"6 A-uttag för el, toalett, färskvattenpåfyllning, sophantering och gråvattentömning, 200 kr allt inkluderat.\"",
+    "description": "Ungefärligt läge (ortens centrum) – exakt plats: Lokstallet vid gamla järnvägsområdet. Källa (https://husbilskompisar.se/stallplatskartan/lokstallet): \"6 A-uttag för el, toalett, färskvattenpåfyllning, sophantering och gråvattentömning, 200 kr allt inkluderat.\"",
     "services": [
       "gravatten",
       "vatten"
@@ -12860,12 +12860,12 @@
   {
     "name": "Tömningsstation Stora bryggan, Sandviken",
     "source": "egen",
-    "query": "Stora bryggan, Sandviken",
+    "query": "Sandviken",
     "nearLat": 60.617,
     "nearLon": 16.776,
-    "maxKm": 5,
+    "maxKm": 3,
     "address": "Stora bryggan (hamnen), Sandviken",
-    "description": "Källa (https://sandviken.se/en/byggaboochmiljo/avfallochatervinning.1180.html): \"sandviken.se (engelsk sida, sökmotorns återgivning): 'there is a dumping station at Stora bryggan in Sandviken, and it is free to use the latrine dumping station. Note that the latrine dumping stations are closed every year from about October to about April.'\"",
+    "description": "Ungefärligt läge (ortens centrum) – exakt plats: Stora bryggan i hamnen vid Storsjön. Källa (https://sandviken.se/en/byggaboochmiljo/avfallochatervinning.1180.html): \"sandviken.se (engelsk sida, sökmotorns återgivning): 'there is a dumping station at Stora bryggan in Sandviken, and it is free to use the latrine dumping station. Note that the latrine dumping stations are closed every year from about October to about April.'\"",
     "services": [
       "latrin"
     ],
@@ -12877,12 +12877,12 @@
   {
     "name": "Smedjebackens hamn – ställplats",
     "source": "egen",
-    "query": "Gästhamnen, Smedjebacken",
+    "query": "Smedjebacken",
     "nearLat": 60.14,
     "nearLon": 15.414,
-    "maxKm": 5,
+    "maxKm": 2,
     "address": "Hamnkontoret, Smedjebackens gästhamn, Smedjebacken",
-    "description": "Källa (https://www.husbilhusvagn.se/stallplats/smedjebackens-hamn): \"Hamnområdet har 18 platser med el, latrintömning, gråvattentömning, sopsortering, dusch och toalett. Först till kvarn, betalning via Swish enligt anslagna priser.\"",
+    "description": "Ungefärligt läge (ortens centrum) – exakt plats: gästhamnen/hamnkontoret. Källa (https://www.husbilhusvagn.se/stallplats/smedjebackens-hamn): \"Hamnområdet har 18 platser med el, latrintömning, gråvattentömning, sopsortering, dusch och toalett. Först till kvarn, betalning via Swish enligt anslagna priser.\"",
     "services": [
       "latrin",
       "gravatten"
