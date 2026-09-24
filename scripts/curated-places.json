@@ -13265,5 +13265,3353 @@
     "source": "egen",
     "address": "Revirvägen, Laxå",
     "description": "Obekräftat (husbilskompisar.se/Ställplatsappen): \"dumpstation vid Rabatt-Torget på Revirvägen där man kan tömma både gråvatten och svartvatten i markbrunn\" – ingen kommunsida hittad."
+  },
+  {
+    "name": "Norra hamnen i Luleå",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/norra-hamnen-i-lulea/",
+    "query": "Norra hamnen i Luleå, Luleå",
+    "nearLat": 65.6093,
+    "nearLon": 22.071,
+    "maxKm": 25
+  },
+  {
+    "name": "Ställplats Torget",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/stallplats-torget/",
+    "query": "Ställplats Torget, Luleå",
+    "nearLat": 65.6093,
+    "nearLon": 22.071,
+    "maxKm": 25
+  },
+  {
+    "name": "Husvagnscenter i Luleå",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/husvagnscenter-i-lulea/",
+    "query": "Husvagnscenter i Luleå, Luleå",
+    "nearLat": 65.6093,
+    "nearLon": 22.071,
+    "maxKm": 25
+  },
+  {
+    "name": "Luleå Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilsparkering/övernattning vid golf. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/lulea-golfklubb/",
+    "query": "Luleå Golfklubb, Luleå",
+    "nearLat": 65.6093,
+    "nearLon": 22.071,
+    "maxKm": 25
+  },
+  {
+    "name": "Brändö Konferens",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/brando-konferens/",
+    "query": "Brändö Konferens, Luleå",
+    "nearLat": 65.6093,
+    "nearLon": 22.071,
+    "maxKm": 25
+  },
+  {
+    "name": "Luleå – Norrströmsvägen 92",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): vid bungalowområde. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/fr/place/325966",
+    "query": "Norrströmsvägen 92, Luleå",
+    "nearLat": 65.6093,
+    "nearLon": 22.071,
+    "maxKm": 25
+  },
+  {
+    "name": "Skellefteå Campus",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/skelleftea-campus/",
+    "lat": 64.7435,
+    "lon": 20.9571
+  },
+  {
+    "name": "Skellefteå – E4",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"chemical toilet cleaning, no water draining\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/38187",
+    "query": "E4, Skellefteå",
+    "nearLat": 64.7631,
+    "nearLon": 20.9735,
+    "maxKm": 25
+  },
+  {
+    "name": "Skellefteå – Gymnasievägen 30",
+    "services": [
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"water and air available\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/396986",
+    "query": "Gymnasievägen 30, Skellefteå",
+    "nearLat": 64.7631,
+    "nearLon": 20.9735,
+    "maxKm": 25
+  },
+  {
+    "name": "Skellefteå – Nöppelbergsvägen 1",
+    "services": [
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): bensinstation, vatten/luft. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/162444",
+    "query": "Nöppelbergsvägen 1, Skellefteå",
+    "nearLat": 64.7631,
+    "nearLon": 20.9735,
+    "maxKm": 25
+  },
+  {
+    "name": "Umeå Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): el, dusch, övernattning vid golf. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/umea-golfklubb/",
+    "query": "Umeå Golfklubb, Umeå",
+    "nearLat": 63.8438,
+    "nearLon": 20.3099,
+    "maxKm": 25
+  },
+  {
+    "name": "Fritids Metropolen",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/fritids-metropolen/",
+    "query": "Fritids Metropolen, Umeå",
+    "nearLat": 63.8438,
+    "nearLon": 20.3099,
+    "maxKm": 25
+  },
+  {
+    "name": "Umeå – Järnvägsallén",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"XXL motorhome area\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/131083",
+    "query": "Järnvägsallén, Umeå",
+    "nearLat": 63.8438,
+    "nearLon": 20.3099,
+    "maxKm": 25
+  },
+  {
+    "name": "Luossavaara Fritidsområde",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): café, toaletter, grillplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/kiruna-luossavaara-fritidsomrade/",
+    "query": "Luossavaara Fritidsområde, Kiruna",
+    "nearLat": 67.8474,
+    "nearLon": 20.2925,
+    "maxKm": 25
+  },
+  {
+    "name": "Nikkaluokta Sarri AB",
+    "services": [
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): el, färskvatten, toaletter, dusch, avfall. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/nikkaluokta-sarri-ab/",
+    "query": "Nikkaluokta Sarri AB, Kiruna",
+    "nearLat": 67.8474,
+    "nearLon": 20.2925,
+    "maxKm": 25
+  },
+  {
+    "name": "Piteå Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): golfklubb. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/pitea-golfklubb/",
+    "lat": 65.31883,
+    "lon": 21.53133
+  },
+  {
+    "name": "Renöhamn",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, tömningsstation, sopkärl, hund ok\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/husbilsplatser/stallplatser-i-norrbotten/",
+    "query": "Renöhamn, Piteå",
+    "nearLat": 65.3348,
+    "nearLon": 21.4356,
+    "maxKm": 25
+  },
+  {
+    "name": "Ställplats Wassara",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, avfall, hund ok\". Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/stallplats-wassara/",
+    "lat": 67.135963,
+    "lon": 20.643392
+  },
+  {
+    "name": "Lycksele Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, dusch\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/lycksele-golfklubb/",
+    "query": "Lycksele Golfklubb, Lycksele",
+    "nearLat": 64.6001,
+    "nearLon": 18.8226,
+    "maxKm": 25
+  },
+  {
+    "name": "Kalix Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): golfklubb. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/kalix-golfklubb/",
+    "query": "Kalix Golfklubb, Kalix",
+    "nearLat": 65.9995,
+    "nearLon": 22.853,
+    "maxKm": 25
+  },
+  {
+    "name": "Camp Frevisören Kalix Havsbad",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/camp-frevisoren-kalix-havsbad/",
+    "query": "Camp Frevisören Kalix Havsbad, Kalix",
+    "nearLat": 65.9995,
+    "nearLon": 22.853,
+    "maxKm": 25
+  },
+  {
+    "name": "Kamlunge Camping",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, färskvatten, wc, dusch, kassettömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/kamlunge-camping/",
+    "query": "Kamlunge Camping, Kalix",
+    "nearLat": 65.9995,
+    "nearLon": 22.853,
+    "maxKm": 25
+  },
+  {
+    "name": "Laponia rastplats",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/laponia-rastplats/",
+    "lat": 66.642335,
+    "lon": 19.824492
+  },
+  {
+    "name": "Lippi Stugby",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"toaletter, dusch, avfall, hund ok, wifi\". Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/lippi-stugby/",
+    "lat": 66.0567767,
+    "lon": 17.7906568
+  },
+  {
+    "name": "Gråträsk byagården",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): rastplats vid bygdegård. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/gratrask-byagarden/",
+    "lat": 65.486106,
+    "lon": 19.796164
+  },
+  {
+    "name": "Arvidsjaurs Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): golfklubb. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/arvidsjaurs-golfklubb/",
+    "query": "Arvidsjaurs Golfklubb, Arvidsjaur",
+    "nearLat": 65.6728,
+    "nearLon": 19.1965,
+    "maxKm": 25
+  },
+  {
+    "name": "Storumans Bil & El",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/storumans-bil-el/",
+    "query": "Storumans Bil & El, Storuman",
+    "nearLat": 65.1012,
+    "nearLon": 17.2198,
+    "maxKm": 25
+  },
+  {
+    "name": "Storumans camping",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"75 platser\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/storumans-camping/",
+    "query": "Storumans camping, Storuman",
+    "nearLat": 65.1012,
+    "nearLon": 17.2198,
+    "maxKm": 25
+  },
+  {
+    "name": "Åsele Nya Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): golfklubb. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/asele-nya-golfklubb/",
+    "lat": 64.1587569,
+    "lon": 17.280728
+  },
+  {
+    "name": "Överkalix Camping",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/husbilsplatser/stallplatser-i-norrbotten/",
+    "query": "Överkalix Camping, Överkalix",
+    "nearLat": 66.653,
+    "nearLon": 22.8351,
+    "maxKm": 25
+  },
+  {
+    "name": "Pajala Camping och Vandrarhem",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"60 platser, el, färskvatten, wc, dusch, avfall, wifi, gråvatten, kassettömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/pajala-camping-och-vandrarhem/",
+    "query": "Pajala Camping och Vandrarhem, Pajala",
+    "nearLat": 67.4904,
+    "nearLon": 23.4087,
+    "maxKm": 25
+  },
+  {
+    "name": "Hotell Smedjan",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/tags/stallplats/",
+    "query": "Hotell Smedjan, Pajala",
+    "nearLat": 67.4904,
+    "nearLon": 23.4087,
+    "maxKm": 25
+  },
+  {
+    "name": "Älvsby folkhögskola ställplats",
+    "services": [
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"12 platser, el, färskvatten, wc, dusch, avfall\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/alvsby-folkhogskola/",
+    "query": "Älvsby folkhögskola ställplats, Älvsbyn",
+    "nearLat": 65.6766,
+    "nearLon": 21.022,
+    "maxKm": 25
+  },
+  {
+    "name": "Bureå Båtsällskap",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/burea-batsallskap/",
+    "query": "Bureå Båtsällskap, Bureå",
+    "nearLat": 64.6175,
+    "nearLon": 21.1833,
+    "maxKm": 25
+  },
+  {
+    "name": "Gästhamnen i Sundsvall",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"toalett, sopkärl\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/gasthamnen-i-sundsvall",
+    "query": "Gästhamnen i Sundsvall, Sundsvall",
+    "nearLat": 62.4183,
+    "nearLon": 17.3341,
+    "maxKm": 25
+  },
+  {
+    "name": "Ställplats Skojarbacken",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/stallplats-skojarbacken",
+    "query": "Ställplats Skojarbacken, Sundsvall",
+    "nearLat": 62.4183,
+    "nearLon": 17.3341,
+    "maxKm": 25
+  },
+  {
+    "name": "Lilla Stigen Ställplatser",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"6 platser, el, färskvatten, gråvatten-/latrintömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/lilla-stigen-stallplatser",
+    "query": "Lilla Stigen Ställplatser, Sundsvall",
+    "nearLat": 62.4183,
+    "nearLon": 17.3341,
+    "maxKm": 25
+  },
+  {
+    "name": "Heffners Allé (camping)",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): servicehus wc/dusch/kök/tvätt. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/321703",
+    "query": "Heffners Allé, Sundsvall",
+    "nearLat": 62.4183,
+    "nearLon": 17.3341,
+    "maxKm": 25
+  },
+  {
+    "name": "Timrå Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilsparkering vid golf. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/timra-golfklubb",
+    "query": "Timrå Golfklubb, Timrå",
+    "nearLat": 62.5033,
+    "nearLon": 17.3431,
+    "maxKm": 25
+  },
+  {
+    "name": "Latrintömning Härnösand",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): latrintömning. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/latrintomning-harnosand",
+    "query": "Latrintömning Härnösand, Härnösand",
+    "nearLat": 62.6306,
+    "nearLon": 17.9585,
+    "maxKm": 25
+  },
+  {
+    "name": "Gästhamn Nattviken",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/gasthamn-nattviken",
+    "query": "Gästhamn Nattviken, Härnösand",
+    "nearLat": 62.6306,
+    "nearLon": 17.9585,
+    "maxKm": 25
+  },
+  {
+    "name": "Gussjönorets ställplats",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se (platslista), ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se (platslista)",
+    "query": "Gussjönorets ställplats, Härnösand",
+    "nearLat": 62.6306,
+    "nearLon": 17.9585,
+    "maxKm": 25
+  },
+  {
+    "name": "Sollefteå Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"husbilsparkering vid golf, el\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/solleftea-golfklubb",
+    "query": "Sollefteå Golfklubb, Sollefteå",
+    "nearLat": 63.172,
+    "nearLon": 17.2775,
+    "maxKm": 25
+  },
+  {
+    "name": "Snibbens Camping/Vandrarhem",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/137579",
+    "query": "Snibbens Camping/Vandrarhem, Sollefteå",
+    "nearLat": 63.172,
+    "nearLon": 17.2775,
+    "maxKm": 25
+  },
+  {
+    "name": "Docksta Vandrarhem & Camping",
+    "services": [
+      "vatten",
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, färskvatten, toalett, dusch, sopor\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/docksta-vandrarhem-camping",
+    "query": "Docksta Vandrarhem & Camping, Docksta",
+    "nearLat": 63.0666,
+    "nearLon": 18.3661,
+    "maxKm": 25
+  },
+  {
+    "name": "Östersunds Stugby & Camping",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se + park4night.com, ej primärkälla): \"150 platser, bokningsbar\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se + park4night.com/en/place/35823",
+    "query": "Östersunds Stugby & Camping, Östersund",
+    "nearLat": 63.1656,
+    "nearLon": 14.688,
+    "maxKm": 25
+  },
+  {
+    "name": "Östersund-Frösö Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilsparkering vid golf. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/ostersund-froso-golfklubb",
+    "query": "Östersund-Frösö Golfklubb, Östersund",
+    "nearLat": 63.1656,
+    "nearLon": 14.688,
+    "maxKm": 25
+  },
+  {
+    "name": "Mariebergsviken",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/mariebergsviken",
+    "query": "Mariebergsviken, Östersund",
+    "nearLat": 63.1656,
+    "nearLon": 14.688,
+    "maxKm": 25
+  },
+  {
+    "name": "Bräcke Strand",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"18 platser, hundar tillåtna\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/bracke-strand",
+    "query": "Bräcke Strand, Bräcke",
+    "nearLat": 62.7474,
+    "nearLon": 15.4169,
+    "maxKm": 25
+  },
+  {
+    "name": "Klövsjö-Vemdalens Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilsparkering vid golf. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/klovsjo-vemdalens-golfklubb",
+    "lat": 62.484652,
+    "lon": 14.220121
+  },
+  {
+    "name": "Svenstavik (rastplats)",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, färskvatten, toalett, gråvattentömning, kassett-/tanktömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/svenstavik",
+    "query": "Svenstavik, Svenstavik",
+    "nearLat": 62.7671,
+    "nearLon": 14.4158,
+    "maxKm": 25
+  },
+  {
+    "name": "Tömningsplats Funäsdalen",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"färskvatten, gråvattentömning, kassettömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/tomningsplats-funasdalen",
+    "query": "Tömningsplats Funäsdalen, Funäsdalen",
+    "nearLat": 62.5568,
+    "nearLon": 12.5687,
+    "maxKm": 25
+  },
+  {
+    "name": "Svegs Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"husbilsparkering vid golf, el\". Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/svegs-golfklubb",
+    "lat": 62.025125,
+    "lon": 14.465625
+  },
+  {
+    "name": "Gäddede Camping och Stugby",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, färskvatten, toalett, dusch, kassettömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/gaddede-camping-och-stugby",
+    "query": "Gäddede Camping och Stugby, Gäddede",
+    "nearLat": 64.506,
+    "nearLon": 14.1484,
+    "maxKm": 25
+  },
+  {
+    "name": "Hoting – Europaväg 45",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): rastplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/82794",
+    "query": "Europaväg 45, Hoting",
+    "nearLat": 64.1072,
+    "nearLon": 16.1747,
+    "maxKm": 25
+  },
+  {
+    "name": "Falu Gruva",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): soptunna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/falu-gruva/",
+    "query": "Falu Gruva, Falun",
+    "nearLat": 60.5763,
+    "nearLon": 15.6516,
+    "maxKm": 25
+  },
+  {
+    "name": "Vildmarksfisket i Mora",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): lugnt läge, fiske. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/vildmarksfisket-i-mora/",
+    "query": "Vildmarksfisket i Mora, Mora",
+    "nearLat": 61.0094,
+    "nearLon": 14.6016,
+    "maxKm": 25
+  },
+  {
+    "name": "Mora Life Åmåsängsgården",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilsplats vid camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/mora-life-amasangsgarden/",
+    "query": "Mora Life Åmåsängsgården, Mora",
+    "nearLat": 61.0094,
+    "nearLon": 14.6016,
+    "maxKm": 25
+  },
+  {
+    "name": "Mora Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilsparkering vid golf. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/mora-golfklubb/",
+    "query": "Mora Golfklubb, Mora",
+    "nearLat": 61.0094,
+    "nearLon": 14.6016,
+    "maxKm": 25
+  },
+  {
+    "name": "Mora – 13 Tingsnäsvägen",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): betalparkering. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/lieu/182569",
+    "query": "13 Tingsnäsvägen, Mora",
+    "nearLat": 61.0094,
+    "nearLon": 14.6016,
+    "maxKm": 25
+  },
+  {
+    "name": "Mora – Siknäs fyrklöver",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night, ej primärkälla): naturcamping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night",
+    "query": "Mora – Siknäs fyrklöver, Mora",
+    "nearLat": 61.0094,
+    "nearLon": 14.6016,
+    "maxKm": 25
+  },
+  {
+    "name": "Rastplats Rastastugan",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/rastplats-rastastugan/",
+    "query": "Rastplats Rastastugan, Borlänge",
+    "nearLat": 60.4795,
+    "nearLon": 15.4755,
+    "maxKm": 25
+  },
+  {
+    "name": "Forsbergs Fritidscenter",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilsservice. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/forsbergs-fritidscenter-i-borlange/",
+    "query": "Forsbergs Fritidscenter, Borlänge",
+    "nearLat": 60.4795,
+    "nearLon": 15.4755,
+    "maxKm": 25
+  },
+  {
+    "name": "Borlänge – Trutenbo",
+    "services": [
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"el, vatten, toalett, 20€/natt\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/344152",
+    "query": "Borlänge – Trutenbo, Borlänge",
+    "nearLat": 60.4795,
+    "nearLon": 15.4755,
+    "maxKm": 25
+  },
+  {
+    "name": "Vidablick ställplats",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/vidablick-stallplats/",
+    "query": "Vidablick ställplats, Rättvik",
+    "nearLat": 60.8879,
+    "nearLon": 15.1084,
+    "maxKm": 25
+  },
+  {
+    "name": "Rättviksgården",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/rattviksgarden/",
+    "query": "Rättviksgården, Rättvik",
+    "nearLat": 60.8879,
+    "nearLon": 15.1084,
+    "maxKm": 25
+  },
+  {
+    "name": "Rättviksbacken",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/rattviksbacken/",
+    "query": "Rättviksbacken, Rättvik",
+    "nearLat": 60.8879,
+    "nearLon": 15.1084,
+    "maxKm": 25
+  },
+  {
+    "name": "Dalhalla",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/dalhalla/",
+    "query": "Dalhalla, Rättvik",
+    "nearLat": 60.8879,
+    "nearLon": 15.1084,
+    "maxKm": 25
+  },
+  {
+    "name": "First Camp Siljansbadet",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping, service. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/first-camp-siljansbadet/",
+    "query": "First Camp Siljansbadet, Rättvik",
+    "nearLat": 60.8879,
+    "nearLon": 15.1084,
+    "maxKm": 25
+  },
+  {
+    "name": "Karlsviks Herrgård",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se + karlsviksherrgard.com + Visit Dalarna, ej primärkälla): ~20 platser, öppet maj–okt (inga bekräftade kärntjänster). Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se + karlsviksherrgard.com + Visit Dalarna",
+    "query": "Karlsviks Herrgård, Rättvik",
+    "nearLat": 60.8879,
+    "nearLon": 15.1084,
+    "maxKm": 25
+  },
+  {
+    "name": "Leksand Strand Camping & Resort",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, vatten, toalett, dusch, sopor, gråvatten-/svartvattentömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/leksand-strand-camping-resort/",
+    "query": "Leksand Strand Camping & Resort, Leksand",
+    "nearLat": 60.7475,
+    "nearLon": 14.9729,
+    "maxKm": 25
+  },
+  {
+    "name": "Leksands rastplats",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se + park4night, ej primärkälla): \"vatten, toalett, sopor, svartvattentömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se + park4night",
+    "query": "Leksands rastplats, Leksand",
+    "nearLat": 60.7475,
+    "nearLon": 14.9729,
+    "maxKm": 25
+  },
+  {
+    "name": "Västanviksbadets Camping",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, vatten, toalett, dusch, sopor, wifi, tömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/vastanviksbadets-camping/",
+    "query": "Västanviksbadets Camping, Leksand",
+    "nearLat": 60.7475,
+    "nearLon": 14.9729,
+    "maxKm": 25
+  },
+  {
+    "name": "Leksand – Solvändan",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): liten P vid Siljan. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/633728",
+    "query": "Leksand – Solvändan, Leksand",
+    "nearLat": 60.7475,
+    "nearLon": 14.9729,
+    "maxKm": 25
+  },
+  {
+    "name": "Avesta Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilsparkering vid golf. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/avesta-golfklubb/",
+    "lat": 60.15013,
+    "lon": 16.20441
+  },
+  {
+    "name": "Avesta – 2 Köpmangatan",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"2 gratis husbilsplatser, inga faciliteter\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/226673",
+    "query": "2 Köpmangatan, Avesta",
+    "nearLat": 60.1448,
+    "nearLon": 16.1754,
+    "maxKm": 25
+  },
+  {
+    "name": "Smedjebackens Båtklubb",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, vatten, toalett, sopor, gråvatten-/kassettömning, 13 platser\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/smedjebackens-hamn/",
+    "query": "Smedjebackens Båtklubb, Smedjebacken",
+    "nearLat": 60.1442,
+    "nearLon": 15.4317,
+    "maxKm": 25
+  },
+  {
+    "name": "Älvdalen – 94 Dalgatan",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): tvättstuga, kök. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/427789",
+    "query": "94 Dalgatan, Älvdalen",
+    "nearLat": 61.2286,
+    "nearLon": 14.0754,
+    "maxKm": 25
+  },
+  {
+    "name": "Orsa – 1 Brantvägen",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): P vid sjön. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/94403",
+    "query": "1 Brantvägen, Orsa",
+    "nearLat": 61.1232,
+    "nearLon": 14.5944,
+    "maxKm": 25
+  },
+  {
+    "name": "Malungs Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilsparkering vid golf. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/malungs-golfklubb/",
+    "lat": 60.626279,
+    "lon": 13.758705
+  },
+  {
+    "name": "Rastplats söder Vansbro",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): soptunna, turistinfo. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/rastplats-soder-vansbro/",
+    "query": "Rastplats söder Vansbro, Vansbro",
+    "nearLat": 60.5075,
+    "nearLon": 14.2314,
+    "maxKm": 25
+  },
+  {
+    "name": "Ställplats Dalarna (785 60)",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se + park4night.com, ej primärkälla): \"el, vatten, sopor, toalett/latrintömning, 20 platser\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se + park4night.com/en/place/317431",
+    "query": "Ställplats Dalarna, Dalarna",
+    "nearLat": 60.5528,
+    "nearLon": 15.2227,
+    "maxKm": 25
+  },
+  {
+    "name": "Ludvika – Harnäsgården/Gamla Skolan",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"avfallstömning + el 200 SEK, inga toaletter/duschar\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/409673",
+    "query": "Ludvika – Harnäsgården/Gamla Skolan, Ludvika",
+    "nearLat": 60.1563,
+    "nearLon": 15.1819,
+    "maxKm": 25
+  },
+  {
+    "name": "Ludvika – 13 Kajvägen",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): liknande faciliteter. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/322546",
+    "query": "13 Kajvägen, Ludvika",
+    "nearLat": 60.1563,
+    "nearLon": 15.1819,
+    "maxKm": 25
+  },
+  {
+    "name": "Tömningsplats Gävle",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): tömningsplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/tomningsplats-gavle/",
+    "query": "Tömningsplats Gävle, Gävle",
+    "nearLat": 60.6686,
+    "nearLon": 17.173,
+    "maxKm": 25
+  },
+  {
+    "name": "Hemlingbystugan",
+    "services": [
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): vatten, toalett, sopor. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/hemlingbystugan/",
+    "query": "Hemlingbystugan, Gävle",
+    "nearLat": 60.6686,
+    "nearLon": 17.173,
+    "maxKm": 25
+  },
+  {
+    "name": "Skeppsbron i Gävle",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se + park4night.com, ej primärkälla): \"sopor, 9 platser, 150 kr/dygn inkl el\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se + park4night.com/en/place/46256",
+    "query": "Skeppsbron i Gävle, Gävle",
+    "nearLat": 60.6686,
+    "nearLon": 17.173,
+    "maxKm": 25
+  },
+  {
+    "name": "Gävle Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilsparkering, elstolpar. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/gavle-golfklubb/",
+    "query": "Gävle Golfklubb, Gävle",
+    "nearLat": 60.6686,
+    "nearLon": 17.173,
+    "maxKm": 25
+  },
+  {
+    "name": "Gävle Camping Engesberg",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se + park4night, ej primärkälla): \"el, vatten, toalett, dusch, sopor, gråvatten-/kassettömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se + park4night",
+    "query": "Gävle Camping Engesberg, Gävle",
+    "nearLat": 60.6686,
+    "nearLon": 17.173,
+    "maxKm": 25
+  },
+  {
+    "name": "Gävle – Lantmäterigatan",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): betal-P vid badhus. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/270537",
+    "query": "Lantmäterigatan, Gävle",
+    "nearLat": 60.6686,
+    "nearLon": 17.173,
+    "maxKm": 25
+  },
+  {
+    "name": "Hudiksvalls Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilsparkering, el. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/hudiksvalls-golfklubb/",
+    "query": "Hudiksvalls Golfklubb, Hudiksvall",
+    "nearLat": 61.7381,
+    "nearLon": 17.4441,
+    "maxKm": 25
+  },
+  {
+    "name": "Hudiksvall – 20 Ullsättersvägen",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"18 platser med el, servicehus sedan 2022\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/169259",
+    "query": "20 Ullsättersvägen, Hudiksvall",
+    "nearLat": 61.7381,
+    "nearLon": 17.4441,
+    "maxKm": 25
+  },
+  {
+    "name": "Hudiksvall – 17 Humlegatan",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"betal-P centrum, 100 SEK/husbil\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/lieu/253956",
+    "query": "17 Humlegatan, Hudiksvall",
+    "nearLat": 61.7381,
+    "nearLon": 17.4441,
+    "maxKm": 25
+  },
+  {
+    "name": "Bollegården",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/bollegarden/",
+    "query": "Bollegården, Bollnäs",
+    "nearLat": 61.3513,
+    "nearLon": 16.4058,
+    "maxKm": 25
+  },
+  {
+    "name": "Rastplats Bollnäs",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se + park4night, ej primärkälla): rastplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se + park4night",
+    "query": "Rastplats Bollnäs, Bollnäs",
+    "nearLat": 61.3513,
+    "nearLon": 16.4058,
+    "maxKm": 25
+  },
+  {
+    "name": "Ljusdal – Trafikverkets rastplats X10",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se (sökträff), ej primärkälla): \"kassettömning, vatten, sopor, toalett\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se (sökträff)",
+    "query": "Trafikverkets rastplats X10, Ljusdal",
+    "nearLat": 61.8276,
+    "nearLon": 16.0658,
+    "maxKm": 25
+  },
+  {
+    "name": "Ljusdal – Stavsätter Järvsövägen 5",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/46215",
+    "query": "Stavsätter Järvsövägen 5, Ljusdal",
+    "nearLat": 61.8276,
+    "nearLon": 16.0658,
+    "maxKm": 25
+  },
+  {
+    "name": "Ockelbo camping (CC Ockelbo)",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"20 platser el, Caravan Club\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/235882",
+    "query": "Ockelbo camping, Ockelbo",
+    "nearLat": 60.885,
+    "nearLon": 16.7091,
+    "maxKm": 25
+  },
+  {
+    "name": "Camp Kungsgården",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se + park4night.com, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se + park4night.com/en/place/76144",
+    "query": "Camp Kungsgården, Sandviken",
+    "nearLat": 60.6297,
+    "nearLon": 16.7531,
+    "maxKm": 25
+  },
+  {
+    "name": "Edsbyn",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/edsbyn/",
+    "lat": 61.3845,
+    "lon": 15.8289
+  },
+  {
+    "name": "Alfta Camping",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"20 platser el, servicehus\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/180092",
+    "query": "Alfta Camping, Alfta",
+    "nearLat": 61.3431,
+    "nearLon": 16.0476,
+    "maxKm": 25
+  },
+  {
+    "name": "Alfta-Edsbyns Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se (sökträff), ej primärkälla): husbilsparkering vid golf. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se (sökträff)",
+    "query": "Alfta-Edsbyns Golfklubb, Alfta",
+    "nearLat": 61.3431,
+    "nearLon": 16.0476,
+    "maxKm": 25
+  },
+  {
+    "name": "Citycamp Stockholm",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, färskvatten, toalett, dusch, sopor, gråvatten/kassett\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/stallplats-stockholm/",
+    "query": "Citycamp Stockholm, Stockholm",
+    "nearLat": 59.2965,
+    "nearLon": 17.9702,
+    "maxKm": 25
+  },
+  {
+    "name": "Tantolunden",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se (tag-arkiv), ej primärkälla): \"el, tömningsstation, sopor\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se (tag-arkiv)",
+    "query": "Tantolunden, Stockholm",
+    "nearLat": 59.2965,
+    "nearLon": 17.9702,
+    "maxKm": 25
+  },
+  {
+    "name": "Husbilsparkering västra Kungsholmen",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilsparkering. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/husbilsparkering-vastra-kungsholmen/",
+    "query": "Husbilsparkering västra Kungsholmen, Stockholm",
+    "nearLat": 59.2965,
+    "nearLon": 17.9702,
+    "maxKm": 25
+  },
+  {
+    "name": "Ställplats Stockholm – Skutskepparvägen",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): el vid varje plats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/31062",
+    "query": "Skutskepparvägen, Ställplats Stockholm",
+    "nearLat": 59.2965,
+    "nearLon": 17.9702,
+    "maxKm": 25
+  },
+  {
+    "name": "Ställplats Stockholm – vid Flaten",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): kodkort för sanitet. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/55501",
+    "query": "Ställplats Stockholm – vid Flaten, Stockholm",
+    "nearLat": 59.2965,
+    "nearLon": 17.9702,
+    "maxKm": 25
+  },
+  {
+    "name": "Åkersberga – Båthamnsvägen",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"fri P 4 husbilar\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/377290",
+    "query": "Båthamnsvägen, Åkersberga",
+    "nearLat": 59.4873,
+    "nearLon": 18.2814,
+    "maxKm": 25
+  },
+  {
+    "name": "Södertälje Gästhamn",
+    "services": [
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, färskvatten, toalett, hund ok\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/sodertalje-gasthamn/",
+    "query": "Södertälje Gästhamn, Södertälje",
+    "nearLat": 59.185,
+    "nearLon": 17.655,
+    "maxKm": 25
+  },
+  {
+    "name": "Caravanhallen i Södertälje",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilsservice. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/caravanhallen-i-sodertalje/",
+    "query": "Caravanhallen i Södertälje, Södertälje",
+    "nearLat": 59.185,
+    "nearLon": 17.655,
+    "maxKm": 25
+  },
+  {
+    "name": "First Camp Nickstabadet",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping vid strand. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/first-camp-nickstabadet/",
+    "query": "First Camp Nickstabadet, Nynäshamn",
+    "nearLat": 58.9327,
+    "nearLon": 17.9431,
+    "maxKm": 25
+  },
+  {
+    "name": "Nynäshamn – Centralgatan 93",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): parkering. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/433358",
+    "query": "Centralgatan 93, Nynäshamn",
+    "nearLat": 58.9327,
+    "nearLon": 17.9431,
+    "maxKm": 25
+  },
+  {
+    "name": "Norrtälje Camping",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, färskvatten, toalett, dusch, sopor, tömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/norrtalje-camping/",
+    "query": "Norrtälje Camping, Norrtälje",
+    "nearLat": 59.7496,
+    "nearLon": 18.778,
+    "maxKm": 25
+  },
+  {
+    "name": "Norrtälje Sportcentrum",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"grusplan, el\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/norrtalje-sportcentrum/",
+    "query": "Norrtälje Sportcentrum, Norrtälje",
+    "nearLat": 59.7496,
+    "nearLon": 18.778,
+    "maxKm": 25
+  },
+  {
+    "name": "Mobolets Gård (bisonfarm)",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"20 platser, el, färskvatten, toalett, dusch, wifi, tömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/mobolets-gard-bisonfarm/",
+    "query": "Mobolets Gård, Norrtälje",
+    "nearLat": 59.7496,
+    "nearLon": 18.778,
+    "maxKm": 25
+  },
+  {
+    "name": "Dahlgrens Auto Ställplats",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"50 kr/dygn\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/dahlgrens-auto-stallplats/",
+    "query": "Dahlgrens Auto Ställplats, Uppsala",
+    "nearLat": 59.8536,
+    "nearLon": 17.6874,
+    "maxKm": 25
+  },
+  {
+    "name": "Fyrishov Stugby och Camping",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping/stugby. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/fyrishov-stugby-och-camping/",
+    "query": "Fyrishov Stugby och Camping, Uppsala",
+    "nearLat": 59.8536,
+    "nearLon": 17.6874,
+    "maxKm": 25
+  },
+  {
+    "name": "EW Fritid",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilsservice. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/ew-fritid/",
+    "query": "EW Fritid, Uppsala",
+    "nearLat": 59.8536,
+    "nearLon": 17.6874,
+    "maxKm": 25
+  },
+  {
+    "name": "Upplands Bil & Fritidscenter",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilsservice. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/upplands-bil-fritidscenter/",
+    "query": "Upplands Bil & Fritidscenter, Uppsala",
+    "nearLat": 59.8536,
+    "nearLon": 17.6874,
+    "maxKm": 25
+  },
+  {
+    "name": "Gamla Uppsala parkering",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"fri P, toalett, svarttömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/90250",
+    "query": "Gamla Uppsala parkering, Uppsala",
+    "nearLat": 59.8536,
+    "nearLon": 17.6874,
+    "maxKm": 25
+  },
+  {
+    "name": "Uppsala – Kungsängsgatan 62",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"20 platser, EasyPark\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/478076",
+    "query": "Kungsängsgatan 62, Uppsala",
+    "nearLat": 59.8536,
+    "nearLon": 17.6874,
+    "maxKm": 25
+  },
+  {
+    "name": "Sundbyholms gästhamn",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"8 platser, el, toalett, dusch, latrintömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/sundbyholms-gasthamn/",
+    "query": "Sundbyholms gästhamn, Eskilstuna",
+    "nearLat": 59.3731,
+    "nearLon": 16.5298,
+    "maxKm": 25
+  },
+  {
+    "name": "Vilsta Camping & Stugby",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/vilsta-camping-stugby/",
+    "query": "Vilsta Camping & Stugby, Eskilstuna",
+    "nearLat": 59.3731,
+    "nearLon": 16.5298,
+    "maxKm": 25
+  },
+  {
+    "name": "Strömsholmen",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilsplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/stromsholmen/",
+    "query": "Strömsholmen, Eskilstuna",
+    "nearLat": 59.3731,
+    "nearLon": 16.5298,
+    "maxKm": 25
+  },
+  {
+    "name": "Nyköpings hamn",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): gästhamn. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/nykopings-hamn/",
+    "query": "Nyköpings hamn, Nyköping",
+    "nearLat": 58.7465,
+    "nearLon": 17.0112,
+    "maxKm": 25
+  },
+  {
+    "name": "Sibrobadet ställplats",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): ställplats vid bad. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/sibrobadet-stallplats/",
+    "query": "Sibrobadet ställplats, Nyköping",
+    "nearLat": 58.7465,
+    "nearLon": 17.0112,
+    "maxKm": 25
+  },
+  {
+    "name": "Strandstuvikens Camping",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/strandstuvikens-camping/",
+    "query": "Strandstuvikens Camping, Nyköping",
+    "nearLat": 58.7465,
+    "nearLon": 17.0112,
+    "maxKm": 25
+  },
+  {
+    "name": "Örstig Camping",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/orstig-camping/",
+    "query": "Örstig Camping, Nyköping",
+    "nearLat": 58.7465,
+    "nearLon": 17.0112,
+    "maxKm": 25
+  },
+  {
+    "name": "Nyköping – Söra",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"grus, 8-10 husbilar, 48h, fri\". Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/516967",
+    "lat": 58.7888,
+    "lon": 17.0032
+  },
+  {
+    "name": "Trosa Havsbad & Familjecamping",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/trosa-havsbad-familecamping/",
+    "query": "Trosa Havsbad & Familjecamping, Trosa",
+    "nearLat": 58.872,
+    "nearLon": 17.574,
+    "maxKm": 25
+  },
+  {
+    "name": "Trosa Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/trosa-golfklubb/",
+    "query": "Trosa Golfklubb, Trosa",
+    "nearLat": 58.872,
+    "nearLon": 17.574,
+    "maxKm": 25
+  },
+  {
+    "name": "Löts Camping",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/lots-camping/",
+    "query": "Löts Camping, Strängnäs",
+    "nearLat": 59.3473,
+    "nearLon": 17.0244,
+    "maxKm": 25
+  },
+  {
+    "name": "Strängnäs Marina",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): marina/gästhamn. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/strangnas-marina/",
+    "query": "Strängnäs Marina, Strängnäs",
+    "nearLat": 59.3473,
+    "nearLon": 17.0244,
+    "maxKm": 25
+  },
+  {
+    "name": "Strängnäs – Östra Strandvägen/Mossnäs",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): parkering. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/79479, /82423",
+    "query": "Östra Strandvägen/Mossnäs, Strängnäs",
+    "nearLat": 59.3473,
+    "nearLon": 17.0244,
+    "maxKm": 25
+  },
+  {
+    "name": "M & M Caravane",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilshandlare/ställplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/m-m-caravane-vasteras/",
+    "query": "M & M Caravane, Västerås",
+    "nearLat": 59.61,
+    "nearLon": 16.552,
+    "maxKm": 25
+  },
+  {
+    "name": "Västerås – Framnäsvägen 15",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): låg avgift dagtid/helg. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/329599",
+    "query": "Framnäsvägen 15, Västerås",
+    "nearLat": 59.61,
+    "nearLon": 16.552,
+    "maxKm": 25
+  },
+  {
+    "name": "Ställplats Köping",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): ställplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/stallplats-koping/",
+    "query": "Ställplats Köping, Köping",
+    "nearLat": 59.5174,
+    "nearLon": 15.9659,
+    "maxKm": 25
+  },
+  {
+    "name": "Köpings Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): golfklubb med övernattning. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/kopings-golfklubb/",
+    "query": "Köpings Golfklubb, Köping",
+    "nearLat": 59.5174,
+    "nearLon": 15.9659,
+    "maxKm": 25
+  },
+  {
+    "name": "Fagersta Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): golfklubb med övernattning. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/fagersta-golfklubb/",
+    "query": "Fagersta Golfklubb, Fagersta",
+    "nearLat": 60.0024,
+    "nearLon": 15.8156,
+    "maxKm": 25
+  },
+  {
+    "name": "Norbergs Camping",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, färskvatten, toalett, dusch, tömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/norbergs-camping/",
+    "query": "Norbergs Camping, Norberg",
+    "nearLat": 60.0714,
+    "nearLon": 15.9326,
+    "maxKm": 25
+  },
+  {
+    "name": "Surahammars Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, dusch\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/surahammars-golfklubb/",
+    "query": "Surahammars Golfklubb, Surahammar",
+    "nearLat": 59.7166,
+    "nearLon": 16.2189,
+    "maxKm": 25
+  },
+  {
+    "name": "Ställplats Klippan",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"6 platser, saknar service\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/stallplats-klippan-goteborg/",
+    "query": "Ställplats Klippan, Göteborg",
+    "nearLat": 57.7089,
+    "nearLon": 11.9471,
+    "maxKm": 25
+  },
+  {
+    "name": "Lisebergs ställplats Skatås",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"37 platser, el, färskvatten, avfall, gråvatten/tanktömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/lisebergs-stallplats-skatas/",
+    "query": "Lisebergs ställplats Skatås, Göteborg",
+    "nearLat": 57.7089,
+    "nearLon": 11.9471,
+    "maxKm": 25
+  },
+  {
+    "name": "Fästningsvägen (Volvo Museum)",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): gratis övernattning. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/89112",
+    "query": "Fästningsvägen, Göteborg",
+    "nearLat": 57.7089,
+    "nearLon": 11.9471,
+    "maxKm": 25
+  },
+  {
+    "name": "Anders Carlssons gata 13-17",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"max 48h, 20 SEK/h\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/255359",
+    "query": "Anders Carlssons gata 13-17, Göteborg",
+    "nearLat": 57.7089,
+    "nearLon": 11.9471,
+    "maxKm": 25
+  },
+  {
+    "name": "Saltholmsgatan 19B (färjeparkering)",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"50 SEK/24h\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/347325",
+    "query": "Saltholmsgatan 19B, Göteborg",
+    "nearLat": 57.7089,
+    "nearLon": 11.9471,
+    "maxKm": 25
+  },
+  {
+    "name": "Borås Camping",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se + park4night.com, ej primärkälla): camping (fullservice). Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se + park4night.com/en/place/195961",
+    "query": "Borås Camping, Borås",
+    "nearLat": 57.7165,
+    "nearLon": 12.9319,
+    "maxKm": 25
+  },
+  {
+    "name": "Vegagatan",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"60 SEK/dag\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/458735",
+    "query": "Vegagatan, Borås",
+    "nearLat": 57.7165,
+    "nearLon": 12.9319,
+    "maxKm": 25
+  },
+  {
+    "name": "Vindgatan 1 (gammal smedja)",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): avskild plats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/583924",
+    "query": "Vindgatan 1, Borås",
+    "nearLat": 57.7165,
+    "nearLon": 12.9319,
+    "maxKm": 25
+  },
+  {
+    "name": "Seglora Camping and Cottages",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/83509",
+    "query": "Seglora Camping and Cottages, Borås",
+    "nearLat": 57.7165,
+    "nearLon": 12.9319,
+    "maxKm": 25
+  },
+  {
+    "name": "Trollhättans slussområde",
+    "services": [
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se + park4night.com, ej primärkälla): \"~19 platser, vattenpåfyllning, avfallshantering\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se + park4night.com/en/place/75109",
+    "query": "Trollhättans slussområde, Trollhättan",
+    "nearLat": 58.2935,
+    "nearLon": 12.3009,
+    "maxKm": 25
+  },
+  {
+    "name": "Trollhättans Camping City",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/trollhattans-camping-city/",
+    "query": "Trollhättans Camping City, Trollhättan",
+    "nearLat": 58.2935,
+    "nearLon": 12.3009,
+    "maxKm": 25
+  },
+  {
+    "name": "Stenrösets Camping",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/stenrosets-camping/",
+    "query": "Stenrösets Camping, Trollhättan",
+    "nearLat": 58.2935,
+    "nearLon": 12.3009,
+    "maxKm": 25
+  },
+  {
+    "name": "Billingens Stugby och Camping",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se + park4night.com, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se + park4night.com/en/place/357532",
+    "query": "Billingens Stugby och Camping, Skövde",
+    "nearLat": 58.3952,
+    "nearLon": 13.89,
+    "maxKm": 25
+  },
+  {
+    "name": "Skövde Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): golfklubb (golfsvep-kandidat). Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/skovde-golfklubb/",
+    "query": "Skövde Golfklubb, Skövde",
+    "nearLat": 58.3952,
+    "nearLon": 13.89,
+    "maxKm": 25
+  },
+  {
+    "name": "Knistad Golf & Country Club",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): golfklubb (golfsvep-kandidat). Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/knistad-golf-country-club/",
+    "query": "Knistad Golf & Country Club, Skövde",
+    "nearLat": 58.3952,
+    "nearLon": 13.89,
+    "maxKm": 25
+  },
+  {
+    "name": "Gästhamnen i Uddevalla",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): gästhamn. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/gasthamnen-i-uddevalla/",
+    "query": "Gästhamnen i Uddevalla, Uddevalla",
+    "nearLat": 58.3502,
+    "nearLon": 11.859,
+    "maxKm": 25
+  },
+  {
+    "name": "Uddevalla husbilsparkering",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): husbilsparkering. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/uddevalla-husbilsparkering/",
+    "query": "Uddevalla husbilsparkering, Uddevalla",
+    "nearLat": 58.3502,
+    "nearLon": 11.859,
+    "maxKm": 25
+  },
+  {
+    "name": "Unda Camping & Stugby",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/unda-camping-stugby/",
+    "query": "Unda Camping & Stugby, Uddevalla",
+    "nearLat": 58.3502,
+    "nearLon": 11.859,
+    "maxKm": 25
+  },
+  {
+    "name": "Kloster Marina",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): marina/ställplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/kloster-marina/",
+    "query": "Kloster Marina, Uddevalla",
+    "nearLat": 58.3502,
+    "nearLon": 11.859,
+    "maxKm": 25
+  },
+  {
+    "name": "Ställplats Naven",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): ställplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/stallplats-naven/",
+    "query": "Ställplats Naven, Lidköping",
+    "nearLat": 58.5106,
+    "nearLon": 13.1851,
+    "maxKm": 25
+  },
+  {
+    "name": "Ställplats Kedumsvik",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): ställplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/stallplats-kedumsvik/",
+    "query": "Ställplats Kedumsvik, Lidköping",
+    "nearLat": 58.5106,
+    "nearLon": 13.1851,
+    "maxKm": 25
+  },
+  {
+    "name": "Spikens fiskeläge",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): ställplats/fiskeläge. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/spikens-fiskelage/",
+    "query": "Spikens fiskeläge, Lidköping",
+    "nearLat": 58.5106,
+    "nearLon": 13.1851,
+    "maxKm": 25
+  },
+  {
+    "name": "Alingsås Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): golfklubb (golfsvep-kandidat). Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/alingsas-golfklubb/",
+    "query": "Alingsås Golfklubb, Alingsås",
+    "nearLat": 57.9378,
+    "nearLon": 12.5572,
+    "maxKm": 25
+  },
+  {
+    "name": "Yttre hamnen i Mariestad",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): hamn/ställplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/yttre-hamnen-i-mariestad/",
+    "query": "Yttre hamnen i Mariestad, Mariestad",
+    "nearLat": 58.7182,
+    "nearLon": 13.8176,
+    "maxKm": 25
+  },
+  {
+    "name": "Sundsörn ställplats",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): ställplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/sundsorn-stallplats/",
+    "query": "Sundsörn ställplats, Mariestad",
+    "nearLat": 58.7182,
+    "nearLon": 13.8176,
+    "maxKm": 25
+  },
+  {
+    "name": "Ställplats Cesarstugan",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): ställplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/stallplats-cesarstugan/",
+    "query": "Ställplats Cesarstugan, Falköping",
+    "nearLat": 58.1553,
+    "nearLon": 13.5357,
+    "maxKm": 25
+  },
+  {
+    "name": "Hornborgasjön",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): naturplats/ställplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/hornborgasjon/",
+    "query": "Hornborgasjön, Falköping",
+    "nearLat": 58.1553,
+    "nearLon": 13.5357,
+    "maxKm": 25
+  },
+  {
+    "name": "Mössebergs Camping",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se (nämnd i sökresultat), ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se (nämnd i sökresultat)",
+    "query": "Mössebergs Camping, Falköping",
+    "nearLat": 58.1553,
+    "nearLon": 13.5357,
+    "maxKm": 25
+  },
+  {
+    "name": "Varbergs Fästning",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se + park4night.com, ej primärkälla): \"10 platser / gratis 2h, upp till 6 m\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se + park4night.com/en/place/78360",
+    "query": "Varbergs Fästning, Varberg",
+    "nearLat": 57.1202,
+    "nearLon": 12.2763,
+    "maxKm": 25
+  },
+  {
+    "name": "Gästhamnen i Varberg",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): gästhamn. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/gasthamnen-i-varberg/",
+    "query": "Gästhamnen i Varberg, Varberg",
+    "nearLat": 57.1202,
+    "nearLon": 12.2763,
+    "maxKm": 25
+  },
+  {
+    "name": "Tömningsplats Varberg",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): tömningsstation. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/tomningsplats-varberg/",
+    "query": "Tömningsplats Varberg, Varberg",
+    "nearLat": 57.1202,
+    "nearLon": 12.2763,
+    "maxKm": 25
+  },
+  {
+    "name": "Varbergs innerhamn",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): bokning via QR. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/37359",
+    "query": "Varbergs innerhamn, Varberg",
+    "nearLat": 57.1202,
+    "nearLon": 12.2763,
+    "maxKm": 25
+  },
+  {
+    "name": "Änggärdevägen 2",
+    "services": [
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"vatten/avfall dygnet runt, dusch/wc via PIN, 300 SEK\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/de/place/30776",
+    "query": "Änggärdevägen 2, Varberg",
+    "nearLat": 57.1202,
+    "nearLon": 12.2763,
+    "maxKm": 25
+  },
+  {
+    "name": "Östra Hamnvägen 7",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): gratis 24h nära centrum. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/de/place/343221",
+    "query": "Östra Hamnvägen 7, Varberg",
+    "nearLat": 57.1202,
+    "nearLon": 12.2763,
+    "maxKm": 25
+  },
+  {
+    "name": "Kungsbacka Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): golfklubb (golfsvep-kandidat). Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/kungsbacka-golfklubb/",
+    "query": "Kungsbacka Golfklubb, Kungsbacka",
+    "nearLat": 57.5107,
+    "nearLon": 12.0808,
+    "maxKm": 25
+  },
+  {
+    "name": "Forsgårdens Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): golfklubb (golfsvep-kandidat). Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/forsgardens-golfklubb/",
+    "query": "Forsgårdens Golfklubb, Kungsbacka",
+    "nearLat": 57.5107,
+    "nearLon": 12.0808,
+    "maxKm": 25
+  },
+  {
+    "name": "Falkenbergs båtsällskap",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se + park4night.com, ej primärkälla): båtsällskap/ställplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se + park4night.com/de/place/144297 (matchande adress)",
+    "query": "Falkenbergs båtsällskap, Falkenberg",
+    "nearLat": 56.8929,
+    "nearLon": 12.5006,
+    "maxKm": 25
+  },
+  {
+    "name": "Hule Gård",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"5 platser, nära havet\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/hule-gard/",
+    "query": "Hule Gård, Falkenberg",
+    "nearLat": 56.8929,
+    "nearLon": 12.5006,
+    "maxKm": 25
+  },
+  {
+    "name": "Ställplats Ginstavallen",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): ställplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/stallplats-ginstavallen/",
+    "query": "Ställplats Ginstavallen, Falkenberg",
+    "nearLat": 56.8929,
+    "nearLon": 12.5006,
+    "maxKm": 25
+  },
+  {
+    "name": "Björnhults Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): golfklubb (golfsvep-kandidat). Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/bjornhults-golfklubb/",
+    "query": "Björnhults Golfklubb, Falkenberg",
+    "nearLat": 56.8929,
+    "nearLon": 12.5006,
+    "maxKm": 25
+  },
+  {
+    "name": "Lanthotell Lögnäs Gård",
+    "services": [
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"dusch, el, färskvatten, hc-wc, wifi, husbilsövernattning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/lanthotell-lognas-gard/",
+    "query": "Lanthotell Lögnäs Gård, Laholm",
+    "nearLat": 56.5014,
+    "nearLon": 13.0035,
+    "maxKm": 25
+  },
+  {
+    "name": "Strömstad Camping",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/stromstad-camping/",
+    "query": "Strömstad Camping, Strömstad",
+    "nearLat": 58.9473,
+    "nearLon": 11.1995,
+    "maxKm": 25
+  },
+  {
+    "name": "Bojarparkeringen",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"färskvatten, toalett, gråvattentömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/bojarparkeringen/",
+    "query": "Bojarparkeringen, Strömstad",
+    "nearLat": 58.9473,
+    "nearLon": 11.1995,
+    "maxKm": 25
+  },
+  {
+    "name": "Strömstads Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): golfklubb (golfsvep-kandidat). Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/stromstads-golfklubb/",
+    "query": "Strömstads Golfklubb, Strömstad",
+    "nearLat": 58.9473,
+    "nearLon": 11.1995,
+    "maxKm": 25
+  },
+  {
+    "name": "Lökholmens Camping",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/lokholmens-camping/",
+    "query": "Lökholmens Camping, Strömstad",
+    "nearLat": 58.9473,
+    "nearLon": 11.1995,
+    "maxKm": 25
+  },
+  {
+    "name": "Hovetorps ställplats",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/hovetorps-stallplats/",
+    "query": "Hovetorps ställplats, Linköping",
+    "nearLat": 58.4217,
+    "nearLon": 15.6087,
+    "maxKm": 25
+  },
+  {
+    "name": "Norrköping Centrum (Stortorget)",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"6 husbilsplatser, max 24h\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/norrkoping-centrum/",
+    "query": "Norrköping Centrum, Norrköping",
+    "nearLat": 58.6023,
+    "nearLon": 16.1857,
+    "maxKm": 25
+  },
+  {
+    "name": "Lindö Småbåtshamn",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/lindo-smabatshamn/",
+    "query": "Lindö Småbåtshamn, Norrköping",
+    "nearLat": 58.6023,
+    "nearLon": 16.1857,
+    "maxKm": 25
+  },
+  {
+    "name": "Trafikverkets rastplats Mjölby",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"färskvatten, wc, avfall, kassettömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/trafikverkets-rastplats-mjolby/",
+    "query": "Trafikverkets rastplats Mjölby, Mjölby",
+    "nearLat": 58.3371,
+    "nearLon": 15.1635,
+    "maxKm": 25
+  },
+  {
+    "name": "Tömningsplats Mjölby",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"gråvatten+kassettömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/tomningsplats-mjolby/",
+    "query": "Tömningsplats Mjölby, Mjölby",
+    "nearLat": 58.3371,
+    "nearLon": 15.1635,
+    "maxKm": 25
+  },
+  {
+    "name": "Mjölby Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): golfklubb (golfsvep-kandidat). Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/mjolby-golfklubb/",
+    "query": "Mjölby Golfklubb, Mjölby",
+    "nearLat": 58.3371,
+    "nearLon": 15.1635,
+    "maxKm": 25
+  },
+  {
+    "name": "Finspångs Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, dusch\" (golfsvep-kandidat). Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/finspangs-golfklubb/",
+    "query": "Finspångs Golfklubb, Finspång",
+    "nearLat": 58.7077,
+    "nearLon": 15.8121,
+    "maxKm": 25
+  },
+  {
+    "name": "Ställplats City Jönköping",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): kontakt dinhusbil.nu. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/stallplats-city-jonkoping/",
+    "lat": 57.764798,
+    "lon": 14.169558
+  },
+  {
+    "name": "Ställplats Elmia",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/stallplats-elmia/",
+    "lat": 57.788337,
+    "lon": 14.225189
+  },
+  {
+    "name": "Värnamo Camping",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/varnamo-camping/",
+    "query": "Värnamo Camping, Värnamo",
+    "nearLat": 57.1796,
+    "nearLon": 14.0444,
+    "maxKm": 25
+  },
+  {
+    "name": "Centralt belägna husbilsplatser i Vetlanda",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"gratis, max 1 natt, 4 platser\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/centralt-belagna-husbilsplatser-i-vetlanda/",
+    "query": "Centralt belägna husbilsplatser i Vetlanda, Vetlanda",
+    "nearLat": 57.4434,
+    "nearLon": 15.0526,
+    "maxKm": 25
+  },
+  {
+    "name": "Ställplats Gislaved",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"wc, avfall\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/stallplats-gislaved/",
+    "query": "Ställplats Gislaved, Gislaved",
+    "nearLat": 57.3089,
+    "nearLon": 13.5532,
+    "maxKm": 25
+  },
+  {
+    "name": "Eksjö Camping",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/eksjo-camping/",
+    "query": "Eksjö Camping, Eksjö",
+    "nearLat": 57.6604,
+    "nearLon": 14.9592,
+    "maxKm": 25
+  },
+  {
+    "name": "Kalmar husbilsparkering",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/kalmar-husbilsparkering/",
+    "query": "Kalmar husbilsparkering, Kalmar",
+    "nearLat": 56.673,
+    "nearLon": 16.3241,
+    "maxKm": 25
+  },
+  {
+    "name": "Örbäcken (IFK Västervik)",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"tömning vid Lysingsbadet, färskvatten vid Rundsvängen\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/orbacken/",
+    "query": "Örbäcken, Västervik",
+    "nearLat": 57.7507,
+    "nearLon": 16.633,
+    "maxKm": 25
+  },
+  {
+    "name": "Tömningsplats Västervik",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): tömning. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/tomningsplats-vastervik/",
+    "query": "Tömningsplats Västervik, Västervik",
+    "nearLat": 57.7507,
+    "nearLon": 16.633,
+    "maxKm": 25
+  },
+  {
+    "name": "Västervik Resort",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, färskvatten, wc, dusch, avfall, wifi, gråvatten+kassettömning\" (bokningsbar). Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/vastervik-resort/",
+    "query": "Västervik Resort, Västervik",
+    "nearLat": 57.7507,
+    "nearLon": 16.633,
+    "maxKm": 25
+  },
+  {
+    "name": "Västerviks Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): golfklubb (golfsvep-kandidat). Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/vasterviks-golfklubb/",
+    "query": "Västerviks Golfklubb, Västervik",
+    "nearLat": 57.7507,
+    "nearLon": 16.633,
+    "maxKm": 25
+  },
+  {
+    "name": "Norra kajen i Oskarshamn",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"färskvatten, wc, avfall, tömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/norra-kajen-oskarshamn/",
+    "query": "Norra kajen i Oskarshamn, Oskarshamn",
+    "nearLat": 57.2633,
+    "nearLon": 16.4443,
+    "maxKm": 25
+  },
+  {
+    "name": "First Camp Gunnarsö",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se (sökträff), ej primärkälla): \"el, tömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se (sökträff)",
+    "query": "First Camp Gunnarsö, Oskarshamn",
+    "nearLat": 57.2633,
+    "nearLon": 16.4443,
+    "maxKm": 25
+  },
+  {
+    "name": "Vimmerby Golfklubb",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el\" (golfsvep-kandidat). Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/vimmerby-golfklubb/",
+    "query": "Vimmerby Golfklubb, Vimmerby",
+    "nearLat": 57.6615,
+    "nearLon": 15.9007,
+    "maxKm": 25
+  },
+  {
+    "name": "Astrid Lindgrens Värld (ställplats)",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/astrid-lindgrens-varld/",
+    "query": "Astrid Lindgrens Värld, Vimmerby",
+    "nearLat": 57.6615,
+    "nearLon": 15.9007,
+    "maxKm": 25
+  },
+  {
+    "name": "Mönsterås hamn",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): rastplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/monsteras-hamn/",
+    "query": "Mönsterås hamn, Mönsterås",
+    "nearLat": 57.0239,
+    "nearLon": 16.5068,
+    "maxKm": 25
+  },
+  {
+    "name": "Ljugarns Semesterby & Camping",
+    "services": [
+      "vatten",
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, färskvatten, wc, dusch, avfall\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/ljugarns-semesterby-camping/",
+    "query": "Ljugarns Semesterby & Camping, Ljugarn",
+    "nearLat": 57.3415,
+    "nearLon": 18.7179,
+    "maxKm": 25
+  },
+  {
+    "name": "Camping Visby Strandby",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"63 platser, alla el, servicehus\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/210328",
+    "query": "Camping Visby Strandby, Visby",
+    "nearLat": 57.6352,
+    "nearLon": 18.3156,
+    "maxKm": 25
+  },
+  {
+    "name": "Visby – 2 Färjeleden",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"10 husbilar, ingen service\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/377547",
+    "query": "2 Färjeleden, Visby",
+    "nearLat": 57.6352,
+    "nearLon": 18.3156,
+    "maxKm": 25
+  },
+  {
+    "name": "Visby – 4 Södra Murgatan",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"10 kr/h, ingen service\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/105546",
+    "query": "4 Södra Murgatan, Visby",
+    "nearLat": 57.6352,
+    "nearLon": 18.3156,
+    "maxKm": 25
+  },
+  {
+    "name": "Visby – 34 Västerhejde Langs väg",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"gratis, ingen service\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/138869",
+    "query": "34 Västerhejde Langs väg, Visby",
+    "nearLat": 57.6352,
+    "nearLon": 18.3156,
+    "maxKm": 25
+  },
+  {
+    "name": "Scaniaparken",
+    "services": [
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, färskvatten, sophantering, övernattning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/scaniaparken/",
+    "query": "Scaniaparken, Malmö",
+    "nearLat": 55.6127,
+    "nearLon": 13.045,
+    "maxKm": 25
+  },
+  {
+    "name": "Parkeringsplats för husbil i Kristianstad",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/parkeringsplats-for-husbil-i-kristianstad/",
+    "lat": 56.044511,
+    "lon": 14.168364
+  },
+  {
+    "name": "Kättingens ställplats",
+    "services": [
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"24 platser, el, färskvatten, toalett, dusch, sopor, gråvatten/tank\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/kattingens-stallplats/",
+    "query": "Kättingens ställplats, Kristianstad",
+    "nearLat": 56.0232,
+    "nearLon": 14.1639,
+    "maxKm": 25
+  },
+  {
+    "name": "Husbilsparkering i Ystad",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"10 platser, 4h-parkering\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/husbilsparkering-i-ystad/",
+    "query": "Husbilsparkering i Ystad, Ystad",
+    "nearLat": 55.4336,
+    "nearLon": 13.8335,
+    "maxKm": 25
+  },
+  {
+    "name": "Godsmagasinet i Simrishamn",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"gratis parkering 7 dagar\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/godsmagasinet-i-simrishamn/",
+    "query": "Godsmagasinet i Simrishamn, Simrishamn",
+    "nearLat": 55.559,
+    "nearLon": 14.3524,
+    "maxKm": 25
+  },
+  {
+    "name": "Småbåtshamnen i Simrishamn",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"7 platser, el\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/smabatshamnen-i-simrishamn/",
+    "query": "Småbåtshamnen i Simrishamn, Simrishamn",
+    "nearLat": 55.559,
+    "nearLon": 14.3524,
+    "maxKm": 25
+  },
+  {
+    "name": "Helsingborgs Bryggeri – Oxhallen",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): bokas via Acamp. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/helsingborgs-bryggeri-oxhallen/",
+    "query": "Helsingborgs Bryggeri – Oxhallen, Helsingborg",
+    "nearLat": 56.0774,
+    "nearLon": 12.7601,
+    "maxKm": 25
+  },
+  {
+    "name": "Ställplats Föreningshamnen i Skälderviken",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se + park4night.com, ej primärkälla): \"el, wc/dusch, tvätt, kök\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se + park4night.com/en/place/356972",
+    "query": "Ställplats Föreningshamnen i Skälderviken, Ängelholm",
+    "nearLat": 56.2541,
+    "nearLon": 12.9122,
+    "maxKm": 25
+  },
+  {
+    "name": "Skånes Djurparks Camping & Grottby",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"gråvatten och toatömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/skanes-djurparks-camping-grottby/",
+    "query": "Skånes Djurparks Camping & Grottby, Höör",
+    "nearLat": 55.9525,
+    "nearLon": 13.5645,
+    "maxKm": 25
+  },
+  {
+    "name": "Stamhem AB",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"50 platser, el, wc/dusch, vatten, latrin ingår, 200 kr\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/415462",
+    "query": "Stamhem AB, Kristianstad",
+    "nearLat": 56.0232,
+    "nearLon": 14.1639,
+    "maxKm": 25
+  },
+  {
+    "name": "Sölvesborg – Östra Hamnvägen",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"alla tjänster + wifi\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/17041",
+    "query": "Östra Hamnvägen, Sölvesborg",
+    "nearLat": 56.0492,
+    "nearLon": 14.6752,
+    "maxKm": 25
+  },
+  {
+    "name": "Vattenriket Visitor Center",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"gratis 4h, övernattning 100 kr\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/41062",
+    "query": "Vattenriket Visitor Center, Kristianstad",
+    "nearLat": 56.0232,
+    "nearLon": 14.1639,
+    "maxKm": 25
+  },
+  {
+    "name": "Karlskrona centrum (allmän parkering)",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"9–16 5 kr/h, fri övrig tid\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night.com/en/place/39693",
+    "query": "Karlskrona centrum, Karlskrona",
+    "nearLat": 56.2004,
+    "nearLon": 15.6368,
+    "maxKm": 25
+  },
+  {
+    "name": "First Camp Skönstavik",
+    "services": [
+      "camping"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (park4night (sökträff), ej primärkälla): campingkedja, fullservice. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://park4night (sökträff)",
+    "query": "First Camp Skönstavik, Karlskrona",
+    "nearLat": 56.2004,
+    "nearLon": 15.6368,
+    "maxKm": 25
+  },
+  {
+    "name": "Rönninge husbilsplats",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, färskvatten, gråvatten-/kassettömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/ronninge-husbilsplats/",
+    "query": "Rönninge husbilsplats, Ronneby",
+    "nearLat": 56.1743,
+    "nearLon": 15.3032,
+    "maxKm": 25
+  },
+  {
+    "name": "Garpahamnen Hasslö",
+    "services": [
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, färskvatten, toalett\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/garpahamnen-hasslo/",
+    "query": "Garpahamnen Hasslö, Hasslö",
+    "nearLat": 56.1027,
+    "nearLon": 15.4744,
+    "maxKm": 25
+  },
+  {
+    "name": "Tömningsplats Karlskrona",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"gråvatten-/kassettömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/tomningsplats-karlskrona/",
+    "query": "Tömningsplats Karlskrona, Karlskrona",
+    "nearLat": 56.2004,
+    "nearLon": 15.6368,
+    "maxKm": 25
+  },
+  {
+    "name": "Ronneby Marina",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"38 platser, hundvänligt\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/rest-area/ronneby-marina/",
+    "query": "Ronneby Marina, Ronneby",
+    "nearLat": 56.1743,
+    "nearLon": 15.3032,
+    "maxKm": 25
+  },
+  {
+    "name": "Väggaviken Karlshamn",
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): gästhamn. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "website": "https://husbilsplats.se/locations/vaggaviken-karlshamn/",
+    "query": "Väggaviken Karlshamn, Karlshamn",
+    "nearLat": 56.1768,
+    "nearLon": 14.8464,
+    "maxKm": 25
   }
 ]

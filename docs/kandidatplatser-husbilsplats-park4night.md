@@ -2,8 +2,19 @@
 
 Rådata från ett nationellt discovery-svep (7 parallella agenter, en per landsdel)
 som sökte husbilsplats.se och park4night.com/en efter ställplatser/campingar som
-helt saknas i appens register. **Inget här är tillagt i appen** – det är en
-research-logg att jobba vidare från, inte en to-do-lista att blint klistra in.
+helt saknas i appens register.
+
+**Uppdatering 24 sep 2026:** Per beslutade att sådana fynd ska VISAS som
+obekräftade (grå nål) i stället för att döljas. 233 rader nedan är därför
+inlagda i `scripts/curated-places.json` med `unverified: true` (skript
+`import-kandidater.mjs` i sessionens scratchpad): 16 med koordinat från listan,
+217 via geokodning av "Namn, Ort" med rimlighetskontroll mot ortens läge (de som
+inte går att geokoda faller bort tyst i synken). 73 fanns redan under samma namn,
+20 låg inom 300 m från en befintlig plats, 8 var sökmotorbrus, 3 var gasol, och
+81 hoppades över för att orten inte gick att placera (småorter utan befintliga
+platser i datan, t.ex. Haparanda, Vindeln, Ramsele, Storlien, Tällberg) – de kan
+läggas in manuellt med koordinat. Kvarstående rader är fortfarande en
+research-logg, inte en to-do-lista att blint klistra in.
 
 ## Metod och begränsningar (viktigt att läsa innan ni jobbar vidare)
 
