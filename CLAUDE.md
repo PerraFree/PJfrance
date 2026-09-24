@@ -569,12 +569,46 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
      (skript: läs `origin/gh-pages:data/stations-seed.json`, matcha på namn,
      lista saknade + poster >6 km från `nearLat/nearLon`).
    - Geokodningsmissar rättade: Gråbo (exakt koordinat 57.8253/12.2462,
-     Nominatim klarade inte "Olstorpsvägen 166"), jem & fix Alvesta/
-     Söderhamn/Hässleholm (gatunummer saknas i OSM → sök på gatunamn +
-     lågt `maxKm`; Hässleholm: hitta.se anger Spångatan 1, inte
-     Stjärneholmsgatan 12). Lärdom: kedjebutiker på industrigator saknar
-     ofta husnummer i OSM – använd gatunamn utan nummer eller exakt
-     koordinat, aldrig postnummer-dubbletter i `query`.
+     Nominatim klarade inte "Olstorpsvägen 166"), jem & fix Hässleholm
+     (hitta.se anger Spångatan 1, inte Stjärneholmsgatan 12 – nu rätt).
+     **jem & fix Alvesta (Skördevägen) och Söderhamn (Stenängsvägen) går
+     fortfarande INTE att geokoda** – gatorna saknas helt i OSM, även utan
+     husnummer. Ligger kvar i registret men publiceras inte förrän någon
+     sätter exakt `lat`/`lon` (kolla butikssidan/hitta.se i webbläsare).
+     Lärdom: kedjebutiker på industrigator saknar ofta husnummer i OSM –
+     använd gatunamn utan nummer eller exakt koordinat, aldrig
+     postnummer-dubbletter i `query`.
+
+   **Tömningssvep latrin/gråvatten (24 sep 2026):** Per bad om ett nytt
+   omfattande svep. 8 parallella agenter (en per landsdel, 22 WebSearch
+   var = 176 av kvoten 200), uppdragstext + JSON-format i sessionens
+   scratchpad (`UPPDRAG-tomning.md`, importskript `import-tomning.mjs`).
+   Agenterna fick hela publicerade datan (`existing-all.json`) för
+   dubblettkoll och prioriterade kommuner med 0–1 tömningsplatser.
+   Bästa källor: kommunernas egna VA-/avfallssidor (Askersund, Högsby,
+   Uppvidinge, Smedjebacken, Kristinehamn, Enköping, Bollnäs, Finspång,
+   Ljusnarsberg, Kungälv…), turistråd (vastsverige.se, visitblekinge.se,
+   destinationhalmstad.se), anläggningarnas egna sajter. Resultat: **19 nya
+   platser + 21 kompletteringar** av befintliga (OSM-)poster (alla med
+   citat i `description`), t.ex. Askersunds reningsverk, Kumla GolfCamp,
+   Kopparberg/Ställdalen, Enköpings hamn, Marholmen, Getinge, Töretorp,
+   Ystads småbåtshamn, Nya Åhusparken, Aspan Ronneby, Björkåkrabadet Åseda,
+   First Camp Älmhult/IKEA, Vadstena ställplats, Skistar Sälen, Säters
+   Camping, Hajstorp, Hällekis, Båstad/Råbocka/Tostarpsgården, Camp Gielas,
+   Sorsele Camping, Edskens Camping, Dalskärs Camping, Hoks Naturcamping.
+   Namnlösa OSM-objekt som kompletterades fick riktiga namn i registret
+   (t.ex. "Vadstena ställplats (gästhamnen)", "Saxemara camping/ställplats")
+   – appens avstånds-dedupe slår ihop dem med OSM-posten i runtime.
+   42 låg-evidens-fynd sparade i `docs/tomning-svep-sep-2026-lag-evidens.md`
+   (INTE inlagda). Lärdomar: stallplatskartan.se återanvänder samma
+   boilerplate ("modern latrintömningsautomat") på många campingar – aldrig
+   belägg; generiska kommunsökningar ger mest slamtömning för fastigheter –
+   sök på namngivna anläggningar/ställplatser i stället; Region Gotland och
+   Orust tar inte emot husbilslatrin alls. Kommuner som fortfarande har 0
+   tömningsplatser efter svepet är mest inlandskommuner utan egen
+   webbinformation (t.ex. Eslöv, Sjöbo, Skurup, Staffanstorp, Lekeberg,
+   Hallsberg, Kungsör, Fagersta/Norberg) – nästa metod är telefon eller
+   crowdsourcing, inte fler webbsökningar.
    - **Kvar efter svepet:** Skånegas Ängelholm + Levol Onsala (gatuadress
      saknas), Expressgasol Tidaholm/Ronneby/Tingsryd och Norbros egen
      automatkarta (JS-kartor, läs i webbläsare), Byggmax/Granngården/Rusta/
