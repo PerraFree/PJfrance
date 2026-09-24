@@ -1794,21 +1794,21 @@
   },
   {
     "name": "Gasolautomat Borgeby Biltvätt, Bjärred",
-    "query": "Desideriavägen 21, 237 42 Bjärred",
+    "query": "Desideriavägen, Borgeby",
     "services": [
       "gasol"
     ],
     "description": "Gasolautomat (AGA/Linde) vid Borgeby Biltvätt – köp ny eller byt tom gasolflaska mot full (PC5/PC10 komposit), kortbetalning, öppet dygnet runt. Källa: Lindes lista + borgebybiltvatt.se.",
     "url": "https://forsaljningsstallen.linde.se/bj%C3%A4rred/desideriav%C3%A4gen-21/aga-gasolautomat-borgeby-biltv%C3%A4tt",
     "source": "egen",
-    "nearLat": 55.72,
-    "nearLon": 13.03,
+    "nearLat": 55.745,
+    "nearLon": 13.05,
     "openingHours": "Dygnet runt",
     "facilities": [
       "gasol_byte"
     ],
     "address": "Desideriavägen 21, 237 42 Bjärred (Borgeby)",
-    "maxKm": 6,
+    "maxKm": 3,
     "gasolPrice": "Byte PC10 ca 379 kr, PC5 ca 249 kr (Linde/AGA-prislista 2026 – kan variera per automat)"
   },
   {
@@ -8314,7 +8314,7 @@
   },
   {
     "name": "Gasol – Fyndlagret, Tranemo",
-    "query": "Limmaredsvägen 32, Tranemo",
+    "query": "Limmaredsvägen 32, 514 32 Tranemo",
     "nearLat": 57.483,
     "nearLon": 13.35,
     "maxKm": 3,
@@ -8467,10 +8467,10 @@
   },
   {
     "name": "GasolAutomat.se – Willys Alingsås",
-    "query": "Otto Elanders gata 6, Alingsås",
+    "query": "Hagavägen 3, Alingsås",
     "nearLat": 57.93,
     "nearLon": 12.533,
-    "maxKm": 12,
+    "maxKm": 6,
     "services": [
       "gasol"
     ],
@@ -8483,7 +8483,7 @@
     "openingHours": "24/7",
     "phone": "072-163 48 70",
     "url": "https://gasolautomat.se/reseller/willys-alingsas/",
-    "address": "Otto Elanders gata 6, Alingsås (Willys)"
+    "address": "Hagavägen 3 (Hagaplan), Alingsås – Willys"
   },
   {
     "name": "Gasol – Granngården, Alingsås",
@@ -8655,7 +8655,7 @@
     "query": "Västra Björrödsvägen 1, Landvetter",
     "nearLat": 57.6758,
     "nearLon": 12.2379,
-    "maxKm": 1.5,
+    "maxKm": 5,
     "services": [
       "gasol"
     ],
@@ -9263,7 +9263,7 @@
     ],
     "source": "egen",
     "description": "Ej i registret (Lerum kommun). Geokoda 'Olstorpsvägen 166, Gråbo' med nearLat/nearLon Gråbo, maxKm 5. maptons-sidan har exakt koordinat men kunde inte hämtas (blockad). Flaskor: PC5, PC10 (komposit); byte tom→full eller köp ny. Källa: forsaljningsstallen.linde.se/gråbo/olstorpsvägen-166/aga-gasolautomat-gråbo; mt.maptons.com/p/12198523556; husbilskompisar.se/stallplatskartan/aga-gasolautomat-graabo",
-    "query": "Olstorpsvägen 166, 443 70 Gråbo, Gråbo",
+    "query": "Olstorpsvägen 166, Gråbo",
     "nearLat": 57.838,
     "nearLon": 12.3,
     "maxKm": 12,
@@ -9283,7 +9283,7 @@
     ],
     "source": "egen",
     "description": "Ej i registret. Finns som egen sida i Lindes officiella återförsäljarkatalog (URL med adress). Sidinnehållet kunde inte läsas (blockad) – flasktyper enligt Lindes automatstandard. Postnr 448 33 ej verifierat (Floda har 448 3x). Flaskor: PC5, PC10 (Linde-automatstandard). Källa: forsaljningsstallen.linde.se/floda/gottfridsvägen-1/aga-gasolautomat-oscarshöjds-blommor-&-trädgård",
-    "query": "Gottfridsvägen 1, 448 33 Floda, Floda",
+    "query": "Gottfridsvägen 1, Floda",
     "nearLat": 57.807,
     "nearLon": 12.362,
     "maxKm": 12,
@@ -11021,11 +11021,11 @@
   },
   {
     "name": "Gasol – jem & fix Alvesta",
-    "query": "Skördevägen 3, Alvesta",
+    "query": "Skördevägen 3, 342 37 Alvesta",
     "nearLat": 56.899,
     "nearLon": 14.556,
     "maxKm": 12,
-    "address": "Skördevägen 3, Alvesta",
+    "address": "Skördevägen 3, 342 37 Alvesta",
     "services": [
       "gasol"
     ],
@@ -11225,7 +11225,7 @@
   },
   {
     "name": "Gasol – jem & fix Habo",
-    "query": "Mysketgatan 1, Habo",
+    "query": "Mysketgatan 1, Habo, Jönköpings län",
     "nearLat": 57.91,
     "nearLon": 14.075,
     "maxKm": 12,
@@ -11752,11 +11752,11 @@
   },
   {
     "name": "Gasol – jem & fix Söderhamn",
-    "query": "Stenängsvägen 4A, Söderhamn",
+    "query": "Stenängsvägen 4A, 826 40 Söderhamn",
     "nearLat": 61.304,
     "nearLon": 17.059,
     "maxKm": 12,
-    "address": "Stenängsvägen 4A, Söderhamn",
+    "address": "Stenängsvägen 4A, 826 40 Söderhamn",
     "services": [
       "gasol"
     ],

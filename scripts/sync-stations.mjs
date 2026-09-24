@@ -662,6 +662,33 @@ try {
   stations.push(...osm)
 } catch (err) {
   console.error(`OSM-hämtning misslyckades helt: ${err.message}`)
+  // Overpass är nere i timmar ibland (alla speglar 504 samtidigt, t.ex.
+  // 24 sep 2026). Utan detta stoppade säkerhetsspärren nedan HELA
+  // skrivningen, så att register-ändringar (nya curated-platser, rättade
+  // koordinater) inte kom ut förrän Overpass svarade igen. Återanvänd i
+  // stället OSM-stationerna från förra körningens seed – de är på sin
+  // höjd några dagar gamla – och låt Trafikverket + registret vara färska.
+  try {
+    const prev = JSON.parse(await readFile(OUT, 'utf8'))
+    const reused = (prev.stations ?? prev)
+      .filter((s) => s.source === 'osm')
+      // Samma regel som i fetchOsmFrom: gasol utan verifierad byte/påfyllning
+      // (ren fuel:lpg-mack) ska inte hänga kvar från en äldre seed.
+      .map((s) => {
+        if (!s.services.includes('gasol')) return s
+        const verified = (s.facilities ?? []).some((f) => f === 'gasol_byte' || f === 'gasol_pafyllning')
+        if (verified) return s
+        const services = s.services.filter((x) => x !== 'gasol')
+        return services.length ? { ...s, services } : null
+      })
+      .filter(Boolean)
+    if (reused.length) {
+      console.warn(`Återanvänder ${reused.length} OSM-stationer från förra seeden (${prev.updatedAt ?? 'okänt datum'}).`)
+      stations.push(...reused)
+    }
+  } catch (e) {
+    console.error(`Kunde inte återanvända förra seeden: ${e.message}`)
+  }
 }
 
 const trvKey = process.env.TRV_API_KEY
