@@ -33,6 +33,12 @@ import type { StationReviews } from '../lib/reviews'
 // in nära (för färsk detalj). Håller "Hämtar stationer …" borta vid ort-zoom.
 const MIN_FETCH_ZOOM = 12
 const VIEW_KEY = 'tomningskartan.view'
+/**
+ * Väderprognos + Windy-länk i popupen. Avstängd sep 2026 (Per: "för mycket
+ * info"). All kod (src/lib/weather.ts, CSS .weather-*) ligger kvar – sätt
+ * true för att slå på igen.
+ */
+const SHOW_WEATHER = false
 
 interface Props {
   stations: Station[]
@@ -289,11 +295,15 @@ function popupHtml(
     )
   }
   if (cards.length) rows.push(`<div class="info-cards">${cards.join('')}</div>`)
-  // Väderprognos fylls i asynkront när popupen öppnas (se popupopen nedan) –
-  // hämtas bara på klick, inte i förväg, samma mönster som öppet-nu/ortsnamn.
-  rows.push(
-    `<div class="weather-slot" data-lat="${station.lat}" data-lon="${station.lon}"><span class="info-label">Väder kommande dagar</span><div class="weather-body">Hämtar prognos …</div></div>`,
-  )
+  // Väderprognos (SMHI) + Windy-länk: AVSTÄNGD på Pers begäran sep 2026
+  // ("för mycket info i popupen"). Koden är kvar i arkivet – sätt
+  // SHOW_WEATHER = true för att aktivera igen (fylls i asynkront vid
+  // popupopen, samma mönster som öppet-nu/ortsnamn).
+  if (SHOW_WEATHER) {
+    rows.push(
+      `<div class="weather-slot" data-lat="${station.lat}" data-lon="${station.lon}"><span class="info-label">Väder kommande dagar</span><div class="weather-body">Hämtar prognos …</div></div>`,
+    )
+  }
   if (station.description) rows.push(`<p class="desc">${esc(station.description)}</p>`)
   rows.push(facilityList(station))
   if (station.payment?.length)
@@ -928,7 +938,8 @@ export default function MapView({
         })
       }
 
-      const weatherSlot = el.querySelector<HTMLElement>('.weather-slot')
+      // Väder: arkiverad funktion, se SHOW_WEATHER.
+      const weatherSlot = SHOW_WEATHER ? el.querySelector<HTMLElement>('.weather-slot') : null
       if (weatherSlot && weatherSlot.dataset.lat && weatherSlot.dataset.lon) {
         const wLat = parseFloat(weatherSlot.dataset.lat)
         const wLon = parseFloat(weatherSlot.dataset.lon)
