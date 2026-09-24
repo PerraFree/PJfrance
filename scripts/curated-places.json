@@ -3252,7 +3252,7 @@
     "services": [
       "gasol"
     ],
-    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista. OBS: bolaget är registrerat på Bergsgatan 114; Värdshusbacken 6 är Circle K Gärde – troligen deras station.",
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Larssons-Service-AB-85650-Sundsvall-Vrdshusbacken-6-0010O00002MnqefQAB",
     "source": "egen",
     "nearLat": 62.37,
@@ -3779,7 +3779,8 @@
     "nearLon": 17.05,
     "facilities": [
       "gasol_byte"
-    ]
+    ],
+    "gasolPrice": "Byte ca 340–420 kr beroende på flasktyp (forumuppgift 2026 – kontrollera i butik)"
   },
   {
     "name": "Gasol – jem & fix, Trelleborg",
@@ -3858,12 +3859,12 @@
     ]
   },
   {
-    "name": "Gasol – Husmacken, Åhus",
+    "name": "Gasol – Åhusmacken, Åhus",
     "query": "Fregattvägen 1, 296 37 Åhus",
     "services": [
       "gasol"
     ],
-    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista. (Bolaget heter Åhusmacken AB.)",
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/husmacken-AB-29637-hus-Fregattvgen-1-0010O00001nO1qnQAC",
     "source": "egen",
     "nearLat": 55.92,
@@ -10651,5 +10652,1475 @@
     "openingHours": "24/7",
     "url": "https://gasolfyllarna.se/privat/gasolautomater/ (sökutdrag: 'första automaten placerades vid Vasa Handelsplats i Södertälje')",
     "gasolPrice": "Depåpris byte PC10 290 kr, P11 315 kr – automatpris kan avvika (gasolfyllarna.se, sep 2026)"
+  },
+  {
+    "name": "AGA Gasolautomat Källarbacken, Hällingsjö",
+    "query": "Hällingsjövägen 2, Hällingsjö",
+    "nearLat": 57.6,
+    "nearLon": 12.43,
+    "maxKm": 8,
+    "address": "Hällingsjövägen 2, 438 96, Hällingsjö",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Självbetjäningsautomat från Linde/AGA vid Källarbacken (lanthandel, mack och ombud) i Hällingsjö, Härryda kommun. Byt tom kompositflaska (PC5 eller PC10) mot fylld dygnet runt – följ instruktionerna på displayen och betala med kort. Det går även att köpa en ny flaska utan att lämna in någon. Öppet 24 timmar om dygnet året runt.",
+    "gasolPrice": "Byte PC10 ca 379 kr, PC5 ca 249 kr (Linde/AGA-prislista 2026 – kan variera per automat)",
+    "openingHours": "24/7",
+    "phone": "08-706 95 00 (Lindes automatsupport)",
+    "url": "https://forsaljningsstallen.linde.se/h%C3%A4llingsj%C3%B6/h%C3%A4llingsj%C3%B6v%C3%A4gen-2/aga-gasolautomat-k%C3%A4llarbacken ; https://husbilsplats.se/locations/aga-gasolautomat-hallingsjo/ ; https://hplats.se/listning/gasol-kallarbacken-hallingsjo/"
+  },
+  {
+    "name": "Plantagen Borås",
+    "query": "Göteborgsvägen 181, Borås",
+    "nearLat": 57.721,
+    "nearLon": 12.94,
+    "maxKm": 8,
+    "address": "Göteborgsvägen 181, 504 63, Borås",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Plantagen byter tom AGA-kompositflaska (PC10/PC5) mot fylld i butiken. Ligger i samma handelsområde som GasolAutomat.se:s automat vid City Gross (Göteborgsvägen 181). Källa: plantagen.se, husbilsklubben.se.",
+    "gasolPrice": "Byte PC10 449 kr (forumuppgift husbilsklubben.se, datum okänt – kontrollera aktuellt pris i butik)",
+    "openingHours": "Mån–fre 10–18, lör–sön 10–16 (butik)",
+    "phone": "033-44 47 80",
+    "url": "https://plantagen.se/se/p/gasol-pafyllning-aga-pc10-10-kg-513006 ; https://plantagen.se/se/p/513004/uteplats/utomhusmatlagning/bransle/gasol-pafyllning-aga-pc5-5-kg ; https://www.husbilsklubben.se/threads/gasol-ulricehamn-bor%C3%A5s-g%C3%B6teborg-eller-kungsbacka.65132/ ; https://oppettider.net/spots/plantagen-boras-goteborgsvagen-dd83d1fd3a"
+  },
+  {
+    "name": "GGM Gas & Gasolmästarna, Västra Frölunda (Göteborg)",
+    "query": "August Barks gata 7, Västra Frölunda",
+    "nearLat": 57.65,
+    "nearLon": 11.92,
+    "maxKm": 8,
+    "address": "August Barks gata 7, 421 32, Västra Frölunda",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolgrossisten GGM Gas & Gasolmästarna har egna gasolautomater utanför butiken (Sisjön/Högsbo) – byt tom flaska mot fylld dygnet runt: stål P6/P11, aluminium PA11, komposit PK5/PK10 samt Campingaz 2012. Källa: ggm.nu, husbilsklubben.se.",
+    "gasolPrice": "Byte från 199 kr enligt ggm.nu; P11 ca 290 kr enligt forum (odaterat) – kontrollera prislistan på ggm.nu",
+    "openingHours": "24/7",
+    "phone": "031-45 50 45",
+    "url": "https://www.ggm.nu/ ; https://www.ggm.nu/gas-gasolm%C3%A4starna-ggm-ab ; https://www.eniro.se/gas+&+gasolm%C3%A4starna+ab+v%C3%A4stra+fr%C3%B6lunda/8995630/firma ; https://www.husbilsklubben.se/threads/gasol-ulricehamn-bor%C3%A5s-g%C3%B6teborg-eller-kungsbacka.65132/"
+  },
+  {
+    "name": "Gasol – jem & fix Sala",
+    "query": "Fridhemsgatan 18, Sala",
+    "nearLat": 59.92,
+    "nearLon": 16.607,
+    "maxKm": 12,
+    "address": "Fridhemsgatan 18, Sala",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/sala/"
+  },
+  {
+    "name": "Gasol – jem & fix Ljusdal",
+    "query": "Årstidsvägen 4, Ljusdal",
+    "nearLat": 61.829,
+    "nearLon": 16.09,
+    "maxKm": 12,
+    "address": "Årstidsvägen 4, Ljusdal",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/ljusdal/"
+  },
+  {
+    "name": "Gasol – jem & fix Landskrona",
+    "query": "Östervångsplan 14, Landskrona",
+    "nearLat": 55.8708,
+    "nearLon": 12.8301,
+    "maxKm": 12,
+    "address": "Östervångsplan 14, Landskrona",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/landskrona/"
+  },
+  {
+    "name": "Gasol – jem & fix Eslöv",
+    "query": "Fallskärmsgatan 7F, Eslöv",
+    "nearLat": 55.839,
+    "nearLon": 13.304,
+    "maxKm": 12,
+    "address": "Fallskärmsgatan 7F, Eslöv",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/esloev/"
+  },
+  {
+    "name": "Gasol – jem & fix Simrishamn",
+    "query": "Testgatan 1, Simrishamn",
+    "nearLat": 55.557,
+    "nearLon": 14.352,
+    "maxKm": 12,
+    "address": "Testgatan 1, Simrishamn",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/simrishamn/"
+  },
+  {
+    "name": "Gasol – jem & fix Hörby",
+    "query": "Medicingatan 1A, Hörby",
+    "nearLat": 55.85,
+    "nearLon": 13.66,
+    "maxKm": 12,
+    "address": "Medicingatan 1A, Hörby",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/hoerby/"
+  },
+  {
+    "name": "Gasol – jem & fix Höör",
+    "query": "Marknadsvägen 8, Höör",
+    "nearLat": 55.935,
+    "nearLon": 13.54,
+    "maxKm": 12,
+    "address": "Marknadsvägen 8, Höör",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/hoeoer/"
+  },
+  {
+    "name": "Gasol – jem & fix Karlskrona",
+    "query": "Gjuterivägen 1, Karlskrona",
+    "nearLat": 56.1612,
+    "nearLon": 15.5869,
+    "maxKm": 12,
+    "address": "Gjuterivägen 1, Karlskrona",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/karlskrona/"
+  },
+  {
+    "name": "Gasol – jem & fix Ronneby",
+    "query": "Gamla Landsvägen 49, Ronneby",
+    "nearLat": 56.21,
+    "nearLon": 15.276,
+    "maxKm": 12,
+    "address": "Gamla Landsvägen 49, Ronneby",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/ronneby/"
+  },
+  {
+    "name": "Gasol – jem & fix Olofström",
+    "query": "Idrottsvägen 4, Olofström",
+    "nearLat": 56.276,
+    "nearLon": 14.532,
+    "maxKm": 12,
+    "address": "Idrottsvägen 4, Olofström",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/olofstroem/"
+  },
+  {
+    "name": "Gasol – jem & fix Osby",
+    "query": "Teodor Kvants väg 7, Osby",
+    "nearLat": 56.382,
+    "nearLon": 13.993,
+    "maxKm": 12,
+    "address": "Teodor Kvants väg 7, Osby",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/osby/"
+  },
+  {
+    "name": "Gasol – jem & fix Klippan",
+    "query": "Fabriksallén 7, Klippan",
+    "nearLat": 56.135,
+    "nearLon": 13.129,
+    "maxKm": 12,
+    "address": "Fabriksallén 7, Klippan",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/klippan/"
+  },
+  {
+    "name": "Gasol – jem & fix Skurup",
+    "query": "Korrehusgatan 5A, Skurup",
+    "nearLat": 55.476,
+    "nearLon": 13.501,
+    "maxKm": 12,
+    "address": "Korrehusgatan 5A, Skurup",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/skurup/"
+  },
+  {
+    "name": "Gasol – jem & fix Höganäs",
+    "query": "Verkstadsgatan 3C, Höganäs",
+    "nearLat": 56.199,
+    "nearLon": 12.558,
+    "maxKm": 12,
+    "address": "Verkstadsgatan 3C, Höganäs",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/hoeganaes/"
+  },
+  {
+    "name": "Gasol – jem & fix Staffanstorp",
+    "query": "Barkvägen 15, Staffanstorp",
+    "nearLat": 55.642,
+    "nearLon": 13.206,
+    "maxKm": 12,
+    "address": "Barkvägen 15, Staffanstorp",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/staffanstorp/"
+  },
+  {
+    "name": "Gasol – jem & fix Lomma",
+    "query": "Prästbergavägen 53, Lomma",
+    "nearLat": 55.674,
+    "nearLon": 13.069,
+    "maxKm": 12,
+    "address": "Prästbergavägen 53, Lomma",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/lomma/"
+  },
+  {
+    "name": "Gasol – jem & fix Älmhult",
+    "query": "Handelsvägen 18F, Älmhult",
+    "nearLat": 56.551,
+    "nearLon": 14.139,
+    "maxKm": 12,
+    "address": "Handelsvägen 18F, Älmhult",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/aelmhult/"
+  },
+  {
+    "name": "Gasol – jem & fix Ljungby",
+    "query": "Skånegatan 8, Ljungby",
+    "nearLat": 56.833,
+    "nearLon": 13.941,
+    "maxKm": 12,
+    "address": "Skånegatan 8, Ljungby",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/ljungby/"
+  },
+  {
+    "name": "Gasol – jem & fix Alvesta",
+    "query": "Skördevägen 3, Alvesta",
+    "nearLat": 56.899,
+    "nearLon": 14.556,
+    "maxKm": 12,
+    "address": "Skördevägen 3, Alvesta",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/alvesta/"
+  },
+  {
+    "name": "Gasol – jem & fix Växjö",
+    "query": "Skogsuddevägen 1A, Växjö",
+    "nearLat": 56.8777,
+    "nearLon": 14.8091,
+    "maxKm": 12,
+    "address": "Skogsuddevägen 1A, Växjö",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/vaexjoe/"
+  },
+  {
+    "name": "Gasol – jem & fix Nybro",
+    "query": "Skruvens väg 2, Nybro",
+    "nearLat": 56.744,
+    "nearLon": 15.907,
+    "maxKm": 12,
+    "address": "Skruvens väg 2, Nybro",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/nybro/"
+  },
+  {
+    "name": "Gasol – jem & fix Oskarshamn",
+    "query": "Be-Ge:s väg 10, Oskarshamn",
+    "nearLat": 57.265,
+    "nearLon": 16.448,
+    "maxKm": 12,
+    "address": "Be-Ge:s väg 10, Oskarshamn",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/oskarshamn/"
+  },
+  {
+    "name": "Gasol – jem & fix Västervik",
+    "query": "Dichmansgatan 2, Västervik",
+    "nearLat": 57.758,
+    "nearLon": 16.636,
+    "maxKm": 12,
+    "address": "Dichmansgatan 2, Västervik",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/vaestervik/"
+  },
+  {
+    "name": "Gasol – jem & fix Vimmerby",
+    "query": "Fiskaregatan 3, Vimmerby",
+    "nearLat": 57.666,
+    "nearLon": 15.856,
+    "maxKm": 12,
+    "address": "Fiskaregatan 3, Vimmerby",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/vimmerby/"
+  },
+  {
+    "name": "Gasol – jem & fix Gislaved",
+    "query": "Eneströmsgatan 5, Gislaved",
+    "nearLat": 57.303,
+    "nearLon": 13.538,
+    "maxKm": 12,
+    "address": "Eneströmsgatan 5, Gislaved",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/gislaved/"
+  },
+  {
+    "name": "Gasol – jem & fix Värnamo",
+    "query": "Ringvägen 59, Värnamo",
+    "nearLat": 57.186,
+    "nearLon": 14.04,
+    "maxKm": 12,
+    "address": "Ringvägen 59, Värnamo",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/vaernamo/"
+  },
+  {
+    "name": "Gasol – jem & fix Vetlanda",
+    "query": "Kolvägen 11, Vetlanda",
+    "nearLat": 57.427,
+    "nearLon": 15.078,
+    "maxKm": 12,
+    "address": "Kolvägen 11, Vetlanda",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/vetlanda/"
+  },
+  {
+    "name": "Gasol – jem & fix Nässjö",
+    "query": "Brogatan 21, Nässjö",
+    "nearLat": 57.653,
+    "nearLon": 14.697,
+    "maxKm": 12,
+    "address": "Brogatan 21, Nässjö",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/naessjoe/"
+  },
+  {
+    "name": "Gasol – jem & fix Eksjö",
+    "query": "Mosstegsgatan 9A, Eksjö",
+    "nearLat": 57.666,
+    "nearLon": 14.972,
+    "maxKm": 12,
+    "address": "Mosstegsgatan 9A, Eksjö",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/eksjoe/"
+  },
+  {
+    "name": "Gasol – jem & fix Jönköping (Solåsen)",
+    "query": "Bangårdsgatan 19, Jönköping",
+    "nearLat": 57.77,
+    "nearLon": 14.21,
+    "maxKm": 12,
+    "address": "Bangårdsgatan 19, Jönköping",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/joenkoeping-oeppnar-265/"
+  },
+  {
+    "name": "Gasol – jem & fix Habo",
+    "query": "Mysketgatan 1, Habo",
+    "nearLat": 57.91,
+    "nearLon": 14.075,
+    "maxKm": 12,
+    "address": "Mysketgatan 1, Habo",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/habo/"
+  },
+  {
+    "name": "Gasol – jem & fix Falkenberg",
+    "query": "Sömmerskevägen 3, Falkenberg",
+    "nearLat": 56.905,
+    "nearLon": 12.491,
+    "maxKm": 12,
+    "address": "Sömmerskevägen 3, Falkenberg",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/falkenberg/"
+  },
+  {
+    "name": "Gasol – jem & fix Laholm",
+    "query": "Johannesdalvägen 9, Laholm",
+    "nearLat": 56.512,
+    "nearLon": 13.044,
+    "maxKm": 12,
+    "address": "Johannesdalvägen 9, Laholm",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/laholm/"
+  },
+  {
+    "name": "Gasol – jem & fix Skene (Kinna)",
+    "query": "Klevagårdsgatan 1, Skene",
+    "nearLat": 57.49,
+    "nearLon": 12.64,
+    "maxKm": 12,
+    "address": "Klevagårdsgatan 1, Skene",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/skene/"
+  },
+  {
+    "name": "Gasol – jem & fix Kungälv",
+    "query": "Traktorgatan 18, Kungälv",
+    "nearLat": 57.87,
+    "nearLon": 11.98,
+    "maxKm": 12,
+    "address": "Traktorgatan 18, Kungälv",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/kungaelv/"
+  },
+  {
+    "name": "Gasol – jem & fix Strömstad",
+    "query": "Prästängsvägen 23, Strömstad",
+    "nearLat": 58.938,
+    "nearLon": 11.171,
+    "maxKm": 12,
+    "address": "Prästängsvägen 23, Strömstad",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/stroemstad/"
+  },
+  {
+    "name": "Gasol – jem & fix Vara",
+    "query": "Dubbgatan 1, Vara",
+    "nearLat": 58.262,
+    "nearLon": 12.953,
+    "maxKm": 12,
+    "address": "Dubbgatan 1, Vara",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/vara/"
+  },
+  {
+    "name": "Gasol – jem & fix Skara",
+    "query": "Smedstorpsgatan 6, Skara",
+    "nearLat": 58.386,
+    "nearLon": 13.439,
+    "maxKm": 12,
+    "address": "Smedstorpsgatan 6, Skara",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/hitta-butik/skara/"
+  },
+  {
+    "name": "Gasol – jem & fix Lidköping",
+    "query": "Sockerbruksgatan 32, Lidköping",
+    "nearLat": 58.503,
+    "nearLon": 13.157,
+    "maxKm": 12,
+    "address": "Sockerbruksgatan 32, Lidköping",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/lidkoeping/"
+  },
+  {
+    "name": "Gasol – jem & fix Mariestad",
+    "query": "Storegårdsvägen 6, Mariestad",
+    "nearLat": 58.709,
+    "nearLon": 13.823,
+    "maxKm": 12,
+    "address": "Storegårdsvägen 6, Mariestad",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/mariestad/"
+  },
+  {
+    "name": "Gasol – jem & fix Falköping",
+    "query": "Lönnerbladsgatan 12, Falköping",
+    "nearLat": 58.173,
+    "nearLon": 13.553,
+    "maxKm": 12,
+    "address": "Lönnerbladsgatan 12, Falköping",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/falkoeping/"
+  },
+  {
+    "name": "Gasol – jem & fix Tidaholm",
+    "query": "Hägnelundsvägen 2, Tidaholm",
+    "nearLat": 58.18,
+    "nearLon": 13.958,
+    "maxKm": 12,
+    "address": "Hägnelundsvägen 2, Tidaholm",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/tidaholm/"
+  },
+  {
+    "name": "Gasol – jem & fix Kristinehamn",
+    "query": "Albinvägen 2, Kristinehamn",
+    "nearLat": 59.3097,
+    "nearLon": 14.108,
+    "maxKm": 12,
+    "address": "Albinvägen 2, Kristinehamn",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/kristinehamn/"
+  },
+  {
+    "name": "Gasol – jem & fix Arvika",
+    "query": "Stränggatan 1, Arvika",
+    "nearLat": 59.655,
+    "nearLon": 12.592,
+    "maxKm": 12,
+    "address": "Stränggatan 1, Arvika",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/arvika/"
+  },
+  {
+    "name": "Gasol – jem & fix Säffle",
+    "query": "Karlavagnsvägen 4, Säffle",
+    "nearLat": 59.133,
+    "nearLon": 12.927,
+    "maxKm": 12,
+    "address": "Karlavagnsvägen 4, Säffle",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/saeffle/"
+  },
+  {
+    "name": "Gasol – jem & fix Torsby",
+    "query": "Wåhlstedts väg 4, Torsby",
+    "nearLat": 60.136,
+    "nearLon": 13.004,
+    "maxKm": 12,
+    "address": "Wåhlstedts väg 4, Torsby",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/torsby/"
+  },
+  {
+    "name": "Gasol – jem & fix Sunne",
+    "query": "Brårudsallén 4, Sunne",
+    "nearLat": 59.836,
+    "nearLon": 13.144,
+    "maxKm": 12,
+    "address": "Brårudsallén 4, Sunne",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/sunne/"
+  },
+  {
+    "name": "Gasol – jem & fix Karlskoga",
+    "query": "Skogsbovägen 8, Karlskoga",
+    "nearLat": 59.327,
+    "nearLon": 14.524,
+    "maxKm": 12,
+    "address": "Skogsbovägen 8, Karlskoga",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/karlskoga/"
+  },
+  {
+    "name": "Gasol – jem & fix Hallsberg",
+    "query": "Överste von Rosens gata 1, Hallsberg",
+    "nearLat": 59.066,
+    "nearLon": 15.11,
+    "maxKm": 12,
+    "address": "Överste von Rosens gata 1, Hallsberg",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/hallsberg/"
+  },
+  {
+    "name": "Gasol – jem & fix Motala",
+    "query": "Mineralvägen 3, Motala",
+    "nearLat": 58.537,
+    "nearLon": 15.036,
+    "maxKm": 12,
+    "address": "Mineralvägen 3, Motala",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/motala/"
+  },
+  {
+    "name": "Gasol – jem & fix Mjölby",
+    "query": "Linköpingsvägen 1B, Mjölby",
+    "nearLat": 58.326,
+    "nearLon": 15.131,
+    "maxKm": 12,
+    "address": "Linköpingsvägen 1B, Mjölby",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/mjoelby/"
+  },
+  {
+    "name": "Gasol – jem & fix Linköping",
+    "query": "Fröstorpsgatan 10, Linköping",
+    "nearLat": 58.4108,
+    "nearLon": 15.6214,
+    "maxKm": 12,
+    "address": "Fröstorpsgatan 10, Linköping",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/linkoeping/"
+  },
+  {
+    "name": "Gasol – jem & fix Finspång",
+    "query": "Skäggebyvägen 27, Finspång",
+    "nearLat": 58.706,
+    "nearLon": 15.77,
+    "maxKm": 12,
+    "address": "Skäggebyvägen 27, Finspång",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/finspaang/"
+  },
+  {
+    "name": "Gasol – jem & fix Söderköping",
+    "query": "Margaretagatan 51, Söderköping",
+    "nearLat": 58.481,
+    "nearLon": 16.322,
+    "maxKm": 12,
+    "address": "Margaretagatan 51, Söderköping",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/soederkoeping/"
+  },
+  {
+    "name": "Gasol – jem & fix Katrineholm",
+    "query": "Starrvägen 19A, Katrineholm",
+    "nearLat": 58.996,
+    "nearLon": 16.208,
+    "maxKm": 12,
+    "address": "Starrvägen 19A, Katrineholm",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/katrineholm/"
+  },
+  {
+    "name": "Gasol – jem & fix Flen",
+    "query": "Tegelvägen 4A, Flen",
+    "nearLat": 59.058,
+    "nearLon": 16.588,
+    "maxKm": 12,
+    "address": "Tegelvägen 4A, Flen",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/flen/"
+  },
+  {
+    "name": "Gasol – jem & fix Köping",
+    "query": "Ringvägen 86, Köping",
+    "nearLat": 59.514,
+    "nearLon": 15.992,
+    "maxKm": 12,
+    "address": "Ringvägen 86, Köping",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/koeping/"
+  },
+  {
+    "name": "Gasol – jem & fix Fagersta",
+    "query": "Bangårdsgatan 6, Fagersta",
+    "nearLat": 60.004,
+    "nearLon": 15.794,
+    "maxKm": 12,
+    "address": "Bangårdsgatan 6, Fagersta",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/fagersta/"
+  },
+  {
+    "name": "Gasol – jem & fix Avesta",
+    "query": "Kungsgatan 14, Avesta",
+    "nearLat": 60.145,
+    "nearLon": 16.168,
+    "maxKm": 12,
+    "address": "Kungsgatan 14, Avesta",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/avesta/"
+  },
+  {
+    "name": "Gasol – jem & fix Hedemora",
+    "query": "Ivarshyttevägen 7A, Hedemora",
+    "nearLat": 60.279,
+    "nearLon": 15.986,
+    "maxKm": 12,
+    "address": "Ivarshyttevägen 7A, Hedemora",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/hedemora/"
+  },
+  {
+    "name": "Gasol – jem & fix Sandviken",
+    "query": "Kolmilavägen 8, Sandviken",
+    "nearLat": 60.617,
+    "nearLon": 16.776,
+    "maxKm": 12,
+    "address": "Kolmilavägen 8, Sandviken",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/sandviken/"
+  },
+  {
+    "name": "Gasol – jem & fix Söderhamn",
+    "query": "Stenängsvägen 4A, Söderhamn",
+    "nearLat": 61.304,
+    "nearLon": 17.059,
+    "maxKm": 12,
+    "address": "Stenängsvägen 4A, Söderhamn",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://www.jemfix.se/butiker/soederhamn/"
+  },
+  {
+    "name": "Gasol – jem & fix Visby",
+    "query": "Skarphällsgatan 8, Visby",
+    "nearLat": 57.635,
+    "nearLon": 18.295,
+    "maxKm": 12,
+    "address": "Skarphällsgatan 8, Visby",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
+    "url": "https://jemfix.se/butiker/visby-oeppnar-snart"
+  },
+  {
+    "name": "Gasol – Bauhaus Bromma (Stockholm)",
+    "query": "Masugnsvägen 36, Bromma",
+    "nearLat": 59.353,
+    "nearLon": 17.965,
+    "maxKm": 12,
+    "address": "Masugnsvägen 36, 168 67, Bromma",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Bauhaus byter AGA P11/PA11/PC10/PC5 i varuhuset under öppettider (lagerstatus per varuhus via kundtjänst). Källa: bauhaus.se.",
+    "url": "https://www.bauhaus.se/varuhus/bromma-",
+    "gasolPrice": "Byte P11 519 kr, PC10 (komposit) 389 kr – kedjepris (bauhaus.se, sep 2026)"
+  },
+  {
+    "name": "Gasol – Bauhaus Länna (Stockholm)",
+    "query": "Gamla Nynäsvägen 600, Skogås",
+    "nearLat": 59.219,
+    "nearLon": 18.145,
+    "maxKm": 12,
+    "address": "Gamla Nynäsvägen 600, 142 51, Skogås",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Bauhaus byter AGA P11/PA11/PC10/PC5 i varuhuset under öppettider (lagerstatus per varuhus via kundtjänst). Källa: bauhaus.se.",
+    "url": "https://www.bauhaus.se/varuhus/lanna",
+    "gasolPrice": "Byte P11 519 kr, PC10 (komposit) 389 kr – kedjepris (bauhaus.se, sep 2026)"
+  },
+  {
+    "name": "Gasol – Bauhaus Norsborg/Botkyrka (Stockholm)",
+    "query": "Segersbyvägen 26, Norsborg",
+    "nearLat": 59.2436,
+    "nearLon": 17.8225,
+    "maxKm": 12,
+    "address": "Segersbyvägen 26, 145 63, Norsborg",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Bauhaus byter AGA P11/PA11/PC10/PC5 i varuhuset under öppettider (lagerstatus per varuhus via kundtjänst). Källa: bauhaus.se.",
+    "url": "https://www.isover.se/services/hitta-aterforsaljare/bauhaus-norsborg/segersbyvagen-26/145-63/norsborg (bauhaus.se/varuhus/botkyrka bekräftar varuhuset men utdraget saknade gatuadress)",
+    "gasolPrice": "Byte P11 519 kr, PC10 (komposit) 389 kr – kedjepris (bauhaus.se, sep 2026)"
+  },
+  {
+    "name": "Gasol – Bauhaus Barkarby/Järfälla (Stockholm)",
+    "query": "Enköpingsvägen 41, Järfälla",
+    "nearLat": 59.405,
+    "nearLon": 17.865,
+    "maxKm": 12,
+    "address": "Enköpingsvägen 41, 177 38, Järfälla",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Bauhaus byter AGA P11/PA11/PC10/PC5 i varuhuset under öppettider (lagerstatus per varuhus via kundtjänst). Källa: bauhaus.se.",
+    "url": "https://www.bauhaus.se/varuhus/barkarby",
+    "gasolPrice": "Byte P11 519 kr, PC10 (komposit) 389 kr – kedjepris (bauhaus.se, sep 2026)"
+  },
+  {
+    "name": "Gasol – Bauhaus Upplands Väsby (Stockholm)",
+    "query": "Kranvägen 8, Upplands Väsby",
+    "nearLat": 59.519,
+    "nearLon": 17.911,
+    "maxKm": 12,
+    "address": "Kranvägen 8, 194 61, Upplands Väsby",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Bauhaus byter AGA P11/PA11/PC10/PC5 i varuhuset under öppettider (lagerstatus per varuhus via kundtjänst). Källa: bauhaus.se.",
+    "url": "https://www.bauhaus.se/varuhus/upplands-vasby",
+    "gasolPrice": "Byte P11 519 kr, PC10 (komposit) 389 kr – kedjepris (bauhaus.se, sep 2026)"
+  },
+  {
+    "name": "Gasol – Bauhaus Sickla (Nacka, Stockholm)",
+    "query": "Sickla Allé 2-4, Nacka",
+    "nearLat": 59.306,
+    "nearLon": 18.12,
+    "maxKm": 12,
+    "address": "Sickla Allé 2-4, 131 65, Nacka",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Bauhaus byter AGA P11/PA11/PC10/PC5 i varuhuset under öppettider (lagerstatus per varuhus via kundtjänst). Källa: bauhaus.se.",
+    "url": "https://www.bauhaus.se/varuhus/sickla",
+    "gasolPrice": "Byte P11 519 kr, PC10 (komposit) 389 kr – kedjepris (bauhaus.se, sep 2026)"
+  },
+  {
+    "name": "Gasol – Bauhaus Knivsta",
+    "query": "Hyvelgatan 1, Knivsta",
+    "nearLat": 59.726,
+    "nearLon": 17.786,
+    "maxKm": 12,
+    "address": "Hyvelgatan 1, Knivsta",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Bauhaus byter AGA P11/PA11/PC10/PC5 i varuhuset under öppettider (lagerstatus per varuhus via kundtjänst). Källa: bauhaus.se.",
+    "url": "https://www.bauhaus.se/varuhus/knivsta",
+    "gasolPrice": "Byte P11 519 kr, PC10 (komposit) 389 kr – kedjepris (bauhaus.se, sep 2026)"
+  },
+  {
+    "name": "Gasol – Bauhaus Örebro (Marieberg)",
+    "query": "Säljarevägen 7, Örebro",
+    "nearLat": 59.225,
+    "nearLon": 15.15,
+    "maxKm": 12,
+    "address": "Säljarevägen 7, Örebro",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Bauhaus byter AGA P11/PA11/PC10/PC5 i varuhuset under öppettider (lagerstatus per varuhus via kundtjänst). Källa: bauhaus.se.",
+    "url": "https://www.waze.com/live-map/directions/bauhaus-orebro-saljarevagen-7-marieberg,-orebro (bauhaus.se/varuhus/orebro bekräftar varuhuset men utdraget saknade gatuadress)",
+    "gasolPrice": "Byte P11 519 kr, PC10 (komposit) 389 kr – kedjepris (bauhaus.se, sep 2026)"
+  },
+  {
+    "name": "Gasol – Bauhaus Linköping (Tornby)",
+    "query": "Östra Svedengatan 31, Linköping",
+    "nearLat": 58.43,
+    "nearLon": 15.61,
+    "maxKm": 12,
+    "address": "Östra Svedengatan 31, 582 73, Linköping",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Bauhaus byter AGA P11/PA11/PC10/PC5 i varuhuset under öppettider (lagerstatus per varuhus via kundtjänst). Källa: bauhaus.se.",
+    "url": "https://www.bauhaus.se/varuhus/linkoping",
+    "gasolPrice": "Byte P11 519 kr, PC10 (komposit) 389 kr – kedjepris (bauhaus.se, sep 2026)"
+  },
+  {
+    "name": "Gasol – Bauhaus Norrköping (Ingelsta)",
+    "query": "Kromgatan 2, Norrköping",
+    "nearLat": 58.62,
+    "nearLon": 16.17,
+    "maxKm": 12,
+    "address": "Kromgatan 2, 602 23, Norrköping",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Bauhaus byter AGA P11/PA11/PC10/PC5 i varuhuset under öppettider (lagerstatus per varuhus via kundtjänst). Källa: bauhaus.se.",
+    "url": "https://www.bauhaus.se/varuhus/norrkoping",
+    "gasolPrice": "Byte P11 519 kr, PC10 (komposit) 389 kr – kedjepris (bauhaus.se, sep 2026)"
+  },
+  {
+    "name": "Gasol – Bauhaus Kalmar (Hansa City)",
+    "query": "Bilbyggarvägen 5, Kalmar",
+    "nearLat": 56.69,
+    "nearLon": 16.32,
+    "maxKm": 12,
+    "address": "Bilbyggarvägen 5, 393 56, Kalmar",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Bauhaus byter AGA P11/PA11/PC10/PC5 i varuhuset under öppettider (lagerstatus per varuhus via kundtjänst). Källa: bauhaus.se.",
+    "url": "https://www.bauhaus.se/varuhus/kalmar",
+    "gasolPrice": "Byte P11 519 kr, PC10 (komposit) 389 kr – kedjepris (bauhaus.se, sep 2026)"
+  },
+  {
+    "name": "Gasol – Bauhaus Växjö",
+    "query": "Älgvägen 3, Växjö",
+    "nearLat": 56.8777,
+    "nearLon": 14.8091,
+    "maxKm": 12,
+    "address": "Älgvägen 3, 352 45, Växjö",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Bauhaus byter AGA P11/PA11/PC10/PC5 i varuhuset under öppettider (lagerstatus per varuhus via kundtjänst). Källa: bauhaus.se.",
+    "url": "https://www.bauhaus.se/varuhus/vaxjo",
+    "gasolPrice": "Byte P11 519 kr, PC10 (komposit) 389 kr – kedjepris (bauhaus.se, sep 2026)"
+  },
+  {
+    "name": "Gasol – Bauhaus Malmö Svågertorp",
+    "query": "Nornegatan 8, Malmö",
+    "nearLat": 55.556,
+    "nearLon": 12.99,
+    "maxKm": 12,
+    "address": "Nornegatan 8, 215 86, Malmö",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Bauhaus byter AGA P11/PA11/PC10/PC5 i varuhuset under öppettider (lagerstatus per varuhus via kundtjänst). Källa: bauhaus.se.",
+    "url": "https://www.bauhaus.se/varuhus/malmo",
+    "gasolPrice": "Byte P11 519 kr, PC10 (komposit) 389 kr – kedjepris (bauhaus.se, sep 2026)"
+  },
+  {
+    "name": "Gasol – Bauhaus Malmö Bernstorp (Burlöv)",
+    "query": "Vassvägen 26, Arlöv",
+    "nearLat": 55.6372,
+    "nearLon": 13.0788,
+    "maxKm": 12,
+    "address": "Vassvägen 26, 232 61, Arlöv",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Bauhaus byter AGA P11/PA11/PC10/PC5 i varuhuset under öppettider (lagerstatus per varuhus via kundtjänst). Källa: bauhaus.se.",
+    "url": "https://www.bauhaus.se/varuhus/stora-bernstorp",
+    "gasolPrice": "Byte P11 519 kr, PC10 (komposit) 389 kr – kedjepris (bauhaus.se, sep 2026)"
+  },
+  {
+    "name": "Gasol – Bauhaus Löddeköpinge (Center Syd)",
+    "query": "Handelsvägen 1, Löddeköpinge",
+    "nearLat": 55.765,
+    "nearLon": 13,
+    "maxKm": 12,
+    "address": "Handelsvägen 1, 246 42, Löddeköpinge",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Bauhaus byter AGA P11/PA11/PC10/PC5 i varuhuset under öppettider (lagerstatus per varuhus via kundtjänst). Källa: bauhaus.se.",
+    "url": "https://www.bauhaus.se/varuhus/loddekopinge",
+    "gasolPrice": "Byte P11 519 kr, PC10 (komposit) 389 kr – kedjepris (bauhaus.se, sep 2026)"
+  },
+  {
+    "name": "Gasol – Bauhaus Uddevalla",
+    "query": "Hedkärr 103, Uddevalla",
+    "nearLat": 58.3498,
+    "nearLon": 11.9424,
+    "maxKm": 12,
+    "address": "Hedkärr 103, 451 76, Uddevalla",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Bauhaus byter AGA P11/PA11/PC10/PC5 i varuhuset under öppettider (lagerstatus per varuhus via kundtjänst). Källa: bauhaus.se.",
+    "url": "https://www.bauhaus.se/varuhus",
+    "gasolPrice": "Byte P11 519 kr, PC10 (komposit) 389 kr – kedjepris (bauhaus.se, sep 2026)"
+  },
+  {
+    "name": "Gasol – Motonet Gävle (Valbo)",
+    "query": "Valbovägen 323 A, Valbo",
+    "nearLat": 60.648,
+    "nearLon": 17.03,
+    "maxKm": 12,
+    "address": "Valbovägen 323 A, Valbo",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Motonet byter AGA P11 och PC10/PC5 i varuhuset under öppettider (\"köp och byt direkt i butiken\"). Pris visas i butik. Källa: motonet.se.",
+    "url": "https://www.motonet.se/varuhus/gavle?id=702"
+  },
+  {
+    "name": "Gasol – Motonet Umeå",
+    "query": "Sandbäcksgatan 17, Umeå",
+    "nearLat": 63.8258,
+    "nearLon": 20.263,
+    "maxKm": 12,
+    "address": "Sandbäcksgatan 17, Umeå",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Motonet byter AGA P11 och PC10/PC5 i varuhuset under öppettider (\"köp och byt direkt i butiken\"). Pris visas i butik. Källa: motonet.se.",
+    "url": "https://www.motonet.se/varuhus/umea?id=704"
+  },
+  {
+    "name": "Gasol – Motonet Växjö",
+    "query": "Marketenterivägen 3, Växjö",
+    "nearLat": 56.8777,
+    "nearLon": 14.8091,
+    "maxKm": 12,
+    "address": "Marketenterivägen 3, Växjö",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Motonet byter AGA P11 och PC10/PC5 i varuhuset under öppettider (\"köp och byt direkt i butiken\"). Pris visas i butik. Källa: motonet.se.",
+    "url": "https://www.motonet.se/varuhus/vaxjo?id=708"
   }
 ]
