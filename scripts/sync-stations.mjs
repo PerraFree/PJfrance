@@ -221,22 +221,49 @@ function placeKind(tags) {
   return undefined
 }
 
+/** Antal OSM-stationer i förra körningens seed (0 om okänt). */
+async function previousOsmCount() {
+  try {
+    const prev = JSON.parse(await readFile(OUT, 'utf8'))
+    return (prev.stations ?? prev).filter((s) => s.source === 'osm').length
+  } catch {
+    return 0
+  }
+}
+
 async function fetchOsm() {
+  // Speglarna släpar olika mycket efter OSM och kan dessutom hugga av svaret
+  // vid timeout (24 sep 2026: 4 614 → 4 526 → 4 430 stationer på tre
+  // körningar när huvudspegeln gav 504 och reservspeglarna fick svara).
+  // Därför: acceptera bara ett svar som är ≥ 97 % av förra seedens antal,
+  // annars prova nästa spegel och ta till sist det största svaret.
+  const prevCount = await previousOsmCount()
   let lastError
-  for (let attempt = 0; attempt < 2; attempt++) {
+  let best = null
+  for (let attempt = 0; attempt < 2 && !best; attempt++) {
     if (attempt > 0) {
       console.log('Nytt varv över speglarna om 30 s …')
       await sleep(30_000)
     }
     for (const url of OVERPASS_MIRRORS) {
       try {
-        return await fetchOsmFrom(url)
+        const stations = await fetchOsmFrom(url)
+        console.log(`OSM via ${url}: ${stations.length} stationer (förra seeden: ${prevCount})`)
+        if (!prevCount || stations.length >= prevCount * 0.97) return stations
+        console.warn(
+          `OSM via ${url} gav bara ${stations.length} av förra seedens ${prevCount} stationer – provar nästa spegel.`,
+        )
+        if (!best || stations.length > best.length) best = stations
       } catch (err) {
         lastError = err
         console.warn(`OSM-hämtning misslyckades via ${url}: ${err.message}`)
         await sleep(5_000)
       }
     }
+  }
+  if (best) {
+    console.warn(`Ingen spegel nådde 97 % av förra antalet – använder det största svaret (${best.length}).`)
+    return best
   }
   throw lastError
 }
@@ -254,6 +281,15 @@ async function fetchOsmFrom(url) {
   })
   if (!res.ok) throw new Error(`${url} svarade ${res.status}`)
   const json = await res.json()
+  // Overpass kan svara 200 med ett AVHUGGET resultat och förklara sig i
+  // `remark` ("Query timed out …", "runtime error …"). Räkna det som fel så
+  // nästa spegel provas i stället för att halva Sverige tyst försvinner.
+  if (json.remark) {
+    console.warn(`Overpass-remark från ${url}: ${json.remark}`)
+    if (/timed out|runtime error|out of memory|load too high/i.test(json.remark)) {
+      throw new Error(`avhugget svar: ${json.remark}`)
+    }
+  }
   const stations = []
   for (const el of json.elements ?? []) {
     if (EXCLUDED_OSM_ELEMENTS.has(`${el.type}/${el.id}`)) continue

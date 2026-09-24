@@ -11037,10 +11037,10 @@
   },
   {
     "name": "Gasol – jem & fix Alvesta",
-    "query": "Skördevägen, Alvesta",
+    "query": "jem & fix, Alvesta",
     "nearLat": 56.899,
     "nearLon": 14.556,
-    "maxKm": 5,
+    "maxKm": 6,
     "address": "Skördevägen 3, 342 37 Alvesta",
     "services": [
       "gasol"
@@ -11768,7 +11768,7 @@
   },
   {
     "name": "Gasol – jem & fix Söderhamn",
-    "query": "Stenängsvägen, Söderhamn",
+    "query": "jem & fix, Söderhamn",
     "nearLat": 61.304,
     "nearLon": 17.059,
     "maxKm": 8,
