@@ -557,6 +557,30 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    ovanlig kombination, taggad med båda facilities men beskrivningen
    förklarar Fredags-/fasttank-begränsningen).
 
+   **Deploy-verifiering efter prissvepet (24 sep 2026):**
+   - **Overpass-fallback i `sync-stations.mjs`:** deploy 153 fick 504 från
+     ALLA Overpass-speglar → 50 %-spärren behöll den gamla seeden och inga
+     nya registerplatser publicerades alls. Nu: om `fetchOsm()` misslyckas
+     helt återanvänds förra seedens OSM-stationer (från `OUT`, samma
+     gasol-filtrering) med en `console.warn` ("Återanvänder N OSM-stationer
+     från förra seeden") så att register + Trafikverket ändå publiceras.
+   - Live efter deploy: **5 728 platser, 438 gasol (402 från registret),
+     204 med `gasolPrice`.** Jämför alltid register mot seed efter deploy
+     (skript: läs `origin/gh-pages:data/stations-seed.json`, matcha på namn,
+     lista saknade + poster >6 km från `nearLat/nearLon`).
+   - Geokodningsmissar rättade: Gråbo (exakt koordinat 57.8253/12.2462,
+     Nominatim klarade inte "Olstorpsvägen 166"), jem & fix Alvesta/
+     Söderhamn/Hässleholm (gatunummer saknas i OSM → sök på gatunamn +
+     lågt `maxKm`; Hässleholm: hitta.se anger Spångatan 1, inte
+     Stjärneholmsgatan 12). Lärdom: kedjebutiker på industrigator saknar
+     ofta husnummer i OSM – använd gatunamn utan nummer eller exakt
+     koordinat, aldrig postnummer-dubbletter i `query`.
+   - **Kvar efter svepet:** Skånegas Ängelholm + Levol Onsala (gatuadress
+     saknas), Expressgasol Tidaholm/Ronneby/Tingsryd och Norbros egen
+     automatkarta (JS-kartor, läs i webbläsare), Byggmax/Granngården/Rusta/
+     ÖoB per-butik-status, priser för ~10 påfyllningsplatser (se listan i
+     "Omgång 2" ovan).
+
 ## Dokumentation
 
 `docs/ADMIN.md` (Pers guide), `docs/SUPABASE.md`, `docs/DATAKALLOR.md`,
