@@ -9262,16 +9262,14 @@
       "gasol_byte"
     ],
     "source": "egen",
-    "description": "Ej i registret (Lerum kommun). Geokoda 'Olstorpsvägen 166, Gråbo' med nearLat/nearLon Gråbo, maxKm 5. maptons-sidan har exakt koordinat men kunde inte hämtas (blockad). Flaskor: PC5, PC10 (komposit); byte tom→full eller köp ny. Källa: forsaljningsstallen.linde.se/gråbo/olstorpsvägen-166/aga-gasolautomat-gråbo; mt.maptons.com/p/12198523556; husbilskompisar.se/stallplatskartan/aga-gasolautomat-graabo",
-    "query": "Olstorpsvägen 166, Gråbo",
-    "nearLat": 57.838,
-    "nearLon": 12.3,
-    "maxKm": 12,
-    "address": "Olstorpsvägen 166, 443 70 Gråbo, 443 70 Gråbo",
+    "description": "Exakt koordinat från maptons. Flaskor: PC5, PC10 (komposit); byte tom→full eller köp ny. Källa: forsaljningsstallen.linde.se/gråbo/olstorpsvägen-166/aga-gasolautomat-gråbo; mt.maptons.com/p/12198523556; husbilskompisar.se/stallplatskartan/aga-gasolautomat-graabo",
+    "address": "Olstorpsvägen 166, 443 70 Gråbo",
     "gasolPrice": "Byte PC10 ca 379 kr, PC5 ca 249 kr (Linde/AGA-prislista 2026 – kan variera per automat)",
     "openingHours": "24/7",
     "phone": "08-706 95 00 (Linde kundtjänst)",
-    "url": "forsaljningsstallen.linde.se/gråbo/olstorpsvägen-166/aga-gasolautomat-gråbo; mt.maptons.com/p/12198523556; husbilskompisar.se/stallplatskartan/aga-gasolautomat-graabo"
+    "url": "forsaljningsstallen.linde.se/gråbo/olstorpsvägen-166/aga-gasolautomat-gråbo; mt.maptons.com/p/12198523556; husbilskompisar.se/stallplatskartan/aga-gasolautomat-graabo",
+    "lat": 57.8253132,
+    "lon": 12.2461602
   },
   {
     "name": "AGA Gasolautomat Oscarshöjds Blommor & Trädgård, Floda",
@@ -9996,11 +9994,11 @@
     ],
     "source": "egen",
     "name": "Gasol – jem & fix Hässleholm",
-    "query": "Stjärneholmsgatan 12, Hässleholm",
+    "query": "Spångatan 1, Hässleholm",
     "nearLat": 56.159,
     "nearLon": 13.7664,
-    "maxKm": 12,
-    "address": "Stjärneholmsgatan 12, Hässleholm",
+    "maxKm": 6,
+    "address": "Spångatan 1, Hässleholm",
     "facilities": [
       "gasol_byte"
     ],
@@ -11021,10 +11019,10 @@
   },
   {
     "name": "Gasol – jem & fix Alvesta",
-    "query": "Skördevägen 3, 342 37 Alvesta",
+    "query": "Skördevägen, Alvesta",
     "nearLat": 56.899,
     "nearLon": 14.556,
-    "maxKm": 12,
+    "maxKm": 5,
     "address": "Skördevägen 3, 342 37 Alvesta",
     "services": [
       "gasol"
@@ -11752,10 +11750,10 @@
   },
   {
     "name": "Gasol – jem & fix Söderhamn",
-    "query": "Stenängsvägen 4A, 826 40 Söderhamn",
+    "query": "Stenängsvägen, Söderhamn",
     "nearLat": 61.304,
     "nearLon": 17.059,
-    "maxKm": 12,
+    "maxKm": 8,
     "address": "Stenängsvägen 4A, 826 40 Söderhamn",
     "services": [
       "gasol"
