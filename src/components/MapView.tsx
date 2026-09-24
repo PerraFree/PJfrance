@@ -251,6 +251,11 @@ function popupHtml(
       `<div class="info-card"><span class="info-label">Avgift</span><span class="info-value">${esc(feeText)}</span></div>`,
     )
   }
+  if (station.gasolPrice) {
+    cards.push(
+      `<div class="info-card"><span class="info-label">Gasolpris</span><span class="info-value">${esc(station.gasolPrice)}</span></div>`,
+    )
+  }
   if (station.openingHours) {
     // Öppet-nu-status fylls i asynkront när popupen öppnas (se popupopen nedan)
     cards.push(

@@ -1632,7 +1632,6 @@
   },
   {
     "name": "Gasolautomat Sälen",
-    "query": "Postvägen 2, Sälen",
     "services": [
       "gasol"
     ],
@@ -1644,7 +1643,10 @@
     "openingHours": "Dygnet runt",
     "facilities": [
       "gasol_byte"
-    ]
+    ],
+    "lat": 61.15737,
+    "lon": 13.26567,
+    "address": "Postvägen 2, Sälen"
   },
   {
     "name": "Gasolautomat Snickeriet, Stenungsund",
@@ -1776,19 +1778,21 @@
   },
   {
     "name": "Gasolautomat Borgeby Biltvätt, Bjärred",
-    "query": "Desideriavägen 21, Bjärred",
+    "query": "Desideriavägen, Bjärred",
     "services": [
       "gasol"
     ],
-    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "description": "Gasolautomat (AGA/Linde) vid Borgeby Biltvätt – köp ny eller byt tom gasolflaska mot full (PC5/PC10 komposit), kortbetalning, öppet dygnet runt. Källa: Lindes lista + borgebybiltvatt.se.",
     "url": "https://forsaljningsstallen.linde.se/bj%C3%A4rred/desideriav%C3%A4gen-21/aga-gasolautomat-borgeby-biltv%C3%A4tt",
     "source": "egen",
-    "nearLat": 55.728,
-    "nearLon": 13.036,
+    "nearLat": 55.745,
+    "nearLon": 13.05,
     "openingHours": "Dygnet runt",
     "facilities": [
       "gasol_byte"
-    ]
+    ],
+    "address": "Desideriavägen 21, 237 41 Bjärred",
+    "maxKm": 10
   },
   {
     "name": "Gasolautomat ICA Supermarket Skanör",
@@ -2496,7 +2500,7 @@
   },
   {
     "name": "Gasolautomat ICA Skrea Strand, Falkenberg",
-    "query": "Ljungholmsgatan 20, Falkenberg",
+    "query": "Ljungholmsvägen 20, Falkenberg",
     "services": [
       "gasol"
     ],
@@ -2508,7 +2512,8 @@
     "openingHours": "Dygnet runt",
     "facilities": [
       "gasol_byte"
-    ]
+    ],
+    "address": "Ljungholmsvägen 20, Falkenberg"
   },
   {
     "name": "Gasolautomat GO Biltvätt, Landskrona",
@@ -3308,7 +3313,6 @@
   },
   {
     "name": "Gasol – Elgiganten, Mora",
-    "query": "Stålmyrsvägen 48B, 792 50 Mora",
     "services": [
       "gasol"
     ],
@@ -3319,7 +3323,10 @@
     "nearLon": 14.56,
     "facilities": [
       "gasol_byte"
-    ]
+    ],
+    "lat": 61.00588,
+    "lon": 14.60164,
+    "address": "Skålmyrsvägen 48B, 792 50 Mora"
   },
   {
     "name": "Gasol – Karl Hedin Bygghandel, Mora",
@@ -7571,33 +7578,42 @@
   },
   {
     "name": "Gasoldepån Simmelsberga",
-    "query": "Simmelsberga, Ekeby",
     "nearLat": 56.05,
     "nearLon": 12.95,
     "services": [
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
-    "description": "Gasolpåfyllning i lösvikt (30 kr/kg). Källa: husvagnsdepan.se.",
+    "description": "Husvagnsdepåns gasolstation: påfyllning av egen flaska i lösvikt (30 kr/kg) samt bytesflaskor. Öppet endast måndag 15–18 och torsdag 16–19. Läget är byn Simmelsberga (utanför Ekeby) – exakt tomt ej bekräftad, ring vid tvekan. Källa: husvagnsdepan.se/gasolpafyllning.",
     "url": "https://husvagnsdepan.se/gasolpafyllning",
-    "source": "egen"
+    "source": "egen",
+    "lat": 56.0007,
+    "lon": 13.004,
+    "address": "Simmelsberga (mellan Ekeby och Kågeröd), Bjuv",
+    "openingHours": "Mo 15:00-18:00; Th 16:00-19:00",
+    "gasolPrice": "Påfyllning egen flaska 30 kr/kg (husvagnsdepan.se, sep 2026)",
+    "phone": "042-400 90 80"
   },
   {
-    "name": "Husvagnsdepan/Gasoldepan Billesholm",
-    "query": "Billesholm",
-    "nearLat": 56.15,
-    "nearLon": 12.94,
+    "name": "Husvagnsdepån Billesholm",
+    "query": "Glasgatan 10, Billesholm",
+    "nearLat": 56.06,
+    "nearLon": 12.98,
     "services": [
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_byte"
     ],
-    "description": "Gasolpåfyllning i lösvikt (30 kr/kg) eller bytesflaska. Källa: husvagnsdepan.se / gasoldepan.se.",
+    "description": "Husbils-/husvagnshandlare med bytesflaskor för gasol. OBS: påfyllning av egen flaska sker INTE här utan vid deras station i Simmelsberga (egen plats på kartan). Källa: husvagnsdepan.se.",
     "url": "https://husvagnsdepan.se/gasolpafyllning",
-    "source": "egen"
+    "source": "egen",
+    "address": "Glasgatan 10, Billesholm",
+    "maxKm": 10,
+    "phone": "042-400 90 80"
   },
   {
     "name": "GT-Petroleum / Gasoli Karlshamn",

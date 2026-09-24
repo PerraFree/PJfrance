@@ -240,11 +240,17 @@ function toStation(el: OverpassElement): Station | null {
   if (lat === undefined || lon === undefined) return null
   const tags = el.tags ?? {}
   if (isBoatStation(tags)) return null
-  const services = servicesFromTags(tags)
+  const override = OSM_FACILITY_OVERRIDES.get(`${el.type}/${el.id}`)
+  // En mack som bara har fuel:lpg=yes (ingen shop=gas, ingen platsvis
+  // verifierad override) är fordonsgas/autogas vid pump – inte flaskbyte.
+  // Utan detta hade den visats som "byt tub" via okänt-fallbacken.
+  // Speglas i scripts/sync-stations.mjs – ändra ALLTID båda.
+  const services = servicesFromTags(tags).filter(
+    (s) => s !== 'gasol' || tags.shop === 'gas' || override,
+  )
   if (services.length === 0) return null
   const kind = placeKind(tags)
   const amenity = amenityFields(tags)
-  const override = OSM_FACILITY_OVERRIDES.get(`${el.type}/${el.id}`)
   if (override) amenity.facilities = [...new Set([...(amenity.facilities ?? []), ...override])]
   return {
     id: `osm-${el.type}-${el.id}`,

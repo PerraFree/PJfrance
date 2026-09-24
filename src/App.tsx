@@ -77,6 +77,7 @@ const MERGE_FIELDS: (keyof Station)[] = [
   'image',
   'address',
   'fee',
+  'gasolPrice',
   'openingHours',
   'operator',
   'phone',

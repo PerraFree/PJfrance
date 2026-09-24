@@ -24,6 +24,10 @@ export interface Station {
   description?: string
   address?: string
   fee?: string
+  /** Pris för gasol (byte tom→full och/eller påfyllning kr/kg), t.ex.
+   *  "Byte P11 449 kr, PC10 499 kr (sep 2026)". Eget fält – blandas inte
+   *  ihop med `fee` som gäller tömning/ställplats. */
+  gasolPrice?: string
   openingHours?: string
   osmUrl?: string
   /** Nycklar ur FACILITY_LABELS – exakt vad som finns på platsen. */

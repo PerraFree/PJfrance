@@ -262,11 +262,17 @@ async function fetchOsmFrom(url) {
     if (lat === undefined || lon === undefined) continue
     const tags = el.tags ?? {}
     if (isBoatStation(tags)) continue
-    const services = servicesFromTags(tags)
+    const override = OSM_FACILITY_OVERRIDES.get(`${el.type}/${el.id}`)
+    // En mack som bara har fuel:lpg=yes (ingen shop=gas, ingen platsvis
+    // verifierad override) är fordonsgas/autogas vid pump – inte flaskbyte.
+    // Utan detta hade den visats som "byt tub" via okänt-fallbacken.
+    // Speglas i src/lib/overpass.ts – ändra ALLTID båda.
+    const services = servicesFromTags(tags).filter(
+      (s) => s !== 'gasol' || tags.shop === 'gas' || override,
+    )
     if (services.length === 0) continue
     const kind = placeKind(tags)
     const amenity = amenityFields(tags)
-    const override = OSM_FACILITY_OVERRIDES.get(`${el.type}/${el.id}`)
     if (override) amenity.facilities = [...new Set([...(amenity.facilities ?? []), ...override])]
     stations.push({
       id: `osm-${el.type}-${el.id}`,
@@ -553,6 +559,7 @@ async function fetchCurated() {
         'phone',
         'openingHours',
         'season',
+        'gasolPrice',
       ]) {
         if (e[key] !== undefined) station[key] = e[key]
       }
