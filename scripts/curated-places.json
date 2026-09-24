@@ -1794,21 +1794,21 @@
   },
   {
     "name": "Gasolautomat Borgeby Biltvätt, Bjärred",
-    "query": "Desideriavägen, Borgeby",
+    "query": "Desideriavägen 21, 237 42 Bjärred",
     "services": [
       "gasol"
     ],
     "description": "Gasolautomat (AGA/Linde) vid Borgeby Biltvätt – köp ny eller byt tom gasolflaska mot full (PC5/PC10 komposit), kortbetalning, öppet dygnet runt. Källa: Lindes lista + borgebybiltvatt.se.",
     "url": "https://forsaljningsstallen.linde.se/bj%C3%A4rred/desideriav%C3%A4gen-21/aga-gasolautomat-borgeby-biltv%C3%A4tt",
     "source": "egen",
-    "nearLat": 55.745,
-    "nearLon": 13.05,
+    "nearLat": 55.72,
+    "nearLon": 13.03,
     "openingHours": "Dygnet runt",
     "facilities": [
       "gasol_byte"
     ],
-    "address": "Desideriavägen 21, 237 41 Bjärred (Borgeby)",
-    "maxKm": 3,
+    "address": "Desideriavägen 21, 237 42 Bjärred (Borgeby)",
+    "maxKm": 6,
     "gasolPrice": "Byte PC10 ca 379 kr, PC5 ca 249 kr (Linde/AGA-prislista 2026 – kan variera per automat)"
   },
   {
@@ -2225,7 +2225,7 @@
     "services": [
       "gasol"
     ],
-    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen. Samma plats som GasolAutomat.se:s automat vid City Gross A6.",
     "url": "https://forsaljningsstallen.linde.se/j%C3%B6nk%C3%B6ping/batterigatan-2/aga-gasolautomat-j%C3%B6nk%C3%B6ping",
     "source": "egen",
     "nearLat": 57.783,
@@ -9020,7 +9020,7 @@
   },
   {
     "name": "GasolAutomat.se – Gekås Camping, Ullared",
-    "query": "Gekås Camping, Ullared",
+    "query": "Falkenbergsvägen 21, Ullared",
     "nearLat": 57.13,
     "nearLon": 12.72,
     "maxKm": 6,
@@ -9034,7 +9034,8 @@
     "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
     "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026)",
     "openingHours": "24/7",
-    "url": "https://gasolautomat.se/reseller/ullared-gekas-camping/"
+    "url": "https://gasolautomat.se/reseller/ullared-gekas-camping/",
+    "address": "Falkenbergsvägen 21, 310 60 Ullared"
   },
   {
     "name": "Gasol – Circle K, Gammelstad (Luleå)",
@@ -9345,7 +9346,7 @@
       "gasol"
     ],
     "source": "egen",
-    "name": "GasolAutomat.se – Kungsbacka (Tölöleden 3)",
+    "name": "GasolAutomat.se – Willys Hede, Kungsbacka",
     "query": "Tölöleden 3, Kungsbacka",
     "nearLat": 57.49,
     "nearLon": 12.08,
@@ -9353,10 +9354,11 @@
     "facilities": [
       "gasol_byte"
     ],
-    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se. Värdbutik ej säkert identifierad (troligen Stora Coop/Willys Hede).",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
     "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)",
     "openingHours": "24/7",
-    "url": "https://gasolautomat.se/automater/"
+    "url": "https://gasolautomat.se/automater/",
+    "address": "Tölöleden 3, 434 39 Kungsbacka"
   },
   {
     "services": [
@@ -10157,5 +10159,497 @@
     "source": "egen",
     "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Samma handelsområde som Elgiganten. Källa: jemfix.se.",
     "url": "https://www.jemfix.se/butiker/karlshamn/"
+  },
+  {
+    "name": "GasolAutomat.se – Willys Torslanda, Göteborg",
+    "query": "Postflyget 6, 423 37 Torslanda",
+    "nearLat": 57.72,
+    "nearLon": 11.77,
+    "maxKm": 10,
+    "address": "Postflyget 6, 423 37, Torslanda",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://gasolautomat.se/reseller/torslanda-willys/ ; https://www.hitta.se/willys+torslanda/torslanda/aamsszfja",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – ICA Nära Fiskebäck, Göteborg",
+    "query": "Mungårdsgatan 21, 426 53 Västra Frölunda",
+    "nearLat": 57.65,
+    "nearLon": 11.85,
+    "maxKm": 10,
+    "address": "Mungårdsgatan 21, 426 53, Västra Frölunda",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://www.ica.se/butiker/nara/goteborg/ica-nara-fiskeback-1003795/ ; https://gasolautomat.se/automater/",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – Gyllene Korven, Askim",
+    "query": "Västra Stationsvägen 2B, 436 44 Askim",
+    "nearLat": 57.63,
+    "nearLon": 11.94,
+    "maxKm": 10,
+    "address": "Västra Stationsvägen 2B, 436 44, Askim",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://www.waze.com/en/live-map/directions/gyllene-korven-vastra-stationsvagen-2b-askim ; https://husbilskompisar.se/stallplatskartan/gasolautomat.se-gyllene-korven",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – Eriksbergs köpcentrum, Göteborg",
+    "query": "Kolhamnsgatan, 417 61 Göteborg",
+    "nearLat": 57.705,
+    "nearLon": 11.92,
+    "maxKm": 10,
+    "address": "Kolhamnsgatan, 417 61, Göteborg",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://husbilskompisar.se/stallplatskartan/gasolautomat.se-eriksbergs-koepcentrum ; https://gasolautomat.se/reseller/goteborg-eriksbergs-kopcentrum/",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – City Gross Ytterby, Kungälv",
+    "query": "Torsbyvägen 12, 442 50 Ytterby",
+    "nearLat": 57.86,
+    "nearLon": 11.93,
+    "maxKm": 10,
+    "address": "Torsbyvägen 12, 442 50, Ytterby",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://www.citygross.se/butiker/Ytterby/ ; https://www.eniro.se/city+gross+ytterby/7817115/firma",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – ICA Maxi Torp, Uddevalla",
+    "query": "Herrestads Torp 214, 451 76 Uddevalla",
+    "nearLat": 58.35,
+    "nearLon": 11.94,
+    "maxKm": 10,
+    "address": "Herrestads Torp 214, 451 76, Uddevalla",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://www.hitta.se/maxi+ica+uddevalla/uddevalla/jcszamnqr ; https://www.ica.se/butiker/kvantum/uddevalla/maxi-uddevalla-1004276/",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – City Gross Torp, Uddevalla",
+    "query": "Östra Torpvägen 2, 451 76 Uddevalla",
+    "nearLat": 58.35,
+    "nearLon": 11.94,
+    "maxKm": 10,
+    "address": "Östra Torpvägen 2, 451 76, Uddevalla",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://www.citygross.se/butiker/Uddevalla/ ; https://www.waze.com/live-map/directions/citygross-torp-ostra-torpvagen-2-uddevalla",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – Rotan/Rotviksbro, Uddevalla",
+    "query": "Rotvik 301, 451 96 Uddevalla",
+    "nearLat": 58.33,
+    "nearLon": 11.79,
+    "maxKm": 10,
+    "address": "Rotvik 301, 451 96, Uddevalla",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://husbilskompisar.se/stallplatskartan/gasolautomat.se-rotan-rotviksbro ; https://gasolautomat.se/reseller/uddevalla-rotan-rotviksbro/",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – Tanum Shoppingcenter, Tanumshede",
+    "query": "Brehogsvägen 5, 457 32 Tanumshede",
+    "nearLat": 58.72,
+    "nearLon": 11.32,
+    "maxKm": 10,
+    "address": "Brehogsvägen 5, 457 32, Tanumshede",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://www.vastsverige.com/en/tanum/produkter/tanum-shoppingcenter/ ; https://thon.no/en/shopping-centres/tanum-shoppingcenter/",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – Coop Extra Lysekil",
+    "query": "Ekgatan 1, 453 37 Lysekil",
+    "nearLat": 58.27,
+    "nearLon": 11.43,
+    "maxKm": 10,
+    "address": "Ekgatan 1, 453 37, Lysekil",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://husbilsplats.se/locations/gasolautomat-coop-extra-lysekil/ ; https://www.hitta.se/coop+extra/lysekil/jaqyhakrs",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – City Gross Halmstad",
+    "query": "Stormgatan 14, 302 63 Halmstad",
+    "nearLat": 56.67,
+    "nearLon": 12.86,
+    "maxKm": 10,
+    "address": "Stormgatan 14, 302 63, Halmstad",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://oppettider.net/spots/city-gross-halmstad-stormgatan-b8da8f7376 ; https://www.koordinater.se/intressepunkt.aspx?poiid=57903",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – Willys Flygstaden, Halmstad",
+    "query": "Kundvägen 4, 302 41 Halmstad",
+    "nearLat": 56.67,
+    "nearLon": 12.86,
+    "maxKm": 10,
+    "address": "Kundvägen 4, 302 41, Halmstad",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://husbilsplats.se/rest-area/gasolautomat-willys-flygstaden/ ; https://gasolautomat.se/reseller/willyss-flygstaden/ ; https://www.willys.se/butik/halmstad/willys-flygstaden-2137",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – Boarps handelsområde, Båstad",
+    "query": "Boarpsvägen 133, 269 91 Båstad",
+    "nearLat": 56.42,
+    "nearLon": 12.92,
+    "maxKm": 10,
+    "address": "Boarpsvägen 133, 269 91, Båstad",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://husbilskompisar.se/service/3046/view,print ; https://gasolautomat.se/reseller/boarps-handelsomrade-bastad/",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – Din Husbil, Jönköping",
+    "query": "Herkulesvägen 25, 553 03 Jönköping",
+    "nearLat": 57.78,
+    "nearLon": 14.16,
+    "maxKm": 10,
+    "address": "Herkulesvägen 25, 553 03, Jönköping",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://husbilskompisar.se/stallplatskartan/gasolautomat.se-din-husbil-joenkoeping ; https://www.hitta.se/din+husbil+i+j%C3%B6nk%C3%B6ping+ab/j%C3%B6nk%C3%B6ping/mrvyjgbbx",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – Willys Västervik",
+    "query": "Södra Järnvägsgatan 35, 593 32 Västervik",
+    "nearLat": 57.76,
+    "nearLon": 16.64,
+    "maxKm": 10,
+    "address": "Södra Järnvägsgatan 35, 593 32, Västervik",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://www.willys.se/butik/vastervik/willys-sodra-jarnvagsg-2171",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – Hemköp/Östenssons Ullstämma, Linköping",
+    "query": "Värmevägen 2, 589 37 Linköping",
+    "nearLat": 58.41,
+    "nearLon": 15.62,
+    "maxKm": 10,
+    "address": "Värmevägen 2, 589 37, Linköping",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://www.hemkop.se/butik/4738 ; https://www.hitta.se/hemk%C3%B6p+%C3%B6stenssons+link%C3%B6ping+ullst%C3%A4mma/link%C3%B6ping/npqrvdja",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – Bilprovningen Ljungsbro",
+    "query": "Blåsvädersgatan 14, 585 73 Ljungsbro",
+    "nearLat": 58.51,
+    "nearLon": 15.49,
+    "maxKm": 10,
+    "address": "Blåsvädersgatan 14, 585 73, Ljungsbro",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://www.bilprovningen.se/stationer/ljungsbro/ljungsbro ; https://www.opendi.se/ljungsbro/301603.html",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – Coop Mjölby",
+    "query": "Hallevadsgatan 2, 595 35 Mjölby",
+    "nearLat": 58.32,
+    "nearLon": 15.13,
+    "maxKm": 10,
+    "address": "Hallevadsgatan 2, 595 35, Mjölby",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://gasolautomat.se/reseller/coop-mjolby/ ; https://www.tiendeo.se/butik/mj%C3%B6lby/coop-hallevadsgatan/52315",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – Happy Homes Erikslund, Västerås",
+    "query": "Hallsta Gårdsgata 3, 721 38 Västerås",
+    "nearLat": 59.61,
+    "nearLon": 16.55,
+    "maxKm": 10,
+    "address": "Hallsta Gårdsgata 3, 721 38, Västerås",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://gasolautomat.se/reseller/happy-homes-erikslund-vasteras/ ; https://www.happyhomes.se/butiker/vasteras",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – Tempo/Handlarn Tråvad",
+    "query": "Ågatan 2, 534 92 Tråvad",
+    "nearLat": 58.22,
+    "nearLon": 13.05,
+    "maxKm": 10,
+    "address": "Ågatan 2, 534 92, Tråvad",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://gasolautomat.se/reseller/tempo-travad/ ; https://oppettider.net/spots/handlarn-travad-agatan-cb57388b34",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – Willys Härnösand",
+    "query": "Gånsviksvägen 8, 871 60 Härnösand",
+    "nearLat": 62.63,
+    "nearLon": 17.94,
+    "maxKm": 10,
+    "address": "Gånsviksvägen 8, 871 60, Härnösand",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://www.willys.se/butik/harnosand/willys-harnon-2250 ; https://www.hitta.se/willys+h%C3%A4rn%C3%B6sand/h%C3%A4rn%C3%B6sand/iaorubjm",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "GasolAutomat.se – Billdal (Kungsporten)",
+    "query": "Kungsporten 6B, 427 50 Billdal",
+    "nearLat": 57.58,
+    "nearLon": 11.95,
+    "maxKm": 10,
+    "address": "Kungsporten 6B, 427 50, Billdal",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "openingHours": "24/7",
+    "url": "https://gasolautomat.se/automater/ (sökutdrag) ; https://husbilsplats.se/stallplatser/platser/page/22/?pno=52",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026 – ej ombekräftat)"
+  },
+  {
+    "name": "Gasol 24/7 (Skånegas) – gasolautomat Karlshamn",
+    "query": "Erik Dahlbergsvägen 101, Karlshamn",
+    "nearLat": 56.17,
+    "nearLon": 14.86,
+    "maxKm": 10,
+    "address": "Erik Dahlbergsvägen 101, Karlshamn",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat 24/7 (Gasol 24/7 Skåne AB/Skånegas) – byte av PC5, PC10 och P11. Källa: skanegas.com, Ställplatsappen.",
+    "openingHours": "24/7",
+    "url": "https://husbilskompisar.se/stallplatskartan/gasol-247-gasolautomat-karlshamn ; https://pr.maptons.com/p/12167033260 ; https://www.skanegas.com/gasolautomater/"
+  },
+  {
+    "name": "Expressgasol – gasolautomat Lidköping (Framnäsvägen)",
+    "query": "Framnäsvägen 5, 531 60 Lidköping",
+    "nearLat": 58.5,
+    "nearLon": 13.16,
+    "maxKm": 10,
+    "address": "Framnäsvägen 5, 531 60, Lidköping",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat dygnet runt (Expressgasol-portalen, regional Linde-handlare) – byte av kompositflaskor. Källa: expressgasol.se, Ställplatsappen.",
+    "openingHours": "24/7",
+    "url": "https://husbilskompisar.se/stallplatskartan/expressgasol.se-lidkoeping ; https://expressgasol.se/lidkoping"
+  },
+  {
+    "name": "Gasolfyllarna – gasolautomat Kungsbacka",
+    "query": "Hedebrovägen 30, 434 39 Kungsbacka",
+    "nearLat": 57.487,
+    "nearLon": 12.076,
+    "maxKm": 10,
+    "address": "Hedebrovägen 30, 434 39, Kungsbacka",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolfyllarnas 24/7-automat – byte av kompositflaskor (PC5/PC10 enligt kedjans automatsortiment). Källa: gasolfyllarna.se.",
+    "openingHours": "24/7",
+    "url": "https://husbilskompisar.se/stallplatskartan/gasolfyllarna-gasolautomat-kungsbacka ; https://gasolfyllarna.se/privat/gasolautomater/",
+    "gasolPrice": "Depåpris byte PC10 290 kr, P11 315 kr – automatpris kan avvika (gasolfyllarna.se, sep 2026)"
+  },
+  {
+    "name": "Gasolfyllarna – gasolautomat Vasa Handelsplats, Södertälje",
+    "query": "Genetaleden (Vasa Handelsplats), 151 59 Södertälje",
+    "nearLat": 59.2,
+    "nearLon": 17.63,
+    "maxKm": 10,
+    "address": "Genetaleden (Vasa Handelsplats), 151 59, Södertälje",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolfyllarnas 24/7-automat – byte av kompositflaskor (PC5/PC10 enligt kedjans automatsortiment). Källa: gasolfyllarna.se.",
+    "openingHours": "24/7",
+    "url": "https://gasolfyllarna.se/privat/gasolautomater/ (sökutdrag: 'första automaten placerades vid Vasa Handelsplats i Södertälje')",
+    "gasolPrice": "Depåpris byte PC10 290 kr, P11 315 kr – automatpris kan avvika (gasolfyllarna.se, sep 2026)"
   }
 ]
