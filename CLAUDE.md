@@ -438,6 +438,100 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    påfyllningsplats ("Aniol Gasol AB") → bekräftade att "fyll på"-knappen
    nu tänds (innan fixen förblev den släckt).
 
+   **Bred gasolgranskning + prissvep (24 sep 2026)** – Per bad om en
+   djupgranskning av allt gasol (byte/påfyllning), pris för byte, och fler
+   platser (Google Maps-sök kring Borås + norbro.se/hitta-gasolautomat).
+   Kriterium från Per: **bara byte av 10/11 kg-flaskor räknas** (P11 stål,
+   PA11 alu, PC10/PK10 komposit) – platser som bara byter PK5/P6 ska bort.
+   Fyra parallella agenter (Norbro-automater, Sjuhärad-svep, kedjor+priser,
+   granskning av befintliga). **Sessionens delade WebSearch-kvot (200)
+   tog slut mitt i** – allt nedan är gjort, resten ligger i "Kvar".
+   - **Nytt fält `gasolPrice`** (Station/types.ts, sync-skriptet, dedupens
+     MERGE_FIELDS, egen ruta "Gasolpris" i popupen) – blandas inte med `fee`.
+   - **Autogas-macker bortfiltrerade:** OSM-element med bara `fuel:lpg=yes`
+     (ingen `shop=gas`, ingen `OSM_FACILITY_OVERRIDES`) får inte längre
+     'gasol' – de är fordonsgas vid pump och visades som "byt tub" via
+     okänt-fallbacken. I BÅDA filerna (sync + overpass.ts). Tog bort Preem
+     Nacka (oklar) + två namnlösa Malmö-macker (en av dem = Gasol Malmö LPG:s
+     egen pump, som redan finns som registerpost).
+   - **Registerfel rättade:** 5 platser saknades helt i publicerad data
+     (Sälen, Bjärred, Falkenberg, Mora, Simmelsberga – felstavade gator /
+     Nominatim-missar → exakta koordinater eller rättad adress); Billesholm
+     var en hopblandning av butiken (byte, Glasgatan 10) och påfyllnings-
+     stationen i Simmelsberga (30 kr/kg, endast må 15–18/to 16–19) → två
+     poster; Husbilsprylen Ullared borttagen (fysisk butik nedlagd enligt
+     husbilsklubben); Gasolbolaget Växjö-dubblett hopslagen (påfyllning bara
+     belagd av myLPG-användare, ej av företaget → bara byte + ring-notis);
+     Gasbolaget Falun omskriven (myLPG beskriver personalstyrd fordons-/
+     fasttankning, lös flaska EJ belagd); Barkmans Eskilstuna fick även byte
+     (automaten byter PK5/PK10/P11); Gasolstationen Väla: flytt jan 2025
+     (inte dec), adress Välamarknaden 5; Gasolfyllarna Norrköping fick
+     `gasol_byte` i overriden (24/7-automat).
+   - **Priser (132 av 242 gasolposter har nu `gasolPrice`)**, kedjepris från
+     kedjornas egna sajter sep 2026: Hornbach P11 519/PK10 389 kr; Bauhaus
+     P11 519/PC10 389; Circle K PK10 379 (rek.); Rusta PC10 449/PC5 299
+     (bara komposit); Linde/AGA-automater "ca PC10 379/PC5 249 – varierar";
+     GasolAutomat.se PC10 349/PC5 229; Svetskompaniet P11 365; Höllvikens
+     Gasol PC10 349/P11 399; Lööfs P11 395; Gasolfyllarna påfyllning från
+     29,90 kr/kg; GasolEsset Trelleborg 37 kr/kg; Gasoli Karlshamn 29 kr/kg;
+     Simmelsberga 30 kr/kg; GasolGöteborg byte PC10 340. **Byggmax,
+     Granngården, jem & fix, ÖoB, Motonet, Preem, OKQ8 (P11) publicerar
+     inget pris** ("varierar per butik") – lämnat tomt hellre än gissat.
+   - **Nya platser (+66):** Sjuhärad/Göteborg öst 37 st (Borås, Ulricehamn,
+     Tranemo, Kinna/Skene, Bollebygd, Herrljunga, Vårgårda, Alingsås, Lerum,
+     Mölnlycke, Landvetter, Partille, Sävedalen – Norbro-/Linde-listor,
+     GasolAutomat.se, kedjesajter); 6 Linde-automater som saknades (Mörrum,
+     Skärblacka, Västerhaninge, Malmslätt, Gävle Gröna vägen, Växjö
+     Norremark – den sista har motstridig sidtitel, verifiera); lokala
+     bolags 24/7-automater (Hallarna Halmstad/Norbro, Höllvikens Gasol,
+     Lööfs Karlstad, Gasolkompaniet Lomma+Toftanäs, Skånegas Eslöv+
+     Landskrona, Skaraborgs Gasol Lidköping+Skövde, GasolAutomat.se Örebro+
+     Gekås); Gasolfyllarna Värmdö; 14 Norbro-återförsäljare (Circle K ×6,
+     Byggmax ×2, ÖoB ×2, Bauhaus Backa, Elgiganten Eslöv, Melleruds Järn).
+     Alla med `query`+`nearLat/nearLon` (maxKm 6–12) – **verifiera
+     geokodningen efter deploy** (`git show origin/gh-pages:data/stations-seed.json`).
+   - **Kedjor – slutsats för framtida butik-för-butik-inläggning:** Hornbach
+     (alla varuhus, fast pris), Bauhaus (alla), Byggmax (~110, sortiment
+     säkert men pris varierar), Granngården (~110), jem & fix (~50), Rusta
+     (~110, bara komposit), Motonet (~10), ÖoB (~60). **Jula och Biltema
+     säljer INGEN 10/11 kg-gasol** (bara patroner) – läggs aldrig in.
+     OKQ8/Circle K/Preem: "tillgänglighet varierar per station", ingen
+     lista → bara de stationer som står i Linde-/Norbro-listorna.
+     Dollarstore: bara PK5/PK10 i utvalda butiker. PA11 (alu) kan enligt
+     gasolautomat.se INTE bytas i automat (fastnar) – bara i butik.
+   - **Kvar (kräver ny session med sökbudget):**
+     1. gasolautomat.se har 9 listsidor ≈ 80 automater i väst/syd; ~25 har
+        bara värdbutik utan gatuadress (Willys Torslanda, ICA Fiskebäck,
+        Gyllene Korven Askim, Stora Coop/Willys Hede Kungsbacka, Citygross
+        Ytterby, ICA Maxi/Citygross Torp Uddevalla, Tanum Shopping, Coop
+        Lysekil, ICA Hajen/Coop Forum/Vincent's Varberg, Citygross/Willys
+        Flygstaden Halmstad, Boarp Båstad, Citygross A6/Din Husbil
+        Jönköping, Willys Västervik, Hemköp Ullstämma Linköping, Coop
+        Mjölby, Happy Homes Erikslund Västerås, Eriksberg Göteborg) och
+        sidorna 3–9 är osökta. Hämta adresser → lägg in.
+     2. Norbros automatkarta är JS (ej sökbar): någon måste öppna
+        norbro.se/privat/hitta-gasolautomat/ i webbläsare och läsa av.
+     3. Utan adress (skippade): Lööfs Kil, Gasolkompaniet Staffanstorp/
+        Trelleborg, Skånegas Laholm, Levol Onsala, Gasolfyllarna Karlstad/
+        Nynäshamn, Gasolmacken Nyköping, Skaraborgs Gasol Falköping/Borås,
+        Expressgasol (Landvetter/Växjö/Falköping/Lidköping/Borås – ev.
+        samma automater som andra bolag), Gasolproffsen Örebro (42 kr/kg
+        lösvikt apr 2026!), Gasolbutiken (41 kr/kg, ort okänd), ICA Grytan.
+     4. Sjuhärad ej hunnet: Fristad, Dalsjöfors, Sandared, Viskafors,
+        Svenljunga, Gråbo/Floda/Hindås/Rävlanda, Kortedala/Angered;
+        Rusta Borås saknar gatuadress (query "Rusta, Borås" – kolla),
+        Granngården Borås har motstridig adress (Sandlidsgatan/Rosendalsg.).
+     5. Oklara att ringa: Gasolbolaget Växjö 0470-480 90 (påfyllning?),
+        Gasbolaget Falun 023-77 10 43 (lös flaska?), Gasolmacken Uppsala
+        (52 kr/kg?!), Verktygsboden Borås (byter de fortfarande PC10/P11?
+        bara 2012/2014-belägg), Hornbach "gasolservice"-sidan (byte eller
+        även lösvikt?).
+     6. Stickprov om Linde-/Primagaz-poster är nedlagda: 0 gjorda.
+     7. Lindes 8 icke-automat-återförsäljare i katalogen (Swebolt Malmö,
+        Cramo Ängelholm/Ljungby, BG Gas Norrköping, Koaro Linköping,
+        Smålandslogistik Växjö, Gasmontage Kungsbacka, Lindströms Svets
+        Stockholm) kan vara ren industrigas – ej inlagda.
+
    **Borås-komplettering (sep 2026):** Per efterlyste specifikt Verktygsboden
    och Svetskompaniet i Borås. Tillagda: Verktygsboden Borås (byte, PC10/
    komposit – bekräftat via återkommande prisomnämnanden på

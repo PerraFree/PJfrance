@@ -3541,14 +3541,15 @@
     "services": [
       "gasol"
     ],
-    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full. Lösviktspåfyllning av egen flaska uppges av myLPG.eu-användare men bekräftas inte av företaget – ring 0470-480 90 innan besök. Källa: Norbro Energis återförsäljarlista, myLPG.eu.",
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Gasolbolaget-Johnny-Ygdevik-AB-35245-Vxj-Sandvgen-17-0013X000044O0FYQA0",
     "source": "egen",
     "nearLat": 56.89,
     "nearLon": 14.82,
     "facilities": [
       "gasol_byte"
-    ]
+    ],
+    "phone": "0470-480 90"
   },
   {
     "name": "Gasol – Byggmax, Karlstad",
@@ -7528,11 +7529,14 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Gasolpåfyllning i lösvikt (36 kr/kg) – fyller din egen flaska oavsett hur mycket gas som finns kvar. Gäller ej AGA-campingflaskor typ 2000/2012 (byts i stället). Källa: gasolgoteborg.se.",
     "url": "https://gasolgoteborg.se/gasolflaskor-priser/",
-    "source": "egen"
+    "source": "egen",
+    "gasolPrice": "Byte PC/PK10 340 kr, PC/PK5 170 kr; ny PC10 1 500 kr (gasolgoteborg.se, sep 2026)",
+    "openingHours": "Mo 12:00-17:00; Th 12:00-18:00; Fr 12:00-15:00"
   },
   {
     "name": "Gasoldirekt i Väst AB",
@@ -7561,7 +7565,8 @@
     ],
     "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
     "url": "https://gasolfyllarna.se/fyllningsstation/goteborg-hisings-backa/",
-    "source": "egen"
+    "source": "egen",
+    "gasolPrice": "Påfyllning från 29,90 kr/kg; depåpris byte PC10 290 kr, P11 315 kr (gasolfyllarna.se, sep 2026)"
   },
   {
     "name": "Gasolfyllarna Trollhättan",
@@ -7576,22 +7581,8 @@
     ],
     "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
     "url": "https://gasolfyllarna.se/fyllningsstation/trollhattan/",
-    "source": "egen"
-  },
-  {
-    "name": "Husbilsprylen i Norden AB",
-    "query": "Varbergsvägen 25, Ullared",
-    "nearLat": 57.13,
-    "nearLon": 12.73,
-    "services": [
-      "gasol"
-    ],
-    "facilities": [
-      "gasol_pafyllning"
-    ],
-    "description": "Husbilstillbehörsbutik som fyller på gasolflaskor i lösvikt (ca 25–29 kr/kg). Källa: husbilsklubben.se.",
-    "url": "https://www.husbilsklubben.se/threads/gasol-p%C3%A5fyllning-ullared.119133/",
-    "source": "egen"
+    "source": "egen",
+    "gasolPrice": "Påfyllning från 29,90 kr/kg; depåpris byte PC10 290 kr, P11 315 kr (gasolfyllarna.se, sep 2026)"
   },
   {
     "name": "Gasolkungen Kalmar",
@@ -7606,7 +7597,9 @@
     ],
     "description": "Gasolpåfyllning i lösvikt – fyller din flaska medan du väntar, du betalar bara för mängden som fylls på. Källa: gasolkungen.se.",
     "url": "https://gasolkungen.se/gasol-i-kalmar/",
-    "source": "egen"
+    "source": "egen",
+    "openingHours": "Mo-Fr 10:00-17:00",
+    "address": "E22 vid polisens kontrollplats, Kalmar Dämme"
   },
   {
     "name": "GasolEsset Trelleborg",
@@ -7621,7 +7614,8 @@
     ],
     "description": "Gasolpåfyllning i lösvikt – du kan alltid fylla på din gasolflaska även om den bara är halvtom, betalar bara för det som fylls på. Källa: gasolesset.se.",
     "url": "https://www.gasolesset.se/gasolesset-trelleborg/",
-    "source": "egen"
+    "source": "egen",
+    "gasolPrice": "Påfyllning 37 kr/kg (gasolesset.se, apr 2026)"
   },
   {
     "name": "Gasol Malmö LPG AB",
@@ -7635,7 +7629,9 @@
     ],
     "description": "Gasolpåfyllning i lösvikt – fyller de flesta europeiska propan-/butanflaskor på plats under öppettider, oavsett hur mycket gas som finns kvar. Källa: gasolmalmolpg.com / mylpg.eu.",
     "url": "https://www.mylpg.eu/stations/sweden/",
-    "source": "egen"
+    "source": "egen",
+    "address": "Bjurögatan 50, 211 24 Malmö (Norra hamnen)",
+    "openingHours": "Mo-Fr 10:00-17:00; Sa 10:00-14:00"
   },
   {
     "name": "Himlastallet i Slagtofta AB",
@@ -7650,7 +7646,8 @@
     ],
     "description": "Gasolpåfyllning – \"Välkomna med er gasolflaska, så fyller jag på den. Byt inte bort din goda kända flaska.\" Källa: himlastallet.se / Facebook.",
     "url": "https://himlastallet.se/gasol",
-    "source": "egen"
+    "source": "egen",
+    "openingHours": "Mo-Fr 08:00-17:00; Sa-Su 10:00-14:00"
   },
   {
     "name": "Gasoldepån Simmelsberga",
@@ -7684,12 +7681,14 @@
     "facilities": [
       "gasol_byte"
     ],
-    "description": "Husbils-/husvagnshandlare med bytesflaskor för gasol. OBS: påfyllning av egen flaska sker INTE här utan vid deras station i Simmelsberga (egen plats på kartan). Källa: husvagnsdepan.se.",
+    "description": "Husbils-/husvagnshandlare med bytesflaskor för gasol (PC10-byte). Egen flaska kan lämnas in här för fyllning – själva påfyllningen sker vid deras station i Simmelsberga (egen plats på kartan). Källa: husvagnsdepan.se.",
     "url": "https://husvagnsdepan.se/gasolpafyllning",
     "source": "egen",
     "address": "Glasgatan 10, Billesholm",
     "maxKm": 10,
-    "phone": "042-400 90 80"
+    "phone": "042-400 90 80",
+    "gasolPrice": "Byte PC10 300 kr (husvagnsdepan.se, sep 2026)",
+    "openingHours": "Mo-Th 08:00-17:00; Fr 08:00-16:00"
   },
   {
     "name": "GT-Petroleum / Gasoli Karlshamn",
@@ -7704,7 +7703,9 @@
     ],
     "description": "Gasolstation som fyller även delvis fulla flaskor (29 kr/kg). Källa: gasolikarlshamn.se / husbilsklubben.se.",
     "url": "https://gasolikarlshamn.se/",
-    "source": "egen"
+    "source": "egen",
+    "gasolPrice": "Påfyllning 29 kr/kg; nya flaskor P11 1 450 kr, PC10 1 650 kr (gasolikarlshamn.se, 2026)",
+    "openingHours": "Mo-Th 14:00-18:00; Fr 13:00-17:00"
   },
   {
     "name": "Gasolmacken Uppsala",
@@ -7734,7 +7735,8 @@
     ],
     "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
     "url": "https://gasolfyllarna.se/fyllningsstation/stockholm-tullinge/",
-    "source": "egen"
+    "source": "egen",
+    "gasolPrice": "Påfyllning från 29,90 kr/kg; depåpris byte PC10 290 kr, P11 315 kr (gasolfyllarna.se, sep 2026)"
   },
   {
     "name": "Gasolfyllarna Stockholm/Järfälla",
@@ -7749,7 +7751,8 @@
     ],
     "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
     "url": "https://gasolfyllarna.se/fyllningsstation/stockholm-jarfalla/",
-    "source": "egen"
+    "source": "egen",
+    "gasolPrice": "Påfyllning från 29,90 kr/kg; depåpris byte PC10 290 kr, P11 315 kr (gasolfyllarna.se, sep 2026)"
   },
   {
     "name": "Gasolfyllarna Stockholm/Jordbro",
@@ -7764,7 +7767,8 @@
     ],
     "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
     "url": "https://gasolfyllarna.se/fyllningsstationer/gasolpafyllning-stockholm-jordbro",
-    "source": "egen"
+    "source": "egen",
+    "gasolPrice": "Påfyllning från 29,90 kr/kg; depåpris byte PC10 290 kr, P11 315 kr (gasolfyllarna.se, sep 2026)"
   },
   {
     "name": "Gasolfyllarna Norrtälje",
@@ -7779,7 +7783,8 @@
     ],
     "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
     "url": "https://gasolfyllarna.se/fyllningsstation/norrtalje/",
-    "source": "egen"
+    "source": "egen",
+    "gasolPrice": "Påfyllning från 29,90 kr/kg; depåpris byte PC10 290 kr, P11 315 kr (gasolfyllarna.se, sep 2026)"
   },
   {
     "name": "Gasolfyllarna Enköping",
@@ -7794,7 +7799,8 @@
     ],
     "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
     "url": "https://gasolfyllarna.se/fyllningsstation/enkoping/",
-    "source": "egen"
+    "source": "egen",
+    "gasolPrice": "Påfyllning från 29,90 kr/kg; depåpris byte PC10 290 kr, P11 315 kr (gasolfyllarna.se, sep 2026)"
   },
   {
     "name": "Gasolfyllarna Gävle",
@@ -7809,7 +7815,8 @@
     ],
     "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se / esbilservice.com.",
     "url": "https://gasolfyllarna.se/",
-    "source": "egen"
+    "source": "egen",
+    "gasolPrice": "Påfyllning från 29,90 kr/kg; depåpris byte PC10 290 kr, P11 315 kr (gasolfyllarna.se, sep 2026)"
   },
   {
     "name": "Gasspecialisten Kiruna",
@@ -7824,7 +7831,8 @@
     ],
     "description": "Gasolpåfyllning i lösvikt – kontrollerar besiktningsdatum, väger flaskan och fyller mängden som saknas. Källa: gasspecialisten.se.",
     "url": "https://gasspecialisten.se/",
-    "source": "egen"
+    "source": "egen",
+    "openingHours": "Mo-Fr 07:00-16:00"
   },
   {
     "name": "Gasolfyllarna Linköping",
@@ -7838,7 +7846,8 @@
     ],
     "description": "Gasolpåfyllning i lösvikt – Safefill/GasBank-flaskor tillåtna. Del av kedjan Gasolfyllarna. Källa: myLPG.eu.",
     "url": "https://www.mylpg.eu/stations/sweden/station/Gasolfyllarna-Linkoping-C6C8902B-0922-2298-8F9E-1777FC2D2966",
-    "source": "egen"
+    "source": "egen",
+    "gasolPrice": "Påfyllning från 29,90 kr/kg; depåpris byte PC10 290 kr, P11 315 kr (gasolfyllarna.se, sep 2026)"
   },
   {
     "name": "Gasolfyllarna Örebro",
@@ -7853,10 +7862,11 @@
     ],
     "description": "Gasolpåfyllning i lösvikt – stödjer utomhusmonterad påfyllning. Del av kedjan Gasolfyllarna. Källa: myLPG.eu.",
     "url": "https://www.mylpg.eu/stations/sweden/station/Gasolfyllarna-Orebro-B3047D51-B680-E014-AEF2-CE37E73B0911",
-    "source": "egen"
+    "source": "egen",
+    "gasolPrice": "Påfyllning från 29,90 kr/kg; depåpris byte PC10 290 kr, P11 315 kr (gasolfyllarna.se, sep 2026)"
   },
   {
-    "name": "Barkmans",
+    "name": "Barkmans gasolautomat, Eskilstuna",
     "query": "Hejargatan 9, Eskilstuna",
     "nearLat": 59.37,
     "nearLon": 16.51,
@@ -7864,14 +7874,16 @@
       "gasol"
     ],
     "facilities": [
+      "gasol_byte",
       "gasol_pafyllning"
     ],
-    "description": "Gasolautomat 24/7 – fyller på lösa flaskor/tuber (även utländska typer), lägsta påfyllning 17 liter, annars 299 kr serviceavgift. Källa: myLPG.eu.",
+    "description": "Gasolautomat 24/7: byte/köp av PK5, PK10 och P11 (Norbro) SAMT påfyllning av egen lös flaska (även utländska typer, låneadaptrar). Påfyllning minst 17 liter, annars 299 kr serviceavgift. Källa: barkmans.se/gasolautomaterna, myLPG.eu.",
     "url": "https://www.mylpg.eu/stations/sweden/station/Barkmans-2D497D5B-D29F-E9E6-6A94-7C980ACBECAA",
-    "source": "egen"
+    "source": "egen",
+    "openingHours": "24/7"
   },
   {
-    "name": "Gasbolaget",
+    "name": "Gasbolaget i Dalarna (Ragvaldsberg, Falun)",
     "query": "Ragvaldsberg 4, Falun",
     "nearLat": 60.61,
     "nearLon": 15.63,
@@ -7881,23 +7893,8 @@
     "facilities": [
       "gasol_pafyllning"
     ],
-    "description": "Gasolpåfyllning i lösvikt – utomhusmonterad påfyllning, Safefill-flaskor tillåtna. Ring +46 23 77 10 43 innan besök. Källa: myLPG.eu.",
+    "description": "Gasolbolag vid väg 69 ca 11 km från Falun. Enligt myLPG.eu personalstyrd LPG-tankning (fast tank/fordon, \"dish\"-koppling) – påfyllning av LÖS flaska ej bekräftad, ring 023-77 10 43 innan besök. Byte av flaskor enligt OSM. Källa: myLPG.eu, gasbolaget.se.",
     "url": "https://www.mylpg.eu/stations/sweden/station/Gasbolaget-9E90E2E0-879A-35AE-5ADB-5A36ACA983AD",
-    "source": "egen"
-  },
-  {
-    "name": "Gasolbolaget",
-    "query": "Sandvägen 17, Växjö",
-    "nearLat": 56.88,
-    "nearLon": 14.81,
-    "services": [
-      "gasol"
-    ],
-    "facilities": [
-      "gasol_pafyllning"
-    ],
-    "description": "Gasolpåfyllning i lösvikt – utomhusmonterad påfyllning. Källa: myLPG.eu.",
-    "url": "https://www.mylpg.eu/es/estaciones/suecia/estacion/Gasolbolaget-5A2BFF21-87B8-EDCF-33DF-020331FB9534",
     "source": "egen"
   },
   {
@@ -7910,9 +7907,10 @@
     "facilities": [
       "gasol_pafyllning"
     ],
-    "description": "Gasolpåfyllning i lösvikt (flyttade hit dec 2025, vid OKQ8 nära Väla) – Safefill/GasBank-flaskor tillåtna. Källa: myLPG.eu.",
+    "description": "Gasolpåfyllning i lösvikt av egen flaska (Gasolstationen Sweonor AB, flyttade hit jan 2025, vid OKQ8 vid Väla) – Safefill/GasBank-flaskor tillåtna. Källa: myLPG.eu + gasolstationen.se.",
     "url": "https://www.mylpg.eu/stations/sweden/station/Gasolstationen-C46A2E2C-5A8B-CC9B-E8F1-1944B1DEA683",
-    "source": "egen"
+    "source": "egen",
+    "address": "Välamarknaden 5, Helsingborg (vid OKQ8)"
   },
   {
     "name": "Läckö Golfklubb",
@@ -8071,6 +8069,1167 @@
     ],
     "description": "Air Liquide-återförsäljare. Byte av gasoltub (butik). Dessutom fredagar 08.00–15.30 vid Verkstadsgatan 5: påfyllning av FAST monterad gasoltank i husbil (ej lös flaska). Källa: husbilsklubben.se-forumet + branschregister (Air Liquide återförsäljarlista).",
     "url": "https://www.svetskompaniet.se/p/gasolpriser",
-    "source": "egen"
+    "source": "egen",
+    "gasolPrice": "Byte P11 365 kr inkl. moms (svetskompaniet.se/p/gasolpriser, sep 2026); fasttank-påfyllning fredagar 08–15.30, pris ej publicerat"
+  },
+  {
+    "name": "GasolAutomat.se – City Gross Borås",
+    "query": "Göteborgsvägen 181, Borås",
+    "nearLat": 57.721,
+    "nearLon": 12.94,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026)",
+    "openingHours": "24/7",
+    "phone": "08-706 95 00",
+    "url": "https://gasolautomat.se/reseller/boras-citygross-boras/"
+  },
+  {
+    "name": "GasolAutomat.se – ICA Knalleland, Borås",
+    "query": "Skaraborgsvägen 25, Borås",
+    "nearLat": 57.721,
+    "nearLon": 12.94,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026)",
+    "openingHours": "24/7",
+    "phone": "072-163 48 70",
+    "url": "https://gasolautomat.se/reseller/boras-ica-knalleland/"
+  },
+  {
+    "name": "Gasol – Circle K Von Lingens väg, Borås",
+    "query": "Von Lingens väg 3, Borås",
+    "nearLat": 57.721,
+    "nearLon": 12.94,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "gasolPrice": "Byte PK10 (komposit) 379 kr rek. pris (circlek.se, 2026); P11-pris ej publicerat",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/circle-k-von-lingens-vag-3-50447-boras/"
+  },
+  {
+    "name": "Gasol – ÖoB, Borås",
+    "query": "Enedalsgatan 10, Borås",
+    "nearLat": 57.721,
+    "nearLon": 12.94,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/oob-enedalsgatan-10-50452-boras/"
+  },
+  {
+    "name": "Gasol – Borås Elmotor & Drivteknik",
+    "query": "Jössagatan 21, Borås",
+    "nearLat": 57.721,
+    "nearLon": 12.94,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/boras-elmotor-drivteknik-jossagatan-21-50441-boras/"
+  },
+  {
+    "name": "Gasol – Rusta, Borås",
+    "query": "Rusta, Borås",
+    "nearLat": 57.721,
+    "nearLon": 12.94,
+    "maxKm": 8,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Rusta byter AGA-kompositflaskor PC10/PC5 (ej P11 stål) i varuhuset. Källa: rusta.com (Borås listad som butik med varan).",
+    "gasolPrice": "Byte PC10 449 kr, PC5 299 kr (rusta.com, sep 2026)",
+    "url": "https://www.rusta.com/sv-se/grillar-och-grilltillbehor/gasolflaskor-och-pafyllning/gasolfyllning-aga-pc10-62351122"
+  },
+  {
+    "name": "Gasol – Granngården, Borås",
+    "query": "Sandlidsgatan 1K, Borås",
+    "nearLat": 57.721,
+    "nearLon": 12.94,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Granngården byter Norbro P11/PA11 (11 kg) i butik – pris visas i butik/på granngarden.se. OBS: adressen anges olika i olika källor (Sandlidsgatan/Rosendalsgatan) – verifiera. Källa: granngarden.se.",
+    "phone": "033-23 78 50",
+    "url": "https://www.granngarden.se/fyllning-av-gasolflaska-norbro-energi-pa-11kg"
+  },
+  {
+    "name": "Gasolautomat Elon Ulricehamn",
+    "query": "Boråsvägen 44, Ulricehamn",
+    "nearLat": 57.792,
+    "nearLon": 13.418,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "gasolPrice": "Byte PC10 ca 379 kr, PC5 ca 249 kr (Linde/AGA-prislista 2026 – kan variera per automat)",
+    "openingHours": "Dygnet runt",
+    "url": "https://forsaljningsstallen.linde.se/en/ulricehamn/bor%C3%A5sv%C3%A4gen-44/aga-gasolautomat-elon-ulricehamn"
+  },
+  {
+    "name": "GH Husvagnar Ulricehamn",
+    "lat": 57.806239,
+    "lon": 13.410136,
+    "address": "Karlsnäsvägen 5, 523 24 Ulricehamn",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "phone": "0321-154 45",
+    "description": "Husvagnshandlare som byter PC10-kompositflaska. Källa: husbilsklubben.se-tråd + husbilsplats.se.",
+    "gasolPrice": "Byte PC10 399 kr (husbilsklubben.se, odaterat – kontrollera)",
+    "url": "https://www.husbilsklubben.se/threads/gasol-ulricehamn-bor%C3%A5s-g%C3%B6teborg-eller-kungsbacka.65132/"
+  },
+  {
+    "name": "Gasol – Circle K, Ulricehamn",
+    "query": "Vist Kyrkväg 1, Ulricehamn",
+    "nearLat": 57.792,
+    "nearLon": 13.418,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "gasolPrice": "Byte PK10 (komposit) 379 kr rek. pris (circlek.se, 2026); P11-pris ej publicerat",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/circle-k-vist-kyrkvag-1-52386-ulricehamn/"
+  },
+  {
+    "name": "Gasol – Dollarstore, Ulricehamn",
+    "query": "Karlsnäsvägen 1, Ulricehamn",
+    "nearLat": 57.792,
+    "nearLon": 13.418,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Dollarstore byter Norbro PK10 (10 kg komposit) och PK5 – ej P11 stål. Källa: Norbros återförsäljarlista + dollarstore.se.",
+    "gasolPrice": "Ny PK10 1 495 kr; byte \"från 249 kr\" (gäller troligen PK5 – PK10-pris ej publicerat; dollarstore.se, sep 2026)",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/dollarstore-karlsnasvagen-1-35227-ulricehamn/"
+  },
+  {
+    "name": "Gasol – Lantmännen Maskin, Ulricehamn",
+    "query": "Karlsnäsvägen 4, Ulricehamn",
+    "nearLat": 57.792,
+    "nearLon": 13.418,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Linde/AGA-försäljningsställe – byt tom gasolflaska mot full under öppettider (storlekar ej specificerade i listan – bekräfta P11/PC10 i butik). Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/en/ulricehamn/karlsn%C3%A4sv%C3%A4gen-4/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-lantm%C3%A4nnen-maskin-ab"
+  },
+  {
+    "name": "Gasolautomat Tranemo",
+    "query": "Storgatan 32, Tranemo",
+    "nearLat": 57.486,
+    "nearLon": 13.348,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "gasolPrice": "Byte PC10 ca 379 kr, PC5 ca 249 kr (Linde/AGA-prislista 2026 – kan variera per automat)",
+    "openingHours": "Dygnet runt",
+    "url": "https://forsaljningsstallen.linde.se/en/tranemo/storgatan-32/aga-gasolautomat-tranemo"
+  },
+  {
+    "name": "Gasol – Fyndlagret, Tranemo",
+    "query": "Limmaredsvägen 32, Tranemo",
+    "nearLat": 57.486,
+    "nearLon": 13.348,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "openingHours": "Mo-Fr 10:00-18:00; Sa 10:00-15:00; Su 11:00-15:00",
+    "phone": "0325-728 00",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/fyndlagret-limmaredsvagen-32-51432-tranemo/"
+  },
+  {
+    "name": "Gasol – Kinna Husvagnsservice",
+    "query": "Lyddevägen 30, Kinna",
+    "nearLat": 57.506,
+    "nearLon": 12.69,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/kinna-husvagnsservice-ab-lyddevagen-30-51158-kinna/"
+  },
+  {
+    "name": "Gasol – Byggmax, Skene",
+    "query": "Skrålabäcksgatan 1, Skene",
+    "nearLat": 57.49,
+    "nearLon": 12.63,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Byggmax byter Norbro P11/PA11/PK10 i butik – pris varierar per butik (byggmax.se). Källa: Norbros återförsäljarlista.",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/byggmax-skralabacksgatan-1-51163-skene/"
+  },
+  {
+    "name": "Gasol – Dollarstore, Skene",
+    "query": "Skrålabäcksgatan 3, Skene",
+    "nearLat": 57.49,
+    "nearLon": 12.63,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Dollarstore byter Norbro PK10 (10 kg komposit) och PK5 – ej P11 stål. Källa: Norbros återförsäljarlista + dollarstore.se.",
+    "gasolPrice": "Ny PK10 1 495 kr; PK10-bytespris ej publicerat (dollarstore.se, sep 2026)",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/dollarstore-skalabacksgatan-3-51163-skene/"
+  },
+  {
+    "name": "Gasol – Skene Järnhandel",
+    "query": "Varbergsvägen 31, Skene",
+    "nearLat": 57.49,
+    "nearLon": 12.63,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Linde/AGA-försäljningsställe (järnhandel) – byt tom gasolflaska mot full, \"flera storlekar\" enligt skenejarn.se. Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/skene/varbergsv%C3%A4gen-31/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-skene-j%C3%A4rnhandel-ab"
+  },
+  {
+    "name": "Svetskompaniet Skene",
+    "query": "Varbergsvägen 2, Skene",
+    "nearLat": 57.49,
+    "nearLon": 12.63,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Svetskompaniet i Kinna AB (Air Liquide-återförsäljare) – byte av gasoltub P11 m.fl. Samma prislista som Borås-filialen. Källa: svetskompaniet.se + husbilsklubben.se (\"billig gasol i Kinna\").",
+    "gasolPrice": "Byte P11 365 kr inkl. moms (svetskompaniet.se/p/gasolpriser, sep 2026)",
+    "url": "https://www.svetskompaniet.se/p/gasolpriser"
+  },
+  {
+    "name": "Gasol – Circle K, Bollebygd",
+    "query": "Rävlandavägen 22A, Bollebygd",
+    "nearLat": 57.667,
+    "nearLon": 12.575,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "gasolPrice": "Byte PK10 (komposit) 379 kr rek. pris (circlek.se, 2026); P11-pris ej publicerat",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/circle-k-ravlandav-22-a-51791-bollebygd/"
+  },
+  {
+    "name": "Gasolautomat Herrljunga",
+    "query": "Magasinsgatan 6, Herrljunga",
+    "nearLat": 58.078,
+    "nearLon": 13.02,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "gasolPrice": "Byte PC10 ca 379 kr, PC5 ca 249 kr (Linde/AGA-prislista 2026 – kan variera per automat)",
+    "openingHours": "Dygnet runt",
+    "url": "https://forsaljningsstallen.linde.se/en/herrljunga/magasinasgatan-6/aga-gasolautomat-herrljunga"
+  },
+  {
+    "name": "Gasol – Circle K, Vårgårda",
+    "query": "Stockholmsvägen 1, Vårgårda",
+    "nearLat": 58.034,
+    "nearLon": 12.809,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "gasolPrice": "Byte PK10 (komposit) 379 kr rek. pris (circlek.se, 2026); P11-pris ej publicerat",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/circle-k-stockholmsvagen-1-44732-vargarda/"
+  },
+  {
+    "name": "GasolAutomat.se – Willys Alingsås",
+    "query": "Hagaplan, Alingsås",
+    "nearLat": 57.93,
+    "nearLon": 12.533,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026)",
+    "openingHours": "24/7",
+    "phone": "072-163 48 70",
+    "url": "https://gasolautomat.se/reseller/willys-alingsas/"
+  },
+  {
+    "name": "Gasol – Granngården, Alingsås",
+    "query": "Pumpgatan 1, Alingsås",
+    "nearLat": 57.93,
+    "nearLon": 12.533,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Granngården byter Norbro P11/PA11 (11 kg) i butik – pris visas i butik/på granngarden.se. Källa: Norbros återförsäljarlista.",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/granngarden-pumpgatan-1-44138-alingsas/"
+  },
+  {
+    "name": "Gasol – Johansson Järn & Trädgård (Jordnära), Alingsås",
+    "query": "Krangatan 12, Alingsås",
+    "nearLat": 57.93,
+    "nearLon": 12.533,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/johansson-jarn-tradgard-jordnara-krangatan-12-44138-alingsas/"
+  },
+  {
+    "name": "Gasol – jem & fix, Alingsås",
+    "query": "Ängsvaktaregatan 1, Alingsås",
+    "nearLat": 57.93,
+    "nearLon": 12.533,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik. Källa: Norbros återförsäljarlista + jemfix.se.",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/jem-fix-angsvaktaregatan-1-44138-alingsas/"
+  },
+  {
+    "name": "Gasol – Hajlift, Alingsås",
+    "query": "Göteborgsvägen 10, Alingsås",
+    "nearLat": 57.93,
+    "nearLon": 12.533,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/hajlift-goteborgsvagen-10-44132-alingsas/"
+  },
+  {
+    "name": "Gasol – Hyreslandslaget/Sävelunds Maskinuthyrning, Alingsås",
+    "query": "Industrigatan 2, Alingsås",
+    "nearLat": 57.93,
+    "nearLon": 12.533,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Linde/AGA-försäljningsställe – byt tom gasolflaska mot full under öppettider (storlekar ej specificerade – bekräfta P11/PC10). Källa: Lindes lista över försäljningsställen.",
+    "url": "https://forsaljningsstallen.linde.se/alings%C3%A5s/industrigatan-2/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-hyreslandslaget-s%C3%A4velunds-maskinuthyrning-ab"
+  },
+  {
+    "name": "Gasolautomat Elon Lerum",
+    "query": "Göteborgsvägen 2, Lerum",
+    "nearLat": 57.77,
+    "nearLon": 12.269,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "gasolPrice": "Byte PC10 ca 379 kr, PC5 ca 249 kr (Linde/AGA-prislista 2026 – kan variera per automat)",
+    "openingHours": "Dygnet runt",
+    "url": "https://forsaljningsstallen.linde.se/lerum/g%C3%B6teborgsv%C3%A4gen-2/aga-gasolautomat-elon"
+  },
+  {
+    "name": "GasolAutomat.se – ICA Kvantum Lerum",
+    "query": "Hulans Torg, Lerum",
+    "nearLat": 57.77,
+    "nearLon": 12.269,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026)",
+    "openingHours": "24/7",
+    "url": "https://gasolautomat.se/reseller/lerum-ica-kvantum/"
+  },
+  {
+    "name": "Gasol – Lerums Järn",
+    "query": "Aspenäsvägen 2, Lerum",
+    "nearLat": 57.77,
+    "nearLon": 12.269,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/lerums-jarn-ab-aspenasvagen-2-44330-lerum/"
+  },
+  {
+    "name": "Gasol – Circle K, Mölnlycke",
+    "query": "Rörsvängen 1, Mölnlycke",
+    "nearLat": 57.659,
+    "nearLon": 12.117,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "gasolPrice": "Byte PK10 (komposit) 379 kr rek. pris (circlek.se, 2026); P11-pris ej publicerat",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/circle-k-rorsvangen-1-43535-molnlycke/"
+  },
+  {
+    "name": "Gasol – Beijer Byggmaterial, Mölnlycke",
+    "query": "Hönekullavägen 25, Mölnlycke",
+    "nearLat": 57.659,
+    "nearLon": 12.117,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/beijer-byggmaterial-ab-087-honekullavagen-25-43544-molnlycke/"
+  },
+  {
+    "name": "Levol gasolautomat, Landvetter",
+    "query": "Västra Björrödsvägen 14, Landvetter",
+    "nearLat": 57.686,
+    "nearLon": 12.215,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (Levol) – byt tom PC5/PC10-kompositflaska mot full, dygnet runt. OBS: flera gasolställen finns på samma gata (Cramo nr 4, Expressgasol nr 1) – kan vara samma automat. Källa: levol.se/gasolautomat.",
+    "openingHours": "24/7",
+    "url": "https://levol.se/gasolautomat/",
+    "gasolPrice": "Byte PC10 399 kr, PC5 269 kr (levol.se prislista 2024)"
+  },
+  {
+    "name": "Gasol – Byggmax, Partille",
+    "query": "Gamla Alingsåsvägen 24, Partille",
+    "nearLat": 57.74,
+    "nearLon": 12.106,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Byggmax byter Norbro P11/PA11/PK10 i butik – pris varierar per butik (byggmax.se). Källa: Norbros återförsäljarlista.",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/byggmax-gamla-alingsasvagen-24-43338-partille/"
+  },
+  {
+    "name": "Gasol – Wangeskog Hyrcenter, Partille",
+    "query": "Järnringen 4, Partille",
+    "nearLat": 57.74,
+    "nearLon": 12.106,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/wangeskog-hyrcenter-ab-jarnringen-4-43330-partille/"
+  },
+  {
+    "name": "Gasol – Circle K, Sävedalen",
+    "query": "Göteborgsvägen 100, Sävedalen",
+    "nearLat": 57.73,
+    "nearLon": 12.07,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "gasolPrice": "Byte PK10 (komposit) 379 kr rek. pris (circlek.se, 2026); P11-pris ej publicerat",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/circle-k-goteborgsvagen-100-43363-savedalen/"
+  },
+  {
+    "name": "Gasolautomat Mörrum",
+    "query": "Sölvesborgsvägen 18, Mörrum",
+    "nearLat": 56.19,
+    "nearLon": 14.75,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "gasolPrice": "Byte PC10 ca 379 kr, PC5 ca 249 kr (Linde/AGA-prislista 2026 – kan variera per automat)",
+    "openingHours": "Dygnet runt",
+    "url": "https://forsaljningsstallen.linde.se/m%C3%B6rrum/s%C3%B6lvesborgsv%C3%A4gen-18/aga-gasolautomat-m%C3%B6rrum"
+  },
+  {
+    "name": "Gasolautomat Skärblacka",
+    "query": "Skogängsvägen 13, Skärblacka",
+    "nearLat": 58.57,
+    "nearLon": 15.9,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "gasolPrice": "Byte PC10 ca 379 kr, PC5 ca 249 kr (Linde/AGA-prislista 2026 – kan variera per automat)",
+    "openingHours": "Dygnet runt",
+    "url": "https://forsaljningsstallen.linde.se/sk%C3%A4rblacka/skog%C3%A4ngsv%C3%A4gen-13/aga-gasolautomat-sk%C3%A4rblacka"
+  },
+  {
+    "name": "Gasolautomat Västerhaninge",
+    "query": "Tungelstavägen 24, Västerhaninge",
+    "nearLat": 59.12,
+    "nearLon": 18.1,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "gasolPrice": "Byte PC10 ca 379 kr, PC5 ca 249 kr (Linde/AGA-prislista 2026 – kan variera per automat)",
+    "openingHours": "Dygnet runt",
+    "url": "https://forsaljningsstallen.linde.se/v%C3%A4sterhaninge/tungelstav%C3%A4gen-24/aga-gasolautomat-v%C3%A4sterhaninge"
+  },
+  {
+    "name": "Gasolautomat ICA Malmslätt, Linköping",
+    "query": "Norrmalmsvägen 11, Malmslätt",
+    "nearLat": 58.42,
+    "nearLon": 15.5,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "gasolPrice": "Byte PC10 ca 379 kr, PC5 ca 249 kr (Linde/AGA-prislista 2026 – kan variera per automat)",
+    "openingHours": "Dygnet runt",
+    "url": "https://forsaljningsstallen.linde.se/link%C3%B6ping/norrmalmsv%C3%A4gen-11/aga-gasolautomat-ica-malmsl%C3%A4tt"
+  },
+  {
+    "name": "Gasolautomat Gröna vägen, Gävle",
+    "query": "Gröna vägen 2, Gävle",
+    "nearLat": 60.67,
+    "nearLon": 17.14,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen.",
+    "gasolPrice": "Byte PC10 ca 379 kr, PC5 ca 249 kr (Linde/AGA-prislista 2026 – kan variera per automat)",
+    "openingHours": "Dygnet runt",
+    "url": "https://forsaljningsstallen.linde.se/g%C3%A4vle/gr%C3%B6na-v%C3%A4gen-2/aga-gasolautomat-g%C3%A4vle"
+  },
+  {
+    "name": "Gasolautomat ICA Kvantum Norremark, Växjö",
+    "query": "Norremarksvägen 3, Växjö",
+    "nearLat": 56.88,
+    "nearLon": 14.81,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (AGA/Linde) – köp ny eller byt tom gasolflaska mot full, kortbetalning i automaten. Kompositflaskor 5 och 10 kg. Källa: Lindes lista över försäljningsställen. OBS: Lindes sidtitel anger felaktigt \"Elon Ulricehamn\" – adressen är Växjö Norremark, verifiera.",
+    "gasolPrice": "Byte PC10 ca 379 kr, PC5 ca 249 kr (Linde/AGA-prislista 2026 – kan variera per automat)",
+    "openingHours": "Dygnet runt",
+    "url": "https://forsaljningsstallen.linde.se/v%C3%A4xj%C3%B6/norremarksv%C3%A4gen-3/aga-gasolautomat-ica-kvantum-norremark"
+  },
+  {
+    "name": "Gasolfyllarna Värmdö",
+    "query": "Mörtnäsvägen 4, Värmdö",
+    "nearLat": 59.32,
+    "nearLon": 18.45,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "source": "egen",
+    "description": "Gasolfyllarna – påfyllning av egen flaska i lösvikt (alla flasktyper). Källa: gasolfyllarna.se/fyllningsstation/gasolfyllarna-varmdo.",
+    "gasolPrice": "Påfyllning från 29,90 kr/kg (gasolfyllarna.se, sep 2026)",
+    "url": "https://gasolfyllarna.se/fyllningsstation/gasolfyllarna-varmdo/"
+  },
+  {
+    "name": "Norbro gasolautomat Hallarna, Halmstad",
+    "query": "Hallarna köpcentrum, Halmstad",
+    "nearLat": 56.668,
+    "nearLon": 12.897,
+    "maxKm": 6,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (Norbro Energi) på parkeringen vid Stora Coop/Systembolaget, Hallarna – köp och byt Norbro-flaskor dygnet runt. Källa: hallarna.se (2026).",
+    "openingHours": "24/7",
+    "url": "https://hallarna.se/aktuellt/ny-gasolautomat-vid-hallarna/"
+  },
+  {
+    "name": "Höllvikens Gasol – gasolautomat",
+    "query": "Långeväg 244, Höllviken",
+    "nearLat": 55.42,
+    "nearLon": 13.02,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat 24/7 – byte och köp av PC10 och P11, även korsbyte P11↔PC10. Källa: gasolen.se.",
+    "gasolPrice": "Byte PC10 349 kr, P11 399 kr; ny PC10 1 465 kr, P11 1 145 kr; korsbyte P11↔PC10 699 kr (gasolen.se, sep 2026)",
+    "openingHours": "24/7",
+    "url": "https://www.gasolen.se/gasolautomat.html"
+  },
+  {
+    "name": "Lööfs Gasol – gasolautomat Karlstad",
+    "query": "Kulinggatan 15, Karlstad",
+    "nearLat": 59.38,
+    "nearLon": 13.55,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat 24/7 – byte och köp av PK/PC5, PK/PC10, P6 och P11 (även mellan storlekar). Källa: loofsgasol.se/gasolautomat.",
+    "gasolPrice": "P11 byte 395 kr i butiken; automatpris kan avvika (loofsgasol.se, sep 2026)",
+    "openingHours": "24/7",
+    "url": "https://www.loofsgasol.se/gasolautomat/"
+  },
+  {
+    "name": "Gasolkompaniet i Syd – gasolautomat Lomma",
+    "query": "Östra Prästbergavägen 2, Lomma",
+    "nearLat": 55.67,
+    "nearLon": 13.08,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat 24/7 – byte och köp av PC5, P6, PC10 och P11. Manuell påfyllning upphörde jan 2026, bara automater kvar. Källa: gasolkompaniet.se.",
+    "gasolPrice": "Byte 239–449 kr beroende på flasktyp, PC10/P11 i övre delen (gasolkompaniet.se, sep 2026)",
+    "openingHours": "24/7",
+    "url": "https://gasolkompaniet.se/gasolautomat.html"
+  },
+  {
+    "name": "Gasolkompaniet i Syd – gasolautomat Toftanäs, Malmö",
+    "query": "Topplocksgatan 15, Malmö",
+    "nearLat": 55.6,
+    "nearLon": 13.07,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat 24/7 på Blomsterlandets parkering – byte och köp av PC5, P6, PC10 och P11. Källa: gasolkompaniet.se.",
+    "gasolPrice": "Byte 239–449 kr beroende på flasktyp (gasolkompaniet.se, sep 2026)",
+    "openingHours": "24/7",
+    "url": "https://gasolkompaniet.se/gasolautomat.html"
+  },
+  {
+    "name": "Gasol 24/7 (Skånegas) – gasolautomat Flygstaden, Eslöv",
+    "query": "Fallskärmsgatan 5B, Eslöv",
+    "nearLat": 55.83,
+    "nearLon": 13.32,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat 24/7 (Skånegas) – byte av PC5, PC10 och P6 komposit/stål; P11 ej bekräftad. Källa: husbilskompisar.se, skanegas.com.",
+    "openingHours": "24/7",
+    "url": "https://www.skanegas.com/gasolautomater/"
+  },
+  {
+    "name": "Gasol 24/7 (Skånegas) – gasolautomat Landskrona",
+    "query": "Ringvägen 170, Landskrona",
+    "nearLat": 55.88,
+    "nearLon": 12.85,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat 24/7 (Skånegas) vid Willys – byte av komposit 5 och 10 kg samt stål 11 kg (P11). Källa: skanegas.com/gasolautomater.",
+    "openingHours": "24/7",
+    "url": "https://www.skanegas.com/gasolautomater/"
+  },
+  {
+    "name": "Skaraborgs Gasol – gasolautomat Lidköping",
+    "query": "Änghagsgatan 2, Lidköping",
+    "nearLat": 58.49,
+    "nearLon": 13.17,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat 24/7 – byte av PC5, PC10, P6 och P11; köp av PC5/PC10. Källa: skaraborgsgasol.se/gasolautomater.",
+    "openingHours": "24/7",
+    "url": "https://skaraborgsgasol.se/gasolautomater/"
+  },
+  {
+    "name": "Skaraborgs Gasol – depå/gasolautomat Skövde",
+    "query": "Norregårdsvägen 18, Skövde",
+    "nearLat": 58.4,
+    "nearLon": 13.86,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Skaraborgs Gasols depå med gasolautomat 24/7 – byte av PC5, PC10, P6 och P11. Påfyllning av egen flaska uppges av myLPG.eu-användare men är inte bekräftad av bolaget. Källa: skaraborgsgasol.se.",
+    "openingHours": "24/7",
+    "url": "https://skaraborgsgasol.se/gasolautomater/"
+  },
+  {
+    "name": "GasolAutomat.se – Karosserigatan, Örebro",
+    "query": "Karosserigatan 4, Örebro",
+    "nearLat": 59.26,
+    "nearLon": 15.19,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026)",
+    "openingHours": "24/7",
+    "url": "https://gasolautomat.se/automater/"
+  },
+  {
+    "name": "GasolAutomat.se – Gekås Camping, Ullared",
+    "query": "Gekås Camping, Ullared",
+    "nearLat": 57.13,
+    "nearLon": 12.72,
+    "maxKm": 6,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026)",
+    "openingHours": "24/7",
+    "url": "https://gasolautomat.se/reseller/ullared-gekas-camping/"
+  },
+  {
+    "name": "Gasol – Circle K, Gammelstad (Luleå)",
+    "query": "Domarvägen 1, Gammelstad",
+    "nearLat": 65.64,
+    "nearLon": 22.02,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "gasolPrice": "Byte PK10 (komposit) 379 kr rek. pris (circlek.se, 2026); P11-pris ej publicerat",
+    "url": "https://www.norbro.se/privat/hitta-aterforsaljare/"
+  },
+  {
+    "name": "Gasol – Circle K Björkbacksvägen, Tyresö",
+    "query": "Björkbacksvägen 12, Tyresö",
+    "nearLat": 59.24,
+    "nearLon": 18.23,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "gasolPrice": "Byte PK10 (komposit) 379 kr rek. pris (circlek.se, 2026); P11-pris ej publicerat",
+    "url": "https://www.norbro.se/privat/hitta-aterforsaljare/"
+  },
+  {
+    "name": "Gasol – Circle K Svampen, Örebro",
+    "query": "Dalbygatan 2, Örebro",
+    "nearLat": 59.27,
+    "nearLon": 15.21,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "gasolPrice": "Byte PK10 (komposit) 379 kr rek. pris (circlek.se, 2026); P11-pris ej publicerat",
+    "url": "https://www.norbro.se/privat/hitta-aterforsaljare/"
+  },
+  {
+    "name": "Gasol – Circle K, Stenungsund",
+    "query": "Göteborgsvägen 26, Stenungsund",
+    "nearLat": 58.07,
+    "nearLon": 11.82,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "gasolPrice": "Byte PK10 (komposit) 379 kr rek. pris (circlek.se, 2026); P11-pris ej publicerat",
+    "url": "https://www.norbro.se/privat/hitta-aterforsaljare/"
+  },
+  {
+    "name": "Gasol – Circle K Torsboda, Söråker",
+    "query": "Torsboda 160, Söråker",
+    "nearLat": 62.5,
+    "nearLon": 17.5,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "gasolPrice": "Byte PK10 (komposit) 379 kr rek. pris (circlek.se, 2026); P11-pris ej publicerat",
+    "url": "https://www.norbro.se/privat/hitta-aterforsaljare/"
+  },
+  {
+    "name": "Gasol – Circle K Bergslagsvägen, Västerås",
+    "query": "Bergslagsvägen 3, Västerås",
+    "nearLat": 59.61,
+    "nearLon": 16.55,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "gasolPrice": "Byte PK10 (komposit) 379 kr rek. pris (circlek.se, 2026); P11-pris ej publicerat",
+    "url": "https://www.norbro.se/privat/hitta-aterforsaljare/"
+  },
+  {
+    "name": "Gasol – Byggmax, Eslöv",
+    "query": "Bruksgatan 6, Eslöv",
+    "nearLat": 55.84,
+    "nearLon": 13.3,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Byggmax byter Norbro P11/PA11/PK10 i butik – pris varierar per butik (byggmax.se). Källa: Norbros återförsäljarlista.",
+    "url": "https://www.norbro.se/privat/hitta-aterforsaljare/"
+  },
+  {
+    "name": "Gasol – Byggmax, Jönköping",
+    "query": "Instrumentvägen 4, Jönköping",
+    "nearLat": 57.78,
+    "nearLon": 14.16,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Byggmax byter Norbro P11/PA11/PK10 i butik – pris varierar per butik (byggmax.se). Källa: Norbros återförsäljarlista.",
+    "url": "https://www.norbro.se/privat/hitta-aterforsaljare/"
+  },
+  {
+    "name": "Gasol – ÖoB, Borlänge",
+    "query": "Norra Backagatan 8, Borlänge",
+    "nearLat": 60.48,
+    "nearLon": 15.43,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "url": "https://www.norbro.se/privat/hitta-aterforsaljare/"
+  },
+  {
+    "name": "Gasol – ÖoB, Piteå",
+    "query": "Fläktgatan 24, Piteå",
+    "nearLat": 65.32,
+    "nearLon": 21.48,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "url": "https://www.norbro.se/privat/hitta-aterforsaljare/"
+  },
+  {
+    "name": "Gasol – Bauhaus, Hisings Backa (Göteborg)",
+    "query": "Transportgatan 19, Hisings Backa",
+    "nearLat": 57.75,
+    "nearLon": 11.99,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Bauhaus byter AGA P11/PA11/PC10/PC5 i varuhuset. Källa: Norbros återförsäljarlista + bauhaus.se.",
+    "gasolPrice": "Byte P11 519 kr, PC10 (komposit) 389 kr – kedjepris (bauhaus.se, sep 2026)",
+    "url": "https://www.norbro.se/privat/hitta-aterforsaljare/"
+  },
+  {
+    "name": "Gasol – Elgiganten, Eslöv",
+    "query": "Fallskärmsgatan 7B, Eslöv",
+    "nearLat": 55.84,
+    "nearLon": 13.3,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "url": "https://www.norbro.se/privat/hitta-aterforsaljare/"
+  },
+  {
+    "name": "Gasol – Melleruds Nya Järn",
+    "query": "Nygatan 7, Mellerud",
+    "nearLat": 58.7,
+    "nearLon": 12.45,
+    "maxKm": 12,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare av gasolflaskor (Norbro Energi/Primagaz) – byt tom flaska mot full under öppettider. Sortimentet är normalt P11/PA11 (11 kg) och PK10 (10 kg komposit) – bekräfta storlek i butik. Källa: Norbros återförsäljarlista.",
+    "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare"
   }
 ]

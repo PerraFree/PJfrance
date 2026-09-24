@@ -56,7 +56,7 @@ const OSM_FACILITY_OVERRIDES = new Map([
   ['node/833279910', ['gasol_pafyllning']], // LPG Flygstadens Gasol (Gasolstationen, Halmstad)
   ['node/1376582241', ['gasol_pafyllning']], // Aniol Gasol AB
   ['node/1376625607', ['gasol_pafyllning']], // Gasol Depån i Svartvik
-  ['node/1376659170', ['gasol_pafyllning']], // Gasolfyllarna (Norrköping)
+  ['node/1376659170', ['gasol_pafyllning', 'gasol_byte']], // Gasolfyllarna (Norrköping) – även 24/7-automat för byte (husbilskompisar.se)
   ['node/1376663049', ['gasol_pafyllning']], // Timmernabbens Karamellfabrik
   ['node/1376738365', ['gasol_pafyllning']], // Ahus Gas Ahus (GasolEsset)
   ['node/1784412478', ['gasol_pafyllning']], // Nöbbelövs Gasol & Entreprenad
