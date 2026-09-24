@@ -3561,15 +3561,19 @@
     "services": [
       "gasol"
     ],
-    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full. Lösviktspåfyllning av egen flaska uppges av myLPG.eu-användare men bekräftas inte av företaget – ring 0470-480 90 innan besök. Källa: Norbro Energis återförsäljarlista, myLPG.eu. OBS: Energigas Sveriges/Kosans lista (sep 2026) anger lösviktspåfyllning här – motsäger företagets egen sida, ej ändrat.",
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full. Lösviktspåfyllning av egen flaska uppges av myLPG.eu-användare men bekräftas inte av företaget – ring 0470-480 90 innan besök. Källa: Norbro Energis återförsäljarlista, myLPG.eu. OBS: Energigas Sveriges/Kosans lista (sep 2026) anger lösviktspåfyllning här – motsäger företagets egen sida, ej ändrat. Påfyllning av egen flaska enligt branschlista/flera källor (research sep 2026): \"Hos Gasolbolaget kan du byta eller fylla din gasolflaska, de har även LPG-tankning. De kan även fylla koldioxid och andningsluft. (sammanfattning av sökträff; öppettider och e-post gasol@gasolbolaget.\"",
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Gasolbolaget-Johnny-Ygdevik-AB-35245-Vxj-Sandvgen-17-0013X000044O0FYQA0",
     "source": "egen",
     "nearLat": 56.89,
     "nearLon": 14.82,
     "facilities": [
-      "gasol_byte"
+      "gasol_byte",
+      "gasol_pafyllning"
     ],
-    "phone": "0470-480 90"
+    "phone": "0470-480 90",
+    "openingHours": "1 maj–31 aug: mån–fre 08–17; 1 sep–30 apr: mån–fre 08–16",
+    "website": "https://www.facebook.com/p/Gasolbolaget-AB-V%C3%A4xj%C3%B6-100063529450069/",
+    "confidence": "medium"
   },
   {
     "name": "Gasol – Byggmax, Karlstad",
@@ -7570,7 +7574,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Gasolpåfyllning (25 kr/kg) – flaskan vägs och fylls, du betalar bara för mängden som faktiskt fylls på. Källa: husbilsklubben.se.",
     "url": "https://www.husbilsklubben.se/threads/gasolfyllning-i-skepplanda.62718/",
@@ -7588,7 +7593,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
     "url": "https://gasolfyllarna.se/fyllningsstation/goteborg-hisings-backa/",
@@ -7608,7 +7614,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
     "url": "https://gasolfyllarna.se/fyllningsstation/trollhattan/",
@@ -7628,7 +7635,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Gasolpåfyllning i lösvikt – fyller din flaska medan du väntar, du betalar bara för mängden som fylls på. Källa: gasolkungen.se.",
     "url": "https://gasolkungen.se/gasol-i-kalmar/",
@@ -7637,23 +7645,30 @@
     "address": "E22 vid polisens kontrollplats, Kalmar Dämme",
     "lat": 56.66982,
     "lon": 16.29855,
-    "confidence": "high"
+    "confidence": "high",
+    "phone": "0762-48 48 12 / 0768-75 21 24",
+    "website": "https://gasolkungen.se/gasol-i-kalmar/",
+    "gasolPrice": "Påfyllning Pris ej publicerat på egen sajt. Forum (husbilsklubben, Öland-tråd, nyligen): 'fyllde båda flaskorna för 440 kr styck' ( (sep 2026)"
   },
   {
     "name": "GasolEsset Trelleborg",
-    "query": "Sjöviksvägen 11, Trelleborg",
-    "nearLat": 55.375,
-    "nearLon": 13.156,
     "services": [
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Gasolpåfyllning i lösvikt – du kan alltid fylla på din gasolflaska även om den bara är halvtom, betalar bara för det som fylls på. Källa: gasolesset.se.",
     "url": "https://www.gasolesset.se/gasolesset-trelleborg/",
     "source": "egen",
-    "gasolPrice": "Påfyllning 37 kr/kg (gasolesset.se, apr 2026)"
+    "gasolPrice": "Påfyllning 37 kr/kg (gasolesset.se, apr 2026)",
+    "phone": "0769-342 434",
+    "openingHours": "Vardagar 09:00–17:00 (lunch 12:00–12:45), lör 09:00–14:00, sön stängt; LPG-pump för fordon/fast tank dygnet runt",
+    "website": "https://www.gasolesset.se/gasolesset-trelleborg/",
+    "confidence": "high",
+    "lat": 55.375,
+    "lon": 13.156
   },
   {
     "name": "Gasol Malmö LPG AB",
@@ -7670,7 +7685,10 @@
     "source": "egen",
     "address": "Bjurögatan 50, 211 24 Malmö (Norra hamnen)",
     "openingHours": "Mo-Fr 10:00-17:00; Sa 10:00-14:00",
-    "gasolPrice": "Påfyllning 36–44 kr/kg beroende på flaskstorlek (gasolmalmolpg.com, sep 2026)"
+    "gasolPrice": "Påfyllning 36–44 kr/kg beroende på flaskstorlek (gasolmalmolpg.com, sep 2026)",
+    "phone": "076-00 83 977",
+    "website": "https://gasolmalmolpg.com/",
+    "confidence": "high"
   },
   {
     "name": "Himlastallet i Slagtofta AB",
@@ -7688,7 +7706,8 @@
     "lon": 13.672262,
     "address": "Slagtofta 4010, 242 94 Hörby",
     "phone": "070-265 18 80",
-    "confidence": "high"
+    "confidence": "high",
+    "website": "https://himlastallet.se/gasol/"
   },
   {
     "name": "Gasoldepån Simmelsberga",
@@ -7709,7 +7728,9 @@
     "address": "Simmelsberga (mellan Ekeby och Kågeröd), Bjuv",
     "openingHours": "Mo 15:00-18:00; Th 16:00-19:00",
     "gasolPrice": "Påfyllning egen flaska 30 kr/kg (husvagnsdepan.se, sep 2026)",
-    "phone": "042-400 90 80"
+    "phone": "042-400 90 80",
+    "website": "https://husvagnsdepan.se/gasolpafyllning/",
+    "confidence": "high"
   },
   {
     "name": "Husvagnsdepån Billesholm",
@@ -7748,7 +7769,8 @@
     "lon": 14.843,
     "address": "Tenngränden 2, 374 31 Karlshamn",
     "phone": "0454-894 35",
-    "confidence": "high"
+    "confidence": "high",
+    "website": "https://gasolikarlshamn.se/"
   },
   {
     "name": "Gasolmacken Uppsala",
@@ -7756,7 +7778,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Gasolpåfyllning i lösvikt. Källa: gasolmacken.se. Verifiering sep 2026: gasolmacken.se/priser (sökutdrag sep 2026): 'Lösviktspriset är för närvarande 52 kr/kg. Har du gasol kvar i flaskan betalar du bara för de kilon som fylls upp till flaskans maxkapacitet.' Bekräftar att 52 kr/kg är aktuellt lösviktspris. Bytespris hittades inte i utdragen (sidan blockerad).",
     "url": "https://gasolmacken.se/uppsala/",
@@ -7766,7 +7789,9 @@
     "lat": 59.88669,
     "lon": 17.61944,
     "website": "https://www.gasoltuben.se/vara-butiker/gasolmacken-i-uppsala-komplett-gasoldepa/",
-    "confidence": "high"
+    "confidence": "high",
+    "phone": "018-60 11 15",
+    "openingHours": "Sep–mar: mån–fre 10–17. Apr–aug: mån–fre 09–17, lör 10–14 (myLPG.eu)"
   },
   {
     "name": "Gasolfyllarna Stockholm/Tullinge",
@@ -7774,7 +7799,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
     "url": "https://gasolfyllarna.se/fyllningsstation/stockholm-tullinge/",
@@ -7794,7 +7820,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
     "url": "https://gasolfyllarna.se/fyllningsstation/stockholm-jarfalla/",
@@ -7814,7 +7841,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
     "url": "https://gasolfyllarna.se/fyllningsstationer/gasolpafyllning-stockholm-jordbro",
@@ -7834,7 +7862,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
     "url": "https://gasolfyllarna.se/fyllningsstation/norrtalje/",
@@ -7854,7 +7883,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se.",
     "url": "https://gasolfyllarna.se/fyllningsstation/enkoping/",
@@ -7874,7 +7904,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Gasolpåfyllning i lösvikt – du fyller din egen flaska och betalar per kg. Del av kedjan Gasolfyllarna. Källa: gasolfyllarna.se / esbilservice.com.",
     "url": "https://gasolfyllarna.se/",
@@ -7890,9 +7921,6 @@
   },
   {
     "name": "Gasspecialisten Kiruna",
-    "query": "Lastvägen 44, Kiruna",
-    "nearLat": 67.85,
-    "nearLon": 20.22,
     "services": [
       "gasol"
     ],
@@ -7902,7 +7930,13 @@
     "description": "Gasolpåfyllning i lösvikt – kontrollerar besiktningsdatum, väger flaskan och fyller mängden som saknas. Källa: gasspecialisten.se.",
     "url": "https://gasspecialisten.se/",
     "source": "egen",
-    "openingHours": "Mo-Fr 07:00-16:00"
+    "openingHours": "Mo-Fr 07:00-16:00",
+    "phone": "0980-840 40 / 073-823 88 77",
+    "website": "https://www.gasspecialisten.se/KIRUNA/",
+    "gasolPrice": "Påfyllning Pris ej publicerat i sökbara källor. (sep 2026)",
+    "confidence": "high",
+    "lat": 67.85,
+    "lon": 20.22
   },
   {
     "name": "Gasolfyllarna Linköping",
@@ -7912,7 +7946,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Gasolpåfyllning i lösvikt – Safefill/GasBank-flaskor tillåtna. Del av kedjan Gasolfyllarna. Källa: myLPG.eu.",
     "url": "https://www.mylpg.eu/stations/sweden/station/Gasolfyllarna-Linkoping-C6C8902B-0922-2298-8F9E-1777FC2D2966",
@@ -7930,7 +7965,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Gasolpåfyllning i lösvikt – stödjer utomhusmonterad påfyllning. Del av kedjan Gasolfyllarna. Källa: myLPG.eu.",
     "url": "https://www.mylpg.eu/stations/sweden/station/Gasolfyllarna-Orebro-B3047D51-B680-E014-AEF2-CE37E73B0911",
@@ -7961,7 +7997,9 @@
     "lon": 16.48403,
     "address": "Hejargatan 9, 632 29 Eskilstuna",
     "phone": "016-14 00 00",
-    "confidence": "high"
+    "confidence": "high",
+    "website": "https://barkmans.se/vara-produkter/gasol-gas/",
+    "gasolPrice": "Påfyllning myLPG: 18,63 kr/liter (2025-09-17), dvs ca 36 kr/kg. Minsta fyllning 17 liter – fyller man mindre kostar det 299 kr (dra (sep 2026)"
   },
   {
     "name": "Gasbolaget i Dalarna (Ragvaldsberg, Falun)",
@@ -7981,7 +8019,8 @@
     "lat": 60.55789,
     "lon": 15.77475,
     "phone": "023-77 10 43",
-    "confidence": "high"
+    "confidence": "high",
+    "website": "https://www.gasbolaget.se/"
   },
   {
     "name": "Gasolstationen (Väla, Helsingborg)",
@@ -7991,7 +8030,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Gasolpåfyllning i lösvikt av egen flaska (Gasolstationen Sweonor AB, flyttade hit jan 2025, vid OKQ8 vid Väla) – Safefill/GasBank-flaskor tillåtna. Källa: myLPG.eu + gasolstationen.se.",
     "url": "https://www.mylpg.eu/stations/sweden/station/Gasolstationen-C46A2E2C-5A8B-CC9B-E8F1-1944B1DEA683",
@@ -7999,7 +8039,9 @@
     "address": "Välamarknaden 5, Helsingborg (vid OKQ8)",
     "phone": "070-682 22 45",
     "website": "https://www.gasolstationen.se/helsingborg",
-    "confidence": "high"
+    "confidence": "high",
+    "openingHours": "Mån–fre 12–17, lör 10–13 (lör endast apr–sep), sön stängt (myLPG.eu)",
+    "gasolPrice": "Påfyllning 42 kr/kg – 42 kr/kg egen flaska (gasolstationen.se/priser, sep 2026) (sep 2026)"
   },
   {
     "name": "Läckö Golfklubb",
@@ -8739,14 +8781,18 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_byte"
+      "gasol_byte",
+      "gasol_pafyllning"
     ],
     "source": "egen",
-    "description": "Gasolautomat vid Levol Oljans huvudkontor (marknadsförs även som Expressgasol) – byt tom PC5/PC10-kompositflaska mot full, dygnet runt. Ingen P11. Källa: levol.se/gasolautomat, expressgasol.se/landvetter, hitta.se.",
+    "description": "Gasolautomat vid Levol Oljans huvudkontor (marknadsförs även som Expressgasol) – byt tom PC5/PC10-kompositflaska mot full, dygnet runt. Ingen P11. Källa: levol.se/gasolautomat, expressgasol.se/landvetter, hitta.se. Påfyllning av egen flaska enligt branschlista/flera källor (research sep 2026): \"levol.se/gasol: \"brett utbud av gasoltuber och fyllning direkt i vårt lager i Landvetter utanför Göteborg\"; \"För fyllning av flaskor i vår depå ber vi dig kontakta oss i förväg och beskriva vilka type\"",
     "openingHours": "24/7",
     "url": "https://levol.se/gasolautomat/",
     "gasolPrice": "Byte PC10 399 kr, PC5 269 kr, PC5→PC10 605 kr; ny PC10 1 465 kr (levol.se prislista 2024)",
-    "address": "Västra Björrödsvägen 1, 438 39 Landvetter"
+    "address": "Västra Björrödsvägen 1, 438 39 Landvetter",
+    "phone": "031-53 00 90",
+    "website": "https://levol.se/gasol/",
+    "confidence": "medium"
   },
   {
     "name": "Gasol – Byggmax, Partille",
@@ -8912,7 +8958,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "source": "egen",
     "description": "Gasolfyllarna – påfyllning av egen flaska i lösvikt (alla flasktyper). Källa: gasolfyllarna.se/fyllningsstation/gasolfyllarna-varmdo.",
@@ -8961,7 +9008,8 @@
     "lon": 12.9987,
     "address": "Långeväg 244, 236 91 Höllviken",
     "phone": "0705-423 464",
-    "confidence": "medium"
+    "confidence": "medium",
+    "website": "https://gasolen.se/"
   },
   {
     "name": "Lööfs Gasol – gasolautomat Karlstad",
@@ -8969,11 +9017,10 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_byte",
-      "gasol_pafyllning"
+      "gasol_byte"
     ],
     "source": "egen",
-    "description": "Gasolautomat 24/7 – byte och köp av PK/PC5, PK/PC10, P6 och P11 (även mellan storlekar). Källa: loofsgasol.se/gasolautomat. Påfyllning av egen flaska enligt branschlista (Energigas Sverige/Kosan) (https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/, 2026-09-24).",
+    "description": "Gasolautomat 24/7 – byte och köp av PK/PC5, PK/PC10, P6 och P11 (även mellan storlekar). Källa: loofsgasol.se/gasolautomat. Påfyllning av egen flaska enligt branschlista (Energigas Sverige/Kosan) (https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/, 2026-09-24). Research sep 2026: inget belägg för lösviktsfyllning av kundens flaska – bara byte (butik + automat). Branschlistan avser Lööfs egen industrifyllning.",
     "gasolPrice": "P11 byte 395 kr i butiken; automatpris kan avvika (loofsgasol.se, sep 2026)",
     "openingHours": "24/7",
     "url": "https://www.loofsgasol.se/gasolautomat/",
@@ -8981,8 +9028,7 @@
     "lon": 13.504,
     "address": "Kulinggatan 13, 652 21 Karlstad",
     "phone": "054-85 44 50",
-    "website": "https://www.loofsgasol.se/",
-    "confidence": "medium"
+    "website": "https://www.loofsgasol.se/"
   },
   {
     "name": "Gasolkompaniet i Syd – gasolautomat Lomma",
@@ -9623,7 +9669,12 @@
       "gasol_pafyllning"
     ],
     "description": "Gasolpåfyllning av egen flaska samt byte (SCC Gasolcenter AB, Skåre företagspark). Ersatte Gasolfyllarna Karlstad som upphörde 31 mars 2025. Pris ej hittat – ring innan. Källa: ihusbil.se-forum apr 2025, hitta.se.",
-    "url": "https://www.hitta.se/"
+    "url": "https://www.hitta.se/",
+    "phone": "054-774 50 44",
+    "openingHours": "Mån–fre 06.30–18.00, lör 10.00–14.00, sön 12.00–16.00 (apr–aug)",
+    "website": "https://www.facebook.com/Gasolcenter/",
+    "gasolPrice": "Påfyllning 40 kr/kg – Lösvikt 40 kr/kg enligt Gasol Centers egen Facebook-post (sep 2026)",
+    "confidence": "high"
   },
   {
     "services": [
@@ -9636,11 +9687,15 @@
     "nearLon": 17.95,
     "maxKm": 8,
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Gasolfyllarna – påfyllning av egen flaska i lösvikt (i Svea Yrkes & Profilkläders lokaler). Källa: gasolfyllarna.se/fyllningsstation/nynashamn.",
     "gasolPrice": "Påfyllning från 29,90 kr/kg (gasolfyllarna.se, sep 2026)",
-    "url": "https://gasolfyllarna.se/fyllningsstation/nynashamn/"
+    "url": "https://gasolfyllarna.se/fyllningsstation/nynashamn/",
+    "openingHours": "Mån–tor 08.00–17.00, fre 08.00–16.00, lör–sön stängt",
+    "website": "https://gasolfyllarna.se/fyllningsstation/nynashamn/",
+    "confidence": "high"
   },
   {
     "services": [
@@ -9659,7 +9714,9 @@
     "lon": 17.00947,
     "address": "Spelhagsvägen 6, 611 31 Nyköping",
     "phone": "0736-76 24 14",
-    "confidence": "high"
+    "confidence": "high",
+    "openingHours": "Mån–fre 09.00–17.00, lör 10.00–14.00",
+    "website": "https://www.gasolmacken.se/nykoping/"
   },
   {
     "services": [
@@ -9671,11 +9728,16 @@
     "lon": 15.16136,
     "address": "Handelsgatan 3, Örebro",
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "description": "Bemannad gasolpåfyllning av egen flaska hos Skydd & Verktyg i Örebro AB (Gasolproffsens partner) – inte automat. Källa: gasolproffsen.se/prislista, hitta.se.",
     "gasolPrice": "Påfyllning 38 kr/kg enligt prislistan (gasolproffsen.se, 2026; en annan sida anger 42 kr/kg)",
-    "url": "https://www.gasolproffsen.se/prislista/"
+    "url": "https://www.gasolproffsen.se/prislista/",
+    "phone": "019-12 92 00",
+    "openingHours": "Mån–fre 08:00–17:30, lör 09:00–14:00, sön stängt",
+    "website": "https://www.gasolproffsen.se/prislista/",
+    "confidence": "high"
   },
   {
     "services": [
@@ -16696,7 +16758,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "source": "egen",
     "address": "Verkstadsvägen 5, 444 31 Stenungsund",
@@ -16715,7 +16778,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "source": "egen",
     "address": "Fjärås industriväg 6 (flyttar till Lantmannaväg 11), 439 74 Fjärås",
@@ -16734,7 +16798,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "source": "egen",
     "address": "Herrestads Torsberg 820, 451 94 Uddevalla",
@@ -16753,7 +16818,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "source": "egen",
     "address": "Moa Martinsons gata 14, 603 78 Norrköping",
@@ -16761,7 +16827,8 @@
     "confidence": "high",
     "phone": "011-300 42 62",
     "website": "https://gasolfyllarna.se/fyllningsstation/norrkoping/",
-    "openingHours": "Mån–Fre 07:30–17:30, Lör 10–16"
+    "openingHours": "Mån–Fre 07:30–17:30, Lör 10–16",
+    "gasolPrice": "Påfyllning 29.9 kr/kg – från 29,90 kr/kg (kedjepris, gasolfyllarna.se/privat/priser) (sep 2026)"
   },
   {
     "name": "Allgas CMS AB, Göteborg",
@@ -16771,11 +16838,11 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_byte"
     ],
     "source": "egen",
     "address": "Ringögatan 2, 417 07 Göteborg",
-    "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.kosangas.se/info-och-raadgivning/raadgivning/faq/flaskfyllare-och-tankning/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
+    "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.kosangas.se/info-och-raadgivning/raadgivning/faq/flaskfyllare-och-tankning/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24). Research sep 2026: endast byte (Primagaz), ingen lösviktsfyllning.",
     "confidence": "medium",
     "phone": "031-51 32 20",
     "website": "https://www.allgas.se/"
@@ -16788,7 +16855,8 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "source": "egen",
     "address": "Cisterngatan 3, 721 32 Västerås",
@@ -16812,9 +16880,11 @@
     "source": "egen",
     "address": "Södergatan 4, 467 31 Grästorp",
     "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
-    "confidence": "medium",
+    "confidence": "high",
     "phone": "070-338 26 50",
-    "openingHours": "Mån–Fre 10–18, Lör 10–13"
+    "openingHours": "Mån–Fre 10–18, Lör 10–13",
+    "website": "https://www.nossans-gasol.se/",
+    "gasolPrice": "Påfyllning Betalar per fylld vikt; pris ej publicerat i sökutdragen (sep 2026)"
   },
   {
     "name": "Gasolstationen (Sweonor AB), Halmstad",
@@ -16824,14 +16894,17 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "source": "egen",
     "address": "Verkstadsgatan 4, 302 60 Halmstad",
     "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
-    "confidence": "medium",
+    "confidence": "high",
     "phone": "070-682 22 45",
-    "website": "https://www.gasolstationen.se/halmstad"
+    "website": "https://www.gasolstationen.se/halmstad",
+    "openingHours": "Mån–fre 12–17 (tors till 18), lör 10–13, sön/helg stängt (myLPG.eu, bekräftad senaste 3 mån)",
+    "gasolPrice": "Påfyllning 42 kr/kg – 42 kr/kg egen flaska (gasolstationen.se/priser, sep 2026) (sep 2026)"
   },
   {
     "name": "Gasolstationen (Sweonor AB), Östra Karup",
@@ -16841,14 +16914,17 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "source": "egen",
     "address": "Tomtaholmsvägen 2, 269 41 Östra Karup",
     "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
-    "confidence": "medium",
+    "confidence": "high",
     "phone": "070-682 22 45",
-    "website": "https://www.gasolstationen.se/ostrakarup"
+    "website": "https://www.gasolstationen.se/ostrakarup",
+    "openingHours": "Vardagar 12.00–17.00 (ej röda dagar); lör 10.00–13.00 apr–sep (ej röda dagar) – kedjans gemensamma tider",
+    "gasolPrice": "Påfyllning 42 kr/kg – 42 kr/kg egen flaska (gasolstationen.se/priser, sep 2026); dessutom gasolautomat (byte) öppen dygnet runt (sep 2026)"
   },
   {
     "name": "Sweonor AB, Våxtorp",
@@ -16873,14 +16949,17 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "source": "egen",
     "address": "Samlarvägen 1, 281 43 Hässleholm",
     "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
-    "confidence": "medium",
+    "confidence": "high",
     "phone": "0451-84 757",
-    "openingHours": "Mån–Fre 09–17, Lör 09–13"
+    "openingHours": "Mån–Fre 09–17, Lör 09–13",
+    "website": "https://ekonex.se/gasol-lpg/",
+    "gasolPrice": "Påfyllning Färdigfylld P6 från 180 kr; lösviktspris ej publicerat (sep 2026)"
   },
   {
     "name": "Kem-Gas AB, Jönköping",
@@ -16897,7 +16976,8 @@
     "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
     "confidence": "medium",
     "phone": "036-16 89 61",
-    "openingHours": "Mån–Fre 07–16 (lunch 12:30–13:30)"
+    "openingHours": "Mån–Fre 07–16 (lunch 12:30–13:30)",
+    "website": "https://www.kem-gas.se/"
   },
   {
     "name": "SBG Gasol, Mörrum",
@@ -16923,13 +17003,17 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "source": "egen",
     "address": "Per Mattiassonsväg 47, 291 92 Kristianstad",
     "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
-    "confidence": "medium",
-    "openingHours": "Mån–Fre 09–17, Lör–Sön 10–16"
+    "confidence": "high",
+    "openingHours": "Mån–Fre 09–17, Lör–Sön 10–16",
+    "phone": "0734-48 48 11 / 0734-48 48 42",
+    "website": "https://gasolkungen.se/gasol-i-kristianstad/",
+    "gasolPrice": "Påfyllning Pris ej publicerat i sökresultat ('olika priser per station') (sep 2026)"
   },
   {
     "name": "Timmernabbens Karamellfabrik, Mönsterås",
@@ -16944,8 +17028,11 @@
     "source": "egen",
     "address": "Kronobäck 2072, 383 92 Mönsterås",
     "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
-    "confidence": "medium",
-    "openingHours": "Mån–Fre 09–16, Lör 11–13"
+    "confidence": "high",
+    "openingHours": "Mån–Fre 09–16, Lör 11–13",
+    "phone": "0499-444 20 / 0708-800 959",
+    "website": "https://kvalitetsgodis.se/produkter/gasol/",
+    "gasolPrice": "Påfyllning Betalar per kilo; minsta debitering 150 kr; endast kontant (SEK/EUR) eller svenskt kort. Forumexempel (äldre): P11 220 k (sep 2026)"
   },
   {
     "name": "Qstar Oil, Linköping",
@@ -16959,10 +17046,11 @@
     ],
     "source": "egen",
     "address": "Norra Stånggatan 13, 581 11 Linköping",
-    "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
-    "confidence": "medium",
+    "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24). Research sep 2026: oljebolagsdepå – troligen bara tankning av fordon/fast tank under kontorstid, lös flaska oklart. Ring innan.",
+    "confidence": "low",
     "phone": "013-475 10 00",
-    "openingHours": "1/5–31/8 08–16, 1/9–30/4 08–16:30"
+    "openingHours": "1/5–31/8 08–16, 1/9–30/4 08–16:30",
+    "unverified": true
   },
   {
     "name": "Ljungby Gasol",
@@ -16989,11 +17077,11 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_byte"
     ],
     "source": "egen",
     "address": "Björkhamrevägen 6, 827 35 Ljusdal",
-    "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
+    "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24). Research sep 2026: sajten beskriver bara byte i automat – lös flaska ej belagd.",
     "confidence": "medium",
     "phone": "0651-163 03",
     "website": "https://www.unax.se/",
@@ -17012,26 +17100,10 @@
     "source": "egen",
     "address": "Fabriksgatan 12H, 591 37 Motala",
     "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
-    "confidence": "medium",
+    "confidence": "high",
     "phone": "0768-54 11 11",
-    "website": "https://www.sodrahamnen.se/"
-  },
-  {
-    "name": "OK/Q8, Piteå",
-    "lat": 65.31888,
-    "lon": 21.43453,
-    "services": [
-      "gasol"
-    ],
-    "facilities": [
-      "gasol_pafyllning"
-    ],
-    "source": "egen",
-    "address": "Oktanvägen 4, 941 33 Piteå",
-    "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
-    "confidence": "medium",
-    "phone": "0911-160 20",
-    "openingHours": "Mån–Lör 06:30–22, Sön 09–22"
+    "website": "https://www.sodrahamnen.se/",
+    "gasolPrice": "Påfyllning 'gasol till konkurrenskraftiga priser' – inget kr/kg-pris i sökutdragen (sep 2026)"
   },
   {
     "name": "Gasoldepån i Sundsvall AB",
@@ -17041,14 +17113,17 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "source": "egen",
     "address": "Hyvelvägen 8, Kvissleby, 862 33 Sundsvall",
     "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
-    "confidence": "medium",
+    "confidence": "high",
     "phone": "0706-47 17 57",
-    "openingHours": "15 maj–5 sep Mån–Fre 08–17; 6 sep–14 maj 08–16"
+    "openingHours": "15 maj–5 sep Mån–Fre 08–17; 6 sep–14 maj 08–16",
+    "website": "https://www.gasoldepan.se/",
+    "gasolPrice": "Påfyllning kr/kg-pris för flaskfyllning ej publicerat på webben. myLPG.eu anger LPG-pumppris 20 kr/liter (2026-04-03). Ny PC10 inkl (sep 2026)"
   },
   {
     "name": "Ystad Gasol AB",
@@ -17063,10 +17138,11 @@
     "source": "egen",
     "address": "Södra Zinkgatan 16, 271 39 Ystad",
     "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
-    "confidence": "medium",
+    "confidence": "high",
     "phone": "0733-45 96 48",
     "website": "https://gasolmalmolpg.com/",
-    "openingHours": "Mån–Fre 10–17, Lör 11–14"
+    "openingHours": "Mån–Fre 10–17, Lör 11–14",
+    "gasolPrice": "Påfyllning Kilopris, ej synligt i sökresultaten (ystadgasol.se/produkter) (sep 2026)"
   },
   {
     "name": "Åhus Gasol AB",
@@ -17076,14 +17152,17 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "source": "egen",
     "address": "Flötövägen 233, 296 91 Åhus",
     "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
-    "confidence": "medium",
+    "confidence": "high",
     "phone": "0736-21 20 51",
-    "openingHours": "Mån–Fre 08–18, Lör 08–13, Sön 10–13"
+    "openingHours": "Mån–Fre 08–18, Lör 08–13, Sön 10–13",
+    "website": "https://www.gasolesset.se/gasolesset_ahus/",
+    "gasolPrice": "Påfyllning 34 kr/kg – 34 kr/kg (gasolesset.se) (sep 2026)"
   },
   {
     "name": "Älmhultsgasol",
@@ -17100,7 +17179,9 @@
     "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
     "confidence": "medium",
     "phone": "0708-76 10 03",
-    "openingHours": "Mån–Fre 08–18, Lör–Sön 10–17"
+    "openingHours": "Mån–Fre 08–18, Lör–Sön 10–17",
+    "website": "https://m.facebook.com/gasolharadsback/",
+    "gasolPrice": "Påfyllning 23 kr/kg – 23 kr/kg, ex P11 250 kr; fastpris på flaskor under 5 kg (datum för inlägget okänt – kan vara äldre) (sep 2026)"
   },
   {
     "name": "Ring-Gas, Örkelljunga",
@@ -17127,11 +17208,11 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_byte"
     ],
     "source": "egen",
     "address": "Göteborgsvägen 1, 464 61 Brålanda",
-    "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
+    "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24). Research sep 2026: Norbro-sidan beskriver bara byte; Kosan listar under \"flaskfyllare och tankning\" – lösvikt ej belagd.",
     "confidence": "medium",
     "phone": "0521-301 50",
     "openingHours": "Mån–Tor 05:30–20, Fre 05:30–19, Lör 08–19, Sön 09–19"
@@ -17144,15 +17225,17 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
     "source": "egen",
     "address": "Simrishamn",
     "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://hakansson-hakansson.se/gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
-    "confidence": "medium",
+    "confidence": "high",
     "website": "https://hakansson-hakansson.se/gasol/",
     "openingHours": "Mån–Fre 10–17, Lör 10–14",
-    "gasolPrice": "Påfyllning 0–4,9 kg: 42 kr/kg, 5+ kg: 36 kr/kg (2026-09-24)"
+    "gasolPrice": "Påfyllning 0–4,9 kg: 42 kr/kg, 5+ kg: 36 kr/kg (2026-09-24)",
+    "phone": "0414-168 11"
   },
   {
     "name": "Husbilslandet i Bäck, Kristinehamn",
@@ -17166,9 +17249,10 @@
     ],
     "source": "egen",
     "address": "681 91 Kristinehamn",
-    "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.kosangas.se/info-och-raadgivning/raadgivning/faq/flaskfyllare-och-tankning/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
-    "confidence": "medium",
-    "phone": "0550-293 85"
+    "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.kosangas.se/info-och-raadgivning/raadgivning/faq/flaskfyllare-och-tankning/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24). Research sep 2026: bara EN branschlista (Kosan) och egen sajt utan konkret citat – ej bekräftat. GASIP Kristinehamn (Hamnvägen 6) är det belagda stället.",
+    "confidence": "low",
+    "phone": "0550-293 85",
+    "unverified": true
   },
   {
     "name": "Bilservice i Kylinge AB, Sölvesborg",
@@ -17182,26 +17266,9 @@
     ],
     "source": "egen",
     "address": "Kylingevägen 20, 294 93 Sölvesborg",
-    "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.kosangas.se/info-och-raadgivning/raadgivning/faq/flaskfyllare-och-tankning/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
-    "confidence": "medium",
-    "phone": "0456-303 55"
-  },
-  {
-    "name": "Harry Perssons Byggnadsvaror, Sölvesborg",
-    "lat": 56.044,
-    "lon": 14.561,
-    "services": [
-      "gasol"
-    ],
-    "facilities": [
-      "gasol_pafyllning"
-    ],
-    "source": "egen",
-    "address": "Hosabyvägen 26, 294 71 Sölvesborg",
-    "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.besucherguide-schweden.de/reiseinfos/gasfullstationen/gaskoordinaten.php (extern guide, kontrollerad 2026-09-24).",
+    "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.kosangas.se/info-och-raadgivning/raadgivning/faq/flaskfyllare-och-tankning/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24). Research sep 2026: husbilsverkstad som fyller FAST monterad tank/Alugas-tankflaska – vanlig lös flaska EJ belagd, ring innan.",
     "confidence": "low",
-    "phone": "0456-500 22",
-    "website": "https://www.hpb.se/",
+    "phone": "0456-303 55",
     "unverified": true
   },
   {
@@ -17217,8 +17284,10 @@
     "source": "egen",
     "address": "Rågrindsvägen 58 A, 943 32 Öjebyn",
     "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.kosangas.se/info-och-raadgivning/raadgivning/faq/flaskfyllare-och-tankning/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
-    "confidence": "medium",
-    "phone": "070-542 19 64"
+    "confidence": "high",
+    "phone": "070-542 19 64",
+    "website": "https://www.gasolfabriken.se/",
+    "gasolPrice": "Påfyllning Pris ej publicerat i sökbara källor. (sep 2026)"
   },
   {
     "name": "Tallheds Plantskola, Orsa",
@@ -17233,8 +17302,235 @@
     "source": "egen",
     "address": "Flygfältsvägen 19, 794 90 Orsa",
     "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.kosangas.se/info-och-raadgivning/raadgivning/faq/flaskfyllare-och-tankning/ (extern guide, kontrollerad 2026-09-24).",
-    "confidence": "low",
+    "confidence": "high",
     "phone": "0250-55 26 11",
-    "unverified": true
+    "openingHours": "Mån–tors 07–16, fre 07–13",
+    "website": "https://www.orsabesparingsskog.se/verksamhet/tallheds-plantskola/gasolflaskor/",
+    "gasolPrice": "Påfyllning Prislista finns på sidan men visades inte i sökutdraget ('Alla priser gäller endast för Gasol inkl moms'); 15 % rabatt f (sep 2026)"
+  },
+  {
+    "name": "Gasolgubben",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte",
+      "gasol_pafyllning"
+    ],
+    "source": "egen",
+    "confidence": "high",
+    "description": "Påfyllning av egen gasolflaska i lösvikt samt byte, även fast tank. Källa (operatörens egen webbplats, research sep 2026): \"gasolgubben.se: 'A standard refilling costs 200 SEK. Prices for bottles with gas included are: PC5 (1300 SEK), PC10 (1500 SEK), PA11 (1700 SEK), P11 (1600 SEK), and P19 (1900 SEK).' gasolkartan/husbilsklubben: 'Gasol ref\"",
+    "query": "Lillegårdsvägen 1, Falkenberg",
+    "nearLat": 56.8937,
+    "nearLon": 12.5006,
+    "maxKm": 15,
+    "address": "Lillegårdsvägen 1, 311 50 Falkenberg",
+    "phone": "0346-71 34 05",
+    "openingHours": "Mån–fre 09:00–16:00, lör–sön stängt (gasolkartan.se)",
+    "website": "https://www.gasolgubben.se/",
+    "gasolPrice": "Påfyllning 38 kr/kg – 38 kr/kg (gasolkartan.se); egen sajt: 'standardpåfyllning 200 kr'; nya flaskor med gas PC5 1 300, PC10 1 500, PA11 1 700 (sep 2026)"
+  },
+  {
+    "name": "GasolEsset Ljungby",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte",
+      "gasol_pafyllning"
+    ],
+    "source": "egen",
+    "confidence": "high",
+    "description": "Påfyllning av egen gasolflaska i lösvikt samt byte, även fast tank. Källa (operatörens egen webbplats, research sep 2026): \"Priset för att fylla en gasolflaska är 39 kr/kg och vi fyller upp den mängd du behöver även om din flaska inte är tom. Vi fyller din gasolflaska medan du väntar, det tar under 1 minut. Påfyllning, nyköp och inbyte av gas\"",
+    "lat": 56.8110052,
+    "lon": 13.9075206,
+    "address": "Nyponvägen 6, 341 33 Ljungby",
+    "openingHours": "mån–tors 10–15, fre 10–17, lör 10–13, sön stängt",
+    "website": "https://www.gasolesset.se/gasolesset-ljungby/",
+    "gasolPrice": "Påfyllning 39 kr/kg – 39 kr/kg (gasolesset.se, sep 2026) – tidigare post i appen saknar pris för Ljungby (sep 2026)"
+  },
+  {
+    "name": "Gasip (Karlskoga)",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte",
+      "gasol_pafyllning"
+    ],
+    "source": "egen",
+    "confidence": "high",
+    "description": "Påfyllning av egen gasolflaska i lösvikt samt byte, även fast tank. Källa (operatörens egen webbplats, research sep 2026): \"gasip.se (sidan 'Gasol på lösvikt'): \"när du fyller en flaska som inte är helt tom väger vi den och du betalar kilopris för det som fylls på i din flaska\". Husbilskompisar: Maskinvägen 22, 691 37 Karlskoga – \"gas bottle \"",
+    "query": "Maskinvägen 22, Karlskoga",
+    "nearLat": 59.3212,
+    "nearLon": 14.4954,
+    "maxKm": 15,
+    "address": "Maskinvägen 22, 691 37 Karlskoga",
+    "phone": "070-455 36 90",
+    "openingHours": "Mån–fre 08:00–17:00, lunchstängt 13:30–14:00",
+    "website": "https://www.gasip.se/pages/gasol-pa-losvikt",
+    "gasolPrice": "Påfyllning Kilopris för det som fylls på – belopp ej fångat (gasip.se säger 'Billigast gasol & LPG i Karlskoga') (sep 2026)"
+  },
+  {
+    "name": "Eslöv Gasol",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "source": "egen",
+    "confidence": "high",
+    "description": "Påfyllning av egen gasolflaska i lösvikt. Källa (operatörens egen webbplats, research sep 2026): \"'They fill your bottle on site regardless of how much gas is left. You pay only for the amount of gasol they fill, usually per kilo.' Adress Gustavslundsvägen 4, Eslöv, 241 39 enligt husbilskompisar.se/stallplatskartan/e\"",
+    "query": "Gustavslundsvägen 4, Eslöv",
+    "nearLat": 55.8441,
+    "nearLon": 13.3248,
+    "maxKm": 15,
+    "address": "Gustavslundsvägen 4, 241 39 Eslöv",
+    "phone": "073-345 96 48",
+    "website": "https://eslovgasol.se/",
+    "gasolPrice": "Påfyllning Betalning per kilo; pris ej i sökresultat (sep 2026)"
+  },
+  {
+    "name": "Gasol Malmö LPG – Limhamn (Småbåtshamnen)",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "source": "egen",
+    "confidence": "high",
+    "description": "Påfyllning av egen gasolflaska i lösvikt, även fast tank. Källa (operatörens egen webbplats, research sep 2026): \"'They also have a location at Bryggövägen, 216 12 Limhamn, open Monday, Thursday, Friday 09:00-17:00, and Saturday 10:00-14:00 with lunch break 12:30-13:00.' Energigas Sverige: 'Gasol Malmö LPG AB … Bryggövägen, Småbåtsh\"",
+    "lat": 55.584793,
+    "lon": 12.922966,
+    "address": "Bryggövägen (Småbåtshamnen), 216 12 Limhamn, Malmö",
+    "phone": "076-00 55 825",
+    "openingHours": "Mån, tor, fre 09:00–17:00, lör 10:00–14:00 (lunch 12:30–13:00)",
+    "website": "https://gasolmalmolpg.com/",
+    "gasolPrice": "Påfyllning Betalning per kilo; pris ej publicerat i sökresultat (sep 2026)"
+  },
+  {
+    "name": "GasolEsset Örkelljunga (Skåneporten)",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte",
+      "gasol_pafyllning"
+    ],
+    "source": "egen",
+    "confidence": "high",
+    "description": "Påfyllning av egen gasolflaska i lösvikt samt byte. Källa (operatörens egen webbplats, research sep 2026): \"'Du betalar endast 34:-/kg och de fyller upp den mängd du behöver även om din flaska ej är tom (gäller Örkelljunga)' … 'De fyller din gasolflaska medan du väntar och det tar under 1 minut'. Adress 'Skåneporten 1, 28638 Ö\"",
+    "lat": 56.283768,
+    "lon": 13.3389124,
+    "address": "Skåneporten 1, 286 38 Örkelljunga",
+    "phone": "073-621 20 51",
+    "website": "https://www.gasolesset.se/gasolesset-orkelljunga/",
+    "gasolPrice": "Påfyllning 34 kr/kg – 34 kr/kg, 'fyller upp den mängd du behöver även om din flaska ej är tom (gäller Örkelljunga)' (sep 2026)"
+  },
+  {
+    "name": "GASIP Kristinehamn",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "source": "egen",
+    "confidence": "high",
+    "description": "Påfyllning av egen gasolflaska i lösvikt, även fast tank. Källa (operatörens egen webbplats, research sep 2026): \"Billigast Gasol & LPG i Kristinehamn hos GASIP: om din flaska inte är helt tom väger vi den och du betalar ett kilopris för den mängd vi fyller i din flaska. 'GASIP Kristinehamn är en gasolfyllningsstation och butik för \"",
+    "query": "Hamnvägen 6, Kristinehamn",
+    "nearLat": 59.3111,
+    "nearLon": 14.0949,
+    "maxKm": 15,
+    "address": "Hamnvägen 6, Kristinehamn",
+    "phone": "073-200 10 30",
+    "openingHours": "Mån 09–17, tis 09–16, ons–fre 09–17, lör–sön stängt (Facebook/gasolkartan)",
+    "website": "https://www.gasip.se/pages/krisintehamn",
+    "gasolPrice": "Påfyllning Kilopris, ej publicerat (sep 2026)"
+  },
+  {
+    "name": "Hudiksvalls Plåt & Gasol AB",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte",
+      "gasol_pafyllning"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Påfyllning av egen gasolflaska i lösvikt samt byte, även fast tank. Källa (branschlista/flera källor, research sep 2026): \"platgasol.se (sökutdrag): \"byte, försäljning och påfyllning av gasolflaskor, samt påfyllning av gasol på bilar och fasta tankar. Vi lagerför gasolflaskor med svensk koppling och har även ett sortiment med norsk och tysk \"",
+    "query": "Ullsättersvägen 22, Hudiksvall",
+    "nearLat": 61.7381,
+    "nearLon": 17.0816,
+    "maxKm": 15,
+    "address": "Ullsättersvägen 22, 824 34 Hudiksvall",
+    "phone": "0650-150 80",
+    "openingHours": "Mån–tors 07:00–16:00, fre 07:00–15:00, lunchstängt 11:00–12:00; dag före röd dag 07:00–12:00; semesterstängt v.29–30 (öppettider.org)",
+    "website": "https://platgasol.se/produkt/gasol"
+  },
+  {
+    "name": "Gasolmacken i Varberg AB",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Påfyllning av egen gasolflaska i lösvikt, även fast tank. Källa (branschlista/flera källor, research sep 2026): \"myLPG: \"dish connector, adapters (available to lend or buy), card payment, staff-operated tanking, and help with filling\", >90 % propan. Systeranläggningar Gasolmacken Uppsala/Nyköping fyller lösa flaskor enligt gasolmac\"",
+    "lat": 57.12792,
+    "lon": 12.292446,
+    "address": "Signalvägen 9, Varberg",
+    "phone": "070-791 10 92",
+    "openingHours": "Mån 14–17, tors 10–17, fre 12–17, övriga dagar stängt (myLPG.eu, 14 bekräftelser, senast 29 apr 2026)",
+    "website": "https://www.gasolmacken.se/",
+    "gasolPrice": "Påfyllning Kedjan Gasolmacken (Uppsala 52 kr/kg, Nyköping ca 260 kr/flaska) – Varbergs pris ej fångat (sep 2026)"
+  },
+  {
+    "name": "TBM Byggmaskiner i Motala AB",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte",
+      "gasol_pafyllning"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Påfyllning av egen gasolflaska i lösvikt samt byte, även fast tank. Källa (branschlista/flera källor, research sep 2026): \"Gasol? Vi fixar det! Hos TBM i Motala hittar du gasol för alla behov, flaskor och p[åfyllning]… (FB-video, rubrik avklippt). myLPG: 'Allowed filling of LPG: Remote fill (outdoor mount)', 'Help with filling', kortbetalnin\"",
+    "query": "Myntgatan 6, Motala",
+    "nearLat": 58.5563,
+    "nearLon": 15.0455,
+    "maxKm": 15,
+    "address": "Myntgatan 6, 591 61 Motala",
+    "phone": "0730-91 60 77",
+    "openingHours": "mån 06:45–16:15; tis 06:45–16:45; ons–fre 06:45–16:15; lör–sön stängt (myLPG, okt 2025)",
+    "website": "https://www.facebook.com/p/TBM-Byggmaskiner-i-Motala-AB-100057372343524/",
+    "gasolPrice": "Påfyllning myLPG: LPG-pris 20 kr/liter (22.10.2025) – gäller pump/fasttank, flaskpris ej publicerat (sep 2026)"
+  },
+  {
+    "name": "NB Energi Sala",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte",
+      "gasol_pafyllning"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Påfyllning av egen gasolflaska i lösvikt samt byte. Källa (branschlista/flera källor, research sep 2026): \"Vi fyller dina flaskor i Västerås och Sala året runt. Populär gasolautomat öppen dygnet runt i både Västerås och Sala – byte och köp av PC5, PC10 och P11.\"",
+    "query": "Norrängsgatan 20, Sala",
+    "nearLat": 59.8536,
+    "nearLon": 17.6361,
+    "maxKm": 15,
+    "address": "Norrängsgatan 20, 733 38 Sala",
+    "phone": "0224-544 03",
+    "openingHours": "Kontor mån–tor 07.30–16.00, fre 07.30–14.00. Lösviktsfyllning ons+tors 12–16 enligt äldre nboljor.se-inlägg (oklart om det gäller båda orterna)",
+    "website": "https://nbenergi.se/privat/gasol/"
   }
 ]

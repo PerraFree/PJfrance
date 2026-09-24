@@ -691,10 +691,27 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
      innan" / "Låg – forum/guide"); 'low' ger dessutom grå obekräftad-nål.
      Perplexity-listans misstänkta rader: OK/Q8 Oktanvägen Piteå (kallas
      Luleå i texten men koordinat/telefon är Piteå) – inlagd som medium.
-     En separat research-session (600 sökningar) körde parallellt mot samma
-     källor och lade resultatet på grenen `claude/gasolfyllning-research`
-     (`docs/import/gasolfyllning-research.json/.md`) – importera därifrån
-     med samma skript/metod.
+     En separat research-session (600 sökningar, ~452 använda, 8 agenter)
+     körde parallellt mot samma källor; resultatet (109 platser granskade)
+     ligger i `docs/import/gasolfyllning-research.json/.md` (hämtade från
+     grenen `claude/gasolfyllning-research`) och slogs ihop med skriptet
+     `import-research.mjs` (scratchpad): **11 nya** (Gasolgubben Falkenberg,
+     Gasip Karlskoga, GASIP Kristinehamn, Eslöv Gasol = Ystad Gasols andra
+     station, Gasol Malmö LPG Limhamn, GasolEsset Ljungby/Örkelljunga som
+     registerposter ovanpå OSM-noderna, Hudiksvalls Plåt & Gasol, Gasolmacken
+     Varberg, TBM Motala, NB Energi Sala – de fyra sista medium), **20
+     uppgraderade till hög** med citat från egen sajt, **7 nedgraderade** där
+     research motsade Perplexity-listan (Allgas, Unax, Frendo Brålanda,
+     Lööfs Karlstad → bara byte; Kylinge, Qstar, Husbilslandet → grå/låg),
+     **2 borttagna** (OK/Q8 Piteå = autogaspump; Harry Perssons = ingen
+     källa nämner gasol). Kvar ogjort: West Coast Gasol Vänersborg/Vargön
+     (gatuadress saknas), Svenska Gas Orust/Henån (osäker adress), luckor
+     Gotland/Öland/Umeå/Skellefteå/Östersund/Ö-vik (forum säger "bara
+     byte"), kr/kg-priser för ~15 platser (kräver webbläsare/telefon).
+     Lärdom: **branschlistorna (Energigas Sverige "tankstationer", Kosans
+     partnerlista) blandar lösviktsfyllning, fast-tank-tankning och rena
+     byte-ställen** – "tankstation" i listan betyder inte lös flaska; kräv
+     alltid operatörens egen formulering för 'high'.
    - **Kvar efter svepet:** Skånegas Ängelholm + Levol Onsala (gatuadress
      saknas), Expressgasol Tidaholm/Ronneby/Tingsryd och Norbros egen
      automatkarta (JS-kartor, läs i webbläsare), Byggmax/Granngården/Rusta/
