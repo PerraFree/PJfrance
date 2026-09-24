@@ -4,6 +4,8 @@ import MapView, { MIN_FETCH_ZOOM } from './components/MapView'
 import SubmitForm from './components/SubmitForm'
 import ReportForm from './components/ReportForm'
 import NearestList from './components/NearestList'
+import RouteList from './components/RouteList'
+import { fetchRoute, stationsAlongRoute, type RouteHit } from './lib/route'
 import IntroHint from './components/IntroHint'
 import { communityEnabled } from './config'
 import { OWN_STATIONS } from './data/stations'
@@ -203,6 +205,19 @@ export default function App() {
   const [reportTarget, setReportTarget] = useState<{ id: string; name: string } | null>(null)
   const [focus, setFocus] = useState<{ id: string; nonce: number } | null>(null)
   const [showNearest, setShowNearest] = useState(false)
+  // "Längs min väg": start/mål-formulär, beräknad väg och radie runt vägen.
+  const [showRouteForm, setShowRouteForm] = useState(false)
+  const [routeFrom, setRouteFrom] = useState('')
+  const [routeTo, setRouteTo] = useState('')
+  const [routeRadius, setRouteRadius] = useState(5)
+  const [routing, setRouting] = useState(false)
+  const [route, setRoute] = useState<{
+    label: string
+    coords: [number, number][]
+    distanceKm: number
+    straight: boolean
+  } | null>(null)
+  const routeAbortRef = useRef<AbortController | null>(null)
   // På mobil startar panelen som en hopfälld bottensheet (karta i fokus).
   const [collapsed, setCollapsed] = useState(
     () => typeof window !== 'undefined' && !!window.matchMedia?.('(max-width: 640px)').matches,
@@ -342,7 +357,7 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [seedStations])
 
-  const shownStations = useMemo(() => {
+  const baseStations = useMemo(() => {
     let list = freeOnly ? stations.filter(isFree) : stations
     if (favOnly) list = list.filter((s) => favorites.has(s.id))
     if (yearRoundOnly) {
@@ -352,6 +367,17 @@ export default function App() {
     }
     return list
   }, [stations, freeOnly, favOnly, favorites, yearRoundOnly])
+
+  // Aktiv rutt: bara platser inom vald radie från vägen visas (kartan, antal,
+  // listan) – sorterade i färdriktningen.
+  const routeHits = useMemo<RouteHit[] | null>(
+    () => (route ? stationsAlongRoute(baseStations, route.coords, routeRadius) : null),
+    [baseStations, route, routeRadius],
+  )
+  const shownStations = useMemo(
+    () => (routeHits ? routeHits.map((h) => h.station) : baseStations),
+    [routeHits, baseStations],
+  )
 
   // Antal synliga pins med hänsyn till aktiva kategorifilter (för tomt-läge)
   const visibleCount = useMemo(
@@ -616,6 +642,62 @@ export default function App() {
     setStatus('Sökning avbruten.')
   }
 
+  // "Längs min väg": geokoda start + mål parallellt, hämta bilvägen (OSRM,
+  // annars fågelvägen) och visa bara platser nära vägen.
+  const handleRoute = async (e: React.FormEvent) => {
+    e.preventDefault()
+    const from = routeFrom.trim()
+    const to = routeTo.trim()
+    if (!to || (!from && !userLoc)) {
+      setStatus('Ange både start och mål – eller tryck "Sök där jag är" först så blir din position start.')
+      return
+    }
+    routeAbortRef.current?.abort()
+    const ac = new AbortController()
+    routeAbortRef.current = ac
+    setRouting(true)
+    setStatus(`Beräknar vägen ${from || 'från din position'} → ${to} …`)
+    try {
+      const [a, b] = await Promise.all([
+        from
+          ? searchPlace(from, ac.signal).then((r) => r[0])
+          : Promise.resolve(userLoc ? { name: 'Din position', lat: userLoc.lat, lon: userLoc.lon } : undefined),
+        searchPlace(to, ac.signal).then((r) => r[0]),
+      ])
+      if (ac.signal.aborted) return
+      if (!a || !b) {
+        setStatus(`Hittade inte ”${!a ? from : to}” – prova en ort eller adress.`)
+        return
+      }
+      const r = await fetchRoute(a, b, ac.signal)
+      if (ac.signal.aborted) return
+      const short = (n: string) => n.split(',')[0].trim()
+      ensureCategories()
+      setRoute({ label: `${short(a.name)} → ${short(b.name)}`, coords: r.coords, distanceKm: r.distanceKm, straight: r.straight })
+      setShowNearest(false)
+      setCollapsed(true)
+      setStatus(
+        r.straight
+          ? 'Vägtjänsten svarade inte – visar platser längs fågelvägen i stället.'
+          : `Vägen ${short(a.name)} → ${short(b.name)}: ${Math.round(r.distanceKm)} km. Platserna listas i färdriktningen.`,
+      )
+    } catch {
+      if (!ac.signal.aborted) setStatus('Kunde inte beräkna vägen – kontrollera nätet och försök igen.')
+    } finally {
+      if (routeAbortRef.current === ac) {
+        routeAbortRef.current = null
+        setRouting(false)
+      }
+    }
+  }
+
+  const clearRoute = useCallback(() => {
+    routeAbortRef.current?.abort()
+    routeAbortRef.current = null
+    setRouting(false)
+    setRoute(null)
+  }, [])
+
   const handleLocate = async () => {
     if (locating) return
     setLocating(true)
@@ -660,6 +742,7 @@ export default function App() {
         activeFilters={activeFilters}
         gasolFacilities={gasolFacilities}
         flyTo={flyTo}
+        routeLine={route?.coords ?? null}
         userLoc={userLoc}
         focus={focus}
         onBoundsChange={handleBoundsChange}
@@ -771,6 +854,61 @@ export default function App() {
           </svg>
           {locating ? 'Hämtar din position …' : 'Sök där jag är'}
         </button>
+
+        <button
+          type="button"
+          className={route ? 'route-btn active' : 'route-btn'}
+          aria-expanded={showRouteForm}
+          onClick={() => setShowRouteForm((v) => !v)}
+        >
+          🛣 Längs min väg
+          {route && routeHits && <span className="fac-count">{routeHits.length}</span>}
+        </button>
+        {showRouteForm && (
+          <form className="route-form" onSubmit={handleRoute} aria-label="Platser längs vägen">
+            <input
+              type="text"
+              placeholder={userLoc ? 'Från (tomt = din position)' : 'Från, t.ex. Borås'}
+              value={routeFrom}
+              onChange={(e) => setRouteFrom(e.target.value)}
+              aria-label="Från"
+            />
+            <input
+              type="text"
+              placeholder="Till, t.ex. Sälen"
+              value={routeTo}
+              onChange={(e) => setRouteTo(e.target.value)}
+              aria-label="Till"
+            />
+            <div className="route-row">
+              <label>
+                Max från vägen
+                <select value={routeRadius} onChange={(e) => setRouteRadius(Number(e.target.value))}>
+                  {[2, 5, 10, 20].map((km) => (
+                    <option key={km} value={km}>
+                      {km} km
+                    </option>
+                  ))}
+                </select>
+              </label>
+              {routing ? (
+                <button type="button" className="cancel-btn" onClick={clearRoute}>
+                  Avbryt
+                </button>
+              ) : (
+                <button type="submit">Visa platser</button>
+              )}
+              {route && !routing && (
+                <button type="button" className="route-clear" onClick={clearRoute}>
+                  Rensa
+                </button>
+              )}
+            </div>
+            <p className="route-help">
+              Visar bara platser nära bilvägen mellan start och mål, i färdriktningen.
+            </p>
+          </form>
+        )}
 
         <div className="filters" role="group" aria-label="Filtrera tjänster">
           {ALL_SERVICES.filter((service) => service !== 'gasol').map((service) => (
@@ -954,7 +1092,23 @@ export default function App() {
         />
       )}
 
-      {userLoc && !showNearest && (
+      {route && routeHits && (
+        <RouteList
+          hits={routeHits}
+          label={route.label}
+          distanceKm={route.distanceKm}
+          straight={route.straight}
+          activeFilters={activeFilters}
+          gasolFacilities={gasolFacilities}
+          onPick={(s) => {
+            setFlyTo({ lat: s.lat, lon: s.lon, zoom: 14 })
+            setFocus({ id: s.id, nonce: performance.now() })
+          }}
+          onClose={clearRoute}
+        />
+      )}
+
+      {userLoc && !showNearest && !route && (
         <button
           className="nearest-toggle"
           type="button"
@@ -964,7 +1118,7 @@ export default function App() {
         </button>
       )}
 
-      {userLoc && showNearest && (
+      {userLoc && showNearest && !route && (
         <NearestList
           stations={shownStations}
           activeFilters={activeFilters}

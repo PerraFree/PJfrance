@@ -1910,6 +1910,117 @@ button {
   }
 }
 
+/* ---------- "Längs min väg" ---------- */
+.route-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 8px;
+  padding: 10px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-control);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.route-btn:hover {
+  background: var(--field);
+}
+.route-btn.active {
+  border-color: #1565c0;
+  background: #e8f0fb;
+  color: #0d3c78;
+}
+.route-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-control);
+  background: var(--field);
+}
+.route-form input {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-control);
+  font-size: 0.95rem;
+  background: #fff;
+  color: var(--text);
+}
+.route-form input:focus {
+  outline: none;
+  border-color: #1565c0;
+  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.16);
+}
+.route-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.route-row label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+.route-row select {
+  padding: 7px 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-control);
+  background: #fff;
+  font: inherit;
+  font-size: 0.88rem;
+}
+.route-row button[type='submit'] {
+  padding: 9px 16px;
+  border: none;
+  border-radius: var(--r-control);
+  background: #1565c0;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+.route-row .route-clear,
+.route-row .cancel-btn {
+  padding: 9px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-control);
+  background: #fff;
+  color: var(--text);
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+.route-help {
+  margin: 0;
+  font-size: 0.76rem;
+  color: var(--text-dim);
+}
+.route-list .nearest-head h2 {
+  font-size: 0.92rem;
+  line-height: 1.3;
+}
+.route-meta {
+  font-weight: 500;
+  color: var(--text-dim);
+}
+.route-side {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--text-dim);
+}
+
 /* Avbryt-knapp under pågående sökning (ersätter "Sök") */
 .search .cancel-btn {
   padding: 0 16px;

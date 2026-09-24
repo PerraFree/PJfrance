@@ -42,6 +42,8 @@ interface Props {
    *  activeFilters). Styr filterknapparna i App.tsx. */
   gasolFacilities: Set<GasolFacility>
   flyTo: { lat: number; lon: number; zoom?: number } | null
+  /** "Längs min väg": vägens punkter [lat, lon] att rita, eller null. */
+  routeLine: [number, number][] | null
   userLoc: { lat: number; lon: number } | null
   focus: { id: string; nonce: number } | null
   onBoundsChange: (bounds: L.LatLngBounds, zoom: number) => void
@@ -435,6 +437,7 @@ export default function MapView({
   activeFilters,
   gasolFacilities,
   flyTo,
+  routeLine,
   userLoc,
   focus,
   onBoundsChange,
@@ -916,6 +919,33 @@ export default function MapView({
       else mapRef.current.flyTo([flyTo.lat, flyTo.lon], flyTo.zoom ?? 12)
     }
   }, [flyTo])
+
+  // "Längs min väg": rita vägen och zooma så hela vägen syns (med marginal
+  // för panelen). Ligger under nålarna (overlay-pane) och tar inga klick.
+  const routeLineRef = useRef<L.Polyline | null>(null)
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map) return
+    if (routeLineRef.current) {
+      map.removeLayer(routeLineRef.current)
+      routeLineRef.current = null
+    }
+    if (routeLine && routeLine.length > 1) {
+      routeLineRef.current = L.polyline(routeLine, {
+        color: '#1565c0',
+        weight: 5,
+        opacity: 0.8,
+        interactive: false,
+      }).addTo(map)
+      const { padTopLeft, padBottomRight } = computePopupPadding()
+      map.fitBounds(routeLineRef.current.getBounds(), {
+        paddingTopLeft: padTopLeft,
+        paddingBottomRight: padBottomRight,
+      })
+    }
+    // computePopupPadding läser bara DOM:en – stabil nog att utelämna
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [routeLine])
 
   // "Du är här"-markör
   useEffect(() => {

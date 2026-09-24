@@ -646,6 +646,29 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
       senast för 5 dagar sedan" (`VerificationInfo` i `src/lib/verify.ts`,
       `fetchVerifications` räknar rader per plats).
    6. **Öppettider/vinterstängt** = nytt område E i veckorutinen.
+
+   **Samma dag, efter Pers "kör punkt 1 och sedan punkt 2":**
+   - **Kandidatlistan → grå:** 233 av de ~470 raderna i
+     `docs/kandidatplatser-husbilsplats-park4night.md` inlagda som
+     `unverified: true` (skript `import-kandidater.mjs` i scratchpad; metod
+     och bortfall dokumenterade överst i kandidatfilen). Ortens läge för
+     rimlighetskontrollen togs som median av befintliga platser vars namn/
+     adress innehåller ortnamnet – 81 rader saknade sådan ort och hoppades.
+   - **"Längs min väg" (ny funktion):** knapp under "Sök där jag är" →
+     formulär Från/Till + max avstånd från vägen (2/5/10/20 km). Start + mål
+     geokodas parallellt (`searchPlace`), bilvägen hämtas från OSRM:s öppna
+     demoserver (`src/lib/route.ts`, `router.project-osrm.org`, ingen nyckel,
+     15 s timeout) – svarar den inte används fågelvägen och statusraden säger
+     det. `stationsAlongRoute()` räknar avstånd punkt→polylinje i ett lokalt
+     km-plan (vägen glesas till ≤600 punkter) och sorterar träffarna i
+     färdriktningen. När en rutt är aktiv filtreras `shownStations` till
+     träffarna (karta, antal, lista), `MapView` ritar vägen (`routeLine`-prop,
+     blå polyline, `fitBounds` med panelmarginal) och `RouteList.tsx` (samma
+     stil som närmaste-listan) visar "km från start" + "km från vägen".
+     "Rensa"/× tar bort allt. Verifierat med Playwright (mockade Nominatim/
+     OSRM): Borås→Ulricehamn gav 21 platser inom 5 km, linje ritad, rensning
+     tömde kartan. OBS: tomt Från-fält + känd position = start från "Sök där
+     jag är"-positionen.
    - **Kvar efter svepet:** Skånegas Ängelholm + Levol Onsala (gatuadress
      saknas), Expressgasol Tidaholm/Ronneby/Tingsryd och Norbros egen
      automatkarta (JS-kartor, läs i webbläsare), Byggmax/Granngården/Rusta/
