@@ -669,6 +669,32 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
      OSRM): Borås→Ulricehamn gav 21 platser inom 5 km, linje ritad, rensning
      tömde kartan. OBS: tomt Från-fält + känd position = start från "Sök där
      jag är"-positionen.
+   - **Gasolpåfyllning av EGEN flaska – Pers Perplexity-lista (samma dag):**
+     Per lät Perplexity sammanställa 60 platser med lösviktspåfyllning från
+     Energigas Sveriges förteckning + Kosans flaskfyllarlista + operatörernas
+     sidor (`docs/import/gasolfyllning_sverige.json`, uppladdad via GitHub).
+     Ungefär hälften fanns redan, men jag hade missat hela Svenska Gas-kedjan
+     (Skepplanda/Stenungsund/Fjärås/Uddevalla), NB Energi, Sweonor, Unax,
+     PLM Motala, Ekonex, Ystad Gasol m.fl. – orsak: jag sökte företag för
+     företag och nådde aldrig branschlistorna innan kvoten tog slut.
+     Importskript `import-gasolfyllning.mjs` (scratchpad) matchar på namn+ort
+     först (registerposter saknar ofta koordinat), sedan avstånd med
+     namnlikhet, och lägger poster ovanpå OSM-noder som redan har
+     påfyllnings-override så de slås ihop i appen. Resultat: 32 nya, 25
+     kompletterade (exakta koordinater ersatte geokodning, telefon,
+     öppettider, pris), 3 KONFLIKTER lämnade som de var: Skaraborgs Gasol
+     Skövde och Gasolbolaget Växjö (företagens egna sidor säger inte lös
+     flaska – listan säger det; notering i description, ring och avgör),
+     Husbilsprylen Ullared (nedlagd). **Nytt fält `confidence`
+     ('high'/'medium'/'low')** på Station → färgkodad rad i popupen ("Hög
+     säkerhet – operatörens egen sida" / "Medelhög – branschlista, ring
+     innan" / "Låg – forum/guide"); 'low' ger dessutom grå obekräftad-nål.
+     Perplexity-listans misstänkta rader: OK/Q8 Oktanvägen Piteå (kallas
+     Luleå i texten men koordinat/telefon är Piteå) – inlagd som medium.
+     En separat research-session (600 sökningar) körde parallellt mot samma
+     källor och lade resultatet på grenen `claude/gasolfyllning-research`
+     (`docs/import/gasolfyllning-research.json/.md`) – importera därifrån
+     med samma skript/metod.
    - **Kvar efter svepet:** Skånegas Ängelholm + Levol Onsala (gatuadress
      saknas), Expressgasol Tidaholm/Ronneby/Tingsryd och Norbros egen
      automatkarta (JS-kartor, läs i webbläsare), Byggmax/Granngården/Rusta/
