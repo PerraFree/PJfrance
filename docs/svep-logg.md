@@ -10,8 +10,9 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 |---|---|---|
 | A. Tömning latrin/gråvatten | Kommuner med 0–1 tömningsplatser: kommunsidor, turistråd, anläggningars egna sajter. Kompletteringar av befintliga camping-/ställplatsposter räknas. | 2026-09-24 |
 | B. Gasol byte/påfyllning + priser | Kedjornas butikssidor (Byggmax/Granngården/Rusta/ÖoB per butik), Norbro-/Linde-/gasolautomat.se-listor, lokala påfyllningsbolag, priser. Bara 10/11 kg-flaskor (P11/PA11/PC10/PK10). | 2026-09-24 |
-| C. Verifiera låg-evidens-listor | Gå igenom `docs/tomning-svep-sep-2026-lag-evidens.md` och `docs/kandidatplatser-husbilsplats-park4night.md`: sök primärkälla för de mest lovande, lägg in bara det som får konkret citat. | aldrig |
-| D. Färskvatten + golfklubbar + tjänsteberikning | Golfklubbar med ställplats (golfamore.com m.fl.), campingar/ställplatser som visas utan tjänst men har det, vattenkiosker. | 2026-09-07 |
+| C. Obekräftade platser: verifiera + fyll på | (1) Sök primärkälla för de OBEKRÄFTADE posterna i registret (`unverified: true` / `unverifiedServices`) – får de citat: ta bort obekräftat-flaggan. (2) Gör om lovande rader i `docs/kandidatplatser-husbilsplats-park4night.md` (tydlig tjänst + ort) till obekräftade registerposter så de syns grått på kartan. | aldrig |
+| D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. | 2026-09-07 |
+| E. Öppettider + vinterstängt | Platser med tömning/vatten som saknar `openingHours`/`season`: hämta säsong ("1 maj–30 sep", "vinterstängt", "året runt") från kommun-/anläggningssida. Skriv `season: 'seasonal'`/`'year-round'` + `openingHours`. Prioritera kommunala tömningsstationer och Trafikverkets rastplatser med vattenavstängning. | aldrig |
 
 ## Regler som alltid gäller
 
@@ -20,6 +21,9 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 - Dedupa mot publicerad seed (namn eller inom ~400 m) innan något skrivs till registret.
 - Gissa aldrig koordinater. Exakt `lat`/`lon` från källa, annars `query` + `nearLat`/`nearLon` + lågt `maxKm`.
 - Verifiera efter deploy att alla nya poster finns i seeden och ligger rimligt.
+- Låg-evidens-fynd (bara husbilsplats.se/park4night/aggregatorer) läggs in som OBEKRÄFTADE
+  poster (`unverified: true` för hel plats, `unverifiedServices: [...]` för påstådda tjänster på
+  en befintlig plats) – de visas grått med "Obekräftad" i appen. Beslut av Per sep 2026.
 
 ## Logg
 

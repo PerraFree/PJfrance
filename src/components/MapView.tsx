@@ -12,16 +12,21 @@ import {
   SERVICE_COLORS,
   SERVICE_ICONS,
   SERVICE_LABELS,
+  UNVERIFIED_COLOR,
   gasolFacilityStatus,
-  serviceIsActive,
+  primaryActiveService,
+  stationIsActive,
+  unverifiedServicesOf,
 } from '../types'
+// (serviceIsActive används inte längre direkt här – primaryActiveService/
+//  stationIsActive i types.ts kapslar in den + obekräftat-logiken.)
 import { openNow } from '../lib/openingHours'
 import { reverseGeocode } from '../lib/reverse'
 import { fetchWeather, WEATHER_ICONS } from '../lib/weather'
 import { sharePlace as nativeShare } from '../lib/native'
 import { facilityChip } from '../lib/icons'
 import { MY_PLACE_PREFIX } from '../lib/myplaces'
-import { markSelfVerified, selfVerifiedRecently } from '../lib/verify'
+import { markSelfVerified, selfVerifiedRecently, type VerificationInfo } from '../lib/verify'
 import type { StationReviews } from '../lib/reviews'
 
 // Seed-datan täcker hela Sverige, så live-hämtning behövs bara när man zoomat
@@ -45,8 +50,8 @@ interface Props {
   favoriteIds: Set<string>
   onToggleFavorite: (id: string) => void
   onDeleteMyPlace: (id: string) => void
-  /** Senaste "stämmer fortfarande"-datum (ISO) per plats-id. */
-  verifications: Map<string, string>
+  /** Senaste "stämmer fortfarande"-datum + antal per plats-id. */
+  verifications: Map<string, VerificationInfo>
   onVerify: (id: string) => void
   canVerify: boolean
   /** Godkända betyg/kommentarer per plats-id. */
@@ -187,7 +192,7 @@ function popupHtml(
   canReport: boolean,
   userLoc: { lat: number; lon: number } | null,
   isFav: boolean,
-  verifiedAt: string | undefined,
+  verified: VerificationInfo | undefined,
   canVerify: boolean,
   review: StationReviews | undefined,
   canRate: boolean,
@@ -206,15 +211,34 @@ function popupHtml(
     if (pafyllning) return ' – fyll på'
     return ''
   })()
-  const services = station.services
-    .map((s) => {
-      const fill = serviceFill(station, s)
-      const badgeFill = fill.split
-        ? `linear-gradient(90deg, ${fill.color} 50%, ${fill.split} 50%)`
-        : fill.color
-      return `<span class="badge" style="--badge:${badgeFill}">${serviceGlyph(station, s)} ${SERVICE_LABELS[s]}${s === 'gasol' ? gasolQualifier : ''}</span>`
-    })
-    .join('')
+  // Obekräftad plats: alla badges grå+streckade. Obekräftade TJÄNSTER på en
+  // bekräftad plats: egna grå badges med "?" efter de bekräftade.
+  const unverifiedPlace = station.unverified === true
+  const claimed = unverifiedServicesOf(station)
+  const services =
+    station.services
+      .map((s) => {
+        if (unverifiedPlace) {
+          return `<span class="badge unverified">${serviceGlyph(station, s)} ${SERVICE_LABELS[s]}?</span>`
+        }
+        const fill = serviceFill(station, s)
+        const badgeFill = fill.split
+          ? `linear-gradient(90deg, ${fill.color} 50%, ${fill.split} 50%)`
+          : fill.color
+        return `<span class="badge" style="--badge:${badgeFill}">${serviceGlyph(station, s)} ${SERVICE_LABELS[s]}${s === 'gasol' ? gasolQualifier : ''}</span>`
+      })
+      .join('') +
+    claimed
+      .map(
+        (s) =>
+          `<span class="badge unverified" title="Obekräftad uppgift">${SERVICE_ICONS[s]} ${SERVICE_LABELS[s]}?</span>`,
+      )
+      .join('')
+  const unverifiedNote = unverifiedPlace
+    ? `<p class="unverified-note"><strong>Obekräftad plats.</strong> Uppgiften kommer från användarsajter, inte från kommunen eller anläggningen. Har du varit här? Tryck <strong>Stämmer</strong> nedan om platsen finns – eller <strong>Rapportera fel</strong> om den inte gör det.</p>`
+    : claimed.length
+      ? `<p class="unverified-note"><strong>Obekräftat:</strong> ${claimed.map((s) => SERVICE_LABELS[s].toLowerCase()).join(', ')} ska finnas här enligt användarsajter, men det är inte bekräftat av kommunen eller anläggningen. Har du varit här? Tryck <strong>Stämmer</strong> om det finns.</p>`
+      : ''
   const season = stationSeason(station)
   const seasonBadge =
     season === 'year-round'
@@ -310,10 +334,11 @@ function popupHtml(
     `<div class="links"><a class="primary" href="${nav}" target="_blank" rel="noopener">Vägbeskrivning →</a>` +
     `<button type="button" class="share-btn" data-lat="${station.lat}" data-lon="${station.lon}" data-name="${escapeAttr(station.name)}">Dela</button>` +
     '</div>'
+  const verifyLabel = unverifiedPlace || claimed.length ? '✓ Stämmer – jag har varit här' : '✓ Stämmer fortfarande'
   const verifyBtn = canVerify
     ? selfVerifiedRecently(station.id)
       ? `<button type="button" class="verify-btn done" disabled>✓ Du har bekräftat</button>`
-      : `<button type="button" class="verify-btn" data-verify-id="${escapeAttr(station.id)}">✓ Stämmer fortfarande</button>`
+      : `<button type="button" class="verify-btn" data-verify-id="${escapeAttr(station.id)}">${verifyLabel}</button>`
     : ''
   const rateBtn = canRate
     ? `<button type="button" class="rate-btn" data-rate-id="${escapeAttr(station.id)}" data-rate-name="${escapeAttr(station.name)}">★ Omdöme/Info</button>`
@@ -348,8 +373,10 @@ function popupHtml(
     ? `<button type="button" class="delete-btn" data-del-id="${escapeAttr(station.id)}">🗑 Ta bort plats</button>`
     : ''
   const sourceLine = isMine ? 'Din egen plats' : sourceNote
-  const verifiedLine = verifiedAt
-    ? `<p class="verified-line">✓ Bekräftad av användare ${fmtVerified(verifiedAt)}</p>`
+  // "Bekräftad av 3 användare, senast för 5 dagar sedan" – antalet bygger
+  // förtroende mer än bara ett datum.
+  const verifiedLine = verified
+    ? `<p class="verified-line">✓ Bekräftad av ${verified.count === 1 ? 'en användare' : `${verified.count} användare, senast`} ${fmtVerified(verified.latest)}</p>`
     : ''
   const avg = review && review.count > 0 ? review.sum / review.count : 0
   const ratingLine =
@@ -365,7 +392,9 @@ function popupHtml(
           )
           .join('')}</div>`
       : ''
-  const accent = SERVICE_COLORS[station.services[0]] ?? 'var(--green-700)'
+  const accent = unverifiedPlace
+    ? UNVERIFIED_COLOR
+    : (SERVICE_COLORS[station.services[0]] ?? 'var(--green-700)')
   // Foto av platsen: ett community-inskickat foto (nyast) går före källans
   // eget, eftersom det oftast är färskare och tagit på plats.
   const photoUrl =
@@ -373,7 +402,7 @@ function popupHtml(
   const photo = photoUrl
     ? `<img class="popup-photo" src="${escapeAttr(photoUrl)}" alt="" loading="lazy" onerror="this.remove()">`
     : ''
-  return `<div class="popup" style="--accent:${accent}">${photo}<h3>${esc(station.name)}</h3>${ratingLine}<div class="badges">${services}${seasonBadge}</div>${verifiedLine}${rows.join('')}${commentBlock}${links}${actions}<p class="source">${sourceLine}</p>${report}${del}</div>`
+  return `<div class="popup" style="--accent:${accent}">${photo}<h3>${esc(station.name)}</h3>${ratingLine}<div class="badges">${services}${seasonBadge}</div>${unverifiedNote}${verifiedLine}${rows.join('')}${commentBlock}${links}${actions}<p class="source">${sourceLine}</p>${report}${del}</div>`
 }
 
 function readSavedView(): { lat: number; lon: number; zoom: number } | null {
@@ -532,9 +561,7 @@ export default function MapView({
     const bounds = map.getBounds().pad(0.5)
     const center = map.getCenter()
     let list = stationsRef.current.filter(
-      (s) =>
-        bounds.contains([s.lat, s.lon]) &&
-        s.services.some((sv) => serviceIsActive(s, sv, active, gasolFacilitiesNow)),
+      (s) => bounds.contains([s.lat, s.lon]) && stationIsActive(s, active, gasolFacilitiesNow),
     )
     const CAP = 600
     if (list.length > CAP) {
@@ -548,10 +575,11 @@ export default function MapView({
     const canReportNow = canReportRef.current
     const userLocNow = userLocRef.current
     const markers = list.map((station) => {
-      const primary =
-        station.services.find((s) => serviceIsActive(station, s, active, gasolFacilitiesNow)) ??
-        station.services[0]
-      const fill = serviceFill(station, primary)
+      // Obekräftad plats/tjänst ⇒ grå nål (samma glyf), så man ser direkt på
+      // kartan vad som är belagt och vad som bara påstås.
+      const pick = primaryActiveService(station, active, gasolFacilitiesNow)
+      const primary = pick?.service ?? station.services[0]
+      const fill = pick?.unverified ? { color: UNVERIFIED_COLOR } : serviceFill(station, primary)
       const marker = L.marker([station.lat, station.lon], {
         icon: pinIcon(fill.color, serviceGlyph(station, primary), fill.split),
       })

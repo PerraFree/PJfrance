@@ -1,4 +1,11 @@
-# Tömningssvep sep 2026 – fynd med LÅG evidens (ej inlagda, kräver manuell koll)
+# Tömningssvep sep 2026 – fynd med LÅG evidens
+
+**Uppdatering samma dag:** Per beslutade att sådana fynd ska VISAS som obekräftade (grå nål,
+"Obekräftad"-text, knapp "Stämmer – jag har varit här") i stället för att döljas. De flesta
+raderna nedan ligger därför nu i `scripts/curated-places.json` med `unverified: true` eller
+`unverifiedServices`. Hoppade över (inte inlagda): Sala Museigatan (ingen tömning), OKQ8
+Strömsnäsbruk (sökmotorbrus), "Ställplats Vaggeryd" (oklart vilken), Vännäs (motstridigt),
+Örebro GK (misstänkt hopblandning med Kumla). Listan nedan är kvar som research-logg.
 
 Från ett nationellt svep (8 parallella agenter, en per landsdel, 176 WebSearch) efter latrin-/gråvattentömning som saknas i appen. Bara fynd med konkret citat från kommun-/anläggningssajt lades in i `scripts/curated-places.json`. Nedan de som bara hade husbilsplats.se/park4night/aggregator-belägg – verifiera mot primärkälla (ring/webb) innan tillägg.
 

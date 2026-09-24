@@ -15,9 +15,15 @@ const headers = {
   'Content-Type': 'application/json',
 }
 
-/** Senaste verifieringsdatum (ISO) per plats-id. */
-export async function fetchVerifications(): Promise<Map<string, string>> {
-  const map = new Map<string, string>()
+/** Senaste bekräftelse (ISO) + antal bekräftelser för en plats. */
+export interface VerificationInfo {
+  latest: string
+  count: number
+}
+
+/** Senaste verifieringsdatum + antal per plats-id. */
+export async function fetchVerifications(): Promise<Map<string, VerificationInfo>> {
+  const map = new Map<string, VerificationInfo>()
   if (!communityEnabled) return map
   const res = await fetch(
     `${url}?select=station_id,created_at&order=created_at.desc&limit=5000`,
@@ -26,10 +32,11 @@ export async function fetchVerifications(): Promise<Map<string, string>> {
   if (!res.ok) return map
   const rows = (await res.json()) as Array<{ station_id?: string; created_at?: string }>
   for (const r of rows) {
+    if (!r.station_id || !r.created_at) continue
     // Raderna kommer nyast först – första förekomsten per plats är senaste.
-    if (r.station_id && r.created_at && !map.has(r.station_id)) {
-      map.set(r.station_id, r.created_at)
-    }
+    const prev = map.get(r.station_id)
+    if (prev) prev.count++
+    else map.set(r.station_id, { latest: r.created_at, count: 1 })
   }
   return map
 }

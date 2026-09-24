@@ -618,6 +618,34 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    webbinformation (t.ex. Eslöv, Sjöbo, Skurup, Staffanstorp, Lekeberg,
    Hallsberg, Kungsör, Fagersta/Norberg) – nästa metod är telefon eller
    crowdsourcing, inte fler webbsökningar.
+
+   **Pers beslut samma dag ("Sveriges bästa i alla kategorier"):**
+   1. **Obekräftade platser VISAS grått i stället för att döljas.** Nya
+      fält på `Station`: `unverified: true` (hela platsen bygger bara på
+      användarsajter) och `unverifiedServices: ['latrin', …]` (påstådda
+      tjänster på en bekräftad plats). Delad logik i `src/types.ts`:
+      `primaryActiveService()` (bekräftad tjänst vinner; obekräftad bara om
+      det är enda skälet att platsen visas → grå nål `UNVERIFIED_COLOR`),
+      `stationIsActive()`, `unverifiedServicesOf()`. Används av MapView
+      (nål/badges/"Obekräftad"-ruta i popupen), App (antal, tomt-läge) och
+      NearestList. `mergeInto()` i App.tsx låter aldrig en obekräftad
+      dubblett "smitta" en bekräftad post (tjänsterna blir bara påstådda),
+      och tvärtom tar den bekräftade över om registerposten var obekräftad.
+      Synkskriptet skickar fälten vidare från `curated-places.json`.
+      Tömningssvepets 37 låg-evidens-fynd + Mjölkekilen ligger nu inne så
+      (skript `import-unverified.mjs` i sessionens scratchpad).
+      Knappen i popupen heter "Stämmer – jag har varit här" på sådana
+      platser (annars "Stämmer fortfarande").
+   2. **Ingen ringlista** – Per vill inte ringa.
+   3. **Sökkvoten:** Per höjer `CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION`
+      till 600 i miljöinställningarna (Claude Code på webben → miljön →
+      Edit → miljövariabler). Nedsida: bara kostnad/tid per svep.
+   4. **Rätt före fler, men missa inte luckor:** veckorutinens område D
+      är nu "kontroll av befintliga platser" (se `docs/svep-logg.md`).
+   5. **Bekräftelseraden** visar nu antal: "Bekräftad av 3 användare,
+      senast för 5 dagar sedan" (`VerificationInfo` i `src/lib/verify.ts`,
+      `fetchVerifications` räknar rader per plats).
+   6. **Öppettider/vinterstängt** = nytt område E i veckorutinen.
    - **Kvar efter svepet:** Skånegas Ängelholm + Levol Onsala (gatuadress
      saknas), Expressgasol Tidaholm/Ronneby/Tingsryd och Norbros egen
      automatkarta (JS-kartor, läs i webbläsare), Byggmax/Granngården/Rusta/

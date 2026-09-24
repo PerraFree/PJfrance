@@ -10,7 +10,7 @@ import { OWN_STATIONS } from './data/stations'
 import { fetchApprovedPlaces } from './lib/community'
 import { loadFavorites, saveFavorites } from './lib/favorites'
 import { loadMyPlaces, saveMyPlaces } from './lib/myplaces'
-import { fetchVerifications, submitVerification } from './lib/verify'
+import { fetchVerifications, submitVerification, type VerificationInfo } from './lib/verify'
 import { fetchReviews, type StationReviews } from './lib/reviews'
 import ReviewForm from './components/ReviewForm'
 import { fetchPhotos } from './lib/photos'
@@ -21,7 +21,12 @@ import { fetchOsmStations } from './lib/overpass'
 import { getPosition, tap } from './lib/native'
 import { gasolFacilityIcon, serviceIcon } from './lib/icons'
 import type { GasolFacility, ServiceType, Station } from './types'
-import { SERVICE_LABELS, gasolFacilityStatus, serviceIsActive } from './types'
+import {
+  SERVICE_LABELS,
+  gasolFacilityStatus,
+  stationIsActive,
+  unverifiedServicesOf,
+} from './types'
 
 /**
  * Valbara kategorier = det man faktiskt åker till en plats för: tömma
@@ -92,7 +97,33 @@ const MERGE_FIELDS: (keyof Station)[] = [
 
 /** Fyller på det som redan behållits (högre prioritet) med det som saknas från en dubblett. */
 function mergeInto(target: Station, s: Station): void {
-  target.services = [...new Set([...target.services, ...s.services])]
+  if (s.unverified && !target.unverified) {
+    // En obekräftad dubblett får aldrig "smitta" en bekräftad post: dess
+    // tjänster blir bara påstådda på den bekräftade platsen.
+    target.unverifiedServices = [
+      ...new Set([...(target.unverifiedServices ?? []), ...s.services, ...(s.unverifiedServices ?? [])]),
+    ]
+  } else if (target.unverified && !s.unverified) {
+    // Den bekräftade dubbletten tar över: dess tjänster blir de bekräftade,
+    // målets egna blir bara påstådda. Id/namn behålls så favoriter och
+    // bekräftelser inte tappas.
+    const claimed = [...target.services, ...(target.unverifiedServices ?? []), ...(s.unverifiedServices ?? [])]
+    target.services = [...s.services]
+    target.unverified = undefined
+    target.unverifiedServices = [...new Set(claimed)]
+  } else {
+    target.services = [...new Set([...target.services, ...s.services])]
+    if (s.unverifiedServices?.length) {
+      target.unverifiedServices = [
+        ...new Set([...(target.unverifiedServices ?? []), ...s.unverifiedServices]),
+      ]
+    }
+  }
+  if (target.unverifiedServices) {
+    // Påstådda tjänster som nu är bekräftade behövs inte i listan längre.
+    const rest = target.unverifiedServices.filter((x) => !target.services.includes(x))
+    target.unverifiedServices = rest.length ? rest : undefined
+  }
   const fac = [...new Set([...(target.facilities ?? []), ...(s.facilities ?? [])])]
   target.facilities = fac.length ? fac : undefined
   for (const k of MERGE_FIELDS) {
@@ -192,7 +223,7 @@ export default function App() {
   const mapCenterRef = useRef<{ lat: number; lon: number } | null>(null)
 
   const [myPlaces, setMyPlaces] = useState<Station[]>(loadMyPlaces)
-  const [verifications, setVerifications] = useState<Map<string, string>>(new Map())
+  const [verifications, setVerifications] = useState<Map<string, VerificationInfo>>(new Map())
 
   // Senaste "stämmer fortfarande"-datum per plats (delas av alla användare)
   useEffect(() => {
@@ -252,7 +283,7 @@ export default function App() {
     })
     setVerifications((prev) => {
       const next = new Map(prev)
-      next.set(id, new Date().toISOString())
+      next.set(id, { latest: new Date().toISOString(), count: (prev.get(id)?.count ?? 0) + 1 })
       return next
     })
   }, [])
@@ -325,9 +356,7 @@ export default function App() {
   // Antal synliga pins med hänsyn till aktiva kategorifilter (för tomt-läge)
   const visibleCount = useMemo(
     () =>
-      shownStations.filter((s) =>
-        s.services.some((sv) => serviceIsActive(s, sv, activeFilters, gasolFacilities)),
-      ).length,
+      shownStations.filter((s) => stationIsActive(s, activeFilters, gasolFacilities)).length,
     [shownStations, activeFilters, gasolFacilities],
   )
 
@@ -342,7 +371,11 @@ export default function App() {
       camping: 0,
       gasol: 0,
     }
-    for (const s of shownStations) for (const sv of s.services) c[sv]++
+    for (const s of shownStations) {
+      for (const sv of s.services) c[sv]++
+      // Obekräftade tjänster räknas med – de visas ju (grått) i det filtret.
+      for (const sv of unverifiedServicesOf(s)) c[sv]++
+    }
     return c
   }, [shownStations])
 

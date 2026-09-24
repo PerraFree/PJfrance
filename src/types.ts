@@ -40,6 +40,19 @@ export interface Station {
   website?: string
   /** 'year-round' = öppet året runt, 'seasonal' = säsongsöppet, annars okänt. */
   season?: 'year-round' | 'seasonal'
+  /**
+   * Hela platsen är obekräftad: uppgiften kommer bara från användarsajter
+   * (husbilsplats.se, park4night, aggregatorer) utan primärkälla. Visas med
+   * grå nål och "Obekräftad"-märkning så användarna kan bekräfta på plats.
+   * Beslut sep 2026: hellre visa grått än dölja helt (se CLAUDE.md).
+   */
+  unverified?: boolean
+  /**
+   * Tjänster som PÅSTÅS finnas (bara svaga källor) utöver de bekräftade i
+   * `services`. Platsen hittas när man filtrerar på dem, men nålen blir grå
+   * om det är enda anledningen till att den visas.
+   */
+  unverifiedServices?: ServiceType[]
 }
 
 /** Allt appen kan visa "finns här" – nycklar matchar det synkskriptet plockar ur OSM. */
@@ -146,4 +159,42 @@ export function serviceIsActive(
   if (!active.has('gasol')) return false
   const { byte, pafyllning } = gasolFacilityStatus(station)
   return (byte && gasolFacilities.has('gasol_byte')) || (pafyllning && gasolFacilities.has('gasol_pafyllning'))
+}
+
+/** Grå nål/badge för obekräftade platser och tjänster (≥4.5:1 med vit text). */
+export const UNVERIFIED_COLOR = '#616161'
+
+/** Bara de påstådda tjänster som inte redan är bekräftade. */
+export function unverifiedServicesOf(
+  station: Pick<Station, 'services' | 'unverifiedServices'>,
+): ServiceType[] {
+  return (station.unverifiedServices ?? []).filter((s) => !station.services.includes(s))
+}
+
+/**
+ * Vilken tjänst nålen ska visa med nuvarande filter, och om den är
+ * obekräftad. Bekräftade tjänster vinner alltid; en obekräftad tjänst
+ * används bara när det är ENDA skälet till att platsen visas. Delad mellan
+ * MapView (nål), App (antal) och NearestList (listan).
+ */
+export function primaryActiveService(
+  station: Pick<Station, 'services' | 'facilities' | 'unverified' | 'unverifiedServices'>,
+  active: Set<ServiceType>,
+  gasolFacilities: Set<GasolFacility>,
+): { service: ServiceType; unverified: boolean } | null {
+  const verified = station.services.find((s) => serviceIsActive(station, s, active, gasolFacilities))
+  if (verified) return { service: verified, unverified: station.unverified === true }
+  const claimed = unverifiedServicesOf(station).find((s) =>
+    serviceIsActive(station, s, active, gasolFacilities),
+  )
+  return claimed ? { service: claimed, unverified: true } : null
+}
+
+/** Ska platsen visas alls med nuvarande filter? (bekräftade eller påstådda tjänster) */
+export function stationIsActive(
+  station: Pick<Station, 'services' | 'facilities' | 'unverified' | 'unverifiedServices'>,
+  active: Set<ServiceType>,
+  gasolFacilities: Set<GasolFacility>,
+): boolean {
+  return primaryActiveService(station, active, gasolFacilities) !== null
 }

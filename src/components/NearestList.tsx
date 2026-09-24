@@ -1,6 +1,12 @@
 import { useEffect, useMemo } from 'react'
 import type { GasolFacility, ServiceType, Station } from '../types'
-import { SERVICE_COLORS, SERVICE_LABELS, serviceIsActive } from '../types'
+import {
+  SERVICE_COLORS,
+  SERVICE_LABELS,
+  UNVERIFIED_COLOR,
+  stationIsActive,
+  unverifiedServicesOf,
+} from '../types'
 
 interface Props {
   stations: Station[]
@@ -40,7 +46,7 @@ export default function NearestList({
 
   const nearest = useMemo(() => {
     return stations
-      .filter((s) => s.services.some((sv) => serviceIsActive(s, sv, listFilters, gasolFacilities)))
+      .filter((s) => stationIsActive(s, listFilters, gasolFacilities))
       .map((s) => ({ s, km: distanceKm(userLoc, s) }))
       .sort((a, b) => a.km - b.km)
       .slice(0, 12)
@@ -77,12 +83,28 @@ export default function NearestList({
                     <span
                       key={sv}
                       className="dot"
-                      style={{ background: SERVICE_COLORS[sv] }}
+                      style={{ background: s.unverified ? UNVERIFIED_COLOR : SERVICE_COLORS[sv] }}
                       title={SERVICE_LABELS[sv]}
                     />
                   ))}
+                {unverifiedServicesOf(s)
+                  .filter((sv) => listFilters.has(sv))
+                  .slice(0, 2)
+                  .map((sv) => (
+                    <span
+                      key={`u-${sv}`}
+                      className="dot"
+                      style={{ background: UNVERIFIED_COLOR }}
+                      title={`${SERVICE_LABELS[sv]} (obekräftad)`}
+                    />
+                  ))}
               </span>
-              <span className="nearest-name">{s.name}</span>
+              <span className="nearest-name">
+                {s.name}
+                {(s.unverified || unverifiedServicesOf(s).some((sv) => listFilters.has(sv))) && (
+                  <span className="nearest-unverified"> · obekräftad</span>
+                )}
+              </span>
               <span className="nearest-km">
                 {km < 1 ? `${Math.round(km * 1000)} m` : `${km.toFixed(km < 10 ? 1 : 0)} km`}
               </span>

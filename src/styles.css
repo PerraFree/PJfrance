@@ -1805,6 +1805,32 @@ button {
   border-color: #f0d3a0;
 }
 
+/* Obekräftad plats/tjänst: grå, streckad kant – ska se "osäker" ut även
+   utan att man läser texten. Färgen speglar UNVERIFIED_COLOR i types.ts. */
+.popup .badge.unverified {
+  --badge: #f2f2f2;
+  color: #444;
+  border: 1px dashed #8a8a8a;
+}
+.popup .unverified-note {
+  margin: 6px 0 4px;
+  padding: 8px 10px;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: #3a3a3a;
+  background: #f4f4f4;
+  border: 1px dashed #b0b0b0;
+  border-radius: 8px;
+}
+.popup .unverified-note strong {
+  color: #222;
+}
+.nearest-unverified {
+  font-size: 0.75em;
+  color: #666;
+  font-style: italic;
+}
+
 /* Åtgärdsrad: spara + kopiera koordinater */
 .pop-actions {
   display: flex;

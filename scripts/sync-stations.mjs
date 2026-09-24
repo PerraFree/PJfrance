@@ -560,6 +560,9 @@ async function fetchCurated() {
         'openingHours',
         'season',
         'gasolPrice',
+        // Obekräftade platser/tjänster (grå nål) – se types.ts och CLAUDE.md
+        'unverified',
+        'unverifiedServices',
       ]) {
         if (e[key] !== undefined) station[key] = e[key]
       }
