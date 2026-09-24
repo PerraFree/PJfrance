@@ -49,7 +49,9 @@ export default function NearestList({
       .filter((s) => stationIsActive(s, listFilters, gasolFacilities))
       .map((s) => ({ s, km: distanceKm(userLoc, s) }))
       .sort((a, b) => a.km - b.km)
-      .slice(0, 12)
+      // Bara de fem närmaste – fler blir rörigt, resten hittar man på kartan
+      // (Pers beslut sep 2026; tidigare 12).
+      .slice(0, 5)
   }, [stations, listFilters, gasolFacilities, userLoc])
 
   useEffect(() => {
