@@ -12777,19 +12777,19 @@
   {
     "name": "Lokstallet ställplats, Hjo",
     "source": "egen",
-    "query": "Hjo",
-    "nearLat": 58.305,
-    "nearLon": 14.29,
-    "maxKm": 2,
     "address": "Lokstallet (vid gamla järnvägsområdet), Hjo",
-    "description": "Ungefärligt läge (ortens centrum) – exakt plats: Lokstallet vid gamla järnvägsområdet. Källa (https://husbilskompisar.se/stallplatskartan/lokstallet): \"6 A-uttag för el, toalett, färskvattenpåfyllning, sophantering och gråvattentömning, 200 kr allt inkluderat.\"",
+    "description": "Troligen samma plats som OSM:s namnlösa \"Ställplats för husbil\" vid gamla järnvägsområdet. Källa (https://husbilskompisar.se/stallplatskartan/lokstallet): \"6 A-uttag för el, toalett, färskvattenpåfyllning, sophantering och gråvattentömning, 200 kr allt inkluderat.\"",
     "services": [
+      "stallplats"
+    ],
+    "fee": "200 kr allt inkluderat",
+    "website": "https://husbilskompisar.se/stallplatskartan/lokstallet",
+    "lat": 58.3088209,
+    "lon": 14.292317,
+    "unverifiedServices": [
       "gravatten",
       "vatten"
-    ],
-    "unverified": true,
-    "fee": "200 kr allt inkluderat",
-    "website": "https://husbilskompisar.se/stallplatskartan/lokstallet"
+    ]
   },
   {
     "name": "Ålstorpsgården ställplats (Landskrona/Kävlinge-trakten)",
