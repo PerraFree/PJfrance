@@ -669,6 +669,18 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
      OSRM): Borås→Ulricehamn gav 21 platser inom 5 km, linje ritad, rensning
      tömde kartan. OBS: tomt Från-fält + känd position = start från "Sök där
      jag är"-positionen.
+   - **Popupen kapades i nederkant (Pers skärmbild, samma dag):** orsaken var
+     att `computePopupPadding()` i `MapView.tsx` använde panelens UNDERKANT
+     som toppmarginal även på desktop, där panelen ligger till vänster – så
+     popupen trycktes ner under ~530 px och fick inte plats. Nu: ny
+     `computeFreeRect()` (fri yta = höger om panelen på desktop, under
+     panelen på mobil utfälld, ovanför bottensheeten på mobil), Leaflets
+     `autoPan` är AV för platspopuper och `centerPopup()` panorerar kartan
+     så att hela kortet hamnar mitt i den fria ytan 120 ms efter
+     `popupopen` (panelen hinner minimeras på mobil). Innehållets max-höjd
+     är `min(100dvh − 150px, 560px)` med rullning. Verifierat med
+     Playwright på 1280×800 (kortet 101–699 px, mitt = 400) och 390×760
+     mobil (38–636 px, mitt i den fria ytan ovanför arket).
    - **Gasolpåfyllning av EGEN flaska – Pers Perplexity-lista (samma dag):**
      Per lät Perplexity sammanställa 60 platser med lösviktspåfyllning från
      Energigas Sveriges förteckning + Kosans flaskfyllarlista + operatörernas

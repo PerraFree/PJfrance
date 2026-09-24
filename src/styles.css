@@ -1046,7 +1046,9 @@ button {
   line-height: 1.45;
   /* Långa platser (många faciliteter) får rulla i popupen i stället för
      att bli högre än skärmen och hamna delvis utanför vyn. */
-  max-height: min(60vh, 460px);
+  /* Hela kortet ska få plats på skärmen (centreras av MapView) – på en låg
+     skärm rullar innehållet, på en hög får det vara upp till 560px. */
+  max-height: min(calc(100dvh - 150px), 560px);
   overflow-y: auto;
   overscroll-behavior: contain;
 }

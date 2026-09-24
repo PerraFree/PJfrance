@@ -520,21 +520,60 @@ export default function MapView({
    * panel på desktop, bottensheet på mobil. Beräknas färskt varje gång en
    * popup ska öppnas (panelen kan ha fällts ut/ihop sedan markören byggdes).
    */
-  const computePopupPadding = () => {
-    const panelRect = document.querySelector('.panel')?.getBoundingClientRect()
+  /**
+   * Den del av skärmen som INTE täcks av panelen, i viewport-pixlar.
+   * Desktop: panelen ligger till vänster (fri yta = höger om den).
+   * Mobil utfälld: panelen ligger överst (fri yta = under den).
+   * Mobil bottensheet: fri yta = ovanför arket.
+   * Tidigare användes panelens underkant som toppmarginal ÄVEN på desktop,
+   * vilket tryckte ner popupen så att den kapades i nederkant (Pers
+   * skärmbild sep 2026).
+   */
+  const computeFreeRect = () => {
+    const vw = window.innerWidth || 1200
     const vh = window.innerHeight || 800
-    let padTopLeft = L.point(16, 260)
-    let padBottomRight = L.point(16, 116)
-    if (panelRect) {
-      if (panelRect.top > vh / 2) {
-        // Bottensheet: håll popupen ovanför arket.
-        padTopLeft = L.point(16, 64)
-        padBottomRight = L.point(16, Math.round(vh - panelRect.top) + 16)
-      } else {
-        padTopLeft = L.point(16, Math.round(panelRect.bottom) + 14)
-      }
+    const panelRect = document.querySelector('.panel')?.getBoundingClientRect()
+    let left = 0, top = 0, right = vw, bottom = vh
+    if (panelRect && panelRect.width > 0) {
+      const wide = panelRect.width >= vw * 0.8
+      if (wide && panelRect.top > vh / 2) bottom = panelRect.top
+      else if (wide) top = panelRect.bottom
+      else left = panelRect.right
     }
-    return { padTopLeft, padBottomRight }
+    return { left, top, right, bottom }
+  }
+  const computePopupPadding = () => {
+    const { left, top, right, bottom } = computeFreeRect()
+    const vw = window.innerWidth || 1200
+    const vh = window.innerHeight || 800
+    return {
+      padTopLeft: L.point(Math.round(left) + 16, Math.round(top) + 16),
+      padBottomRight: L.point(Math.round(vw - right) + 16, Math.round(vh - bottom) + 16),
+    }
+  }
+  /**
+   * Centrera den öppna popupen i den fria ytan – hela platskortet ska synas
+   * och ligga mitt i bild oavsett pc/mac/mobil (Pers önskemål sep 2026).
+   * Körs en stund efter popupopen så att panelen hunnit minimeras (mobil).
+   */
+  const centerPopup = (popup: L.Popup) => {
+    window.setTimeout(() => {
+      const map = mapRef.current
+      const el = popup.getElement()
+      if (!map || !el || !popup.isOpen()) return
+      const rect = el.getBoundingClientRect()
+      const free = computeFreeRect()
+      const freeW = free.right - free.left
+      const freeH = free.bottom - free.top
+      // Ryms popupen inte i höjd: lägg den så högt som möjligt i stället.
+      const targetY = rect.height >= freeH - 24 ? free.top + 12 + rect.height / 2 : free.top + freeH / 2
+      const targetX = rect.width >= freeW - 24 ? free.left + 12 + rect.width / 2 : free.left + freeW / 2
+      const dx = Math.round(rect.left + rect.width / 2 - targetX)
+      const dy = Math.round(rect.top + rect.height / 2 - targetY)
+      if (Math.abs(dx) < 2 && Math.abs(dy) < 2) return
+      const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+      map.panBy([dx, dy], { animate: !reduce })
+    }, 120)
   }
   const refreshPopupPadding = (marker: L.Marker) => {
     const popup = marker.getPopup()
@@ -616,6 +655,10 @@ export default function MapView({
         {
           maxWidth: 300,
           className: 'station-popup',
+          // Leaflets egen auto-panorering stängs av – vi centrerar själva
+          // i den fria ytan (centerPopup) i stället för att bara "knuffa in"
+          // popupen innanför en marginal.
+          autoPan: false,
           autoPanPaddingTopLeft: padTopLeft,
           autoPanPaddingBottomRight: padBottomRight,
         },
@@ -860,6 +903,7 @@ export default function MapView({
       if (popup.options.className === 'station-popup') {
         popupOpenRef.current = true
         onStationPopupOpenRef.current?.()
+        centerPopup(popup)
       }
       const el = popup.getElement()
       if (!el) return
