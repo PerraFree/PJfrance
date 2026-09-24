@@ -599,6 +599,7 @@ async function fetchCurated() {
         // Obekräftade platser/tjänster (grå nål) – se types.ts och CLAUDE.md
         'unverified',
         'unverifiedServices',
+        'confidence',
       ]) {
         if (e[key] !== undefined) station[key] = e[key]
       }

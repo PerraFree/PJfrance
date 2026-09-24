@@ -1805,6 +1805,31 @@ button {
   border-color: #f0d3a0;
 }
 
+/* Källsäkerhet per plats (hög/medel/låg) – färgkodad rad ovanför källraden */
+.popup .confidence {
+  margin: 8px 0 2px;
+  padding: 6px 9px;
+  border-radius: 8px;
+  font-size: 0.74rem;
+  line-height: 1.35;
+  border: 1px solid transparent;
+}
+.popup .confidence.high {
+  background: #eaf5eb;
+  color: #1e5a24;
+  border-color: #bfe0c2;
+}
+.popup .confidence.medium {
+  background: #fdf1dc;
+  color: #8a5300;
+  border-color: #f0d3a0;
+}
+.popup .confidence.low {
+  background: #f4f4f4;
+  color: #444;
+  border-color: #c8c8c8;
+}
+
 /* Obekräftad plats/tjänst: grå, streckad kant – ska se "osäker" ut även
    utan att man läser texten. Färgen speglar UNVERIFIED_COLOR i types.ts. */
 .popup .badge.unverified {

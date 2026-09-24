@@ -95,6 +95,7 @@ const MERGE_FIELDS: (keyof Station)[] = [
   'payment',
   'osmUrl',
   'season',
+  'confidence',
 ]
 
 /** Fyller på det som redan behållits (högre prioritet) med det som saknas från en dubblett. */

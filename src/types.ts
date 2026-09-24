@@ -53,6 +53,13 @@ export interface Station {
    * om det är enda anledningen till att den visas.
    */
   unverifiedServices?: ServiceType[]
+  /**
+   * Hur säker källan är (visas i popupen, viktigt för gasolpåfyllning):
+   * 'high' = operatörens egen webbplats/kommunen säger det uttryckligen,
+   * 'medium' = branschlista (t.ex. Energigas Sverige, Kosan) eller två
+   * oberoende källor, 'low' = bara forum/aggregator/extern guide.
+   */
+  confidence?: 'high' | 'medium' | 'low'
 }
 
 /** Allt appen kan visa "finns här" – nycklar matchar det synkskriptet plockar ur OSM. */

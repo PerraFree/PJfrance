@@ -375,6 +375,16 @@ function popupHtml(
     ? `<button type="button" class="delete-btn" data-del-id="${escapeAttr(station.id)}">🗑 Ta bort plats</button>`
     : ''
   const sourceLine = isMine ? 'Din egen plats' : sourceNote
+  // Källsäkerhet per plats – Per vill se på varje plats hur väl belagd
+  // uppgiften är (särskilt gasolpåfyllning av egen flaska).
+  const CONFIDENCE_TEXT: Record<NonNullable<Station['confidence']>, string> = {
+    high: 'Hög säkerhet – uppgiften kommer från operatörens/kommunens egen webbplats.',
+    medium: 'Medelhög säkerhet – från branschlista eller flera källor, inte operatörens egen sida. Ring gärna innan du åker.',
+    low: 'Låg säkerhet – bara från forum eller extern guide. Ring innan du åker.',
+  }
+  const confidenceLine = station.confidence
+    ? `<p class="confidence ${station.confidence}">${CONFIDENCE_TEXT[station.confidence]}</p>`
+    : ''
   // "Bekräftad av 3 användare, senast för 5 dagar sedan" – antalet bygger
   // förtroende mer än bara ett datum.
   const verifiedLine = verified
@@ -404,7 +414,7 @@ function popupHtml(
   const photo = photoUrl
     ? `<img class="popup-photo" src="${escapeAttr(photoUrl)}" alt="" loading="lazy" onerror="this.remove()">`
     : ''
-  return `<div class="popup" style="--accent:${accent}">${photo}<h3>${esc(station.name)}</h3>${ratingLine}<div class="badges">${services}${seasonBadge}</div>${unverifiedNote}${verifiedLine}${rows.join('')}${commentBlock}${links}${actions}<p class="source">${sourceLine}</p>${report}${del}</div>`
+  return `<div class="popup" style="--accent:${accent}">${photo}<h3>${esc(station.name)}</h3>${ratingLine}<div class="badges">${services}${seasonBadge}</div>${unverifiedNote}${verifiedLine}${rows.join('')}${commentBlock}${links}${actions}${confidenceLine}<p class="source">${sourceLine}</p>${report}${del}</div>`
 }
 
 function readSavedView(): { lat: number; lon: number; zoom: number } | null {
