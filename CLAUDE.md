@@ -119,15 +119,28 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
   sökningar) roterar enligt `docs/svep-logg.md`.
 - Återanvändbara importskript ligger i `scripts/import-tools/` (läs README
   där – sökvägarna måste anpassas).
-- **Öppet vid sessionsbytet till "Gråvatten 4" (25 sep):** deploy v64 med
-  rättade geokodningsfrågor för 31 nya platser från källjämförelserna
-  (Lysernas, Brännebacka, Tiraholm, Forsvik, Harsa, Quickstop Ratan,
-  Kurjoviken, Hyppeln, Rök, Berkinge, Gräsö m.fl.) – verifiera att de finns
-  i seeden och ligger inom `maxKm` från `nearLat/nearLon`; sätt exakt
-  `lat`/`lon` för dem som fortfarande saknas. Övriga öppna punkter: jem &
-  fix Alvesta + NB Energi Sala (ogeokodbara), West Coast Gasol, Svenska Gas
-  Orust, Råda/Tönnebro rastplats (latrin påstådd, TRV säger nej),
-  husbilsplats.se-listan bakom betalvägg, campingkollen bara stickprov.
+- **Deploy v64 (25 sep) verifierad:** 15 av de 31 rättade platserna från
+  källjämförelserna kom med. De 16 övriga rättades i v65: 11 fick exakta
+  koordinater från källor (husbil.se/park4night/golfguiden via
+  WebSearch-utdrag – WebFetch är blockerat mot i stort sett alla dessa
+  sajter), 2 var dubbletter av befintliga OSM-/registerposter och togs bort
+  (Mangenbadens Camping = Caravan Club Mangenbaden i Molkom, inte Gräsmark;
+  Lögdö Wild/Skälsjön = OSM "Skälsjön Camping"), 3 fick bara rättat
+  orts-ankare (Harsa, Hovra, Tågstallarna – **verifiera i seeden efter
+  v65**). Lärdom: kandidatimportens `nearLat/nearLon` = median av platser
+  med kommunnamnet i namnet ger ofta helt fel ankare (Tågstallarna låg
+  31 km norr om Rättvik, Ratan 31 km fel) så korrekta geokodningar
+  kasserades. **27 äldre registerposter publiceras fortfarande inte**
+  (synkloggen: "kunde inte geokoda"/"hoppar över") – 24 obekräftade från
+  kandidatimporten (t.ex. Ställplats Skojarbacken, Bräcke Strand, Ställplats
+  Köping, Norrtälje Camping, Lilla Stigen, Latrintömning Härnösand,
+  Kättingens ställplats) + Nostalgimuseet Tomelilla, jem & fix Alvesta,
+  NB Energi Sala. Samma metod (agenter som hämtar koordinat ur husbil.se/
+  park4night-utdrag, ankare = närmaste kända seed-plats) löser dem; lista
+  fram dem med skriptet i "Deploy-verifiering" (register minus seed på namn).
+  Övriga öppna punkter: West Coast Gasol, Svenska Gas Orust, Råda/Tönnebro
+  rastplats (latrin påstådd, TRV säger nej), husbilsplats.se-listan bakom
+  betalvägg, campingkollen bara stickprov.
 
 ## Backlog (nästa att göra, i prioritetsordning)
 

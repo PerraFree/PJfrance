@@ -39,3 +39,8 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   nya obekräftade, 39 bekräftade + 32 obekräftade kompletteringar. Underlag i
   `docs/import/`. Kvar: husbilsplats.se-lista bakom betalvägg, campingkollen bara
   stickprov, Råda/Tönnebro rastplats (latrin påstådd, TRV säger nej).
+- **2026-09-25, efterkontroll deploy v64:** 16 av de nya platserna kasserades av synken
+  (Nominatim-miss eller fel orts-ankare). 11 fick exakta koordinater från källor, 2 dubbletter
+  borttagna, 3 fick rättat ankare (Harsa, Hovra, Tågstallarna – kontrollera i v65). 27 äldre
+  registerposter (mest obekräftade från kandidatimporten) publiceras fortfarande inte – se
+  CLAUDE.md "Läget just nu".

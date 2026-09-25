@@ -17982,7 +17982,7 @@
       "camping"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"Fricamping vid Hästskär is a possible overnight stop in Enköping.\" ()",
+    "description": "Campingkollen/primärkälla. \"Fricamping vid Hästskär is a possible overnight stop in Enköping.\"",
     "query": "Enköpings",
     "nearLat": 59.6378,
     "nearLon": 17.0605,
@@ -17996,14 +17996,15 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"Kulla Mysinge i Örsundsbro, tolv platser (fem gräs, sju grus), alla med el. Omklädningsrum med dusch och toalett öppet dygnet runt, 50 kr/natt (utan el) till 300 kr för icke-golfare med el. [Ingen primärkälla hittad: ing\" ()",
-    "query": "Friiberghs Golfklubb, Örsundsbro",
-    "nearLat": 59.6378,
-    "nearLon": 17.0605,
-    "maxKm": 15,
+    "description": "Campingkollen/primärkälla. \"Kulla Mysinge i Örsundsbro, tolv platser (fem gräs, sju grus), alla med el. Omklädningsrum med dusch och toalett öppet dygnet runt, 50 kr/natt (utan el) till 300 kr för icke-golfare med el.\" Koordinat från https://www.golfguidenonline.se/item/friiberghs-golfklubb/",
+    "nearLat": 59.6341,
+    "nearLon": 17.1347,
+    "maxKm": 30,
     "address": "Kulla Mysinge 1, 749 62 Örsundsbro",
     "unverified": true,
-    "confidence": "low"
+    "confidence": "low",
+    "lat": 59.69986,
+    "lon": 17.49142
   },
   {
     "name": "Källinge Gård",
@@ -18012,14 +18013,15 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"Lantlig ställplats på aktiv gård i Fjärdhundraland öster om Enköping, plats för två husbilar med el och färskvatten, 100 kr/natt. [Ingen primärkälla hittad: Egen sajt (kallingegard.se) och fjardhundraland.se bekräftar st\" ()",
-    "query": "Torstuna Källinge 8, Fjärdhundra",
-    "nearLat": 59.6378,
-    "nearLon": 17.0605,
-    "maxKm": 15,
+    "description": "Campingkollen/primärkälla. \"Lantlig ställplats på aktiv gård i Fjärdhundraland öster om Enköping, plats för två husbilar med el och färskvatten, 100 kr/natt.\" Koordinat från https://www.husbil.se/stallplatser/p/843/",
+    "nearLat": 59.6341,
+    "nearLon": 17.1347,
+    "maxKm": 30,
     "address": "Torstuna Källinge 8, 749 72 Fjärdhundra",
     "unverified": true,
-    "confidence": "low"
+    "confidence": "low",
+    "lat": 59.8011,
+    "lon": 17.091
   },
   {
     "name": "Stall Torsbrogården",
@@ -18028,14 +18030,15 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"Utanför Enköping, fyra ställplatser i hästgårdsmiljö, två med el och tillgång till vatten, 150 kr/natt. [Ingen primärkälla hittad: ingen primärkälla hittad – bara husbil.se/stallplatserisverige.se (4 platser, 2 med el, f\" ()",
-    "query": "Torsbro 23, Uppsala",
-    "nearLat": 59.876,
-    "nearLon": 17.6552,
-    "maxKm": 15,
+    "description": "Campingkollen/primärkälla. \"Utanför Enköping, fyra ställplatser i hästgårdsmiljö, två med el och tillgång till vatten, 150 kr/natt.\" Koordinat från https://www.husbil.se/stallplatser/p/959/",
+    "nearLat": 59.9585,
+    "nearLon": 17.7766,
+    "maxKm": 30,
     "address": "Torsbro 23, 755 91 Uppsala (enligt allabolag.se – Ramstalund)",
     "unverified": true,
-    "confidence": "low"
+    "confidence": "low",
+    "lat": 59.795,
+    "lon": 17.4267
   },
   {
     "name": "Lysernas Ställplats",
@@ -18046,13 +18049,14 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"Anläggningens egen sajt akulla.eu: ställplatser för husbil nära Ullared, platser med och utan el, 'kök, dusch, toaletter, färskvatten samt tömning av gråvatten och latrin'. Tel 0340-360 57, info@akulla.eu.\" (https://akulla.eu/)",
-    "query": "Lyserna 2, Rolfstorp",
-    "nearLat": 57.117,
-    "nearLon": 12.2507,
-    "maxKm": 15,
+    "description": "Campingkollen/primärkälla. \"Anläggningens egen sajt akulla.eu: ställplatser för husbil nära Ullared, platser med och utan el, 'kök, dusch, toaletter, färskvatten samt tömning av gråvatten och latrin'. Tel 0340-360 57, info@akulla.eu.\" (https://akulla.eu/) Koordinat från https://www.husbil.se/stallplatser/p/1093/",
+    "nearLat": 57.1247,
+    "nearLon": 12.564,
+    "maxKm": 30,
     "address": "Lyserna 2, 432 97 Rolfstorp",
-    "website": "https://akulla.eu/"
+    "website": "https://akulla.eu/",
+    "lat": 57.122,
+    "lon": 12.5445
   },
   {
     "name": "Falun-Borlänge GK Aspeboda ställplats",
@@ -18075,7 +18079,7 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"Nämnd i länssidans sammanfattning (https://campingkollen.se/stallplatser/gotland/): ställplats i Visbyområdet nära färja, flygplats och stadens service. Egen slug ej sedd.\" ()",
+    "description": "Campingkollen/primärkälla. \"Nämnd i länssidans sammanfattning (https://campingkollen.se/stallplatser/gotland/): ställplats i Visbyområdet nära färja, flygplats och stadens service. Egen slug ej sedd.\"",
     "query": "Bergbetningen, Visby",
     "nearLat": 57.6139,
     "nearLon": 18.3217,
@@ -18092,14 +18096,15 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"gotland.com (Gotlands officiella besökssida): ställplats vid Lauters gästhamn, 50 platser varav 25 med el, 'el, toaletter och tömning', öppet året runt, dusch bara maj–september. Tömningen är ospecificerad (latrin/gråvat\" (https://gotland.com/companies/stallplats-lauterhorn/)",
-    "query": "Lauterhorn, Fårö",
-    "nearLat": 57.93,
-    "nearLon": 19.1,
-    "maxKm": 15,
+    "description": "Campingkollen/primärkälla. \"gotland.com (Gotlands officiella besökssida): ställplats vid Lauters gästhamn, 50 platser varav 25 med el, 'el, toaletter och tömning', öppet året runt, dusch bara maj–september. Tömningen är ospecificerad (latrin/gråvat\" (https://gotland.com/companies/stallplats-lauterhorn/) Koordinat från https://www.husbil.se/stallplatser/p/612/",
+    "nearLat": 57.9153,
+    "nearLon": 19.1332,
+    "maxKm": 30,
     "address": "Lauters gästhamn, Fårö",
     "confidence": "medium",
-    "website": "https://gotland.com/companies/stallplats-lauterhorn/"
+    "website": "https://gotland.com/companies/stallplats-lauterhorn/",
+    "lat": 57.95231,
+    "lon": 19.08143
   },
   {
     "name": "Brännebacka Gård",
@@ -18110,13 +18115,14 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"Turistrådet Västsverige (vastsverige.com) listar faciliteter: el, parkering, toaletter, duschar, 'gråvattentömning, latrintömning och färskvatten'; egen sajt: 'dusch, toalett, kök samt tömning och påfyllning'. Nyöppnad s\" (https://www.vastsverige.com/grastorp/produkter/brannebacka-gard/?site=699)",
-    "query": "Flo Brännebacka 7, Grästorp",
+    "description": "Campingkollen/primärkälla. \"Turistrådet Västsverige (vastsverige.com) listar faciliteter: el, parkering, toaletter, duschar, 'gråvattentömning, latrintömning och färskvatten'; egen sajt: 'dusch, toalett, kök samt tömning och påfyllning'. Nyöppnad s\" (https://www.vastsverige.com/grastorp/produkter/brannebacka-gard/?site=699) Koordinat från https://www.husbil.se/stallplatser/p/546/",
     "nearLat": 58.3334,
     "nearLon": 12.6701,
-    "maxKm": 15,
+    "maxKm": 30,
     "address": "Flo Brännebacka 7, 467 91 Grästorp",
-    "website": "https://www.vastsverige.com/grastorp/produkter/brannebacka-gard/?site=699"
+    "website": "https://www.vastsverige.com/grastorp/produkter/brannebacka-gard/?site=699",
+    "lat": 58.334,
+    "lon": 12.64302
   },
   {
     "name": "Forsgårdens ställplats",
@@ -18156,13 +18162,14 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"Egen sajt tiraholm.se (Info): ställplatser för husbil/husvagn vid restaurangen/gårdsbutiken vid Bolmens strand, 8 platser med el + plats för ca 15 till; 'handikappanpassad toalett, vattenpost, el, plats för tömning av to\" (https://tiraholm.se/info/)",
-    "query": "Tiraholm, Unnaryd",
-    "nearLat": 57.0367,
-    "nearLon": 13.2907,
-    "maxKm": 25,
+    "description": "Campingkollen/primärkälla. \"Egen sajt tiraholm.se (Info): ställplatser för husbil/husvagn vid restaurangen/gårdsbutiken vid Bolmens strand, 8 platser med el + plats för ca 15 till; 'handikappanpassad toalett, vattenpost, el, plats för tömning av to\" (https://tiraholm.se/info/) Koordinat från https://park4night.com/de/place/97409",
+    "nearLat": 56.9688,
+    "nearLon": 13.2573,
+    "maxKm": 30,
     "address": "Tiraholm, Unnaryd (Hylte kommun)",
-    "website": "https://tiraholm.se/info/"
+    "website": "https://tiraholm.se/info/",
+    "lat": 56.94355,
+    "lon": 13.64444
   },
   {
     "name": "Forsvik ställplats – Göta kanal",
@@ -18185,15 +18192,16 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"ställplats i Fannbyn på Frösön, ca 100 kr/natt, säsong 1 juni–30 september – inga tjänster i snippet\" (https://campingkollen.se/stallplats/brunkulla-gard/)",
-    "query": "Fannbyn 120, Frösön",
-    "nearLat": 63.1815,
-    "nearLon": 14.6521,
-    "maxKm": 15,
+    "description": "Campingkollen/primärkälla. \"ställplats i Fannbyn på Frösön, ca 100 kr/natt, säsong 1 juni–30 september – inga tjänster i snippet\" (https://campingkollen.se/stallplats/brunkulla-gard/) Koordinat från https://www.husbil.se/stallplatser/o/Jamtlandslan/",
+    "nearLat": 63.1014,
+    "nearLon": 14.43593,
+    "maxKm": 30,
     "address": "Fannbyn 120, Frösön",
     "unverified": true,
     "confidence": "low",
-    "website": "https://campingkollen.se/stallplats/brunkulla-gard/"
+    "website": "https://campingkollen.se/stallplats/brunkulla-gard/",
+    "lat": 63.13726,
+    "lon": 14.46279
   },
   {
     "name": "Ställplats Lagavägen (vid Rökeriet)",
@@ -18201,7 +18209,7 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"Visit Laholm: 24-timmars ställplats anpassad för husbilar längs Lagavägen ovanför Rökeriet, utsikt över Lagan, nära Laholms centrum\" ()",
+    "description": "Campingkollen/primärkälla. \"Visit Laholm: 24-timmars ställplats anpassad för husbilar längs Lagavägen ovanför Rökeriet, utsikt över Lagan, nära Laholms centrum\"",
     "query": "Lagavägen, Laholm, Laholms",
     "nearLat": 56.5148,
     "nearLon": 12.9712,
@@ -18220,10 +18228,10 @@
     ],
     "source": "egen",
     "description": "Campingkollen/primärkälla. \"Harsas egen sajt harsa.se (Boende/Husvagn): 23 säsongsplatser vinter (1/10–30/4) med el, dygnsplatser sommar (1/5–30/9) för husbil/husvagn; 'färskvatten, gråvatten och sopkärl finns' samt 'gråvatten och latrintömning ske\" (https://harsa.se/boende/husvagn/)",
-    "query": "Harsa, Järvsö",
-    "nearLat": 61.8201,
-    "nearLon": 16.0423,
-    "maxKm": 30,
+    "query": "Harsa, Ljusdals kommun",
+    "nearLat": 61.6224,
+    "nearLon": 15.9854,
+    "maxKm": 6,
     "address": "Harsagården 1, Harsa, Järvsö",
     "website": "https://harsa.se/boende/husvagn/"
   },
@@ -18234,11 +18242,11 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"STF Vandrarhem i Hovra, Korskrogen, med servicepunkt för husbilar: el, toalett, dusch och dricksvatten. Öppet året runt, max 6 nätter [Ingen primärkälla hittad: Egen sajt hovravandrarhem.se + STF (svenskaturistforeningen\" (https://campingkollen.se/stallplats/hovra-stf-vandrarhem/)",
-    "query": "Inibyvägen 18, Korskrogen",
-    "nearLat": 61.8201,
-    "nearLon": 16.0423,
-    "maxKm": 20,
+    "description": "Campingkollen/primärkälla. \"STF Vandrarhem i Hovra, Korskrogen, med servicepunkt för husbilar: el, toalett, dusch och dricksvatten. Öppet året runt, max 6 nätter\" (https://campingkollen.se/stallplats/hovra-stf-vandrarhem/)",
+    "query": "Hovra, Ljusdals kommun",
+    "nearLat": 61.8167,
+    "nearLon": 15.75,
+    "maxKm": 10,
     "address": "Inibyvägen 18, 827 92 Korskrogen",
     "unverified": true,
     "confidence": "low",
@@ -18251,7 +18259,7 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"vid väg 84, ca 5 km söder om Färila och 10 km norr om Ljusdal, vid Ljusnan. Tolv ställplatser, varav sex med el, samt toaletter, dusch, dricksvatten, grillplats och WiFi. Pris från 250 kr, öppet maj–september [Ingen prim\" ()",
+    "description": "Campingkollen/primärkälla. \"vid väg 84, ca 5 km söder om Färila och 10 km norr om Ljusdal, vid Ljusnan. Tolv ställplatser, varav sex med el, samt toaletter, dusch, dricksvatten, grillplats och WiFi. Pris från 250 kr, öppet maj–september [Ingen prim\"",
     "query": "Morvall Färilavägen 90, 827 62 Färila, Ljusdals",
     "nearLat": 61.8201,
     "nearLon": 16.0423,
@@ -18268,7 +18276,7 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"längs E45 ca 8,5 km söder om Mellerud, åtta platser med el på grus, färskvattenpåfyllning och gråvattentömning; öppet april–oktober, från 150 kr/natt [Ingen primärkälla hittad: ingen primärkälla hittad – ingen egen sajt,\" (https://campingkollen.se/stallplats/eckeruds-gard/)",
+    "description": "Campingkollen/primärkälla. \"längs E45 ca 8,5 km söder om Mellerud, åtta platser med el på grus, färskvattenpåfyllning och gråvattentömning; öppet april–oktober, från 150 kr/natt\" (https://campingkollen.se/stallplats/eckeruds-gard/)",
     "query": "Eckeruds gård, Mellerud",
     "nearLat": 58.7485,
     "nearLon": 12.4511,
@@ -18348,7 +18356,7 @@
       "camping"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"i Voxnabruk strax utanför Edsbyn, ca 15 m från Voxnan, campingplatser med el, servicehus och bastu\" ()",
+    "description": "Campingkollen/primärkälla. \"i Voxnabruk strax utanför Edsbyn, ca 15 m från Voxnan, campingplatser med el, servicehus och bastu\"",
     "query": "Ovanåkers",
     "nearLat": 61.3431,
     "nearLon": 15.8813,
@@ -18363,13 +18371,14 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"ratan.se (byaföreningens egen sida 'Bo som besökare'): 'Ratans QuickStop' för 6 gästande husbilar intill servicehuset (kök, toalett, dusch, tvättmaskin, torktumlare); 'vid infarten till gästhamnen finns möjlighet till to\" (https://www.ratan.se/boende/bo-som-besokare/)",
-    "query": "Ratan, Robertsfors",
-    "nearLat": 64.2683,
-    "nearLon": 21.0025,
-    "maxKm": 25,
+    "description": "Campingkollen/primärkälla. \"ratan.se (byaföreningens egen sida 'Bo som besökare'): 'Ratans QuickStop' för 6 gästande husbilar intill servicehuset (kök, toalett, dusch, tvättmaskin, torktumlare); 'vid infarten till gästhamnen finns möjlighet till to\" (https://www.ratan.se/boende/bo-som-besokare/) Koordinat från https://www.husbil.se/stallplatser/p/7/",
+    "nearLat": 63.98999,
+    "nearLon": 20.88373,
+    "maxKm": 30,
     "address": "Ratans gästhamn / Hamnmagasinet, Ratan, Robertsfors kommun",
-    "website": "https://www.ratan.se/boende/bo-som-besokare/"
+    "website": "https://www.ratan.se/boende/bo-som-besokare/",
+    "lat": 63.99064,
+    "lon": 20.89019
   },
   {
     "name": "Tågstallarnas ställplats",
@@ -18378,11 +18387,11 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"20 spaces all with electricity, plus WC, drinking water (dricksvatten), waste management and outdoor showers in summer, from ca 160 kr/night; opposite Siljansbadets camping [Ingen primärkälla hittad: ingen primärkälla hi\" (https://campingkollen.se/stallplats/tagstallarnas-stallplats/)",
+    "description": "Campingkollen/primärkälla. \"20 spaces all with electricity, plus WC, drinking water (dricksvatten), waste management and outdoor showers in summer, from ca 160 kr/night; opposite Siljansbadets camping\" (https://campingkollen.se/stallplats/tagstallarnas-stallplats/)",
     "query": "Långbryggevägen 5, Rättvik",
-    "nearLat": 61.1696,
-    "nearLon": 15.1659,
-    "maxKm": 10,
+    "nearLat": 60.8887,
+    "nearLon": 15.1085,
+    "maxKm": 1.5,
     "address": "Långbryggevägen 5, 795 32 Rättvik (enligt aggregatorer, mittemot Siljansbadets camping)",
     "unverified": true,
     "confidence": "low",
@@ -18421,21 +18430,6 @@
     "website": "https://campingkollen.se/stallplats/rosenberg/"
   },
   {
-    "name": "Lögdö Wild naturcamping vid Skälsjön",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "description": "Campingkollen/primärkälla. \"naturcamping vid Skälsjön i Lögdö Wilds område, bokas via Lögdö Wild, enkel naturcampingservice med utedass\" (https://campingkollen.se/stallplats/skalsjons-camping/)",
-    "query": "Skälsjön, Timrå",
-    "nearLat": 62.5404,
-    "nearLon": 17.6338,
-    "maxKm": 30,
-    "unverified": true,
-    "confidence": "low",
-    "website": "https://campingkollen.se/stallplats/skalsjons-camping/"
-  },
-  {
     "name": "Gafsele bygdegård ställplats",
     "lat": 64.004963,
     "lon": 17.2728045,
@@ -18443,7 +18437,7 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"Ställplats för husbil och husvagn med tjänster: vatten, toalett, kök, wifi och el [Ingen primärkälla hittad: Bygdegårdarnas riksförbund (bygdegardarna.se/hitta-bygdegard/gafsele) bekräftar 'ställplatser för husbil/husvag\" (https://campingkollen.se/stallplats/gafsele-bygdegard-stallplats/)",
+    "description": "Campingkollen/primärkälla. \"Ställplats för husbil och husvagn med tjänster: vatten, toalett, kök, wifi och el\" (https://campingkollen.se/stallplats/gafsele-bygdegard-stallplats/)",
     "unverifiedServices": [
       "vatten"
     ]
@@ -18454,14 +18448,15 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"Gräsplatser med el och utsikt över Dalälven, 200 kr/natt med greenfee eller 300 kr utan, dusch, toalett och bastu ingår. [Ingen primärkälla hittad: alvkarlebygk.com (klubbens egen sida 'Ställplats'): 16 ställplatser med \" ()",
-    "query": "Älvkarleby Golfklubb, Älvkarleby",
-    "nearLat": 60.6376,
-    "nearLon": 17.9837,
-    "maxKm": 10,
+    "description": "Campingkollen/primärkälla. \"Gräsplatser med el och utsikt över Dalälven, 200 kr/natt med greenfee eller 300 kr utan, dusch, toalett och bastu ingår.\" Koordinat från https://www.golfisverige.com/klubb/alvkarleby-golfklubb/en/",
+    "nearLat": 60.5780176,
+    "nearLon": 17.4514352,
+    "maxKm": 30,
     "address": "Älvkarleby Golfklubb, Älvkarleby",
     "unverified": true,
-    "confidence": "low"
+    "confidence": "low",
+    "lat": 60.5881,
+    "lon": 17.44394
   },
   {
     "name": "Hyppelns gästhamn",
@@ -18514,7 +18509,7 @@
       "camping"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"Vid Granfjärden i Östhammar, 300–350 kr/natt inkl el, 'service building with shower, laundry, and latrine emptying, plus kiosk and restaurant'. [Ingen primärkälla hittad: caravanclub.se (egen sajt) + roslagen.se (turistr\" ()",
+    "description": "Campingkollen/primärkälla. \"Vid Granfjärden i Östhammar, 300–350 kr/natt inkl el, 'service building with shower, laundry, and latrine emptying, plus kiosk and restaurant'.\"",
     "query": "Sund 2664, 742 93 Östhammar, Östhammars",
     "nearLat": 60.2557,
     "nearLon": 18.4509,
@@ -19208,21 +19203,6 @@
     "website": "https://firstcamp.se/destinationer/sunne-fryksdalen"
   },
   {
-    "name": "Mangenbadens Camping",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "description": "rastplatserna.se/husbilsplats.se. \"Sidtitel 'Mangenbadens Camping' (träff i sökning på tömma latrin kassett gråvatten Värmland; tjänster ej i sammandraget; läge Mangen/Sunne antaget)\" (https://husbilsplats.se/rest-area/mangenbadens-camping/)",
-    "query": "Mangenbaden, Gräsmark",
-    "nearLat": 59.85,
-    "nearLon": 12.95,
-    "maxKm": 25,
-    "unverified": true,
-    "confidence": "low",
-    "website": "https://husbilsplats.se/rest-area/mangenbadens-camping/"
-  },
-  {
     "name": "Silvköparens Camping",
     "services": [
       "camping"
@@ -19360,14 +19340,15 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "rastplatserna.se/husbilsplats.se. \"Träff vid sökning på tömning Höga kusten – tjänst ej bekräftad i sammandrag\" (https://husbilsplats.se/rest-area/hoga-kusten-bron/)",
-    "query": "Höga Kusten-bron",
-    "nearLat": 62.8,
-    "nearLon": 17.94,
-    "maxKm": 20,
+    "description": "rastplatserna.se/husbilsplats.se. \"Träff vid sökning på tömning Höga kusten – tjänst ej bekräftad i sammandrag\" (https://husbilsplats.se/rest-area/hoga-kusten-bron/) Koordinat från https://husbilsplats.se/locations/hoga-kusten-bron/",
+    "nearLat": 62.80687,
+    "nearLon": 17.95115,
+    "maxKm": 30,
     "unverified": true,
     "confidence": "low",
-    "website": "https://husbilsplats.se/rest-area/hoga-kusten-bron/"
+    "website": "https://husbilsplats.se/rest-area/hoga-kusten-bron/",
+    "lat": 62.80455,
+    "lon": 17.95174
   },
   {
     "name": "Sandvikens Camping & Stugby",
