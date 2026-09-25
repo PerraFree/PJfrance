@@ -1,0 +1,33 @@
+name: Hämta kommungränser (scripts/kommuner.json)
+
+# Engångs-/sällanknapp: hämtar Sveriges kommungränser (OSM via Overpass +
+# Nominatim) och committar scripts/kommuner.json. Synken använder filen för
+# att ge varje plats rätt kommun (punkt-i-polygon). Kör om när kommungränser
+# ändrats eller om filen saknas.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  hamta:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Hämta och förenkla kommungränser
+        run: node scripts/build-kommuner.mjs
+      - name: Committa filen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add scripts/kommuner.json
+          if git diff --cached --quiet; then
+            echo "Ingen ändring."
+          else
+            git commit -m "Uppdatera kommungränser (scripts/kommuner.json) [skip ci]"
+            git push
+          fi

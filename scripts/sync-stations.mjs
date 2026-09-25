@@ -808,8 +808,60 @@ area["ISO3166-1"="SE"][admin_level=2]->.se;
 relation["boundary"="administrative"]["admin_level"="7"](area.se);
 out center tags;
 `
-/** Närmaste kommuncentrum (OSM admin_level=7) – bra nog för landningssidor per kommun. */
+const KOMMUNER = new URL('./kommuner.json', import.meta.url)
+
+/** Punkt-i-polygon (ray casting), ring = [[lon, lat], …]. */
+function pointInRing(lon, lat, ring) {
+  let inside = false
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const [xi, yi] = ring[i]
+    const [xj, yj] = ring[j]
+    if (yi > lat !== yj > lat && lon < ((xj - xi) * (lat - yi)) / (yj - yi) + xi) inside = !inside
+  }
+  return inside
+}
+function pointInKommun(lon, lat, k) {
+  if (!k.polygons || !k.bbox) return false
+  const [minLon, minLat, maxLon, maxLat] = k.bbox
+  if (lon < minLon || lon > maxLon || lat < minLat || lat > maxLat) return false
+  for (const poly of k.polygons) {
+    if (!pointInRing(lon, lat, poly[0])) continue
+    // Hål (enklaver) räknas inte som kommunen
+    if (poly.slice(1).some((hole) => pointInRing(lon, lat, hole))) continue
+    return true
+  }
+  return false
+}
+
+/**
+ * Kommun per plats. Först riktiga kommungränser (scripts/kommuner.json,
+ * hämtas av workflowen hamta-kommungranser.yml), platser som hamnar utanför
+ * alla polygoner (hav, sjöar, gränsavrundning) får närmaste kommuncentrum.
+ * Saknas filen används enbart närmaste centrum från Overpass.
+ */
 async function assignMunicipalities(stations) {
+  try {
+    const data = JSON.parse(await readFile(KOMMUNER, 'utf8'))
+    const kommuner = data.kommuner ?? data
+    const withPoly = kommuner.filter((k) => k.polygons)
+    if (withPoly.length < 250) throw new Error(`bara ${withPoly.length} kommuner med polygon i kommuner.json`)
+    let inside = 0, nearest = 0
+    for (const s of stations) {
+      const hit = withPoly.find((k) => pointInKommun(s.lon, s.lat, k))
+      if (hit) { s.kommun = hit.name; inside++; continue }
+      let best = null, bestKm = Infinity
+      for (const k of kommuner) {
+        if (!k.center) continue
+        const km = distanceKm(k.center[1], k.center[0], s.lat, s.lon)
+        if (km < bestKm) { bestKm = km; best = k }
+      }
+      if (best) { s.kommun = best.name; nearest++ }
+    }
+    console.log(`Kommuner: ${withPoly.length} polygoner (${data.fetchedAt?.slice(0, 10) ?? '?'}); ${inside} platser inom gräns, ${nearest} via närmaste centrum`)
+    return
+  } catch (err) {
+    console.warn(`kommuner.json saknas/ogiltig (${err.message}) – använder närmaste kommuncentrum från Overpass`)
+  }
   let lastError
   for (const url of OVERPASS_MIRRORS) {
     try {
