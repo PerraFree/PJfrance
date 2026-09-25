@@ -1,0 +1,2545 @@
+[
+  {
+    "name": "First Camp Sibbarp – Malmö",
+    "slug": "sibbarp-malmo",
+    "city": "Malmö",
+    "address": null,
+    "lat": 55.5718265,
+    "lon": 12.908289,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": true,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "Vid campingens husbilsområde (41 husbilsplatser längs huvudvägen med egen tömning); latrintömning lös tank även i servicehus 1",
+    "stallplats": null,
+    "openingNote": "Vissa tömningsstationer stängda vintertid p.g.a. frost; lågsäsong kan vattenposter/latrintömning vara begränsade",
+    "evidence": "\"Toilet emptying takes place at the campsite's motorhome area, and there is also the possibility of emptying fixed tanks as well as filling water and air. Note that certain disposal stations are closed during winter due to frost.\" / \"41 easily accessible motorhome pitches located along the campsite's main road with their own waste disposal point\" (söksammanfattning av firstcamp.se/destinationer/sibbarp-malmo/camping)",
+    "source": "https://firstcamp.se/destinationer/sibbarp-malmo/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-296888614",
+    "existingName": "First Camp Malmö Sibbarp",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-way-296888614",
+      "curated-297-first-camp-malmö-sibbarp"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Alla tre tjänster belagda på destinationens egen camping-sida."
+  },
+  {
+    "name": "First Camp Åhus – Kristianstad",
+    "slug": "ahus-kristianstad",
+    "city": "Åhus",
+    "address": null,
+    "lat": 55.9418753,
+    "lon": 14.3124287,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": null,
+    "onlyGuests": false,
+    "fee": "60 kr/dag från kl 12 för genomresande (First Camps generella regel, ej destinationsspecifikt bekräftad)",
+    "location_note": "CamperClean-automat på husbilsområdet (mitt på campingen, nära receptionen); latrintömning lös tank vid servicehus 1, 3 och 4; tömning fast tank vid servicehus 4 samt vid strandstugebyn",
+    "stallplats": null,
+    "openingNote": null,
+    "evidence": "\"There is a pumping station on the motorhome area ... a popular CamperClean automatic dumping station for loose tanks where you insert the cassette in the machine where it is emptied, rinsed, and sprayed with antibacterial cleaning agent ... Pumping stations for loose tanks are found at service buildings 1, 3, and 4. Dumping for fixed tanks is available at service building 4 and at the beach cottage village.\" (söksammanfattning av firstcamp.se/destinationer/ahus-kristianstad/camping, återgiven på engelska av sökverktyget)",
+    "source": "https://firstcamp.se/destinationer/ahus-kristianstad/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-128544589",
+    "existingName": "First Camp Åhus - Kristianstad",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-128544589",
+      "curated-294-first-camp-åhus,-åhus"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Latrin + gråvatten tydligt belagda för denna destination. Färskvatten nämns inte explicit i sökresultatet (bara First Camps generella 'tömma och fylla'-text) – lämnat null."
+  },
+  {
+    "name": "First Camp Skånes Djurpark – Höör",
+    "slug": "skanes-djurpark-hoor",
+    "city": "Höör",
+    "address": null,
+    "lat": 55.9636647,
+    "lon": 13.5310359,
+    "latrin": null,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": null,
+    "stallplats": null,
+    "openingNote": null,
+    "evidence": "",
+    "source": null,
+    "confidence": null,
+    "checked": true,
+    "existingId": "curated-321-skånes-djurparks-camping,-höör",
+    "existingName": "Skånes Djurparks Camping",
+    "existingServices": [
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterIds": [
+      "curated-321-skånes-djurparks-camping,-höör"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "nearbyWithin1km": [
+      "osm-way-118132362 (Grottbyn Vandrarhem och Camping Höör: camping)",
+      "curated-1092-skånes-djurparks-camping-&-grottby,-höör (Skånes Djurparks Camping & Grottby: latrin,gravatten,vatten,camping)"
+    ],
+    "status": "EJ FIRST CAMP LÄNGRE (ingen sida hittad)",
+    "notes": "Två sökningar (inkl. slug-riktad) gav INGEN träff alls på en firstcamp.se-sida för Skånes Djurpark/Höör – inte ens destinationens startsida dök upp. Antingen är slugen en annan eller så drivs anläggningen inte (längre) under First Camp-namnet. Lägg inte till något; kontrollera destinationslistan på firstcamp.se/destinationer manuellt."
+  },
+  {
+    "name": "First Camp Råå Vallar – Helsingborg",
+    "slug": "raa-vallar-helsingborg",
+    "city": "Helsingborg (Råå)",
+    "address": "Kustgatan 95, 252 70 Råå, Helsingborg",
+    "lat": 56.0044085,
+    "lon": 12.7257004,
+    "latrin": null,
+    "gravatten": true,
+    "vatten": true,
+    "onlyGuests": false,
+    "fee": "Ställplats från 180 kr/natt (bokas/betalas i receptionen, ej online); tömning/färskvatten gratis",
+    "location_note": "Ställplatsen ligger vid campingens infart, utanför bommarna; tömningsstation för fasta tankar vid husbilstömningen inne på campingen",
+    "stallplats": true,
+    "openingNote": "Toalett med handfat vid ställplatsen vår/sommar/höst (ej vinter)",
+    "evidence": "\"The parking area has 12 parking spaces for motorhomes in two different sizes – 5×7 meters and 5×12 meters. The motorhome parking area is located right at the campsite entrance, outside the barriers. ... A dumping station is available on the campsite where you can empty and refill your fresh water tank for free. There is a dumping station for fixed tanks at the motorhome dumping station. ... no access to electricity, service buildings, or pool areas.\" (söksammanfattning av firstcamp.se/destinationer/raa-vallar-helsingborg/stallplats)",
+    "source": "https://firstcamp.se/destinationer/raa-vallar-helsingborg/stallplats",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-57975146",
+    "existingName": "Råå Vallar",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-way-57975146",
+      "curated-319-råå-vallar"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "latrin"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Gråvatten (fast tank) + färskvatten tydligt belagda. Kassettömning nämns inte uttryckligen i ställplats-texten (Råå Vallar finns dock med på First Camps generella latrintömning-lista) – latrin lämnat null. Ställplats: 12 platser, ingen el."
+  },
+  {
+    "name": "First Camp Skönstavik – Karlskrona",
+    "slug": "skonstavik-karlskrona",
+    "city": "Karlskrona",
+    "address": null,
+    "lat": 56.2004488,
+    "lon": 15.6045914,
+    "latrin": true,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "Latrintömning strax till vänster om receptionen (enligt kartan)",
+    "stallplats": null,
+    "openingNote": null,
+    "evidence": "\"The toilet tank emptying station (latrintömning) is located just to the left of reception according to the map.\" (söksammanfattning av firstcamp.se/destinationer/skonstavik-karlskrona/camping, återgiven på engelska av sökverktyget)",
+    "source": "https://firstcamp.se/destinationer/skonstavik-karlskrona/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-25622201",
+    "existingName": "First Camp Skönstavik – Karlskrona",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-25622201",
+      "curated-1097-first-camp-skönstavik,-karlskrona"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten",
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Endast latrin belagd destinationsspecifikt. Tomter med 'el och VA på tomten' finns, men ingen tömning fast tank / färskvattenpåfyllning citerad från destinationssidan (bara First Camps generella text) – null. ~250 platser."
+  },
+  {
+    "name": "First Camp Mölle – Höganäs",
+    "slug": "molle-hoganas",
+    "city": "Mölle",
+    "address": null,
+    "lat": 56.2699404,
+    "lon": 12.5297504,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "Latrintömning i servicehus 1; station för fasta tankar bakom servicehus 1",
+    "stallplats": null,
+    "openingNote": "året runt (\"First Camp Mölle – Höganäs is open year-round\")",
+    "evidence": "\"There is a possibility to empty toilet cassettes at service house 1. A station for fixed tanks is located behind service house 1.\" (söksammanfattning av firstcamp.se/destinationer/molle-hoganas + /camping, återgiven på engelska av sökverktyget; andra sökningen upprepade samma formulering)",
+    "source": "https://firstcamp.se/destinationer/molle-hoganas/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-437382779",
+    "existingName": "Firstcamp Mölle – Höganäs",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-437382779",
+      "osm-node-276520080",
+      "curated-298-first-camp-mölle,-höganäs"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Färskvatten: sökverktyget påstod 'access to fresh water' men utan citat från destinationssidan – räknas inte som belägg, null. 2 servicehus totalt."
+  },
+  {
+    "name": "First Camp Torekov – Båstad",
+    "slug": "torekov-bastad",
+    "city": "Torekov",
+    "address": null,
+    "lat": 56.4307182,
+    "lon": 12.6411445,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": true,
+    "onlyGuests": false,
+    "fee": "Gratis för boende gäster; 60 kr för genomresande, varje dag från kl 12 (bekräftat på destinationens ställplats-sida)",
+    "location_note": "Latrintömning i samtliga servicehus; gråvatten och färskvattenpåfyllning vid receptionen; husbilsplatserna vid campingens infart, precis utanför bommarna",
+    "stallplats": true,
+    "openingNote": null,
+    "evidence": "\"Tömningsstationen finns i samtliga servicehus på First Camp Torekov – Båstad.\" / \"Gråvatten och påfyllning av färskvatten finns vid receptionen.\" / \"Husbilsplatserna är belägna vid campingens infart, precis utanför bommarna. De har asfalterat underlag med gräs på sidorna och tillgång till el. Husbilplatserna är 15 meter långa och 4 meter breda med plats för ekipage upp till 12 meter.\" / \"Om du bor hos oss är det helt gratis att tömma och fylla färskvatten. Har du vägarna förbi kan du tömma och fylla på dina tankar i husbilen för endast 60 kr, varje dag från kl. 12.\"",
+    "source": "https://firstcamp.se/destinationer/torekov-bastad/stallplats-torekov",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-494506962",
+    "existingName": "First Camp Torekov-Båstad",
+    "existingServices": [
+      "vatten",
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-494506962",
+      "osm-node-1952528803",
+      "osm-way-494506963",
+      "curated-318-first-camp-torekov"
+    ],
+    "clusterConfirmedServices": [
+      "vatten",
+      "gravatten",
+      "latrin"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Bästa belägget i gruppen – svensk originaltext, alla tre tjänster + ställplats + pris."
+  },
+  {
+    "name": "First Camp Mellbystrand – Halmstad",
+    "slug": "mellbystrand-halmstad",
+    "city": "Mellbystrand",
+    "address": null,
+    "lat": 56.5203345,
+    "lon": 12.9484454,
+    "latrin": null,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": null,
+    "stallplats": null,
+    "openingNote": null,
+    "evidence": "",
+    "source": null,
+    "confidence": null,
+    "checked": true,
+    "existingId": "osm-way-976890775",
+    "existingName": "Mellbystrands Camping",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-way-976890775",
+      "curated-317-first-camp-mellbystrand,-laholm"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "EJ FIRST CAMP LÄNGRE (ingen sida hittad)",
+    "notes": "Två sökningar gav ingen firstcamp.se-sida för Mellbystrand – sökresultaten returnerade i stället Halmstad-destinationerna Tylösand, Hagön och Karlstorp (Karlstorp – Halmstad var ej på min lista men fick citat: 'Latrintömning finns i servicehus 1 och 2, och husbilstömningen finns vid platserna 242-243 på väg mot utfarten'). Troligen ingår Mellbystrand inte i First Camp under det namnet – verifiera manuellt."
+  },
+  {
+    "name": "First Camp Sjöstugan – Älmhult",
+    "slug": "sjostugan-almhult",
+    "city": "Älmhult",
+    "address": null,
+    "lat": 56.5687663,
+    "lon": 14.1319134,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": true,
+    "onlyGuests": false,
+    "fee": null,
+    "location_note": "Ställplatsen ligger vid IKEA/Älmhults handelsplats intill väg 23; på campingen finns tömningsstationen för latrin och lös tank vid servicehuset",
+    "stallplats": true,
+    "openingNote": "Incheckning från 13:00 (öppet dygnet runt, incheckningsautomat + pinkod till bommen)",
+    "evidence": "\"Ställplatsen ligger vid IKEA och Älmhults handelsplats intill väg 23. Här finns latrintömning, färskvatten och sopstation.\" / \"42 platser med el, hårdgjorda platser med asfalt, färskvatten för påfyllning, latrintömning för lös och fast tank, sopstation och kärl för aska.\" / camping: \"Tömningsstationen för latrin och för lös tank finns vid servicehuset.\"",
+    "source": "https://firstcamp.se/destinationer/sjostugan-almhult/stallplats",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-363799969",
+    "existingName": "Sjöstugans Camping & Vandrarhem",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-363799969",
+      "curated-325-sjöstugans-camping,-älmhult"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Två fysiska platser: ställplatsen vid IKEA (egen sida, tömning lös+fast tank, färskvatten, 42 elplatser, bom med pinkod = i praktiken öppen för genomresande via bokning/automat) och själva campingen Sjöstugan vid sjön (tömning latrin+lös tank vid servicehuset). Pris för ställplatsen ej i sökresultatet."
+  },
+  {
+    "name": "First Camp Hagön – Halmstad",
+    "slug": "hagon-halmstad",
+    "city": "Halmstad",
+    "address": null,
+    "lat": 56.635294,
+    "lon": 12.9016781,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": null,
+    "onlyGuests": false,
+    "fee": "60 kr/dag från kl 12 för genomresande, gratis för boende (First Camps generella text)",
+    "location_note": "Latrintömning lös tank vid respektive servicehus (4 st, bl.a. servicehus 4); latrinstation för fasta tankar vid svängen UTANFÖR campingen",
+    "stallplats": null,
+    "openingNote": null,
+    "evidence": "\"Latrin finns vid respektive servicehus på området, och latrinstation för fasta tankar finns vid svängen utanför campingen.\" / \"Service Building 4 offers WC, RWC, shower, oven, microwave, and latrine emptying for loose tanks.\"",
+    "source": "https://firstcamp.se/destinationer/hagon-halmstad/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-relation-10467020",
+    "existingName": "Hagöns Camping",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-relation-10467020",
+      "curated-279-hagöns-camping"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Tömning för fast tank ligger utanför själva campingen (vid svängen) – kan vara nåbar för genomresande. Färskvatten: bara 'el och vatten direkt på tomten' (tomtanslutning) och generell text, ingen påfyllningsstation citerad – null. Husbilsplatser utan el i kanten av området."
+  },
+  {
+    "name": "First Camp Stensö – Kalmar",
+    "slug": "stenso-kalmar",
+    "city": "Kalmar",
+    "address": null,
+    "lat": 56.6484969,
+    "lon": 16.3240793,
+    "latrin": true,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": false,
+    "fee": "60 kr/dag från kl 12 för genomresande (generell First Camp-text visad i sökresultatet)",
+    "location_note": "vid receptionen/butiken",
+    "stallplats": false,
+    "openingNote": "Incheckning 13:00",
+    "evidence": "\"Latrintömningen finns vid receptionen/butiken.\" / \"husbilsplatser med el och uppställning på hårdgjord yta med gräs bredvid, belägna i området vid receptionen/butiken\" / \"4 servicehus\"",
+    "source": "https://firstcamp.se/destinationer/stenso-kalmar/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-relation-11168707",
+    "existingName": "Stensö Camping",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-relation-11168707",
+      "osm-node-9934215598"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten",
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Latrin belagd med plats (vid receptionen). Gråvatten/fast tank och färskvattenpåfyllning inte uttryckligen nämnda i två sökningar. Husbilsplatserna ligger inne på campingen vid receptionen – ingen egen ställplats."
+  },
+  {
+    "name": "First Camp Tylösand – Halmstad",
+    "slug": "tylosand-halmstad",
+    "city": "Halmstad (Tylösand)",
+    "address": null,
+    "lat": 56.6595108,
+    "lon": 12.7385929,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": null,
+    "onlyGuests": false,
+    "fee": "60 kr/dag från kl 12 för genomresande, gratis för boende (First Camps generella text, visad tillsammans med destinationssidan)",
+    "location_note": "Latrintömning i samtliga servicehus; tömningsstation för fasta tankar vid nedre delen av aktivitetsbanan",
+    "stallplats": null,
+    "openingNote": "\"First Camp Tylösand – Halmstad har numera öppet året om för både camping och stugor.\"",
+    "evidence": "\"Det finns möjlighet att tömma latrinbehållare i samtliga servicehus, för fasta tankar finns tömningsstation vid nedre delen av aktivitetsbanan.\"",
+    "source": "https://firstcamp.se/destinationer/tylosand-halmstad/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-relation-10481167",
+    "existingName": "First Camp Tylösand",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-relation-10481167",
+      "curated-276-first-camp-tylösand"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Latrin + gråvatten belagda med svenskt citat. Färskvatten nämns inte destinationsspecifikt (andra sökningen gav samma text) – null."
+  },
+  {
+    "name": "First Camp Karlstorp – Halmstad",
+    "slug": "karlstorp-halmstad",
+    "city": "Halmstad",
+    "address": null,
+    "lat": 56.6664889,
+    "lon": 12.8590538,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "Latrintömning i servicehus 1 och 2; husbilstömning (fast tank) vid platserna 242–243 på väg mot utfarten",
+    "stallplats": null,
+    "openingNote": null,
+    "evidence": "\"Latrintömning finns i servicehus 1 och 2, och husbilstömningen finns vid platserna 242-243 på väg mot utfarten\"",
+    "source": "https://firstcamp.se/destinationer/karlstorp-halmstad/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-1185957108",
+    "existingName": "Citycamp Halmstad",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-1185957108"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "vatten"
+    ],
+    "nearbyWithin1km": [
+      "curated-15-strandgatan-3,-halmstad (Ställplats BK Najaden: stallplats)"
+    ],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Destination som saknades i min ursprungliga lista – dök upp i Syd-agentens Mellbystrand-sökning (citatet kom därifrån, ingen egen sökning). Seed-matchning: 'Citycamp Halmstad' (osm-way-1185957108) ligger vid Karlstorp och är troligen samma anläggning under tidigare namn – verifiera i webbläsare."
+  },
+  {
+    "name": "First Camp Ekerum – Öland",
+    "slug": "ekerum-oland",
+    "city": "Borgholm",
+    "address": null,
+    "lat": 56.7904442,
+    "lon": 16.5644663,
+    "latrin": true,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": false,
+    "fee": "60 kr/dag från kl 12 för genomresande (generell First Camp-text visad i sökresultatet)",
+    "location_note": "servicehus 2, 3, 4 och 6",
+    "stallplats": false,
+    "openingNote": null,
+    "evidence": "\"Tömningsstation latrin finns i servicehus 2, 3, 4 och 6.\" / \"Allt vatten på destinationen, även i stugor och servicehus, är kommunalt vatten och går bra att dricka direkt ur kranen.\" / \"Husbilsplatserna ligger nära glassbaren, stranden och servicehusen.\"",
+    "source": "https://firstcamp.se/destinationer/ekerum-oland/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-128131340",
+    "existingName": "Ekerums Camping & Stugor",
+    "existingServices": [
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-128131340",
+      "osm-node-8833321072",
+      "osm-way-954397626",
+      "osm-way-954397627",
+      "osm-way-954397638",
+      "curated-374-ekerums-camping-&-stugor"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten",
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Latrin högt belagd (fyra servicehus). Gråvatten/fast tank ej nämnt. Vatten: bara \"kommunalt vatten går att dricka\" – inte uttryckligen påfyllning för husbil, därför null. Husbilsplatser inne på området, ingen egen ställplats. Gatuadress syntes inte i resultatet."
+  },
+  {
+    "name": "First Camp Skrea Strand – Falkenberg",
+    "slug": "skrea-strand-falkenberg",
+    "city": "Falkenberg",
+    "address": null,
+    "lat": 56.8822799,
+    "lon": 12.5146901,
+    "latrin": null,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": null,
+    "stallplats": null,
+    "openingNote": null,
+    "evidence": "",
+    "source": null,
+    "confidence": null,
+    "checked": true,
+    "existingId": "osm-relation-10212456",
+    "existingName": "Skrea camping och vandrarhem",
+    "existingServices": [
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-relation-10212456",
+      "curated-278-skrea-camping-och-vandrarhem"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "EJ FIRST CAMP LÄNGRE (ingen sida hittad)",
+    "notes": "Två sökningar (varav en helt utan tjänsteord: 'First Camp Skrea Strand Falkenberg camping') gav INGEN firstcamp.se-sida för Skrea Strand. Sökverktyget pekade i stället på Björkäng – Varberg som 'nearby camping option between Varberg and Falkenberg'. Starkt tecken på att Skrea Strand INTE längre är en First Camp-destination – lägg inte in som First Camp; behandla ev. befintlig post som fristående camping och verifiera mot annan källa."
+  },
+  {
+    "name": "First Camp Björkäng – Varberg",
+    "slug": "bjorkang-varberg",
+    "city": "Varberg",
+    "address": null,
+    "lat": 57.0093014,
+    "lon": 12.3483225,
+    "latrin": true,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "Latrintömning (lös tank) i servicehus 3 och 4",
+    "stallplats": null,
+    "openingNote": null,
+    "evidence": "\"Latrine emptying stations are located at service houses 3 and 4 at the campsite. ... Service house 3 has WC, RWC (handicap WC), and toilet emptying for loose tanks.\" (söksammanfattning av firstcamp.se/destinationer/bjorkang-varberg/camping, återgiven på engelska av sökverktyget)",
+    "source": "https://firstcamp.se/destinationer/bjorkang-varberg/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-relation-10228336",
+    "existingName": "Björkängs Camping",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-relation-10228336",
+      "curated-441-björkängs-camping"
+    ],
+    "clusterConfirmedServices": [
+      "latrin"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Endast latrin (kassett) belagd. Ingen text om tömning för fast tank eller färskvattenpåfyllning hittades i två sökningar – gravatten/vatten null. ~420 platser, mellan Varberg och Falkenberg."
+  },
+  {
+    "name": "First Camp Löttorp – Öland",
+    "slug": "lottorp-oland",
+    "city": "Löttorp",
+    "address": null,
+    "lat": 57.1813411,
+    "lon": 17.0544304,
+    "latrin": true,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "i båda servicehusen",
+    "stallplats": false,
+    "openingNote": null,
+    "evidence": "\"Tömningsstationen finns i båda servicehusen.\" (två servicehus på campingen) / \"husbilsplatser med el, vatten och avlopp på området Havet, med asfalt eller hårdgjord mark\"",
+    "source": "https://firstcamp.se/destinationer/lottorp-oland/camping",
+    "confidence": "medium",
+    "checked": true,
+    "existingId": "osm-way-296513627",
+    "existingName": "Löttorps Camping",
+    "existingServices": [
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-296513627"
+    ],
+    "clusterConfirmedServices": [],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [
+      "latrin"
+    ],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS UTAN TÖMNING",
+    "notes": "Tömningsstation i servicehusen = latrin/kassettömning (inne i servicehus). Gråvatten för fast tank inte uttryckligen nämnt. Färskvatten nämns bara via VA-tomter (el+vatten+avlopp på området Havet) – ingen uttrycklig påfyllningsplats; rimligt men ej citerat. Ingen separat ställplats för genomresande funnen."
+  },
+  {
+    "name": "First Camp Kärradal – Varberg",
+    "slug": "karradal-varberg",
+    "city": "Kärradal, Varberg",
+    "address": null,
+    "lat": 57.1843195,
+    "lon": 12.2153812,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": null,
+    "onlyGuests": false,
+    "fee": "60 kr/dag från kl 12 för genomresande (First Camps text i sökresultatet för Kärradal)",
+    "location_note": "Latrintömning i alla servicehus (1, 2 och 3); gråvattentömning vid servicehus 1",
+    "stallplats": null,
+    "openingNote": "stugby året runt; campingdelen stängd vintertid, öppnar våren",
+    "evidence": "Sökmotorns återgivning av firstcamp.se/destinationer/karradal-varberg/camping: \"Det finns möjlighet att tömma latrinbehållare i alla våra servicehus (1, 2 och 3) på First Camp Kärradal – Varberg. Dessutom vid servicehus 1 kan man tömma gråvatten.\" / \"Om du bor hos oss är det helt gratis att tömma. För besökare som inte bor på campingen kan du tömma och fylla på dina tankar i husbilen för endast 60 kr, varje dag från kl. 12.\"",
+    "source": "https://firstcamp.se/destinationer/karradal-varberg/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-node-9907751694",
+    "existingName": "Tömningsstation, Kärradal",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterIds": [
+      "osm-node-9907751694"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Destination som saknades i min ursprungliga lista (hittad av Norr-agenten). Seed har en namnlös OSM-tömningsstation 'Tömningsstation, Kärradal' (gravatten,latrin,vatten) på 57.1843,12.2154 men ingen camping-post för själva anläggningen."
+  },
+  {
+    "name": "First Camp Gunnarsö – Oskarshamn",
+    "slug": "gunnarso-oskarshamn",
+    "city": "Oskarshamn",
+    "address": "Östersjövägen 103, 572 63 Oskarshamn",
+    "lat": 57.2517,
+    "lon": 16.49207,
+    "latrin": true,
+    "gravatten": null,
+    "vatten": true,
+    "onlyGuests": false,
+    "fee": "Pris per natt i bokningssystemet (ställplatsen bokas online/telefon); ingen särskild tömningsavgift angiven",
+    "location_note": "Ställplatsen ligger direkt vid infarten till campingen (48 platser) med eget servicehus och latrinplatta",
+    "stallplats": true,
+    "openingNote": "Ställplats Gunnarsö är vinterstängd; incheckning 13:00, utcheckning 11:00; drop-in utanför receptionens öppettider bara under sommarsäsong",
+    "evidence": "\"Ställplatsen ligger direkt vid infarten till campingen och erbjuder 48 platser för husbilar.\" / \"Ställplatsen har ett servicehus med alla faciliteter, elstolpar vid alla platser och en smidig latrinplatta för enkel tömning.\" / \"Servicehuset har 4 toaletter, 2 duschar, disk och latrinplatta.\" / camping: \"husbilsplatser för fordon upp till 12 meter ... asfalt och gräs med både vatten och el\"",
+    "source": "https://firstcamp.se/destinationer/gunnarso-oskarshamn/stallplats-gunnarso",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-node-431824975",
+    "existingName": "Gunnarsö Camping",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-node-431824975",
+      "osm-way-319290336",
+      "curated-290-gunnarsö-camping",
+      "curated-1075-first-camp-gunnarsö,-oskarshamn"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Latrin (latrinplatta) högt belagd på ställplatsen. Färskvatten belagd via 'vatten och el' på husbilsplatserna på campingen (ej uttryckligen påfyllningskran på ställplatsen). Gråvatten/fast tank inte nämnt. Ställplatsen är utanför/vid infarten – öppen för genomresande via bokning."
+  },
+  {
+    "name": "First Camp Böda Sand – Öland",
+    "slug": "boda-sand-oland",
+    "city": "Böda",
+    "address": null,
+    "lat": 57.2738261,
+    "lon": 17.0540814,
+    "latrin": null,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": null,
+    "stallplats": null,
+    "openingNote": null,
+    "evidence": "",
+    "source": null,
+    "confidence": null,
+    "checked": true,
+    "existingId": "osm-way-326746925",
+    "existingName": "Böda Sand Beach Resort",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-way-326746925",
+      "curated-378-böda-sand-beach-resort"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "EJ FIRST CAMP LÄNGRE (ingen sida hittad)",
+    "notes": "Ingen destinationssida finns på firstcamp.se för Böda Sand – tre sökningar (inkl. exakt slug och \"Böda Sand\" i citattecken) gav bara Löttorp och Ekerum som First Camps enda Öland-destinationer; Böda sand nämns endast som utflyktsmål/strand från Löttorp. Böda Sand är alltså troligen INTE en First Camp-anläggning (egen operatör, bodasand.se) – verifiera mot annan källa utanför detta uppdrag; lägg inte in som First Camp."
+  },
+  {
+    "name": "First Camp Tofta – Gotland",
+    "slug": "tofta-gotland",
+    "city": "Tofta",
+    "address": null,
+    "lat": 57.4843249,
+    "lon": 18.128362,
+    "latrin": null,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": null,
+    "stallplats": null,
+    "openingNote": null,
+    "evidence": "\"Eftersom det kan vara svårt att hitta boende på populära Gotland fungerar det bra som en dagsutflykt från First Camp Gunnarsö\" (firstcamp.se/destinationer/gunnarso-oskarshamn/res-till-gotland)",
+    "source": "https://firstcamp.se/destinationer/gunnarso-oskarshamn/res-till-gotland",
+    "confidence": null,
+    "checked": true,
+    "existingId": "osm-relation-6597540",
+    "existingName": "Tofta Camping",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-relation-6597540",
+      "osm-node-431825102",
+      "osm-way-292515253",
+      "osm-relation-6597539",
+      "curated-461-tofta-camping"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "EJ FIRST CAMP LÄNGRE (ingen sida hittad)",
+    "notes": "INTE längre First Camp. Tre sökningar (inkl. exakt slug tofta-gotland) gav ingen destinationssida; firstcamp.se beskriver i stället Tofta strand som ett dagsutflyktsmål från Gunnarsö och rekommenderar färjan från Oskarshamn eftersom 'det kan vara svårt att hitta boende på Gotland' – dvs First Camp har ingen egen anläggning på Gotland just nu. Tofta Camping drivs av annan operatör (verifiera separat, ej First Camp-namn i appen)."
+  },
+  {
+    "name": "First Camp Lilleby – Göteborg",
+    "slug": "lilleby-goteborg",
+    "city": "Göteborg (Torslanda)",
+    "address": null,
+    "lat": 57.743511,
+    "lon": 11.7584796,
+    "latrin": null,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": null,
+    "stallplats": true,
+    "openingNote": null,
+    "evidence": "Endast generell text: \"The motorhome pitches are located at the campsite's parking area with asphalt surface and access to electricity, measuring 10 meters long and 7 meters wide with space for vehicles up to 10 meters.\" Servicehus: \"bright and clean toilets, sinks, and showers, as well as washing machines and dryers.\" Tömningsstation: bara \"see the camping map\" (FAQ-boilerplate). Inget om latrintömning/fast tank/vattenpost för denna destination.",
+    "source": "https://firstcamp.se/destinationer/lilleby-goteborg/camping",
+    "confidence": "low",
+    "checked": true,
+    "existingId": "osm-relation-10921465",
+    "existingName": "Göteborgs Camping",
+    "existingServices": [
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-relation-10921465",
+      "osm-node-12913259314",
+      "osm-node-12913259315",
+      "osm-relation-19251115"
+    ],
+    "clusterConfirmedServices": [
+      "vatten",
+      "gravatten",
+      "latrin"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "vatten",
+      "gravatten",
+      "latrin"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING (First Camp-sidan bekräftar inget)",
+    "notes": "Två sökningar gav bara servicehusets dusch/toalett/tvätt och kedjans generella 60 kr-text – INTE belägg. Husbilsplatser på asfalterad parkering (ställplatskaraktär) är belagda men inte tjänsterna. Lägg INTE till tömning/vatten utan manuell koll av campingkartan/sidan."
+  },
+  {
+    "name": "First Camp Gränna – Vättern",
+    "slug": "granna-vattern",
+    "city": "Gränna",
+    "address": null,
+    "lat": 58.0259609,
+    "lon": 14.457209,
+    "latrin": null,
+    "gravatten": true,
+    "vatten": null,
+    "onlyGuests": false,
+    "fee": "60 kr/dag från kl 12 för genomresande (generell First Camp-text visad i sökresultatet)",
+    "location_note": "tre tömningsstationer på området",
+    "stallplats": false,
+    "openingNote": "Öppet året runt",
+    "evidence": "\"Det finns tre tömningsstationer på området.\" / \"First Camp Gränna – Vättern är en året runt-öppen camping med drygt 400 platser\" / \"Servicehusen på området är moderna med dusch- och skötrum, kök och tvättstuga.\"",
+    "source": "https://firstcamp.se/destinationer/granna-vattern/camping",
+    "confidence": "medium",
+    "checked": true,
+    "existingId": "osm-way-297331049",
+    "existingName": "First Camp Gränna - Vättern",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping",
+      "stallplats",
+      "sopor"
+    ],
+    "clusterIds": [
+      "osm-way-297331049",
+      "osm-node-5040482429",
+      "osm-node-14178382379",
+      "osm-node-14178382380",
+      "osm-node-14178382381",
+      "osm-node-14178382382",
+      "osm-way-626238361",
+      "osm-way-1558602626",
+      "curated-326-grännastrandens-camping"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "latrin",
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "\"Tre tömningsstationer\" är destinationsspecifikt men säger inte lös/fast tank – satt som gravatten=true (tömningsstation = dumpstation enligt uppdragets definition), latrin/vatten null eftersom ordet latrin/färskvatten inte förekom. Sannolikt både latrin och gråvatten i praktiken – överväg medium-confidence för latrin också."
+  },
+  {
+    "name": "First Camp Hökensås – Tidaholm",
+    "slug": "hokensas-tidaholm",
+    "city": "Tidaholm",
+    "address": null,
+    "lat": 58.1001315,
+    "lon": 14.0722076,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": null,
+    "onlyGuests": false,
+    "fee": "60 kr/dag från kl 12 för genomresande (generell First Camp-text visad på destinationssidan)",
+    "location_note": null,
+    "stallplats": null,
+    "openingNote": null,
+    "evidence": "Sökresultat (återgivet av sökverktyget, ej ordagrant): \"The toilet emptying station was undergoing renovation in autumn 2023, and it was not possible to empty fixed tanks at the camping during this period, with renovation expected to be completed by the end of November 2023.\" Samt: \"If you stay at the campground, toilet emptying and water refilling are completely free, or for day visitors passing through, the service costs only 60 kr daily from 12:00.\" Servicehusen (2 st) beskrivs bara med toalett/dusch/tvätt/disk.",
+    "source": "https://firstcamp.se/destinationer/hokensas-tidaholm/camping",
+    "confidence": "medium",
+    "checked": true,
+    "existingId": "osm-relation-17776418",
+    "existingName": "Tidaholm Hökensås Semesterby och Camping",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-relation-17776418"
+    ],
+    "clusterConfirmedServices": [],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [
+      "latrin",
+      "gravatten"
+    ],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS UTAN TÖMNING",
+    "notes": "Belägget är ett renoveringsmeddelande från hösten 2023 som indirekt bekräftar att tömningsstation för både kassett och fast tank finns (renoverad, klar nov 2023). Ingen aktuell facilitetstext med 'latrintömning'/'vattenpost' returnerades av sökningen. Sätt medium – lägg till som bekräftad först efter manuell koll av sidan."
+  },
+  {
+    "name": "First Camp Solvik – Kungshamn",
+    "slug": "solvik-kungshamn",
+    "city": "Kungshamn",
+    "address": null,
+    "lat": 58.3926271,
+    "lon": 11.2571463,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "tömningsstation vid varje servicehus; fast tank: separat station i husbilsområdet och vid servicehus 1",
+    "stallplats": true,
+    "openingNote": null,
+    "evidence": "Sökverktygets återgivning: \"Dumping stations are located at each service building, and for fixed tanks, there's a separate station in the motorhome area and at Service House 1.\" / \"Service House 1 includes toilets, shower, care room, kitchen, laundry, and toilet tank emptying; Service House 2 has toilets, shower, family room, care room, kitchen, dog shower, and toilet tank emptying.\" Husbilsplatser: \"located next to cabins in Strandbyn, just 1 meter from the water, with a graveled surface\".",
+    "source": "https://firstcamp.se/destinationer/solvik-kungshamn/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-1315304781",
+    "existingName": "First Camp Solvik – Kungshamn",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-1315304781"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "vatten"
+    ],
+    "nearbyWithin1km": [
+      "osm-relation-13095510 (Sotenäs Camping: camping)",
+      "curated-468-sotenäs-camping (Sotenäs Camping: camping,gravatten,latrin,vatten)"
+    ],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Latrin + fast-tank-tömning tydligt belagda med plats. Färskvatten nämns INTE explicit i någon av de två sökningarna (första svarets 'access to fresh water' var sökverktygets egen slutsats, inte citat) – lämnad null. Husbilsområde inne på campingen (grus)."
+  },
+  {
+    "name": "First Camp Skara Sommarland",
+    "slug": "skara-sommarland",
+    "city": "Skara",
+    "address": null,
+    "lat": 58.4121582,
+    "lon": 13.5538564,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": true,
+    "onlyGuests": false,
+    "fee": "60 kr/dag från kl 12 för genomresande",
+    "location_note": "latrin (lös tank) i servicehus 3; vattenposter i alla servicehus",
+    "stallplats": null,
+    "openingNote": null,
+    "evidence": "\"På destinationen finns tömningsstationer för både lös och fast tank.\" / \"Servicehus 3: ... latrintömning lös tank\" / \"Vattenposter finns i alla servicehus.\" / \"Bor du hos oss på First Camp är tömningen helt gratis. Är du bara på genomresa eller mellan destinationer kan du tömma och fylla på dina tankar för endast 60 kr, varje dag från kl. 12.\" (delvis sökverktygets återgivning på engelska: \"there are dumping stations for both loose and fixed tanks\", \"Water posts are available in all service houses\").",
+    "source": "https://firstcamp.se/destinationer/skara-sommarland/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-relation-6413774",
+    "existingName": "Skara Sommarlands camping",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-relation-6413774",
+      "curated-307-skara-sommarlands-camping"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Slug bekräftad: firstcamp.se/destinationer/skara-sommarland (camping-undersida /camping). 5 servicehus. Ingen separat ställplats nämnd – husbilar bokar vanlig campingtomt med/utan el."
+  },
+  {
+    "name": "First Camp Glyttinge – Linköping",
+    "slug": "glyttinge-linkoping",
+    "city": "Linköping",
+    "address": null,
+    "lat": 58.4217198,
+    "lon": 15.5598463,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": true,
+    "onlyGuests": false,
+    "fee": "60 kr/dag från kl 12 för genomresande (generell First Camp-text visad i sökresultatet)",
+    "location_note": "Latrintömning på baksidan av servicehuset; servicehus 1: gråvattentömning + vattenpost; servicehus 2: tömning lös tank",
+    "stallplats": false,
+    "openingNote": null,
+    "evidence": "\"Latrintömningen finns på baksidan av servicehuset.\" / \"Servicehus 1: toaletter, gråvattentömning, hundduch och vattenpost\" / \"Servicehus 2: toaletter, dusch, kök, handtvätt, tvättstuga, TV-rum och latrintömning för lös tank\"",
+    "source": "https://firstcamp.se/destinationer/glyttinge-linkoping/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-138265403",
+    "existingName": "First Camp Glyttinge",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-138265403"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Fullständig: latrin, gråvatten (ordet 'gråvattentömning' förekommer) och vattenpost. Ligger vid E4, 100 m² tomter med el."
+  },
+  {
+    "name": "First Camp Vadstena – Vättern",
+    "slug": "vadstena-vattern",
+    "city": "Vadstena",
+    "address": null,
+    "lat": 58.4665007,
+    "lon": 14.9340596,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": null,
+    "onlyGuests": false,
+    "fee": "60 kr/dag från kl 12 för genomresande (generell First Camp-text visad i sökresultatet)",
+    "location_note": "CamperClean (lös tank) vid servicehus 2; lös tank även servicehus 3 och 4; fast tank vid servicehus 1 och 4",
+    "stallplats": false,
+    "openingNote": null,
+    "evidence": "\"Vid servicehus 2 finns en CamperClean – en automatisk tömningsstation för lös tank där du placerar kassetten i maskinen där den töms, sköljs och sprejas med antibakteriellt rengöringsmedel innan den kommer ut igen, ren och fin.\" / \"Tömning för fast tank finns vid servicehus 1 och 4.\" / servicehus 2/3/4: \"tömning lös tank\", servicehus 1/4: \"tömning fast tank\"",
+    "source": "https://firstcamp.se/destinationer/vadstena-vattern/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-760268947",
+    "existingName": "Vadstena Camping",
+    "existingServices": [
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-760268947"
+    ],
+    "clusterConfirmedServices": [],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [
+      "latrin",
+      "gravatten"
+    ],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS UTAN TÖMNING",
+    "notes": "Mycket tydlig: latrin (CamperClean + lös tank i tre servicehus) och gråvatten (fast tank vid servicehus 1 och 4). Färskvatten ej uttryckligen nämnt. Nära 400 platser, husbilsplatser med sjöutsikt inne på campingen."
+  },
+  {
+    "name": "First Camp Kolmården – Norrköping",
+    "slug": "kolmarden-norrkoping",
+    "city": "Kolmården",
+    "address": null,
+    "lat": 58.6593026,
+    "lon": 16.4029339,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": true,
+    "onlyGuests": false,
+    "fee": "60 kr/dag från kl 12 för genomresande (generell First Camp-text visad i sökresultatet)",
+    "location_note": "Liten station vid receptionen (byggnaden bakom Skogslängorna) för latrinbehållare; större station vid verkstadsbyggnaden efter lekplatsen för både latrinbehållare och fast tank",
+    "stallplats": false,
+    "openingNote": null,
+    "evidence": "\"Det finns två tömningsstationer på campingen: en vid receptionen i byggnaden bakom Skogslängorna för latrinbehållare, och en större station vid verkstadsbyggnaden efter lekplatsen där både latrinbehållare och fasta tankar kan tömmas.\" / \"Platserna med el och VA är belägna intill Bråviken, och färskvatten och avloppsdränering finns intill varje plats.\"",
+    "source": "https://firstcamp.se/destinationer/kolmarden-norrkoping/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-132041797",
+    "existingName": "First Camp Kolmården",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-way-132041797",
+      "curated-299-first-camp-kolmården"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Latrin + fast tank (gråvatten) ordagrant. Färskvatten belagt via VA-tomterna intill Bråviken ('färskvatten ... intill varje plats') – gäller VA-platserna, ingen separat påfyllningskran nämnd men vatten finns klart på anläggningen."
+  },
+  {
+    "name": "First Camp Edsvik – Grebbestad",
+    "slug": "edsvik-grebbestad",
+    "city": "Grebbestad",
+    "address": null,
+    "lat": 58.7110717,
+    "lon": 11.2328546,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": true,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "latrintömning i servicehusen och utanför receptionen; spolplatta för gråvatten på området; husbilsplatser högst upp längs vägen nära reception/butik",
+    "stallplats": true,
+    "openingNote": "året runt",
+    "evidence": "Sökverktygets återgivning: \"Latrine emptying stations are located in the service buildings and outside the reception.\" / \"A rinsing plate for greywater emptying for fixed tanks is also available on the area.\" / \"There are water and sewage connection options in several parts of the area, and for those with motorhomes there is a service facility with a dumping station.\" / \"There are motorhome pitches with electricity located at the top of the campground, along the road, very close to the campground's reception and shop.\" / \"First Camp Edsvik – Grebbestad is open year-round.\"",
+    "source": "https://firstcamp.se/destinationer/edsvik-grebbestad/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-relation-10921243",
+    "existingName": "First Camp Edsvik - Grebbestad",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-relation-10921243"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Vatten = 'vatten- och avloppsanslutning på flera delar av området' (tomtanslutning) + servicehus med tömningsstation – räknas som färskvatten tillgängligt, men ingen uttrycklig 'vattenpost/påfyllning'-formulering. Latrin utanför receptionen antyder åtkomst även för genomresande."
+  },
+  {
+    "name": "First Camp Ekudden – Mariestad",
+    "slug": "ekudden-mariestad",
+    "city": "Mariestad",
+    "address": null,
+    "lat": 58.7182273,
+    "lon": 13.7976441,
+    "latrin": true,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "servicehus 3 och servicehus 4",
+    "stallplats": true,
+    "openingNote": null,
+    "evidence": "\"Servicehus 3\" och \"Servicehus 4\": \"latrintömning lös tank\" (facilitetslista per servicehus, 4 servicehus totalt). Husbilsplatser: \"specially designated for motorhomes, spread throughout the area with some located directly by the waterfront and others near reception, shop, and the camping bistro\" (sökverktygets återgivning). Tömningsstation: bara FAQ-raden \"Var finns tömningsstationen? Se campingkartan\".",
+    "source": "https://firstcamp.se/destinationer/ekudden-mariestad/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-76632860",
+    "existingName": "Ekuddens Camping",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-76632860",
+      "curated-328-ekuddens-camping,-mariestad"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten",
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Latrin (lös tank) tydligt belagd i servicehuslistan. Fast-tank-tömning och vattenpost nämns inte explicit i returnerad text – FAQ-raden om campingkartan är generell First Camp-boilerplate och räknas inte som belägg. Husbilsplatserna ligger inne på campingen (ingen separat ställplats utanför bommen nämnd)."
+  },
+  {
+    "name": "First Camp Nickstabadet – Nynäshamn",
+    "slug": "nickstabadet-nynashamn",
+    "city": "Nynäshamn",
+    "address": null,
+    "lat": 58.9069767,
+    "lon": 17.9369073,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": "60 kr/dag från kl 12 för genomresande (First Camps generella regel, upprepad i träffen)",
+    "location_note": "Latrintömning i samma byggnad som vandrarhem och reception, samt bakom servicehus 2; gråvattenavlopp i servicehus 1",
+    "stallplats": null,
+    "openingNote": "året runt",
+    "evidence": "Campingsidan (sökresultatets sammanfattning): \"Servicehus 1 har toaletter, duschar, skötrum, kök och gråvattenavlopp\"; \"Servicehus 2 har toaletter, duschar, familjebadrum, skötrum, kök, tvättmaskin, hunddusch och latrintömning för lös tank\"; \"Latrintömning finns i samma byggnad som vandrarhem och reception, samt bakom servicehus 2\"; \"husbilsplatser i alla storlekar – små, mellan och stora, nära stranden\"; \"öppet året runt\".",
+    "source": "https://firstcamp.se/destinationer/nickstabadet-nynashamn/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-823976379",
+    "existingName": "Nickstabadets Camping",
+    "existingServices": [
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-823976379",
+      "curated-387-nickstabadets-camping",
+      "curated-980-first-camp-nickstabadet,-nynäshamn"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "vatten"
+    ],
+    "nearbyWithin1km": [
+      "curated-981-centralgatan-93,-nynäshamn (Nynäshamn – Centralgatan 93: stallplats)"
+    ],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Latrin (lös tank) tydligt belagd. Gråvatten = \"gråvattenavlopp\" i servicehus 1 (avlopp för gråvattendunk, troligen INTE tömningsränna för fast tank) – sätt gravatten med viss reservation. Färskvatten inte destinationsspecifikt nämnt."
+  },
+  {
+    "name": "First Camp City – Strömstad",
+    "slug": "city-stromstad",
+    "city": "Strömstad",
+    "address": null,
+    "lat": 58.9297258,
+    "lon": 11.1793606,
+    "latrin": true,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "servicehus 4",
+    "stallplats": null,
+    "openingNote": null,
+    "evidence": "\"Latrintömning för husbilar finns vid servicehus 4.\" / \"Tömningsstationen: se campingkartan.\" / \"Tillgång till servicehus ingår alltid och på platser med el ingår ström i priset.\" / \"I alla tre servicehusen finns duschar, toaletter och diskrum.\"",
+    "source": "https://firstcamp.se/destinationer/city-stromstad/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-relation-10609991",
+    "existingName": "Strömstads Camping",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-relation-10609991",
+      "curated-1052-strömstad-camping,-strömstad",
+      "curated-1055-lökholmens-camping,-strömstad"
+    ],
+    "clusterConfirmedServices": [],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [
+      "latrin"
+    ],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [
+      "curated-98-uddevallavägen-50,-strömstad (First Camp City Strömstad latrintömning: latrin,vatten)"
+    ],
+    "status": "FINNS UTAN TÖMNING",
+    "notes": "Latrin belagd ordagrant. Fast tank/gråvatten och vattenpost nämns inte i returnerad text (två sökningar). Sidan säger '3 servicehus' men latrintömning 'vid servicehus 4' – troligen numrering, inte fel. Kuperat bergsområde – ingen separat ställplats nämnd."
+  },
+  {
+    "name": "First Camp Duse Udde – Säffle",
+    "slug": "duse-udde-saffle",
+    "city": "Säffle",
+    "address": null,
+    "lat": 59.081771,
+    "lon": 12.8858833,
+    "latrin": true,
+    "gravatten": null,
+    "vatten": true,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "latrin vid återvinningsstationen, servicehus 1 och lilla röda huset; vattenslang för husbilar vid servicehus 1 (året runt)",
+    "stallplats": true,
+    "openingNote": "vattenslang vid servicehus 1 året runt",
+    "evidence": "Sökverktygets återgivning: \"Latrine emptying facilities are located at the recycling station, as well as at service house 1 and the small red building.\" / \"Service house 1 includes a water hose for motorhomes available year-round. Additionally, on the electric pitches 402-409, 412-483, and 500-535, you have the option to connect water and greywater drainage directly to your caravan.\" / \"several designated motorhome pitches on gravel surfaces with the best lake views on the campsite, located at the top of a hill\" / \"three service houses on the campsite\".",
+    "source": "https://firstcamp.se/destinationer/duse-udde-saffle/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-1006196367",
+    "existingName": "Duse Udde Camping",
+    "existingServices": [
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-1006196367",
+      "osm-node-431825651",
+      "curated-288-duse-udde-camping"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Latrin + färskvatten (vattenslang för husbil) tydligt belagda. Tömning av FAST tank nämns inte uttryckligen – 'latrintömning vid återvinningsstationen' kan vara en utomhusstation men det är en gissning; gråvattenavlopp finns bara som tomtanslutning på vissa elplatser. Lämnad null."
+  },
+  {
+    "name": "First Camp City – Stockholm",
+    "slug": "city-stockholm",
+    "city": "Stockholm",
+    "address": null,
+    "lat": 59.2482835,
+    "lon": 18.16076,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": true,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "Ställplats Stockholm vid Flatens naturreservat och sjön Flaten; självincheckning dygnet runt",
+    "stallplats": true,
+    "openingNote": "året runt",
+    "evidence": "Ställplatssidan (sökresultatets sammanfattning): \"dumpstation för fast tank, för både grå- och svartvatten, samt möjlighet att tömma kassettoalett\"; färskvattenpåfyllning ingår i ställplatsens faciliteter; \"miljöstation finns på området\"; \"husbilsplatser med grusunderlag och gräs på sidorna, för husbilar upp till 16 meter\"; \"Ställplats Stockholm har öppet året runt\"; \"checka in med självservice dygnet runt\".",
+    "source": "https://firstcamp.se/destinationer/city-stockholm/stallplatsstockholm",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-relation-5185724",
+    "existingName": "City – Stockholm",
+    "existingServices": [
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-relation-5185724",
+      "osm-relation-5185723",
+      "curated-400-first-camp-city-stockholm"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Destinationsspecifik ställplatssida med alla tre tjänsterna. Om genomresande får tömma (utan att stå över natten) framgår inte av träffen."
+  },
+  {
+    "name": "First Camp Gustavsvik – Örebro",
+    "slug": "gustavsvik-orebro",
+    "city": "Örebro",
+    "address": null,
+    "lat": 59.2573247,
+    "lon": 15.1914992,
+    "latrin": null,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": null,
+    "stallplats": null,
+    "openingNote": null,
+    "evidence": "Ingen sida under firstcamp.se för Gustavsvik hittades. Ånnaboda-sidan skriver: \"Örebro ligger bara två mil bort med shopping, nöjen, Megafun och äventyrsbadet Gustavsvik\" – Gustavsvik omnämns alltså bara som utflyktsmål, inte som First Camp-destination.",
+    "source": "https://firstcamp.se/destinationer/annaboda-orebro",
+    "confidence": null,
+    "checked": true,
+    "existingId": "osm-way-365339926",
+    "existingName": "Gustavsvik",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-365339926",
+      "curated-273-gustavsvik"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "EJ FIRST CAMP LÄNGRE (ingen sida hittad)",
+    "notes": "Gustavsvik är INTE en First Camp-destination (två sökningar, inkl. exakt frassökning \"First Camp Gustavsvik\", gav bara Ånnaboda-träffar). Gustavsvik camping i Örebro drivs av annan operatör – ska inte läggas in som First Camp."
+  },
+  {
+    "name": "First Camp Herrgårdsliv – Kristinehamn",
+    "slug": "herrgardsliv-kristinehamn",
+    "city": "Kristinehamn",
+    "address": null,
+    "lat": 59.3067609,
+    "lon": 14.066275,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": null,
+    "onlyGuests": false,
+    "fee": "60 kr/dag från kl 12 för genomresande",
+    "location_note": "lös tank i alla servicehus; fast tank vid Norra och Östra servicehuset",
+    "stallplats": true,
+    "openingNote": null,
+    "evidence": "\"Tömningsstation för lös tank finns i alla servicehusen. Tömning av fasta tankar vid både Norra och Östra servicehuset.\" / \"Norra servicehuset har latrintömning lös och fast tank\" / \"Östra servicehuset har latrintömning lös & fast tank\" / \"Södra servicehuset har latrintömning lös tank\" / \"När du står på ställplatsen har du tillgång till alla faciliteter i våra servicehus.\" / \"du kan tömma och fylla på dina tankar i husbilen för endast 60 kr, varje dag från kl. 12 ... om du bor hos oss är det helt gratis.\"",
+    "source": "https://firstcamp.se/destinationer/herrgardsliv-kristinehamn/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-363449504",
+    "existingName": "Kristinehamn Herrgårdscamping & Stugor",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-363449504"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Latrin + fast tank ordagrant belagda med plats. Färskvatten: bara den generella 'fylla på dina tankar'-texten – ingen uttrycklig vattenpost-rad, därför null. Egen ställplats belagd ('När du står på ställplatsen...')."
+  },
+  {
+    "name": "First Camp Mörudden – Hammarö",
+    "slug": "morudden-hammaro",
+    "city": "Hammarö",
+    "address": null,
+    "lat": 59.3132525,
+    "lon": 13.4989842,
+    "latrin": true,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": false,
+    "fee": "60 kr/dag från kl 12 för genomresande (First Camp-text visad på destinationssidan)",
+    "location_note": "vid servicehuset/sopstationen",
+    "stallplats": null,
+    "openingNote": "året runt",
+    "evidence": "Sökverktygets återgivning: \"The toilet emptying station is located by the service house/waste station.\" / \"The camping has 2 service houses on the site.\" / \"If you stay with them, it is completely free! If you're passing by or between destinations, you can empty and refill your motorhome tanks for only 60 SEK, daily from 12 noon.\" / \"First Camp Mörudden – Hammarö is open year-round.\"",
+    "source": "https://firstcamp.se/destinationer/morudden-hammaro/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-1319802648",
+    "existingName": "First Camp Mörudden",
+    "existingServices": [
+      "vatten",
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-1319802648",
+      "osm-node-12253494806",
+      "curated-867-first-camp-mörudden"
+    ],
+    "clusterConfirmedServices": [
+      "vatten",
+      "gravatten",
+      "latrin"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "vatten",
+      "gravatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Latrintömningsstation belagd med plats (servicehus/sopstation). Fast tank och vattenpost nämns inte – 'water access' i andra svaret var sökverktygets slutsats, inte citat. First Camp Easy-destination (enklare standard)."
+  },
+  {
+    "name": "First Camp Ånnaboda – Örebro",
+    "slug": "annaboda-orebro",
+    "city": "Örebro",
+    "address": null,
+    "lat": 59.3404306,
+    "lon": 14.9392284,
+    "latrin": true,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "servicehus 1 bredvid bommen, samt servicehus 3 och 4",
+    "stallplats": null,
+    "openingNote": "året runt (\"year-round\" enligt engelska sidan)",
+    "evidence": "\"Latrintömning finns vid servicehus 1 bredvid bommen, samt vid servicehus 3 och 4 på campingen.\" / \"Servicehus 3 har kök och disk, 4 toaletter och 4 duschar (2 dam och 2 herr) hunddusch och latrin. Servicehus 4 har 12 toaletter och 6 duschar (...), kök, disk, tvättstuga och latrin.\" / \"Alla campingplatser är utrustade med eluttag och det finns plats för husvagn, husbil och tält.\"",
+    "source": "https://firstcamp.se/destinationer/annaboda-orebro/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-relation-15330391",
+    "existingName": "Ånnaboda Camping",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-relation-15330391",
+      "osm-node-14116257207",
+      "curated-401-ånnaboda-camping"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Latrin (kassett) belagd med citat. Gråvatten/fast tank och färskvatten nämns INTE destinationsspecifikt – bara First Camps generella husbilstext. Ingen särskild ställplats-sida hittad."
+  },
+  {
+    "name": "First Camp Sommarvik – Årjäng",
+    "slug": "sommarvik-arjang",
+    "city": "Årjäng",
+    "address": null,
+    "lat": 59.3678286,
+    "lon": 12.1396401,
+    "latrin": true,
+    "gravatten": null,
+    "vatten": true,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "servicehus 1 (Centrum) och servicehus 6 (Barbros hus)",
+    "stallplats": null,
+    "openingNote": "året runt",
+    "evidence": "Sökverktygets återgivning av servicehuslistan: \"Servicehus 6 - Barbros hus includes WC, shower, RWC family room, changing table, latrine emptying for loose tank, and water post.\" / \"Servicehus 1 - Centrum includes WC, shower, RWC, family room, changing table, kitchen, washing machine, dishwasher, latrine emptying for loose tank, and water post.\" / \"approximately 300 camping pitches\" / \"six service buildings on site\" / \"First Camp Sommarvik – Årjäng is open year-round.\"",
+    "source": "https://firstcamp.se/destinationer/sommarvik-arjang/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-325696930",
+    "existingName": "Årjäng SweCamp Resort Sommarvik",
+    "existingServices": [
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-325696930",
+      "osm-node-11958290961",
+      "curated-287-årjäng-swecamp-resort-sommarvik"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Latrin (lös tank) + vattenpost belagda i minst två servicehus. Fast-tank-tömning nämns inte i returnerad text (bara 'se campingkartan'-boilerplate). Varmvatten via påfyllbart nyckelkort. Ingen separat ställplats nämnd."
+  },
+  {
+    "name": "First Camp Skutberget – Karlstad",
+    "slug": "skutberget-karlstad",
+    "city": "Karlstad",
+    "address": null,
+    "lat": 59.3741669,
+    "lon": 13.3874037,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": true,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "latrin i servicehus 1 och i separat byggnad vid 400-området; fast tank bakom servicehus 1",
+    "stallplats": true,
+    "openingNote": "året runt; vattnet avstängt på alla campingtomter under vintersäsongen",
+    "evidence": "\"Latrintömning finns i servicehus 1 samt i separat byggnad vid 400-området, och för fasta husbilstankar finns en station bakom servicehus 1.\" / \"Vattnet är avstängt på alla campingtomter under vintersäsongen.\" / \"På Skutberget – Karlstad finner du flera nyanlagda husbilsplatser där du glider bekvämt in på en asfalterad plats med stenlagd yta intill samt tillhörande grill(!), och självklart finns det el på platserna.\" / \"2 stycken servicehus på campingen samt latrintömning och sopstation\" / \"öppen året om\".",
+    "source": "https://firstcamp.se/destinationer/skutberget-karlstad/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-298812703",
+    "existingName": "First Camp Skutberget-Karlstad",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-298812703",
+      "curated-286-first-camp-skutberget,-karlstad"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Vatten belagt indirekt men tydligt (vatten på campingtomterna, avstängt vintertid) – ingen uttrycklig 'vattenpost'-rad. Nyanlagda husbilsplatser inne på campingen."
+  },
+  {
+    "name": "First Camp Nora – Bergslagen",
+    "slug": "nora-bergslagen",
+    "city": "Nora",
+    "address": null,
+    "lat": 59.5268,
+    "lon": 15.0440004,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": true,
+    "onlyGuests": null,
+    "fee": "Ställplats 260 kr/natt inkl. el, servicehus, toatömning och lufttryck",
+    "location_note": "Ställplatsen ligger vid Skojarbacken, ett stenkast från Norasjön och trästaden Nora",
+    "stallplats": true,
+    "openingNote": "Incheckning från kl 13 (öppet dygnet runt), utcheckning senast kl 12",
+    "evidence": "Sökresultatets sammanfattning av ställplatssidan (översatt, ej ordagrant): servicehuset har toaletter (en handikappanpassad) och \"en kran för påfyllning av färskvatten\"; \"toatömning för både fast och lös tank finns, samt lufttryck för pumpning av däck\". Pris: \"260 kr per natt, inkl. ställplats, el, tillgång till servicehus, toatömning och lufttryck\".",
+    "source": "https://firstcamp.se/destinationer/nora-bergslagen/stallplats",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-196823753",
+    "existingName": "Nordic camping Nora",
+    "existingServices": [
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-196823753"
+    ],
+    "clusterConfirmedServices": [],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [
+      "latrin",
+      "gravatten",
+      "vatten"
+    ],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [
+      "osm-node-6769450139 (Gustavsbergs naturistcamping: camping)"
+    ],
+    "status": "FINNS UTAN TÖMNING",
+    "notes": "Destinationsspecifik ställplatssida (URL:en är /stallplats, inte /stallplats-nora). Tömning av fast tank = svartvatten/dumpstation; gråvatten inte ordagrant nämnt men fast-tank-tömning finns. Formuleringarna kom via sökmotorns sammanfattning, inte som ordagrant citat."
+  },
+  {
+    "name": "First Camp Västerås – Mälaren",
+    "slug": "vasteras-malaren",
+    "city": "Västerås",
+    "address": null,
+    "lat": 59.5755937,
+    "lon": 16.5230056,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "egen byggnad intill miljöstationerna; lös tank inomhus, fast tank strax utanför",
+    "stallplats": null,
+    "openingNote": "året runt",
+    "evidence": "\"Tömningsstation ligger i egen byggnad intill miljöstationerna, med tömning för lös tank inomhus och fast tank strax utanför.\" / \"First Camp Västerås-Mälaren har öppet året runt och erbjuder rymliga campingplatser för husvagn, husbil och tält.\" / \"2 st servicehus på campingen, incheckning kl 13.00.\"",
+    "source": "https://firstcamp.se/destinationer/vasteras-malaren/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-247078005",
+    "existingName": "Västerås mälarcamping",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-way-247078005"
+    ],
+    "clusterConfirmedServices": [],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [
+      "latrin",
+      "gravatten"
+    ],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS UTAN TÖMNING",
+    "notes": "Färskvatten nämns bara i First Camps generella text, inte på Västerås-sidan (två sökningar). Ingen separat ställplats-sida hittad."
+  },
+  {
+    "name": "First Camp Bredsand – Enköping",
+    "slug": "bredsand-enkoping",
+    "city": "Enköping",
+    "address": null,
+    "lat": 59.5926432,
+    "lon": 17.0705987,
+    "latrin": null,
+    "gravatten": null,
+    "vatten": true,
+    "onlyGuests": true,
+    "fee": null,
+    "location_note": "vatten på campingtomter med \"el och vatten\"",
+    "stallplats": null,
+    "openingNote": null,
+    "evidence": "\"Kommer du med husbil kan du välja att bo på campingtomter med el, el och vatten, eller utan el. Tomterna finns i olika storlekar med både grus- och gräsunderlag.\" / \"Campingområdet är miljöcertifierat och utrustat med toaletter, duschar, skötrum, tvättmaskiner, ugn, mikrovågsugn och diskmöjligheter.\" / \"6–7 km till centrala Enköping\".",
+    "source": "https://firstcamp.se/destination/bredsand-enkoping/campingtomt/",
+    "confidence": "medium",
+    "checked": true,
+    "existingId": "osm-relation-9644309",
+    "existingName": "Bredsands Camping",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-relation-9644309",
+      "osm-node-6515230614"
+    ],
+    "clusterConfirmedServices": [
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED VATTEN (tömning ej belagd)",
+    "notes": "FORTFARANDE FIRST CAMP: sidor under firstcamp.se/destinationer/bredsand-enkoping/rum, en.firstcamp.se/destinations/bredsand-enkoping/shopping och stugsidan \"Sommartorp | Bredsand – Enköping | First Camp\" finns 2026. Ingen destinationsspecifik text om latrin-/gråvattentömning hittad (bara generell husbilstext). Vatten = tomter med vattenanslutning (endast boende), inte belagd separat påfyllningsplats. Träffarna var mest gamla /destination/-URL:er; den nya /destinationer/bredsand-enkoping/camping-sidan indexerades inte."
+  },
+  {
+    "name": "First Camp Haganäset – Charlottenberg",
+    "slug": "haganaset-charlottenberg",
+    "city": "Charlottenberg",
+    "address": null,
+    "lat": 59.8196161,
+    "lon": 12.3329674,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": true,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "lös tank i båda servicehusen; fast tank vid ställplatsen; ställplatsen ligger vid infarten till området",
+    "stallplats": true,
+    "openingNote": null,
+    "evidence": "Sökverktygets återgivning: \"Dump stations for loose tanks are located in both service buildings, and emptying of fixed tanks is available at the parking area [ställplatsen].\" / \"Water posts with drinking water are distributed throughout the camping area. However, the drinking water has a high fluoride content ... should not be given in larger amounts to children younger than half a year old.\" / \"The motorhome parking area is perfect for those who won't be staying long, as the spaces are located right at the entrance to the area, and you have access to facilities in the service buildings. The maximum length is 10 meters for motorhomes, electricity is included, and the ground surface is gravel.\" / \"two service buildings, one on the western side and one on the eastern side of the camping, both opened with key cards received at check-in\".",
+    "source": "https://firstcamp.se/destinationer/haganaset-charlottenberg/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-relation-11134834",
+    "existingName": "Haganäset - Charlottenberg Camping & Stugor",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-relation-11134834"
+    ],
+    "clusterConfirmedServices": [],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [
+      "latrin",
+      "gravatten",
+      "vatten"
+    ],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS UTAN TÖMNING",
+    "notes": "Alla tre tjänsterna belagda. Ställplats vid infarten avsedd för korta stopp (max 10 m, el ingår, grus). Servicehusen kräver nyckelkort från incheckning – dvs. tömning i servicehus bara för incheckade gäster; fast-tank-tömningen ligger däremot vid ställplatsen."
+  },
+  {
+    "name": "First Camp Mellsta – Borlänge",
+    "slug": "mellsta-borlange",
+    "city": "Borlänge",
+    "address": null,
+    "lat": 60.5125612,
+    "lon": 15.382848,
+    "latrin": true,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "latrintömning i servicehus 1 och 2",
+    "stallplats": null,
+    "openingNote": "Obemannat koncept – digital incheckning via mobil eller självbetjäningsautomat på plats",
+    "evidence": "\"Latrintömning finns i servicehus 1 och 2.\" / \"125 campingtomter för husvagn, husbil och tält\" / \"servicehus utrustade med toaletter, duschar, tvättstuga, tvättmaskin, torktumlare, ugn och mikrovågsugn\" / \"2 st servicehus på campingen\" / Incheckningssidan: \"Information om tömningsstationen\" listas tillsammans med digital incheckning och wifi-lösenord.",
+    "source": "https://firstcamp.se/destinationer/mellsta-borlange/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-47078082",
+    "existingName": "Mellstaparken Camping",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-47078082"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten",
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Latrin belagd. En \"tömningsstation\" omnämns på incheckningssidan (firstcamp.se/destinationer/mellsta-borlange/incheckning) men utan detaljer om fast tank/gråvatten – gravatten lämnad null. Färskvatten: första träffen sa \"you can refill fresh water\" men verkade komma från First Camps generella text, andra sökningen bekräftade det inte → null. Beskrivs som \"fungerar som en stor ställplats\" men ingen separat ställplats-sida."
+  },
+  {
+    "name": "First Camp Lugnet – Falun",
+    "slug": "lugnet-falun",
+    "city": "Falun",
+    "address": null,
+    "lat": 60.6205856,
+    "lon": 15.6515812,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": "60 kr/dag från kl 12 för genomresande (First Camps generella regel, upprepad i träffen)",
+    "location_note": "latrin (kassett) i servicehus 3; gråvatten på anvisad plats",
+    "stallplats": null,
+    "openingNote": "Gråvattentömning endast öppen april–september",
+    "evidence": "\"Latrintömning för kassetter i servicehus 3.\" / \"Gråvattentömning hänvisas till anvisad plats. Endast öppen april-september.\" / \"3 st servicehus på campingen och incheckning sker kl. 12.00 för dig som bor på campingområdet.\"",
+    "source": "https://firstcamp.se/destinationer/lugnet-falun/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-92436534",
+    "existingName": "First Camp Lugnet Falun",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-92436534",
+      "osm-way-534916523",
+      "curated-332-first-camp-lugnet-stugby"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Latrin + gråvatten ordagrant belagda. OBS säsongsbegränsning på gråvatten (apr–sep). Färskvatten inte destinationsspecifikt nämnt."
+  },
+  {
+    "name": "First Camp Siljansbadet – Rättvik",
+    "slug": "siljansbadet-rattvik",
+    "city": "Rättvik",
+    "address": "Långbryggevägen 4, 795 32 Rättvik",
+    "lat": 60.8879016,
+    "lon": 15.1084038,
+    "latrin": true,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "tömningsstation för latrin i samtliga servicehus; ställplatserna ligger avskilt nära badstranden vid Siljan, 1 km från centrala Rättvik",
+    "stallplats": true,
+    "openingNote": "Ställplats: el + tillgång till servicehus under sommarsäsongen – servicehusen är stängda vintertid",
+    "evidence": "\"Tömningsstation för latrin finns i samtliga servicehus.\" / Ställplatssidan: \"platserna är 12 x 7 meter\", \"i platserna ingår el och tillgång till servicehus under sommarsäsongen. Observera att servicehusen är stängda vintertid.\" / Adress \"Långbryggevägen 4, 795 32 Rättvik\".",
+    "source": "https://firstcamp.se/destinationer/siljansbadet-rattvik/stallplats",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-206306978",
+    "existingName": "Siljanbadets Camping",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-206306978",
+      "curated-938-first-camp-siljansbadet,-rättvik"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten",
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Latrin belagd. Gråvatten/fast tank och färskvatten nämns bara i First Camps generella ställplatstext (\"erbjuder ofta el, färskvatten och tömning\"), inte destinationsspecifikt – två sökningar gav samma resultat. Vintertid: ingen service."
+  },
+  {
+    "name": "First Camp Enåbadet – Rättvik",
+    "slug": "enabadet-rattvik",
+    "city": "Rättvik",
+    "address": null,
+    "lat": 60.8910064,
+    "lon": 15.1330804,
+    "latrin": true,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "latrintömning i samtliga servicehus",
+    "stallplats": null,
+    "openingNote": "året runt",
+    "evidence": "\"Latrintömning finns i samtliga servicehus.\" / \"På Enåbadet – Rättvik finns över 300 campingtomter med el, samt ett antal utan el.\" / \"First Camp Enåbadet – Rättvik har öppet året runt.\"",
+    "source": "https://firstcamp.se/destinationer/enabadet-rattvik",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-206319156",
+    "existingName": "Enåbadets Camping",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-206319156",
+      "osm-way-1498120916",
+      "curated-531-massarbäcksgårdens-ställplatser",
+      "curated-935-rättviksgården,-rättvik"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten",
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Bara latrin destinationsspecifikt belagd. Gråvatten/färskvatten: endast generell First Camp-text och trivselreglerna (\"svart- och gråvatten ska tömmas vid anvisade tömningsstationer\") – inget om just Enåbadet. Ligger vid Enån; systercamping till Siljansbadet."
+  },
+  {
+    "name": "First Camp Moraparken – Dalarna",
+    "slug": "moraparken-dalarna",
+    "city": "Mora",
+    "address": null,
+    "lat": 61.0093594,
+    "lon": 14.5317929,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": true,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "intill ställplatserna (10 st, 12 x 7 m); latrintömning i samtliga servicehus",
+    "stallplats": true,
+    "openingNote": "året om (restaurang/butik säsongsvarierande öppettider)",
+    "evidence": "\"Intill platserna finns möjlighet för tömning av latrin och gråvatten samt påfyllning av färskvatten.\" / \"Tömningsstation för latrin finns i samtliga servicehus.\" / \"På ställplatserna ingår el, tillgång till servicehus och övriga faciliteter på campingen. Det finns totalt 10 ställplatser och storleken på platserna är 12 x 7 meter.\" / \"First Camp Moraparken – Dalarna har öppet året om.\"",
+    "source": "https://firstcamp.se/destinationer/moraparken-dalarna/stallplats",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-relation-11918991",
+    "existingName": "First Camp Moraparken",
+    "existingServices": [
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-relation-11918991",
+      "curated-275-first-camp-moraparken"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [
+      "osm-node-5909209386 (Ställplats för husbil, Morastrand: stallplats)",
+      "curated-929-13-tingsnäsvägen,-mora (Mora – 13 Tingsnäsvägen: stallplats)"
+    ],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Alla tre tjänsterna ordagrant belagda på destinationens egen ställplatssida."
+  },
+  {
+    "name": "First Camp Orsa – Dalarna",
+    "slug": "orsa-dalarna",
+    "city": "Orsa",
+    "address": null,
+    "lat": 61.1231278,
+    "lon": 14.5907825,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": true,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "latrin vid servicehus 2, 3, 5, 6 och 7; tömningsstation för fast tank bakom receptionen; husbilsplatser på asfalt bakom bowlinghallen",
+    "stallplats": true,
+    "openingNote": "året runt",
+    "evidence": "\"Intill platserna finns möjlighet för tömning av latrin och gråvatten samt påfyllning av färskvatten.\" / \"Latrintömning finns vid servicehus 2, 3, 5, 6 och 7 på campingen. Det finns även en tömningsstation för dig med fast toalettank bakom receptionen.\" / Husbilsplatser: \"maxlängd 10 meter\", \"asfaltsunderlag, bakom bowlinghallen\", \"tillgång till servicehus med dusch och toalett ingår\".",
+    "source": "https://firstcamp.se/destinationer/orsa-dalarna/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-36902843",
+    "existingName": "Orsa Camping",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-way-36902843",
+      "curated-57-bowlingvägen-1,-orsa"
+    ],
+    "clusterConfirmedServices": [
+      "latrin",
+      "gravatten",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Särskilda husbilsplatser inne på campingen (inte ställplats utanför bommen). Alla tre tjänsterna belagda."
+  },
+  {
+    "name": "First Camp Malnbaden – Hudiksvall",
+    "slug": "malnbaden-hudiksvall",
+    "city": "Hudiksvall",
+    "address": null,
+    "lat": 61.7188956,
+    "lon": 17.1787614,
+    "latrin": null,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": null,
+    "stallplats": null,
+    "openingNote": null,
+    "evidence": "",
+    "source": null,
+    "confidence": null,
+    "checked": true,
+    "existingId": "osm-node-333781943",
+    "existingName": "Malnbadens Camping & Vandrarhem",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-node-333781943",
+      "osm-way-136578863",
+      "curated-302-first-camp-malnbaden,-hudiksvall"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "EJ FIRST CAMP LÄNGRE (ingen sida hittad)",
+    "notes": "Tre sökningar (varav en med citattecken kring 'Malnbaden') mot firstcamp.se/en.firstcamp.se gav INGEN destinationssida alls – inte ens en träff på ordet Malnbaden. Alla andra norrlandsdestinationer i listan dök upp som firstcamp.se/destinationer/<slug>. Misstanke: Malnbaden är inte (längre) en First Camp-destination, eller heter något annat på firstcamp.se. Verifiera i webbläsare (firstcamp.se/destinationer) innan den läggs in som First Camp."
+  },
+  {
+    "name": "First Camp Fläsian – Sundsvall",
+    "slug": "flasian-sundsvall",
+    "city": "Sundsvall",
+    "address": null,
+    "lat": 62.3592252,
+    "lon": 17.3713938,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "Latrin: tre platser på vänster sida efter vägen ner på campingen från infarten. Tömningsränna för fast tank: nere vid havet (brant backe – kan vara otillgänglig vintertid utan fyrhjulsdrift).",
+    "stallplats": null,
+    "openingNote": null,
+    "evidence": "\"Tömningsstationer för latrin finns vid tre platser på vänster sida efter vägen ner på campingen från infarten.\" / \"Ränna för tömning av grå- och svartvatten från fast tank finns nere vid havet\" – \"den under vinterhalvåret på grund av väglag kan vara otillgänglig för fordon utan fyrhjulsdrift pga den branta backen\". Läge: \"5 km söder om Sundsvall\".",
+    "source": "https://firstcamp.se/destinationer/flasian-sundsvall/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-297511988",
+    "existingName": "First Camp Fläsian",
+    "existingServices": [
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-297511988",
+      "curated-413-first-camp-fläsian"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Färskvatten nämns bara i First Camps generella ställplatstext (\"påfyllning av färskvatten\"), inte specifikt för Fläsian – därför null. Gatuadress syntes inte i sökresultaten."
+  },
+  {
+    "name": "First Camp Frösön – Östersund",
+    "slug": "froson-ostersund",
+    "city": "Östersund",
+    "address": null,
+    "lat": 63.1704714,
+    "lon": 14.53891,
+    "latrin": true,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "Latrintömning vid servicehus 1 och 3. Husbilsplatser med hårdgjord yta och el nära reception/servicehus.",
+    "stallplats": null,
+    "openingNote": "året runt (\"the camping is open all year around\" enligt en.firstcamp.se)",
+    "evidence": "\"Latrintömning finns vid servicehus 1 och 3 på campingen.\" / EN: \"The emptying station has latrines located in service buildings 1 and 3.\" Servicehus 1: \"toilets, accessible toilets, shower, care room, kitchen, and toilet emptying facilities\". Husbil: \"a couple of motorhome spots with hard-surfaced areas and electricity located near the reception and service houses\". First Camp Easy-koncept.",
+    "source": "https://firstcamp.se/destinationer/froson-ostersund/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-99409175",
+    "existingName": "Frösö Camping",
+    "existingServices": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-99409175"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten",
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Tre sökningar (sv + en) – ingen text om tömningsränna för fast tank eller färskvattenpåfyllning hittades. Latrin (kassett) är belagd med citat; gråvatten/vatten okänt."
+  },
+  {
+    "name": "First Camp Nydala – Umeå",
+    "slug": "nydala-umea",
+    "city": "Umeå",
+    "address": null,
+    "lat": 63.8438462,
+    "lon": 20.3445644,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": true,
+    "onlyGuests": false,
+    "fee": "60 kr/dag för genomresande, från kl 12 (generell First Camp-regel, återgiven i sökresultatet för Nydala)",
+    "location_note": "Latrintömning på tre ställen på området; tömningsstation/ränna för fast tank till höger efter receptionen. Färskvattenkranar och avlopp intill campingtomterna.",
+    "stallplats": null,
+    "openingNote": "året runt (\"open year-round\" / \"Camping all year round\")",
+    "evidence": "\"Latrine emptying stations are available at three locations on the campground. For fixed tanks, there is a dumping station to the right after reception.\" / \"A drain for grey water disposal from fixed tanks is also available on the grounds, located to the right of reception.\" / \"Fresh water taps and drains for wastewater are available adjacent to the camping sites.\" / \"If you stay with them, it's completely free. If you're just passing through or between destinations, you can empty and refill your tanks for only 60 kr, daily from 12:00.\"",
+    "source": "https://firstcamp.se/destinationer/nydala-umea/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-88212612",
+    "existingName": "First Camp Nydala - Umeå",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-way-88212612",
+      "osm-way-211751405",
+      "osm-way-1390533425",
+      "osm-way-1390533426",
+      "curated-303-first-camp-umeå,-umeå",
+      "curated-415-first-camp-nydala---umeå"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [
+      "curated-881-fritids-metropolen,-umeå (Fritids Metropolen: stallplats)"
+    ],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Nydala nämns även uttryckligen på First Camps latrintömning-sida som destination med tömningsstation. Citaten ovan är sökmotorns engelska återgivning av den svenska camping-sidan."
+  },
+  {
+    "name": "First Camp Ansia – Lycksele",
+    "slug": "ansia-lycksele",
+    "city": "Lycksele",
+    "address": null,
+    "lat": 64.5961953,
+    "lon": 18.6985208,
+    "latrin": true,
+    "gravatten": null,
+    "vatten": null,
+    "onlyGuests": false,
+    "fee": "60 kr/dag för genomresande, från kl 12 (generell First Camp-regel, återgiven i sökresultatet)",
+    "location_note": "Latrintömning vid miljöstation 1 och vid alla servicehus; vintertid endast vid servicehus 2.",
+    "stallplats": null,
+    "openingNote": "året runt-drift antyds (vinterregel för latrintömning: endast servicehus 2)",
+    "evidence": "\"Latrintömning (toilet emptying) facilities are available at environmental station 1 and at all service houses. During the winter season, toilet emptying is only available at service house 2.\" / Tomter: \"pitches with water/sewage (VA), electricity, and asphalt in various sizes\".",
+    "source": "https://firstcamp.se/destinationer/ansia-lycksele/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-node-431824496",
+    "existingName": "First Camp Ansia",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-node-431824496",
+      "curated-336-first-camp-ansia"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "gravatten",
+      "vatten"
+    ],
+    "nearbyWithin1km": [
+      "curated-888-lycksele-golfklubb,-lycksele (Lycksele Golfklubb: stallplats)"
+    ],
+    "status": "FINNS MED TÖMNING",
+    "notes": "Sökresultatet påstod även 'dumping stations' och 'fresh water filling' men det var tydligt generell First Camp-text (60 kr-regeln), inte Ansias egen – därför gravatten/vatten = null. Tomter med VA (vatten/avlopp) på platsen antyder färskvatten på tomten men är inte belägg för en påfyllningsplats för genomresande."
+  },
+  {
+    "name": "First Camp Arcus – Luleå",
+    "slug": "arcus-lulea",
+    "city": "Luleå",
+    "address": null,
+    "lat": 65.5937306,
+    "lon": 22.0709823,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": null,
+    "onlyGuests": null,
+    "fee": null,
+    "location_note": "Latrin (lös tank) i alla servicehus. Fast tank: ENDAST gråvatten kan tömmas på området (ej svartvatten från fast tank); tömning av fast tank gäller inte vintertid.",
+    "stallplats": null,
+    "openingNote": "året runt (\"open year-round\"; fast-tank-tömning ej vintertid)",
+    "evidence": "\"Toilet tank emptying (latrin) for removable tanks is available in all service buildings. However, for fixed tanks, there is only the possibility to empty greywater on the grounds. Note that emptying of fixed tanks is not available during winter.\" / \"Arcus - Luleå offers nice motorhome pitches with parking on both paved surfaces and grass.\"",
+    "source": "https://firstcamp.se/destinationer/arcus-lulea/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-253061846",
+    "existingName": "First Camp Luleå",
+    "existingServices": [
+      "camping",
+      "stallplats"
+    ],
+    "clusterIds": [
+      "osm-way-253061846",
+      "curated-419-first-camp-luleå"
+    ],
+    "clusterConfirmedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [],
+    "seedClaimsBeyondSource": [
+      "vatten"
+    ],
+    "nearbyWithin1km": [],
+    "status": "FINNS MED TÖMNING",
+    "notes": "OBS: uttryckligen INGEN svartvattentömning för fast tank – bara gråvatten. Lägg gärna in det i description. Färskvatten nämndes inte specifikt för Arcus (två sökningar)."
+  },
+  {
+    "name": "First Camp Björknäs – Boden",
+    "slug": "bjorknas-boden",
+    "city": "Boden",
+    "address": null,
+    "lat": 65.8301328,
+    "lon": 21.6701517,
+    "latrin": true,
+    "gravatten": true,
+    "vatten": true,
+    "onlyGuests": false,
+    "fee": "60 kr/dag för genomresande, från kl 12 (generell First Camp-regel, återgiven i sökresultatet för Björknäs)",
+    "location_note": "Latrintömning i eller vid samtliga servicehus + fem ytterligare ställen på området.",
+    "stallplats": true,
+    "openingNote": "året runt",
+    "evidence": "\"Tömningsstation för latrin finns i eller vid samtliga servicehus, och det finns även fem ytterligare ställen för latrintömning på området.\" / \"Du kan fylla färskvatten och tömma gråvatten och svartvatten på campingen.\" / \"På First Camp Björknäs i Boden finns ställplatser med el, perfekta för dig som reser genom Norrland med husbil.\" / \"First Camp Björknäs – Boden har öppet året runt.\"",
+    "source": "https://firstcamp.se/destinationer/bjorknas-boden/camping",
+    "confidence": "high",
+    "checked": true,
+    "existingId": "osm-way-556861308",
+    "existingName": "Bodens camping",
+    "existingServices": [
+      "camping"
+    ],
+    "clusterIds": [
+      "osm-way-556861308"
+    ],
+    "clusterConfirmedServices": [],
+    "clusterUnverifiedServices": [],
+    "missingInSeed": [
+      "latrin",
+      "gravatten",
+      "vatten"
+    ],
+    "seedClaimsBeyondSource": [],
+    "nearbyWithin1km": [],
+    "status": "FINNS UTAN TÖMNING",
+    "notes": "Meningen om färskvatten/gråvatten/svartvatten kan vara sökmotorns sammanfattning av First Camps generella husbilstext snarare än Björknäs egen sida – latrincitatet (fem ytterligare ställen) är dock otvetydigt platsspecifikt. Om ni vill vara strikta: latrin=high, gravatten/vatten=medium."
+  }
+]
