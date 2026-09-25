@@ -810,6 +810,17 @@ out center tags;
 `
 const KOMMUNER = new URL('./kommuner.json', import.meta.url)
 
+/**
+ * OSM namnger kommunerna i genitiv ("Arjeplogs kommun", "Göteborgs Stad").
+ * Ta bort "kommun"/"Stad" och genitiv-s, men behåll s:et där det hör till
+ * namnet (Borås, Bollnäs, Kramfors, Grums …).
+ */
+function normalizeKommunName(raw) {
+  let n = String(raw).replace(/\s+(kommun|stad)$/i, '').trim()
+  if (/s$/.test(n) && !/(ås|äs|fors)$/i.test(n) && n !== 'Grums') n = n.slice(0, -1)
+  return n
+}
+
 /** Punkt-i-polygon (ray casting), ring = [[lon, lat], …]. */
 function pointInRing(lon, lat, ring) {
   let inside = false
@@ -842,7 +853,7 @@ function pointInKommun(lon, lat, k) {
 async function assignMunicipalities(stations) {
   try {
     const data = JSON.parse(await readFile(KOMMUNER, 'utf8'))
-    const kommuner = data.kommuner ?? data
+    const kommuner = (data.kommuner ?? data).map((k) => ({ ...k, name: normalizeKommunName(k.name) }))
     const withPoly = kommuner.filter((k) => k.polygons)
     if (withPoly.length < 250) throw new Error(`bara ${withPoly.length} kommuner med polygon i kommuner.json`)
     let inside = 0, nearest = 0
@@ -875,7 +886,7 @@ async function assignMunicipalities(stations) {
       const json = await res.json()
       const m = (json.elements ?? [])
         .filter((e) => e.center && e.tags?.name)
-        .map((e) => ({ name: e.tags.name.replace(/ kommun$/i, '').trim(), lat: e.center.lat, lon: e.center.lon }))
+        .map((e) => ({ name: normalizeKommunName(e.tags.name), lat: e.center.lat, lon: e.center.lon }))
       if (m.length < 250) throw new Error(`bara ${m.length} kommuner i svaret`)
       for (const s of stations) {
         let best = null, bestKm = Infinity
