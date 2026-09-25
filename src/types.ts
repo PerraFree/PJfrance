@@ -60,6 +60,8 @@ export interface Station {
    * oberoende källor, 'low' = bara forum/aggregator/extern guide.
    */
   confidence?: 'high' | 'medium' | 'low'
+  /** Kommun (närmaste kommuncentrum enligt OSM, sätts av synken) – används för SEO-sidorna. */
+  kommun?: string
 }
 
 /** Allt appen kan visa "finns här" – nycklar matchar det synkskriptet plockar ur OSM. */

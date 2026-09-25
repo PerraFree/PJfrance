@@ -14,3 +14,7 @@ android/app/build
 android/capacitor-cordova-android-plugins
 ios/App/App/public
 ios/App/Pods
+
+# Genereras i CI av scripts/build-seo-pages.mjs
+public/kommun/
+public/sitemap.xml

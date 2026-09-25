@@ -790,6 +790,59 @@ async function nameGenericStations(stations) {
   )
 }
 
+// ---------- Kommun per plats (för SEO-sidorna, scripts/build-seo-pages.mjs) ----------
+
+const MUNICIPALITY_QUERY = `
+[out:json][timeout:180];
+area["ISO3166-1"="SE"][admin_level=2]->.se;
+relation["boundary"="administrative"]["admin_level"="7"](area.se);
+out center tags;
+`
+/** Närmaste kommuncentrum (OSM admin_level=7) – bra nog för landningssidor per kommun. */
+async function assignMunicipalities(stations) {
+  let lastError
+  for (const url of OVERPASS_MIRRORS) {
+    try {
+      const res = await fetch(url, {
+        method: 'POST',
+        body: 'data=' + encodeURIComponent(MUNICIPALITY_QUERY),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'User-Agent': USER_AGENT },
+        signal: AbortSignal.timeout(180_000),
+      })
+      if (!res.ok) throw new Error(`${url} svarade ${res.status}`)
+      const json = await res.json()
+      const m = (json.elements ?? [])
+        .filter((e) => e.center && e.tags?.name)
+        .map((e) => ({ name: e.tags.name.replace(/ kommun$/i, '').trim(), lat: e.center.lat, lon: e.center.lon }))
+      if (m.length < 250) throw new Error(`bara ${m.length} kommuner i svaret`)
+      for (const s of stations) {
+        let best = null, bestKm = Infinity
+        for (const k of m) {
+          const km = distanceKm(k.lat, k.lon, s.lat, s.lon)
+          if (km < bestKm) { bestKm = km; best = k }
+        }
+        if (best) s.kommun = best.name
+      }
+      console.log(`Kommuner: ${m.length} från OSM, alla platser tilldelade närmaste kommuncentrum`)
+      return
+    } catch (err) {
+      lastError = err
+      console.warn(`Kommunhämtning misslyckades via ${url}: ${err.message}`)
+    }
+  }
+  // Reserv: behåll kommun från förra publicerade seeden per id
+  try {
+    const res = await fetch(PREV_SEED_URL, { signal: AbortSignal.timeout(60_000) })
+    if (res.ok) {
+      const prev = await res.json()
+      const byId = new Map((prev.stations ?? prev).filter((s) => s.kommun).map((s) => [s.id, s.kommun]))
+      let n = 0
+      for (const s of stations) if (byId.has(s.id)) { s.kommun = byId.get(s.id); n++ }
+      console.warn(`Kommuner: återanvände ${n} från förra seeden (${lastError?.message})`)
+    }
+  } catch { /* inget att göra */ }
+}
+
 // ---------- Kör ----------
 
 const stations = []
@@ -880,6 +933,12 @@ try {
   await nameGenericStations(stations)
 } catch (err) {
   console.warn(`Namngivning av namnlösa platser misslyckades: ${err.message}`)
+}
+
+try {
+  await assignMunicipalities(stations)
+} catch (err) {
+  console.warn(`Kommuntilldelning misslyckades: ${err.message}`)
 }
 
 try {

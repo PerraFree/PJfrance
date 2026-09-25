@@ -1042,6 +1042,9 @@ export default function App() {
           ➕ Lägg till en plats
         </button>
 
+        <p className="foot-links">
+          <a href="/om/">Om Tömningskartan</a> · <a href="/kommun/">Platser per kommun</a>
+        </p>
         <p className="version-line">Version {import.meta.env.VITE_BUILD_ID}</p>
       </div>
 

@@ -29,13 +29,24 @@
       property="og:description"
       content="Hitta ställplatser, campingplatser, gråvatten- och latrintömning, färskvatten och gasol i hela Sverige."
     />
-    <meta property="og:image" content="/icon-512.png" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content="https://tomningskartan.se/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://tomningskartan.se/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://tomningskartan.se/" />
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"WebApplication","name":"Tömningskartan","url":"https://tomningskartan.se/","applicationCategory":"TravelApplication","operatingSystem":"Any","inLanguage":"sv","offers":{"@type":"Offer","price":"0","priceCurrency":"SEK"},"description":"Karta över gråvatten- och latrintömning, färskvatten, gasol, ställplatser och campingar för husbil och husvagn i Sverige."}
+    </script>
 
-    <title>Tömningskartan – ställplatser, tömning & vatten för husbil i Sverige</title>
+    <title>Tömningskartan – tömning, vatten & gasol för husbil i Sverige</title>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <h1>Tömningskartan</h1>
+      <p>Gratis karta för husbil och husvagn: gråvatten- och latrintömning, färskvatten, gasol, ställplatser och campingar i hela Sverige. Kartan kräver JavaScript. <a href="/om/">Om Tömningskartan</a> · <a href="/kommun/">Platser per kommun</a></p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

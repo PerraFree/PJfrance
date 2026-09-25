@@ -877,6 +877,20 @@ button {
   font-size: 0.85rem;
 }
 
+.foot-links {
+  margin: 10px 0 0;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+.foot-links a {
+  color: var(--green-700);
+  text-decoration: none;
+}
+.foot-links a:hover {
+  text-decoration: underline;
+}
+
 .version-line {
   margin: 6px 0 0;
   text-align: center;

@@ -32,6 +32,9 @@ jobs:
         continue-on-error: true
         env:
           TRV_API_KEY: ${{ secrets.TRV_API_KEY }}
+      - name: Bygg SEO-sidor (kommunsidor + sitemap) från seed-datan
+        run: node scripts/build-seo-pages.mjs
+        continue-on-error: true
       - name: Läs Supabase-koppling (supabase.env eller repo-variabler)
         run: |
           if [ -f supabase.env ]; then
