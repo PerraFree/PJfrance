@@ -6,6 +6,7 @@ import ReportForm from './components/ReportForm'
 import NearestList from './components/NearestList'
 import RouteList from './components/RouteList'
 import { fetchRoute, stationsAlongRoute, type RouteHit } from './lib/route'
+import { isGenericName, nameGenericByNearby } from './lib/naming'
 import IntroHint from './components/IntroHint'
 import { communityEnabled } from './config'
 import { OWN_STATIONS } from './data/stations'
@@ -100,6 +101,13 @@ const MERGE_FIELDS: (keyof Station)[] = [
 
 /** Fyller på det som redan behållits (högre prioritet) med det som saknas från en dubblett. */
 function mergeInto(target: Station, s: Station): void {
+  // Ett riktigt namn slår alltid ett generiskt ("Tömningsstation"): en
+  // namnlös tömningsnod 70 m från "Ställplats Skeda Strand" ska heta Skeda
+  // Strand, inte "Tömningsstation" (Pers fältrapport sep 2026).
+  if (isGenericName(target.name) && !isGenericName(s.name)) {
+    if (!target.description && isGenericName(target.name)) target.description = target.name
+    target.name = s.name
+  }
   if (s.unverified && !target.unverified) {
     // En obekräftad dubblett får aldrig "smitta" en bekräftad post: dess
     // tjänster blir bara påstådda på den bekräftade platsen.
@@ -333,17 +341,26 @@ export default function App() {
     })
   }, [])
 
-  const stations = useMemo(
-    () =>
-      dedupe([
-        ...myPlaces,
-        ...OWN_STATIONS,
-        ...communityStations,
-        ...osmStations,
-        ...seedStations,
-      ]),
-    [osmStations, seedStations, communityStations, myPlaces],
-  )
+  const stations = useMemo(() => {
+    // Live-hämtade OSM-objekt saknar de namn synken räknat fram (ortsuppslag/
+    // närliggande plats) – ta seedens namn för samma id så att det generiska
+    // live-namnet inte vinner i dedupen bara för att det kommer först.
+    const seedNameById = new Map<string, string>()
+    for (const s of seedStations) if (!isGenericName(s.name)) seedNameById.set(s.id, s.name)
+    const live = osmStations.map((s) => {
+      const better = isGenericName(s.name) ? seedNameById.get(s.id) : undefined
+      return better ? { ...s, name: better } : s
+    })
+    const merged = dedupe([
+      ...myPlaces,
+      ...OWN_STATIONS,
+      ...communityStations,
+      ...live,
+      ...seedStations,
+    ])
+    // Kvarvarande generiska namn: "Tömningsstation vid <närmaste namngivna plats>"
+    return nameGenericByNearby(merged)
+  }, [osmStations, seedStations, communityStations, myPlaces])
 
   useEffect(() => {
     dataCountRef.current = stations.length

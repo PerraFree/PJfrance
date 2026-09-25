@@ -724,6 +724,29 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
      partnerlista) blandar lösviktsfyllning, fast-tank-tankning och rena
      byte-ställen** – "tankstation" i listan betyder inte lös flaska; kräv
      alltid operatörens egen formulering för 'high'.
+   - **Riktiga namn på namnlösa platser (25 sep 2026, Pers fältrapport):**
+     tömningen vid Skeda Strand (Värnamo) visades som "Tömningsstation" –
+     OSM-noden saknar `name`, och i appens dedupe vann den namnlösa noden
+     över "Ställplats Skeda Strand" 70 m bort bara för att den låg först.
+     Publicerad data hade 2 599 generiska namn (Sopstation 1 007, ÅVC 494,
+     Camping 403, Ställplats för husbil 290, Tömningsstation 241,
+     Vattenpåfyllning 160). Tre lager, alla speglar samma lista
+     (`GENERIC_NAME_RE` i `src/lib/naming.ts` = `GENERIC_NAME` i
+     `sync-stations.mjs`, ändra ALLTID båda):
+     1. `mergeInto()` i App.tsx: ett riktigt namn slår alltid ett generiskt
+        vid hopslagning (det generiska sparas som description).
+     2. `nameGenericByNearby()` (`src/lib/naming.ts`) körs på den
+        sammanslagna listan i App OCH i synken (`nameGenericStations`):
+        "Tömningsstation vid Ställplats Skeda Strand" om en namngiven plats
+        finns inom 250 m (617 platser vid simulering mot seeden).
+     3. Synken slår upp ortsnamn via Nominatim reverse (zoom 16, hamlet/
+        village/suburb/town/city) för resten med tömning/vatten/ställplats/
+        camping → "Tömningsstation, Skeda". Max 250 per körning (~5 min);
+        redan uppslagna namn återanvänds från senast publicerade seed
+        (`PREV_SEED_URL`, gh-pages raw) via fältet `nameFrom: 'reverse'`,
+        så ~685 platser är klara efter ~3 deployer. Live-hämtade OSM-objekt
+        får seedens namn per id i App innan dedupen. Sopstationer/ÅVC får
+        bara steg 1–2 (ingen reverse) för att hålla körtiden nere.
    - **Kvar efter svepet:** Skånegas Ängelholm + Levol Onsala (gatuadress
      saknas), Expressgasol Tidaholm/Ronneby/Tingsryd och Norbros egen
      automatkarta (JS-kartor, läs i webbläsare), Byggmax/Granngården/Rusta/

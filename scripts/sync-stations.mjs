@@ -692,6 +692,98 @@ async function enrichImagesFromCommons(stations) {
   )
 }
 
+// ---------- Riktiga namn på namnlösa platser ----------
+
+// Speglar GENERIC_NAME_RE i src/lib/naming.ts – ändra ALLTID båda.
+const GENERIC_NAME =
+  /^(Tömningsstation|Ställplats för husbil|Vattenpåfyllning|Sopstation|Återvinningscentral|Drivmedelsstation|Camping|Ställplats|Rastplats|Gasolförsäljning|Gästhamn\/marina|Dricksvatten|Vägkrog\/serviceområde)$/
+const NAME_CORE = new Set(['gravatten', 'latrin', 'vatten', 'stallplats', 'camping'])
+// Senast publicerade seed – används som cache för redan uppslagna ortsnamn.
+const PREV_SEED_URL = 'https://raw.githubusercontent.com/PerraFree/PJfrance/gh-pages/data/stations-seed.json'
+const MAX_REVERSE_LOOKUPS = 250 // ~5 min per körning; resten tas nästa gång
+
+/** Ortsdel/ort för en koordinat via Nominatim reverse ("Skeda", "Furen", "Bor"). */
+async function reverseLocality(lat, lon) {
+  try {
+    const res = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=16&lat=${lat}&lon=${lon}&accept-language=sv`,
+      { headers: { 'User-Agent': USER_AGENT }, signal: AbortSignal.timeout(15_000) },
+    )
+    if (!res.ok) return null
+    const j = await res.json()
+    const a = j.address ?? {}
+    const loc =
+      a.hamlet ?? a.village ?? a.neighbourhood ?? a.suburb ?? a.town ?? a.city ?? a.municipality
+    return loc ? String(loc).replace(/ kommun$/i, '').trim() : null
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Per (sep 2026): en plats får inte bara heta "Tömningsstation" när den
+ * ligger på Skeda Strand. Tre steg, i ordning:
+ *  1. Namngiven plats inom 250 m → "Tömningsstation vid Ställplats Skeda Strand"
+ *     (samma logik körs även i appen, src/lib/naming.ts, för live-data).
+ *  2. Namn som redan slagits upp i förra publicerade seeden återanvänds
+ *     (så vi inte belastar Nominatim med samma platser varje vecka).
+ *  3. Nominatim reverse → "Tömningsstation, Skeda" (bara platser med
+ *     tömning/vatten/ställplats/camping; max MAX_REVERSE_LOOKUPS per körning).
+ */
+async function nameGenericStations(stations) {
+  const CELL = 0.003
+  const grid = new Map()
+  const key = (lat, lon) => `${Math.round(lat / CELL)},${Math.round(lon / CELL)}`
+  for (const s of stations) {
+    if (GENERIC_NAME.test(s.name)) continue
+    const k = key(s.lat, s.lon)
+    if (grid.has(k)) grid.get(k).push(s)
+    else grid.set(k, [s])
+  }
+  let prevNames = new Map()
+  try {
+    const res = await fetch(PREV_SEED_URL, { signal: AbortSignal.timeout(60_000) })
+    if (res.ok) {
+      const prev = await res.json()
+      for (const s of prev.stations ?? prev) {
+        if (s.nameFrom === 'reverse' && !GENERIC_NAME.test(s.name)) prevNames.set(s.id, s.name)
+      }
+    }
+  } catch (err) {
+    console.warn(`Kunde inte läsa förra seeden för namn-cache: ${err.message}`)
+  }
+  let nearby = 0, reused = 0, reverse = 0
+  const todo = []
+  for (const s of stations) {
+    if (!GENERIC_NAME.test(s.name)) continue
+    const cx = Math.round(s.lat / CELL)
+    const cy = Math.round(s.lon / CELL)
+    let best = null
+    let bestKm = 0.25
+    for (let dx = -1; dx <= 1; dx++) {
+      for (let dy = -1; dy <= 1; dy++) {
+        for (const n of grid.get(`${cx + dx},${cy + dy}`) ?? []) {
+          const km = distanceKm(n.lat, n.lon, s.lat, s.lon)
+          if (km < bestKm) { best = n; bestKm = km }
+        }
+      }
+    }
+    if (best) { s.name = `${s.name} vid ${best.name}`; s.nameFrom = 'nearby'; nearby++; continue }
+    if (!s.services.some((x) => NAME_CORE.has(x))) continue
+    if (prevNames.has(s.id)) { s.name = prevNames.get(s.id); s.nameFrom = 'reverse'; reused++; continue }
+    todo.push(s)
+  }
+  for (const s of todo.slice(0, MAX_REVERSE_LOOKUPS)) {
+    const loc = await reverseLocality(s.lat, s.lon)
+    if (loc) { s.name = `${s.name}, ${loc}`; s.nameFrom = 'reverse'; reverse++ }
+    await sleep(1100)
+  }
+  const left = Math.max(0, todo.length - MAX_REVERSE_LOOKUPS)
+  console.log(
+    `Namn: ${nearby} via närliggande plats, ${reused} återanvända från förra seeden, ${reverse} nya ortsuppslag${left ? `, ${left} kvar till nästa körning` : ''}`,
+  )
+}
+
 // ---------- Kör ----------
 
 const stations = []
@@ -776,6 +868,12 @@ if (previousCount > 0 && stations.length < previousCount * 0.5) {
       'verklig minskning. Behåller befintlig seed-fil i stället för att skriva över med ofullständig data.',
   )
   process.exit(1)
+}
+
+try {
+  await nameGenericStations(stations)
+} catch (err) {
+  console.warn(`Namngivning av namnlösa platser misslyckades: ${err.message}`)
 }
 
 try {
