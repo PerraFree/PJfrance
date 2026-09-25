@@ -34,3 +34,8 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 - **2026-09-24, B (gasol):** se CLAUDE.md "Bred gasolgranskning + prissvep". Registret 176 → 405
   gasolposter, 205 med pris. Kvar: Byggmax/Granngården/Rusta/ÖoB per butik, Skånegas Ängelholm,
   Levol Onsala, jem & fix Alvesta/Söderhamn (ogeokodbara gator), priser för ~10 påfyllningsplatser.
+- **2026-09-25, C+D (källjämförelser):** First Camp, rastplatserna.se, husbilsplats.se,
+  campingkollen.se jämförda mot kartan (3 research-sessioner). 22 nya bekräftade, 62
+  nya obekräftade, 39 bekräftade + 32 obekräftade kompletteringar. Underlag i
+  `docs/import/`. Kvar: husbilsplats.se-lista bakom betalvägg, campingkollen bara
+  stickprov, Råda/Tönnebro rastplats (latrin påstådd, TRV säger nej).
