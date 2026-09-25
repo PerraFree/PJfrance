@@ -1180,16 +1180,16 @@
     "query": "Skojarbacken, Nora",
     "services": [
       "stallplats",
-      "latrin"
-    ],
-    "fee": "260 kr/dygn inkl el",
-    "description": "Latrintömning för fast och portabel tank, servicehus. Källa: First Camp. Obekräftat (https://husbilsplatser.husbilsklubben.se/locations/6383): \"husbilsklubben.se 'Marknadsplatsen Nora': toatömning bara mot betald natt (175 kr, kod efter betalning); 'vattenpåfyllning och gråvattentömning är kostnadsfritt'. Nora kommun (nora.se) bekräftar ställplats vid Skojarbacken vid Resecentrum men sidan är egress-blockad, tjänster ej lästa.\"",
-    "url": "https://firstcamp.se/destinationer/nora-bergslagen/stallplats-nora",
-    "source": "egen",
-    "unverifiedServices": [
+      "latrin",
       "gravatten",
       "vatten"
-    ]
+    ],
+    "fee": "260 kr/dygn inkl el",
+    "description": "Ställplats vid Skojarbacken, Norasjön, 5 min från centrum. Källa First Camp: latrintömning för fast och portabel tank, servicehus. Källa Visit Nora (visitnora.se): \"servicehus med toaletter, duschar och färskvatten samt tömning av avloppstank för både fasta och lösa tankar\". Vinterstängd, incheckning 12:00.",
+    "url": "https://firstcamp.se/destinationer/nora-bergslagen/stallplats-nora",
+    "source": "egen",
+    "lat": 59.51578,
+    "lon": 15.03809
   },
   {
     "name": "Örebro Truckstop tömningsstation",
@@ -1443,7 +1443,10 @@
     "fee": "från 150 kr",
     "description": "20 platser apr–okt: toalett, vatten, gråvatten- och latrintömning. Källa: husbil.se.",
     "url": "https://www.husbil.se/stallplatser/p/803/",
-    "source": "egen"
+    "source": "egen",
+    "lat": 55.56128,
+    "lon": 13.94009,
+    "address": "Tryde 1739, 273 97 Tomelilla"
   },
   {
     "name": "Ängelholms Föreningshamn ställplats",
@@ -1502,7 +1505,10 @@
       "stallplats"
     ],
     "description": "Ställplats ca 1,7 km från Strömstads centrum: toalett, färskvatten och latrintömning 15/3–15/10. Källa: Strömstads kommun.",
-    "url": "https://www.stromstad.se/trafikochinfrastruktur/trafikochgator/parkeraistromstad/stallplatshusbil.4.4c0436f114c2179012917e12.html"
+    "url": "https://www.stromstad.se/trafikochinfrastruktur/trafikochgator/parkeraistromstad/stallplatshusbil.4.4c0436f114c2179012917e12.html",
+    "lat": 58.95167,
+    "lon": 11.17457,
+    "address": "Kebalvägen, Strömstad"
   },
   {
     "name": "Tömningsplats Lögarängen Västerås",
@@ -13465,7 +13471,10 @@
     "query": "Ställplats Torget, Luleå",
     "nearLat": 65.6093,
     "nearLon": 22.071,
-    "maxKm": 25
+    "maxKm": 25,
+    "lat": 65.52922,
+    "lon": 21.795,
+    "address": "Ersnäsvägen 29-17, 975 92 Luleå (Ersnäs)"
   },
   {
     "name": "Husvagnscenter i Luleå",
@@ -13647,9 +13656,12 @@
     "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): el, färskvatten, toaletter, dusch, avfall. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
     "website": "https://husbilsplats.se/rest-area/nikkaluokta-sarri-ab/",
     "query": "Nikkaluokta Sarri AB, Kiruna",
-    "nearLat": 67.8474,
-    "nearLon": 20.2925,
-    "maxKm": 25
+    "nearLat": 67.85083,
+    "nearLon": 19.01298,
+    "maxKm": 5,
+    "lat": 67.85083,
+    "lon": 19.01298,
+    "address": "Nikkaluokta 1104, 981 99 Kiruna"
   },
   {
     "name": "Piteå Golfklubb",
@@ -13729,9 +13741,12 @@
     "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
     "website": "https://husbilsplats.se/locations/camp-frevisoren-kalix-havsbad/",
     "query": "Camp Frevisören Kalix Havsbad, Kalix",
-    "nearLat": 65.9995,
-    "nearLon": 22.853,
-    "maxKm": 25
+    "nearLat": 65.756,
+    "nearLon": 23.40195,
+    "maxKm": 5,
+    "lat": 65.756,
+    "lon": 23.40195,
+    "address": "Frevisören, 952 95 Båtskärsnäs"
   },
   {
     "name": "Kamlunge Camping",
@@ -13841,37 +13856,6 @@
     "lon": 17.280728
   },
   {
-    "name": "Överkalix Camping",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/husbilsplatser/stallplatser-i-norrbotten/",
-    "query": "Överkalix Camping, Överkalix",
-    "nearLat": 66.653,
-    "nearLon": 22.8351,
-    "maxKm": 25
-  },
-  {
-    "name": "Pajala Camping och Vandrarhem",
-    "services": [
-      "latrin",
-      "gravatten",
-      "vatten",
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"60 platser, el, färskvatten, wc, dusch, avfall, wifi, gråvatten, kassettömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/rest-area/pajala-camping-och-vandrarhem/",
-    "query": "Pajala Camping och Vandrarhem, Pajala",
-    "nearLat": 67.4904,
-    "nearLon": 23.4087,
-    "maxKm": 25
-  },
-  {
     "name": "Hotell Smedjan",
     "services": [
       "stallplats"
@@ -13881,9 +13865,12 @@
     "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
     "website": "https://husbilsplats.se/rest-area/tags/stallplats/",
     "query": "Hotell Smedjan, Pajala",
-    "nearLat": 67.4904,
-    "nearLon": 23.4087,
-    "maxKm": 25
+    "nearLat": 67.2089,
+    "nearLon": 23.37173,
+    "maxKm": 5,
+    "lat": 67.2089,
+    "lon": 23.37173,
+    "address": "Fridhemsvägen 1, 984 31 Pajala"
   },
   {
     "name": "Älvsby folkhögskola ställplats",
@@ -13929,37 +13916,6 @@
     "maxKm": 25
   },
   {
-    "name": "Ställplats Skojarbacken",
-    "services": [
-      "stallplats"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/rest-area/stallplats-skojarbacken",
-    "query": "Ställplats Skojarbacken, Sundsvall",
-    "nearLat": 62.4183,
-    "nearLon": 17.3341,
-    "maxKm": 25
-  },
-  {
-    "name": "Lilla Stigen Ställplatser",
-    "services": [
-      "latrin",
-      "gravatten",
-      "vatten",
-      "stallplats"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"6 platser, el, färskvatten, gråvatten-/latrintömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/rest-area/lilla-stigen-stallplatser",
-    "query": "Lilla Stigen Ställplatser, Sundsvall",
-    "nearLat": 62.4183,
-    "nearLon": 17.3341,
-    "maxKm": 25
-  },
-  {
     "name": "Heffners Allé (camping)",
     "services": [
       "camping"
@@ -13985,22 +13941,6 @@
     "query": "Timrå Golfklubb, Timrå",
     "nearLat": 62.5033,
     "nearLon": 17.3431,
-    "maxKm": 25
-  },
-  {
-    "name": "Latrintömning Härnösand",
-    "services": [
-      "latrin",
-      "gravatten",
-      "stallplats"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): latrintömning. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/locations/latrintomning-harnosand",
-    "query": "Latrintömning Härnösand, Härnösand",
-    "nearLat": 62.6306,
-    "nearLon": 17.9585,
     "maxKm": 25
   },
   {
@@ -14041,20 +13981,6 @@
     "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"husbilsparkering vid golf, el\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
     "website": "https://husbilsplats.se/rest-area/solleftea-golfklubb",
     "query": "Sollefteå Golfklubb, Sollefteå",
-    "nearLat": 63.172,
-    "nearLon": 17.2775,
-    "maxKm": 25
-  },
-  {
-    "name": "Snibbens Camping/Vandrarhem",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (park4night.com, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://park4night.com/en/place/137579",
-    "query": "Snibbens Camping/Vandrarhem, Sollefteå",
     "nearLat": 63.172,
     "nearLon": 17.2775,
     "maxKm": 25
@@ -14103,32 +14029,20 @@
     "maxKm": 25
   },
   {
-    "name": "Mariebergsviken",
+    "name": "Husbilsparkering Mariebergsviken, Karlstad",
     "services": [
       "stallplats"
     ],
     "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/rest-area/mariebergsviken",
-    "query": "Mariebergsviken, Östersund",
-    "nearLat": 63.1656,
-    "nearLon": 14.688,
-    "maxKm": 25
-  },
-  {
-    "name": "Bräcke Strand",
-    "services": [
-      "stallplats"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"18 platser, hundar tillåtna\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/rest-area/bracke-strand",
-    "query": "Bräcke Strand, Bräcke",
-    "nearLat": 62.7474,
-    "nearLon": 15.4169,
-    "maxKm": 25
+    "description": "Kommunal husbilsparkering vid Mariebergsviken/Mariebergsskogen, Långövägen 9: fem platser, max 24 h, övernattning tillåten (ingen camping). Inga tjänster. Källa: Karlstads kommun (karlstad.se, husbilsparkering).",
+    "website": "https://karlstad.se/trafik-och-gator/parkering/husbilsparkering",
+    "query": "Mariebergsviken, Karlstad",
+    "nearLat": 59.37162,
+    "nearLon": 13.48881,
+    "maxKm": 5,
+    "lat": 59.37162,
+    "lon": 13.48881,
+    "address": "Långövägen 9, 652 29 Karlstad"
   },
   {
     "name": "Klövsjö-Vemdalens Golfklubb",
@@ -14217,7 +14131,10 @@
     "query": "Europaväg 45, Hoting",
     "nearLat": 64.1072,
     "nearLon": 16.1747,
-    "maxKm": 25
+    "maxKm": 25,
+    "lat": 64.1464,
+    "lon": 16.2379,
+    "address": "Europaväg 45, 830 80 Hoting (skogsväg ner till sjö)"
   },
   {
     "name": "Falu Gruva",
@@ -14289,20 +14206,6 @@
     "description": "Obekräftad plats (park4night.com, ej primärkälla): betalparkering. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
     "website": "https://park4night.com/lieu/182569",
     "query": "13 Tingsnäsvägen, Mora",
-    "nearLat": 61.0094,
-    "nearLon": 14.6016,
-    "maxKm": 25
-  },
-  {
-    "name": "Mora – Siknäs fyrklöver",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (park4night, ej primärkälla): naturcamping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://park4night",
-    "query": "Mora – Siknäs fyrklöver, Mora",
     "nearLat": 61.0094,
     "nearLon": 14.6016,
     "maxKm": 25
@@ -14621,20 +14524,24 @@
     "maxKm": 25
   },
   {
-    "name": "Ludvika – Harnäsgården/Gamla Skolan",
+    "name": "Harnäsgården ställplats, Ludvika",
     "services": [
       "latrin",
       "gravatten",
+      "vatten",
       "stallplats"
     ],
     "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"avfallstömning + el 200 SEK, inga toaletter/duschar\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://park4night.com/en/place/409673",
-    "query": "Ludvika – Harnäsgården/Gamla Skolan, Ludvika",
+    "description": "Högbergskyrkans ställplats vid Harnäsgården, Badstigen 10: 5 platser med el, säsong 8 maj–30 sep, bokning via Psidan. Källa (operatörens egen sida hogbergskyrkan.se/harnasgarden): \"färskvatten hämtas vid kanten av fotbollsplanen, och det finns avloppsanslutningar för grå- och svartvatten\".",
+    "website": "https://hogbergskyrkan.se/harnasgarden/",
+    "query": "Badstigen 10, Ludvika",
     "nearLat": 60.1563,
     "nearLon": 15.1819,
-    "maxKm": 25
+    "maxKm": 25,
+    "lat": 60.1534,
+    "lon": 15.2264,
+    "address": "Badstigen 10, 771 55 Ludvika (Harnäs vid sjön Hillen, ~3 km från centrum)",
+    "season": "seasonal"
   },
   {
     "name": "Ludvika – 13 Kajvägen",
@@ -14823,7 +14730,10 @@
     "query": "Trafikverkets rastplats X10, Ljusdal",
     "nearLat": 61.8276,
     "nearLon": 16.0658,
-    "maxKm": 25
+    "maxKm": 25,
+    "lat": 61.82012,
+    "lon": 16.06617,
+    "address": "Rastplats Stavsätter, Järvsövägen 5, 827 94 Ljusdal (riksväg 83, strax SO om bron in mot Ljusdals centrum)"
   },
   {
     "name": "Ljusdal – Stavsätter Järvsövägen 5",
@@ -14969,18 +14879,23 @@
     "maxKm": 25
   },
   {
-    "name": "Ställplats Stockholm – vid Flaten",
+    "name": "First Camp Ställplats Stockholm (Flaten)",
     "services": [
+      "gravatten",
+      "latrin",
       "stallplats"
     ],
     "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (park4night.com, ej primärkälla): kodkort för sanitet. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://park4night.com/en/place/55501",
-    "query": "Ställplats Stockholm – vid Flaten, Stockholm",
+    "description": "First Camps obemannade ställplats intill First Camp City – Stockholm, Flatens skogsväg 30 (Skarpnäck). Öppen 24/7 året runt, betalstation + kodkort. Källa (firstcamp.se): \"servicehus med toalett, dusch, tvättstuga och disk\" samt \"tömningsstation för fasta tankar, både gråvatten och svartvatten\".",
+    "website": "https://firstcamp.se/destinationer/city-stockholm/stallplatsstockholm",
+    "query": "Flatens skogsväg 30, Skarpnäck",
     "nearLat": 59.2965,
     "nearLon": 17.9702,
-    "maxKm": 25
+    "maxKm": 25,
+    "lat": 59.25001,
+    "lon": 18.16177,
+    "address": "Flatens skogsväg 30, 128 30 Skarpnäck (Stockholm)",
+    "season": "year-round"
   },
   {
     "name": "Åkersberga – Båthamnsvägen",
@@ -15068,7 +14983,10 @@
     "query": "Norrtälje Camping, Norrtälje",
     "nearLat": 59.7496,
     "nearLon": 18.778,
-    "maxKm": 25
+    "maxKm": 25,
+    "lat": 59.76305,
+    "lon": 18.67148,
+    "address": "Lommarvägen 42, 761 52 Norrtälje"
   },
   {
     "name": "Norrtälje Sportcentrum",
@@ -15417,7 +15335,10 @@
     "query": "Ställplats Köping, Köping",
     "nearLat": 59.5174,
     "nearLon": 15.9659,
-    "maxKm": 25
+    "maxKm": 25,
+    "lat": 59.50566,
+    "lon": 16.00214,
+    "address": "Gamla Hamnvägen (söder om de röda magasinen i inre hamnen), 731 30 Köping"
   },
   {
     "name": "Köpings Golfklubb",
@@ -15589,20 +15510,6 @@
     "description": "Obekräftad plats (park4night.com, ej primärkälla): avskild plats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
     "website": "https://park4night.com/en/place/583924",
     "query": "Vindgatan 1, Borås",
-    "nearLat": 57.7165,
-    "nearLon": 12.9319,
-    "maxKm": 25
-  },
-  {
-    "name": "Seglora Camping and Cottages",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (park4night.com, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://park4night.com/en/place/83509",
-    "query": "Seglora Camping and Cottages, Borås",
     "nearLat": 57.7165,
     "nearLon": 12.9319,
     "maxKm": 25
@@ -16024,12 +15931,19 @@
     ],
     "source": "egen",
     "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): ställplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "description": "Obekräftad plats (husbilsplats.se/husbil.se, ej primärkälla): 6 platser (4 med el), från 150 kr, året runt; husbil.se anger \"latrintömning, toalett, dricksvatten, el\". Hällarp vid väg 154. Har du varit här? Bekräfta i appen.",
     "website": "https://husbilsplats.se/rest-area/stallplats-ginstavallen/",
     "query": "Ställplats Ginstavallen, Falkenberg",
     "nearLat": 56.8929,
     "nearLon": 12.5006,
-    "maxKm": 25
+    "maxKm": 25,
+    "lat": 56.9757,
+    "lon": 12.56249,
+    "address": "Ginstavallen, Hällarp, väg 154 Falkenberg–Ullared, Falkenbergs kommun",
+    "unverifiedServices": [
+      "latrin",
+      "vatten"
+    ]
   },
   {
     "name": "Björnhults Golfklubb",
@@ -16070,23 +15984,6 @@
     "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
     "website": "https://husbilsplats.se/locations/stromstad-camping/",
     "query": "Strömstad Camping, Strömstad",
-    "nearLat": 58.9473,
-    "nearLon": 11.1995,
-    "maxKm": 25
-  },
-  {
-    "name": "Bojarparkeringen",
-    "services": [
-      "gravatten",
-      "latrin",
-      "vatten",
-      "stallplats"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"färskvatten, toalett, gråvattentömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/rest-area/bojarparkeringen/",
-    "query": "Bojarparkeringen, Strömstad",
     "nearLat": 58.9473,
     "nearLon": 11.1995,
     "maxKm": 25
@@ -16273,7 +16170,10 @@
     "query": "Centralt belägna husbilsplatser i Vetlanda, Vetlanda",
     "nearLat": 57.4434,
     "nearLon": 15.0526,
-    "maxKm": 25
+    "maxKm": 25,
+    "lat": 57.42245,
+    "lon": 15.08558,
+    "address": "Fabriksgatan 1H/3F, 574 38 Vetlanda"
   },
   {
     "name": "Ställplats Gislaved",
@@ -16332,7 +16232,10 @@
     "query": "Örbäcken, Västervik",
     "nearLat": 57.7507,
     "nearLon": 16.633,
-    "maxKm": 25
+    "maxKm": 25,
+    "lat": 57.73672,
+    "lon": 16.63666,
+    "address": "Örbäcken, IFK Västerviks klubbstuga, Västervik"
   },
   {
     "name": "Tömningsplats Västervik",
@@ -16379,23 +16282,6 @@
     "query": "Västerviks Golfklubb, Västervik",
     "nearLat": 57.7507,
     "nearLon": 16.633,
-    "maxKm": 25
-  },
-  {
-    "name": "Norra kajen i Oskarshamn",
-    "services": [
-      "latrin",
-      "gravatten",
-      "vatten",
-      "stallplats"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"färskvatten, wc, avfall, tömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/rest-area/norra-kajen-oskarshamn/",
-    "query": "Norra kajen i Oskarshamn, Oskarshamn",
-    "nearLat": 57.2633,
-    "nearLon": 16.4443,
     "maxKm": 25
   },
   {
@@ -16563,12 +16449,15 @@
     ],
     "source": "egen",
     "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"24 platser, el, färskvatten, toalett, dusch, sopor, gråvatten/tank\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "description": "Obekräftad plats (husbilsplats.se/husbil.se, ej primärkälla): 24 platser, el och vatten vid varje plats, dusch, WC, gemensamhetsrum; 1 apr–31 okt, från 200 kr, bokning via Psidan. Gråvatten enligt husbilsplats.se, ej bekräftat av operatören. 3 km norr om Orsa kyrka vid E45. Har du varit här? Bekräfta i appen.",
     "website": "https://husbilsplats.se/rest-area/kattingens-stallplats/",
-    "query": "Kättingens ställplats, Kristianstad",
-    "nearLat": 56.0232,
-    "nearLon": 14.1639,
-    "maxKm": 25
+    "query": "Kättingens ställplats, Orsa",
+    "nearLat": 61.13896,
+    "nearLon": 14.64047,
+    "maxKm": 5,
+    "lat": 61.13896,
+    "lon": 14.64047,
+    "address": "Bornvägen 53, 794 32 Orsa (Dalarna)"
   },
   {
     "name": "Husbilsparkering i Ystad",
@@ -16638,7 +16527,10 @@
     "query": "Ställplats Föreningshamnen i Skälderviken, Ängelholm",
     "nearLat": 56.2541,
     "nearLon": 12.9122,
-    "maxKm": 25
+    "maxKm": 25,
+    "lat": 56.2686,
+    "lon": 12.8419,
+    "address": "Segelvägen 9, 262 61 Ängelholm (Skälderviken)"
   },
   {
     "name": "Skånes Djurparks Camping & Grottby",
@@ -18103,8 +17995,8 @@
     "address": "Lauters gästhamn, Fårö",
     "confidence": "medium",
     "website": "https://gotland.com/companies/stallplats-lauterhorn/",
-    "lat": 57.95231,
-    "lon": 19.08143
+    "lat": 57.9523,
+    "lon": 19.0814
   },
   {
     "name": "Brännebacka Gård",
@@ -18121,8 +18013,8 @@
     "maxKm": 30,
     "address": "Flo Brännebacka 7, 467 91 Grästorp",
     "website": "https://www.vastsverige.com/grastorp/produkter/brannebacka-gard/?site=699",
-    "lat": 58.334,
-    "lon": 12.64302
+    "lat": 58.3345,
+    "lon": 12.6433
   },
   {
     "name": "Forsgårdens ställplats",
@@ -18168,8 +18060,8 @@
     "maxKm": 30,
     "address": "Tiraholm, Unnaryd (Hylte kommun)",
     "website": "https://tiraholm.se/info/",
-    "lat": 56.94355,
-    "lon": 13.64444
+    "lat": 56.9435,
+    "lon": 13.6444
   },
   {
     "name": "Forsvik ställplats – Göta kanal",
@@ -18233,7 +18125,9 @@
     "nearLon": 15.9854,
     "maxKm": 6,
     "address": "Harsagården 1, Harsa, Järvsö",
-    "website": "https://harsa.se/boende/husvagn/"
+    "website": "https://harsa.se/boende/husvagn/",
+    "lat": 61.62504,
+    "lon": 15.97158
   },
   {
     "name": "Hovra STF Vandrarhem",
@@ -18250,7 +18144,9 @@
     "address": "Inibyvägen 18, 827 92 Korskrogen",
     "unverified": true,
     "confidence": "low",
-    "website": "https://campingkollen.se/stallplats/hovra-stf-vandrarhem/"
+    "website": "https://campingkollen.se/stallplats/hovra-stf-vandrarhem/",
+    "lat": 61.86686,
+    "lon": 15.73077
   },
   {
     "name": "RiverWild Fishing & Lodging",
@@ -18284,7 +18180,9 @@
     "address": "Eckeruds gård, 464 92 Mellerud (utmed E45, 8,5 km söder om Mellerud)",
     "unverified": true,
     "confidence": "low",
-    "website": "https://campingkollen.se/stallplats/eckeruds-gard/"
+    "website": "https://campingkollen.se/stallplats/eckeruds-gard/",
+    "lat": 58.6432,
+    "lon": 12.4172
   },
   {
     "name": "Fricamping vid Sollerön",
@@ -18395,7 +18293,9 @@
     "address": "Långbryggevägen 5, 795 32 Rättvik (enligt aggregatorer, mittemot Siljansbadets camping)",
     "unverified": true,
     "confidence": "low",
-    "website": "https://campingkollen.se/stallplats/tagstallarnas-stallplats/"
+    "website": "https://campingkollen.se/stallplats/tagstallarnas-stallplats/",
+    "lat": 60.88842,
+    "lon": 15.1099
   },
   {
     "name": "Ställplats Kurjoviken",
@@ -18455,8 +18355,8 @@
     "address": "Älvkarleby Golfklubb, Älvkarleby",
     "unverified": true,
     "confidence": "low",
-    "lat": 60.5881,
-    "lon": 17.44394
+    "lat": 60.58857,
+    "lon": 17.4469
   },
   {
     "name": "Hyppelns gästhamn",
@@ -18485,7 +18385,9 @@
     "nearLon": 14.6234,
     "maxKm": 15,
     "address": "Rök, Ödeshög (några hundra meter från Rökstenen)",
-    "website": "https://rokslanthandel.com/stallplatser/"
+    "website": "https://rokslanthandel.com/stallplatser/",
+    "lat": 58.2936,
+    "lon": 14.7872
   },
   {
     "name": "Berkinge Bad & Fiskecamp",
@@ -19335,22 +19237,6 @@
     "website": "https://storsjo-camping.se/"
   },
   {
-    "name": "Höga kusten - bron",
-    "services": [
-      "stallplats"
-    ],
-    "source": "egen",
-    "description": "rastplatserna.se/husbilsplats.se. \"Träff vid sökning på tömning Höga kusten – tjänst ej bekräftad i sammandrag\" (https://husbilsplats.se/rest-area/hoga-kusten-bron/) Koordinat från https://husbilsplats.se/locations/hoga-kusten-bron/",
-    "nearLat": 62.80687,
-    "nearLon": 17.95115,
-    "maxKm": 30,
-    "unverified": true,
-    "confidence": "low",
-    "website": "https://husbilsplats.se/rest-area/hoga-kusten-bron/",
-    "lat": 62.80455,
-    "lon": 17.95174
-  },
-  {
     "name": "Sandvikens Camping & Stugby",
     "lat": 63.1521136,
     "lon": 14.5829742,
@@ -19479,21 +19365,6 @@
     "unverified": true,
     "confidence": "low",
     "website": "https://husbilsplats.se/rest-area/norrakers-camping-fiskecenter/"
-  },
-  {
-    "name": "Kolgårdens Stugby & Camping",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "description": "rastplatserna.se/husbilsplats.se. \"Träff vid sökning på tömning latrin/gråvatten i Lappland – tjänst ej bekräftad i sammandrag\" (https://husbilsplats.se/rest-area/kolgardens-stugby-camping/)",
-    "query": "Storuman",
-    "nearLat": 65.1,
-    "nearLon": 17.11,
-    "maxKm": 15,
-    "unverified": true,
-    "confidence": "low",
-    "website": "https://husbilsplats.se/rest-area/kolgardens-stugby-camping/"
   },
   {
     "name": "Malå Camping",

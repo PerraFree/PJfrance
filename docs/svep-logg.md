@@ -44,3 +44,7 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   borttagna, 3 fick rättat ankare (Harsa, Hovra, Tågstallarna – kontrollera i v65). 27 äldre
   registerposter (mest obekräftade från kandidatimporten) publiceras fortfarande inte – se
   CLAUDE.md "Läget just nu".
+- **2026-09-25, koordinatsvep (session "Gråvatten 4", parallellt med raden ovan):** alla 16 +
+  de 31 äldre gick igenom sex agenter. 43 poster har nu exakt lat/lon, 15 dubbletter borttagna,
+  3 uppgraderade till bekräftade (Harnäsgården Ludvika, First Camp Ställplats Stockholm,
+  Mariebergsviken Karlstad), First Camp Nora kompletterad. Kvar: jem & fix Alvesta.

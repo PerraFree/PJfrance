@@ -119,28 +119,41 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
   sökningar) roterar enligt `docs/svep-logg.md`.
 - Återanvändbara importskript ligger i `scripts/import-tools/` (läs README
   där – sökvägarna måste anpassas).
-- **Deploy v64 (25 sep) verifierad:** 15 av de 31 rättade platserna från
-  källjämförelserna kom med. De 16 övriga rättades i v65: 11 fick exakta
-  koordinater från källor (husbil.se/park4night/golfguiden via
-  WebSearch-utdrag – WebFetch är blockerat mot i stort sett alla dessa
-  sajter), 2 var dubbletter av befintliga OSM-/registerposter och togs bort
-  (Mangenbadens Camping = Caravan Club Mangenbaden i Molkom, inte Gräsmark;
-  Lögdö Wild/Skälsjön = OSM "Skälsjön Camping"), 3 fick bara rättat
-  orts-ankare (Harsa, Hovra, Tågstallarna – **verifiera i seeden efter
-  v65**). Lärdom: kandidatimportens `nearLat/nearLon` = median av platser
-  med kommunnamnet i namnet ger ofta helt fel ankare (Tågstallarna låg
-  31 km norr om Rättvik, Ratan 31 km fel) så korrekta geokodningar
-  kasserades. **27 äldre registerposter publiceras fortfarande inte**
-  (synkloggen: "kunde inte geokoda"/"hoppar över") – 24 obekräftade från
-  kandidatimporten (t.ex. Ställplats Skojarbacken, Bräcke Strand, Ställplats
-  Köping, Norrtälje Camping, Lilla Stigen, Latrintömning Härnösand,
-  Kättingens ställplats) + Nostalgimuseet Tomelilla, jem & fix Alvesta,
-  NB Energi Sala. Samma metod (agenter som hämtar koordinat ur husbil.se/
-  park4night-utdrag, ankare = närmaste kända seed-plats) löser dem; lista
-  fram dem med skriptet i "Deploy-verifiering" (register minus seed på namn).
-  Övriga öppna punkter: West Coast Gasol, Svenska Gas Orust, Råda/Tönnebro
-  rastplats (latrin påstådd, TRV säger nej), husbilsplats.se-listan bakom
-  betalvägg, campingkollen bara stickprov.
+- **Deploy v64 (25 sep) verifierad + koordinatsvep (v65/v66):** 15 av de
+  31 rättade platserna från källjämförelserna kom med i v64; 16 saknades
+  (9 ogeokodbara adresser, 7 kasserade av rimlighetskontrollen – ofta för
+  att `nearLat/nearLon` pekade på fel ort: Tågstallarna låg 31 km norr om
+  Rättvik, Ratan 31 km fel, Älvkarleby ute i havet). Synkloggen visade
+  dessutom 31 ÄLDRE poster (mest grå kandidatimporter) som tyst saknats i
+  seeden. **OBS: två sessioner ("Gråvatten 3" och "Gråvatten 4") rättade
+  samma lista parallellt 25 sep** – commit 19deba6 (11 platser, session 3)
+  och nästa commit (session 4, 43 platser inkl. samma 11 med identiska
+  koordinater) slogs ihop postvis; kör aldrig två sessioner mot samma
+  öppna punkt. Metod: sex parallella agenter (WebSearch, ~130 sökningar)
+  hämtade exakta koordinater från husbil.se/husbilsplats.se/park4night/
+  hitta.se/operatörssajter (bara som KOORDINAT-källa; tjänster kräver
+  fortfarande primärkälla; WebFetch är blockerat mot i stort sett alla
+  dessa sajter). Utfall: 43 poster fick exakt `lat`/`lon`, 15 grå poster
+  raderades som dubbletter av redan publicerade platser inom 100–400 m
+  (Mangenbaden = Caravan Club Mangenbaden i Molkom, Lögdö Wild = OSM
+  Skälsjön Camping, Överkalix, Pajala, Snibbens, Seglora, Bräcke Strand,
+  Lilla Stigen, Härnösand-tömningen m.fl. fanns redan med full service
+  från OSM/register), 3 uppgraderades till bekräftade med citat från
+  operatör/kommun (Harnäsgården Ludvika, First Camp Ställplats
+  Stockholm/Flaten, Mariebergsviken Karlstad), First Camp Nora fick
+  gravatten+vatten (Visit Nora), Röks Lanthandel flyttad 6 km (låg fel),
+  Kättingens ställplats flyttad från Kristianstad till Orsa. Fyra
+  kandidatposter hade helt fel ort i `query` (Skojarbacken=Nora, Lilla
+  Stigen=Dalsland, Snibbens=Ramvik, Mariebergsviken=Karlstad) – lärdom:
+  kandidatimportens ortsgissning (median av platser med kommunnamnet i
+  namnet) är opålitlig, kolla alltid källsidans egen koordinat. Skript:
+  `apply-final.mjs` (scratchpad, samma mönster som import-tools).
+  **Kvar:** jem & fix Alvesta (ingen källa ger koordinat – läs av
+  hitta.se/eniro i webbläsare), Ljusdal X10 (husbilsplats-post på TRV-
+  rastplats, gråvatten/vatten påstått), West Coast Gasol, Svenska Gas
+  Orust, Råda/Tönnebro rastplats (latrin påstådd, TRV säger nej),
+  husbilsplats.se-listan bakom betalvägg, campingkollen bara stickprov.
+  Verifiera efter deploy att alla 43 finns i seeden.
 
 ## Backlog (nästa att göra, i prioritetsordning)
 
