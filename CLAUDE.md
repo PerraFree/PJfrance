@@ -793,4 +793,8 @@ text, så det tekniska SEO-arbetet bygger på statiska sidor vid sidan av:
 
 `docs/ADMIN.md` (Pers guide), `docs/SUPABASE.md`, `docs/DATAKALLOR.md`,
 `docs/BUILD-MOBILE.md`, `docs/kandidatplatser-husbilsplats-park4night.md`
-(overifierad kandidatlista från discovery-svepet, aug 2026).
+(overifierad kandidatlista från discovery-svepet, aug 2026),
+`docs/import/tomningsplatser-webb.md` + `.json` (sep 2026: rastplatserna.se
+och husbilsplats.se:s tömningslistor matchade mot kartan, 396 rader med
+status FINNS MED/UTAN TÖMNING/SAKNAS, confidence per rad – underlag, inget
+importerat än; båda sajterna är egress-blockade, listorna är ofullständiga).
