@@ -766,8 +766,13 @@ text, så det tekniska SEO-arbetet bygger på statiska sidor vid sidan av:
   `public/kommun/index.html` och `public/sitemap.xml`. Genererade filer är
   gitignorerade. Obekräftade platser (`unverified`) tas inte med. Kräver
   fältet `kommun` på platserna: synken sätter det via `assignMunicipalities()`
-  (Overpass `admin_level=7` med `out center`, närmaste kommuncentrum – grovt
-  men bra nog; reserv: förra seedens värde per id). Lokalt test:
+  (Overpass `admin_level=7` med `out center`, närmaste kommuncentrum – grovt:
+  Borås kommun fick bara 33 platser i första körningen eftersom kanterna
+  hamnar hos grannkommunerna; riktiga kommungränser vore bättre men kräver
+  polygon-data; reserv: förra seedens värde per id). Utfall 25 sep: 288
+  kommunsidor, sitemap 291 URL:er, om/, robots.txt, og-image.png live.
+  `previousOsmCount()` läser nu senast PUBLICERADE seeden (gh-pages raw) –
+  repots egen seed-fil committas inte av CI och var inaktuell. Lokalt test:
   `SEED_PATH=<seed-med-kommun> MIN_KOMMUNER=5 node scripts/build-seo-pages.mjs`.
 - `public/om/index.html` – statisk "Om"-sida med riktig text (vad, funktioner,
   källor, gratis/ingen reklam, kontakt) + JSON-LD `WebApplication`.

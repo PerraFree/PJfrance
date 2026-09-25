@@ -221,8 +221,18 @@ function placeKind(tags) {
   return undefined
 }
 
-/** Antal OSM-stationer i förra körningens seed (0 om okänt). */
+/** Antal OSM-stationer i senast PUBLICERADE seeden (gh-pages) – repots egen
+ *  seed-fil committas inte längre av CI och är därför gammal. 0 om okänt. */
 async function previousOsmCount() {
+  try {
+    const res = await fetch(PREV_SEED_URL, { signal: AbortSignal.timeout(60_000) })
+    if (res.ok) {
+      const prev = await res.json()
+      return (prev.stations ?? prev).filter((s) => s.source === 'osm').length
+    }
+  } catch {
+    /* faller tillbaka på repots fil */
+  }
   try {
     const prev = JSON.parse(await readFile(OUT, 'utf8'))
     return (prev.stations ?? prev).filter((s) => s.source === 'osm').length
