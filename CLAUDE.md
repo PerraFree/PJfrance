@@ -102,12 +102,32 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
 (byt sessionslänken till aktuell session). Aldrig modell-ID i kod/commits.
 `git pull --rebase` före push. Inga PR utan uttrycklig begäran.
 
-## Läget just nu (2026-08-09)
+## Läget just nu (2026-09-25)
 
-- **5 020 platser live**, varav sopor 2 164, ställplats 1 405, latrin 846,
-  gråvatten 590, vatten 587, gasol 42. ~120 platser i egna registret.
-- Menyknapp: grön rundad ruta med stor pil bredvid appnamnet (fäll ut/ihop).
-- Popup-persistens, mobil bottensheet, versionsrad – allt utrullat och verifierat.
+- **~6 150 platser live** (efter deploy v64; kontrollera `git show
+  origin/gh-pages:data/stations-seed.json`): OSM ~4 400–4 600 (varierar med
+  Overpass-spegel), Trafikverket 319, eget register 1 280 poster varav ~310
+  obekräftade (grå). Gasol: ~440 platser, 80 med påfyllning av egen flaska,
+  källsäkerhet på alla gasolposter.
+- Funktioner utrullade denna vecka: grå obekräftade platser, källsäkerhet
+  hög/medel/låg, "Längs min väg", bekräftelser med antal, centrerat
+  platskort, väder avstängt (`SHOW_WEATHER`), närmaste-listan = 5, riktiga
+  namn på namnlösa platser, riktiga kommungränser (`scripts/kommuner.json`),
+  SEO-sidor per kommun + sitemap + Om-sida + OG-bild, Search Console
+  verifierad och sitemap inskickad av Per (25 sep).
+- Veckorutin "Tömningskartan – veckosvep datakällor" (må 05:00 UTC, 600
+  sökningar) roterar enligt `docs/svep-logg.md`.
+- Återanvändbara importskript ligger i `scripts/import-tools/` (läs README
+  där – sökvägarna måste anpassas).
+- **Öppet vid sessionsbytet till "Gråvatten 4" (25 sep):** deploy v64 med
+  rättade geokodningsfrågor för 31 nya platser från källjämförelserna
+  (Lysernas, Brännebacka, Tiraholm, Forsvik, Harsa, Quickstop Ratan,
+  Kurjoviken, Hyppeln, Rök, Berkinge, Gräsö m.fl.) – verifiera att de finns
+  i seeden och ligger inom `maxKm` från `nearLat/nearLon`; sätt exakt
+  `lat`/`lon` för dem som fortfarande saknas. Övriga öppna punkter: jem &
+  fix Alvesta + NB Energi Sala (ogeokodbara), West Coast Gasol, Svenska Gas
+  Orust, Råda/Tönnebro rastplats (latrin påstådd, TRV säger nej),
+  husbilsplats.se-listan bakom betalvägg, campingkollen bara stickprov.
 
 ## Backlog (nästa att göra, i prioritetsordning)
 
