@@ -741,10 +741,13 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
         finns inom 250 m (617 platser vid simulering mot seeden).
      3. Synken slår upp ortsnamn via Nominatim reverse (zoom 16, hamlet/
         village/suburb/town/city) för resten med tömning/vatten/ställplats/
-        camping → "Tömningsstation, Skeda". Max 250 per körning (~5 min);
+        camping → "Tömningsstation, Skeda" (bara kommunen känd: "Camping i
+        Linköpings kommun" – första körningen skrev genitivfelet "Camping,
+        Linköpings" för 34 platser, de slås upp om). Max 250 per körning (~5 min);
         redan uppslagna namn återanvänds från senast publicerade seed
         (`PREV_SEED_URL`, gh-pages raw) via fältet `nameFrom: 'reverse'`,
-        så ~685 platser är klara efter ~3 deployer. Live-hämtade OSM-objekt
+        så ~685 platser är klara efter ~3 deployer. Utfall deploy 1 (25 sep):
+        616 via närliggande, 250 via ortsuppslag, 440 kvar med kärntjänst. Live-hämtade OSM-objekt
         får seedens namn per id i App innan dedupen. Sopstationer/ÅVC får
         bara steg 1–2 (ingen reverse) för att hålla körtiden nere.
    - **Kvar efter svepet:** Skånegas Ängelholm + Levol Onsala (gatuadress

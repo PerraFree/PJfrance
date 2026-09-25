@@ -712,9 +712,12 @@ async function reverseLocality(lat, lon) {
     if (!res.ok) return null
     const j = await res.json()
     const a = j.address ?? {}
-    const loc =
-      a.hamlet ?? a.village ?? a.neighbourhood ?? a.suburb ?? a.town ?? a.city ?? a.municipality
-    return loc ? String(loc).replace(/ kommun$/i, '').trim() : null
+    const loc = a.hamlet ?? a.village ?? a.neighbourhood ?? a.suburb ?? a.town ?? a.city
+    if (loc) return String(loc).trim()
+    // Bara kommunen känd: "Linköpings kommun" är genitiv – "Camping,
+    // Linköpings" blev fel i första körningen. Skriv "i Linköpings kommun".
+    if (a.municipality) return `i ${String(a.municipality).trim()}`
+    return null
   } catch {
     return null
   }
@@ -746,7 +749,10 @@ async function nameGenericStations(stations) {
     if (res.ok) {
       const prev = await res.json()
       for (const s of prev.stations ?? prev) {
-        if (s.nameFrom === 'reverse' && !GENERIC_NAME.test(s.name)) prevNames.set(s.id, s.name)
+        // Hoppa över första körningens genitivfel ("Camping, Linköpings") så
+        // de slås upp på nytt med det nya formatet.
+        if (s.nameFrom === 'reverse' && !GENERIC_NAME.test(s.name) && !/, [^,]+s$/.test(s.name))
+          prevNames.set(s.id, s.name)
       }
     }
   } catch (err) {
@@ -775,7 +781,7 @@ async function nameGenericStations(stations) {
   }
   for (const s of todo.slice(0, MAX_REVERSE_LOOKUPS)) {
     const loc = await reverseLocality(s.lat, s.lon)
-    if (loc) { s.name = `${s.name}, ${loc}`; s.nameFrom = 'reverse'; reverse++ }
+    if (loc) { s.name = loc.startsWith('i ') ? `${s.name} ${loc}` : `${s.name}, ${loc}`; s.nameFrom = 'reverse'; reverse++ }
     await sleep(1100)
   }
   const left = Math.max(0, todo.length - MAX_REVERSE_LOOKUPS)
