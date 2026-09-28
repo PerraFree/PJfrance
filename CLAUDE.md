@@ -102,7 +102,17 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
 (byt sessionslänken till aktuell session). Aldrig modell-ID i kod/commits.
 `git pull --rebase` före push. Inga PR utan uttrycklig begäran.
 
-## Läget just nu (2026-09-25)
+## Läget just nu (2026-09-28)
+
+- **Öppettider/säsong-svep (28 sep, veckorutinens område E, KÖRT FÖRSTA GÅNGEN):**
+  se `docs/svep-logg.md` för full metod/resultat. Kort: 76 av 160 undersökta
+  platser fick belagd säsong/öppettid med citat (43 i registret, 33 OSM-platser
+  via ny `OSM_SEASON_OVERRIDES`-mekanism i `scripts/sync-stations.mjs` +
+  `src/lib/overpass.ts`, samma "<type>/<id>"-mönster som
+  `OSM_FACILITY_OVERRIDES` – ändra ALLTID båda). ~1 250 platser med
+  tömning/vatten saknar fortfarande fältet, se svep-loggen för kvarvarande
+  luckor (bl.a. Trafikverkets 210 rastplatser, som helt saknar en känd
+  metod för säsong).
 
 - **~6 150 platser live** (efter deploy v64; kontrollera `git show
   origin/gh-pages:data/stations-seed.json`): OSM ~4 400–4 600 (varierar med

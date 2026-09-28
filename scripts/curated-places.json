@@ -9,7 +9,9 @@
     ],
     "fee": "Gratis, inget abonnemang",
     "description": "Vid infarten till återvinningscentralen Moga Returen. Källa: Svenljunga kommun.",
-    "url": "https://www.svenljunga.se/bygga-bo-miljo--trafik/vatten-och-avlopp/tomningsplats-for-husbilar"
+    "url": "https://www.svenljunga.se/bygga-bo-miljo--trafik/vatten-och-avlopp/tomningsplats-for-husbilar",
+    "season": "year-round",
+    "openingHours": "Mån-ons 10-17, tors 10-20 (apr-sep) / 10-18 (okt-mars), fre-lör 10-15, sön stängt"
   },
   {
     "name": "Alvesta tömningsplats",
@@ -42,7 +44,9 @@
     ],
     "fee": "Gratis",
     "description": "Tömning av gråvatten och latrin vid parkeringen i Inre hamnen. Källa: Norrköpings kommun.",
-    "url": "https://norrkoping.se/boende-trafik-och-miljo/vatten-avlopp-dagvatten-och-avfall/latrintomning"
+    "url": "https://norrkoping.se/boende-trafik-och-miljo/vatten-avlopp-dagvatten-och-avfall/latrintomning",
+    "season": "seasonal",
+    "openingHours": "15 april–15 oktober"
   },
   {
     "name": "Gnesta tömningsstation",
@@ -53,7 +57,9 @@
     ],
     "fee": "Gratis under vår och sommar",
     "description": "Kommunal tömningsstation på Ågatan. Källa: Gnesta kommun.",
-    "url": "https://www.gnesta.se/bostadmiljo/vattenochavlopp/kommunaltvattenochavlopp/tomningsstation.4.41b1e6ca165854d52266e477.html"
+    "url": "https://www.gnesta.se/bostadmiljo/vattenochavlopp/kommunaltvattenochavlopp/tomningsstation.4.41b1e6ca165854d52266e477.html",
+    "season": "seasonal",
+    "openingHours": "Öppen under sommarperioden, stänger vid frostrisk"
   },
   {
     "name": "Härnösand latrintömning",
@@ -235,7 +241,9 @@
     "fee": "220 kr/dygn inkl el",
     "description": "33 platser med el i Höganäs hamn. Servicehus med dusch, WC, tvättstuga, grå-/svartvattentömning. Öppen 1/6–31/8, endast husbilar.",
     "url": "https://hbs.se/g-stb-t/stallplats",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "1 juni–31 augusti"
   },
   {
     "name": "Falsterbokanalens Båtklubb ställplats",
@@ -468,7 +476,9 @@
     "url": "https://karlskoga.se/trafik--resor/stallplatsen.html",
     "source": "egen",
     "lat": 59.3211642,
-    "lon": 14.536561
+    "lon": 14.536561,
+    "season": "seasonal",
+    "openingHours": "28 mars–3 november"
   },
   {
     "name": "Bodele ställplats Uddevalla",
@@ -680,7 +690,9 @@
     "fee": "180 kr/dygn",
     "description": "Kommunala platser med färskvatten och latrintömning 1/5–30/9. Källa: kungalv.se.",
     "url": "https://www.kungalv.se/trafik--gator/parkering/parkera-stora-fordon/",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "1 maj–30 september (toaletter upplåsta 06:00–21:00)"
   },
   {
     "name": "Hamnservice Lysekil tömning",
@@ -691,7 +703,9 @@
     ],
     "description": "Kommunal tömning av latrin och gråvatten nära havsbadet. Källa: hamn.lysekil.se.",
     "url": "https://hamn.lysekil.se/sv/TomningLatrin",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "Begränsad service efter vecka 39"
   },
   {
     "name": "Kinna resecentrum husbilsplatser",
@@ -1137,7 +1151,9 @@
     "fee": "Avgift",
     "description": "Latrintömning samt toalett/dusch mot avgift. Källa: Sundsvalls kommun.",
     "url": "https://sundsvall.se/kommun/samhallsplanering-och-trafik/bilparkering/hitta-parkering/parkering-for-husbil",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "10 juni–31 augusti"
   },
   {
     "name": "Öjestrand GK ställplats",
@@ -1332,7 +1348,9 @@
     "fee": "175–200 kr inkl el",
     "description": "50 platser med el, maj–september, latrintömning. Källa: husbilsplats.se.",
     "url": "https://husbilsplats.se/locations/ockero-hamn/",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "30 april–30 september (full service), övrig del av året begränsad service"
   },
   {
     "name": "Hästholmens Västergård",
@@ -4166,7 +4184,9 @@
     "source": "egen",
     "nearLat": 58.69,
     "nearLon": 12.45,
-    "maxKm": 20
+    "maxKm": 20,
+    "season": "year-round",
+    "openingHours": "Året runt camping"
   },
   {
     "name": "Ursand Resort & Camping",
@@ -4311,7 +4331,9 @@
     "source": "egen",
     "nearLat": 56.07,
     "nearLon": 14.66,
-    "maxKm": 20
+    "maxKm": 20,
+    "season": "seasonal",
+    "openingHours": "12 april–17 september (huvudsäsong); vintersäsong okt–mars på 150-området"
   },
   {
     "name": "First Camp Åhus",
@@ -4409,7 +4431,9 @@
     "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats. First Camp: Liten station vid receptionen (byggnaden bakom Skogslängorna) för latrinbehållare; större station vid verkstadsbyggnaden efter lekplatsen för både latrinbehållare och fast tank",
     "url": "https://firstcamp.se/destination/kolmarden-norrkoping/",
     "source": "egen",
-    "fee": "Gratis för boende gäster; genomresande kan tömma och fylla för 60 kr/dag (från kl 12) enligt First Camp"
+    "fee": "Gratis för boende gäster; genomresande kan tömma och fylla för 60 kr/dag (från kl 12) enligt First Camp",
+    "season": "year-round",
+    "openingHours": "Öppet året runt"
   },
   {
     "name": "Flottsbro Camping",
@@ -4606,7 +4630,9 @@
     "source": "egen",
     "nearLat": 64.95,
     "nearLon": 21.21,
-    "maxKm": 15
+    "maxKm": 15,
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "name": "Grebbestad Fjorden",
@@ -4666,7 +4692,9 @@
     ],
     "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "https://www.sivikscamping.com/",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "15 april–15 september 2026"
   },
   {
     "name": "Gullbrannagården",
@@ -4761,7 +4789,9 @@
     "source": "egen",
     "nearLat": 55.97,
     "nearLon": 13.53,
-    "maxKm": 20
+    "maxKm": 20,
+    "season": "year-round",
+    "openingHours": "Öppet året runt; fullservice mitten av juni–början av augusti (reception 08.00–18.00)"
   },
   {
     "name": "Löderups Strandbad Camping",
@@ -4923,7 +4953,9 @@
     ],
     "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "https://www.hallstahammar.se/skantzo",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "Drop in-platserna öppna maj–september, begränsade öppettider i för- och eftersäsong"
   },
   {
     "name": "First Camp Lugnet Stugby",
@@ -4985,7 +5017,9 @@
     ],
     "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "https://www.stromsund.se/camping",
-    "source": "egen"
+    "source": "egen",
+    "season": "year-round",
+    "openingHours": "Helårscamping; receptionen på campingen öppen juni–mitten av september (Mån-fre 9-19, lör-sön 10-18), övrig tid vid turistinformationen"
   },
   {
     "name": "First Camp Ansia",
@@ -5138,7 +5172,9 @@
     ],
     "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "https://www.gnosjostrand.se/",
-    "source": "egen"
+    "source": "egen",
+    "season": "year-round",
+    "openingHours": "Öppet året runt, begränsade öppettider vintersäsong 1/10–31/5, högsäsong 15 juni–15 augusti"
   },
   {
     "name": "Mössebergs Camping & Stugby",
@@ -5180,7 +5216,9 @@
     ],
     "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "https://kyrkekvarn.com",
-    "source": "egen"
+    "source": "egen",
+    "season": "year-round",
+    "openingHours": "Öppet alla dagar året runt (telefontid vardagar 10–12)"
   },
   {
     "name": "Flatenbadets Stugor & Camping",
@@ -5316,7 +5354,9 @@
     ],
     "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "https://stenasa.com/?lang=en",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "10 april–18 oktober (säsong 2026)"
   },
   {
     "name": "Emmaboda GK Camping",
@@ -5341,7 +5381,9 @@
     ],
     "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "https://www.loderupscamping.se/",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "10 april–13 september (säsong 2026)"
   },
   {
     "name": "Nybrostrands camping",
@@ -5353,7 +5395,9 @@
     ],
     "description": "Erbjuder latrintömning för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "https://nybrostrandscamping.n.nu/",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "4 april–27 september (säsong 2026)"
   },
   {
     "name": "Bokerastens Camping",
@@ -5436,7 +5480,9 @@
     ],
     "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "https://bexetcamping.com/",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "1 maj–31 augusti"
   },
   {
     "name": "Vimmerby Camping Nossenbaden",
@@ -5721,7 +5767,9 @@
     ],
     "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "http://caravanclub.se/",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "1 maj–30 september"
   },
   {
     "name": "Baggetorps Vandrarhem",
@@ -5759,7 +5807,9 @@
     ],
     "description": "Erbjuder gråvattentömning för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "https://www.restaurangekenas.se/camping/",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "Öppet till slutet av oktober (restaurangen stänger säsongen 27 september)"
   },
   {
     "name": "Örnäs Camping",
@@ -5787,7 +5837,9 @@
     ],
     "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "https://www.farstanashf.se/",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "13 juni–31 augusti 2026"
   },
   {
     "name": "Djupadalsbadets camping",
@@ -5886,7 +5938,9 @@
     "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats. First Camp: Ställplats Stockholm vid Flatens naturreservat och sjön Flaten; självincheckning dygnet runt",
     "url": "https://firstcamp.se/destinationer/city-stockholm/camping",
     "source": "egen",
-    "fee": "Gratis för boende gäster; genomresande kan tömma och fylla för 60 kr/dag (från kl 12) enligt First Camp"
+    "fee": "Gratis för boende gäster; genomresande kan tömma och fylla för 60 kr/dag (från kl 12) enligt First Camp",
+    "season": "year-round",
+    "openingHours": "Året om"
   },
   {
     "name": "Ånnaboda Camping",
@@ -5899,7 +5953,9 @@
     "description": "Erbjuder latrintömning för husbil/husvagn. Källa: anläggningens webbplats. First Camp: servicehus 1 bredvid bommen, samt servicehus 3 och 4",
     "url": "http://www.annaboda.com/",
     "source": "egen",
-    "fee": "Gratis för boende gäster; genomresande kan tömma och fylla för 60 kr/dag (från kl 12) enligt First Camp"
+    "fee": "Gratis för boende gäster; genomresande kan tömma och fylla för 60 kr/dag (från kl 12) enligt First Camp",
+    "season": "year-round",
+    "openingHours": "Öppet året runt"
   },
   {
     "name": "Camping Branäs",
@@ -5925,7 +5981,9 @@
     ],
     "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "https://www.medskogssjon.se/",
-    "source": "egen"
+    "source": "egen",
+    "season": "year-round",
+    "openingHours": "Vintersäsong 1/10–31/3 och sommarsäsong 1/4–30/9 (öppet året runt)"
   },
   {
     "name": "Våmåbadets Camping",
@@ -5951,7 +6009,9 @@
     ],
     "description": "Erbjuder latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "https://www.svegscamping.se/",
-    "source": "egen"
+    "source": "egen",
+    "season": "year-round",
+    "openingHours": "Öppet året runt"
   },
   {
     "name": "Sunnanö Camping",
@@ -6268,7 +6328,9 @@
     "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats. rastplatserna.se/husbilsplats.se. \"Registret har redan \"Gäddede Camping & Stugby\" (64.505972/14.1483848) med gravatten+latrin+vatten, källa \"anläggningens webbplats\", PLUS en obekräftad dubblett \"Gäddede Camping och Stugby\" (query-baserad, unverified). In\" (https://husbilsplats.se/rest-area/gaddede-camping-och-stugby/)",
     "url": "https://www.gaddedecamping.com/",
     "source": "egen",
-    "confidence": "medium"
+    "confidence": "medium",
+    "season": "year-round",
+    "openingHours": "Öppet hela året, sommar som vinter"
   },
   {
     "name": "Åmsele camping",
@@ -7573,7 +7635,9 @@
     ],
     "description": "El, vatten, toalett, dusch, tvättmaskin, latrin- och gråvattentömning i Rättvik. Kompletterar OSM-posten med bekräftad färskvattenpåfyllning. Källa: anläggningens egen webbplats och Visit Rättvik.",
     "url": "https://www.massarbacksgarden.se/",
-    "source": "egen"
+    "source": "egen",
+    "season": "year-round",
+    "openingHours": "Öppet året runt (med undantag vid kyla/mycket snö)"
   },
   {
     "name": "Ragvaldsträsk ställplats",
@@ -12330,7 +12394,9 @@
     ],
     "source": "egen",
     "description": "Komplettering norrland sep 2026. Källa (https://www.husvagnochcamping.se/artiklar/campingkollen/20211209/camp-gielas-arvidsjaur-har-mots-turisterna-i-lappland/ ; https://www.husbilhusvagn.se/camping/camp-gielas): \"Husvagn & Camping (Campingkollen-reportage 2021-12-09): Camp Gielas har 'servicestation för husbilar och ett mycket trevligt rum för toatömning'. Husbil & Husvagns anläggningssida (husbilhusvagn.se/camping/camp-gielas) listar 'Tömma gråvatten' och 'Tömma latrin (kassett)'. husbilsplats.se (sekundär) nämner dessutom vattenpåfyllning, gråvatten- och toatömning 'på olika ställen för att minimera kö'. Arvidsjaur kommun hade 0 tömningsplatser i appen.\"",
-    "website": "https://www.husvagnochcamping.se/artiklar/campingkollen/20211209/camp-gielas-arvidsjaur-har-mots-turisterna-i-lappland/ ; https://www.husbilhusvagn.se/camping/camp-gielas"
+    "website": "https://www.husvagnochcamping.se/artiklar/campingkollen/20211209/camp-gielas-arvidsjaur-har-mots-turisterna-i-lappland/ ; https://www.husbilhusvagn.se/camping/camp-gielas",
+    "season": "year-round",
+    "openingHours": "Året runt, dygnet runt via Hotell Laponia"
   },
   {
     "name": "Sorsele Camping",
@@ -12516,7 +12582,9 @@
     ],
     "source": "egen",
     "description": "Komplettering sjuharad-skaraborg sep 2026. Källa (https://www.hajstorp.com/stllplats-hajstorp (anläggningens egen sajt; återgivet via sökresultat – hajstorp.com är egress-blockad härifrån så citatet är sökmotorns sammanfattning av sidan)): \"Ställplats vid Hajstorps övre sluss: 16 elplatser, servicehus med toaletter, duschar, kök och tvätt sommartid, samt färskvatten och tömning av toalett och gråvatten. 300 kr/natt inkl el (högsäsong), 150 kr/natt (lågsäsong).\"",
-    "website": "https://www.hajstorp.com/stllplats-hajstorp (anläggningens egen sajt; återgivet via sökresultat – hajstorp.com är egress-blockad härifrån så citatet är sökmotorns sammanfattning av sidan)"
+    "website": "https://www.hajstorp.com/stllplats-hajstorp (anläggningens egen sajt; återgivet via sökresultat – hajstorp.com är egress-blockad härifrån så citatet är sökmotorns sammanfattning av sidan)",
+    "season": "seasonal",
+    "openingHours": "Säsong ca april–september (kaféet öppet 30/4–27/9 2026)"
   },
   {
     "name": "Ystads småbåtshamn – latrintömning",
@@ -12566,7 +12634,9 @@
     "operator": "Bromölla kommun",
     "website": "https://www.bromolla.se/uppleva-och-gora/turism/stallplatser-for-husbilar/",
     "lat": 56.0634955,
-    "lon": 14.4959751
+    "lon": 14.4959751,
+    "season": "year-round",
+    "openingHours": "Öppet 07.00–22.00"
   },
   {
     "name": "Ställplats Aspan, Ronneby",
@@ -13300,7 +13370,9 @@
     ],
     "source": "egen",
     "description": "Obekräftat (https://www.essunga.se/uppleva--gora/nossebro-bad-och-camping/camping/stallplats.html (kommunsida, träff i sökningen) ; https://stallplatskartan.se/sv/nossebro-bad-camping/): \"För tömning av latrin finns en modern latrintömningsautomat, vilket gör hanteringen smidig och hygienisk. Ställplatserna bokas via 0512-570 43 eller nossebrobadet@essunga.se. Marknadsgatan 4, Nossebro.\"",
-    "website": "https://www.essunga.se/uppleva--gora/nossebro-bad-och-camping/camping/stallplats.html (kommunsida, träff i sökningen) ; https://stallplatskartan.se/sv/nossebro-bad-camping/"
+    "website": "https://www.essunga.se/uppleva--gora/nossebro-bad-och-camping/camping/stallplats.html (kommunsida, träff i sökningen) ; https://stallplatskartan.se/sv/nossebro-bad-camping/",
+    "season": "seasonal",
+    "openingHours": "2 april–14 september"
   },
   {
     "name": "Herrljunga Återvinningscentral",
@@ -13885,7 +13957,9 @@
     "query": "Älvsby folkhögskola ställplats, Älvsbyn",
     "nearLat": 65.6766,
     "nearLon": 21.022,
-    "maxKm": 25
+    "maxKm": 25,
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "name": "Bureå Båtsällskap",
@@ -17948,7 +18022,9 @@
     "address": "Lyserna 2, 432 97 Rolfstorp",
     "website": "https://akulla.eu/",
     "lat": 57.122,
-    "lon": 12.5445
+    "lon": 12.5445,
+    "season": "year-round",
+    "openingHours": "Öppet året runt"
   },
   {
     "name": "Falun-Borlänge GK Aspeboda ställplats",
@@ -18127,7 +18203,9 @@
     "address": "Harsagården 1, Harsa, Järvsö",
     "website": "https://harsa.se/boende/husvagn/",
     "lat": 61.62504,
-    "lon": 15.97158
+    "lon": 15.97158,
+    "season": "seasonal",
+    "openingHours": "1 maj–30 september"
   },
   {
     "name": "Hovra STF Vandrarhem",
@@ -18213,7 +18291,9 @@
     "maxKm": 10,
     "address": "Borenshult, Motala (strax öster om Motala vid Göta kanal)",
     "confidence": "medium",
-    "website": "https://www.gotakanal.se/sv/boka/boende/2849882/st%C3%A4llplats-borenshult/detaljer"
+    "website": "https://www.gotakanal.se/sv/boka/boende/2849882/st%C3%A4llplats-borenshult/detaljer",
+    "season": "seasonal",
+    "openingHours": "Cirka slutet av maj–slutet av augusti (slusskiosk bemannad 12–19 juni–augusti)"
   },
   {
     "name": "Nybrovallen Grönhögens Camping",
@@ -18311,7 +18391,9 @@
     "nearLon": 21.0293,
     "maxKm": 25,
     "address": "Kurjovikens gästhamn, Skelleftehamn (skyltat från E4)",
-    "website": "https://www.urss.se/klubben/anlaggningar/stallplats-kurjoviken/"
+    "website": "https://www.urss.se/klubben/anlaggningar/stallplats-kurjoviken/",
+    "season": "seasonal",
+    "openingHours": "1 juni–15 september"
   },
   {
     "name": "Ställplats Rosenberg",
@@ -18528,7 +18610,9 @@
     "nearLon": 12.8,
     "maxKm": 15,
     "address": "Kattviksvägen 347, 269 91 Båstad",
-    "website": "https://caravanclub.se/camping/norrviken/"
+    "website": "https://caravanclub.se/camping/norrviken/",
+    "season": "seasonal",
+    "openingHours": "21 mars–4 oktober"
   },
   {
     "name": "Ställplats - Arontorp",
@@ -19333,7 +19417,9 @@
     "maxKm": 15,
     "address": "Storgatan 1A, 917 31 Dorotea",
     "confidence": "medium",
-    "website": "https://doro.camp/en/campground/"
+    "website": "https://doro.camp/en/campground/",
+    "season": "seasonal",
+    "openingHours": "Sommarsäsong juni–slutet av augusti, vintersäsong nov/dec–april; servicehuset delvis öppet/stängt i maj och september"
   },
   {
     "name": "Lufta Camping",

@@ -47,9 +47,41 @@ const OSM_FACILITY_OVERRIDES = new Map<string, string[]>([
 // egen sida (se docs/svep-logg.md). Fyller bara i det OSM SAKNAR – går aldrig
 // före en riktig opening_hours/seasonal-tagg. Speglar scripts/sync-stations.mjs
 // – ändra ALLTID båda.
-const OSM_SEASON_OVERRIDES = new Map<string, { season?: Station['season']; openingHours?: string }>(
-  [],
-)
+const OSM_SEASON_OVERRIDES = new Map<string, { season?: Station['season']; openingHours?: string }>([
+  ['way/1176936971', { season: 'seasonal', openingHours: '70 platser bokningsbara 15 maj–september; 10 platser bokningsbara året runt' }], // Småbåtshamnen i Limhamn AB – smabatshamnen.se
+  ['way/296910983', { season: 'seasonal', openingHours: '28 mars–11 oktober (säsong 2026)' }], // Kiviks Familjecamping – kivikscamping.se
+  ['way/127555305', { season: 'year-round', openingHours: 'Öppet året runt, begränsad service under lågsäsong' }], // Rigeleje Strand Camping – rigelejestrand.se
+  ['node/10947329170', { season: 'year-round', openingHours: 'Öppen året runt' }], // Ställplats Nogersunds Hamn – nogersundshamn.se
+  ['way/1043407790', { season: 'seasonal', openingHours: '1 april–30 september' }], // Tredenborgs camping – tredenborg.com
+  ['node/12925322676', { season: 'year-round', openingHours: 'Öppet året runt (175 kr maj–september, 100 kr oktober–april)' }], // Sandhamn Ställplatser och Stugor – gasthamn.sandhamnmarine.se
+  ['way/25687352', { season: 'year-round', openingHours: 'Öppet året runt; försäsong 1 april–13 juni, eftersäsong 22 augusti–12 oktober 2026' }], // Dragsö Camping – dragso.se
+  ['way/77662837', { season: 'year-round', openingHours: 'Öppet året runt; fullservice midsommar–slutet av augusti (reception 08.00–21.00)' }], // Långasjönäs Camping och Stugby – langasjonas.com
+  ['way/1463934565', { season: 'year-round', openingHours: 'Tillgänglig dygnet runt, året runt' }], // Persköps ställplats – perskopsstallplats.com
+  ['way/205130559', { season: 'seasonal', openingHours: '1 maj–4 oktober (säsong 2026)' }], // Getnö Gård Lake Åsnen Resort – getnogard.se
+  ['way/36742514', { season: 'seasonal', openingHours: 'Stängt 30 november–27 mars' }], // Evedals Camping – evedalscamping.com
+  ['way/625832150', { season: 'seasonal', openingHours: 'April–oktober' }], // Rödlix Vandrarhem & Camping – rodlixvandrarhem.se
+  ['way/702212347', { season: 'seasonal', openingHours: '29 april–30 september' }], // Espeviks Camping – espevikscamping.se
+  ['node/850174475', { season: 'seasonal', openingHours: '8 maj–6 september 2026' }], // Bödagårdens Camping – bodagarden.nu
+  ['node/6462134771', { season: 'seasonal', openingHours: 'Servicehus med gråvatten/latrintömning stängt mitten av oktober till mitten av mars; sommar dagligen 9-19' }], // Gästhamn Blankaholm – blankaholm.com
+  ['node/431824851', { season: 'year-round', openingHours: 'Anläggningen öppen året runt; reception bemannad sommarsäsong, t.ex. 15 juni–23 augusti dagligen 8.30–18' }], // Lövhults Camping – nassjo.se
+  ['way/114345736', { season: 'seasonal', openingHours: '24 maj–9 september' }], // Lovsjöbadens Camping – lovsjocamping.se
+  ['way/1163078106', { season: 'seasonal', openingHours: '1 maj–30 september' }], // Strandskogens camping – sudersand.se
+  ['relation/17689924', { season: 'seasonal', openingHours: '1 april–11 oktober' }], // Stocken Camping – stockencamping.se
+  ['node/431825468', { season: 'seasonal', openingHours: '1 april–31 oktober' }], // Grästorps camping – grastorp.se
+  ['way/39672366', { season: 'year-round', openingHours: 'Året runt' }], // KronoCamping Lidköping – kronocamping.com
+  ['way/233909831', { season: 'seasonal', openingHours: '1 april–2 november' }], // Åråshults Camping & Stugby – arashultscamping.com
+  ['node/2382863123', { season: 'seasonal', openingHours: '29 maj–21 juni 2026: mån-fre 11-19, lör-sön 10-18 (sommarsäsong, fortsätter med egna tider t.o.m. augusti)' }], // Sannabadet – sannabadet.se
+  ['way/89615997', { season: 'seasonal', openingHours: '8 maj–27 september' }], // Bredäng Camping Stockholm – bredangcamping.se
+  ['way/363803188', { season: 'seasonal', openingHours: 'Sommarsäsong 1 maj–30 september; vintersäsong 1 oktober–30 april (kontakt via telefon/mejl)' }], // Treens Natur & Fiskecamp – treenscamping.se
+  ['relation/16027523', { season: 'seasonal', openingHours: '1 april–30 september (säsong 2026)' }], // Rullsands Havsbad och Camping – rullsand.se
+  ['way/1449952833', { season: 'seasonal', openingHours: '1 maj–18 oktober' }], // Ljusdals hembygdsgård – ljusdalshembygdsforening.se
+  ['way/1471697019', { season: 'year-round', openingHours: 'Öppen året om' }], // Sjöstugan – sjostugan.nu
+  ['way/303518816', { season: 'seasonal', openingHours: 'Campingen öppnar 7 maj 2026 (vandrarhemmet 1 april 2026)' }], // Vivstavarvstjärns Camping – vivstavarvscamping.se
+  ['way/1450685675', { season: 'seasonal', openingHours: 'April–oktober' }], // Bräcke Strand Ställplats – brackestrand.se
+  ['node/270492517', { season: 'seasonal', openingHours: 'Sommarsäsongen 2026 öppnar 23 maj' }], // Galå Fjällgård – gala-fjallgard.com
+  ['way/1288977153', { season: 'seasonal', openingHours: '1 maj–30 september' }], // Ställplats Storsjöstrand – stellpy.se
+  ['way/251360292', { season: 'year-round', openingHours: 'Öppet året runt' }], // Trehörningsjö Camping och Stugby – trehorningsjocamping.se
+])
 
 // Flera speglar – om en är överbelastad (429/504) provas nästa.
 const OVERPASS_MIRRORS = [
