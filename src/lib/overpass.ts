@@ -76,6 +76,7 @@ const OSM_SEASON_OVERRIDES = new Map<string, { season?: Station['season']; openi
   ['relation/16027523', { season: 'seasonal', openingHours: '1 april–30 september (säsong 2026)' }], // Rullsands Havsbad och Camping – rullsand.se
   ['way/1449952833', { season: 'seasonal', openingHours: '1 maj–18 oktober' }], // Ljusdals hembygdsgård – ljusdalshembygdsforening.se
   ['way/1471697019', { season: 'year-round', openingHours: 'Öppen året om' }], // Sjöstugan – sjostugan.nu
+  ['relation/21255848', { season: 'year-round', openingHours: 'Öppen året om' }], // Sjöstugan (Idre) – OSM ritade om platsen till en relation sep 2026, samma anläggning som way/1471697019
   ['way/303518816', { season: 'seasonal', openingHours: 'Campingen öppnar 7 maj 2026 (vandrarhemmet 1 april 2026)' }], // Vivstavarvstjärns Camping – vivstavarvscamping.se
   ['way/1450685675', { season: 'seasonal', openingHours: 'April–oktober' }], // Bräcke Strand Ställplats – brackestrand.se
   ['node/270492517', { season: 'seasonal', openingHours: 'Sommarsäsongen 2026 öppnar 23 maj' }], // Galå Fjällgård – gala-fjallgard.com
