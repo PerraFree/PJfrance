@@ -40,5 +40,15 @@ jobs:
             echo "Ingen ändring i stationsdatan."
           else
             git commit -m "Uppdatera stationsdata (automatisk synk) [skip ci]"
-            git push
+            # Synken tar ~30 min – hinner någon pusha under tiden avvisas pushen
+            # ("fetch first", hände 28 sep 2026). Rebasa på färsk gren och försök igen.
+            # Seed-filen är genererad, så vid konflikt vinner den färska synken (-X theirs).
+            ok=0
+            for i in 1 2 3; do
+              if git pull --rebase -X theirs origin "${GITHUB_REF_NAME}" && git push; then ok=1; break; fi
+              git rebase --abort 2>/dev/null || true
+              echo "Push misslyckades (försök $i av 3) – väntar 15 s"
+              sleep 15
+            done
+            [ "$ok" = 1 ] || { echo "::error::Kunde inte pusha seed-filen efter 3 försök"; exit 1; }
           fi
