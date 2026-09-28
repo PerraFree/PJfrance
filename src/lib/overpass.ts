@@ -42,6 +42,15 @@ const OSM_FACILITY_OVERRIDES = new Map<string, string[]>([
   ['way/222140864', ['gasol_byte']], // Circle K Bandhagen Högdalen
 ])
 
+// Öppettider/säsong-svep sep 2026: OSM saknar opening_hours/seasonal-tagg för
+// dessa, men research hittade ett konkret citat från kommunen/anläggningens
+// egen sida (se docs/svep-logg.md). Fyller bara i det OSM SAKNAR – går aldrig
+// före en riktig opening_hours/seasonal-tagg. Speglar scripts/sync-stations.mjs
+// – ändra ALLTID båda.
+const OSM_SEASON_OVERRIDES = new Map<string, { season?: Station['season']; openingHours?: string }>(
+  [],
+)
+
 // Flera speglar – om en är överbelastad (429/504) provas nästa.
 const OVERPASS_MIRRORS = [
   'https://overpass-api.de/api/interpreter',
@@ -241,6 +250,7 @@ function toStation(el: OverpassElement): Station | null {
   const tags = el.tags ?? {}
   if (isBoatStation(tags)) return null
   const override = OSM_FACILITY_OVERRIDES.get(`${el.type}/${el.id}`)
+  const seasonOverride = OSM_SEASON_OVERRIDES.get(`${el.type}/${el.id}`)
   // En mack som bara har fuel:lpg=yes (ingen shop=gas, ingen platsvis
   // verifierad override) är fordonsgas/autogas vid pump – inte flaskbyte.
   // Utan detta hade den visats som "byt tub" via okänt-fallbacken.
@@ -268,8 +278,8 @@ function toStation(el: OverpassElement): Station | null {
         : tags.fee === 'no' && !(services.length === 1 && services[0] === 'gasol')
           ? 'Gratis'
           : undefined,
-    openingHours: tags.opening_hours,
-    season: seasonFromTags(tags),
+    openingHours: tags.opening_hours ?? seasonOverride?.openingHours,
+    season: seasonFromTags(tags) ?? seasonOverride?.season,
     image: imageFromTags(tags),
     osmUrl: `https://www.openstreetmap.org/${el.type}/${el.id}`,
     ...amenity,
