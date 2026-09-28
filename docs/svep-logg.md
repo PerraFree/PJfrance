@@ -44,9 +44,13 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   fortfarande gårdagens data, men mina nya gasolplatser/priser kom aldrig
   ut. Rättat i `scripts/sync-stations.mjs`: ett 0-stationssvar räknas inte
   längre som "best", och om inget mirror ger någon data alls kastas ett fel
-  så att reuse-säkringen faktiskt aktiveras. Pushad separat, väntar på att
-  nästa deploy (som nu kör om automatiskt) verifierar att B:s ändringar
-  kommer med.
+  så att reuse-säkringen faktiskt aktiveras.
+  **Verifierat efter deploy (run 189, 09:02 UTC):** fixen fungerade – OSM
+  återanvändes korrekt (4 619 stationer, samma som innan Overpass-avbrottet)
+  i stället för att falla till 0, och alla B-ändringar kom med: 4/4 nya
+  gasolplatser geokodade rimligt nära sina ortankare (Ängelholm, Onsala,
+  Linköping, Norrköping – alla inom någon km) och alla 4 prisuppdateringar
+  syns i seeden (243 av 449 curated gasolplatser har nu `gasolPrice`).
 - **2026-09-28, B (gasol priser + kvarvarande luckor):** A och B stod båda som
   "senast kört 2026-09-24" i tabellen (samma dag), men B:s sista commit den
   dagen (09:17) låg strax före A:s första (09:38) – valde därför B som den
