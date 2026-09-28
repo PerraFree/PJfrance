@@ -7813,7 +7813,8 @@
     "address": "Slagtofta 4010, 242 94 Hörby",
     "phone": "070-265 18 80",
     "confidence": "high",
-    "website": "https://himlastallet.se/gasol/"
+    "website": "https://himlastallet.se/gasol/",
+    "gasolPrice": "Byte, ny flaska: PK5 1550 kr, P6 1350 kr, PK10 1750 kr, P11 1450 kr (himlastallet.se/gasol, sep 2026)"
   },
   {
     "name": "Gasoldepån Simmelsberga",
@@ -9580,7 +9581,8 @@
     "nearLat": 59.345,
     "nearLon": 18.09,
     "maxKm": 12,
-    "url": "https://www.lsvab.se/ ; https://forsaljningsstallen.linde.se/stockholm/liding%C3%B6v%C3%A4gen-75-f/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-lindstr%C3%B6ms-svets-&-verktyg-ab-(hyreshuset)"
+    "url": "https://www.lsvab.se/ ; https://forsaljningsstallen.linde.se/stockholm/liding%C3%B6v%C3%A4gen-75-f/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-lindstr%C3%B6ms-svets-&-verktyg-ab-(hyreshuset)",
+    "gasolPrice": "Byte PC10 549 kr, P11 649 kr inkl. moms (egen sajt, nyhet daterad 2024-04-19 – kan ha ändrats sedan dess) (sep 2026)"
   },
   {
     "services": [
@@ -10855,7 +10857,8 @@
     "source": "egen",
     "description": "Gasolautomat 24/7 (Gasol 24/7 Skåne AB/Skånegas) – byte av PC5, PC10 och P11. Källa: skanegas.com, Ställplatsappen.",
     "openingHours": "24/7",
-    "url": "https://husbilskompisar.se/stallplatskartan/gasol-247-gasolautomat-karlshamn ; https://pr.maptons.com/p/12167033260 ; https://www.skanegas.com/gasolautomater/"
+    "url": "https://husbilskompisar.se/stallplatskartan/gasol-247-gasolautomat-karlshamn ; https://pr.maptons.com/p/12167033260 ; https://www.skanegas.com/gasolautomater/",
+    "gasolPrice": "Byte från 180 kr (exakt kr/kg per flasktyp ej angivet) (skanegas.com, sep 2026)"
   },
   {
     "name": "Expressgasol – gasolautomat Lidköping (Framnäsvägen)",
@@ -17089,7 +17092,8 @@
     "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
     "confidence": "medium",
     "phone": "0732-437 437",
-    "openingHours": "Mån–Tor 10–15, Fre 10–17, Lör 10–13"
+    "openingHours": "Mån–Tor 10–15, Fre 10–17, Lör 10–13",
+    "gasolPrice": "Påfyllning 39 kr/kg (gasolesset.se, sep 2026)"
   },
   {
     "name": "Unax AB, Ljusdal",
@@ -19555,5 +19559,76 @@
     "unverifiedServices": [
       "latrin"
     ]
+  },
+  {
+    "name": "Skånegas gasolautomat, Ängelholm",
+    "query": "Verkstadsgatan 4, Ängelholm",
+    "nearLat": 56.2428,
+    "nearLon": 12.8612,
+    "maxKm": 8,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "high",
+    "address": "Verkstadsgatan 4, Ängelholm (mitt emot McDonald's)",
+    "description": "Gasolautomat, byte/köp av nya flaskor PC5/PC10/P11, öppen dygnet runt. Källa: Skånegas egen webbplats (skanegas.com/gasolautomater), kontrollerad sep 2026.",
+    "website": "https://www.skanegas.com/gasolautomater/"
+  },
+  {
+    "name": "Levol gasolautomat, Onsala",
+    "query": "Onsala",
+    "nearLat": 57.4192,
+    "nearLon": 11.9767,
+    "maxKm": 10,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "high",
+    "description": "Gasolautomat, byte av PC5/PC10-flaskor, öppen dygnet runt. Källa: Levols egen webbplats (levol.se/gasolautomat), kontrollerad sep 2026. Exakt gatuadress saknas – platsen ligger centrerad på Onsala tätort tills adressen bekräftats.",
+    "website": "https://levol.se/gasolautomat/"
+  },
+  {
+    "name": "Koaro AB, Linköping",
+    "query": "Roxtorpsgatan 16B, Linköping",
+    "nearLat": 58.4108,
+    "nearLon": 15.6214,
+    "maxKm": 8,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "address": "Roxtorpsgatan 16B, 582 73 Linköping",
+    "description": "Linde Gas försäljningsställe, AGA-depå/industrigasåterförsäljare som för gasol. Ingen uppgift om lösviktspåfyllning hittad, klassad som byte. Källa: forsaljningsstallen.linde.se, kontrollerad sep 2026.",
+    "website": "https://forsaljningsstallen.linde.se/link%C3%B6ping/roxtorpsgatan-16b/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-koaro-ab"
+  },
+  {
+    "name": "BG:s Gas & VVS Service AB, Norrköping",
+    "query": "Kiselgatan 31, Norrköping",
+    "nearLat": 58.5877,
+    "nearLon": 16.1924,
+    "maxKm": 8,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "address": "Kiselgatan 31, 602 23 Norrköping",
+    "description": "Linde Gas försäljningsställe, VVS-/gasfirma sedan 1994 som för gasol bland industrigaserna. Ingen uppgift om lösviktspåfyllning hittad, klassad som byte. Källa: forsaljningsstallen.linde.se, kontrollerad sep 2026.",
+    "website": "https://forsaljningsstallen.linde.se/norrk%C3%B6ping/kiselgatan-31/linde-gas-f%C3%B6rs%C3%A4ljningsst%C3%A4lle-bg-gas-%26-vvs-service-ab"
   }
 ]

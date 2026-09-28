@@ -9,7 +9,7 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 | Fokusområde | Vad | Senast kört |
 |---|---|---|
 | A. Tömning latrin/gråvatten | Kommuner med 0–1 tömningsplatser: kommunsidor, turistråd, anläggningars egna sajter. Kompletteringar av befintliga camping-/ställplatsposter räknas. | 2026-09-24 |
-| B. Gasol byte/påfyllning + priser | Kedjornas butikssidor (Byggmax/Granngården/Rusta/ÖoB per butik), Norbro-/Linde-/gasolautomat.se-listor, lokala påfyllningsbolag, priser. Bara 10/11 kg-flaskor (P11/PA11/PC10/PK10). | 2026-09-24 |
+| B. Gasol byte/påfyllning + priser | Kedjornas butikssidor (Byggmax/Granngården/Rusta/ÖoB per butik), Norbro-/Linde-/gasolautomat.se-listor, lokala påfyllningsbolag, priser. Bara 10/11 kg-flaskor (P11/PA11/PC10/PK10). | 2026-09-28 |
 | C. Obekräftade platser: verifiera + fyll på | (1) Sök primärkälla för de OBEKRÄFTADE posterna i registret (`unverified: true` / `unverifiedServices`) – får de citat: ta bort obekräftat-flaggan. (2) Gör om lovande rader i `docs/kandidatplatser-husbilsplats-park4night.md` (tydlig tjänst + ort) till obekräftade registerposter så de syns grått på kartan. | 2026-09-25 |
 | D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. | 2026-09-25 |
 | E. Öppettider + vinterstängt | Platser med tömning/vatten som saknar `openingHours`/`season`: hämta säsong ("1 maj–30 sep", "vinterstängt", "året runt") från kommun-/anläggningssida. Skriv `season: 'seasonal'`/`'year-round'` + `openingHours`. Prioritera kommunala tömningsstationer och Trafikverkets rastplatser med vattenavstängning. | 2026-09-28 |
@@ -27,6 +27,38 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 ## Logg
 
+- **2026-09-28, B (gasol priser + kvarvarande luckor):** A och B stod båda som
+  "senast kört 2026-09-24" i tabellen (samma dag), men B:s sista commit den
+  dagen (09:17) låg strax före A:s första (09:38) – valde därför B som den
+  strikt äldsta av de två.
+  **Metod:** 8 parallella agenter (general-purpose, 60 sökningar var i budget,
+  ~223 av 600 använda totalt, inget kvotfel) mot de 77 lokala oberoende
+  gasolåterförsäljarna i registret som saknade `gasolPrice` (kedjor som
+  Byggmax/Granngården/Rusta/ÖoB/jem & fix/Motonet/Elgiganten uteslöts
+  medvetet – redan känt att de inte publicerar butiksspecifikt pris, se
+  CLAUDE.md). Sista gruppen fick även fyra kända luckor: Skånegas
+  Ängelholm, Levol Onsala, Koaro Linköping, BG Gas Norrköping.
+  **Resultat:** endast **4 av 77 fick ett citerbart pris** från egen sajt
+  (Himlastallet i Slagtofta, Lindströms Svets & Verktyg, Skånegas Karlshamn,
+  Ljungby Gasol → GasolEsset Ljungby 39 kr/kg) – mönstret håller: småskaliga
+  lokala återförsäljare (bensinstationer, järnhandlar, svetsbutiker)
+  publicerar nästan aldrig pris online, kräver telefon/butiksbesök. Alla 77
+  bekräftades fortfarande aktiva (ingen nedläggning hittad, inget togs bort).
+  **4 nya platser** hittade och tillagda (alla `gasol_byte`, `confidence`
+  hög/medel, källa = operatörens/Lindes egen sajt): Skånegas gasolautomat
+  Ängelholm (Verkstadsgatan 4), Levol gasolautomat Onsala (adress saknas –
+  `query: 'Onsala'` med `nearLat/nearLon` på tätorten, maxKm 10), Koaro AB
+  Linköping och BG:s Gas & VVS Service AB Norrköping (båda Linde-
+  återförsäljare, ingen påfyllning belagd → byte). Ingen av de fyra kunde
+  geokodas till exakt lat/lon inom sökbudgeten – **verifiera geokodningen
+  extra noga efter deploy**, särskilt Onsala (bara ortsanker, inget
+  gatunamn).
+  **Kvar:** Byggmax/Granngården/Rusta/ÖoB per-butik-status (kräver
+  lagerstatus i butik, inte webbsök), Expressgasol Tidaholm/Ronneby/
+  Tingsryd + Norbros egen automatkarta (JS-kartor, kräver webbläsare),
+  Levol Onsala gatuadress, priser för resten av de ~73 lokala
+  återförsäljarna som gav null (kräver telefon – Per vill inte ringa, så
+  detta är en permanent lucka om inte metoden ändras).
 - **2026-09-28, E (öppettider/säsong), rättelse av C/D:** Upptäckte att raden
   "2026-09-25, C+D (källjämförelser)" nedan aldrig uppdaterade rotationstabellens
   datum för C och D – de stod kvar som "aldrig"/"2026-09-07" trots att området
