@@ -27,6 +27,26 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 ## Logg
 
+- **2026-09-28, buggfix i synkskriptet (upptäckt vid deploy-verifiering av B
+  nedan):** Deployen efter B:s commit publicerade INTE de nya ändringarna –
+  seeden på gh-pages var oförändrad. Orsak (se Actions-loggen för run 188):
+  alla tre Overpass-speglar gav antingen 504 eller ett tomt svar (0
+  stationer). `fetchOsm()`:s "prova nästa spegel, ta till sist det största
+  svaret"-logik räknade det TOMMA svaret (0 stationer) som ett giltigt
+  "best"-resultat i stället för att ignorera det – en tom array är `truthy`
+  i JS, så loopen avbröts efter första varvet och `fetchOsm()` returnerade
+  tyst 0 stationer i stället för att kasta ett fel. Det gjorde att
+  "återanvänd förra seedens OSM-data"-säkringen (tillagd 24 sep, i
+  `catch`-blocket runt `fetchOsm()`-anropet) aldrig utlöstes, eftersom inget
+  fel kastades. Resultatet (0 OSM + 319 TRV + 1268 register = 1587) var
+  under hälften av förra körningens 6202, så den ANDRA säkringen (50 %-
+  spärren) triggade korrekt och avbröt skrivningen – appen visade alltså
+  fortfarande gårdagens data, men mina nya gasolplatser/priser kom aldrig
+  ut. Rättat i `scripts/sync-stations.mjs`: ett 0-stationssvar räknas inte
+  längre som "best", och om inget mirror ger någon data alls kastas ett fel
+  så att reuse-säkringen faktiskt aktiveras. Pushad separat, väntar på att
+  nästa deploy (som nu kör om automatiskt) verifierar att B:s ändringar
+  kommer med.
 - **2026-09-28, B (gasol priser + kvarvarande luckor):** A och B stod båda som
   "senast kört 2026-09-24" i tabellen (samma dag), men B:s sista commit den
   dagen (09:17) låg strax före A:s första (09:38) – valde därför B som den

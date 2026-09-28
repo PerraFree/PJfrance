@@ -292,7 +292,7 @@ async function fetchOsm() {
   const prevCount = await previousOsmCount()
   let lastError
   let best = null
-  for (let attempt = 0; attempt < 2 && !best; attempt++) {
+  for (let attempt = 0; attempt < 2 && !(best && best.length); attempt++) {
     if (attempt > 0) {
       console.log('Nytt varv över speglarna om 30 s …')
       await sleep(30_000)
@@ -305,7 +305,13 @@ async function fetchOsm() {
         console.warn(
           `OSM via ${url} gav bara ${stations.length} av förra seedens ${prevCount} stationer – provar nästa spegel.`,
         )
-        if (!best || stations.length > best.length) best = stations
+        // Ett svar med 0 (eller nästan 0) stationer är i praktiken samma sak
+        // som ett fel – räknas INTE som "best", annars avbryts försöksvarvet
+        // i förtid (tom array är truthy i JS) och fetchOsm() returnerar tyst
+        // 0 stationer i stället för att kasta, vilket hoppar över
+        // reuse-säkringen i anropskoden nedan (hände 28 sep 2026: alla tre
+        // speglar gav 504/504/0, "0" vann som "best", ingen återanvändning).
+        if (stations.length > 0 && (!best || stations.length > best.length)) best = stations
       } catch (err) {
         lastError = err
         console.warn(`OSM-hämtning misslyckades via ${url}: ${err.message}`)
@@ -313,11 +319,11 @@ async function fetchOsm() {
       }
     }
   }
-  if (best) {
+  if (best && best.length) {
     console.warn(`Ingen spegel nådde 97 % av förra antalet – använder det största svaret (${best.length}).`)
     return best
   }
-  throw lastError
+  throw lastError ?? new Error('Alla Overpass-speglar gav tomt eller inget svar')
 }
 
 async function fetchOsmFrom(url) {
