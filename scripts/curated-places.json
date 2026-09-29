@@ -19819,17 +19819,16 @@
   },
   {
     "name": "Hässlegårdens GK ställplats",
-    "query": "Hässlegårdens Golfklubb, Hässleholm",
-    "nearLat": 56.12277,
-    "nearLon": 13.73611,
-    "maxKm": 25,
     "services": [
       "stallplats"
     ],
     "source": "egen",
     "description": "Källa (https://hggk.se/gast/stallplats/): \"11 platser på gräs med tillgång till el.\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Klubbens egen ställplatssida finns; sökutdraget gav bara antal platser + el, inget om vatten/tömning.",
     "website": "https://hggk.se/gast/stallplats/",
-    "confidence": "medium"
+    "confidence": "medium",
+    "lat": 56.14974,
+    "lon": 13.75155,
+    "address": "Hässlegårdens Golfklubb, Kommendörsgatan 15, 281 43 Hässleholm"
   },
   {
     "name": "Malmö City GK ställplats (Kvarnbybanan)",
@@ -20260,10 +20259,6 @@
   },
   {
     "name": "ForshagaDeje Golfklubb ställplats",
-    "query": "ForshagaDeje Golfklubb, Forshaga",
-    "nearLat": 59.6,
-    "nearLon": 13.47,
-    "maxKm": 25,
     "services": [
       "vatten",
       "stallplats"
@@ -20273,7 +20268,10 @@
     "website": "https://forshagadejegk.se/stallplatser/",
     "openingHours": "Klubbhus 07:00–22:00; incheckning från 14:00, utcheckning senast 13:00",
     "phone": "0552-41440",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 59.59925,
+    "lon": 13.42119,
+    "address": "ForshagaDeje Golfklubb, Dömle 1 (Dömlevägen), 669 91 Deje"
   },
   {
     "name": "Arvika Golfklubb ställplats",
@@ -20471,10 +20469,6 @@
   },
   {
     "name": "Mönsterås Golfklubb ställplats",
-    "query": "Mönsterås Golfklubb",
-    "nearLat": 57.02389,
-    "nearLon": 16.43173,
-    "maxKm": 25,
     "services": [
       "stallplats"
     ],
@@ -20484,7 +20478,10 @@
     "fee": "180 kr/natt (naturkartan.se)",
     "openingHours": "Säsong april–september (naturkartan.se)",
     "season": "seasonal",
-    "confidence": "medium"
+    "confidence": "medium",
+    "lat": 57.03275,
+    "lon": 16.43975,
+    "address": "Mönsterås Golfklubb, mitt emot Mönsterås centrumavfart (E22), ca 1 km västerut, 383 91 Mönsterås"
   },
   {
     "name": "Nybro Golfklubb ställplats",
@@ -20567,10 +20564,6 @@
   },
   {
     "name": "Älmhults Golfklubb ställplats",
-    "query": "Älmhults Golfklubb, norra infarten från väg 23, Älmhult",
-    "nearLat": 56.56877,
-    "nearLon": 14.15311,
-    "maxKm": 25,
     "services": [
       "stallplats"
     ],
@@ -20579,7 +20572,10 @@
     "website": "https://almhultsgk.se/gaster/",
     "fee": "golfgäst 250 kr/natt med el, 200 kr utan el; övriga 400 kr/natt med el, 300 kr utan",
     "phone": "0476-141 35",
-    "confidence": "medium"
+    "confidence": "medium",
+    "lat": 56.56474,
+    "lon": 14.1792,
+    "address": "Älmhults Golfklubb, Äskya 1215, 343 90 Älmhult"
   },
   {
     "name": "Lagans Golfklubb ställplats",
@@ -20677,7 +20673,7 @@
   },
   {
     "name": "Gotska Golfklubb ställplats",
-    "query": "Gotska Golfklubb",
+    "query": "Gotska Golfklubb, Visby",
     "nearLat": 57.62306,
     "nearLon": 18.32651,
     "maxKm": 25,
@@ -21292,10 +21288,6 @@
   },
   {
     "name": "Hofors Golfklubb ställplats",
-    "query": "Långnäsvägen 20, Hofors",
-    "nearLat": 60.54084,
-    "nearLon": 16.27003,
-    "maxKm": 25,
     "services": [
       "gravatten",
       "stallplats"
@@ -21305,7 +21297,10 @@
     "website": "https://www.hoforsgk.se/gaster/stallplatser/",
     "fee": "250 kr/dygn",
     "phone": "0290-852 40",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 60.52341,
+    "lon": 16.36632,
+    "address": "Hofors Golfklubb, Långnäsvägen 20, 813 91 Hofors"
   },
   {
     "name": "Bollnäs Golfklubb ställplats",
@@ -21512,10 +21507,6 @@
   },
   {
     "name": "Gällivare-Malmbergets Golfklubb husbilsplatser",
-    "query": "Gällivare-Malmbergets Golfklubb, Gällivare",
-    "nearLat": 67.60544,
-    "nearLon": 19.56772,
-    "maxKm": 25,
     "services": [
       "stallplats"
     ],
@@ -21524,6 +21515,9 @@
     "website": "https://husbilsplats.se/locations/gallivare-malmbergets-golfklubb/",
     "phone": "070-542 07 82",
     "confidence": "low",
-    "unverified": true
+    "unverified": true,
+    "lat": 67.17149,
+    "lon": 20.62015,
+    "address": "Gällivare-Malmbergets Golfklubb, Gällivarevägen 4, 983 21 Malmberget"
   }
 ]
