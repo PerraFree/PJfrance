@@ -28,3 +28,4 @@ Seed hämtas med `git show origin/gh-pages:data/stations-seed.json > <S>/seed.js
   mot publicerad seed (`seed.json` från `git show origin/gh-pages:data/stations-seed.json`)
   och avståndet till `nearLat/nearLon` i registret jämförs med `maxKm`.
   Skriver "SAKNAS" / "FÖR LÅNGT BORT" / "nära gränsen". Byt ut namnlistan.
+| `import-golf.mjs` | `golf-<n>.json` från agenterna (format i `UPPDRAG-golf.md`) + `seed.json` + `existing-golf.json` | golfklubbssvep: high → bekräftad tjänst, medium → ställplats + påstådda tjänster, low → grå; saknad koordinat → `query` + kommunens medianläge ur seeden |

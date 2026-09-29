@@ -143,3 +143,8 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   de 31 äldre gick igenom sex agenter. 43 poster har nu exakt lat/lon, 15 dubbletter borttagna,
   3 uppgraderade till bekräftade (Harnäsgården Ludvika, First Camp Ställplats Stockholm,
   Mariebergsviken Karlstad), First Camp Nora kompletterad. Kvar: jem & fix Alvesta.
+- **2026-09-29, restposter + golfklubbssvep del 2 (session "Gråvatten 4"):** Råda/Tönnebro
+  latrin EJ belagd (registerposter raderade), Häradsbäck gasol flyttad, Svenska Gas Orust ny.
+  Golf: 8 agenter, 165 klubbar mot klubbarnas egna sidor → 124 nya, 5 uppgraderade, 23 grå →
+  bekräftad ställplats, 2 raderade. Se CLAUDE.md "Golfklubbssvep, del 2". ~100 poster
+  geokodas i synken – verifiera efter deploy. Räknas som upptäckt-delen av område D.

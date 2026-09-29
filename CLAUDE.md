@@ -317,6 +317,44 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    bekräftat UTAN service (Sjögärde, Mälarbadens, Ölands, Ängsö GK – den
    sista uttryckligen förbjuder toatömning). Detta var ett första svep, inte
    heltäckande – fler golfklubbar återstår att kontrollera.
+
+   **Golfklubbssvep, del 2 (29 sep 2026, riksomfattande):** 8 parallella
+   agenter (en per landsdel, 45 sökningar var, uppdrag + JSON-format i
+   `scripts/import-tools/UPPDRAG-golf.md`, import med
+   `scripts/import-tools/import-golf.mjs`, rådata i
+   `docs/import/golfklubbar-svep-sep-2026.json`). 165 klubbar granskade:
+   44 high, 86 medium, 35 low. Metod: verifiera de 36 grå golfposterna från
+   kandidatimporten + upptäck nya, ALLTID mot klubbens egen sida (turistråd/
+   kommun räknas också som primärkälla, t.ex. Trelleborg via Visit
+   Trelleborg, Herrljunga via Västsverige, Örnsköldsvik Puttom via Höga
+   Kusten). **Utfall i registret:** 124 nya poster, 5 uppgraderade grå →
+   bekräftad tjänst (Älvkarleby gravatten+latrin, Surahammar vatten+latrin,
+   Herrljunga vatten+latrin, Östersund-Frösö vatten, Björnhult latrin+
+   vatten), 23 grå → bekräftad ställplats (klubbsida bekräftar platsen men
+   nämner ingen tömning), 2 raderade (Alfta-Edsbyn = ingen egen ställplats,
+   hänvisar till Alfta Bad & Camping; grå Hudiksvall-dubblett av bekräftad
+   post). Nya klubbar MED belagd tjänst: Tönnersjö (gravatten+vatten),
+   Vinberg (latrin+vatten), Lysegården, Töreboda (gravatten+latrin),
+   Lidköping (vatten+latrin), Mariestad (latrin), Falköping (vatten, EJ
+   gråvatten), Kil, ForshagaDeje, Eksjö, Möre, Ljungbyhed, Flen, Sala,
+   Rättvik, Snöå (gravatten+latrin), Hofors (gravatten), Trelleborg
+   (alla tre), Örnsköldsvik Puttom (vatten). **Viktig lärdom som motsäger
+   fälttipset "de flesta golfklubbar har vatten":** ~25 klubbar säger
+   UTTRYCKLIGEN nej till tömning på egen sida (Romeleåsen, Eslöv, Kävlinge,
+   Abbekås, Boa, Österlen, Trosa, Köping, Motala, Arboga, Karlstad,
+   ForshagaDeje, Hökensås, Gagnef, Säter, Rättvik, Mönsterås, Nybro,
+   Östersund-Frösö, Umeå (även INGET vatten) m.fl.) – ställplats med el är
+   normen, färskvatten finns hos kanske en tredjedel, tömning hos en
+   handfull. Medium-poster (86) är bekräftad ställplats + ev.
+   `unverifiedServices`; low (35) grå. **~100 av de nya posterna saknar
+   exakt koordinat** (hitta.se/eniro/klubbsajter egress-blockade) och
+   geokodas av synken via `query` ("<Klubb>, <kommun>" eller gatuadress) +
+   kommunens medianläge från seeden som `nearLat/nearLon` (maxKm 25) –
+   **verifiera efter deploy** hur många som gick igenom och lista de som
+   kasserades. Kvar: koordinatrunda för dem som inte geokodas, Kungsbacka/
+   Forsgården/Västervik/Vimmerby/Malung/Gävle/Piteå/Sveg/Knistad (klubbsajt
+   nämner inget om husbil – förblir grå), osökta klubbar i Bohuslän,
+   Göteborgs kranskommuner, Söderåsen/Ystad/Båstad-trakten, Eda/Filipstad.
 3. **Helt saknade platser (nya, ej bara "tjänsteberikning")** – upptäckt
    aug 2026 efter att Hofsnäs Herrgård (fullservice-ställplats) visade sig
    saknas helt (varken OSM, TRV eller vårt register hade den – bara
