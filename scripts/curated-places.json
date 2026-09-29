@@ -14802,7 +14802,7 @@
     ],
     "source": "egen",
     "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se (sökträff), ej primärkälla): \"kassettömning, vatten, sopor, toalett\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
+    "description": "Obekräftad komplettering (husbilsplats.se, ej primärkälla) av Trafikverkets rastplats Stavsätter vid rv 83: \"kassettömning, vatten, sopor, toalett\". Trafikverket bekräftar bara latrintömning (tillfälligt stängd hösten 2026) och sopor. Har du varit här? Bekräfta i appen.",
     "website": "https://husbilsplats.se (sökträff)",
     "query": "Trafikverkets rastplats X10, Ljusdal",
     "nearLat": 61.8276,
@@ -14811,20 +14811,6 @@
     "lat": 61.82012,
     "lon": 16.06617,
     "address": "Rastplats Stavsätter, Järvsövägen 5, 827 94 Ljusdal (riksväg 83, strax SO om bron in mot Ljusdals centrum)"
-  },
-  {
-    "name": "Ljusdal – Stavsätter Järvsövägen 5",
-    "services": [
-      "stallplats"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (park4night.com, ej primärkälla): inga tjänster angivna. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://park4night.com/en/place/46215",
-    "query": "Stavsätter Järvsövägen 5, Ljusdal",
-    "nearLat": 61.8276,
-    "nearLon": 16.0658,
-    "maxKm": 25
   },
   {
     "name": "Ockelbo camping (CC Ockelbo)",
