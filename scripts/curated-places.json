@@ -16822,6 +16822,27 @@
     "gasolPrice": "Påfyllning 1–6 kg: 43 kr/kg, >6 kg: 38 kr/kg (2026-09-24)"
   },
   {
+    "name": "Svenska Gas & Gasol AB, Orust (Henån)",
+    "query": "Häröd 304, Henån",
+    "nearLat": 58.2038,
+    "nearLon": 11.6776,
+    "maxKm": 5,
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning",
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "address": "Häröd 304, 473 96 Henån",
+    "description": "Påfyllning av egen gasolflaska i lösvikt samt försäljning av flaskor. Källa: operatörens egen sida svenskagas.se/orust (\"Här kan du fylla gasol i lösvikt och köpa gasolflaskor till bra priser\", kontrollerad 2026-09-29). Läget geokodat från adressen – verifiera vid besök.",
+    "confidence": "high",
+    "phone": "073-967 55 81",
+    "website": "https://www.svenskagas.se/orust",
+    "openingHours": "Tis 11–16, Tor 11–16, Lör 10–14"
+  },
+  {
     "name": "Gasolfyllarna, Norrköping",
     "lat": 58.5803597,
     "lon": 16.1300116,
@@ -17177,9 +17198,9 @@
     "gasolPrice": "Påfyllning 34 kr/kg – 34 kr/kg (gasolesset.se) (sep 2026)"
   },
   {
-    "name": "Älmhultsgasol",
-    "lat": 56.52664,
-    "lon": 14.37635,
+    "name": "Gasol Häradsbäck (Mötesplats Häradsbäck, f.d. Älmhultsgasol)",
+    "lat": 56.53008,
+    "lon": 14.45141,
     "services": [
       "gasol"
     ],
@@ -17187,13 +17208,13 @@
       "gasol_pafyllning"
     ],
     "source": "egen",
-    "address": "Barkhult 4040, Häradsbäck, 343 92 Älmhult",
-    "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
-    "confidence": "medium",
-    "phone": "0708-76 10 03",
-    "openingHours": "Mån–Fre 08–18, Lör–Sön 10–17",
-    "website": "https://m.facebook.com/gasolharadsback/",
-    "gasolPrice": "Påfyllning 23 kr/kg – 23 kr/kg, ex P11 250 kr; fastpris på flaskor under 5 kg (datum för inlägget okänt – kan vara äldre) (sep 2026)"
+    "address": "Älmhultsvägen 3, 343 92 Häradsbäck (Älmhults kommun)",
+    "description": "Påfyllning av egen gasolflaska i lösvikt samt tankning av fast tank, vid Handelsboden/Vårt Café på Mötesplats Häradsbäck. Flyttade hit 2020 från Barkhult (Smålänningen 2020-05-21: \"nu finns tankar och utrustning i Häradsbäck\", \"gasol på tub eller som drivmedel till bilar, husbilar eller andra fordon\"). Källa: operatörens egen sida haradsback.se/gasol-lpg/ (kontrollerad 2026-09-29). Koordinat från myLPG.eu.",
+    "confidence": "high",
+    "phone": "0476-600 17",
+    "openingHours": "Mån–Ons 12–18, Tor stängt, Fre 11–18, Lör 11–13, Sön stängt",
+    "website": "https://haradsback.se/gasol-lpg/",
+    "gasolPrice": "Påfyllning ca 29 kr/kg (15 kr/liter enl. myLPG.eu mars 2026; äldre forumuppgift 23 kr/kg från Barkhult-tiden)"
   },
   {
     "name": "Ring-Gas, Örkelljunga",
