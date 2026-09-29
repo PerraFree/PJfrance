@@ -56,9 +56,10 @@ research-logg, inte en to-do-lista att blint klistra in.
 
 ## Nästa steg
 
-1. Kör en ny svepomgång riktad specifikt mot de helt ogenomsökta länen ovan
-   (Kronoberg/Örebro/Värmland) och de ~35 kommunerna i Västra
-   Götaland/Halland/Bohuslän/Dalsland/Sjuhärad/Skaraborg.
+1. ~~Kronoberg/Örebro/Värmland~~ – **KÖRT 29 sep 2026** (6 agenter, 101 fynd,
+   rådata i `docs/import/discovery-kronoberg-orebro-varmland-sep-2026.json`, se
+   `docs/svep-logg.md`). Kvar: de ~35 kommunerna i Västra
+   Götaland/Halland/Bohuslän/Dalsland/Sjuhärad/Skaraborg samt Öland/Gotland.
 2. För kandidater nedan som verkar lovande (tydligt citat om gråvatten/latrin/
    vatten): sök upp en oberoende primärkälla (anläggningens egen sajt,
    kommunsida, nyhetsartikel) innan tillägg – samma "verifiera innan du lägger

@@ -17,6 +17,9 @@ const median = (a) => { const b = [...a].sort((x, y) => x - y); return b[Math.fl
 const kommunAnchor = (k) => { const arr = byKommun[k] || byKommun[k + 's'] || byKommun[(k || '').replace(/s$/, '')]; if (!arr) return null; return { lat: median(arr.map((s) => s.lat)), lon: median(arr.map((s) => s.lon)) } }
 const r5 = (x) => Math.round(x * 1e5) / 1e5
 const norm = (s) => (s || '').toLowerCase().replace(/\s+/g, ' ').trim()
+// Handjusterade geokodningsfrågor (Nominatim hittar inte beskrivande namn)
+const QUERY_FIX = { 'Ställplatser för husbilar i gästhamnen i Klässbol': 'Klässbols gästhamn, Arvika', 'Ställplats Dammen (Östregårds ställplatser)': 'Östregård, Blädinge, Alvesta' }
+const SKIP = /^Unden – naturnära/ // "Unden" är en hel sjö – ingen punkt att geokoda
 const GENERIC = /^(tömningsstation|ställplats|ställplats för husbil|camping|vattenpåfyllning|sopstation|latrintömning)\b/i
 const files = fs.readdirSync(S).filter((f) => /^disc-[a-z]+-\d\.json$/.test(f)).sort()
 const log = { nya: 0, uppgr: 0, kompl: 0, gra: 0, hoppade: [] }
@@ -26,7 +29,7 @@ for (const f of files) {
   try { arr = JSON.parse(fs.readFileSync(`${S}/${f}`, 'utf8')) } catch (e) { console.log(`${f}: oläsbar (${e.message})`); continue }
   for (const r of arr) {
     const name = (r.name || '').trim()
-    if (!name) continue
+    if (!name || /^Alvesta Golfklubb/i.test(name) || SKIP.test(name)) continue // Alvesta GK raderad 29 sep (bara aggregator)
     let conf = r.confidence === 'high' || r.confidence === 'medium' ? r.confidence : 'low'
     const svc = [...new Set((r.services || []).filter((s) => ALL.includes(s)))]
     const claimedCore = svc.filter((s) => CORE.includes(s))
@@ -40,8 +43,9 @@ for (const f of files) {
     if (typeof r.lat !== 'number' || typeof r.lon !== 'number' || r.lat < 55 || r.lat > 69.1) {
       const anchor = kommunAnchor(r.kommun)
       if (!anchor) { log.hoppade.push(`${name}: ingen koordinat och okänd kommun "${r.kommun}" (${conf})`); continue }
-      let q = (r.address || '').replace(/\s*\(.*?\)/g, '').replace(/\s+/g, ' ').trim()
+      let q = (r.address || '').replace(/\s*\(.*?\)/g, '').replace(/^(vid|korsningen|centrumparkeringen vid)\s+/i, '').replace(/,\s*(vid|strax|nära|intill|norra delen|södra delen|vägen)\b[^,]*/gi, '').replace(/\s+(vid|intill)\s+[^,]*/gi, '').replace(/\s*\/\s*[^,]*/g, '').replace(/\s+/g, ' ').replace(/^,\s*|,\s*$/g, '').trim()
       if (!q || /\bkm\b|okänd|saknas/i.test(q)) q = `${name.replace(/\s*\(.*?\)/g, '')}, ${r.kommun}`
+      if (QUERY_FIX[name]) q = QUERY_FIX[name]
       geo = { query: q, nearLat: r5(anchor.lat), nearLon: r5(anchor.lon), maxKm: 30 }
       r.lat = anchor.lat; r.lon = anchor.lon // bara för dubblettkoll nedan
     }
@@ -102,6 +106,7 @@ for (const f of files) {
       if (conf !== 'low') delete e.unverified
       if (!fields.unverifiedServices) delete e.unverifiedServices
       if (!geo) { delete e.query; delete e.nearLat; delete e.nearLon; delete e.maxKm }
+      if (GENERIC.test(e.name) && !GENERIC.test(name)) { console.log(`  namn: ${e.name} → ${name}`); e.name = name }
       if (conf === 'high' && confirmedCore.length) log.uppgr++; else if (conf === 'low') log.gra++; else log.kompl++
       console.log(`${(conf === 'low' ? 'GRÅ  ' : conf === 'high' ? 'UPPGR' : 'KOMPL').padEnd(6)} ${e.name.padEnd(46)} ${was} → ${e.services.join(',')}${e.unverifiedServices ? ' (påstått: ' + e.unverifiedServices + ')' : ''}`)
     } else {

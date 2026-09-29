@@ -394,6 +394,19 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    session bör täcka dessa luckor och sedan verifiera de mest lovande
    kandidaterna (tydligt citat om gråvatten/latrin/vatten) mot en
    oberoende primärkälla innan tillägg.
+   **Kronoberg/Örebro/Värmland KÖRDA 29 sep 2026** (6 agenter × 45 sökningar,
+   uppdrag `scripts/import-tools/UPPDRAG-discovery.md`, import
+   `import-discovery.mjs`, rådata `docs/import/discovery-kronoberg-orebro-
+   varmland-sep-2026.json`): 101 fynd → 69 nya, 10 uppgraderade, 6
+   kompletterade. Mest rena ställplatser från kommun/turistråd (Karlstad,
+   Filipstad, Säffle, Tiveden, Hällefors); tömning/vatten nytt bl.a. på
+   Kattugglan Kånna, Hägern Bolmsö, Kosta Safaripark, Norraryd, Braås,
+   Askersunds GK, Husabergsudde, Lindesbergs GK, Lunedet, Flå/Säffle
+   gästhamn, Torsby husbilsparkering, Hovfjället, Rottneros 45, Larstomta,
+   Töcksfors gästhamn, Djupdalen. ~45 poster utan koordinat geokodas via
+   adress + kommunmedian (maxKm 30) – **verifiera efter deploy**. Kvar:
+   VG/Halland-kommunerna + Öland/Gotland (se kandidatfilen), Storfors utan
+   belagd tömning, Lekeberg nästan tom, Vinön-posten motsägs (grå, låt stå).
 4. **Öppettider/vinterstängt** saknas för många platser.
 5. Vilhelmina-tömningsstationen togs bort i väntan på bekräftat läge.
 6. AdminPanel: 'na'-läget och tabellkontroller är fixade; håll texterna i

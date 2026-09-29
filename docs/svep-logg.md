@@ -148,3 +148,14 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   Golf: 8 agenter, 165 klubbar mot klubbarnas egna sidor → 124 nya, 5 uppgraderade, 23 grå →
   bekräftad ställplats, 2 raderade. Se CLAUDE.md "Golfklubbssvep, del 2". ~100 poster
   geokodas i synken – verifiera efter deploy. Räknas som upptäckt-delen av område D.
+- **2026-09-29, discovery-svep Kronoberg/Örebro/Värmland (session "Gråvatten 4", område D upptäckt):**
+  6 agenter × 45 sökningar (två per län, kommun för kommun mot kommun-/turistrådssidor,
+  husbilsplats/park4night bara som ledtråd). 101 fynd (54 high, 32 medium, 15 low) →
+  69 nya registerposter, 10 uppgraderade (Askersunds GK latrin+vatten, Husabergsudde
+  gravatten+vatten, Lindesbergs GK gravatten+latrin, Laxå-tömningen grå → bekräftad via
+  tiveden.se, Kvarntorpshögen m.fl.), 6 kompletterade med påstådda tjänster, 15 hoppade
+  (fanns redan). Rådata `docs/import/discovery-kronoberg-orebro-varmland-sep-2026.json`,
+  skript `scripts/import-tools/import-discovery.mjs`. ~45 poster geokodas i synken via
+  adress + kommunmedian – verifiera efter deploy. Kvar: Markaryd/Älmhult/Kristinehamn gav
+  inget nytt; Storfors saknar belagd tömning; Lekeberg har bara Sannabadet + Lanna Bokcafé;
+  Vinön-posten motsägs (ingen service enligt gäst); Hallsbergs två namnlösa fricampingar.

@@ -28,4 +28,5 @@ Seed hämtas med `git show origin/gh-pages:data/stations-seed.json > <S>/seed.js
   mot publicerad seed (`seed.json` från `git show origin/gh-pages:data/stations-seed.json`)
   och avståndet till `nearLat/nearLon` i registret jämförs med `maxKm`.
   Skriver "SAKNAS" / "FÖR LÅNGT BORT" / "nära gränsen". Byt ut namnlistan.
+| `import-discovery.mjs` | `disc-<län>-<n>.json` från agenterna (format i `UPPDRAG-discovery.md`) + `seed.json` | discovery-svep per län: high → bekräftad tjänst, medium → plats bekräftad + påstådda tjänster, low → grå; dedupe 400 m mot seeden, koordinat läggs på närmaste OSM-nod; saknad koordinat → `query` (adress) + kommunens medianläge |
 | `import-golf.mjs` | `golf-<n>.json` från agenterna (format i `UPPDRAG-golf.md`) + `seed.json` + `existing-golf.json` | golfklubbssvep: high → bekräftad tjänst, medium → ställplats + påstådda tjänster, low → grå; saknad koordinat → `query` + kommunens medianläge ur seeden |
