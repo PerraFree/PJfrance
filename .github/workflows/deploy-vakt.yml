@@ -1,0 +1,66 @@
+name: Deploy-vakt (startar deployen om GitHub missade pushen)
+
+# GitHub skapar ibland ingen "Deploy till GitHub Pages"-körning när grenen
+# pushas (hände två gånger 29 sep 2026 – ingen push-körning alls, trots
+# lyckad push). Den här vakten går var 15:e minut och jämför grenens topp
+# med det som faktiskt är publicerat på gh-pages (deploy-commitens meddelande
+# är "deploy: <sha>"). Ligger grenen före, med ändringar som påverkar
+# appen, och ingen deploy pågår för toppen → starta deployen via
+# workflow_dispatch (det går alltid igenom, till skillnad från push-händelsen).
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: read
+
+concurrency:
+  group: deploy-vakt
+  cancel-in-progress: false
+
+jobs:
+  vakt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Jämför grenens topp med publicerad version
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          HEAD=$(git rev-parse HEAD)
+          git fetch --depth=1 origin gh-pages 2>/dev/null || { echo "Ingen gh-pages ännu – startar deploy."; gh workflow run deploy.yml --ref "$BRANCH"; exit 0; }
+          DEPLOYED=$(git log -1 --format=%s origin/gh-pages | sed -n 's/^deploy: \([0-9a-f]\{40\}\).*/\1/p')
+          echo "Grenens topp: $HEAD"
+          echo "Publicerat:   ${DEPLOYED:-okänt}"
+          if [ "$HEAD" = "$DEPLOYED" ]; then
+            echo "Publicerat = grenens topp. Inget att göra."
+            exit 0
+          fi
+          # Har något som påverkar appen ändrats sedan det publicerade commitet?
+          # (Dokumentation och den CI-committade seed-filen räknas inte – de
+          # commitas med [skip ci] och tas med vid nästa riktiga deploy.)
+          if [ -n "$DEPLOYED" ] && git cat-file -e "$DEPLOYED^{commit}" 2>/dev/null; then
+            CHANGED=$(git diff --name-only "$DEPLOYED" "$HEAD" -- src public scripts index.html package.json package-lock.json vite.config.ts tsconfig.json supabase.env .github/workflows/deploy.yml | grep -v '^public/data/stations-seed.json$' || true)
+            if [ -z "$CHANGED" ]; then
+              echo "Bara dokumentation/seed ändrad sedan deployen – ingen deploy behövs."
+              exit 0
+            fi
+            echo "Ändrat sedan deployen:"; echo "$CHANGED"
+          fi
+          # Pågår/köar redan en deploy för toppen? Har en redan lyckats
+          # (t.ex. utan att dist ändrades, så gh-pages fick ingen ny commit)?
+          RUNS=$(gh api "repos/$REPO/actions/workflows/deploy.yml/runs?branch=$BRANCH&per_page=15")
+          ACTIVE=$(echo "$RUNS" | jq --arg h "$HEAD" '[.workflow_runs[] | select(.head_sha==$h and (.status=="queued" or .status=="in_progress" or .status=="waiting" or .status=="pending"))] | length')
+          DONE=$(echo "$RUNS" | jq --arg h "$HEAD" '[.workflow_runs[] | select(.head_sha==$h and .conclusion=="success")] | length')
+          if [ "$ACTIVE" != "0" ]; then echo "En deploy för toppen pågår redan."; exit 0; fi
+          if [ "$DONE" != "0" ]; then echo "En deploy för toppen har redan lyckats (inget nytt att publicera)."; exit 0; fi
+          echo "Ingen deploy för $HEAD hittades – startar en nu."
+          gh workflow run deploy.yml --ref "$BRANCH"

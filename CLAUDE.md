@@ -98,6 +98,20 @@ bumpa `CACHE`-versionen vid behov). Capacitor/Android finns förberett
 - Bygg community-läge: `VITE_SUPABASE_URL=https://example.supabase.co VITE_SUPABASE_ANON_KEY=test npm run build`
 - Playwright: Chromium på `/opt/pw-browsers/chromium`; testskript måste ligga i projektmappen (playwright-core-resolution), mocka externa hosts med `ctx.route`, sätt `localStorage tomningskartan.introSeen=1`. Radera testskript före commit.
 - Deploy-kvitto: bevaka `git ls-remote origin gh-pages` (byt hash) OCH GitHubs interna `pages-build-deployment` (workflow-id 317009082) – den kan fastna/kraschas separat; en tom commit på gh-pages knuffar igång en färsk publicering.
+- **GitHub missar ibland push-händelsen** (29 sep 2026, två gånger samma
+  dag: lyckad push men ingen "Deploy till GitHub Pages"-körning alls, ena
+  gången inte ens Android-bygget). Kontrollera därför ALLTID direkt efter
+  push att en deploy-körning finns för din SHA (`actions_list` på
+  workflow 316264463) och starta annars manuellt med `workflow_dispatch`
+  (`actions_run_trigger`, deploy.yml, ref = grenen). Säkerhetsnät i repot:
+  `.github/workflows/deploy-vakt.yml` kör var 15:e minut, jämför grenens
+  topp med "deploy: <sha>" i gh-pages senaste commit och startar deployen
+  själv om något app-påverkande (src/public/scripts/index.html/package/
+  deploy.yml, ej seed-filen) ändrats utan att en deploy pågår eller
+  lyckats för toppen. Dokumentationscommits med `[skip ci]` utlöser inget.
+  OBS: `concurrency: pages` + `cancel-in-progress` gör att en ny push
+  AVBRYTER en pågående deploy och börjar om (30–40 min) – pusha
+  dokumentation med `[skip ci]` medan en datadeploy kör.
 - Versionsrad i menyn ("Version <byggtid>") är kvittot på att mobilen kör senaste versionen.
 
 ## Commit-regler
