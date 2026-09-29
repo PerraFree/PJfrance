@@ -1,0 +1,459 @@
+<title>Aluminium mot stålplåt 2020–2026</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+/* Layout: one column of stacked figures, summary tiles first, each figure = title + chart + toggle to its table. */
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --fg:#161a1f; --muted:#5d6672; --line:#d9dde3; --grid:#e8ebef;
+  --alu:#2a78d6; --alu-soft:#cde2fb; --sheet:#1baf7a; --steel:#eb6834; --gold:#eda100;
+  --ramp1:#86b6ef; --ramp2:#5598e7; --ramp3:#2a78d6; --ramp4:#1c5cab; --ramp5:#104281;
+  --data:#0ca30c; --est:#d03b3b; --tip-bg:#161a1f; --tip-fg:#ffffff;
+  --display:"Archivo",system-ui,sans-serif; --body:"Source Sans 3",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#15181c; --surface:#1d2126; --fg:#eef0f3; --muted:#a4acb6; --line:#343a42; --grid:#2a3038;
+  --alu:#3987e5; --alu-soft:#1c3a5e; --sheet:#199e70; --steel:#d95926; --gold:#c98500;
+  --ramp1:#184f95; --ramp2:#1c5cab; --ramp3:#256abf; --ramp4:#3987e5; --ramp5:#6da7ec;
+  --tip-bg:#eef0f3; --tip-fg:#15181c; color-scheme:dark; } }
+:root[data-theme="dark"]{
+  --bg:#15181c; --surface:#1d2126; --fg:#eef0f3; --muted:#a4acb6; --line:#343a42; --grid:#2a3038;
+  --alu:#3987e5; --alu-soft:#1c3a5e; --sheet:#199e70; --steel:#d95926; --gold:#c98500;
+  --ramp1:#184f95; --ramp2:#1c5cab; --ramp3:#256abf; --ramp4:#3987e5; --ramp5:#6da7ec;
+  --tip-bg:#eef0f3; --tip-fg:#15181c; color-scheme:dark; }
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:grid;gap:36px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+h1{font-size:clamp(26px,4vw,38px);line-height:1.1;font-weight:700}
+h2{font-size:21px;font-weight:600}
+h3{font-size:16px;font-weight:600}
+p{margin:0;max-width:68ch}
+.lede{color:var(--muted);font-size:17px}
+.eyebrow{font-family:var(--display);text-transform:uppercase;letter-spacing:.08em;font-size:12px;color:var(--muted)}
+header{display:grid;gap:10px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;color:var(--muted);font-size:14px}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:14px 16px;display:grid;gap:4px;min-width:0}
+.kpi .v{font-family:var(--display);font-size:30px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.kpi .u{font-size:13px;color:var(--muted)}
+.kpi .d{font-size:13px}
+.kpi.alu .v{color:var(--alu)} .kpi.steel .v{color:var(--steel)}
+
+section.fig{display:grid;gap:12px}
+.fig-head{display:grid;gap:4px}
+.fig-head p{color:var(--muted);font-size:15px}
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:12px 8px 6px;position:relative;min-width:0}
+.chart svg{width:100%;height:auto;display:block;font-family:var(--body)}
+.chart text{fill:var(--fg);font-size:12px}
+.chart .ax text{fill:var(--muted)}
+.chart .grid line{stroke:var(--grid)}
+.chart .base{stroke:var(--line)}
+.chart .lbl{font-weight:600;font-size:12px}
+.chart .lbl.tiny{font-weight:400;font-size:11px;fill:var(--muted)}
+.tip{position:absolute;pointer-events:none;background:var(--tip-bg);color:var(--tip-fg);font-size:13px;padding:8px 10px;border-radius:4px;line-height:1.35;max-width:260px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:2}
+.tip b{font-family:var(--display)}
+.tip .r{display:flex;justify-content:space-between;gap:14px;font-variant-numeric:tabular-nums}
+.tip .r i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;padding:2px 8px}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.sw{width:18px;height:3px;border-radius:2px;display:inline-block}
+.sw.dash{background:repeating-linear-gradient(90deg,currentColor 0 4px,transparent 4px 7px)}
+.sw.box{height:11px;border-radius:2px}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;align-items:center;font-size:13px;color:var(--muted)}
+.foot button{font:inherit;font-weight:600;color:var(--alu);background:none;border:1px solid var(--line);border-radius:4px;padding:5px 10px;cursor:pointer}
+.foot button:focus-visible,a:focus-visible{outline:2px solid var(--alu);outline-offset:2px}
+.tbl{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--grid);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+thead th{font-family:var(--display);font-weight:600;font-size:12px;letter-spacing:.03em;color:var(--muted);text-transform:uppercase}
+tbody tr:last-child td{border-bottom:0}
+.tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.04em;padding:1px 6px;border-radius:3px;border:1px solid currentColor;line-height:1.5}
+.tag.data{color:var(--data)} .tag.est{color:var(--est)}
+
+.prose{display:grid;gap:10px}
+.prose ul{margin:0;padding-left:20px;display:grid;gap:6px;max-width:68ch}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;display:grid;gap:8px;min-width:0}
+.card h3{font-size:15px}
+a{color:var(--alu)}
+.small{font-size:13px;color:var(--muted)}
+.chart:hover .hover-line{opacity:1}
+@media (prefers-reduced-motion:no-preference){ .tip{transition:opacity .12s} }
+@media (max-width:520px){ .kpi .v{font-size:26px} body{font-size:15px} }
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">All Coating Industrilackeringar AB · underlag 29 september 2026</div>
+  <h1>Aluminium mot stålplåt 2020–2026</h1>
+  <p class="lede">Råvarupris, marknadspris för valsad plåt på coil och All Coatings eget inköpspris för FP12 0,8×1250 (EN AW‑4115, 2‑sidig primer) jämfört med lackerad stålplåt av den typ SSAB GreenCoat och Plannja säljer.</p>
+  <div class="meta">
+    <span>Alla priser exkl. moms</span>
+    <span>Årsvärden = årsmedel, 2026 = januari–september</span>
+    <span><span class="tag data">Data</span> publicerad siffra &nbsp; <span class="tag est">Uppskattning</span> beräknad från punktvärden</span>
+  </div>
+</header>
+
+<section class="kpis" aria-label="Nyckeltal just nu">
+  <div class="kpi alu"><div class="eyebrow">LME aluminium 29 sep 2026</div><div class="v">3 239</div><div class="u">USD/ton, kontant</div><div class="d">Årsmedel 2020: 1 704. Rekord 7 mar 2022: ~3 984.</div></div>
+  <div class="kpi alu"><div class="eyebrow">Rotterdam‑premie 23 sep 2026</div><div class="v">533</div><div class="u">USD/ton, tullbetald göt</div><div class="d">Juni 2020: ~100. Rekord maj 2022: 600–630.</div></div>
+  <div class="kpi alu"><div class="eyebrow">Råvara i kronor 2026</div><div class="v">≈36</div><div class="u">kr/kg göt (LME + premie, i SEK)</div><div class="d">2020: ≈17 kr/kg. Dyraste året hittills, trots svagare dollar.</div></div>
+  <div class="kpi"><div class="eyebrow">All Coating listpris i dag</div><div class="v">78,78</div><div class="u">kr/kg = 170 kr/m² (2,16 kg/m²)</div><div class="d">74,99 kr/kg dec 2024–jul 2026, 79,99 aug 2026.</div></div>
+  <div class="kpi steel"><div class="eyebrow">Lackerad stålcoil 2026</div><div class="v">≈11</div><div class="u">kr/kg vid verk (uppskattning)</div><div class="d">≈53 kr/m² för 0,6 mm. Varmvalsad coil: 734–742 €/t i sep 2026.</div></div>
+</section>
+
+<!-- FIG 1 -->
+<section class="fig" id="fig-alu">
+  <div class="fig-head">
+    <h2>Aluminium i kronor per kilo, 2020–2026</h2>
+    <p>Råvaran (göt) och en uppskattad verkspris för vanlig 1 mm plåt, mot All Coatings fakturapris. Bokfört kr/kg är årets PREFA‑inköp delat på sålda kvadratmeter (räkenskapsår maj–april) och påverkas av lagerrörelser.</p>
+  </div>
+  <div class="chart" id="c-alu"></div>
+  <div class="legend" id="l-alu"></div>
+  <div class="foot"><span>Göt = (LME + Rotterdam‑premie) × USD/SEK. Verkspris 1 mm 1050 = göt + konverteringsavgift (CRU: 615 €/t feb 2025).</span><button type="button" data-toggle="t-alu" id="b-alu">Visa tabell</button></div>
+  <div class="tbl" id="t-alu" hidden></div>
+</section>
+
+<!-- FIG 2 -->
+<section class="fig" id="fig-steel">
+  <div class="fig-head">
+    <h2>Stålplåt i kronor per kilo, 2020–2026</h2>
+    <p>Nordeuropeiskt verkspris för varmvalsad coil (HRC), varmförzinkad coil (HDG) och uppskattat pris för lackerad coil, det vill säga råvaran bakom GreenCoat och Plannjas takplåt. Räknat om från euro per ton.</p>
+  </div>
+  <div class="chart" id="c-steel"></div>
+  <div class="legend" id="l-steel"></div>
+  <div class="foot"><span>Lackerad coil = HDG + 150–250 €/t (ingen publicerad serie finns). Zink ingår med bara ~0,2–0,3 kr/kg.</span><button type="button" data-toggle="t-steel" id="b-steel">Visa tabell</button></div>
+  <div class="tbl" id="t-steel" hidden></div>
+</section>
+
+<!-- FIG 3 -->
+<section class="fig" id="fig-index">
+  <div class="fig-head">
+    <h2>Samma kurvor som index, 2020 = 100</h2>
+    <p>Här syns skillnaden i rörelse: stål toppade redan 2021 och har fallit tillbaka till ungefär 1,5 gånger 2020‑nivån. Aluminium föll efter 2022 men har 2026 gått till en ny topp i kronor, drygt 2 gånger 2020.</p>
+  </div>
+  <div class="two">
+    <div>
+      <div class="chart" id="c-idx-alu"></div>
+      <div class="legend" id="l-idx-alu"></div>
+    </div>
+    <div>
+      <div class="chart" id="c-idx-steel"></div>
+      <div class="legend" id="l-idx-steel"></div>
+    </div>
+  </div>
+  <div class="foot"><span>Index räknat på kr/kg‑serierna i figur 1 och 2.</span><button type="button" data-toggle="t-idx" id="b-idx">Visa tabell</button></div>
+  <div class="tbl" id="t-idx" hidden></div>
+</section>
+
+<!-- FIG 4 -->
+<section class="fig" id="fig-m2">
+  <div class="fig-head">
+    <h2>Vad kostar en kvadratmeter plåt vid verket?</h2>
+    <p>Aluminium 0,8 mm väger 2,16 kg/m². Lackerad stålplåt 0,6 mm väger ungefär 4,9 kg/m². Trots att stålet väger mer än dubbelt så mycket är kvadratmetern billigare, och gapet har vuxit sedan 2024.</p>
+  </div>
+  <div class="chart" id="c-m2"></div>
+  <div class="legend" id="l-m2"></div>
+  <div class="foot"><span>Aluminium vid verk = 1 mm‑pris + ~6 kr/kg för tunnare tjocklek och 2‑sidig primer. All Coatings egna pris visas som markör.</span><button type="button" data-toggle="t-m2" id="b-m2">Visa tabell</button></div>
+  <div class="tbl" id="t-m2" hidden></div>
+</section>
+
+<!-- FIG 5 -->
+<section class="fig" id="fig-build">
+  <div class="fig-head">
+    <h2>Så byggs priset på en primerad aluminiumcoil, september 2026</h2>
+    <p>Kilopriset staplas från råvara till leverans. Marknadsmässig nivå för primerad 0,8 mm 3xxx/4115‑plåt via grossist landar på ungefär 55–68 kr/kg. All Coatings listpris ligger ovanför det spannet.</p>
+  </div>
+  <div class="chart" id="c-build"></div>
+  <div class="foot"><span>Uppskattning per led. Konvertering enligt CRU:s 1050‑avgift; primer, tunnplåt och emballage samt grossistmarginal är bedömda spann, mittvärde visas.</span><button type="button" data-toggle="t-build" id="b-build">Visa tabell</button></div>
+  <div class="tbl" id="t-build" hidden></div>
+</section>
+
+<!-- FIG 6 -->
+<section class="fig" id="fig-lme">
+  <div class="fig-head">
+    <h2>LME aluminium per år: medel och spann</h2>
+    <p>Stapeln är årsmedlet i dollar per ton. Strecket visar årets lägsta och högsta notering. 2026 har det högsta årsmedlet sedan 2020, drivet av Iran‑konflikten (stängt Hormuz, angrepp på smältverk i Gulfen) och EU:s stopp för ryskt aluminium.</p>
+  </div>
+  <div class="chart" id="c-lme"></div>
+  <div class="foot"><span>Årsmedel är publicerade siffror; 2021 och 2022 samt spannen för 2020–2024 är uppskattade från punktvärden.</span><button type="button" data-toggle="t-lme" id="b-lme">Visa tabell</button></div>
+  <div class="tbl" id="t-lme" hidden></div>
+</section>
+
+<section class="prose">
+  <h2>Vad siffrorna säger</h2>
+  <div class="two">
+    <div class="card">
+      <h3>Aluminium</h3>
+      <ul>
+        <li>Råvaran i kronor har mer än fördubblats sedan 2020: från ≈17 till ≈36 kr/kg göt. 2026 är dyrare än rekordåret 2022 därför att både LME och Rotterdam‑premien är höga samtidigt.</li>
+        <li>Premien i Europa är i dag lika viktig som LME‑rörelserna: 533 USD/ton i september 2026 mot ≈100 i juni 2020. Orsaker: nedlagda europeiska smältverk 2021–2022, förbudet mot ryskt aluminium (helt från 26 feb 2026), CBAM från 1 jan 2026 och driftstoppet på Grundartangi.</li>
+        <li>All Coating betalade fast 74,99 kr/kg från december 2024 till juli 2026 medan råvaran steg ≈30 %. Höjningen till 79,99 i augusti är +6,7 %. Leverantören har alltså tagit en del av råvaruuppgången.</li>
+        <li>Metallandelen i 78,78 kr/kg är ≈36 kr/kg. Resten, ≈43 kr/kg, är konvertering, primer, tunnplåt, logistik och marginaler. Det är 3–4 gånger CRU:s konverteringsavgift för vanlig 1050‑plåt, vilket är högt även för en specialkvalitet.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Stål (SSAB GreenCoat, Plannja)</h3>
+      <ul>
+        <li>Varmvalsad coil gick från ≈480 €/t 2020 till rekordet 1 374 €/t den 16 mars 2022 och har sedan fallit till 550–750 €/t. September 2026: 734–742 €/t.</li>
+        <li>Lackerad stålcoil vid verk: ≈8 kr/kg 2020, ≈13,6 kr/kg 2021, ≈11 kr/kg 2026. Per kvadratmeter 0,6 mm: 39 → 67 → 53 kr/m².</li>
+        <li>SSAB publicerar inga listpriser. Deras rapporter visar rekord 2021–2022, prisfall 2023–2025 och stigande priser Q1–Q2 2026 inför EU:s nya importskydd (kvot −47 %, 50 % tull utanför kvot från 1 juli 2026).</li>
+        <li>Plannja är fortfarande en del av SSAB (Ruukki Construction). Butikspriser 2025/26: Plannja Trend GreenCoat 427 kr/m² inkl. moms, GreenCoat Pural 0,6 mm bandplåt 246 kr/m² inkl. moms.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Vad All Coating kan göra</h3>
+    <ul>
+      <li><b>Begär LME‑indexerat pris.</b> Skilj på metall (LME + premie, avläst månadsvis) och en fast konverterings‑/lackeringsavgift i kronor. Då vet ni vad ni betalar för vad, och priset följer marknaden både upp och ner.</li>
+      <li><b>Ta in jämförelseofferter</b> på primerad 0,8×1250 i EN AW‑3005/3105 H4x (samma egenskaper som 4115 enligt Gränges datablad) från Alumeco, Tibnor, BE Group eller Gränges direkt. Det ger en marknadsnivå att förhandla mot.</li>
+      <li><b>Använd volymen.</b> 6 000 kg ger redan 76,78 kr/kg. Vid 40 ton/år är skillnaden mellan 78,78 och 74,99 cirka 150 000 kr, mot specialpriset 62,24 cirka 660 000 kr.</li>
+      <li><b>Följ marknaden själv:</b> <a href="https://www.westmetall.com/en/markdaten.php?action=table&field=LME_Al_cash" target="_blank" rel="noopener">Westmetall</a> (gratis månadsmedel LME), <a href="https://www.lme.com/en/metals/non-ferrous/lme-aluminium" target="_blank" rel="noopener">LME.com</a>, <a href="https://www.riksbank.se/sv/statistik/rantor-och-valutakurser/" target="_blank" rel="noopener">Riksbanken</a> (USD/SEK, EUR/SEK), <a href="https://www.scb.se/hitta-statistik/statistik-efter-amne/priser-och-konsumtion/prisindex-i-producent-och-importled/" target="_blank" rel="noopener">SCB producentprisindex</a> (aluminium 24.42, stål 24.10), <a href="https://tradingeconomics.com/commodity/hrc-steel" target="_blank" rel="noopener">Trading Economics</a> (HRC Europa).</li>
+    </ul>
+  </div>
+</section>
+
+<section class="prose">
+  <h2>Datakvalitet</h2>
+  <p>Nästan alla primärkällor (LME, Westmetall, Fastmarkets, CRU, MEPS, Riksbanken, SCB, Gränges, SSAB, PREFA) var blockerade från researchmiljön. Siffrorna kommer därför från sökresultatens utdrag av dessa källor, inte från fullständiga tidsserier.</p>
+  <ul>
+    <li><span class="tag data">Data</span> LME‑årsmedel 2020, 2023, 2024, 2025 och dagsnoteringar 2026; Rotterdam‑premiens punktvärden; HRC‑rekorden 2021 och 2022 och punktpriser 2024–2026; USD/SEK och EUR/SEK 2025; CRU:s konverteringsavgift feb 2025; All Coatings fakturor.</li>
+    <li><span class="tag est">Uppskattning</span> LME‑årsmedel 2021 och 2022 (ur minnet, ±2 %); premiens årsmedel; valutakurser 2020–2024 (ur minnet, bör stämmas av mot Riksbanken) och 2026; alla verkspriser för aluminiumplåt; HRC/HDG‑årsmedel 2020–2023; hela serien för lackerad stålcoil; kostnadsuppbyggnaden i figur 5.</li>
+    <li>Vill ni ha exakta serier: Westmetall (LME per månad), Riksbankens årsmedel, SCB:s tabell PPI2020A för 24.42/24.10 och SSAB:s kvartalsrapporter läses bäst i en vanlig webbläsare. Den fullständiga rapporten med källhänvisningar finns i filen <i>reports/Aluminiumcoil och stålplåt priser 2020.md</i>.</li>
+  </ul>
+</section>
+</div>
+
+<script>
+(function(){
+'use strict';
+// ---------- DATA ----------
+const YEARS=[2020,2021,2022,2023,2024,2025,2026];
+const YL=['2020','2021','2022','2023','2024','2025','2026*'];
+const lme   =[1704,2473,2707,2290,2403,2632,3350];        // USD/t årsmedel (2021, 2022, 2026 = uppskattning)
+const lmeTag=['D','E','E','D','D','D','E'];
+const prem  =[100,250,450,200,240,275,500];               // USD/t Rotterdam DP, årsmedel uppskattat
+const usdsek=[9.20,8.58,10.12,10.61,10.57,9.59,9.45];
+const usdTag=['E','E','E','E','E','D','E'];
+const eursek=[10.49,10.14,10.63,11.48,11.43,11.20,11.00];
+const ingot=lme.map((v,i)=>Math.round((v+prem[i])*usdsek[i]/100)/10);   // kr/kg
+const sheet=[21.5,29,42,35,36,35,43];                    // kr/kg verkspris 1 mm 1050, uppskattning
+const invoice=[null,null,null,null,74.99,74.99,78.78];    // All Coating faktura/listpris
+const booked=[null,57.9,73.1,53.6,68.8,80.1,null];        // bokfört kr/kg per räkenskapsår (21/22 → 2021 osv)
+const hrcEur=[480,1025,925,680,625,590,690];
+const hdgEur=[560,1150,1050,740,670,680,790];
+const ppEur =[750,1350,1250,930,860,870,990];
+const zinc  =[2270,3005,3486,2648,2778,2866,3400];
+const toKg=(e,i)=>Math.round(e*eursek[i]/100)/10;
+const hrc=hrcEur.map(toKg), hdg=hdgEur.map(toKg), pp=ppEur.map(toKg);
+const lmeLo=[1455,1950,2080,2100,2100,2177,2972], lmeHi=[2050,3180,3984,2600,2800,3070,3855];
+const rangeTag=['E','E','E','E','E','D','D'];
+
+// ---------- HELPERS ----------
+const cs=getComputedStyle(document.documentElement);
+const col=n=>cs.getPropertyValue(n).trim();
+const fmt=(v,d=1)=>v==null?'–':v.toLocaleString('sv-SE',{minimumFractionDigits:d,maximumFractionDigits:d});
+const fmt0=v=>v==null?'–':Math.round(v).toLocaleString('sv-SE');
+const svgEl=(t,a)=>{const e=document.createElementNS('http://www.w3.org/2000/svg',t);for(const k in a)e.setAttribute(k,a[k]);return e;};
+function tag(t){return t==='D'?'<span class="tag data">Data</span>':'<span class="tag est">Uppsk.</span>';}
+function table(id,head,rows){
+  const el=document.getElementById(id);
+  el.innerHTML='<table><thead><tr>'+head.map(h=>'<th>'+h+'</th>').join('')+'</tr></thead><tbody>'+
+    rows.map(r=>'<tr>'+r.map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('')+'</tbody></table>';
+}
+function legend(id,items){
+  document.getElementById(id).innerHTML=items.map(it=>'<span><span class="sw'+(it.dash?' dash':'')+(it.box?' box':'')+'" style="'+(it.dash?'color:':'background:')+it.color+'"></span>'+it.label+'</span>').join('');
+}
+function tipEl(host){const t=document.createElement('div');t.className='tip';t.style.opacity='0';host.appendChild(t);return t;}
+function placeTip(host,t,x,y){
+  const r=host.getBoundingClientRect();const w=t.offsetWidth,h=t.offsetHeight;
+  let lx=x+14, ly=y-h/2; if(lx+w>r.width-4) lx=x-w-14; if(ly<4) ly=4; if(ly+h>r.height-4) ly=r.height-h-4;
+  t.style.left=lx+'px';t.style.top=ly+'px';t.style.opacity='1';
+}
+
+// ---------- LINE CHART ----------
+function lineChart(id,series,opt){
+  const host=document.getElementById(id);host.innerHTML='';
+  const W=opt.w||900,H=opt.h||340,m={t:22,r:opt.right||120,b:34,l:44};
+  const iw=W-m.l-m.r, ih=H-m.t-m.b;
+  const max=opt.max||Math.ceil(Math.max(...series.flatMap(s=>s.data.filter(v=>v!=null)))*1.08/opt.step)*opt.step;
+  const x=i=>m.l+iw*(i/(YEARS.length-1)), y=v=>m.t+ih-ih*(v/max);
+  const svg=svgEl('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':opt.aria||''});
+  const g=svgEl('g',{class:'grid'});
+  for(let v=0;v<=max;v+=opt.step){g.appendChild(svgEl('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v)}));
+    const t=svgEl('text',{x:m.l-8,y:y(v)+4,'text-anchor':'end',class:'ax'});t.textContent=fmt0(v);const ax=svgEl('g',{class:'ax'});ax.appendChild(t);svg.appendChild(ax);}
+  svg.appendChild(g);
+  svg.appendChild(svgEl('line',{class:'base',x1:m.l,x2:W-m.r,y1:y(0),y2:y(0)}));
+  YEARS.forEach((yr,i)=>{const t=svgEl('text',{x:x(i),y:H-12,'text-anchor':'middle'});t.textContent=YL[i];const ax=svgEl('g',{class:'ax'});ax.appendChild(t);svg.appendChild(ax);});
+  const ut=svgEl('text',{x:m.l-8,y:12,'text-anchor':'end',class:'lbl tiny'});ut.textContent=opt.unit;svg.appendChild(ut);
+  const hover=svgEl('line',{class:'hover-line',y1:m.t,y2:m.t+ih,stroke:col('--muted'),'stroke-dasharray':'3 3',opacity:0});svg.appendChild(hover);
+  // label slots to avoid collisions on the right
+  const ends=[];
+  series.forEach(s=>{
+    const pts=s.data.map((v,i)=>v==null?null:[x(i),y(v)]);
+    let d='',prev=false;
+    pts.forEach(p=>{if(!p){prev=false;return;}d+=(prev?'L':'M')+p[0]+' '+p[1]+' ';prev=true;});
+    if(d) svg.appendChild(svgEl('path',{d,fill:'none',stroke:s.color,'stroke-width':2.2,'stroke-linejoin':'round','stroke-dasharray':s.dash?'6 4':'none'}));
+    pts.forEach((p,i)=>{if(!p)return;
+      svg.appendChild(svgEl('circle',{cx:p[0],cy:p[1],r:4.5,fill:s.hollow?col('--surface'):s.color,stroke:s.color,'stroke-width':2}));});
+    let li=pts.length-1;while(li>=0&&!pts[li])li--;
+    if(li>=0) ends.push({y:pts[li][1],x:pts[li][0],s,v:s.data[li]});
+  });
+  ends.sort((a,b)=>a.y-b.y);
+  for(let i=1;i<ends.length;i++){if(ends[i].y-ends[i-1].y<15)ends[i].y=ends[i-1].y+15;}
+  ends.forEach(e=>{const t=svgEl('text',{x:e.x+9,y:e.y+4,class:'lbl'});t.textContent=e.s.short+' '+fmt(e.v,e.s.dec==null?1:e.s.dec);t.style.fill=e.s.color;svg.appendChild(t);});
+  // hover layer
+  const tip=tipEl(host);
+  const rect=svgEl('rect',{x:m.l,y:m.t,width:iw,height:ih,fill:'transparent'});
+  svg.appendChild(rect);
+  const move=ev=>{const r=svg.getBoundingClientRect();const px=(ev.clientX-r.left)*W/r.width;
+    let i=Math.round((px-m.l)/iw*(YEARS.length-1));i=Math.max(0,Math.min(YEARS.length-1,i));
+    hover.setAttribute('x1',x(i));hover.setAttribute('x2',x(i));hover.setAttribute('opacity',1);
+    tip.innerHTML='<b>'+YL[i]+'</b>'+series.map(s=>s.data[i]==null?'':'<div class="r"><span><i style="background:'+s.color+'"></i>'+s.label+'</span><span>'+fmt(s.data[i],s.dec==null?1:s.dec)+'</span></div>').join('');
+    const hr=host.getBoundingClientRect();placeTip(host,tip,ev.clientX-hr.left,ev.clientY-hr.top);};
+  rect.addEventListener('mousemove',move);rect.addEventListener('touchstart',e=>move(e.touches[0]),{passive:true});
+  rect.addEventListener('mouseleave',()=>{tip.style.opacity='0';hover.setAttribute('opacity',0);});
+  host.appendChild(svg);
+}
+
+// ---------- GROUPED BAR CHART ----------
+function barChart(id,cats,series,opt){
+  const host=document.getElementById(id);host.innerHTML='';
+  const W=900,H=opt.h||320,m={t:26,r:16,b:34,l:44};const iw=W-m.l-m.r,ih=H-m.t-m.b;
+  const allv=series.flatMap(s=>s.data.filter(v=>v!=null)).concat(opt.markers?opt.markers.flatMap(mk=>mk.data.filter(v=>v!=null)):[]);
+  const max=Math.ceil(Math.max(...allv)*1.1/opt.step)*opt.step;
+  const y=v=>m.t+ih-ih*(v/max);const gw=iw/cats.length, bw=Math.min(46,(gw*0.72)/series.length-2);
+  const svg=svgEl('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':opt.aria||''});
+  const g=svgEl('g',{class:'grid'});
+  for(let v=0;v<=max;v+=opt.step){g.appendChild(svgEl('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v)}));const t=svgEl('text',{x:m.l-8,y:y(v)+4,'text-anchor':'end'});t.textContent=fmt0(v);const ax=svgEl('g',{class:'ax'});ax.appendChild(t);svg.appendChild(ax);}
+  svg.appendChild(g);
+  const ut=svgEl('text',{x:m.l-8,y:12,'text-anchor':'end',class:'lbl tiny'});ut.textContent=opt.unit;svg.appendChild(ut);
+  const tip=tipEl(host);
+  cats.forEach((c,ci)=>{
+    const cx=m.l+gw*ci+gw/2;const total=series.length*(bw+2)-2;
+    const t=svgEl('text',{x:cx,y:H-12,'text-anchor':'middle'});t.textContent=c;const ax=svgEl('g',{class:'ax'});ax.appendChild(t);svg.appendChild(ax);
+    series.forEach((s,si)=>{const v=s.data[ci];if(v==null)return;const bx=cx-total/2+si*(bw+2);const bh=ih*(v/max);
+      const r=svgEl('path',{d:`M${bx} ${y(0)} V${y(v)+4} q0 -4 4 -4 h${bw-8} q4 0 4 4 V${y(0)} Z`,fill:s.color});
+      svg.appendChild(r);
+      const l=svgEl('text',{x:bx+bw/2,y:y(v)-6,'text-anchor':'middle',class:'lbl'});l.textContent=fmt(v,s.dec==null?0:s.dec);svg.appendChild(l);
+      const hit=svgEl('rect',{x:bx-1,y:m.t,width:bw+2,height:ih,fill:'transparent'});
+      hit.addEventListener('mousemove',ev=>{tip.innerHTML='<b>'+c+'</b><div class="r"><span><i style="background:'+s.color+'"></i>'+s.label+'</span><span>'+fmt(v,s.dec==null?0:s.dec)+' '+opt.unit+'</span></div>'+(s.note?'<div class="small" style="color:inherit;opacity:.8">'+s.note[ci]+'</div>':'');const hr=host.getBoundingClientRect();placeTip(host,tip,ev.clientX-hr.left,ev.clientY-hr.top);});
+      hit.addEventListener('mouseleave',()=>tip.style.opacity='0');svg.appendChild(hit);});
+    if(opt.markers)opt.markers.forEach(mk=>{const v=mk.data[ci];if(v==null)return;
+      svg.appendChild(svgEl('path',{d:`M${cx-7} ${y(v)} L${cx} ${y(v)-7} L${cx+7} ${y(v)} L${cx} ${y(v)+7} Z`,fill:col('--surface'),stroke:mk.color,'stroke-width':2.2}));
+      let last=mk.data.length-1;while(last>=0&&mk.data[last]==null)last--;
+      const l=svgEl('text',{x:ci===last?cx-11:cx,y:ci===last?y(v)+4:y(v)-12,'text-anchor':ci===last?'end':'middle',class:ci===last?'lbl':'lbl tiny'});
+      l.textContent=(ci===last?mk.short+' ':'')+fmt(v,0);if(ci===last)l.style.fill=mk.color;svg.appendChild(l);
+      const hit=svgEl('rect',{x:cx-9,y:y(v)-9,width:18,height:18,fill:'transparent'});
+      hit.addEventListener('mousemove',ev=>{tip.innerHTML='<b>'+c+'</b><div class="r"><span>'+mk.label+'</span><span>'+fmt(v,0)+' '+opt.unit+'</span></div>';const hr=host.getBoundingClientRect();placeTip(host,tip,ev.clientX-hr.left,ev.clientY-hr.top);});
+      hit.addEventListener('mouseleave',()=>tip.style.opacity='0');svg.appendChild(hit);});
+  });
+  svg.appendChild(svgEl('line',{class:'base',x1:m.l,x2:W-m.r,y1:y(0),y2:y(0)}));
+  host.appendChild(svg);
+}
+
+// ---------- RANGE BAR (LME) ----------
+function rangeChart(id){
+  const host=document.getElementById(id);host.innerHTML='';
+  const W=900,H=320,m={t:26,r:16,b:34,l:48};const iw=W-m.l-m.r,ih=H-m.t-m.b;const max=4500,step=500;
+  const y=v=>m.t+ih-ih*(v/max);const gw=iw/YEARS.length,bw=Math.min(56,gw*0.5);
+  const svg=svgEl('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'LME aluminium årsmedel och spann 2020–2026'});
+  const g=svgEl('g',{class:'grid'});
+  for(let v=0;v<=max;v+=step){g.appendChild(svgEl('line',{x1:m.l,x2:W-m.r,y1:y(v),y2:y(v)}));const t=svgEl('text',{x:m.l-8,y:y(v)+4,'text-anchor':'end'});t.textContent=fmt0(v);const ax=svgEl('g',{class:'ax'});ax.appendChild(t);svg.appendChild(ax);}
+  svg.appendChild(g);
+  const ut=svgEl('text',{x:m.l-8,y:12,'text-anchor':'end',class:'lbl tiny'});ut.textContent='USD/ton';svg.appendChild(ut);
+  const tip=tipEl(host);
+  YEARS.forEach((yr,i)=>{const cx=m.l+gw*i+gw/2;const v=lme[i];
+    const t=svgEl('text',{x:cx,y:H-12,'text-anchor':'middle'});t.textContent=YL[i];const ax=svgEl('g',{class:'ax'});ax.appendChild(t);svg.appendChild(ax);
+    svg.appendChild(svgEl('path',{d:`M${cx-bw/2} ${y(0)} V${y(v)+4} q0 -4 4 -4 h${bw-8} q4 0 4 4 V${y(0)} Z`,fill:lmeTag[i]==='D'?col('--alu'):col('--alu-soft'),stroke:col('--alu'),'stroke-width':lmeTag[i]==='D'?0:1.5}));
+    svg.appendChild(svgEl('line',{x1:cx,x2:cx,y1:y(lmeLo[i]),y2:y(lmeHi[i]),stroke:col('--fg'),'stroke-width':2}));
+    svg.appendChild(svgEl('line',{x1:cx-7,x2:cx+7,y1:y(lmeHi[i]),y2:y(lmeHi[i]),stroke:col('--fg'),'stroke-width':2}));
+    svg.appendChild(svgEl('line',{x1:cx-7,x2:cx+7,y1:y(lmeLo[i]),y2:y(lmeLo[i]),stroke:col('--fg'),'stroke-width':2}));
+    const l=svgEl('text',{x:cx+12,y:y(v)+4,class:'lbl'});l.textContent=fmt0(v);svg.appendChild(l);
+    const hit=svgEl('rect',{x:cx-gw/2,y:m.t,width:gw,height:ih,fill:'transparent'});
+    hit.addEventListener('mousemove',ev=>{tip.innerHTML='<b>'+YL[i]+'</b><div class="r"><span>Årsmedel</span><span>'+fmt0(v)+' USD/t'+(lmeTag[i]==='E'?' (uppsk.)':'')+'</span></div><div class="r"><span>Lägst–högst</span><span>'+fmt0(lmeLo[i])+'–'+fmt0(lmeHi[i])+(rangeTag[i]==='E'?' (uppsk.)':'')+'</span></div>';const hr=host.getBoundingClientRect();placeTip(host,tip,ev.clientX-hr.left,ev.clientY-hr.top);});
+    hit.addEventListener('mouseleave',()=>tip.style.opacity='0');svg.appendChild(hit);});
+  svg.appendChild(svgEl('line',{class:'base',x1:m.l,x2:W-m.r,y1:y(0),y2:y(0)}));
+  const n=svgEl('text',{x:W-m.r,y:14,'text-anchor':'end',class:'lbl tiny'});n.textContent='Ljus stapel = uppskattat årsmedel · streck = årets spann';svg.appendChild(n);
+  host.appendChild(svg);
+}
+
+// ---------- STACKED BUILD-UP ----------
+function buildChart(id){
+  const host=document.getElementById(id);host.innerHTML='';
+  const parts=[
+    {l:'LME‑metall',v:30.6,c:col('--ramp1'),n:'3 239 USD/t × 9,45'},
+    {l:'Rotterdam‑premie',v:5.0,c:col('--ramp2'),n:'533 USD/t × 9,45'},
+    {l:'Konvertering (valsning)',v:6.8,c:col('--ramp3'),n:'CRU 1050: 615 €/t'},
+    {l:'Tunnplåt, primer, emballage',v:7.5,c:col('--ramp4'),n:'spann 6–9 kr/kg'},
+    {l:'Grossist och frakt',v:10.5,c:col('--ramp5'),n:'spann 5–16 kr/kg'}];
+  const W=900,H=150,m={t:34,r:16,b:40,l:16};const iw=W-m.l-m.r;const max=85;const x=v=>m.l+iw*(v/max);
+  const svg=svgEl('svg',{viewBox:`0 0 ${W} ${H}`,role:'img','aria-label':'Kostnadsuppbyggnad kr/kg primerad aluminiumcoil'});
+  const tip=tipEl(host);let acc=0;const by=m.t,bh=44;
+  parts.forEach((p,i)=>{const x0=x(acc),x1=x(acc+p.v);acc+=p.v;
+    svg.appendChild(svgEl('rect',{x:x0,y:by,width:Math.max(0,x1-x0-2),height:bh,fill:p.c,rx:i===parts.length-1?4:0}));
+    const t=svgEl('text',{x:(x0+x1)/2,y:by+bh/2+4,'text-anchor':'middle',class:'lbl'});t.textContent=fmt(p.v,1);t.style.fill=i<3?col('--fg'):'#ffffff';if(x1-x0>34)svg.appendChild(t);
+    const nl=svgEl('text',{x:(x0+x1)/2,y:by+bh+18,'text-anchor':'middle',class:'lbl tiny'});nl.textContent=p.l;if(x1-x0>120)svg.appendChild(nl);
+    const hit=svgEl('rect',{x:x0,y:by,width:x1-x0,height:bh,fill:'transparent'});
+    hit.addEventListener('mousemove',ev=>{tip.innerHTML='<b>'+p.l+'</b><div class="r"><span>≈ '+fmt(p.v,1)+' kr/kg</span></div><div>'+p.n+'</div>';const hr=host.getBoundingClientRect();placeTip(host,tip,ev.clientX-hr.left,ev.clientY-hr.top);});
+    hit.addEventListener('mouseleave',()=>tip.style.opacity='0');svg.appendChild(hit);});
+  const tot=svgEl('text',{x:x(acc)+8,y:by+bh/2+4,class:'lbl'});tot.textContent='≈ '+fmt(acc,1);svg.appendChild(tot);
+  const t1=svgEl('text',{x:m.l,y:14,class:'lbl tiny'});t1.textContent='Marknadsmässig nivå (mittvärden), kr/kg';svg.appendChild(t1);
+  const lx=x(78.78);
+  svg.appendChild(svgEl('line',{x1:lx,x2:lx,y1:by-14,y2:by+bh+6,stroke:col('--steel'),'stroke-width':2.5}));
+  const lt=svgEl('text',{x:lx,y:by-18,'text-anchor':'end',class:'lbl'});lt.textContent='All Coating listpris 78,78';lt.style.fill=col('--steel');svg.appendChild(lt);
+  const ax=svgEl('g',{class:'ax'});[0,20,40,60,80].forEach(v=>{const t=svgEl('text',{x:x(v),y:H-6,'text-anchor':'middle'});t.textContent=v;ax.appendChild(t);svg.appendChild(svgEl('line',{x1:x(v),x2:x(v),y1:by+bh,y2:by+bh+4,stroke:col('--line')}));});svg.appendChild(ax);
+  host.appendChild(svg);
+  table('t-build',['Led','kr/kg (mitt)','Underlag'],parts.map(p=>[p.l,fmt(p.v,1),p.n]).concat([['<b>Summa vid grossist</b>','<b>'+fmt(acc,1)+'</b>','spann ≈ 55–68 kr/kg'],['All Coating listpris','78,78','faktura 74,99 (dec 2024–jul 2026), 79,99 (aug 2026)']]));
+}
+
+// ---------- RENDER ----------
+const A=col('--alu'),S=col('--sheet'),ST=col('--steel'),G=col('--gold');
+lineChart('c-alu',[
+  {label:'Göt, råvara (LME + premie)',short:'Göt',data:ingot,color:A},
+  {label:'Verkspris 1 mm plåt, uppskattat',short:'Plåt 1 mm',data:sheet,color:S},
+  {label:'All Coating fakturapris FP12',short:'All Coating',data:invoice,color:ST,dec:2},
+  {label:'All Coating bokfört kr/kg (räkenskapsår)',short:'Bokfört',data:booked,color:ST,dash:true,hollow:true}
+],{step:10,unit:'kr/kg',aria:'Aluminium kr per kg 2020–2026',right:150});
+legend('l-alu',[{label:'Göt, råvara',color:A},{label:'Verkspris 1 mm plåt (uppskattat)',color:S},{label:'All Coating fakturapris',color:ST},{label:'All Coating bokfört kr/kg',color:ST,dash:true}]);
+table('t-alu',['År','LME USD/t','Premie USD/t','USD/SEK','Göt kr/kg','Plåt 1 mm kr/kg','All Coating faktura','Bokfört kr/kg'],
+  YEARS.map((y,i)=>[YL[i],fmt0(lme[i])+' '+tag(lmeTag[i]),fmt0(prem[i])+' '+tag('E'),fmt(usdsek[i],2)+' '+tag(usdTag[i]),fmt(ingot[i],1),fmt(sheet[i],1)+' '+tag('E'),invoice[i]==null?'–':fmt(invoice[i],2)+' '+tag('D'),booked[i]==null?'–':fmt(booked[i],1)+' '+tag('D')]));
+
+lineChart('c-steel',[
+  {label:'Varmvalsad coil (HRC)',short:'HRC',data:hrc,color:A},
+  {label:'Varmförzinkad coil (HDG)',short:'HDG',data:hdg,color:S},
+  {label:'Lackerad coil, uppskattad',short:'Lackerad',data:pp,color:ST}
+],{step:2,unit:'kr/kg',aria:'Stål kr per kg 2020–2026',right:130});
+legend('l-steel',[{label:'Varmvalsad coil (HRC)',color:A},{label:'Varmförzinkad coil (HDG)',color:S},{label:'Lackerad coil (uppskattad)',color:ST}]);
+table('t-steel',['År','HRC €/t','HDG €/t','Lackerad €/t','EUR/SEK','HRC kr/kg','HDG kr/kg','Lackerad kr/kg','Zink USD/t'],
+  YEARS.map((y,i)=>[YL[i],fmt0(hrcEur[i])+' '+tag(i>=4?'D':'E'),fmt0(hdgEur[i])+' '+tag('E'),fmt0(ppEur[i])+' '+tag('E'),fmt(eursek[i],2)+' '+tag(i===5?'D':'E'),fmt(hrc[i],1),fmt(hdg[i],1),fmt(pp[i],1),fmt0(zinc[i])+' '+tag(i===0||i===6?'E':'D')]));
+
+const idx=a=>a.map(v=>Math.round(v/a[0]*100));
+const iIngot=idx(ingot),iSheet=idx(sheet),iHrc=idx(hrc),iPp=idx(pp);
+lineChart('c-idx-alu',[{label:'Göt (råvara)',short:'Göt',data:iIngot,color:A,dec:0},{label:'Plåt 1 mm (verk)',short:'Plåt',data:iSheet,color:S,dec:0}],{step:50,max:300,unit:'Aluminium, index',right:80,h:300});
+lineChart('c-idx-steel',[{label:'HRC (råvara)',short:'HRC',data:iHrc,color:A,dec:0},{label:'Lackerad coil (verk)',short:'Lack.',data:iPp,color:S,dec:0}],{step:50,max:300,unit:'Stål, index',right:80,h:300});
+legend('l-idx-alu',[{label:'Göt, råvara',color:A},{label:'Plåt 1 mm, verk',color:S}]);
+legend('l-idx-steel',[{label:'HRC, råvara',color:A},{label:'Lackerad coil, verk',color:S}]);
+table('t-idx',['År','Alu göt','Alu plåt','Stål HRC','Stål lackerad'],YEARS.map((y,i)=>[YL[i],iIngot[i],iSheet[i],iHrc[i],iPp[i]]));
+
+const aluM2=sheet.map(v=>Math.round((v+6)*2.16)), st06=pp.map(v=>Math.round(v*4.9)), st05=pp.map(v=>Math.round(v*4.1));
+const acM2=invoice.map(v=>v==null?null:Math.round(v*2.16));
+barChart('c-m2',YL,[
+  {label:'Aluminium 0,8 mm primerad, vid verk',data:aluM2,color:A},
+  {label:'Stål 0,6 mm lackerad, vid verk',data:st06,color:ST}
+],{step:25,unit:'kr/m²',aria:'Pris per kvadratmeter aluminium mot stål',markers:[{short:'All Coating',label:'All Coatings pris × 2,16 kg/m²',data:acM2,color:col('--fg')}]});
+legend('l-m2',[{label:'Aluminium 0,8 mm primerad (2,16 kg/m²)',color:A,box:true},{label:'Stål 0,6 mm lackerad (4,9 kg/m²)',color:ST,box:true},{label:'◇ All Coatings faktiska pris × 2,16',color:col('--fg')}]);
+table('t-m2',['År','Alu 0,8 mm verk kr/m²','All Coating kr/m²','Stål 0,6 mm kr/m²','Stål 0,5 mm kr/m²','Alu / stål 0,6'],
+  YEARS.map((y,i)=>[YL[i],fmt0(aluM2[i])+' '+tag('E'),acM2[i]==null?'–':fmt0(acM2[i])+' '+tag('D'),fmt0(st06[i])+' '+tag('E'),fmt0(st05[i])+' '+tag('E'),fmt(aluM2[i]/st06[i],1)+'×']));
+
+buildChart('c-build');
+rangeChart('c-lme');
+table('t-lme',['År','Årsmedel USD/t','Lägst','Högst','Kommentar'],YEARS.map((y,i)=>[YL[i],fmt0(lme[i])+' '+tag(lmeTag[i]),fmt0(lmeLo[i])+' '+tag(rangeTag[i]),fmt0(lmeHi[i])+' '+tag(rangeTag[i]),
+  ['Covid‑botten april 2020 (~1 455)','Återhämtning, europeiska smältverk stänger','Rekord 7 mars 2022, energikris','Nedgång, svag efterfrågan','Stabilt, ryskt metallförbud USA/UK','Slut 2025: 2 972','Iran‑konflikt, Hormuz stängt, EU‑förbud ryskt aluminium; 29 sep: 3 239'][i]]));
+
+// toggles
+document.querySelectorAll('[data-toggle]').forEach(b=>b.addEventListener('click',()=>{const t=document.getElementById(b.dataset.toggle);t.hidden=!t.hidden;b.textContent=t.hidden?'Visa tabell':'Dölj tabell';}));
+})();
+</script>
