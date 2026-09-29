@@ -55,12 +55,20 @@ jobs:
             fi
             echo "Ändrat sedan deployen:"; echo "$CHANGED"
           fi
-          # Pågår/köar redan en deploy för toppen? Har en redan lyckats
-          # (t.ex. utan att dist ändrades, så gh-pages fick ingen ny commit)?
+          # Pågår/köar redan NÅGON deploy på grenen? Då väntar vi – att starta
+          # en till skulle bara avbryta den (concurrency: cancel-in-progress)
+          # och börja om från noll. Nästa vakt-tick avgör om toppen ändå
+          # behöver en egen körning.
           RUNS=$(gh api "repos/$REPO/actions/workflows/deploy.yml/runs?branch=$BRANCH&per_page=15")
-          ACTIVE=$(echo "$RUNS" | jq --arg h "$HEAD" '[.workflow_runs[] | select(.head_sha==$h and (.status=="queued" or .status=="in_progress" or .status=="waiting" or .status=="pending"))] | length')
-          DONE=$(echo "$RUNS" | jq --arg h "$HEAD" '[.workflow_runs[] | select(.head_sha==$h and .conclusion=="success")] | length')
-          if [ "$ACTIVE" != "0" ]; then echo "En deploy för toppen pågår redan."; exit 0; fi
-          if [ "$DONE" != "0" ]; then echo "En deploy för toppen har redan lyckats (inget nytt att publicera)."; exit 0; fi
-          echo "Ingen deploy för $HEAD hittades – startar en nu."
+          ACTIVE=$(echo "$RUNS" | jq '[.workflow_runs[] | select(.status=="queued" or .status=="in_progress" or .status=="waiting" or .status=="pending" or .status=="requested")] | length')
+          if [ "$ACTIVE" != "0" ]; then echo "En deploy pågår redan på grenen – väntar."; exit 0; fi
+          # Har den senaste LYCKADE deployen redan samma app-filer som toppen?
+          # (t.ex. deployen gick igenom men dist var identisk, så gh-pages fick
+          # ingen ny commit, eller bara dokumentation har tillkommit sedan dess)
+          LAST_OK=$(echo "$RUNS" | jq -r '[.workflow_runs[] | select(.conclusion=="success")][0].head_sha // empty')
+          if [ -n "$LAST_OK" ] && git cat-file -e "$LAST_OK^{commit}" 2>/dev/null; then
+            SINCE_OK=$(git diff --name-only "$LAST_OK" "$HEAD" -- src public scripts index.html package.json package-lock.json vite.config.ts tsconfig.json supabase.env .github/workflows/deploy.yml | grep -v '^public/data/stations-seed.json$' || true)
+            if [ -z "$SINCE_OK" ]; then echo "Senaste lyckade deployen ($LAST_OK) täcker redan toppens app-filer."; exit 0; fi
+          fi
+          echo "Ingen deploy täcker $HEAD – startar en nu."
           gh workflow run deploy.yml --ref "$BRANCH"
