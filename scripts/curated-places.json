@@ -19527,19 +19527,6 @@
     "website": "https://husbilsplats.se/rest-area/norrsken-lodge/"
   },
   {
-    "name": "Rastplats Råda",
-    "lat": 60.004248,
-    "lon": 13.605485,
-    "services": [
-      "sopor"
-    ],
-    "source": "egen",
-    "description": "rastplatserna.se/husbilsplats.se. \"rastplatserna.se: 'Latrintömning: finns (uppdaterad 1 juni 2026)'; husbilskompisar 'Råda, Trafikverkets rastplats': ca 9 km SV om Hagfors på rv 62, intill restaurang, HWC-toalett, lekplats. Trafikverkets egen rastplatssi\" (https://rastplatserna.se/rastplats/rada)",
-    "unverifiedServices": [
-      "latrin"
-    ]
-  },
-  {
     "name": "Rastplats Gylle",
     "services": [
       "stallplats"
@@ -19553,19 +19540,6 @@
     "unverified": true,
     "confidence": "low",
     "website": "https://rastplatserna.se/rastplats/gylle"
-  },
-  {
-    "name": "Rastplats Tönnebro",
-    "lat": 61.072113,
-    "lon": 16.967362,
-    "services": [
-      "sopor"
-    ],
-    "source": "egen",
-    "description": "rastplatserna.se/husbilsplats.se. \"rastplatserna.se/husbilskompisar: Tönnebro, Trafikverkets rastplats på E4 28 km S om Söderhamn, intill restaurang; latrintömning för husbil (endast lös latrin, ej gråvatten enligt TRV:s allmänna regel). Trafikverkets ege\" (https://rastplatserna.se/rastplats/tonnebro)",
-    "unverifiedServices": [
-      "latrin"
-    ]
   },
   {
     "name": "Skånegas gasolautomat, Ängelholm",

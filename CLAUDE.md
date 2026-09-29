@@ -166,11 +166,21 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
   kandidatimportens ortsgissning (median av platser med kommunnamnet i
   namnet) är opålitlig, kolla alltid källsidans egen koordinat. Skript:
   `apply-final.mjs` (scratchpad, samma mönster som import-tools).
-  **Kvar:** jem & fix Alvesta (ingen källa ger koordinat – läs av
-  hitta.se/eniro i webbläsare), Ljusdal X10 (husbilsplats-post på TRV-
-  rastplats, gråvatten/vatten påstått), West Coast Gasol, Svenska Gas
-  Orust, Råda/Tönnebro rastplats (latrin påstådd, TRV säger nej),
-  husbilsplats.se-listan bakom betalvägg, campingkollen bara stickprov.
+  **Restposter avklarade 29 sep:** Råda/Tönnebro – latrintömning på
+  rastplatserna EJ belagd (TRV-API bara sopor, hplats.se/svenskarastplatser
+  säger uttryckligen "Nej"; bara rastplatserna.se:s mallade text påstår
+  det) → de två registerposterna med `unverifiedServices: ['latrin']`
+  raderade, TRV-posterna täcker platserna. Ljusdal X10: TRV har redan
+  latrin (tillfälligt stängd), park4night-dubblett raderad. Gasol
+  Häradsbäck flyttad 4,7 km till Mötesplats Häradsbäck (Älmhultsvägen 3,
+  flytt 2020, haradsback.se/gasol-lpg, high). Svenska Gas Orust tillagd
+  (Häröd 304, Henån, svenskagas.se/orust, `query`+ankare – verifiera
+  läget efter deploy). **Kvar:** jem & fix Alvesta (Skördevägen 2/4/6 –
+  ingen källa ger koordinat, tomten delas med Dollarstore/JYSK; läs av
+  hitta.se i webbläsare), West Coast Gasol Vänersborg/Vargön (lösvikts-
+  fyllning bekräftad på westcoastgasol.se men INGEN gatuadress någonstans –
+  Facebook-sidans "Om"-flik i webbläsare), husbilsplats.se-listan bakom
+  betalvägg, campingkollen bara stickprov.
   **Verifierat 29 sep mot seeden från 28 sep (5 984 platser: OSM 4 397,
   TRV 319, register 1 261):** alla 43 + de uppgraderade ligger i seeden
   på exakt registerkoordinat (0 m avvikelse); enda saknade är jem & fix
