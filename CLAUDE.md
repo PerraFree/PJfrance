@@ -363,9 +363,15 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    `unverifiedServices`; low (35) grå. **~100 av de nya posterna saknar
    exakt koordinat** (hitta.se/eniro/klubbsajter egress-blockade) och
    geokodas av synken via `query` ("<Klubb>, <kommun>" eller gatuadress) +
-   kommunens medianläge från seeden som `nearLat/nearLon` (maxKm 25) –
-   **verifiera efter deploy** hur många som gick igenom och lista de som
-   kasserades. Kvar: koordinatrunda för dem som inte geokodas, Kungsbacka/
+   kommunens medianläge från seeden som `nearLat/nearLon` (maxKm 25).
+   **Verifierat 29 sep (deploy 13:13, 6 324 platser):** första deployen
+   fick med 170 av 181; 11 kasserades (3 på Gotland + Boden låg >25 km
+   från kommunmitten men rätt → maxKm 60; 4 geokodades helt fel, 3 hittades
+   inte → exakta koordinater från en agentrunda; Alvesta GK raderad, bara
+   aggregator). Andra deployen: **180 av 180 i seeden**, 42 golfplatser
+   med bekräftad tömning/vatten, 33 grå. Lärdom: kommunmedianen som ankare
+   funkar, men stora kommuner (Gotland, Boden, Gällivare) behöver maxKm
+   ≥60, och Nominatim hittar inte alla klubbnamn. Kvar: Kungsbacka/
    Forsgården/Västervik/Vimmerby/Malung/Gävle/Piteå/Sveg/Knistad (klubbsajt
    nämner inget om husbil – förblir grå), osökta klubbar i Bohuslän,
    Göteborgs kranskommuner, Söderåsen/Ystad/Båstad-trakten, Eda/Filipstad.
