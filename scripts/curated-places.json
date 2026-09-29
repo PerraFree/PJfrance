@@ -20695,7 +20695,7 @@
     "query": "Slite Golfklubb, Slite, Gotland",
     "nearLat": 57.62306,
     "nearLon": 18.32651,
-    "maxKm": 25,
+    "maxKm": 60,
     "services": [
       "stallplats"
     ],
@@ -20726,7 +20726,7 @@
     "query": "Ljugarns Golfklubb, Gotland",
     "nearLat": 57.62306,
     "nearLon": 18.32651,
-    "maxKm": 25,
+    "maxKm": 60,
     "services": [
       "stallplats"
     ],
@@ -20738,21 +20738,6 @@
     "phone": "070-787 53 74 (husbil.se)",
     "season": "seasonal",
     "confidence": "medium"
-  },
-  {
-    "name": "Alvesta Golfklubb",
-    "query": "Kronobergshed, 342 63 Moheda",
-    "nearLat": 56.90446,
-    "nearLon": 14.57496,
-    "maxKm": 25,
-    "services": [
-      "stallplats"
-    ],
-    "source": "egen",
-    "description": "Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Bara husbilsplats.se ('husbilsparkering och övernattning i samband med golf'). Domänbegränsad sökning mot alvestagk.se gav 0 träffar. Rekommenderar INTE tillägg (inte ens grå) utan ytterligare källa.",
-    "website": "https://husbilsplats.se/locations/alvesta-golfklubb/",
-    "confidence": "low",
-    "unverified": true
   },
   {
     "name": "Ljungbyheds Golfklubb ställplats",
@@ -21481,7 +21466,7 @@
     "query": "Bodens Golfklubb, Boden",
     "nearLat": 66.05368,
     "nearLon": 21.69308,
-    "maxKm": 25,
+    "maxKm": 60,
     "services": [
       "stallplats"
     ],
