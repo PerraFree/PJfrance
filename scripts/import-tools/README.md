@@ -16,3 +16,15 @@ till en egen mapp** och lägg in indatafilerna där innan körning. Kör alltid
 | `compare.mjs` / `compare-tomning.mjs` | seed från gh-pages | deploy-verifiering: saknade poster + avstånd från `nearLat/nearLon` |
 
 Seed hämtas med `git show origin/gh-pages:data/stations-seed.json > <S>/seed.json`.
+
+## Koordinatsvep (25 sep 2026)
+
+- `apply-coords.mjs` – läser `coords-*.json` från agenter (fält: name, lat, lon,
+  source, evidence, townLat/townLon/townName, confidence) och sätter exakt
+  `lat`/`lon` på registerposten, tar bort `query`, sätter orts-ankaret till
+  agentens town-koordinat (maxKm 30) och lägger "Koordinat från <url>" i
+  beskrivningen. Kör med `--dry` först. Sökvägen `S` måste anpassas.
+- `verify-deploy-names.mjs` – kontroll efter deploy: listan `NAMES` matchas
+  mot publicerad seed (`seed.json` från `git show origin/gh-pages:data/stations-seed.json`)
+  och avståndet till `nearLat/nearLon` i registret jämförs med `maxKm`.
+  Skriver "SAKNAS" / "FÖR LÅNGT BORT" / "nära gränsen". Byt ut namnlistan.
