@@ -550,6 +550,12 @@ export default function MapView({
       else if (wide) top = panelRect.bottom
       else left = panelRect.right
     }
+    // Mobil: "Närmaste platser"-arket ligger ovanpå panelen (även i sitt
+    // hopfällda remsläge) – den fria ytan slutar vid dess överkant.
+    const nearRect = document.querySelector('.nearest')?.getBoundingClientRect()
+    if (nearRect && nearRect.width >= vw * 0.8 && nearRect.top > vh / 3) {
+      bottom = Math.min(bottom, nearRect.top)
+    }
     return { left, top, right, bottom }
   }
   const computePopupPadding = () => {

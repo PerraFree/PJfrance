@@ -733,6 +733,10 @@ export default function App() {
       if (activeFiltersRef.current.size === 0) ensureGasolFacilities()
       setActiveFilters((prev) => (prev.size === 0 ? new Set(ALL_SERVICES) : prev))
       setCollapsed(true) // ge kartan plats
+      // Mobil: krymp panelen till bara handtag + namn, annars täcker den
+      // kartan även när "Närmaste platser"-listan dragits ner (Pers
+      // skärmbild sep 2026). Tryck på panelen återställer den.
+      if (window.matchMedia?.('(max-width: 640px)').matches) setMini(true)
       setStatus('Visar platser nära dig – avstånd visas i varje plats.')
     } catch {
       setStatus('Kunde inte hämta din position.')

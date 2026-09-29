@@ -1643,6 +1643,27 @@ button {
     z-index: 1200;
     padding-bottom: env(safe-area-inset-bottom);
   }
+  /* Draghandtag + rubrik går att dra ner (eller trycka på) så att listan
+     fälls ihop till en remsa och kartan med nålarna syns. */
+  .nearest .sheet-handle {
+    padding: 8px 0 0;
+    margin: 0;
+  }
+  .nearest .nearest-head {
+    cursor: pointer;
+    padding-top: 6px;
+    touch-action: none;
+  }
+  .nearest .sheet-handle {
+    touch-action: none;
+  }
+  .nearest.minimized ul,
+  .nearest.minimized .nearest-empty {
+    display: none;
+  }
+  .nearest.minimized .nearest-head {
+    padding-bottom: 12px;
+  }
 
   .map-empty {
     top: 38%;
