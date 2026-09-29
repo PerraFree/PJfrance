@@ -171,7 +171,10 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
   rastplats, gråvatten/vatten påstått), West Coast Gasol, Svenska Gas
   Orust, Råda/Tönnebro rastplats (latrin påstådd, TRV säger nej),
   husbilsplats.se-listan bakom betalvägg, campingkollen bara stickprov.
-  Verifiera efter deploy att alla 43 finns i seeden.
+  **Verifierat 29 sep mot seeden från 28 sep (5 984 platser: OSM 4 397,
+  TRV 319, register 1 261):** alla 43 + de uppgraderade ligger i seeden
+  på exakt registerkoordinat (0 m avvikelse); enda saknade är jem & fix
+  Alvesta.
 
 ## Backlog (nästa att göra, i prioritetsordning)
 
