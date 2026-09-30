@@ -58,8 +58,9 @@ research-logg, inte en to-do-lista att blint klistra in.
 
 1. ~~Kronoberg/Örebro/Värmland~~ – **KÖRT 29 sep 2026** (6 agenter, 101 fynd,
    rådata i `docs/import/discovery-kronoberg-orebro-varmland-sep-2026.json`, se
-   `docs/svep-logg.md`). Kvar: de ~35 kommunerna i Västra
-   Götaland/Halland/Bohuslän/Dalsland/Sjuhärad/Skaraborg samt Öland/Gotland.
+   `docs/svep-logg.md`). ~~VG/Halland-kommunerna~~ – **KÖRT 30 sep 2026**
+   (6 agenter, 98 fynd, `docs/import/discovery-vastra-gotaland-halland-sep-2026.json`).
+   Kvar: Öland/Gotland samt Emmaboda/Torsås/Högsby.
 2. För kandidater nedan som verkar lovande (tydligt citat om gråvatten/latrin/
    vatten): sök upp en oberoende primärkälla (anläggningens egen sajt,
    kommunsida, nyhetsartikel) innan tillägg – samma "verifiera innan du lägger

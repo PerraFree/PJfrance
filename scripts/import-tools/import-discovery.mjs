@@ -18,8 +18,11 @@ const kommunAnchor = (k) => { const arr = byKommun[k] || byKommun[k + 's'] || by
 const r5 = (x) => Math.round(x * 1e5) / 1e5
 const norm = (s) => (s || '').toLowerCase().replace(/\s+/g, ' ').trim()
 // Handjusterade geokodningsfrågor (Nominatim hittar inte beskrivande namn)
-const QUERY_FIX = { 'Ställplatser för husbilar i gästhamnen i Klässbol': 'Klässbols gästhamn, Arvika', 'Ställplats Dammen (Östregårds ställplatser)': 'Östregård, Blädinge, Alvesta' }
-const SKIP = /^Unden – naturnära/ // "Unden" är en hel sjö – ingen punkt att geokoda
+const QUERY_FIX = { 'Ställplatser för husbilar i gästhamnen i Klässbol': 'Klässbols gästhamn, Arvika', 'Ställplats Dammen (Östregårds ställplatser)': 'Östregård, Blädinge, Alvesta',
+  'Svenljunga ställplats (Moga Fritid)': 'Moga Fritid, Svenljunga', 'Ställplats Lassalyckan, Ulricehamn': 'Lassalyckan, Ulricehamn',
+  'Husbilsparkering Herrljunga Folkets Park': 'Herrljunga Folkets Park, Herrljunga', 'Husbilsparkering Haraberget (Herrljunga hembygdspark)': 'Haraberget, Herrljunga',
+  'Backamo Lägerplats ställplats': 'Backamo, Ljungskile', 'Kolholmarnas husbilsparkering, Lysekil': 'Kolholmarna, Lysekil' }
+const SKIP = /^Unden – naturnära|^Edet Värdshus/ // "Unden" är en hel sjö – ingen punkt att geokoda
 const GENERIC = /^(tömningsstation|ställplats|ställplats för husbil|camping|vattenpåfyllning|sopstation|latrintömning)\b/i
 const files = fs.readdirSync(S).filter((f) => /^disc-[a-z]+-\d\.json$/.test(f)).sort()
 const log = { nya: 0, uppgr: 0, kompl: 0, gra: 0, hoppade: [] }
@@ -43,7 +46,7 @@ for (const f of files) {
     if (typeof r.lat !== 'number' || typeof r.lon !== 'number' || r.lat < 55 || r.lat > 69.1) {
       const anchor = kommunAnchor(r.kommun)
       if (!anchor) { log.hoppade.push(`${name}: ingen koordinat och okänd kommun "${r.kommun}" (${conf})`); continue }
-      let q = (r.address || '').replace(/\s*\(.*?\)/g, '').replace(/^(vid|korsningen|centrumparkeringen vid)\s+/i, '').replace(/,\s*(vid|strax|nära|intill|norra delen|södra delen|vägen)\b[^,]*/gi, '').replace(/\s+(vid|intill)\s+[^,]*/gi, '').replace(/\s*\/\s*[^,]*/g, '').replace(/\s+/g, ' ').replace(/^,\s*|,\s*$/g, '').trim()
+      let q = (r.address || '').replace(/\s*\(.*?\)/g, '').replace(/\s+[–-]\s+.*$/, '').replace(/^(vid|korsningen|centrumparkeringen vid|bakom|parkeringen)\s+/i, '').replace(/,\s*(bakom|öster om|söder om|norr om|väster om|infart|väg\s*\d+|ca\s)\b[^,]*/gi, '').replace(/,\s*(vid|strax|nära|intill|norra delen|södra delen|vägen)\b[^,]*/gi, '').replace(/\s+(vid|intill)\s+[^,]*/gi, '').replace(/\s*\/\s*[^,]*/g, '').replace(/\s+/g, ' ').replace(/^,\s*|,\s*$/g, '').trim()
       if (!q || /\bkm\b|okänd|saknas/i.test(q)) q = `${name.replace(/\s*\(.*?\)/g, '')}, ${r.kommun}`
       if (QUERY_FIX[name]) q = QUERY_FIX[name]
       geo = { query: q, nearLat: r5(anchor.lat), nearLon: r5(anchor.lon), maxKm: 30 }

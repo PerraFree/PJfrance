@@ -163,3 +163,14 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   koordinater, 3 bättre query (Loka Brunn, Laxtjärn – låg 14 km fel, Flakudden). Verifiera
   nästa deploy.
   **Utfall 30 sep 09:02:** 84 av 85 i seeden; Loka Brunn fick kurortens koordinat manuellt.
+- **2026-09-30, discovery-svep Västra Götaland/Halland (session "Gråvatten 4", område D upptäckt):**
+  de 37 osökta kommunerna (Bohuslän, Dalsland+Lilla Edet, Göteborgs kranskommuner, Sjuhärad+
+  Hylte, Skaraborg väst/öst), 6 agenter × 45 sökningar. 98 fynd → 70 nya registerposter, 5
+  uppgraderade (Skara Björkelundsgatan grå → latrin via skara.se, Kedumsvik grå → full tömning,
+  Lokstallet Hjo vatten+latrin, Göta Holme), 5 kompletterade, 17 hoppade. Stenungsunds hamn-
+  ställplatsen borttagen (nedlagd 2025 enl. ST-tidningen, hamnens sugtömning gäller båtar).
+  Rådata `docs/import/discovery-vastra-gotaland-halland-sep-2026.json`. ~50 poster geokodas –
+  verifiera efter deploy. Kvar: Lilla Edet är genuint tomt (närmaste tömning Backamo/Uddevalla),
+  Tibro/Tidaholm/Tranemo saknar kommunal tömning, Mellerud/Bengtsfors/Grästorp/Vårgårda inget
+  nytt, Fengersfors-konflikt (OSM säger tömning, Visit Väst säger bara vatten), Öijared GK bara
+  aggregator, Sotenäs planerade ställplatser (Väjern/Bovallstrand/Malmön) ej byggda ännu.

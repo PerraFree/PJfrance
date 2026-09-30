@@ -415,9 +415,20 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    **Deploy 30 sep 09:02 (6 391 platser): 84 av 85 i seeden**, Laxtjärn nu
    1,5 km NO om Kopparberg och Flakudden i hamnen. Bara Loka Brunn saknades
    (Nominatim hittar inte "Loka Brunn") → kurortens Wikipedia-koordinat
-   satt som lat/lon med notis i beskrivningen. Kvar:
-   VG/Halland-kommunerna + Öland/Gotland (se kandidatfilen), Storfors utan
-   belagd tömning, Lekeberg nästan tom, Vinön-posten motsägs (grå, låt stå).
+   satt som lat/lon med notis i beskrivningen.
+   **VG/Halland KÖRT 30 sep 2026** (37 kommuner, 6 agenter × 45 sökningar,
+   rådata `docs/import/discovery-vastra-gotaland-halland-sep-2026.json`):
+   98 fynd → 70 nya, 5 uppgraderade, 5 kompletterade. Tömning/vatten nytt
+   bl.a. Kolholmarna + Lysekils Marina (Lysekil), Stenungsögården, Rökan
+   Vrångholmen Marstrand, Kungälv-Kode GK, Måkeberg Åmål, Furusjön,
+   Mustadfors, Backamo (Uddevalla), Nääs, Jälluntofta, Skärshult, Kedumsvik,
+   Örnsro/Stadscamping/Valle (Skara), Göta Holme, Lokstallet Hjo.
+   Stenungsunds hamn-ställplatsen raderad (nedlagd 2025). ~50 poster
+   geokodas – **verifiera efter deploy** (`check-discovery.mjs`-mönstret).
+   Kvar: Öland/Gotland + Emmaboda/Torsås/Högsby (se kandidatfilen), Storfors
+   utan belagd tömning, Lekeberg nästan tom, Lilla Edet genuint tomt,
+   Vinön-posten motsägs (grå, låt stå), Fengersfors-konflikt (OSM tömning
+   vs. Visit Väst bara vatten – kolla på plats).
 4. **Öppettider/vinterstängt** saknas för många platser.
 5. Vilhelmina-tömningsstationen togs bort i väntan på bekräftat läge.
 6. AdminPanel: 'na'-läget och tabellkontroller är fixade; håll texterna i
