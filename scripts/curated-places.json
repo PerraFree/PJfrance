@@ -21619,10 +21619,6 @@
   },
   {
     "name": "Kastebergs Gård ställplats",
-    "query": "Össlöv Kasteberg, 341 96 Ljungby",
-    "nearLat": 56.81775,
-    "nearLon": 13.89625,
-    "maxKm": 30,
     "services": [
       "vatten",
       "stallplats"
@@ -21635,7 +21631,9 @@
     "phone": "0372-120 00",
     "address": "Össlöv Kasteberg, 341 96 Ljungby",
     "season": "year-round",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 56.88605,
+    "lon": 13.96422
   },
   {
     "name": "Fridtuna Gård ställplats",
@@ -21658,10 +21656,6 @@
   },
   {
     "name": "Berghem Prästgården ställplats",
-    "query": "Berghem Prästgården 1, 341 91 Ljungby",
-    "nearLat": 56.81775,
-    "nearLon": 13.89625,
-    "maxKm": 30,
     "services": [
       "stallplats"
     ],
@@ -21672,14 +21666,12 @@
     "phone": "070-889 84 89 (Ljungby turistbyrå 0372-78 92 20)",
     "address": "Berghem Prästgården 1, 341 91 Ljungby",
     "season": "year-round",
-    "confidence": "medium"
+    "confidence": "medium",
+    "lat": 56.80193,
+    "lon": 13.91259
   },
   {
     "name": "Simmarp Mellangården ställplats",
-    "query": "Simmarp Mellangården 1, 341 55 Vittaryd",
-    "nearLat": 56.81775,
-    "nearLon": 13.89625,
-    "maxKm": 30,
     "services": [
       "stallplats"
     ],
@@ -21687,7 +21679,9 @@
     "description": "Källa (https://www.ljungby.se/uppleva-och-gora/visit-ljungby/stanna-kvar/camping-och-stallplatser ; https://www.bopalantgard.se/gardar/simmarp-mellangarden-1/): \"Ljungby kommun listar adressen under 'Camping och ställplatser' (via söksammandrag); Bo på Lantgård: 'lantlig idyll mellan Bolmen och Vidöstern'. Inga tjänster beskrivna.\" Bara bekräftat att kommunen listar den som ställplats. Koordinat saknas.",
     "website": "https://www.bopalantgard.se/gardar/simmarp-mellangarden-1/",
     "address": "Simmarp Mellangården 1, 341 55 Vittaryd",
-    "confidence": "medium"
+    "confidence": "medium",
+    "lat": 56.99243,
+    "lon": 13.92974
   },
   {
     "name": "Ställplats Dammen (Östregårds ställplatser)",
@@ -21916,10 +21910,6 @@
   },
   {
     "name": "Uppställningsplatser vid Uvaparken, Fröseke",
-    "query": "Uvaparken, Fröseke",
-    "nearLat": 57.01338,
-    "nearLon": 15.36054,
-    "maxKm": 30,
     "services": [
       "stallplats"
     ],
@@ -21928,14 +21918,12 @@
     "website": "https://smp.se/2020-06-17/badsugen-smalandsposten-listar-de-basta-badstranderna-kommun-for-kommun",
     "address": "Uvaparken / Uvasjöns badplats, Fröseke",
     "confidence": "low",
-    "unverified": true
+    "unverified": true,
+    "lat": 56.94736,
+    "lon": 15.79557
   },
   {
     "name": "Lanna Bokcafé ställplats",
-    "query": "Lanna Bokcafé, Lanna",
-    "nearLat": 59.17246,
-    "nearLon": 14.87975,
-    "maxKm": 30,
     "services": [
       "stallplats"
     ],
@@ -21945,7 +21933,9 @@
     "phone": "019-29 10 30 / sms 076-896 99 78",
     "address": "Lanna Bokcafé, Lanna (Lekeberg)",
     "season": "year-round",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 59.2396,
+    "lon": 14.9191
   },
   {
     "name": "Fricamping Mullhyttan (Tryggebodavägen)",
@@ -22179,10 +22169,10 @@
   },
   {
     "name": "Loka Brunn husbilsplatser",
-    "query": "Loka Brunn, 712 94 Grythyttan",
-    "nearLat": 59.80751,
-    "nearLon": 14.52386,
-    "maxKm": 30,
+    "query": "Loka Brunn, Grythyttan",
+    "nearLat": 59.6067,
+    "nearLon": 14.4806,
+    "maxKm": 3,
     "services": [
       "stallplats"
     ],
@@ -22195,10 +22185,10 @@
   },
   {
     "name": "Ställplats Laxtjärn",
-    "query": "Laxtjärn, Ljusnarsbergs kommun",
-    "nearLat": 59.90144,
-    "nearLon": 15.01905,
-    "maxKm": 30,
+    "query": "Laxtjärnen, Kopparberg",
+    "nearLat": 59.875,
+    "nearLon": 14.99,
+    "maxKm": 4,
     "services": [
       "stallplats"
     ],
@@ -22434,10 +22424,10 @@
   },
   {
     "name": "Ställplats Flakudden, Filipstad",
-    "query": "Flakudden, Filipstad",
-    "nearLat": 59.77206,
-    "nearLon": 14.17508,
-    "maxKm": 30,
+    "query": "John Ericssonsgatan 8, Filipstad",
+    "nearLat": 59.712,
+    "nearLon": 14.168,
+    "maxKm": 2,
     "services": [
       "stallplats"
     ],
@@ -22621,10 +22611,6 @@
   },
   {
     "name": "Ställplatser för husbilar vid Larstomta, Gunnarskog",
-    "query": "Larstomta, 670 35 Gunnarskog",
-    "nearLat": 59.6227,
-    "nearLon": 12.53371,
-    "maxKm": 30,
     "services": [
       "vatten",
       "latrin",
@@ -22639,7 +22625,9 @@
     "phone": "0706-632 675 (vardagar 08–17, annars sms)",
     "address": "Larstomta, 670 35 Gunnarskog (20 km norr om Arvika, väg 172)",
     "season": "seasonal",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 59.81372,
+    "lon": 12.57702
   },
   {
     "name": "Ställplatser för husbilar i gästhamnen i Klässbol",
@@ -22658,10 +22646,6 @@
   },
   {
     "name": "Ställplats vid Klässbols Linneväveri",
-    "query": "Klässbols Linneväveri, Klässbol",
-    "nearLat": 59.6227,
-    "nearLon": 12.53371,
-    "maxKm": 30,
     "services": [
       "stallplats"
     ],
@@ -22670,7 +22654,9 @@
     "website": "https://visitvarmland.com/arvika/boende/stallplatser/stallplatser-for-husbilar-vid-klassbols-linnevaveri",
     "openingHours": "WC bara under väveriets öppettider",
     "address": "Klässbols Linneväveri, Klässbol (stora parkeringen)",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 59.53149,
+    "lon": 12.74493
   },
   {
     "name": "Töcksfors gästhamn",
@@ -22692,10 +22678,6 @@
   },
   {
     "name": "Camping Djupdalen",
-    "query": "Hara Djupdalen, 683 62 Ekshärad",
-    "nearLat": 60.05149,
-    "nearLon": 13.59987,
-    "maxKm": 30,
     "services": [
       "latrin",
       "camping",
@@ -22706,7 +22688,9 @@
     "website": "https://campingdjupdalen.se/",
     "phone": "+46 70 254 27 29",
     "address": "Hara Djupdalen, 683 62 Ekshärad",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 60.2015,
+    "lon": 13.49556
   },
   {
     "name": "Ransäters Hembygdsgård camping",

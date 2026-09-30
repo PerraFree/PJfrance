@@ -404,7 +404,15 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    Askersunds GK, Husabergsudde, Lindesbergs GK, Lunedet, Flå/Säffle
    gästhamn, Torsby husbilsparkering, Hovfjället, Rottneros 45, Larstomta,
    Töcksfors gästhamn, Djupdalen. ~45 poster utan koordinat geokodas via
-   adress + kommunmedian (maxKm 30) – **verifiera efter deploy**. Kvar:
+   adress + kommunmedian (maxKm 30). **Verifierat 30 sep (deploy 17:39,
+   6 383 platser): 75 av 85 i seeden**, 10 hittades inte av Nominatim
+   (gårdsadresser typ "Össlöv Kasteberg", cafénamn) → 8 fick exakta
+   koordinater från husbil.se/eniro/hitta.se/Visit Värmland, 3 fick bättre
+   query + snävt ankare (Loka Brunn, Laxtjärn, Flakudden). Laxtjärn hade
+   dessutom geokodats 14 km fel (fel sjö) – badplatsen ligger ~1,5 km från
+   Kopparberg. Övriga 15 poster >6 km från kommunmedianen kontrollerade mot
+   känt ortläge: alla rätt (Bolmsö, Grimslöv, Hunna, Töcksfors m.fl.).
+   Kontrollera nästa deploy att de 11 nu ligger i seeden. Kvar:
    VG/Halland-kommunerna + Öland/Gotland (se kandidatfilen), Storfors utan
    belagd tömning, Lekeberg nästan tom, Vinön-posten motsägs (grå, låt stå).
 4. **Öppettider/vinterstängt** saknas för många platser.

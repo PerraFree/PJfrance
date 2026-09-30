@@ -159,3 +159,6 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   adress + kommunmedian – verifiera efter deploy. Kvar: Markaryd/Älmhult/Kristinehamn gav
   inget nytt; Storfors saknar belagd tömning; Lekeberg har bara Sannabadet + Lanna Bokcafé;
   Vinön-posten motsägs (ingen service enligt gäst); Hallsbergs två namnlösa fricampingar.
+- **2026-09-30, efterkontroll discovery-svepet:** 75 av 85 poster i seeden; 8 fick exakta
+  koordinater, 3 bättre query (Loka Brunn, Laxtjärn – låg 14 km fel, Flakudden). Verifiera
+  nästa deploy.
