@@ -45,10 +45,10 @@ jobs:
             exit 0
           fi
           # Har något som påverkar appen ändrats sedan det publicerade commitet?
-          # (Dokumentation och den CI-committade seed-filen räknas inte – de
+          # (Dokumentation och de CI-committade filerna seed + commons-image-cache räknas inte – de
           # commitas med [skip ci] och tas med vid nästa riktiga deploy.)
           if [ -n "$DEPLOYED" ] && git cat-file -e "$DEPLOYED^{commit}" 2>/dev/null; then
-            CHANGED=$(git diff --name-only "$DEPLOYED" "$HEAD" -- src public scripts index.html package.json package-lock.json vite.config.ts tsconfig.json supabase.env .github/workflows/deploy.yml | grep -v '^public/data/stations-seed.json$' || true)
+            CHANGED=$(git diff --name-only "$DEPLOYED" "$HEAD" -- src public scripts index.html package.json package-lock.json vite.config.ts tsconfig.json supabase.env .github/workflows/deploy.yml | grep -v -e '^public/data/stations-seed.json$' -e '^scripts/commons-image-cache.json$' || true)
             if [ -z "$CHANGED" ]; then
               echo "Bara dokumentation/seed ändrad sedan deployen – ingen deploy behövs."
               exit 0
@@ -67,7 +67,7 @@ jobs:
           # ingen ny commit, eller bara dokumentation har tillkommit sedan dess)
           LAST_OK=$(echo "$RUNS" | jq -r '[.workflow_runs[] | select(.conclusion=="success")][0].head_sha // empty')
           if [ -n "$LAST_OK" ] && git cat-file -e "$LAST_OK^{commit}" 2>/dev/null; then
-            SINCE_OK=$(git diff --name-only "$LAST_OK" "$HEAD" -- src public scripts index.html package.json package-lock.json vite.config.ts tsconfig.json supabase.env .github/workflows/deploy.yml | grep -v '^public/data/stations-seed.json$' || true)
+            SINCE_OK=$(git diff --name-only "$LAST_OK" "$HEAD" -- src public scripts index.html package.json package-lock.json vite.config.ts tsconfig.json supabase.env .github/workflows/deploy.yml | grep -v -e '^public/data/stations-seed.json$' -e '^scripts/commons-image-cache.json$' || true)
             if [ -z "$SINCE_OK" ]; then echo "Senaste lyckade deployen ($LAST_OK) täcker redan toppens app-filer."; exit 0; fi
           fi
           echo "Ingen deploy täcker $HEAD – startar en nu."
