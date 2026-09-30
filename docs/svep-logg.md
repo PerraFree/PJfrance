@@ -162,3 +162,4 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 - **2026-09-30, efterkontroll discovery-svepet:** 75 av 85 poster i seeden; 8 fick exakta
   koordinater, 3 bättre query (Loka Brunn, Laxtjärn – låg 14 km fel, Flakudden). Verifiera
   nästa deploy.
+  **Utfall 30 sep 09:02:** 84 av 85 i seeden; Loka Brunn fick kurortens koordinat manuellt.

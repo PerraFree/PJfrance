@@ -412,7 +412,10 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    dessutom geokodats 14 km fel (fel sjö) – badplatsen ligger ~1,5 km från
    Kopparberg. Övriga 15 poster >6 km från kommunmedianen kontrollerade mot
    känt ortläge: alla rätt (Bolmsö, Grimslöv, Hunna, Töcksfors m.fl.).
-   Kontrollera nästa deploy att de 11 nu ligger i seeden. Kvar:
+   **Deploy 30 sep 09:02 (6 391 platser): 84 av 85 i seeden**, Laxtjärn nu
+   1,5 km NO om Kopparberg och Flakudden i hamnen. Bara Loka Brunn saknades
+   (Nominatim hittar inte "Loka Brunn") → kurortens Wikipedia-koordinat
+   satt som lat/lon med notis i beskrivningen. Kvar:
    VG/Halland-kommunerna + Öland/Gotland (se kandidatfilen), Storfors utan
    belagd tömning, Lekeberg nästan tom, Vinön-posten motsägs (grå, låt stå).
 4. **Öppettider/vinterstängt** saknas för många platser.

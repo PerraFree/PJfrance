@@ -22169,19 +22169,17 @@
   },
   {
     "name": "Loka Brunn husbilsplatser",
-    "query": "Loka Brunn, Grythyttan",
-    "nearLat": 59.6067,
-    "nearLon": 14.4806,
-    "maxKm": 3,
     "services": [
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://lokabrunn.se/allman-gastinformation/): \"Loka Brunn har flera husbilsplatser nära väg 205. För mer information om platserna, kontakta 0591-631 00.\" Operatörens egen sida bekräftar husbilsplatser men inget om el/vatten/tömning. Loka Brunn (kurorten) ligger ca 59.6067, 14.4806 enligt Wikipedia – exakt läge för husbilsplatserna okänt, därför null.",
+    "description": "Källa (https://lokabrunn.se/allman-gastinformation/): \"Loka Brunn har flera husbilsplatser nära väg 205. För mer information om platserna, kontakta 0591-631 00.\" Operatörens egen sida bekräftar husbilsplatser men inget om el/vatten/tömning. Loka Brunn (kurorten) ligger ca 59.6067, 14.4806 enligt Wikipedia – exakt läge för husbilsplatserna okänt, därför null. Koordinaten är kurortens läge (Wikipedia) – husbilsplatsernas exakta läge på området är inte känt, fråga i receptionen.",
     "website": "https://lokabrunn.se/",
     "phone": "0591-631 00",
     "address": "Loka Brunn, 712 94 Grythyttan (vid väg 205)",
-    "confidence": "medium"
+    "confidence": "medium",
+    "lat": 59.6067,
+    "lon": 14.4806
   },
   {
     "name": "Ställplats Laxtjärn",
