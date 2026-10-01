@@ -176,3 +176,4 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   aggregator, Sotenäs planerade ställplatser (Väjern/Bovallstrand/Malmön) ej byggda ännu.
   **Utfall 1 okt:** 75 av 82 i seeden; 7 ogeokodbara + Sturebadet (11 km fel) fick exakta
   koordinater. Verifiera nästa deploy.
+  **Deploy 1 okt 13:03:** 82 av 82 i seeden – klart.

@@ -431,7 +431,8 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    flera orter) → alla 8 fick exakta koordinater från husbil.se/
    husbilskompisar/husvagn.se. Övriga 27 poster >6 km från kommunmedianen
    kontrollerade mot känt ortläge: alla rätt (Tjörn/Orust-hamnarna, Tösse,
-   Horred, Sexdrega, Landeryd, Lundsbrunn m.fl.). Kontrollera nästa deploy.
+   Horred, Sexdrega, Landeryd, Lundsbrunn m.fl.). **Deploy 1 okt 13:03
+   (6 462 platser): 82 av 82 i seeden.**
    Kvar: Öland/Gotland + Emmaboda/Torsås/Högsby (se kandidatfilen), Storfors
    utan belagd tömning, Lekeberg nästan tom, Lilla Edet genuint tomt,
    Vinön-posten motsägs (grå, låt stå), Fengersfors-konflikt (OSM tömning
