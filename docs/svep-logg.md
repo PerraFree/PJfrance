@@ -174,3 +174,5 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   Tibro/Tidaholm/Tranemo saknar kommunal tömning, Mellerud/Bengtsfors/Grästorp/Vårgårda inget
   nytt, Fengersfors-konflikt (OSM säger tömning, Visit Väst säger bara vatten), Öijared GK bara
   aggregator, Sotenäs planerade ställplatser (Väjern/Bovallstrand/Malmön) ej byggda ännu.
+  **Utfall 1 okt:** 75 av 82 i seeden; 7 ogeokodbara + Sturebadet (11 km fel) fick exakta
+  koordinater. Verifiera nästa deploy.

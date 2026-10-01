@@ -22766,10 +22766,6 @@
   },
   {
     "name": "Lysekils Marina ställplats, Basteviksholmarna",
-    "query": "Basteviksholmarna, Lysekil",
-    "nearLat": 58.28236,
-    "nearLon": 11.44989,
-    "maxKm": 30,
     "services": [
       "vatten",
       "gravatten",
@@ -22783,7 +22779,9 @@
     "openingHours": "Säsong april–september",
     "address": "Basteviksholmarna, Lysekil (ca 1 mil norr om Lysekil, väg mot Brastad)",
     "season": "seasonal",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 58.31732,
+    "lon": 11.39635
   },
   {
     "name": "Rixö gästhamn / Rixö Båtklubb husbilsparkering",
@@ -23001,10 +22999,6 @@
   },
   {
     "name": "Kungälv-Kode GK ställplats",
-    "query": "Övre Knaverstad 140, Kode",
-    "nearLat": 57.88635,
-    "nearLon": 11.93369,
-    "maxKm": 30,
     "services": [
       "vatten",
       "stallplats"
@@ -23017,7 +23011,9 @@
     "phone": "0303-513 00",
     "address": "Övre Knaverstad 140, Kode",
     "season": "seasonal",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 57.9575,
+    "lon": 11.79977
   },
   {
     "name": "Tjuvkilshuvud ställplats",
@@ -23225,10 +23221,6 @@
   },
   {
     "name": "Nössemarks Camping, gästhamn och café",
-    "query": "Nössemark strand 640, 668 91 Ed",
-    "nearLat": 58.9142,
-    "nearLon": 11.93318,
-    "maxKm": 30,
     "services": [
       "sopor",
       "camping",
@@ -23243,7 +23235,9 @@
     "unverifiedServices": [
       "latrin",
       "vatten"
-    ]
+    ],
+    "lat": 59.13527,
+    "lon": 11.83805
   },
   {
     "name": "Gästhamn och ställplats Mustadfors, Dals Långed",
@@ -23306,10 +23300,6 @@
   },
   {
     "name": "Backamo Lägerplats ställplats",
-    "query": "Backamo, Ljungskile",
-    "nearLat": 58.33883,
-    "nearLon": 11.89292,
-    "maxKm": 30,
     "services": [
       "gravatten",
       "latrin",
@@ -23323,7 +23313,9 @@
     "phone": "0522-234 20",
     "address": "Backamo Lägerplats, väg 167 mellan Lilla Edet och Ljungskile, 459 93 Ljungskile",
     "season": "year-round",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 58.18253,
+    "lon": 11.98344
   },
   {
     "name": "Ställplats Hulta Bollebygd GK",
@@ -23380,10 +23372,6 @@
   },
   {
     "name": "Ale Golfklubb ställplats",
-    "query": "Alfhems Kungsgård 195, 446 91 Alvhem",
-    "nearLat": 57.94844,
-    "nearLon": 12.13201,
-    "maxKm": 30,
     "services": [
       "stallplats"
     ],
@@ -23396,7 +23384,9 @@
     "confidence": "medium",
     "unverifiedServices": [
       "vatten"
-    ]
+    ],
+    "lat": 57.99909,
+    "lon": 12.1823
   },
   {
     "name": "Chalmers Golfklubb husbilsparkering",
@@ -23652,10 +23642,6 @@
   },
   {
     "name": "Ställplats Sturebadet / Ågatan, Ulricehamn",
-    "query": "Ågatan, Ulricehamn",
-    "nearLat": 57.80403,
-    "nearLon": 13.41012,
-    "maxKm": 30,
     "services": [
       "stallplats"
     ],
@@ -23664,14 +23650,12 @@
     "website": "https://www3.ulricehamn.se/innehall/2020/07/St%C3%A4llplatskarta.pdf",
     "fee": "Gratis, 24 timmar",
     "address": "Ågatan (längst in) vid Sturebadet, Ulricehamn",
-    "confidence": "medium"
+    "confidence": "medium",
+    "lat": 57.79731,
+    "lon": 13.41068
   },
   {
     "name": "Grimstorpets ställplats, Grimsås",
-    "query": "Grimstorpet 1, 514 95 Grimsås",
-    "nearLat": 57.47258,
-    "nearLon": 13.37547,
-    "maxKm": 30,
     "services": [
       "stallplats"
     ],
@@ -23681,7 +23665,9 @@
     "phone": "073-067 44 45",
     "address": "Grimstorpet 1, 514 95 Grimsås",
     "confidence": "low",
-    "unverified": true
+    "unverified": true,
+    "lat": 57.47428,
+    "lon": 13.53783
   },
   {
     "name": "Husbilsparkering Folkets Park, Götene",
@@ -23738,10 +23724,6 @@
   },
   {
     "name": "Naturum Hornborgasjön, Fågeludden – husbilsövernattning",
-    "query": "Naturum Hornborgasjön, Fågeludden, Broddetorp",
-    "nearLat": 58.17558,
-    "nearLon": 13.53575,
-    "maxKm": 30,
     "services": [
       "stallplats",
       "sopor"
@@ -23752,7 +23734,9 @@
     "fee": "150 kr/natt året runt (Swish 123 543 84 11)",
     "address": "Naturum Hornborgasjön, Fågeludden, Broddetorp (östra sidan av Hornborgasjön)",
     "season": "year-round",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 58.3234,
+    "lon": 13.5908
   },
   {
     "name": "Ställplats järnvägsmuseet Vallgatan, Skara",

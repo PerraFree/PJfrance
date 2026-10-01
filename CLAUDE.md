@@ -423,8 +423,15 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    Vrångholmen Marstrand, Kungälv-Kode GK, Måkeberg Åmål, Furusjön,
    Mustadfors, Backamo (Uddevalla), Nääs, Jälluntofta, Skärshult, Kedumsvik,
    Örnsro/Stadscamping/Valle (Skara), Göta Holme, Lokstallet Hjo.
-   Stenungsunds hamn-ställplatsen raderad (nedlagd 2025). ~50 poster
-   geokodas – **verifiera efter deploy** (`check-discovery.mjs`-mönstret).
+   Stenungsunds hamn-ställplatsen raderad (nedlagd 2025). **Verifierat
+   1 okt (deploy 30 sep 11:43, 6 453 platser): 75 av 82 i seeden**; 7
+   hittades inte av Nominatim (Basteviksholmarna, Övre Knaverstad, Nössemark
+   strand, Backamo, Alfhems Kungsgård, Grimstorpet, Naturum Hornborgasjön)
+   och Sturebadet Ulricehamn hade geokodats 11 km fel ("Ågatan" finns på
+   flera orter) → alla 8 fick exakta koordinater från husbil.se/
+   husbilskompisar/husvagn.se. Övriga 27 poster >6 km från kommunmedianen
+   kontrollerade mot känt ortläge: alla rätt (Tjörn/Orust-hamnarna, Tösse,
+   Horred, Sexdrega, Landeryd, Lundsbrunn m.fl.). Kontrollera nästa deploy.
    Kvar: Öland/Gotland + Emmaboda/Torsås/Högsby (se kandidatfilen), Storfors
    utan belagd tömning, Lekeberg nästan tom, Lilla Edet genuint tomt,
    Vinön-posten motsägs (grå, låt stå), Fengersfors-konflikt (OSM tömning
