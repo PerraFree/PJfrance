@@ -433,8 +433,20 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    kontrollerade mot känt ortläge: alla rätt (Tjörn/Orust-hamnarna, Tösse,
    Horred, Sexdrega, Landeryd, Lundsbrunn m.fl.). **Deploy 1 okt 13:03
    (6 462 platser): 82 av 82 i seeden.**
-   Kvar: Öland/Gotland + Emmaboda/Torsås/Högsby (se kandidatfilen), Storfors
-   utan belagd tömning, Lekeberg nästan tom, Lilla Edet genuint tomt,
+   **Öland/Gotland/Emmaboda-Torsås-Högsby KÖRT 5 okt 2026** (4 agenter,
+   rådata `docs/import/discovery-oland-gotland-kalmar-okt-2026.json`): 90
+   fynd → 59 nya, 3 uppgraderade, 3 kompletterade. Tömning/vatten nytt bl.a.
+   Degerhamns gästhamn, Böda Station Camping, Arontorp (grå → full),
+   Borgholms hamn, Lundegård, Gardestugan + Kojsagården Stenkyrka, Sandviken
+   Strand (Östergarn), Emmaboda Camping (regional tömningsplats enl.
+   Glasriket), Magdegärde Gullabo. Region Gotlands vattenkiosker medvetet
+   EJ inlagda (nyckel krävs, stängda 2026). `import-discovery.mjs` har nu
+   `MAXKM` per stor kommun (Gotland 70, Borgholm 60, Norrlandskommuner
+   60–80) så kantplatser inte kasseras. **Därmed är hela landet genomsökt
+   en gång med discovery-metoden** – nästa varv bör gå på kommuner med
+   0–1 tömningsplatser (se tömningssvepets lista) eller på crowdsourcing.
+   Kvar: Storfors utan belagd tömning, Lekeberg nästan tom, Lilla Edet
+   genuint tomt,
    Vinön-posten motsägs (grå, låt stå), Fengersfors-konflikt (OSM tömning
    vs. Visit Väst bara vatten – kolla på plats).
 4. **Öppettider/vinterstängt** saknas för många platser.

@@ -22,7 +22,9 @@ const QUERY_FIX = { 'Ställplatser för husbilar i gästhamnen i Klässbol': 'Kl
   'Svenljunga ställplats (Moga Fritid)': 'Moga Fritid, Svenljunga', 'Ställplats Lassalyckan, Ulricehamn': 'Lassalyckan, Ulricehamn',
   'Husbilsparkering Herrljunga Folkets Park': 'Herrljunga Folkets Park, Herrljunga', 'Husbilsparkering Haraberget (Herrljunga hembygdspark)': 'Haraberget, Herrljunga',
   'Backamo Lägerplats ställplats': 'Backamo, Ljungskile', 'Kolholmarnas husbilsparkering, Lysekil': 'Kolholmarna, Lysekil' }
-const SKIP = /^Unden – naturnära|^Edet Värdshus/ // "Unden" är en hel sjö – ingen punkt att geokoda
+const SKIP = /^Unden – naturnära|^Edet Värdshus|^Vattenkiosk |^Tömningsplats Smedmästarvägen|^Parkering vid badplats Söderåkra|^Vattenpåfyllning (Preem|bensinstation)/ // vattenkiosker = ej husbilsplatser (kräver nyckel, stängda 2026); macktappar/postnummer-parkering utan läge // "Unden" är en hel sjö – ingen punkt att geokoda
+// Stora/avlånga kommuner: medianen ligger långt från kanterna (lärdom golfsvepet)
+const MAXKM = { Gotland: 70, Borgholm: 60, 'Mörbylånga': 50, Kiruna: 80, Jokkmokk: 80, Gällivare: 80, Boden: 60, Arjeplog: 80, Sorsele: 60, Storuman: 70, Älvdalen: 70, Härjedalen: 80, Berg: 60, Strömsund: 80, Krokom: 70, Åre: 70, Pajala: 70, Överkalix: 60, Arvidsjaur: 60, Skellefteå: 60, Umeå: 50, Örnsköldsvik: 50, Piteå: 50, Luleå: 50 }
 const GENERIC = /^(tömningsstation|ställplats|ställplats för husbil|camping|vattenpåfyllning|sopstation|latrintömning)\b/i
 const files = fs.readdirSync(S).filter((f) => /^disc-[a-z]+-\d\.json$/.test(f)).sort()
 const log = { nya: 0, uppgr: 0, kompl: 0, gra: 0, hoppade: [] }
@@ -49,7 +51,7 @@ for (const f of files) {
       let q = (r.address || '').replace(/\s*\(.*?\)/g, '').replace(/\s+[–-]\s+.*$/, '').replace(/^(vid|korsningen|centrumparkeringen vid|bakom|parkeringen)\s+/i, '').replace(/,\s*(bakom|öster om|söder om|norr om|väster om|infart|väg\s*\d+|ca\s)\b[^,]*/gi, '').replace(/,\s*(vid|strax|nära|intill|norra delen|södra delen|vägen)\b[^,]*/gi, '').replace(/\s+(vid|intill)\s+[^,]*/gi, '').replace(/\s*\/\s*[^,]*/g, '').replace(/\s+/g, ' ').replace(/^,\s*|,\s*$/g, '').trim()
       if (!q || /\bkm\b|okänd|saknas/i.test(q)) q = `${name.replace(/\s*\(.*?\)/g, '')}, ${r.kommun}`
       if (QUERY_FIX[name]) q = QUERY_FIX[name]
-      geo = { query: q, nearLat: r5(anchor.lat), nearLon: r5(anchor.lon), maxKm: 30 }
+      geo = { query: q, nearLat: r5(anchor.lat), nearLon: r5(anchor.lon), maxKm: MAXKM[r.kommun] || 30 }
       r.lat = anchor.lat; r.lon = anchor.lon // bara för dubblettkoll nedan
     }
 

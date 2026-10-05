@@ -188,3 +188,14 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   **Utfall 1 okt:** 75 av 82 i seeden; 7 ogeokodbara + Sturebadet (11 km fel) fick exakta
   koordinater. Verifiera nästa deploy.
   **Deploy 1 okt 13:03:** 82 av 82 i seeden – klart.
+- **2026-10-05, discovery-svep Öland/Gotland/Emmaboda-Torsås-Högsby (session "Gråvatten 4", område D
+  upptäckt – sista luckan i det nationella discovery-svepet):** 4 agenter × 45 sökningar. 90 fynd
+  (38 high, 26 medium, 26 low) → 59 nya, 3 uppgraderade (Arontorp grå → full service, Böda +vatten,
+  Petes EKOgård +vatten), 3 kompletterade, 14 hoppade, 9 medvetet utelämnade (Region Gotlands
+  vattenkiosker kräver nyckel och var stängda 2026, macktappar/park4night-parkeringar utan läge).
+  Bästa källa Öland: oland.se:s ställplatsserie med ja/nej per tjänst. Rådata
+  `docs/import/discovery-oland-gotland-kalmar-okt-2026.json`. Koordinatfel rättade: Ställplats
+  Ringvägen Högsby (låg 22 km fel), Sandkvie (delade punkt med Hoburgsgubben). Verifiera efter
+  deploy. Kvar: Ljugarns GK (tre aggregatorer eniga om tömning, grå), Mörbylånga hamn (oklart om
+  latrinstationen gäller husbil), Färjestadens hamn, Snäck/Vitviken/Kyllaj/Hangvar ej hunna,
+  Valleviken och Slite Strand har avvecklat husbilsplatser (ej inlagda).
