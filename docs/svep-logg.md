@@ -8,7 +8,7 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 | Fokusområde | Vad | Senast kört |
 |---|---|---|
-| A. Tömning latrin/gråvatten | Kommuner med 0–1 tömningsplatser: kommunsidor, turistråd, anläggningars egna sajter. Kompletteringar av befintliga camping-/ställplatsposter räknas. | 2026-09-24 |
+| A. Tömning latrin/gråvatten | Kommuner med 0–1 tömningsplatser: kommunsidor, turistråd, anläggningars egna sajter. Kompletteringar av befintliga camping-/ställplatsposter räknas. | 2026-10-05 |
 | B. Gasol byte/påfyllning + priser | Kedjornas butikssidor (Byggmax/Granngården/Rusta/ÖoB per butik), Norbro-/Linde-/gasolautomat.se-listor, lokala påfyllningsbolag, priser. Bara 10/11 kg-flaskor (P11/PA11/PC10/PK10). | 2026-09-28 |
 | C. Obekräftade platser: verifiera + fyll på | (1) Sök primärkälla för de OBEKRÄFTADE posterna i registret (`unverified: true` / `unverifiedServices`) – får de citat: ta bort obekräftat-flaggan. (2) Gör om lovande rader i `docs/kandidatplatser-husbilsplats-park4night.md` (tydlig tjänst + ort) till obekräftade registerposter så de syns grått på kartan. | 2026-09-25 |
 | D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. | 2026-09-25 |
@@ -27,6 +27,17 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 ## Logg
 
+- **2026-10-05, A (tömning latrin/gråvatten):** äldst datum i rotationen. 7 agenter × 65 i budget
+  (~300 sökningar använda, inget kvotfel) mot de 69 kommuner som hade 0–1 tömningsplatser i
+  seeden (Stockholms län, Skåne, VG, Mellansverige, Norr). Kommunerna publicerar nästan aldrig
+  husbilsstationer (bara fastighetsslam; Järfälla/Sigtuna/Hammarö säger uttryckligen nej).
+  **Resultat: 4 nya platser** (Västanfors Båtklubb Fagersta, Kungsörs gästhamn, Caravan Club
+  Storsved Värmdö, Nyttorps Quickstop Falköping – alla via `query`+ankare, maxKm 10, verifiera
+  efter deploy) och **8 kompletteringar** (Djulöbadet, Ånge Camping, Doro Camp, Caravan Club Mista,
+  Femöre Marina, Ingarö havscamping, Nossebrobadet, Tidaholms Camping). 30 låg-/medelfynd i
+  `docs/tomning-svep-okt-2026-lag-evidens.md` (inte inlagda). Kvar: Gnesta Ågatan 8 stängd (notis),
+  E20-rastplatser Alingsås/Vårgårda, Maplelake Hökensås, Edsbybacken; metoden ger allt mindre –
+  nästa steg är crowdsourcing eller webbläsarläsning.
 - **2026-09-28, buggfix i synkskriptet (upptäckt vid deploy-verifiering av B
   nedan):** Deployen efter B:s commit publicerade INTE de nya ändringarna –
   seeden på gh-pages var oförändrad. Orsak (se Actions-loggen för run 188):

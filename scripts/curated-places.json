@@ -13344,7 +13344,8 @@
     "lon": 16.2107684,
     "services": [
       "camping",
-      "stallplats"
+      "stallplats",
+      "latrin"
     ],
     "unverifiedServices": [
       "latrin",
@@ -13413,7 +13414,8 @@
     "services": [
       "vatten",
       "camping",
-      "stallplats"
+      "stallplats",
+      "latrin"
     ],
     "unverifiedServices": [
       "latrin",
@@ -19475,7 +19477,8 @@
     "name": "Doro Camp Lapland",
     "services": [
       "gravatten",
-      "stallplats"
+      "stallplats",
+      "latrin"
     ],
     "source": "egen",
     "description": "rastplatserna.se/husbilsplats.se. \"Egen sajt doro.camp (/en/campground): \"rymliga platser med el för husvagn, husbil eller tält – alla dessa platser är anslutna till avloppssystemet\" (gråvatten vid platsen). Ingen uttrycklig text om latrin-/kassettömnings\" (https://doro.camp/en/campground/)",
@@ -23998,5 +24001,141 @@
       "vatten",
       "gravatten"
     ]
+  },
+  {
+    "name": "Västanfors Båtklubb – tömning gråvatten & latrin",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten"
+    ],
+    "source": "egen",
+    "description": "Källa (https://www.vastanforsbatklubb.se/): \"Nytt för 2026: gråvatten- och latrintömning (sugstation) på området; ställplatser med gråvatten & latrintömning, dricksvatten, året runt\"",
+    "query": "Båthamnsvägen 10, Fagersta",
+    "nearLat": 59.993,
+    "nearLon": 15.793,
+    "maxKm": 10,
+    "address": "Båthamnsvägen 10, Fagersta",
+    "openingHours": "året runt",
+    "fee": "ställplats 290 kr/dygn",
+    "operator": "Västanfors Båtklubb",
+    "website": "https://www.vastanforsbatklubb.se/"
+  },
+  {
+    "name": "Kungsörs gästhamn – sugtömningsstation (husbil)",
+    "services": [
+      "latrin"
+    ],
+    "source": "egen",
+    "description": "Källa (https://kungsor.se/uppleva-och-gora/anlaggningar-och-lokaler/gasthamn.html): \"I gästhamnen finns en sugtömningsstation för främst fasta tankar. Stationen är öppen dygnet 1 maj - 31 oktober. Att använda den ingår i hamnavgiften. (fyra ställplatser för husbil vid vattnet)\"",
+    "query": "Gästhamnen, Arbogaån, Kungsör",
+    "nearLat": 59.42,
+    "nearLon": 16.101,
+    "maxKm": 10,
+    "address": "Gästhamnen, Arbogaån, Kungsör",
+    "openingHours": "1 maj–31 oktober, dygnet runt",
+    "fee": "ingår i hamnavgiften",
+    "operator": "Kungsörs kommun",
+    "website": "https://kungsor.se/uppleva-och-gora/anlaggningar-och-lokaler/gasthamn.html"
+  },
+  {
+    "name": "Ånge Camping",
+    "lat": 62.5169535,
+    "lon": 15.6174436,
+    "services": [
+      "camping",
+      "stallplats",
+      "latrin",
+      "vatten"
+    ],
+    "source": "egen",
+    "description": "Komplettering norr sep 2026. Källa (https://angecamping.com/): \"Ånge Camping egen sajt: latrintömning utanför herrarnas entré och färskvatten på gaveln; servicehus öppet dygnet runt; öppet maj-september\"",
+    "website": "https://angecamping.com/"
+  },
+  {
+    "name": "Caravan Club Storsved (gästplats, Potthuset)",
+    "services": [
+      "latrin",
+      "vatten"
+    ],
+    "source": "egen",
+    "description": "Källa (https://caravanclub.se/content/uploads/CC-Storsved-8-sid-low.pdf): \"Campingen har gästparkering och latrintömning; 'There is an interim parking area with the possibility to fill drinking water and empty toilets in the Potthuset'; dricksvatten på servicehusets långsida från borrad brunn. Gråvatten: avlopp/slask i diskho vid tvättstugan (ej klart för husbil).\"",
+    "query": "Kalvsviksvägen 22 b, Värmdö",
+    "nearLat": 59.325,
+    "nearLon": 18.4,
+    "maxKm": 10,
+    "address": "Kalvsviksvägen 22 b, Värmdö",
+    "operator": "Caravan Club of Sweden",
+    "website": "https://caravanclub.se/content/uploads/CC-Storsved-8-sid-low.pdf"
+  },
+  {
+    "name": "Ingarö havscamping Södersved",
+    "lat": 59.291632,
+    "lon": 18.4240425,
+    "services": [
+      "camping",
+      "latrin"
+    ],
+    "source": "egen",
+    "description": "Komplettering sthlm1 sep 2026. Källa (https://ingarohavscamping.se/vara-servicehus-our-service-houses/): \"Två servicehus ... 'On either end of the service houses there are arrangements where you can empty your latrines.' (Aggregatorer nämner även latrinautomat, gråvatten och vattenpåfyllning – ej primärkälla.)\"",
+    "website": "https://ingarohavscamping.se/vara-servicehus-our-service-houses/"
+  },
+  {
+    "name": "Caravan Club Mista",
+    "lat": 59.3949059,
+    "lon": 18.2979173,
+    "services": [
+      "stallplats",
+      "latrin",
+      "gravatten"
+    ],
+    "source": "egen",
+    "description": "Komplettering sthlm2 sep 2026. Källa (https://caravanclub.se/camping/mista/): \"Mista erbjuder 'Svartvatten/Gråvattentömning' (Caravan Clubs egen campingsida)\"",
+    "website": "https://caravanclub.se/camping/mista/"
+  },
+  {
+    "name": "Femöre Marina",
+    "lat": 58.658724,
+    "lon": 17.1119342,
+    "services": [
+      "stallplats",
+      "latrin",
+      "gravatten"
+    ],
+    "source": "egen",
+    "description": "Komplettering sthlm2 sep 2026. Källa (https://www.visitoxelosund.se/boende/femore-marina): \"Visit Oxelösund: möjlighet att tömma latrin vid Fiskehamnen; gråvatten kan tömmas vid Fiskehamnen (och latrin+gråvatten på Jogersö Eco Camp). Femöre Marina ligger vid Fiskehamnen.\"",
+    "website": "https://www.visitoxelosund.se/boende/femore-marina"
+  },
+  {
+    "name": "Nyttorps Quickstop (ställplats)",
+    "services": [
+      "latrin",
+      "vatten"
+    ],
+    "source": "egen",
+    "description": "Källa (https://www.vastsverige.com/falkoping/produkter/stallplatser/?site=580 ; https://nyttorpshundgladje.se/nyttorps-quickstops): \"11 ställplatser ... tillgång till WC, vattenpåfyllning, latrintömning, sophantering och disk med varmvatten (ca 13 km utanför Falköping, ingen el)\"",
+    "query": "Nyttorp, Falköping",
+    "nearLat": 58.17,
+    "nearLon": 13.55,
+    "maxKm": 10,
+    "address": "Nyttorp, Falköping",
+    "openingHours": "slutet av april–slutet av september",
+    "fee": "från 130 kr",
+    "operator": "Nyttorpsgruppen / Nyttorps Hundglädje",
+    "website": "https://www.vastsverige.com/falkoping/produkter/stallplatser/?site=580 ; https://nyttorpshundgladje.se/nyttorps-quickstops"
+  },
+  {
+    "name": "Tidaholms Camping",
+    "lat": 58.1713647,
+    "lon": 13.954633,
+    "services": [
+      "camping",
+      "stallplats",
+      "latrin",
+      "vatten"
+    ],
+    "source": "egen",
+    "description": "Komplettering vg sep 2026. Källa (https://www.vastsverige.com/en/tidaholm/products/tidaholms-camping/): \"Västsverige: servicen omfattar latrintömning (kassettoa), färskvatten; 'praktisk latrintömningsmaskin'; Södra Ringvägen 25\"",
+    "website": "https://www.vastsverige.com/en/tidaholm/products/tidaholms-camping/"
   }
 ]
