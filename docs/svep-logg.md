@@ -199,3 +199,5 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   deploy. Kvar: Ljugarns GK (tre aggregatorer eniga om tömning, grå), Mörbylånga hamn (oklart om
   latrinstationen gäller husbil), Färjestadens hamn, Snäck/Vitviken/Kyllaj/Hangvar ej hunna,
   Valleviken och Slite Strand har avvecklat husbilsplatser (ej inlagda).
+  **Utfall 5 okt 15:56:** 59 av 69 i seeden (Simrishamn-posten som skrivits över av misstag
+  återställd); 9 fick exakta koordinater, Riddares bättre query. Verifiera nästa deploy.

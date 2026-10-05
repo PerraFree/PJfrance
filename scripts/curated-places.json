@@ -24291,10 +24291,6 @@
   },
   {
     "name": "Lammet & Grisen ställplats",
-    "query": "Hornvägen 35, 387 72 Löttorp",
-    "nearLat": 56.92619,
-    "nearLon": 16.79229,
-    "maxKm": 60,
     "services": [
       "stallplats"
     ],
@@ -24302,14 +24298,12 @@
     "description": "Källa (https://www.oland.se/en/pitch-lammet-grisen): \"15 pitches. There is a water tap for cans and bottles, but not for the entire water tank. Emptying of latrine cassettes, fixed tanks, and gray water is not available. No electricity, no shower. The restaurant's toilets are on the outside of the restaurant and are open all night.\" Restaurangställplats, Horn/Löttorp. Vattenkran bara för dunkar – ej tankfyllning, därför inte 'vatten'.",
     "website": "https://www.oland.se/en/pitch-lammet-grisen",
     "address": "Hornvägen 35, 387 72 Löttorp",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 57.17605,
+    "lon": 16.94019
   },
   {
     "name": "Ölands GK ställplats",
-    "query": "Ölands Golfklubb, Källa, Löttorp",
-    "nearLat": 56.92619,
-    "nearLon": 16.79229,
-    "maxKm": 60,
     "services": [
       "stallplats"
     ],
@@ -24317,14 +24311,12 @@
     "description": "Källa (https://www.olandsgk.se/gaster/stallplats): \"5 spaces with electricity, water available (but not for tank filling), toilet, and shower facilities. No possibility to empty the latrine or gray water – they recommend Borgholm's harbours or private campsites for this service.\" Även på oland.se/en/pitch-olands-gk. Exakt adress/koordinat saknas i utdraget – klubbhuset ligger i Källa norr om Köpingsvik. Stämmer med CLAUDE.md:s notering 'Ölands GK bekräftat UTAN service'.",
     "website": "https://www.olandsgk.se/gaster/stallplats",
     "address": "Ölands Golfklubb, Källa, Löttorp (Borgholms kommun)",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 57.14001,
+    "lon": 16.96522
   },
   {
     "name": "Böda Station Camping & ställplats",
-    "query": "Böda stationsväg 12, 387 73 Löttorp",
-    "nearLat": 56.92619,
-    "nearLon": 16.79229,
-    "maxKm": 60,
     "services": [
       "vatten",
       "latrin",
@@ -24336,7 +24328,9 @@
     "website": "https://www.oland.se/en/camping-boda-station-camping",
     "phone": "0485-223 06",
     "address": "Böda stationsväg 12, 387 73 Löttorp",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 57.26049,
+    "lon": 17.03142
   },
   {
     "name": "Neptuni Åkrar ställplats",
@@ -24408,23 +24402,21 @@
   },
   {
     "name": "Degerhamns gästhamn & ställplats",
-    "query": "Degerhamns hamn, 386 64 Degerhamn",
-    "nearLat": 56.53617,
-    "nearLon": 16.48174,
-    "maxKm": 50,
     "services": [
       "latrin",
       "vatten",
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://degerhamnsbatklubb.se/priser.html): \"Husbilsparkering 120 kr/dygn utan el, 150 kr/dygn med el. I avgiften ingår servicehus med dusch, toalett, tvättmaskin och torktumlare. Toatömning 50 kr, färskvatten 50 kr/gång. Medlem i båtklubben 1 000 kr/år ger parkering för 50 kr/dygn (80 kr med el).\" SAKNAS HELT i befintlig data trots 'Årets ställplats 2014/2015' (CampingSverige/Husbil&Husvagn). Drivs av Degerhamns båtklubb. Aggregatorer (stallplatserna.se) anger även gråvattentömning – ej belagt i klubbens prislista, lägg som obekräftad tjänst. Koordinat saknas i källan – hamnen ligger vid Degerhamns samhälle, sydvästra Öland.",
+    "description": "Källa (https://degerhamnsbatklubb.se/priser.html): \"Husbilsparkering 120 kr/dygn utan el, 150 kr/dygn med el. I avgiften ingår servicehus med dusch, toalett, tvättmaskin och torktumlare. Toatömning 50 kr, färskvatten 50 kr/gång. Medlem i båtklubben 1 000 kr/år ger parkering för 50 kr/dygn (80 kr med el).\" SAKNAS HELT i befintlig data trots 'Årets ställplats 2014/2015' (CampingSverige/Husbil&Husvagn). Drivs av Degerhamns båtklubb. Aggregatorer (stallplatserna.se) anger även gråvattentömning – ej belagt i klubbens prislista, lägg som obekräftad tjänst. Koordinat saknas i källan – hamnen ligger vid Degerhamns samhälle, sydvästra Öland. OBS (husbilsplats.se okt 2026): ställplatsen uppges vara stängd/överklagad – kontrollera innan besök.",
     "website": "https://degerhamnsbatklubb.se/",
     "fee": "120 kr/dygn utan el, 150 kr med el; toatömning 50 kr; vatten 50 kr",
     "openingHours": "Säsong 15 april–15 oktober (enligt stallplatserna.se)",
     "address": "Degerhamns hamn, 386 64 Degerhamn",
     "season": "seasonal",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 56.35637,
+    "lon": 16.40787
   },
   {
     "name": "Ställplats Ventlinge",
@@ -24479,10 +24471,6 @@
   },
   {
     "name": "Gräsgårds hamn ställplats",
-    "query": "Gräsgårds hamn, 380 65 Degerhamn",
-    "nearLat": 56.53617,
-    "nearLon": 16.48174,
-    "maxKm": 50,
     "services": [
       "vatten",
       "stallplats",
@@ -24492,7 +24480,9 @@
     "description": "Källa (https://www.oland.se/en/pitch-grasgard): \"22 parking places (12 with electricity), water access, electricity, toilets (outhouse), and showers. Emptying of latrine cassettes, fixed tanks, and gray water are not available. Access to dry toilets, garbage containers, electricity, and water.\" Ny plats; även på alltpaoland.se/platser/grasgards-hamns-stallplats/. Gräsgård ligger på sydöstra kusten mellan Bläsinge och Ottenby.",
     "website": "https://www.oland.se/en/pitch-grasgard",
     "address": "Gräsgårds hamn, 380 65 Degerhamn (sydöstra Öland)",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 56.31722,
+    "lon": 16.5317
   },
   {
     "name": "Allégården Kastlösa ställplats",
@@ -24817,10 +24807,10 @@
   },
   {
     "name": "Riddares ställplats (Tingstäde träsk)",
-    "query": "Riddare, Tingstäde",
-    "nearLat": 57.62288,
-    "nearLon": 18.32167,
-    "maxKm": 70,
+    "query": "Hejnum Riddare 412, Tingstäde",
+    "nearLat": 57.728,
+    "nearLon": 18.631,
+    "maxKm": 8,
     "services": [
       "stallplats"
     ],
@@ -24852,10 +24842,6 @@
   },
   {
     "name": "Visby Brukshundklubb ställplats",
-    "query": "Visby Brukshundklubbs klubbområde, Visby",
-    "nearLat": 57.62288,
-    "nearLon": 18.32167,
-    "maxKm": 70,
     "services": [
       "stallplats"
     ],
@@ -24866,7 +24852,9 @@
     "openingHours": "Säsong Juni–augusti",
     "address": "Visby Brukshundklubbs klubbområde, Visby (adress ej hittad)",
     "season": "seasonal",
-    "confidence": "medium"
+    "confidence": "medium",
+    "lat": 57.59169,
+    "lon": 18.28648
   },
   {
     "name": "Bunge Vandrarhem & Ställplats (STF)",
@@ -24985,10 +24973,6 @@
   },
   {
     "name": "Sandviken Strand ställplats (Havssidan)",
-    "query": "Östergarn Falhammars 830, 623 68 Katthammarsvik",
-    "nearLat": 57.62288,
-    "nearLon": 18.32167,
-    "maxKm": 70,
     "services": [
       "vatten",
       "gravatten",
@@ -25001,7 +24985,9 @@
     "website": "https://sandvikenstrand.se",
     "phone": "070-256 11 00",
     "address": "Östergarn Falhammars 830, 623 68 Katthammarsvik",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 57.40018,
+    "lon": 18.87513
   },
   {
     "name": "Ställplats Sudervallen, Hemse",
@@ -25043,10 +25029,6 @@
   },
   {
     "name": "Ansarve Ställplats, Fröjel",
-    "query": "Ansarve, Fröjel, 623 55 Klintehamn",
-    "nearLat": 57.62288,
-    "nearLon": 18.32167,
-    "maxKm": 70,
     "services": [
       "stallplats"
     ],
@@ -25062,14 +25044,12 @@
       "gravatten",
       "latrin",
       "vatten"
-    ]
+    ],
+    "lat": 57.348,
+    "lon": 18.2596
   },
   {
     "name": "Nissevikens stugby ställplats",
-    "query": "Näs Stugbyvägen 1A, 623 37 Havdhem",
-    "nearLat": 57.62288,
-    "nearLon": 18.32167,
-    "maxKm": 70,
     "services": [
       "stallplats"
     ],
@@ -25081,7 +25061,9 @@
     "address": "Näs Stugbyvägen 1A, 623 37 Havdhem",
     "season": "year-round",
     "confidence": "low",
-    "unverified": true
+    "unverified": true,
+    "lat": 57.133,
+    "lon": 18.2207
   },
   {
     "name": "Djupviks hamn (Eksta) husbilsparkering",
