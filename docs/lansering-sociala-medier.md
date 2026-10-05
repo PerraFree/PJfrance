@@ -1,80 +1,99 @@
 # Lanseringstexter för sociala medier
 
-Färdiga texter att klistra in. Siffrorna gäller oktober 2026 (ca 6 470 platser) –
-runda gärna nedåt om det gått ett tag. Byt ut "jag" mot "vi" om det passar bättre.
+Färdiga texter att klistra in. Vinkeln: Per tyckte själv att det var svårt att
+hitta tömning, vatten och gasol – så varför inte bygga kartan tillsammans med
+andra husbils- och husvagnsåkare? Siffrorna gäller oktober 2026 (ca 6 500
+platser) – runda gärna nedåt om det gått ett tag.
 
 ## 1. Facebook-grupper för husbil/husvagn (längre version)
 
 Hej alla husbils- och husvagnsvänner!
 
-Jag har byggt en gratis karta som jag själv saknat i många år: **Tömningskartan**
-– tomningskartan.se
+Känner ni igen det här? Man är ute på resa, tanken börjar bli full och så
+sitter man och letar i tre olika appar, på kommunens hemsida och i gamla
+forumtrådar för att hitta var man kan tömma. Jag har gjort det så många gånger
+att jag till slut tröttnade och byggde en karta själv.
 
-Den visar var du kan tömma gråvatten och latrin, fylla färskvatten, slänga sopor
-och köpa eller fylla gasol. Just nu finns över 6 400 platser i hela Sverige:
-drygt 1 300 latrintömningar, 1 000 gråvattentömningar, 1 000 färskvattenkranar
-och nästan 500 gasolställen (där du också ser om de byter tub eller fyller din
-egen flaska). Ställplatser och campingar finns med som bonus.
+Den heter **Tömningskartan** och finns på tomningskartan.se. Den visar var du
+kan tömma gråvatten och latrin, fylla färskvatten, slänga sopor och köpa eller
+fylla gasol. Just nu drygt 6 400 platser i hela Sverige, och ställplatser och
+campingar finns med på köpet.
 
-Så här funkar den:
-• Tryck "Sök där jag är" så får du de närmaste platserna direkt.
+Men det här är inte min karta – det är vår. Ingen av oss känner till hela
+Sverige, men tillsammans gör vi det. Därför kan alla hjälpa till direkt i
+appen:
+• Har du varit på en plats? Tryck "Stämmer – jag har varit här". Då vet nästa
+  resenär att uppgiften håller.
+• Saknas ett ställe du brukar använda? Tryck "Lägg till plats" så kommer det
+  med.
+• Är något fel eller stängt? "Rapportera fel" så rättar jag.
+• Lägg gärna till ett foto, det hjälper enormt när man kommer fram i mörker.
+
+Så här hittar du platser:
+• "Sök där jag är" ger dig de närmaste direkt.
 • "Längs min väg" visar allt som ligger nära din resväg, från start till mål.
-• Varje plats har källa, öppettider och avgift när vi vet det. Osäkra platser
-  visas i grått så du vet vad som är bekräftat.
-• Har du varit på en plats? Tryck "Stämmer" så hjälper du nästa resenär. Du kan
-  också rapportera fel, lägga till foton och föreslå nya platser.
+• Osäkra platser visas i grått, så du ser vad som är bekräftat och inte.
 
-Helt gratis, ingen reklam, inget konto. Funkar i mobilen – öppna sidan och välj
-"Lägg till på hemskärmen" så blir den som en app.
+Helt gratis, ingen reklam, inget konto. Öppna sidan i mobilen och välj "Lägg
+till på hemskärmen" så blir den som en app.
 
-Jag skulle bli jätteglad för feedback, och ännu gladare om ni bekräftar platser
-ni känner till. Ju fler som hjälps åt, desto bättre blir kartan för oss alla.
+Jag skulle bli jätteglad om ni testar den, säger vad ni tycker och framför
+allt bekräftar de platser ni själva känner till. Varje bekräftelse gör kartan
+lite bättre för alla oss som åker.
 
 Trevlig resa! 🚐
 
-## 2. Kort version (Instagram, Facebook-inlägg på egen sida, Threads)
+## 2. Kort version (Instagram, egen Facebook-sida, Threads)
 
-Var tömmer man egentligen? 🚐💧
+Jag tröttnade på att leta efter tömningsstationer. Så jag byggde en karta – och
+nu hoppas jag att ni hjälper till att fylla den. 🚐💧
 
-Nu finns Tömningskartan – en gratis karta med över 6 400 platser i Sverige för
-gråvatten, latrin, färskvatten, sopor och gasol. Tryck "Sök där jag är" eller
-planera hela resan med "Längs min väg".
+Tömningskartan visar gråvatten, latrin, färskvatten, sopor och gasol i hela
+Sverige, över 6 400 platser hittills. Gratis, ingen reklam, inget konto.
 
-Ingen reklam, inget konto, bara åka och tömma.
+Har du varit på en plats? Tryck "Stämmer" i appen. Saknas ett ställe? Lägg till
+det. Tillsammans vet vi var allt finns.
+
 👉 tomningskartan.se
-
-Har du varit på en plats? Bekräfta den i appen så hjälper du nästa resenär.
 
 #husbil #husvagn #husbilsliv #ställplats #camping #tömningskartan #gråvatten
 #latrintömning #husbilssverige #campinglife
 
 ## 3. Forum (Husbilsklubben, Husvagn & Camping m.fl. – sakligare ton)
 
-**Tömningskartan – ny gratis karta över tömning, vatten, sopor och gasol**
+**Tömningskartan – karta över tömning, vatten, sopor och gasol som vi bygger
+tillsammans**
 
-Jag har satt ihop en webbapp som samlar platser för gråvatten- och
-latrintömning, färskvatten, sopor och gasol på en karta: tomningskartan.se
+Bakgrunden är enkel: jag har själv haft svårt att hitta tömningsstationer,
+färskvatten och gasol när jag är ute och åker. Informationen finns, men
+utspridd på kommunsidor, campingsajter, forum och olika appar. Så jag byggde en
+karta som samlar allt på ett ställe: tomningskartan.se
 
-Datan kommer från OpenStreetMap, Trafikverkets rastplatser och ett eget register
-som vi bygger upp kommun för kommun mot kommunernas och anläggningarnas egna
-sidor. Just nu drygt 6 400 platser. Varje plats visar källa och hur säker
+Tanken är att vi som åker husbil och husvagn fyller på den tillsammans. Ingen
+av oss känner till hela landet, men alla känner till sina egna ställen. I
+appen kan man bekräfta att en plats stämmer ("Stämmer – jag har varit här"),
+rapportera fel, lägga till foton och föreslå nya platser. Allt som kommer in
+granskas innan det hamnar på kartan.
+
+Grunddatan kommer från OpenStreetMap, Trafikverkets rastplatser och ett eget
+register som jag bygger kommun för kommun mot kommunernas och anläggningarnas
+egna sidor. Just nu drygt 6 400 platser. Varje plats visar källa och hur säker
 uppgiften är, och obekräftade platser är gråmarkerade i stället för att gömmas.
-
-För gasol skiljer kartan på byte av tub och påfyllning av egen flaska, och visar
-pris där vi hittat det.
+För gasol skiljer kartan på byte av tub och påfyllning av egen flaska, och
+visar pris där det finns.
 
 Funktioner: "Sök där jag är", "Längs min väg" (platser nära en resväg), filter
-per tjänst, bekräfta/rapportera/foto per plats, föreslå ny plats. Gratis, ingen
-reklam, inget konto. Funkar som app via "Lägg till på hemskärmen".
+per tjänst. Gratis, ingen reklam, inget konto. Funkar som app via "Lägg till på
+hemskärmen".
 
-Det är ett hobbyprojekt och det finns garanterat luckor och fel – tipsa gärna
-här i tråden eller direkt i appen via "Rapportera fel". Särskilt tacksam för
-koll av platser ni själva använder.
+Det finns garanterat luckor och fel, så tipsa gärna här i tråden eller direkt i
+appen. Mest tacksam är jag för att ni kollar och bekräftar platser ni själva
+använder.
 
 ## 4. Riktigt kort (kommentar, bio, SMS)
 
-Gratis karta över tömning, vatten, sopor och gasol för husbil/husvagn i hela
-Sverige: tomningskartan.se 🚐
+Svårt att hitta tömning, vatten och gasol? Jag också – så jag byggde en karta
+som vi fyller på tillsammans: tomningskartan.se 🚐
 
 ## Tips för spridning
 
@@ -83,6 +102,6 @@ Sverige: tomningskartan.se 🚐
 - Posta i grupperna på kvällstid söndag–tisdag, då är flest husbilsägare inne.
 - Svara på alla kommentarer första dagarna, det lyfter inlägget i flödet.
 - Be vänner bekräfta några platser i appen direkt efter lanseringen – det ger
-  "Bekräftad av X användare" på kartan och bygger förtroende.
+  "Bekräftad av X användare" på kartan och visar att det är en levande karta.
 - Fråga redaktionerna på Husbil & Husvagn och Allt om Husvagn & Camping om de
   vill skriva en notis – skicka texten under punkt 3 plus en skärmbild.
