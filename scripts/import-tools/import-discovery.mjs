@@ -57,7 +57,9 @@ for (const f of files) {
 
     // Befintlig registerpost? (existing_name eller exakt namn)
     let e = null
-    if (r.existing_name) e = reg.find((x) => norm(x.name) === norm(r.existing_name))
+    // Generiska namn ("Ställplats (parkering för husbil)") finns på flera orter – kräv närhet (<5 km)
+    // till agentens koordinat/kommunankare, annars matchas fel post (hände 5 okt: Visby skrev över Simrishamn)
+    if (r.existing_name) e = reg.find((x) => norm(x.name) === norm(r.existing_name) && (!GENERIC.test(x.name) || (x.lat != null && dist(x.lat, x.lon, r.lat, r.lon) < 5)))
     if (!e) e = reg.find((x) => norm(x.name) === norm(name))
     if (!e && !geo) e = reg.find((x) => x.lat != null && dist(x.lat, x.lon, r.lat, r.lon) < 0.15)
     // Seed-stationer (OSM/TRV/register) inom 400 m

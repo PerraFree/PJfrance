@@ -12788,7 +12788,7 @@
     "website": "https://nsr.se/fragor-svar/var-gor-jag-av-latrin-och-gravatten-fran-husbil-eller-husvagn/"
   },
   {
-    "name": "Region Gotland ställplats Norra vågbrytaren, Visby hamn",
+    "name": "Ställplats (parkering för husbil)",
     "lat": 55.685541,
     "lon": 14.2249587,
     "services": [
@@ -12796,16 +12796,8 @@
       "latrin"
     ],
     "source": "egen",
-    "description": "Källa (https://gotland.se/trafik-gator-och-parker/parkera-och-ladda/husbil-stallplatser-terrangkorning): \"Region Gotland erbjuder ställplatser för husbilar i Visby: på norra vågbrytaren tio platser. På dessa platser är övernattning tillåten men inga andra tjänster finns. (gotland.se, sammandrag)\" Ingen koordinat hittad (campit 'Visby Hamn' egress-blockad). Befintlig OSM-post 'Ställplats (parkering för husbil)' 57.6393/18.2841 ligger vid hamnens norra del och är TROLIGEN denna – verifiera i kartan innan hopslagning. Ingen tömning/vatten. Komplettering skane-blekinge sep 2026. Källa (https://www.simrishamn.se/gata-park-och-natur/trafik/husbilar): \"Simrishamns kommun, sidan 'Husbilar': ställplatser för husbilar och toalettömning finns i hamnarna i Simrishamn, Skillinge och Kivik. Simrishamn och Skillinge finns redan med latrin i appen; Kivik saknas. Befintlig OSM-ställplats vid Kiviks hamn (55.6855, 14.2250) är rimlig bärare. (via sökmotorsammanfattning av simrishamn.se)\"",
-    "website": "https://campit.se/en/camp/visby-hamn",
-    "query": "Norra vågbrytaren, Visby hamn, 621 57 Visby",
-    "nearLat": 57.62288,
-    "nearLon": 18.32167,
-    "maxKm": 70,
-    "fee": "Taxa E: 10 kr/h v.23–35, 5 kr/h v.36–22",
-    "address": "Norra vågbrytaren, Visby hamn, 621 57 Visby",
-    "season": "year-round",
-    "confidence": "high"
+    "description": "Komplettering skane-blekinge sep 2026. Källa (https://www.simrishamn.se/gata-park-och-natur/trafik/husbilar): \"Simrishamns kommun, sidan 'Husbilar': ställplatser för husbilar och toalettömning finns i hamnarna i Simrishamn, Skillinge och Kivik. Simrishamn och Skillinge finns redan med latrin i appen; Kivik saknas. Befintlig OSM-ställplats vid Kiviks hamn (55.6855, 14.2250) är rimlig bärare. (via sökmotorsammanfattning av simrishamn.se)\"",
+    "website": "https://www.simrishamn.se/gata-park-och-natur/trafik/husbilar"
   },
   {
     "name": "Saxemara camping/ställplats (Ronneby)",
@@ -25210,5 +25202,17 @@
     "fee": "Oklart om 250 kr/dygn-taxan (inkl. el) gäller även Lanhagen – kommunens taxesida nämner 'Ställplats för husbil' 250 kr/dygn och plats",
     "address": "Lanhagen (friluftsområde), Högsby",
     "confidence": "medium"
+  },
+  {
+    "name": "Region Gotland ställplats Norra vågbrytaren, Visby hamn",
+    "lat": 57.6393,
+    "lon": 18.2841,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://gotland.se/trafik-gator-och-parker/parkera-och-ladda/husbil-stallplatser-terrangkorning): \"Region Gotland erbjuder ställplatser för husbilar i Visby: på norra vågbrytaren tio platser. På dessa platser är övernattning tillåten men inga andra tjänster finns.\" Koordinat = befintlig OSM-nod i hamnen.",
+    "website": "https://gotland.se/trafik-gator-och-parker/parkera-och-ladda/husbil-stallplatser-terrangkorning",
+    "confidence": "high"
   }
 ]

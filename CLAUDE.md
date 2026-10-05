@@ -442,7 +442,12 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    Glasriket), Magdegärde Gullabo. Region Gotlands vattenkiosker medvetet
    EJ inlagda (nyckel krävs, stängda 2026). `import-discovery.mjs` har nu
    `MAXKM` per stor kommun (Gotland 70, Borgholm 60, Norrlandskommuner
-   60–80) så kantplatser inte kasseras. **Därmed är hela landet genomsökt
+   60–80) så kantplatser inte kasseras. **Bugg upptäckt vid verifieringen:**
+   agentens `existing_name` "Ställplats (parkering för husbil)" matchade
+   FÖRSTA registerposten med det generiska namnet – en Simrishamn-post –
+   som döptes om till Visby-posten med Visby-beskrivning på Skåne-koordinat.
+   Återställd från git; importskriptet kräver nu närhet (<5 km) när
+   `existing_name` är generiskt. **Därmed är hela landet genomsökt
    en gång med discovery-metoden** – nästa varv bör gå på kommuner med
    0–1 tömningsplatser (se tömningssvepets lista) eller på crowdsourcing.
    Kvar: Storfors utan belagd tömning, Lekeberg nästan tom, Lilla Edet
