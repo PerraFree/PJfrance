@@ -453,7 +453,10 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    Böda Station, Degerhamn – OBS stängd/överklagad enl. husbilsplats.se,
    Gräsgård, Visby BK, Sandviken Strand, Ansarve, Nisseviken), Riddares
    fick gårdsadress + snävt ankare. 15 poster >6 km från kommunmitten
-   kontrollerade: alla rätt. **Därmed är hela landet genomsökt
+   kontrollerade: alla rätt. **Deploy 5 okt 17:57: 68 av 69 i seeden** –
+   bara Riddares (grå, gårdsadress "Hejnum Riddare 412" som Nominatim inte
+   hittar) saknas; lämnad opublicerad tills någon ger en koordinat.
+   **Därmed är hela landet genomsökt
    en gång med discovery-metoden** – nästa varv bör gå på kommuner med
    0–1 tömningsplatser (se tömningssvepets lista) eller på crowdsourcing.
    Kvar: Storfors utan belagd tömning, Lekeberg nästan tom, Lilla Edet
