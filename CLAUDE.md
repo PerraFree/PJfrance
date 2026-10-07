@@ -873,6 +873,13 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
      OSRM): Borås→Ulricehamn gav 21 platser inom 5 km, linje ritad, rensning
      tömde kartan. OBS: tomt Från-fält + känd position = start från "Sök där
      jag är"-positionen.
+   - **"Du är här"-pricken jättestor vid "Sök där jag är" (Pers rapport
+     7 okt 2026):** markören var en `L.circleMarker` i vektorlagret, som
+     Leaflet skalar med kartan under flyTo-animationen – cirkeln såg
+     enorm ut tills inzoomningen var klar (på mobil flera sekunder). Nu en
+     `L.marker` med `divIcon` (`.user-dot`, 18 px, fast pixelstorlek
+     oavsett zoom/animation). Verifierat med Playwright (390×760,
+     mockad geolocation): 18×18 px i sex mätningar under och efter flyTo.
    - **Popupen kapades i nederkant (Pers skärmbild, samma dag):** orsaken var
      att `computePopupPadding()` i `MapView.tsx` använde panelens UNDERKANT
      som toppmarginal även på desktop, där panelen ligger till vänster – så

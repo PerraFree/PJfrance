@@ -480,7 +480,7 @@ export default function MapView({
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<L.Map | null>(null)
   const clusterRef = useRef<L.MarkerClusterGroup | null>(null)
-  const userMarkerRef = useRef<L.CircleMarker | null>(null)
+  const userMarkerRef = useRef<L.Marker | null>(null)
   const markersById = useRef<Map<string, L.Marker>>(new Map())
   const onReportRef = useRef(onReport)
   onReportRef.current = onReport
@@ -1027,12 +1027,19 @@ export default function MapView({
       userMarkerRef.current = null
     }
     if (userLoc) {
-      userMarkerRef.current = L.circleMarker([userLoc.lat, userLoc.lon], {
-        radius: 8,
-        color: '#fff',
-        weight: 3,
-        fillColor: '#1976d2',
-        fillOpacity: 1,
+      // En vanlig markör (divIcon) i stället för L.circleMarker: vektorlagret
+      // skalas med kartan under flyTo-animationen, så cirkeln såg jättestor ut
+      // tills inzoomningen var klar (Pers rapport okt 2026). Markörer har
+      // fast pixelstorlek oavsett zoom och animation.
+      userMarkerRef.current = L.marker([userLoc.lat, userLoc.lon], {
+        icon: L.divIcon({
+          className: 'user-dot',
+          iconSize: [18, 18],
+          iconAnchor: [9, 9],
+          popupAnchor: [0, -10],
+        }),
+        keyboard: false,
+        zIndexOffset: 1000,
       })
         .bindPopup('Din position', { className: 'user-popup' })
         .addTo(map)

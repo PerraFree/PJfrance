@@ -2465,3 +2465,15 @@ button {
 .panel-toggle:active {
   transform: scale(0.94);
 }
+
+/* "Du är här"-markören: fast pixelstorlek (divIcon), skalas inte under
+   zoom-animationen som en vektorcirkel gör. Blå prick med vit kant. */
+.user-dot {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #1976d2;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.35), 0 1px 4px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+}
