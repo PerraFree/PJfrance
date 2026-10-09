@@ -14,7 +14,10 @@ const ALL = ['vatten', 'gravatten', 'latrin', 'sopor', 'stallplats', 'camping']
 const byKommun = {}
 for (const s of seed) { if (s.kommun) (byKommun[s.kommun] = byKommun[s.kommun] || []).push(s) }
 const median = (a) => { const b = [...a].sort((x, y) => x - y); return b[Math.floor(b.length / 2)] }
-const kommunAnchor = (k) => { const arr = byKommun[k] || byKommun[k + 's'] || byKommun[(k || '').replace(/s$/, '')]; if (!arr) return null; return { lat: median(arr.map((s) => s.lat)), lon: median(arr.map((s) => s.lon)) } }
+// Kommuner utan platser i seeden (Lilla Edet, okt 2026) får sitt ankare från kommunpolygonens mittpunkt i scripts/kommuner.json
+const KOMMUNER = JSON.parse(fs.readFileSync('/home/user/PJfrance/scripts/kommuner.json', 'utf8')).kommuner
+const kNorm = (n) => (n || '').replace(/ Stad$/, '').replace(/s$/, '').toLowerCase()
+const kommunAnchor = (k) => { const arr = byKommun[k] || byKommun[k + 's'] || byKommun[(k || '').replace(/s$/, '')]; if (arr) return { lat: median(arr.map((s) => s.lat)), lon: median(arr.map((s) => s.lon)) }; const km = KOMMUNER.find((x) => kNorm(x.name) === kNorm(k)); return km ? { lat: km.center[1], lon: km.center[0] } : null }
 const r5 = (x) => Math.round(x * 1e5) / 1e5
 const norm = (s) => (s || '').toLowerCase().replace(/\s+/g, ' ').trim()
 // Handjusterade geokodningsfrågor (Nominatim hittar inte beskrivande namn)
@@ -24,7 +27,7 @@ const QUERY_FIX = { 'Ställplatser för husbilar i gästhamnen i Klässbol': 'Kl
   'Backamo Lägerplats ställplats': 'Backamo, Ljungskile', 'Kolholmarnas husbilsparkering, Lysekil': 'Kolholmarna, Lysekil' }
 const SKIP = /^Unden – naturnära|^Edet Värdshus|^Vattenkiosk |^Tömningsplats Smedmästarvägen|^Parkering vid badplats Söderåkra|^Vattenpåfyllning (Preem|bensinstation)/ // vattenkiosker = ej husbilsplatser (kräver nyckel, stängda 2026); macktappar/postnummer-parkering utan läge // "Unden" är en hel sjö – ingen punkt att geokoda
 // Stora/avlånga kommuner: medianen ligger långt från kanterna (lärdom golfsvepet)
-const MAXKM = { Gotland: 70, Borgholm: 60, 'Mörbylånga': 50, Kiruna: 80, Jokkmokk: 80, Gällivare: 80, Boden: 60, Arjeplog: 80, Sorsele: 60, Storuman: 70, Älvdalen: 70, Härjedalen: 80, Berg: 60, Strömsund: 80, Krokom: 70, Åre: 70, Pajala: 70, Överkalix: 60, Arvidsjaur: 60, Skellefteå: 60, Umeå: 50, Örnsköldsvik: 50, Piteå: 50, Luleå: 50 }
+const MAXKM = { Gotland: 70, Borgholm: 60, 'Mörbylånga': 50, Kiruna: 80, Jokkmokk: 80, Gällivare: 80, Boden: 60, Arjeplog: 80, Sorsele: 60, Storuman: 70, Älvdalen: 70, Härjedalen: 80, Berg: 60, Strömsund: 80, Krokom: 70, Åre: 70, Pajala: 70, Överkalix: 60, Arvidsjaur: 60, Skellefteå: 60, Umeå: 50, Örnsköldsvik: 50, Piteå: 50, Luleå: 50, Ånge: 60, Dorotea: 70, Malå: 50, Norsjö: 50, Bjurholm: 40, Ovanåker: 45, Orsa: 50, Hultsfred: 40, Skövde: 35, Haninge: 45, Nynäshamn: 35, Österåker: 40, Södertälje: 35, Norrtälje: 60 }
 const GENERIC = /^(tömningsstation|ställplats|ställplats för husbil|camping|vattenpåfyllning|sopstation|latrintömning)\b/i
 const files = fs.readdirSync(S).filter((f) => /^disc-[a-z]+-\d\.json$/.test(f)).sort()
 const log = { nya: 0, uppgr: 0, kompl: 0, gra: 0, hoppade: [] }
