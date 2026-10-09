@@ -457,8 +457,23 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    bara Riddares (grå, gårdsadress "Hejnum Riddare 412" som Nominatim inte
    hittar) saknas; lämnad opublicerad tills någon ger en koordinat.
    **Därmed är hela landet genomsökt
-   en gång med discovery-metoden** – nästa varv bör gå på kommuner med
-   0–1 tömningsplatser (se tömningssvepets lista) eller på crowdsourcing.
+   en gång med discovery-metoden.**
+   **Varv 2 KÖRT 9 okt 2026 – de 67 kommunerna med 0–1 bekräftade
+   tömningsplatser** (8 agenter × 45 sökningar, tömningsfokus, tillägg
+   `UPPDRAG-tillagg-tomning.md` i scratchpad – kommunens VA/avfall,
+   befintliga camping/ställplats-poster utan tömning, gästhamnar; rådata
+   `docs/import/discovery-varv2-lagtackning-okt-2026.json`): 110 fynd → 60
+   nya, 9 uppgraderade, 12 kompletterade. Ny tömning bl.a. Östnora
+   (Haninge), Malexander, Reningsverket Hultsfred, Jungnerholmarna,
+   Timmernabben (CamperClean), Grönklitt, Silverfallen Skövde, Kungsörs
+   gästhamn. Lilla Edet: bara gasol (Linde), ingen ställplats finns.
+   `import-discovery.mjs` tar nu kommunankare från `scripts/kommuner.json`
+   när seeden saknar platser i kommunen. **Slutsats: ingen av de 67
+   kommunerna har en kommunal tömningsplats (reningsverk/ÅVC) på webben**
+   – Skåne inland, Stockholms innerkommuner, Malå, Skinnskatteberg,
+   Lekeberg, Hallsberg är uttömda för websök; nästa metod är crowdsourcing
+   (lanseringen) eller telefon. Verifiera geokodningen av ~42 poster efter
+   deploy (se svep-loggen).
    Kvar: Storfors utan belagd tömning, Lekeberg nästan tom, Lilla Edet
    genuint tomt,
    Vinön-posten motsägs (grå, låt stå), Fengersfors-konflikt (OSM tömning

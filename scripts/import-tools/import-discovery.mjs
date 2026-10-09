@@ -24,7 +24,13 @@ const norm = (s) => (s || '').toLowerCase().replace(/\s+/g, ' ').trim()
 const QUERY_FIX = { 'Ställplatser för husbilar i gästhamnen i Klässbol': 'Klässbols gästhamn, Arvika', 'Ställplats Dammen (Östregårds ställplatser)': 'Östregård, Blädinge, Alvesta',
   'Svenljunga ställplats (Moga Fritid)': 'Moga Fritid, Svenljunga', 'Ställplats Lassalyckan, Ulricehamn': 'Lassalyckan, Ulricehamn',
   'Husbilsparkering Herrljunga Folkets Park': 'Herrljunga Folkets Park, Herrljunga', 'Husbilsparkering Haraberget (Herrljunga hembygdspark)': 'Haraberget, Herrljunga',
-  'Backamo Lägerplats ställplats': 'Backamo, Ljungskile', 'Kolholmarnas husbilsparkering, Lysekil': 'Kolholmarna, Lysekil' }
+  'Backamo Lägerplats ställplats': 'Backamo, Ljungskile', 'Kolholmarnas husbilsparkering, Lysekil': 'Kolholmarna, Lysekil',
+  // varv 2 (okt 2026)
+  'Ställplats för husbil i Deje (Stationsområdet)': 'Älvdalsvägen, Deje', 'Ställplats Liljan, Katrineholm centrum': 'Fredsgatan, Katrineholm',
+  'Gnesta centrum – 24h-parkering bakom Vita Villan': 'Västra Storgatan, Gnesta', 'Kungsörs gästhamn – ställplatser och servicehuset Kajutan': 'Kungsörs gästhamn, Kungsör',
+  'Klämmingsbergsbadet camping': 'Klämmingsbergsbadet, Gnesta', 'Skytteholm gästhamn (Munsö) – ställplats husbil': 'Skytteholm, Ekerö',
+  'Haninge GK ställplats (Årsta slott)': 'Årsta slott, Haninge', 'Östanå Havscamp': 'Östanå färjeläge, Åkersberga', 'Camping Gålö Havsbad': 'Gålö havsbad, Haninge',
+  'Norsjö badplats (husbilsparkering)': 'Norsjö badplats, Norsjö', 'Ställplats Alfta Q8': 'Krangatan 1, Alfta', 'Norbergs OK klubbstuga (NOK-stugan) ställplatser': 'Norbergs OK, Norberg' }
 const SKIP = /^Unden – naturnära|^Edet Värdshus|^Vattenkiosk |^Tömningsplats Smedmästarvägen|^Parkering vid badplats Söderåkra|^Vattenpåfyllning (Preem|bensinstation)/ // vattenkiosker = ej husbilsplatser (kräver nyckel, stängda 2026); macktappar/postnummer-parkering utan läge // "Unden" är en hel sjö – ingen punkt att geokoda
 // Stora/avlånga kommuner: medianen ligger långt från kanterna (lärdom golfsvepet)
 const MAXKM = { Gotland: 70, Borgholm: 60, 'Mörbylånga': 50, Kiruna: 80, Jokkmokk: 80, Gällivare: 80, Boden: 60, Arjeplog: 80, Sorsele: 60, Storuman: 70, Älvdalen: 70, Härjedalen: 80, Berg: 60, Strömsund: 80, Krokom: 70, Åre: 70, Pajala: 70, Överkalix: 60, Arvidsjaur: 60, Skellefteå: 60, Umeå: 50, Örnsköldsvik: 50, Piteå: 50, Luleå: 50, Ånge: 60, Dorotea: 70, Malå: 50, Norsjö: 50, Bjurholm: 40, Ovanåker: 45, Orsa: 50, Hultsfred: 40, Skövde: 35, Haninge: 45, Nynäshamn: 35, Österåker: 40, Södertälje: 35, Norrtälje: 60 }

@@ -202,3 +202,28 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   **Utfall 5 okt 15:56:** 59 av 69 i seeden (Simrishamn-posten som skrivits över av misstag
   återställd); 9 fick exakta koordinater, Riddares bättre query. Verifiera nästa deploy.
   **Deploy 5 okt 17:57:** 68 av 69 i seeden – klart (Riddares saknar koordinat, grå, opublicerad).
+- **2026-10-09, discovery varv 2 – kommuner med 0–1 bekräftade tömningsplatser (session "Gråvatten 4",
+  område D upptäckt):** 67 kommuner (mätning mot seed 7 okt: 31 med noll bekräftad gråvatten/latrin, 36 med
+  en) i 8 grupper (Stockholm nord/syd, Skåne väst/inland, Västra Götaland, Värmland–Örebro–Västmanland,
+  Småland–Östergötland–Dalarna–Hälsingland, Norrland), 8 agenter × 45 sökningar med tömningsfokus
+  (tillägg `UPPDRAG-tillagg-tomning.md`: kommunens VA/avfall, befintliga camping/ställplats-poster
+  utan tömning, gästhamnar, golfklubbar). 110 fynd (39 high, 36 medium, 35 low) → 60 nya, 9 uppgraderade,
+  12 kompletterade, 7 grå-kompletteringar, 22 hoppade. Ny belagd tömning: Östnora Camping (Haninge),
+  Malexander Camping, Reningsverket Hultsfred (riktigt namn på OSM-posten, gratis), Jungnerholmarna
+  Fliseryd, Caravan Club Timmernabben (CamperClean), Orsa Grönklitt (latrin, EJ gråvatten), Silverfallen/
+  Karlsfors Skövde (latrin), Kungsörs gästhamn (sammanslagen med ogeokodad post från sep), Djulö
+  bekräftad av egen sida, Nickstabadet avgift. Vatten nytt: Fagersta GK, Kävlinge GK, Ingelsby Gård,
+  Hulta GK, Målilla Hembygdspark, Kvarnvik, Hedemora Folkets Park, NOK-stugan Norberg. Lilla Edet (0
+  platser) fick två gasolposter (Linde) – ingen ställplats/tömning finns enligt kommun och Västsverige.
+  Raderade: grå "Trafikverkets rastplats H3" (platshållare – TRV:s Rastplats Emån Ö/V har redan latrin)
+  och "Mönsterås Gästhamn" (bara husbil.se, felgeokodad, kommunen säger uttryckligen ingen latrin i
+  hamnen). Uttryckligt NEJ dokumenterat i beskrivningen: Åkersberga GK, Kävlinge GK, Abbekås GK, NSS
+  Nynäshamn, Vara badhus, Hjälmared, Mönsterås hamn, Klippan Virserum. Rådata
+  `docs/import/discovery-varv2-lagtackning-okt-2026.json`. ~42 poster geokodas via adress – verifiera
+  efter deploy (`check-discovery.mjs`). **Slutsats:** webben är uttömd för Skåne inland (Eslöv, Skurup,
+  Staffanstorp, Åstorp, Perstorp, Svalöv), Stockholms innerkommuner, Salem/Tyresö/Botkyrka, Malå,
+  Skinnskatteberg, Lekeberg, Hallsberg – ingen kommun i varvet har en kommunal tömningsplats vid
+  reningsverk/ÅVC på webben. Nästa metod där: crowdsourcing eller telefon. `site:`-sökningar ignoreras
+  av sökmotorn – använd `allowed_domains`. Kvar att kolla i webbläsare: Vafabmiljös sida
+  "Tömningsplatser för husbil", angecamping.com (tömning motsägs av Campercontact), galohavsbad.se,
+  ostanahavscamp.se (ny ställplats 2026 vid Ljusteröfärjan, påstår full service), Kalvkätte Hultsfred.
