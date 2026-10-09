@@ -25277,19 +25277,17 @@
   },
   {
     "name": "Ställplats för husbil i Mölnbacka",
-    "query": "Mölnbacka, 669 92 Deje",
-    "nearLat": 59.56853,
-    "nearLon": 13.4926,
-    "maxKm": 30,
     "services": [
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.visitvarmland.com/forshaga/boende/stallplatser/stallplats-for-husbil-i-molnbacka): \"Ett antal ställplatser i centrala Mölnbacka. Mölnbacka, 66992 Deje. Arrangör: Forshaga kommun. Nära vandring på Kulturstigen, badplats och fiske.\" Kommunal ställplats; inga faciliteter angivna (varken el, vatten eller tömning).",
+    "description": "Källa (https://www.visitvarmland.com/forshaga/boende/stallplatser/stallplats-for-husbil-i-molnbacka): \"Ett antal ställplatser i centrala Mölnbacka. Mölnbacka, 66992 Deje. Arrangör: Forshaga kommun. Nära vandring på Kulturstigen, badplats och fiske.\" Kommunal ställplats; inga faciliteter angivna (varken el, vatten eller tömning). Koordinat från https://www.husbil.se/stallplatser/o/Forshaga/.",
     "website": "https://www.visitvarmland.com/forshaga/boende/stallplatser/stallplats-for-husbil-i-molnbacka",
     "phone": "054-17 20 00",
     "address": "Mölnbacka, 669 92 Deje",
-    "confidence": "high"
+    "confidence": "high",
+    "lat": 59.63606,
+    "lon": 13.55501
   },
   {
     "name": "ICA Virsbo ställplats",
@@ -25497,34 +25495,30 @@
   },
   {
     "name": "Ställplats Blåbärskullen, Mörlunda",
-    "query": "Blåbärskullen, Mörlunda",
-    "nearLat": 57.45607,
-    "nearLon": 15.82807,
-    "maxKm": 40,
     "services": [
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://visithultsfred.se/stallplats-blabarskullen-2/): \"Platsen ligger centralt i Mörlunda i direkt anslutning till hembygdsparken Blåbärskullen. 100 kr/dygn, betalas via Swish.\" Inga faciliteter (vatten/tömning) nämns i källan. Drivs av Mörlunda-Tveta hembygdsförening.",
+    "description": "Källa (https://visithultsfred.se/stallplats-blabarskullen-2/): \"Platsen ligger centralt i Mörlunda i direkt anslutning till hembygdsparken Blåbärskullen. 100 kr/dygn, betalas via Swish.\" Inga faciliteter (vatten/tömning) nämns i källan. Drivs av Mörlunda-Tveta hembygdsförening. Ungefärligt läge (ortens mittpunkt, platsen ligger i centrala Mörlunda vid hembygdsparken) – exakt koordinat saknas.",
     "website": "https://visithultsfred.se/stallplats-blabarskullen-2/",
     "fee": "100 kr/dygn (Swish)",
     "address": "Blåbärskullen (hembygdsparken), Mörlunda",
-    "confidence": "medium"
+    "confidence": "medium",
+    "lat": 57.318,
+    "lon": 15.854
   },
   {
     "name": "Sommargården Klippans ställplats, Virserum",
-    "query": "Sommargården Klippan, 577 71 Virserum",
-    "nearLat": 57.45607,
-    "nearLon": 15.82807,
-    "maxKm": 40,
     "services": [
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://visithultsfred.se/en/sommargarden-klippans-stallplats/): \"Next to Virserum's cottage village ... No facilities. There is room for about five motorhomes. Close to a swimming spot and hiking and cycling trails.\" Uttryckligen UTAN service ('No facilities'). Källan hänvisar till Reningsverket Hultsfred för tömning.",
+    "description": "Källa (https://visithultsfred.se/en/sommargarden-klippans-stallplats/): \"Next to Virserum's cottage village ... No facilities. There is room for about five motorhomes. Close to a swimming spot and hiking and cycling trails.\" Uttryckligen UTAN service ('No facilities'). Källan hänvisar till Reningsverket Hultsfred för tömning. Koordinat från https://husbilskompisar.se/stallplatskartan/sommargaarden-klippan.",
     "website": "https://visithultsfred.se/en/sommargarden-klippans-stallplats/",
     "address": "Sommargården Klippan, intill Virserums stugby, 577 71 Virserum",
-    "confidence": "medium"
+    "confidence": "medium",
+    "lat": 57.3078,
+    "lon": 15.5745
   },
   {
     "name": "Dackestupets ställplats, Virserum",
@@ -25755,19 +25749,17 @@
   },
   {
     "name": "Jonstorps Ställplats (Rönneholm, Stehag)",
-    "query": "Rönneholm, Jonstorp, 241 74 Stehag",
-    "nearLat": 55.84274,
-    "nearLon": 13.32484,
-    "maxKm": 30,
     "services": [
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://campcation.com/campsite/jonstorps-stallplats): \"Many of the spacious, well-maintained motorhome pitches are equipped with electric hook-ups.\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Bara aggregator (Campcation, husbil.se listar den som 'Jonstorps Ställplats vid Orrahus'). Mellan Stehag och Stockamöllan. Bara el nämns, inget om vatten/tömning. OBS: förväxla inte med Jonstorp i Höganäs kommun (263 92) – detta är Jonstorp/Rönneholm i Eslövs kommun. Koordinat saknas.",
+    "description": "Källa (https://campcation.com/campsite/jonstorps-stallplats): \"Many of the spacious, well-maintained motorhome pitches are equipped with electric hook-ups.\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Bara aggregator (Campcation, husbil.se listar den som 'Jonstorps Ställplats vid Orrahus'). Mellan Stehag och Stockamöllan. Bara el nämns, inget om vatten/tömning. OBS: förväxla inte med Jonstorp i Höganäs kommun (263 92) – detta är Jonstorp/Rönneholm i Eslövs kommun. Koordinat saknas. Koordinat från https://www.husbil.se/stallplatser/p/1010/.",
     "website": "https://campcation.com/campsite/jonstorps-stallplats",
     "address": "Rönneholm, Jonstorp, 241 74 Stehag",
     "confidence": "low",
-    "unverified": true
+    "unverified": true,
+    "lat": 55.92507,
+    "lon": 13.37517
   },
   {
     "name": "STF Klåveröd Logi & Café – ställplats",
@@ -26134,16 +26126,12 @@
   },
   {
     "name": "Skansholmen gästhamn & camping (Mörkö)",
-    "query": "Skansholmen, Mörkö, 153 93 Hölö",
-    "nearLat": 59.18585,
-    "nearLon": 17.61053,
-    "maxKm": 35,
     "services": [
       "camping",
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.destinationsodertalje.se/upptack-sodertalje/camping/): \"Destination Södertälje: 'Skansholmen på Mörkö – gästhamn och camping; bo i stuga, vandrarhem eller i egen båt, husbil eller husvagn.' gasthamnsguiden.se (ställplatssidan): 'latrine emptying for both boat & motorhome', 'service building with hot showers, toilets, laundry room and basic kitchen', färskvatten; 240 kr/natt mellansäsong, 300 kr högsäsong (20/6–1/9) + el 60 kr.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Camping/ställplats = turistråd (primär). Latrin för husbil = gasthamnsguiden (hamnens egen listning, men aggregator) – gränsfall, därför medium. Kolla om 'Camping, Hölö' (59.0078/17.5380) i existing är samma plats – Skansholmen ligger på norra Mörkö vid färjan, troligen ~10 km österut.",
+    "description": "Källa (https://www.destinationsodertalje.se/upptack-sodertalje/camping/): \"Destination Södertälje: 'Skansholmen på Mörkö – gästhamn och camping; bo i stuga, vandrarhem eller i egen båt, husbil eller husvagn.' gasthamnsguiden.se (ställplatssidan): 'latrine emptying for both boat & motorhome', 'service building with hot showers, toilets, laundry room and basic kitchen', färskvatten; 240 kr/natt mellansäsong, 300 kr högsäsong (20/6–1/9) + el 60 kr.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Camping/ställplats = turistråd (primär). Latrin för husbil = gasthamnsguiden (hamnens egen listning, men aggregator) – gränsfall, därför medium. Kolla om 'Camping, Hölö' (59.0078/17.5380) i existing är samma plats – Skansholmen ligger på norra Mörkö vid färjan, troligen ~10 km österut. Koordinat från https://park4night.com/en/place/39224.",
     "website": "https://www.gasthamnsguiden.se/en/stallplats/skansholmen-gasthamn/",
     "fee": "240 kr/natt mellansäsong, 300 kr/natt 20/6–1/9, el 60 kr",
     "openingHours": "Säsong 1 maj–30 september (camping.info)",
@@ -26153,7 +26141,9 @@
     "unverifiedServices": [
       "latrin",
       "vatten"
-    ]
+    ],
+    "lat": 59.0491,
+    "lon": 17.689
   },
   {
     "name": "Bommersvik – ställplatser",
@@ -26169,21 +26159,6 @@
     "website": "https://www.bommersvik.se/",
     "address": "Bommersvik, vid sjön Yngern, 155 93 Nykvarn",
     "confidence": "medium"
-  },
-  {
-    "name": "Nykvarnsparken",
-    "query": "Nykvarnsparken, Nykvarn",
-    "nearLat": 59.18379,
-    "nearLon": 17.35281,
-    "maxKm": 30,
-    "services": [
-      "stallplats"
-    ],
-    "source": "egen",
-    "description": "Källa (https://husbilsplats.se/locations/nykvarnsparken/): \"husbilsplats.se har en listning 'Nykvarnsparken' (innehållet syntes inte i sökutdraget).\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Bara aggregator-ledtråd. Läs sidan i webbläsare för GPS och faciliteter.",
-    "address": "Nykvarnsparken, Nykvarn",
-    "confidence": "low",
-    "unverified": true
   },
   {
     "name": "Klämmingsbergsbadet camping",

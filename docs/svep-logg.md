@@ -227,3 +227,9 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   av sökmotorn – använd `allowed_domains`. Kvar att kolla i webbläsare: Vafabmiljös sida
   "Tömningsplatser för husbil", angecamping.com (tömning motsägs av Campercontact), galohavsbad.se,
   ostanahavscamp.se (ny ställplats 2026 vid Ljusteröfärjan, påstår full service), Kalvkätte Hultsfred.
+  **Utfall 9 okt 07:11 (deploy e437508, 6 587 platser): 81 av 87 i seeden**; 13 poster >6 km från
+  kommunankaret kontrollerade mot känt ortläge – alla rätt. 6 ogeokodade → 4 fick exakta koordinater
+  (Mölnbacka via husbil.se, Sommargården Klippan via husbilskompisar + Visit Hultsfred, Jonstorp Stehag
+  via husbil.se, Skansholmen Mörkö via park4night), Blåbärskullen Mörlunda fick ortens mittpunkt med
+  notis (exakt läge saknas, <1 km fel), Nykvarnsparken RADERAD (ligger i Linköping vid Nykvarns sluss,
+  inte i Nykvarns kommun – bara husbilsplats.se som källa). Verifiera nästa deploy.
