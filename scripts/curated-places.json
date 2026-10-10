@@ -26325,21 +26325,20 @@
   },
   {
     "name": "Uddevalla Golfklubb ställplats",
-    "query": "Uddevalla Golfklubb, Uddevalla",
-    "nearLat": 58.33883,
-    "nearLon": 11.91077,
-    "maxKm": 25,
     "services": [
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://uddevallagk.se/gast/): \"STÄLLPLATS (egen rubrik under Gäst på uddevallagk.se – sidtexten gick inte att läsa via sökindex). husbil.se: 5 platser, alla med el, pris från 250 kr, med golf 100 kr, säsong april–oktober.\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Klubbens sajt har en egen Ställplats-sida (https://uddevallagk.se/gast/ visar rubriken 'STÄLLPLATS') men innehållet kom inte med i sökindexet; 1golf.eu och husbil.se (https://www.husbil.se/stallplatser/p/240/) bekräftar husbilsplatser med el. Inget om vatten/tömning någonstans. Koordinat ej hittad – geokoda 'Bången 310, Uddevalla' (nära Torp/IKEA, avfart väg 44; ankare Uddevalla, maxKm 12).",
+    "description": "Källa (https://uddevallagk.se/gast/): \"STÄLLPLATS (egen rubrik under Gäst på uddevallagk.se – sidtexten gick inte att läsa via sökindex). husbil.se: 5 platser, alla med el, pris från 250 kr, med golf 100 kr, säsong april–oktober.\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Klubbens sajt har en egen Ställplats-sida (https://uddevallagk.se/gast/ visar rubriken 'STÄLLPLATS') men innehållet kom inte med i sökindexet; 1golf.eu och husbil.se (https://www.husbil.se/stallplatser/p/240/) bekräftar husbilsplatser med el. Inget om vatten/tömning någonstans. Koordinat ej hittad – geokoda 'Bången 310, Uddevalla' (nära Torp/IKEA, avfart väg 44; ankare Uddevalla, maxKm 12). Koordinat från https://www.golfisverige.com/klubb/uddevalla-golfklubb/.",
     "website": "https://uddevallagk.se/gast/",
     "fee": "250 kr/natt, 100 kr för golfspelare (enl. husbil.se)",
     "openingHours": "Säsong april–oktober (enl. husbil.se)",
     "phone": "0522-825 01",
     "season": "seasonal",
-    "confidence": "medium"
+    "confidence": "medium",
+    "lat": 58.36823,
+    "lon": 11.7695,
+    "address": "Bången 310, 451 94 Uddevalla"
   },
   {
     "name": "Hörlycke Golfklubb ställplats",
@@ -26503,19 +26502,18 @@
   },
   {
     "name": "Söderslätts GK ställplats",
-    "query": "Elleboda, Vellinge",
-    "nearLat": 55.41602,
-    "nearLon": 12.86532,
-    "maxKm": 25,
     "services": [
       "stallplats"
     ],
     "source": "egen",
-    "description": "Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Bara aggregator (1golf.eu listar 'Wohnmobilstellplatz' bland faciliteterna). Klubbens egen sida kunde inte läsas (domän okänd/egress). Koordinat saknas – geokoda Söderslätts Golfklubb, Elleboda, Vellinge.",
+    "description": "Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Bara aggregator (1golf.eu listar 'Wohnmobilstellplatz' bland faciliteterna). Klubbens egen sida kunde inte läsas (domän okänd/egress). Koordinat saknas – geokoda Söderslätts Golfklubb, Elleboda, Vellinge. Koordinat från https://www.golfisverige.com/klubb/soderslatts-golfklubb/.",
     "website": "https://www.1golf.eu/club/soederslaetts-golfklubb/",
     "phone": "+46 40 42 96 80",
     "confidence": "low",
-    "unverified": true
+    "unverified": true,
+    "lat": 55.4676,
+    "lon": 13.0809,
+    "address": "Elleboda, Grevievägen 260-10, 235 94 Vellinge"
   },
   {
     "name": "Uddeholms Golfklubb ställplats",

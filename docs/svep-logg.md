@@ -250,3 +250,7 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   Rya/Helsingborg, Falsterbo/Ljunghusen, Barsebäck, Lomma/Staffanstorp, Hörby, Kinds GK Svenljunga.
   Sidofynd att kolla separat: Ställplats Lerum Seglarevägen 25 (Västsverige: el/vatten/gråvatten/latrin),
   Wapnö Gård Halmstad.
+  **Utfall 10 okt 11:50 (deploy 85ee226, 6 613 platser): 33 av 34 i seeden**; 7 poster >6 km från
+  kommunankaret kontrollerade – alla rätt (Dagsholm, Lyckorna, Himle, Beddingestrand, Rya, Frösåker;
+  Uddevalla GK låg 550 m från klubbhuset, nu exakt koordinat Bången 310). Söderslätts GK (grå) hittades
+  inte av Nominatim → exakt koordinat Elleboda/Grevievägen 260 från golfisverige.com. Verifiera nästa deploy.
