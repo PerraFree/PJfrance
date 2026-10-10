@@ -234,3 +234,19 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   notis (exakt läge saknas, <1 km fel), Nykvarnsparken RADERAD (ligger i Linköping vid Nykvarns sluss,
   inte i Nykvarns kommun – bara husbilsplats.se som källa). Verifiera nästa deploy.
   **Deploy 9 okt 08:01 (c027b67, 6 592 platser): 86 av 86 i seeden – klart.**
+- **2026-10-10, golfklubbssvep del 3 (session "Gråvatten 4", område D):** de regioner som del 2 lämnade
+  osökta – Bohuslän/Dalsland, Göteborgs kranskommuner + Halland + Sjuhärad, Skåne, Värmland/Bergslagen.
+  4 agenter × 45 sökningar, 75 klubbar granskade (4 high, 20 medium, 51 low varav 22 "ingen ställplats
+  belagd"/uttryckligt nej). Utfall: 22 nya registerposter, 7 kompletterade, 5 grå. **Enda nya tjänsterna:**
+  Fullerö GK Västerås (vatten belagt, uttryckligen ingen tömning) och Degernäs Camping vid Degerfors GK
+  (vatten via "vattenslang för påfyllning", tömning fanns redan från OSM). Lundsbergs GK (Storfors) fick
+  påstått vatten (kommunsida). Nya bekräftade ställplatser utan service: Dagsholm, Lyckorna, Uddevalla GK,
+  Falkenberg, Ullared Flädje, Gullbringa, Varberg Västra, Bedinge, Tomelilla, Söderåsen, Bjäre (påstått
+  vatten), Uddeholm, Saxå, Kristinehamn, Nora. Uttryckligen NEJ till husbil: Torslanda, Vallda, Kristianstad
+  Åhus, Ystad (hänvisar till Nybrostrand), Landskrona (Borstahusen). Lärdom bekräftad igen: golfklubbar =
+  ställplats med el, nästan aldrig tömning. Rådata `docs/import/golfklubbar-svep-del3-okt-2026.json`;
+  `import-golf.mjs` hoppar nu poster med `skip: true` och behåller befintliga påstådda tjänster vid
+  komplettering. ~20 poster geokodas via klubbnamn + kommunankare – verifiera efter deploy. Kvar osökt:
+  Rya/Helsingborg, Falsterbo/Ljunghusen, Barsebäck, Lomma/Staffanstorp, Hörby, Kinds GK Svenljunga.
+  Sidofynd att kolla separat: Ställplats Lerum Seglarevägen 25 (Västsverige: el/vatten/gråvatten/latrin),
+  Wapnö Gård Halmstad.

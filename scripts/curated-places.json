@@ -170,7 +170,6 @@
   },
   {
     "name": "Skepparslövs Golfklubb ställplats",
-    "query": "Sätesvägen 14, Kristianstad",
     "services": [
       "stallplats"
     ],
@@ -179,10 +178,17 @@
       "dusch",
       "wc"
     ],
-    "fee": "200 kr/natt inkl el (gratis vid golfspel)",
-    "description": "12 platser med eluttag. Dusch och toalett i klubbhuset maj–september.",
+    "fee": "200 kr/natt inkl. el",
+    "description": "Källa (https://skepparslovsgk.se/husvagnsparkering/): \"12 platser med el för husbil eller husvagn. 200 kr per natt inkl. el. Icke-golfare kontaktar receptionen för att boka plats innan ankomst. Klubbhuset är öppet till 21.00 på kvällarna maj–september, med toaletter och duschar.\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Klubbens egen sida: 12 elplatser, toalett/dusch i klubbhuset. Ingen uppgift om färskvatten eller tömning. Bokas via Golf.se i kombination med golfrunda, annars via receptionen.",
     "url": "https://skepparslovsgk.se/husvagnsparkering/",
-    "source": "egen"
+    "source": "egen",
+    "lat": 56.01219,
+    "lon": 14.0331,
+    "website": "https://skepparslovsgk.se/husvagnsparkering/",
+    "openingHours": "Säsong maj–september (klubbhus öppet)",
+    "phone": "+46 44 22 95 08",
+    "season": "seasonal",
+    "confidence": "medium"
   },
   {
     "name": "Koberg Golfklubb ställplats",
@@ -1287,16 +1293,20 @@
   },
   {
     "name": "Westerqwarn ställplats",
-    "query": "Westerqwarn, Mölntorp, Hallstahammar",
     "services": [
-      "stallplats",
       "latrin",
       "gravatten",
-      "vatten"
+      "vatten",
+      "stallplats"
     ],
-    "description": "Vid Strömsholms kanal: vatten, gråvatten- och svartvattentömning ingår. Källa: westerqwarn.se.",
+    "description": "Källa (https://stromsholmsgolf.se/gast/): \"Vid Westerqwarn pub & restaurang finns husbilscamping. För bokning ring 0220-40688. (Adress Västerkvarnsvägen 1, 734 93 Kolbäck.)\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. INGEN ny post – klubbens husbilscamping ÄR Westerqwarn ställplats som redan finns i kartan med stallplats+latrin+gravatten+vatten (westerqwarn.se). Hallstahammar täcks därmed; eventuellt lägg till notis i Westerqwarn-posten att Strömsholms GK ligger intill.",
     "url": "https://westerqwarn.se/bo/stallplatser/",
-    "source": "egen"
+    "source": "egen",
+    "lat": 59.54759,
+    "lon": 16.25818,
+    "website": "https://stromsholmsgolf.se/gast/",
+    "phone": "0220-406 88",
+    "confidence": "high"
   },
   {
     "name": "Ställplats Ekängen Surahammar",
@@ -13107,10 +13117,10 @@
     "name": "Ställplats Stjärnfors Golfklubb",
     "source": "egen",
     "address": "Stjernfors 409, Kopparberg",
-    "description": "Källa (https://www.ljusnarsberg.se/huvudsidor/upplevagora/boende/boende/stallplatsstjernforsgolfklubb.5.537a9bc217ee36cd3f4bb23b.html): \"Ställplatsen ligger i direkt anslutning till golfbanan, ca 7 km från Kopparberg. Tillgång till el, vatten och WC. [Kommunens ställplatsöversikt:] 'el, vatten och toalett, samt möjlighet att tömma gråvatten med kassett.'\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Befintlig post har stallplats+vatten. Kommunens formulering 'tömma gråvatten med kassett' är motsägelsefull (kassett = latrin/toa, inte gråvatten) – oklart om det gäller kassettoa eller gråvatten; lagt som latrin med services_unclear. Ring klubben eller läs kommunsidan i webbläsare innan tjänsten bekräftas. Källa (https://www.ljusnarsberg.se/huvudsidor/upplevagora/boende/boende/stallplatsstjernforsgolfklubb.5.537a9bc217ee36cd3f4bb23b.html): \"ljusnarsberg.se: 'Ca 7 km från Kopparberg med tillgång till el, vatten och WC.' Endast vatten belagt, ingen tömning nämnd.\"",
+    "description": "Källa (https://stjernforsgk.com/ och http://www.stjernforsgk.com/g%C3%A4st/boende-44536669): \"Klubbens startsida nämner 'boende/ställplats' under gästinformationen; boendesidan säger bara 'Ca 4 km från Stjernfors'. Inga uppgifter om el, vatten eller tömning i sökresultaten.\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Kunde INTE bekräfta befintliga 'vatten' eller den obekräftade 'latrin' – 1golf.eu listar bara 'caravan park' + gästtoaletter. Låt befintlig post stå som den är (vatten kom från tidigare källa); latrin fortsatt obekräftad. Posten ligger på samma koordinat som Stjärnfors Kaffestuga & Camping.",
     "services": [
-      "stallplats",
-      "vatten"
+      "vatten",
+      "stallplats"
     ],
     "website": "http://www.stjernforsgk.com",
     "lat": 59.8322,
@@ -22169,14 +22179,14 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.noragolfklubb.se/stallplats/): \"Alla platser har tillgång till el och omklädningsrum med dusch, 300 kr/natt i samband med golfspel, 400 kr/natt utan golf. 10 platser, alla med el. Säsong april–september.\" Saknas helt i befintlig data. Klubbens sida nämner INGET om färskvatten eller tömning – bara el och omklädningsrum/dusch. Grus- eller gräsplatser.",
+    "description": "Källa (https://www.noragolfklubb.se/stallplats/): \"ett dussintal platser för husvagn och husbil, alldeles i anslutning till klubbhusområdet och restaurangen. Uppställning sker på gräs- eller grusplan. Alla platser har el, och det finns omklädningsrum med dusch. 300 kr per natt för den som spelar golf och 400 kr per natt för den som inte spelar.\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Befintlig post bekräftad på klubbens egen sida (ca 12 platser, el, dusch). Inget om vatten eller tömning – förblir bara ställplats. Max ett fordon per eluttag, vindskydd ej tillåtet.",
     "website": "https://www.noragolfklubb.se/stallplats/",
-    "fee": "300 kr/natt med golf, 400 kr/natt utan golf (husbil.se anger 100 kr med golf – äldre uppgift)",
-    "openingHours": "Säsong april–september",
-    "phone": "0587-155 48",
+    "fee": "300 kr/natt (golfspelare), 400 kr/natt (övriga), el ingår",
+    "openingHours": "Incheckning 15:00, utcheckning 13:00",
+    "phone": "0587-120 00",
     "address": "Nora Golfklubb, avfart väg 244 mot Nora från riksväg 50",
     "season": "seasonal",
-    "confidence": "high"
+    "confidence": "medium"
   },
   {
     "name": "Husbilsparkering Nora centrum (Rådstugugatan)",
@@ -22806,11 +22816,12 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.husbil.se/stallplatser/o/Eda/): \"Eda Golfklubbs elplatser finns uppe till höger vid ankomst till golfklubben (husbil.se).\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Bara aggregator (husbil.se). Klubbens egen sida hittades inte i sökningen (edagk.se gav inga träffar). Grå tills klubbsidan bekräftar.",
-    "website": "https://www.husbil.se/stallplatser/o/Eda/",
+    "description": "Källa (https://www.1golf.eu/club/eda-golfklubb/ (aggregator); https://www.visitvarmland.com/eda/eda-golfklubb-noresund): \"1golf.eu: 'Wohnmobilstellplatz mit Stromanschluss' bland faciliteterna. Visit Värmlands sida 'Eda Golfklubb Noresund' nämner restaurang och boende i herrgårdsannexet men INGA husbilsplatser.\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Förblir grå. Ingen egen klubbsajt hittades (kansli@edagk.com). Husvagnscamping/ställplats i Eda finns i stället vid Drömbyn/Valfjället (annan anläggning).",
+    "website": "https://www.visitvarmland.com/eda/eda-golfklubb-noresund",
     "address": "Eda Golfklubb, Noresund, Koppom/Åmotfors",
     "confidence": "low",
-    "unverified": true
+    "unverified": true,
+    "phone": "0571-341 01"
   },
   {
     "name": "Kolholmarnas husbilsparkering, Lysekil",
@@ -22880,7 +22891,7 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://husbilsplats.se/rest-area/skafto-golfklubb/): \"Här kan du kombinera ditt golfäventyr med möjligheten att parkera din husbil eller husvagn på närliggande platser. I närheten finns möjligheter att tömma husbilens tankar och fylla på färskvatten.\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Bara aggregator (husbilsplats.se/stallplatskartan). Klubbens egen sajt skaftogk.se nämner ingen ställplats i sökindexet (site:-sökning gav inget). Tömning beskrivs som 'i närheten', inte på plats – grå kandidat.",
+    "description": "Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Grå befintlig post verifierad: varken klubbens egen sajt (domänsökning skaftogk.se) eller Visit Västsverige nämner ställplats/husbil – bara golfbilar, greenfee, restaurang och hotell i klubbhuset. De påstådda tjänsterna vatten/gravatten/latrin kunde inte beläggas. Låt stå grå (eller överväg radering om aggregatorkällan är enda belägget).",
     "website": "https://skaftogk.se/",
     "address": "Stockeviksvägen 2, 450 34 Fiskebäckskil",
     "confidence": "low",
@@ -22889,7 +22900,8 @@
       "vatten",
       "gravatten",
       "latrin"
-    ]
+    ],
+    "phone": "0523-232 11"
   },
   {
     "name": "Stenungsögården camping & ställplats",
@@ -23446,7 +23458,7 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.golfportalen.se/golfbanor/ale-golfklubb/): \"Ale Golfklubb erbjuder en trivsam uppställningsplats för husbil eller husvagn, lummig och skyddad från västliga vindar. El och vatten (ej dricksvatten) finns i direkt anslutning till uppställningsplatsen. I klubbhuset finns dusch och toaletter (låses 22:30). Tillgång till toaletter och dricksvatten dygnet runt finns i en liten byggnad vid 18:e green, ca en minuts promenad. (golfportalen.se) – alegk.se listar 'Husvagn & Husbil Boende' som egen rubrik.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Golfportalen är en golfportal, inte klubbens egen sida – klubbsidan (alegk.se) bekräftar bara att husbils-/husvagnsboende finns (sökträff 'Husvagn & Husbil Boende'), texten kunde inte läsas. Dricksvatten belagt via portalen, ingen tömning nämns. Vid E45 mellan Göteborg och Trollhättan.",
+    "description": "Källa (https://alegk.se/): \"Startsidan: man kan bo med husvagn eller husbil hos oss (rubrik 'Boenden/Ställplatser'); nyhet om damgolfhelg: deltagare övernattade i klubbhuset och på klubbens ställplatser (återgivet från sökutdrag).\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Klubbens egen sida bekräftar ställplats, men INGET om vatten/el/tömning hittades på alegk.se – behåll vatten som obekräftat (unverifiedServices). Adress Alfhems Kungsgård 195, 446 91 Alvhem.",
     "website": "https://alegk.se/",
     "openingHours": "Klubbhus låses 22:30; toalett/dricksvatten dygnet runt vid 18:e green; säsong Golfsäsong (ej angivet)",
     "address": "Alfhems Kungsgård 195, 446 91 Alvhem",
@@ -23456,55 +23468,52 @@
       "vatten"
     ],
     "lat": 57.99909,
-    "lon": 12.1823
+    "lon": 12.1823,
+    "phone": "0303-33 60 33"
   },
   {
     "name": "Chalmers Golfklubb husbilsparkering",
-    "query": "Härrydavägen 50, 438 91 Landvetter",
-    "nearLat": 57.67011,
-    "nearLon": 12.23792,
-    "maxKm": 30,
     "services": [
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.vastsverige.com/harryda/produkter/chalmers-golfklubb/): \"Chalmers golfanläggning ligger i ett naturskönt område nära Landvetters flygplats, endast 15 minuter från centrala Göteborg. Erbjuder husbilsparkering och övernattning i samband med golfspel, med el. (söksammandrag av vastsverige.com/husbilsplats.se)\" Turistrådets sida nämner klubben; uppgiften om husbilsparkering med el kommer ur söksammandrag som blandar vastsverige.com och husbilsplats.se – klubbsidan chgk.se gav ingen träff på husbil. Ingen tömning/vatten belagd.",
+    "description": "Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Domänsökning på chgk.se gav INGET om husbil/ställplats (bara 'fri parkering' på konferenssidan). Befintlig post är bekräftad ställplats sedan tidigare – lämna som den är, men ingen ny evidens.",
     "website": "https://chgk.se/",
-    "phone": "031-91 84 30",
+    "phone": "031-91 84 36",
     "address": "Härrydavägen 50, 438 91 Landvetter",
-    "confidence": "medium"
+    "confidence": "low",
+    "lat": 57.68616,
+    "lon": 12.20798,
+    "unverified": true
   },
   {
     "name": "Mölndals Golfklubb husbilsplats",
-    "query": "Hällesåkersvägen 14, 437 91 Lindome",
-    "nearLat": 57.63116,
-    "nearLon": 12.0499,
-    "maxKm": 30,
     "services": [
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://husbilsplats.se/locations/molndals-golfklubb/): \"Husvagn/husbil (husbilsplats.se listar klubben som husbilsplats)\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Bara husbilsplats.se; klubbens egen sida (molndalsgk.se) gav ingen träff på husbil/ställplats. Grå.",
+    "description": "Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Domänsökning på molndalsgk.se gav inget om husbil (bara golfbilar). Förblir grå.",
     "website": "https://www.molndalsgk.se/",
     "phone": "031-99 30 30",
     "address": "Hällesåkersvägen 14, 437 91 Lindome",
     "confidence": "low",
-    "unverified": true
+    "unverified": true,
+    "lat": 57.5972,
+    "lon": 12.15358
   },
   {
     "name": "Partille Golfklubb husbilsplats",
-    "query": "Partille Golfklubb, Öjersjö, Partille",
-    "nearLat": 57.7382,
-    "nearLon": 12.13914,
-    "maxKm": 30,
     "services": [
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://husbilsplats.se/locations/partille-golfklubb/): \"Partille Golfklubb – Husbilsplatser i Sverige (husbilsplats.se-listning)\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Bara husbilsplats.se, ingen primärkälla. Gatuadress ej belagd. Grå.",
+    "description": "Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Domänsökning på partillegk.se gav inget om husbil. Kommunens Partille Ställplats (vid vandrarhemmet) är en separat anläggning. Förblir grå.",
     "address": "Partille Golfklubb, Öjersjö, Partille",
     "confidence": "low",
-    "unverified": true
+    "unverified": true,
+    "lat": 57.69185,
+    "lon": 12.10839,
+    "website": "https://partillegk.se/"
   },
   {
     "name": "Ale Disc Golf Center",
@@ -23643,19 +23652,18 @@
   },
   {
     "name": "Rydö Golfklubb ställplats",
-    "query": "Idrottsvägen 1, 314 42 Rydöbruk",
-    "nearLat": 56.96982,
-    "nearLon": 13.32204,
-    "maxKm": 30,
     "services": [
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.hylte.se/visit-hylte/overnattning/camping-och-stallplatser): \"Naturskön ställplats belägen på Rydöbruks 18-hålsbana.\" 8 husbils-/husvagnsplatser med el vid hål 9 (enligt husbilsplats.se/svenskastallplatser.se). Ingen uppgift om vatten/tömning. E-post info@rydogolf.se. Kommunens sida bekräftar platsen; klubbens egen sida inte läst (kvot slut) – tjänster oklara.",
-    "website": "https://rydogolf.se/",
-    "phone": "0345-210 42",
+    "description": "Källa (https://www.rydogolf.se/gaest): \"Gästsidan: husbil-/husvagnsparkering med eluttag; avgiften betalas helst i förväg. 250 kr/dygn för gäster som samtidigt spelar golf, 350 kr/dygn för övriga (återgivet från klubbens gästsida).\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. El bekräftad, inget om vatten/tömning. Adress Idrottsvägen 1, 314 42 Rydöbruk.",
+    "website": "https://www.rydogolf.se/gaest",
+    "phone": "0345-210 46",
     "address": "Idrottsvägen 1, 314 42 Rydöbruk",
-    "confidence": "medium"
+    "confidence": "medium",
+    "lat": 56.95826,
+    "lon": 13.13258,
+    "fee": "250 kr/dygn (golfande gäst), 350 kr/dygn (övriga)"
   },
   {
     "name": "Jälluntofta Camping",
@@ -23781,7 +23789,7 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://vargardagolf.se/gast/): \"Vi har 4 platser med el och de ligger alla på gräs. Bajamaja finns i anslutning på ställplatserna. Dusch och WC finns i klubbstugan. Dricksvatten finns vid kiosken på 10:ans hål.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Dricksvatten vid kiosken – oklart om det är avsett för tankpåfyllning. Ingen tömning nämns. Platserna hyrs i första hand ut till golfare. Bokning via info@vargardagolf.se. Källa (https://vargardagolf.se/gast/): \"Husbilsparkering med elplatser ligger vid tee på hål 12. Det finns 4 platser med el och de ligger alla på gräs. Bajamaja finns i anslutning på ställplatserna. Dusch och WC finns i klubbstugan. Platserna i första hand hyrs ut till golfare som ämnar spela på vår bana.\" Ingen tömning eller färskvattenpåfyllning nämns – bara el, bajamaja samt dusch/WC i klubbstugan. Bokas via mejl till klubben, golfare prioriteras.",
+    "description": "Källa (https://vargardagolf.se/gast/): \"Husbilsparkering med el finns vid tee på hål 12. 4 elplatser, alla på gräs. Dricksvatten och toalett finns vid kiosken vid hål 10. Portabel toalett intill platserna. Bokning via info@vargardagolf.se. Incheckning 14:00, utcheckning 13:00. Platserna hyrs i första hand ut till golfare. 150 kr/dygn, årskort 1900 kr (återgivet från klubbens gästsida).\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. 'Dricksvatten vid kiosken vid hål 10' är belagt men oklart om det är påfyllning för husbilstank → behåll vatten som obekräftat/oklart. El på 4 platser bekräftad. Ingen tömning nämns. Främst för golfare.",
     "website": "https://vargardagolf.se/gast/",
     "fee": "150 kr/dygn, årskort 1 900 kr",
     "openingHours": "Incheckning 14:00, utcheckning 13:00",
@@ -26283,5 +26291,354 @@
     "address": "Karlsfors gård, 541 97 Lerdala",
     "season": "year-round",
     "confidence": "high"
+  },
+  {
+    "name": "Dagsholm Golf ställplats",
+    "query": "Dagsholm Golf, Färgelanda",
+    "nearLat": 58.6496,
+    "nearLon": 12.0644,
+    "maxKm": 25,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://www.dagsholmgolf.se/gast/boende/stallplats/): \"Ställplats för husvagn, husbil eller campervan. Alla våra ställplatser har el. Ställplats: 175 kr / natt. VIP ställplats: 200 kr / natt. Bokning via SMS eller e-post till booking@dagsholmgolf.se\" Klubbens egen sida bekräftar ställplats med el på alla platser; omklädningsrum med dusch/toalett nämns för greenfeegäster. Inget om färskvatten, gråvatten- eller latrintömning – lägg INTE till tjänster. Visit Västsverige (vastsverige.com/fargelanda/produkter/dagsholms-golfklubb/) säger samma: 'Om man är ute och reser med husvagn, husbil, campervan eller annat, har vi givetvis plats för det. Alla våra ställplatser har el'. Ingen exakt koordinat hittad (hitta.se ger ej lat/lon i sökindex) – geokoda 'Dagsholm 12, Färgelanda' (banan ligger vid Ellenösjön, nearLat/nearLon Färgelanda, maxKm 20).",
+    "website": "https://www.dagsholmgolf.se/gast/boende/stallplats/",
+    "fee": "175 kr/natt (VIP-plats 200 kr/natt)",
+    "phone": "0528-203 77",
+    "confidence": "high"
+  },
+  {
+    "name": "Lyckorna Golfklubb ställplats",
+    "query": "Lyckorna Golfklubb, Uddevalla",
+    "nearLat": 58.33883,
+    "nearLon": 11.91077,
+    "maxKm": 25,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://lyckornagk.se/gast/): \"Till dig som stannar längre erbjuder vi uppställningsplatser för husbil och husvagn med el.\" Klubbens egen gästsida: uppställningsplatser med el för husbil/husvagn. Inget om vatten/tömning, inget pris. Samarbetspartnern Anfasteröd Gårdsvik (camping intill) har också campingtomter med el. Koordinat ej hittad – geokoda adressen (459 91 Ljungskile, Uddevalla kommun; ankare Ljungskile, maxKm 10).",
+    "website": "https://lyckornagk.se/gast/",
+    "phone": "0522-201 76",
+    "confidence": "high"
+  },
+  {
+    "name": "Uddevalla Golfklubb ställplats",
+    "query": "Uddevalla Golfklubb, Uddevalla",
+    "nearLat": 58.33883,
+    "nearLon": 11.91077,
+    "maxKm": 25,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://uddevallagk.se/gast/): \"STÄLLPLATS (egen rubrik under Gäst på uddevallagk.se – sidtexten gick inte att läsa via sökindex). husbil.se: 5 platser, alla med el, pris från 250 kr, med golf 100 kr, säsong april–oktober.\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Klubbens sajt har en egen Ställplats-sida (https://uddevallagk.se/gast/ visar rubriken 'STÄLLPLATS') men innehållet kom inte med i sökindexet; 1golf.eu och husbil.se (https://www.husbil.se/stallplatser/p/240/) bekräftar husbilsplatser med el. Inget om vatten/tömning någonstans. Koordinat ej hittad – geokoda 'Bången 310, Uddevalla' (nära Torp/IKEA, avfart väg 44; ankare Uddevalla, maxKm 12).",
+    "website": "https://uddevallagk.se/gast/",
+    "fee": "250 kr/natt, 100 kr för golfspelare (enl. husbil.se)",
+    "openingHours": "Säsong april–oktober (enl. husbil.se)",
+    "phone": "0522-825 01",
+    "season": "seasonal",
+    "confidence": "medium"
+  },
+  {
+    "name": "Hörlycke Golfklubb ställplats",
+    "query": "Hörlycke Golfklubb, Trollhättan",
+    "nearLat": 58.27614,
+    "nearLon": 12.29875,
+    "maxKm": 25,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. 9-hålsbana i Trollhättan (Trollhättans GK som sådan finns inte – Hörlycke GK och Koberg GK är kommunens klubbar). Bara aggregatorn 1golf.eu listar 'Wohnmobilstellplatz' bland faciliteterna; klubbens egen sida horlyckegk.se gav inga sökträffar om husbil. Grå/obekräftad ställplats om den läggs in. Banans adress Hörlycke Myrtuvan 461 98 (hitta.se); kansliadressen Uppsättaregatan 8 är INTE banan.",
+    "website": "https://www.horlyckegk.se",
+    "phone": "070-205 10 67",
+    "confidence": "low",
+    "unverified": true
+  },
+  {
+    "name": "Falkenbergs Golfklubb ställplats",
+    "lat": 56.89123,
+    "lon": 12.57069,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://www.falkenbergsgk.se/gast/): \"Vi har 4 ställplatser som bokas genom att ringa till receptionen på 0346-500 50. [...] 200 kr/dygn, inklusive el, 100 kr för greenfee-gäster\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Klubbens egen gästsida bekräftar 4 ställplatser med el. Inget om vatten/tömning. Adress Golfvägen 29, 311 70 Falkenberg. Bokning via receptionen (även bokning@falkenbergsgk.se).",
+    "website": "https://www.falkenbergsgk.se/gast/",
+    "fee": "200 kr/dygn inkl. el, 100 kr för greenfeegäster (annan klubbsida anger 300/100 kr – bekräfta vid bokning)",
+    "phone": "0346-500 50",
+    "confidence": "medium"
+  },
+  {
+    "name": "Ullared Flädje Golfklubb husbilsparkering",
+    "lat": 56.99606,
+    "lon": 12.63623,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://falkenberg.se/en/se-gora/aktiviteter/golf/ullared-fladje-golfklubb/ + https://www.ullaredfladjegk.se/se-old/gast/medlem): \"Klubbens sida: husbilsparkeringen ligger vackert och bekvämt på grönområdet intill klubbhuset (återgivet från sökutdrag, ej ordagrant). Falkenberg kommun/turistsida: 'There is a motorhome parking area with electricity adjacent to the club house. The spots are on grass, and there is also a nice barbecue area.'\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Adress Flädje 212, 311 65 Vessigebro. Husbilsplatser med el på gräs intill klubbhuset enligt kommunens turistsida + klubbsida. Inget om vatten/tömning. Pris ej funnet.",
+    "website": "https://www.ullaredfladjegk.se/",
+    "phone": "070-792 23 98",
+    "confidence": "medium"
+  },
+  {
+    "name": "Gullbringa Golf & Country Club ställplats",
+    "lat": 57.88254,
+    "lon": 11.77089,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://gullbringagolf.se/boende-golfpaket/stallpaket/): \"Klubbens 'Ställpaket'-sida: eluttag på parkeringen vid klubbhuset, klubbhuset har omklädningsrum med dusch och toaletter; golfare som betalar ordinarie greenfee står gratis, övriga 350 kr per natt och fordon; fri spel på Djungelbanan ingår (återgivet från sökutdrag, ej ordagrant).\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. OBS: Kungälvs kommun (utanför regionen men angiven som exempel i uppdraget). Adress Kulperödsvägen 6, 442 95 Hålta. Bokning via kansli@gullbringagolf.se. Inget om vatten/tömning. Kontrollera dubblett mot Kungälv-Kode GK (ligger ~9 km bort, annan klubb).",
+    "website": "https://gullbringagolf.se/boende-golfpaket/stallpaket/",
+    "fee": "Gratis för golfare med ordinarie greenfee, annars 350 kr/natt och fordon",
+    "openingHours": "Kansli 08–16 vardagar, 08–15 helger – ring vid sen ankomst; säsong Banan öppen april–november (kontaktsidan)",
+    "phone": "0303-22 71 61",
+    "season": "seasonal",
+    "confidence": "medium"
+  },
+  {
+    "name": "Varbergs GK Västra ställplatser (Himle)",
+    "query": "Varbergs Golfklubb Västra, Varberg",
+    "nearLat": 57.11521,
+    "nearLon": 12.26013,
+    "maxKm": 25,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://varbergsgk.se/gast/boende/): \"Varbergs GK Västra: upp till 8 platser med tillgång till el i naturskön miljö. Gäster har tillgång till omklädningsrum med dusch och bastu. Restaurang, driving range och padel ligger inom 50 meter från ställplatserna (återgivet från klubbens boendesida).\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Ny anläggning: klubben har ställplatser på BÅDA banorna; Östra finns redan i kartan (granskad del 2). Inget om vatten/tömning.",
+    "website": "https://varbergsgk.se/gast/boende/",
+    "fee": "Östra anger 250–300 kr/natt, gratis om två personer bokar greenfee – Västra ej prissatt i utdraget",
+    "phone": "0340-48 03 80",
+    "confidence": "medium"
+  },
+  {
+    "name": "Bedinge GK ställplats",
+    "query": "Golfbanevägen 10, Beddingestrand",
+    "nearLat": 55.37382,
+    "nearLon": 13.16291,
+    "maxKm": 25,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://bedingegk.se/stallplatser/): \"12 platser i trevlig miljö med tillgång till el. Dusch och toalett finns i klubbhuset i närheten (alla platser ligger nära klubbhuset). 200 kr/natt för golfare (golf-ID anges vid bokning), 350 kr/natt för icke-golfare. Bokning via receptionen 0410-25514.\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Klubbens egen sida bekräftar 12 elplatser och dusch/toalett i klubbhuset; inget om färskvatten/tömning. 1golf-recensioner (2018) bekräftar husbilsplats med el. Sveriges sydligaste golfbana, oftast spelbar året runt. Koordinat saknas – geokoda Golfbanevägen 10, Beddingestrand (Trelleborgs kommun).",
+    "website": "https://bedingegk.se/stallplatser/",
+    "fee": "200 kr/natt golfare, 350 kr/natt icke-golfare (inkl. el)",
+    "phone": "0410-255 14",
+    "confidence": "medium"
+  },
+  {
+    "name": "Tomelilla Golf camping/ställplats",
+    "query": "Ullstorp, Tomelilla",
+    "nearLat": 55.54706,
+    "nearLon": 13.95773,
+    "maxKm": 25,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://www.tomelillagolf.se/hotell-och-camping/camping): \"Här på Tomelilla Golf har vi tolv campingplatser med el på gräs där vi välkomnar både husbilar och husvagnar. Dygnspriset är 275 kr för plats med el och 195 kr för plats utan el. Det finns inga laddstolpar för elbilar.\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Klubbens egen sida bekräftar 12 campingplatser med el på gräs; inget om färskvatten/tömning. Hotell på området. Koordinat saknas – geokoda Tomelilla Golfklubb, Ullstorp, Tomelilla.",
+    "website": "https://www.tomelillagolf.se/hotell-och-camping/camping",
+    "fee": "275 kr/dygn med el, 195 kr/dygn utan el",
+    "phone": "+46 417 194 30",
+    "confidence": "medium"
+  },
+  {
+    "name": "Söderåsens GK ställplats",
+    "query": "Risekatslösavägen 81, Billesholm",
+    "nearLat": 56.07588,
+    "nearLon": 12.9344,
+    "maxKm": 25,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://www.soderasensgk.se/kopia-p%C3%A5-st%C3%A4llplats): \"Åtta uppställningsplatser för husbil och husvagn med el, nära klubbhuset. 150 kr/natt i samband med spel på Söderåsens GK, och 250 kr/natt för endast ställplats och övernattning. Greenfee tillkommer. Tillgång till el, dusch och restaurang finns på området. Incheckning från kl. 14, utcheckning senast kl. 13.\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Klubbens egen sida: 8 elplatser, toalett/dusch i klubbhuset, bokning via bokningskalender på webbplatsen. Inget om färskvatten/tömning. Klubben ligger i Billesholm, Bjuvs kommun (ej Svalöv). Koordinat saknas – geokoda Risekatslösavägen 81, Billesholm.",
+    "website": "https://www.soderasensgk.se/kopia-p%C3%A5-st%C3%A4llplats",
+    "fee": "150 kr/natt för golfande gäster, 250 kr/natt övriga (inkl. el)",
+    "openingHours": "Incheckning från 14, utcheckning senast 13",
+    "phone": "+46 42 733 37",
+    "confidence": "medium"
+  },
+  {
+    "name": "Bjäre GK ställplats",
+    "query": "Salomonhögsvägen 336, Båstad",
+    "nearLat": 56.43151,
+    "nearLon": 12.79674,
+    "maxKm": 25,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://campcation.com/campsite/bjare-golfklubb-hotell-and-lodge): \"At Bjäre golf club located in Skåne with proximity to Båstad you will find 4 bookable parking spaces! The pitches include electricity and access to both water and changing rooms with shower & sauna!\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Klubbens egen webbplats (bjaregolfklubb.se) har en menysida 'Husbil/husvagn' men dess text kom inte med i sökresultaten; citatet är klubbens bokningslistning på Campcation (4 bokningsbara platser med el, 'access to water' – oklart om påfyllning till husbil eller bara vatten i omklädningsrummet). 1golf listar Wohnmobilstellplatz. Koordinat saknas – geokoda Salomonhögsvägen 336, Båstad.",
+    "website": "https://www.bjaregolfklubb.se/",
+    "openingHours": "Säsong 22/04–17/09 (enligt Campcation-kalendern)",
+    "phone": "+46 431 36 10 53",
+    "season": "seasonal",
+    "confidence": "medium",
+    "unverifiedServices": [
+      "vatten"
+    ]
+  },
+  {
+    "name": "Woodlands Golf & Country Club ställplats",
+    "query": "Rya 472, Örkelljunga",
+    "nearLat": 56.2754,
+    "nearLon": 13.29386,
+    "maxKm": 25,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Bara aggregator (1golf.eu listar 'Wohnmobilstellplatz'/'Caravan park' bland faciliteterna). Klubbens egen sida kunde inte läsas (domän okänd/egress). 27-hålsbana. Koordinat saknas – geokoda Rya 472, Örkelljunga.",
+    "website": "https://www.1golf.eu/club/woodlands-country-club/",
+    "phone": "+46 435 536 40",
+    "confidence": "low",
+    "unverified": true
+  },
+  {
+    "name": "Söderslätts GK ställplats",
+    "query": "Elleboda, Vellinge",
+    "nearLat": 55.41602,
+    "nearLon": 12.86532,
+    "maxKm": 25,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Bara aggregator (1golf.eu listar 'Wohnmobilstellplatz' bland faciliteterna). Klubbens egen sida kunde inte läsas (domän okänd/egress). Koordinat saknas – geokoda Söderslätts Golfklubb, Elleboda, Vellinge.",
+    "website": "https://www.1golf.eu/club/soederslaetts-golfklubb/",
+    "phone": "+46 40 42 96 80",
+    "confidence": "low",
+    "unverified": true
+  },
+  {
+    "name": "Uddeholms Golfklubb ställplats",
+    "lat": 59.9862,
+    "lon": 13.6096,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://www.uddeholmsgk.se/stallplatser/): \"åtta ställplatser med el för husbil eller husvagn … kan bokas i förväg genom att ringa till shopen. 200 kr per natt för dig som spelar på banan och 250 kr per natt för dig som inte spelar. Kontakta oss på: 0563-60564\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Klubbens egen sida bekräftar 8 ställplatser med el vid Rådasjön (Rissäter 20, Råda) men nämner inget om vatten/tömning. Visit Värmland (hagfors/aktiviteter/golfa/golf/uddeholms-golfklubb) säger samma sak.",
+    "website": "https://www.uddeholmsgk.se/stallplatser/",
+    "fee": "200 kr/natt (golfspelare), 250 kr/natt (övriga), el ingår",
+    "phone": "0563-605 64",
+    "confidence": "medium"
+  },
+  {
+    "name": "Fullerö GK ställplats",
+    "lat": 59.565,
+    "lon": 16.505,
+    "services": [
+      "vatten",
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://www.fullerogk.se/stallplats/ och https://www.fullerogk.se/boka-boende/): \"Ingen tömning av gråvatten eller latrin. … kallvatten/dricksvatten-kran vid ladans baksida och en 50 m slang för att fylla tanken. 7 (+6 på f.d. padelbanan) markerade platser med el. 280 kr per natt för golfspelare, 380 kr per natt för övriga.\" Färskvatten belagt (tappkran + 50 m slang), klubben säger UTTRYCKLIGEN nej till gråvatten-/latrintömning. Platser vid 18:e green, Jotsberga. Bokning via Sirvoy. OBS: Västerås GK:s sajt återger samma Fullerö-text – blanda inte ihop klubbarna.",
+    "website": "https://www.fullerogk.se/stallplats/",
+    "fee": "280 kr/natt (golfspelare), 380 kr/natt (övriga); äldre sida: 175/100/250 kr",
+    "openingHours": "Incheckning från 13:00, utcheckning före 13:00; omklädningsrum öppna 05–23",
+    "phone": "021-502 62",
+    "season": "year-round",
+    "confidence": "high"
+  },
+  {
+    "name": "Saxå Golfklubb ställplats (Saxå Bruk)",
+    "lat": 59.78943,
+    "lon": 14.36283,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://saxabruk.com/husbil-husvagn/ (Saxå Bruk driver anläggningen; klubbens sida https://www.saxagk.se/bo-spela/ har rubriken 'Husbil & Husvagn' och hänvisar till Malm & Måltid/Saxå Bruk, 076-148 87 02)): \"4 platser för Husbilar och Husvagnar … kontakta Saxå GK för bokning så att de kan ge er tillgång till el, WC och dusch. WC och dusch finns i nyrenoverade Kolhuset. 300 SEK per plats och natt. 0590 240 70 / saxagk@telia.com\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. El/WC/dusch bekräftat av operatören, inget om vatten eller tömning. husbil.se:s adressrad 'RV 63, 9 km V Hällefors' är missvisande – lita på koordinaten (mellan Grythyttan och Filipstad). Saxå Bruk-sidan är flera år gammal.",
+    "website": "https://saxabruk.com/husbil-husvagn/",
+    "fee": "300 kr/plats och natt (el, WC, dusch ingår)",
+    "phone": "0590-240 70",
+    "confidence": "medium"
+  },
+  {
+    "name": "Lundsbergs Golfklubb ställplats",
+    "lat": 59.48955,
+    "lon": 14.18627,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://www.lundsbergsgk.se/gaster/): \"fyra ställplatser för husbilar och husvagnar … vid fairwayerna. 200 kr per natt. I priset ingår tillgång till el, omklädningsrum, dusch och WC. Betalning via Swish 123-512 85 17 eller i klubbhuset.\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Storfors kommun (storfors.se, föreningssida/nyhet) skriver att hyrare får 'el, toaletter, dusch och vattenpåfyllning' och campercontact listar gratis vatten – vatten alltså troligt men EJ på klubbens egen sida → föreslås som unverifiedServices: ['vatten']. Campercontact: ingen gråvatten-/kassettömning. Enda golfklubben i Storfors kommun (mellan Matlången och Hållsjön).",
+    "website": "https://www.lundsbergsgk.se/gaster/",
+    "fee": "200 kr/natt inkl. el",
+    "phone": "0550-703 02",
+    "confidence": "medium",
+    "unverifiedServices": [
+      "vatten"
+    ]
+  },
+  {
+    "name": "Kristinehamns Golfklubb ställplats",
+    "lat": 59.33619,
+    "lon": 14.13215,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://kristinehamnsgk.se/boka-stallplats-for-husbil-torpet-digitalt/ och https://kristinehamnsgk.se/greenfee/): \"totalt 14 ställplatser med tillgång till el … Husbilsgäster kan använda klubbhuset där det finns dusch, toalett, tvättstuga (mot avgift) och bastu. Ställplats husbil 250 kr, tvättstuga 50 kr/tillfälle.\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Komplettering av befintlig OSM-post: 14 platser med el, bokas i klubbens bokningskalender. Inget om vatten/tömning på klubbens sidor (stellplatz.info-rutorna för tömning är ej ifyllda). Kristinehamns gästhamn 700 m från centrum har full service.",
+    "website": "https://kristinehamnsgk.se/boka-stallplats-for-husbil-torpet-digitalt/",
+    "fee": "250 kr/natt inkl. el",
+    "phone": "0550-823 10",
+    "confidence": "medium"
+  },
+  {
+    "name": "Degernäs Camping (vid Degerfors Golfklubb)",
+    "lat": 59.25145,
+    "lon": 14.4595,
+    "services": [
+      "vatten",
+      "gravatten",
+      "latrin",
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://www.degernascamping.se/bra-att-veta/ och https://www.degernascamping.se/golf/): \"Direkt anslutning till 18-håls golfbana på Degerfors Golf. … ca 80 campingtomter/tältplatser för husvagnar/husbilar och tält. Vattenslang för påfyllning av husbilar och husvagn. (Faciliteter: tömningsplatta för avloppstankar, strand, toaletter, duschar.)\" Degerfors GK har ingen egen ställplats – husbilsgäster hänvisas till Degernäs Camping vägg i vägg. Befintlig post har redan gravatten+latrin; KOMPLETTERING: lägg till 'vatten' (vattenslang för påfyllning belagd på campingens egen sida).",
+    "website": "https://www.degernascamping.se/",
+    "openingHours": "Incheckning från 15:00",
+    "phone": "0586-242 322",
+    "confidence": "high"
+  },
+  {
+    "name": "Kungsörs Golfklubb (Lockmora)",
+    "query": "Kungsörs Golfklubb, Kungsör",
+    "nearLat": 59.4318,
+    "nearLon": 16.1122,
+    "maxKm": 25,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://www.1golf.eu/en/club/kungsoers-golfklubb/ (aggregator)): \"1golf.eu: 'Club Amenities – Caravan park' (tysk version 'Wohnmobilstellplatz'). Kungsörs kommuns Lockmora-sida nämner bara övningsrange och 9-håls kortbana, inget om husbil.\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. EJ inlagd – bara aggregator, ingen koordinat hittad och ingen egen klubbsajt i träffarna. Kungsörs gästhamn (finns redan i kartan med latrin+vatten) är kommunens ställplats.",
+    "website": "https://www.1golf.eu/en/club/kungsoers-golfklubb/ (aggregator)",
+    "confidence": "low",
+    "unverified": true
+  },
+  {
+    "name": "Frösåker Golf & Country Club",
+    "query": "Frösåker Golf & Country Club, Västerås",
+    "nearLat": 59.6095,
+    "nearLon": 16.56574,
+    "maxKm": 25,
+    "services": [
+      "stallplats"
+    ],
+    "source": "egen",
+    "description": "Källa (https://www.1golf.eu/club/froesaker-golf-country-club/ (aggregator)): \"1golf.eu: 'Caravan park' bland faciliteterna. Hotell-/bokningssidor nämner bara gratis parkering.\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. EJ inlagd – inget på egen sajt (domän ej hittad), ingen koordinat, bara aggregatorns ikon. Frösåker Gård, Kärrbo, öster om Västerås.",
+    "website": "https://www.1golf.eu/club/froesaker-golf-country-club/ (aggregator)",
+    "phone": "021-250 24",
+    "confidence": "low",
+    "unverified": true
   }
 ]

@@ -36,7 +36,7 @@ for (const f of files) {
   try { arr = JSON.parse(fs.readFileSync(`${S}/${f}`, 'utf8')) } catch (e) { console.log(`${f}: oläsbar (${e.message})`); continue }
   for (const r of arr) {
     const name = (r.name || '').replace(/\s*\(UTANFÖR REGION[^)]*\)/, '').trim()
-    if (!name || SKIP.test(name)) continue
+    if (!name || SKIP.test(name) || r.skip) continue // r.skip = agenten säger uttryckligen "lägg inte in" (del 3, okt 2026)
     let conf = r.confidence
     const claimed = [...new Set((r.services || []).filter((s) => CORE.includes(s)))]
     if (r.services_unclear) { /* citatet är otydligt → behandla som påstått */ }
@@ -94,7 +94,8 @@ for (const f of files) {
       const was = e.unverified ? 'grå' : e.services.join(',')
       const keepCore = e.unverified ? [] : e.services.filter((x) => CORE.includes(x))
       fields.services = [...new Set([...keepCore, ...fields.services])]
-      if (fields.unverifiedServices) fields.unverifiedServices = fields.unverifiedServices.filter((x) => !fields.services.includes(x))
+      // Behåll befintliga påstådda tjänster som den nya källan varken bekräftar eller motsäger (Stjärnfors-lärdom, okt 2026)
+      fields.unverifiedServices = [...new Set([...(e.unverifiedServices || []), ...(fields.unverifiedServices || [])])].filter((x) => !fields.services.includes(x))
       if (fields.unverifiedServices && !fields.unverifiedServices.length) delete fields.unverifiedServices
       if (keepCore.length && !confirmedCore.length) fields.confidence = e.confidence || 'high'
       for (const k of Object.keys(fields)) if (fields[k] !== undefined) e[k] = fields[k]

@@ -373,8 +373,13 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    funkar, men stora kommuner (Gotland, Boden, Gällivare) behöver maxKm
    ≥60, och Nominatim hittar inte alla klubbnamn. Kvar: Kungsbacka/
    Forsgården/Västervik/Vimmerby/Malung/Gävle/Piteå/Sveg/Knistad (klubbsajt
-   nämner inget om husbil – förblir grå), osökta klubbar i Bohuslän,
-   Göteborgs kranskommuner, Söderåsen/Ystad/Båstad-trakten, Eda/Filipstad.
+   nämner inget om husbil – förblir grå).
+   **Golfklubbssvep, del 3 (10 okt 2026):** de osökta regionerna (Bohuslän/
+   Dalsland, Göteborg/Halland/Sjuhärad, Skåne, Värmland/Bergslagen) – 75
+   klubbar, 22 nya poster, bara TVÅ nya tjänster (Fullerö GK vatten, Degernäs
+   Camping vatten). Golfsvepet är därmed i praktiken klart riksomfattande;
+   kvar bara Rya/Helsingborg, Falsterbo/Ljunghusen, Barsebäck, Lomma/
+   Staffanstorp, Hörby, Kinds GK. Se `docs/svep-logg.md`.
 3. **Helt saknade platser (nya, ej bara "tjänsteberikning")** – upptäckt
    aug 2026 efter att Hofsnäs Herrgård (fullservice-ställplats) visade sig
    saknas helt (varken OSM, TRV eller vårt register hade den – bara
