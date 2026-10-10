@@ -14,7 +14,11 @@ for (const s of seed) { if (s.kommun) (byKommun[s.kommun] = byKommun[s.kommun] |
 const median = (a) => { const b = [...a].sort((x, y) => x - y); return b[Math.floor(b.length / 2)] }
 const ALIAS = { Falun: 'Falu' }
 const ANCHORS = { Forshaga: { lat: 59.6, lon: 13.47 } }
-const kommunAnchor = (k) => { if (ANCHORS[k]) return ANCHORS[k]; k = ALIAS[k] || k; const arr = byKommun[k] || byKommun[k + 's'] || byKommun[(k || '').replace(/s$/, '')]; if (!arr) return null; return { lat: median(arr.map((s) => s.lat)), lon: median(arr.map((s) => s.lon)) } }
+// Kommuner utan platser i seeden får sitt ankare från kommunpolygonens mittpunkt (samma som import-discovery.mjs, okt 2026)
+const KOMMUNER = JSON.parse(fs.readFileSync('/home/user/PJfrance/scripts/kommuner.json', 'utf8')).kommuner
+const kNorm = (n) => (n || '').replace(/ Stad$/, '').replace(/s$/, '').toLowerCase()
+const MAXKM = { Torsby: 60, Hagfors: 40, Arvika: 40, Årjäng: 40, Säffle: 35, Kristianstad: 40, Tanum: 35, Strömstad: 30, Hässleholm: 35, Ljusdal: 60, Härjedalen: 80 }
+const kommunAnchor = (k) => { if (ANCHORS[k]) return ANCHORS[k]; k = ALIAS[k] || k; const arr = byKommun[k] || byKommun[k + 's'] || byKommun[(k || '').replace(/s$/, '')]; if (arr) return { lat: median(arr.map((s) => s.lat)), lon: median(arr.map((s) => s.lon)) }; const km = KOMMUNER.find((x) => kNorm(x.name) === kNorm(k)); return km ? { lat: km.center[1], lon: km.center[0] } : null }
 const cleanClub = (n) => n.replace(/\s*\(.*?\)/g, '').replace(/\s*[–-]\s.*$/, '').replace(/\s+(ställplats(er)?|husbils-\/husvagnsparkering|husbilsparkering|husbilsplatser|uppställningsplats|camping\/ställplats|Golf Caravan Park)\s*$/i, '').replace(/\bGK\b/, 'Golfklubb').replace(/\bG&CC\b/, 'Golf & Country Club').trim()
 const DELETE = ['Alfta-Edsbyns Golfklubb', 'Hudiksvalls Golfklubb']
 const SKIP = /Idrefjällens|Sälenfjällens|Högbo|Alfta-Edsbyns/i
@@ -46,7 +50,7 @@ for (const f of files) {
       let q = (r.geocode_query || r.address || '').replace(/\s*\(.*?\)/g, '').replace(/,\s*(vid|norr|söder|väster|öster|nära|\d+\s*km)\b.*$/i, '').replace(/\s+/g, ' ').trim()
       if (!q || /\bkm\b|geokoda|klubbhuset|\//i.test(q)) q = `${cleanClub(name)}, ${r.kommun}`
       q = q.replace(/\bGK\b/, 'Golfklubb')
-      geo = { query: q, nearLat: r5(anchor.lat), nearLon: r5(anchor.lon), maxKm: 25 }
+      geo = { query: q, nearLat: r5(anchor.lat), nearLon: r5(anchor.lon), maxKm: MAXKM[r.kommun] || 25 }
       r.lat = anchor.lat; r.lon = anchor.lon // bara för dubblettkoll nedan
     }
     if (r.note && /nedlagd|stängd permanent|ingen ställplats|erbjuder inte/i.test(r.note) && !claimed.length && conf !== 'high') { log.hoppade.push(`${name}: ${r.note.slice(0, 90)}`); continue }
