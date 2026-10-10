@@ -233,3 +233,4 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   via husbil.se, Skansholmen Mörkö via park4night), Blåbärskullen Mörlunda fick ortens mittpunkt med
   notis (exakt läge saknas, <1 km fel), Nykvarnsparken RADERAD (ligger i Linköping vid Nykvarns sluss,
   inte i Nykvarns kommun – bara husbilsplats.se som källa). Verifiera nästa deploy.
+  **Deploy 9 okt 08:01 (c027b67, 6 592 platser): 86 av 86 i seeden – klart.**
