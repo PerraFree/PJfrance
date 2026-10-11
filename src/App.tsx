@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef, useState, type TouchEvent } from 'react'
 import type L from 'leaflet'
 import MapView, { MIN_FETCH_ZOOM } from './components/MapView'
 import SubmitForm from './components/SubmitForm'
@@ -234,6 +234,49 @@ export default function App() {
   // Minimalt läge: när en plats valts krymper sheeten till bara handtaget +
   // appnamnet så att kartan och popupen får plats. Återställs vid tryck.
   const [mini, setMini] = useState(false)
+  // Svep på arkets övre del (handtag + rubrikrad) på mobil: svep NER → bara
+  // handtaget + appnamnet syns (kartan får hela ytan), svep UPP → ett steg
+  // upp (minimalt → hopfällt → helt utfällt). Pers önskemål okt 2026: man
+  // ska i ALLA lägen kunna dra ner arket och se enbart kartan.
+  const sheetTouchStartY = useRef<number | null>(null)
+  const sheetTouchLastY = useRef<number | null>(null)
+  const sheetSwiped = useRef(false)
+  const onSheetTouchStart = (e: TouchEvent<HTMLElement>) => {
+    sheetTouchStartY.current = e.touches[0]?.clientY ?? null
+    sheetTouchLastY.current = sheetTouchStartY.current
+    sheetSwiped.current = false
+  }
+  const onSheetTouchMove = (e: TouchEvent<HTMLElement>) => {
+    sheetTouchLastY.current = e.touches[0]?.clientY ?? sheetTouchLastY.current
+  }
+  const onSheetTouchEnd = () => {
+    if (sheetTouchStartY.current == null || sheetTouchLastY.current == null) return
+    const dy = sheetTouchLastY.current - sheetTouchStartY.current
+    sheetTouchStartY.current = null
+    if (Math.abs(dy) < 30) return
+    // Ett riktigt svep ger normalt inget klick, men skulle ett komma inom
+    // en kort stund ska det inte ångra svepet. Flaggan rensas av sig själv.
+    sheetSwiped.current = true
+    window.setTimeout(() => {
+      sheetSwiped.current = false
+    }, 400)
+    if (dy > 0) {
+      // Ner: alltid hela vägen till "bara kartan".
+      setCollapsed(true)
+      setMini(true)
+    } else if (mini) {
+      setMini(false)
+    } else {
+      setCollapsed(false)
+    }
+  }
+  // Ett svep avslutas ibland med ett syntetiskt klick – låt det inte
+  // omedelbart ångra svepet (handtagets/rubrikens onClick).
+  const swallowSwipeClick = () => {
+    if (!sheetSwiped.current) return false
+    sheetSwiped.current = false
+    return true
+  }
   const [locating, setLocating] = useState(false)
   const [showMore, setShowMore] = useState(false)
   const [favorites, setFavorites] = useState<Set<string>>(loadFavorites)
@@ -796,7 +839,17 @@ export default function App() {
 
       <div
         className={`panel${collapsed ? ' collapsed' : ''}${mini ? ' mini' : ''}`}
-        onClickCapture={mini ? () => setMini(false) : undefined}
+        onClickCapture={
+          mini
+            ? (e) => {
+                // I minimalt läge återställer VARJE tryck arket – och inget
+                // annat. Utan stopPropagation hann handtagets egen onClick
+                // köras efter omrenderingen och fällde ut hela menyn.
+                e.stopPropagation()
+                if (!swallowSwipeClick()) setMini(false)
+              }
+            : undefined
+        }
       >
         <button
           type="button"
@@ -804,13 +857,22 @@ export default function App() {
           aria-expanded={!collapsed}
           aria-label={collapsed ? 'Visa hela menyn' : 'Fäll ihop menyn'}
           onClick={() => {
+            if (swallowSwipeClick()) return
             if (mini) setMini(false)
             else setCollapsed((v) => !v)
           }}
+          onTouchStart={onSheetTouchStart}
+          onTouchMove={onSheetTouchMove}
+          onTouchEnd={onSheetTouchEnd}
         >
           <span aria-hidden="true" />
         </button>
-        <header className="brand">
+        <header
+          className="brand"
+          onTouchStart={onSheetTouchStart}
+          onTouchMove={onSheetTouchMove}
+          onTouchEnd={onSheetTouchEnd}
+        >
           <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" width="34" height="34" />
           <div>
             <h1>Tömningskartan</h1>

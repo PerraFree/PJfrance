@@ -255,3 +255,11 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   Uddevalla GK låg 550 m från klubbhuset, nu exakt koordinat Bången 310). Söderslätts GK (grå) hittades
   inte av Nominatim → exakt koordinat Elleboda/Grevievägen 260 från golfisverige.com. Verifiera nästa deploy.
   **Deploy 10 okt 12:45 (bc3791b, 6 614 platser): 34 av 34 i seeden – klart.**
+- **2026-10-11, golfsvepets restlista Skåne + sidofynd (session "Gråvatten 4"):** Kinds GK Svenljunga
+  (ny, klubbsida: 12 platser med el, 150 kr – bara ställplats), Rya GK och Flommens GK (grå, bara
+  husbilsplats.se), Barsebäck G&CC säger uttryckligen NEJ till husbil, Helsingborgs GK/Falsterbo/
+  Ljunghusen/Lomma GK/Elisefarm nämner inget – golfsvepet är därmed KLART riksomfattande. Sidofynd:
+  Ställplats Lerum (OSM-post hade gråvatten+latrin) får färskvatten + sopor via Västsverige +
+  stallplatslerum.se (57 platser, från 350 kr/natt, året runt); Wapnö Gård Halmstad NY (Destination
+  Halmstad: 50 grusplatser året runt, gråvattentömning mot avgift; el/vatten bara aggregator → påstått).
+  Rådata tillagd sist i `golfklubbar-svep-del3-okt-2026.json` resp. `discovery-varv2-lagtackning-okt-2026.json`.

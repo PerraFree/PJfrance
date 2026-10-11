@@ -2668,5 +2668,56 @@
   "phone": null,
   "website": null,
   "note": "Bara Campercontact (aggregator). Ingen tömning/vatten listad; restaurangen nedlagd 2024. Enda kända övernattningsplatsen i Lilla Edets kommun – kommunens egna sidor (lillaedet.se, vastsverige.com/gotaalv) nämner ingen ställplats alls."
+ },
+ {
+  "grupp": "sidofynd-golf3",
+  "name": "Ställplats Lerum",
+  "existing_name": "Ställplats Lerum",
+  "kommun": "Lerum",
+  "lat": 57.7579,
+  "lon": 12.252,
+  "coord_source": "befintlig OSM-post (Seglarevägen 25, 443 30 Lerum)",
+  "address": "Seglarevägen 25, 443 30 Lerum",
+  "services": [
+   "vatten",
+   "gravatten",
+   "latrin",
+   "sopor",
+   "stallplats"
+  ],
+  "services_unclear": false,
+  "quote": "På Ställplats Lerum finns 57 bokningsbara platser för husbilar och husvagnar. På samtliga platser ingår el och här finns fräscha toaletter, duschrum, tillgång till färskvatten, tömning av grå- och svartvatten samt avfallssortering.",
+  "source": "https://www.vastsverige.com/lerum/produkter/stallplats-lerum/",
+  "confidence": "high",
+  "fee": "Från 350 kr/natt (plats 14–51), XL-plats 1–13 från 395 kr, Premium 52–57 från 440 kr; el ingår på platser där det anges, tömning/färskvatten ingår (stallplatslerum.se)",
+  "season": "Öppet året runt",
+  "openingHours": "Incheckning från 13:00, utcheckning senast 11:00",
+  "phone": "0302-710 10",
+  "website": "https://stallplatslerum.se/",
+  "note": "Komplettering: färskvatten + sopsortering belagt av Västsverige (turistråd) och av ställplatsens egen sida (stallplatslerum.se: 'fresh water refilling is available on-site', 'I priset ingår tillgång till el på platsen där det anges samt nyttjande av servicehus'). 57 bokningsbara platser (egen sida nämner även '70 bokningsbara elplatser'). Bokas online."
+ },
+ {
+  "grupp": "sidofynd-golf3",
+  "name": "Wapnö Gård husbilsplatser",
+  "existing_name": null,
+  "kommun": "Halmstad",
+  "lat": 56.7143,
+  "lon": 12.8398,
+  "coord_source": "https://husbilskompisar.se/stallplatskartan/wapnoe-gaard",
+  "address": "Vapnö Gård 215, 305 91 Halmstad",
+  "services": [
+   "stallplats",
+   "gravatten"
+  ],
+  "services_unclear": false,
+  "quote": "The 50 pitches on gravel are open year round for both motorhomes and caravans. Access to toilets and emptying of grey water costs a fee.",
+  "source": "https://www.destinationhalmstad.se/en/accommodation/motorhome-and-caravan-pitches",
+  "confidence": "high",
+  "fee": "Avgift för toalett och gråvattentömning (belopp ej angivet); pris för platsen ej hittat",
+  "season": "Öppet året runt",
+  "openingHours": null,
+  "phone": "035-299 03 00",
+  "website": "https://www.wapno.se/",
+  "note": "50 grusplatser på gårdens parkering (Destination Halmstad, sidan ca 1 år gammal). Gårdens egen sida wapno.se nämner inte husbilsplatserna alls. Husbilskompisar (aggregator) anger dessutom el + färskvatten + toalett – INTE belagt av primärkälla, lägg som unverifiedServices: ['vatten'] om så önskas. Latrintömning nämns inte av någon källa. Koordinaten är husbilskompisars (gården ligger vid Wapnövägen ca 6 km NO om Halmstad); hitta.se bekräftar adressen Vapnö Gård 215."
  }
 ]

@@ -377,9 +377,11 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    **Golfklubbssvep, del 3 (10 okt 2026):** de osökta regionerna (Bohuslän/
    Dalsland, Göteborg/Halland/Sjuhärad, Skåne, Värmland/Bergslagen) – 75
    klubbar, 22 nya poster, bara TVÅ nya tjänster (Fullerö GK vatten, Degernäs
-   Camping vatten). Golfsvepet är därmed i praktiken klart riksomfattande;
-   kvar bara Rya/Helsingborg, Falsterbo/Ljunghusen, Barsebäck, Lomma/
-   Staffanstorp, Hörby, Kinds GK. Se `docs/svep-logg.md`.
+   Camping vatten). Restlistan (Rya, Helsingborg, Falsterbo, Ljunghusen,
+   Barsebäck, Lomma, Hörby, Kinds GK) kördes 11 okt: bara Kinds GK blev en
+   bekräftad ställplats, Barsebäck förbjuder husbil. **Golfsvepet är KLART
+   riksomfattande.** Sidofynd samma dag: Ställplats Lerum fick färskvatten,
+   Wapnö Gård Halmstad ny med gråvatten. Se `docs/svep-logg.md`.
 3. **Helt saknade platser (nya, ej bara "tjänsteberikning")** – upptäckt
    aug 2026 efter att Hofsnäs Herrgård (fullservice-ställplats) visade sig
    saknas helt (varken OSM, TRV eller vårt register hade den – bara
@@ -893,6 +895,19 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
      OSRM): Borås→Ulricehamn gav 21 platser inom 5 km, linje ritad, rensning
      tömde kartan. OBS: tomt Från-fält + känd position = start från "Sök där
      jag är"-positionen.
+   - **Svep på bottenarket (Pers önskemål 11 okt 2026):** man ska i ALLA
+     lägen kunna dra ner arkets övre del och se enbart kartan. Handtaget
+     (`.sheet-handle`) och rubrikraden (`.brand`) i `App.tsx` har nu
+     touch-hanterare (samma mönster som `NearestList`): svep ner (≥30 px)
+     → `collapsed + mini` (bara handtag + appnamn), svep upp → ett steg
+     upp (mini → hopfällt → utfällt). Tryck fungerar som förut. Två
+     fallgropar: (1) `touch-action: none` på handtaget gjorde att Chromium
+     inte skapade några klick alls efter tryck – regeln togs bort; (2) i
+     minimalt läge kördes panelens `onClickCapture` OCH handtagets egen
+     `onClick` på samma tryck (React hann omrendera emellan) så arket
+     hoppade till helt utfällt – capture-hanteraren stoppar nu
+     propageringen. Verifierat med Playwright (390×760, CDP-touch): alla
+     sex svep/tryck-fall ger rätt läge. sw.js → v80.
    - **"Du är här"-pricken jättestor vid "Sök där jag är" (Pers rapport
      7 okt 2026):** markören var en `L.circleMarker` i vektorlagret, som
      Leaflet skalar med kartan under flyTo-animationen – cirkeln såg
