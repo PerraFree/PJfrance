@@ -141,6 +141,28 @@ Android förberett (`docs/BUILD-MOBILE.md`).
 - Webbplatser mäts aldrig härifrån: ett blankt kartområde hos Per betyder att
   tile-leverantören inte svarade, inte att appen är trasig – testa byggversionen.
 
+## Granskning före push (Per kan inte granska kod – sessionen är granskaren)
+
+Johans säkerhetsgenomgång 11 okt 2026 hittade fyra brister som funnits sedan
+augusti (öppen foto-URL, för bred token, moderering som kunde stoppas, inget
+spamskydd) plus en trasig installation och en uppsvälld CLAUDE.md. Alla hade
+fångats av punkterna nedan. Gå igenom dem före varje push som rör något av
+`supabase/`, `.github/workflows/`, formulären eller `src/lib/*.ts` som anropar
+Supabase – och kör `/security-review` på diffen.
+
+1. **Allt användaren kan skicka in** (fält, filer, URL:er) valideras i
+   databasen, inte bara i appen: tillåtna värden, längd, mängd per tid.
+   Anon-nyckeln är publik – allt som appen kan göra kan vem som helst göra.
+2. **Varje hemlighet:** vilka jobb använder den, vad kan den göra, är det det
+   minsta som behövs? Efter byte/rotation körs VARJE jobb som använder den.
+3. **Varje ny konfiguration** (workflow, Dependabot, etikett, policy) verifieras
+   med en riktig körning, inte bara genom att den ser rätt ut.
+4. **Testa fientligt, inte bara glatt:** vad händer med 300 tecken, 1 000
+   inskick, en främmande URL, ett `@användarnamn` i texten, en leverantör som
+   inte svarar?
+5. **Dokumentation:** regel i CLAUDE.md, läge i `docs/STATUS.md`, logg i
+   `docs/svep-logg.md`. Aldrig tvärtom.
+
 ## Commit-regler
 
 Svenska commit-meddelanden. Avsluta alltid med:
