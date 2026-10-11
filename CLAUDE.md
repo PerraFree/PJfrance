@@ -236,8 +236,16 @@ Pers instruktioner). Det som en ny session behöver veta utöver resten av filen
   campingkollen (JS). Nästa naturliga steg är veckorutinens rotation i
   `docs/svep-logg.md` (område D "kontroll av befintliga platser" och E
   "öppettider/säsong" har flest luckor), eller crowdsourcing-lanseringen.
-- **Seed 11 okt 14:10:** 6 624 platser (OSM 4 624, Trafikverket 318, register
-  1 681 varav ~330 grå). Registret har 1 682 poster.
+- **Område D kört första gången 11 okt (Västra Götaland):** 40 platser
+  kontrollerade mot egen källa, 21 registerposter rättade (säsong/avgift),
+  8 "kontrollposter" ovanpå OSM-platser. Se `docs/svep-logg.md`. Mönster:
+  `UPPDRAG-kontroll.md` + `apply-kontroll.mjs` i `scripts/import-tools/`;
+  agenternas avgifts-/säsongstexter måste alltid kortas för hand efteråt.
+  Nästa D-region: Skåne eller Stockholms län.
+- **Bottenarket följer fingret vid drag (11 okt, Pers önskemål):** native
+  `touchmove` (passive:false) flyttar `.panel` med translateY, släpp ≥60 px
+  → mini, annars tillbaka. Playwright 8/8. sw.js v82.
+- **Seed 11 okt 17:5x:** 6 632 platser. Registret har 1 690 poster.
 - Supabase-tokenpåminnelsen (~mitten av november) är en Claude-rutin på
   kontot, inte något i repot.
 
