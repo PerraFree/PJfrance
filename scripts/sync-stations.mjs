@@ -544,6 +544,7 @@ async function fetchTrafikverket(apiKey) {
 
 async function geocode(query) {
   // 1) Nominatim (exakta adresser)
+  let nominatimAnswered = false
   try {
     const url =
       'https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=se&q=' +
@@ -554,6 +555,7 @@ async function geocode(query) {
     })
     if (res.ok) {
       const json = await res.json()
+      nominatimAnswered = true
       if (json.length) return { lat: parseFloat(json[0].lat), lon: parseFloat(json[0].lon) }
     }
   } catch {
@@ -571,7 +573,13 @@ async function geocode(query) {
   const hit = (pjson.features ?? []).find(
     (f) => f.properties?.countrycode === 'SE' && f.geometry?.coordinates,
   )
-  if (!hit) return null
+  if (!hit) {
+    // "Hittas inte" får bara sägas när Nominatim faktiskt svarade – ett 504
+    // från Nominatim + tomt Photon-svar är ett FEL, inte en miss (annars
+    // cachas det som miss i 30 dagar och platsen försvinner ur seeden).
+    if (!nominatimAnswered) throw new Error('Nominatim svarade inte och Photon hittade inget')
+    return null
+  }
   const [lon, lat] = hit.geometry.coordinates
   return { lat, lon }
 }
@@ -623,6 +631,16 @@ async function fetchCurated() {
   } catch {
     /* första körningen – tom cache */
   }
+  // Förra seedens lägen för registerposter (namn → lat/lon), reserv vid miss.
+  const prevPos = new Map()
+  try {
+    const prev = JSON.parse(await readFile(OUT, 'utf8'))
+    for (const s of prev.stations ?? prev) {
+      if (typeof s.id === 'string' && s.id.startsWith('curated-')) prevPos.set(s.name, { lat: s.lat, lon: s.lon })
+    }
+  } catch {
+    /* ingen tidigare seed */
+  }
   const stats = { cached: 0, looked: 0 }
   const stations = []
   for (const [i, e] of entries.entries()) {
@@ -650,7 +668,16 @@ async function fetchCurated() {
           stats.looked++
           pos = await geocode(e.query)
           const at = new Date().toISOString()
-          cache[e.query] = pos ? { lat: pos.lat, lon: pos.lon, at } : { miss: true, at }
+          if (!pos && prevPos.has(e.name)) {
+            // Geokodaren hittar inget NU men platsen låg i förra seeden –
+            // behåll det läget hellre än att tappa platsen (hände 11 okt 2026
+            // med Furusjöns Camping efter ett tillfälligt Nominatim-fel).
+            pos = prevPos.get(e.name)
+            console.warn(`Register: "${e.query}" (${e.name}) hittades inte nu – behåller läget från förra seeden`)
+            cache[e.query] = { lat: pos.lat, lon: pos.lon, at, from: 'prev-seed' }
+          } else {
+            cache[e.query] = pos ? { lat: pos.lat, lon: pos.lon, at } : { miss: true, at }
+          }
         }
       }
       if (!pos) {
