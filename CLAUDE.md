@@ -78,7 +78,13 @@ bumpa `CACHE`-versionen vid behov). Capacitor/Android finns förberett
   (träffar + missar; missar prövas om efter 30 dagar) så ~950 registerposter inte
   slås upp på nytt varje gång (var ~20 min ren väntetid). Nyckeln är exakt
   `query`-text – ändra queryn så slås posten upp igen; radera raden i cachen
-  för att tvinga ny uppslagning av en oförändrad post.
+  för att tvinga ny uppslagning av en oförändrad post. **Lärdom 11 okt:** i
+  första synken med cachen föll Furusjöns Camping bort – Nominatim gav ett
+  tillfälligt fel, Photon hittade inget, och "miss" cachades i 30 dagar.
+  Därför: `geocode()` kastar fel (cachas inte) när Nominatim inte svarade
+  alls, och vid genuin miss behålls läget från förra seeden (`OUT`, numera
+  committad) om posten fanns där (`from: 'prev-seed'` i cachen). Mätt 11 okt:
+  koddeploy 39 s (förut ~32 min), synk 3 min 18 s (förut ~30 min).
 - `installera-databasen.yml` – engångsknapp: hittar Supabase-projektet, väcker pausat projekt, hämtar/skapar nyckel, skriver `supabase.env`, kör schema, dispatchar deploy. Kräver secret `SUPABASE_ACCESS_TOKEN`.
 - `bevaka-platsforslag.yml` – var 3:e timme: nya förslag/kommentarer → GitHub-ärenden (mejl till Per). Markör `<!-- submission:UUID -->` på FÖRSTA raden; användartext saneras via `cell()`.
 - `hantera-platsforslag.yml` – kommentar `godkänn`/`neka`/`avslå` i ärendet uppdaterar Supabase (ord-jämförelse, INTE `\b` – trasigt med å/ä/ö). Väcker pausad databas först.
