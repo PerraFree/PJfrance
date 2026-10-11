@@ -21,6 +21,15 @@ aldrig skriva SQL eller pilla i Supabase.
    → *Run workflow*. Den hittar ditt Supabase-projekt, kopplar ihop allt
    (adress + besöksnyckel läggs in automatiskt), skapar tabellerna och bygger
    om appen. Vänta ett par minuter. Klart!
+4. **Granskningsnyckel** (för mejlflödet godkänn/neka): öppna
+   https://supabase.com/dashboard → ditt projekt → *Project Settings* →
+   *API Keys* → fliken *Secret keys* → skapa/kopiera nyckeln (börjar på
+   `sb_secret_`) → lägg in den som secret med namnet `SUPABASE_SERVICE_KEY`
+   på https://github.com/PerraFree/PJfrance/settings/secrets/actions/new.
+   Den går aldrig ut och kan bara läsa/skriva i databasen, inte ändra
+   projektet. (Kontotoken i steg 1–2 går ut efter ~90 dagar och används
+   numera bara av *Installera databasen*, som du kör vid behov – t.ex.
+   efter en ändring i `supabase/schema.sql`.)
 
 Kontrollera resultatet på adminsidan (?admin=1) – alla rader ska vara gröna.
 Kolla även att rätt mejladress står på https://github.com/settings/notifications.

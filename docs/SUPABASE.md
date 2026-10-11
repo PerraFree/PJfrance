@@ -187,14 +187,22 @@ Repo:t har två workflows som gör granskningen enkel:
   `godkänn` publicerar platsen för alla direkt, `neka` avslår. Ärendet stängs
   automatiskt.
 
-**Engångssteg för att aktivera** (samma nyckel som installationen använder):
+**Engångssteg för att aktivera:**
 
 1. Skapa en personlig åtkomstnyckel på
    [supabase.com/dashboard/account/tokens](https://supabase.com/dashboard/account/tokens)
-   → **Generate new token**.
+   → **Generate new token** (Resource access: bara projektet).
 2. Lägg in den som repo-**secret** med namnet `SUPABASE_ACCESS_TOKEN`
    (GitHub → Settings → Secrets and variables → Actions → New repository
    secret). Nyckeln är hemlig – den läggs ALDRIG i frontend, bara som secret.
-3. Kör workflowen **Installera databasen** (Actions-fliken) en gång.
+3. Kör workflowen **Installera databasen** (Actions-fliken) en gång. Det är
+   den enda workflowen som använder kontotoken (den behövs för att skapa
+   tabeller och hämta nycklar via Supabases Management API). Kör den igen
+   efter varje ändring i `supabase/schema.sql`.
+4. Hämta projektets **hemliga API-nyckel** (Project Settings → API Keys →
+   Secret keys, `sb_secret_…`; den äldre `service_role`-nyckeln fungerar
+   också) och lägg in den som secret `SUPABASE_SERVICE_KEY`. Bevakningen och
+   godkänn/neka-jobbet använder bara den: den går inte ut och kan inte ändra
+   projektinställningar (säkerhetsfynd 2 i GHSA-72p3-7774-p8h3, okt 2026).
 
 Hela flödet finns steg-för-steg i [docs/ADMIN.md](ADMIN.md).

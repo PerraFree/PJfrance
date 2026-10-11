@@ -169,6 +169,19 @@ export default function AdminPanel() {
             Supabase-projekt, kopplar ihop allt och bygger om appen automatiskt. Vänta
             ett par minuter → ladda om den här sidan. Alla rader ska nu vara gröna.
           </li>
+          <li>
+            <strong>Granskningsnyckel</strong> (för mejlflödet godkänn/neka): öppna{' '}
+            <a href="https://supabase.com/dashboard" target="_blank" rel="noopener noreferrer">
+              Supabase
+            </a>{' '}
+            → ditt projekt → <em>Project Settings</em> → <em>API Keys</em> → fliken{' '}
+            <em>Secret keys</em> → skapa/kopiera nyckeln (börjar på <code>sb_secret_</code>) →{' '}
+            <a href={`${REPO}/settings/secrets/actions/new`} target="_blank" rel="noopener noreferrer">
+              ny secret hos GitHub
+            </a>{' '}
+            med namnet <code>SUPABASE_SERVICE_KEY</code>. Den går aldrig ut och kan bara läsa/skriva
+            i databasen – inte ändra projektet.
+          </li>
         </ol>
         <p>
           Kolla också att din mejladress stämmer under{' '}

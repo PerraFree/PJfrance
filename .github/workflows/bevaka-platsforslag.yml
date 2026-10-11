@@ -1,9 +1,16 @@
 name: Bevaka platsförslag
 
-# Ser till att databasen är installerad, kollar sedan efter nya platsförslag
-# och kommentarer, och öppnar ett GitHub-ärende per post. GitHub mejlar dig
-# automatiskt. Godkänn genom att kommentera "godkänn" i ärendet.
-# Kräver secret SUPABASE_ACCESS_TOKEN (supabase.com/dashboard/account/tokens).
+# Kollar efter nya platsförslag och kommentarer i Supabase och öppnar ett
+# GitHub-ärende per post. GitHub mejlar dig automatiskt. Godkänn genom att
+# kommentera "godkänn" i ärendet.
+#
+# Kräver secret SUPABASE_SERVICE_KEY = projektets HEMLIGA API-nyckel
+# (Supabase → Project Settings → API Keys → "Secret keys" → sb_secret_…,
+# eller den äldre "service_role"-nyckeln). Den går inte ut och kan bara
+# läsa/skriva i databasen, inte ändra projektet (säkerhetsfynd 2,
+# GHSA-72p3-7774-p8h3). Kontotoken SUPABASE_ACCESS_TOKEN används numera
+# BARA av "Installera databasen" (manuell) – det är också den som kör
+# supabase/schema.sql; ändrar du schemat, kör den workflowen en gång.
 
 on:
   workflow_dispatch:
@@ -26,65 +33,40 @@ jobs:
       - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         env:
           SUPABASE_URL: ${{ vars.SUPABASE_URL }}
-          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         with:
           script: |
             const fs = require('fs')
-            const token = process.env.SUPABASE_ACCESS_TOKEN
+            const key = process.env.SUPABASE_SERVICE_KEY
             let urlVar = process.env.SUPABASE_URL
             if (!urlVar && fs.existsSync('supabase.env')) {
               const m = fs.readFileSync('supabase.env', 'utf8').match(/VITE_SUPABASE_URL=(.+)/)
               if (m) urlVar = m[1].trim()
             }
-            if (!token || !urlVar) {
-              core.notice('SUPABASE_ACCESS_TOKEN eller Supabase-koppling saknas – hoppar över. Kör "Installera databasen" först (se docs/ADMIN.md).')
+            if (!key || !urlVar) {
+              core.setFailed(
+                'Secret SUPABASE_SERVICE_KEY saknas (eller Supabase-kopplingen). Hämta projektets hemliga ' +
+                  'API-nyckel i Supabase (Project Settings → API Keys) och lägg in den som repo-secret ' +
+                  'SUPABASE_SERVICE_KEY. Se docs/ADMIN.md.',
+              )
               return
             }
-            const ref = new URL(urlVar).hostname.split('.')[0]
-            const mgmtHeaders = { Authorization: `Bearer ${token}` }
-            // Hämtar projektstatus och loggar HTTP-felet rakt av om anropet inte
-            // lyckas (t.ex. ogiltig/utgången token) – annars blir `proj.status`
-            // bara "undefined" i tysthet och man tror felaktigt att databasen
-            // aldrig vaknar (hände sep 2026, se CLAUDE.md).
-            const getProj = async () => {
-              const res = await fetch(`https://api.supabase.com/v1/projects/${ref}`, { headers: mgmtHeaders })
-              const body = await res.json().catch(() => ({}))
+            // PostgREST med den hemliga nyckeln (kringgår RLS). Nya sb_secret_-
+            // nycklar skickas bara i apikey-headern; äldre service_role-nycklar
+            // (JWT, börjar på "eyJ") även som Bearer.
+            const base = urlVar.replace(/\/$/, '')
+            const headers = { apikey: key, 'Content-Type': 'application/json' }
+            if (key.startsWith('eyJ')) headers.Authorization = `Bearer ${key}`
+            const q = async (path) => {
+              const res = await fetch(`${base}/rest/v1/${path}`, { headers })
               if (!res.ok) {
                 throw new Error(
-                  `Supabase Management API svarade ${res.status} för projekt "${ref}": ` +
-                    `${JSON.stringify(body).slice(0, 300)}. Kontrollera att SUPABASE_ACCESS_TOKEN ` +
-                    `fortfarande är giltig (supabase.com/dashboard/account/tokens).`,
+                  `Supabase svarade ${res.status} för ${path.split('?')[0]}: ${(await res.text()).slice(0, 300)}. ` +
+                    'Kontrollera SUPABASE_SERVICE_KEY, och att projektet inte är pausat (supabase.com/dashboard).',
                 )
               }
-              return body
-            }
-            // Väck databasen om den är pausad (gratisprojekt somnar)
-            let proj = await getProj()
-            if (String(proj.status).startsWith('INACTIVE')) {
-              core.info('Databasen är pausad – väcker den …')
-              await fetch(`https://api.supabase.com/v1/projects/${ref}/restore`, { method: 'POST', headers: mgmtHeaders })
-            }
-            for (let i = 0; i < 40 && !String(proj.status).includes('ACTIVE_HEALTHY'); i++) {
-              await new Promise((r) => setTimeout(r, 15_000))
-              proj = await getProj()
-              if (i % 4 === 0) core.info(`  … väntar på databasen: ${proj.status}`)
-            }
-            if (!String(proj.status).includes('ACTIVE_HEALTHY')) {
-              core.setFailed(`Databasen vaknade inte i tid (${proj.status}). Nästa körning försöker igen.`)
-              return
-            }
-            const q = async (query) => {
-              const res = await fetch(`https://api.supabase.com/v1/projects/${ref}/database/query`, {
-                method: 'POST',
-                headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-                body: JSON.stringify({ query }),
-              })
-              if (!res.ok) throw new Error(`Supabase svarade ${res.status}: ${await res.text()}`)
               return res.json()
             }
-
-            // 0) Självläkning: se till att alla tabeller/regler finns (idempotent)
-            await q(fs.readFileSync('supabase/schema.sql', 'utf8'))
 
             // Befintliga gransknings-ärenden (dedup)
             const labels = ['platsförslag', 'omdöme']
@@ -159,15 +141,12 @@ jobs:
 
             // 1) Platsförslag
             const subs = await q(
-              `select id,name,address,services,fee,description,lat,lon from submissions where status = 'pending' order by created_at asc`,
+              'submissions?status=eq.pending&select=id,name,address,services,fee,description,lat,lon&order=created_at.asc&limit=500',
             )
             for (const r of subs) {
               const marker = `<!-- submission:${r.id} -->`
               if (seen(marker)) continue
-              // services kan komma som JS-array eller Postgres-literal "{a,b}"
-              const services = Array.isArray(r.services)
-                ? r.services.join(', ')
-                : String(r.services ?? '').replace(/^\{|\}$/g, '').split(',').filter(Boolean).join(', ')
+              const services = Array.isArray(r.services) ? r.services.join(', ') : String(r.services ?? '')
               const body = [
                 marker,
                 `**Nytt platsförslag väntar på granskning**`,
@@ -189,7 +168,7 @@ jobs:
 
             // 2) Kommentarer/omdömen med text
             const revs = await q(
-              `select id,station_id,station_name,rating,comment from reviews where status = 'pending' order by created_at asc`,
+              'reviews?status=eq.pending&select=id,station_id,station_name,rating,comment&order=created_at.asc&limit=500',
             )
             for (const r of revs) {
               const marker = `<!-- review:${r.id} -->`

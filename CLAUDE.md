@@ -86,9 +86,10 @@ bumpa `CACHE`-versionen vid behov). Capacitor/Android finns förberett
   committad) om posten fanns där (`from: 'prev-seed'` i cachen). Mätt 11 okt:
   koddeploy 39 s (förut ~32 min), synk 3 min 18 s (förut ~30 min).
 - `installera-databasen.yml` – engångsknapp: hittar Supabase-projektet, väcker pausat projekt, hämtar/skapar nyckel, skriver `supabase.env`, kör schema, dispatchar deploy. Kräver secret `SUPABASE_ACCESS_TOKEN`.
-- `bevaka-platsforslag.yml` – var 3:e timme: nya förslag/kommentarer → GitHub-ärenden (mejl till Per). Markör `<!-- submission:UUID -->` på FÖRSTA raden; användartext saneras via `cell()`.
-- `hantera-platsforslag.yml` – kommentar `godkänn`/`neka`/`avslå` i ärendet uppdaterar Supabase (ord-jämförelse, INTE `\b` – trasigt med å/ä/ö). Väcker pausad databas först.
-- Secrets: `SUPABASE_ACCESS_TOKEN`, `TRV_API_KEY`.
+- `bevaka-platsforslag.yml` – var 3:e timme: nya förslag/kommentarer → GitHub-ärenden (mejl till Per). Markör `<!-- submission:UUID -->` på FÖRSTA raden; användartext saneras via `cell()` (@ och # neutraliseras). Max 20 ärenden per körning, try/catch per rad. Läser via PostgREST med `SUPABASE_SERVICE_KEY` – kör INTE längre schema.sql och väcker inte databasen (säkerhetsfynd 2, okt 2026).
+- `hantera-platsforslag.yml` – kommentar `godkänn`/`neka`/`avslå` i ärendet uppdaterar Supabase via PostgREST PATCH med `SUPABASE_SERVICE_KEY` (ord-jämförelse, INTE `\b` – trasigt med å/ä/ö).
+- Secrets: `SUPABASE_ACCESS_TOKEN` (BARA `installera-databasen.yml`), `SUPABASE_SERVICE_KEY` (projektets hemliga API-nyckel, `sb_secret_…`/service_role – bevakning + godkänn/neka), `TRV_API_KEY`.
+- **Ändrad `supabase/schema.sql` tas i bruk genom att köra `installera-databasen.yml` manuellt** (workflow_dispatch). Självläkningen i bevakningen är borttagen (fynd 2).
 - **Alla actions är låsta till commit-SHA** (issue #14 från Pers vän, 11 okt
   2026) med versionen som kommentar efter `#`. `.github/dependabot.yml`
   (github-actions, veckovis måndag) skickar PR:er när nya versioner finns –
@@ -121,16 +122,19 @@ bumpa `CACHE`-versionen vid behov). Capacitor/Android finns förberett
   scoped access-tokens (deras gamla "legacy" full-access-tokens gick aldrig
   ut, men de nya scoped-tokens är begränsade till max ~90 dagar även om man
   väljer "Custom"/längsta datum). Gick ut oväntat 2–7 sep 2026 → alla tre
-  ovanstående jobb fick `401 Unauthorized` (`bevaka-platsforslag.yml` visade
-  det tydligast, med "Databasen vaknade inte i tid" tills felsökningen
-  förbättrades att visa HTTP-status/svarstext direkt i stället för att bara
-  pollra blint i 10 minuter, se `getProj()` i `bevaka-platsforslag.yml`).
+  dåvarande jobb fick `401 Unauthorized`. **Sedan 11 okt 2026 (säkerhetsfynd
+  2) använder bara `installera-databasen.yml` token** – bevakning och
+  godkänn/neka kör på `SUPABASE_SERVICE_KEY` som inte går ut, så en utgången
+  token märks först när någon kör installationen (t.ex. efter schemaändring).
   Ny token skapad 7 sep 2026 (giltig ~90 dagar, dvs ca 6 dec 2026) – en
   påminnelse är schemalagd ~3 veckor innan, men om den missas: gå till
   https://supabase.com/dashboard/account/tokens → *Generate new token* →
   Resource access: **Project** → org **PerraFree's Org** → projekt
-  **Greywater** → Permissions: preset **Full access** → Expires in: längsta
-  tillåtna (just nu ~90 dagar) → *Review access* → *Create token* → kopiera
+  **Greywater** → Permissions: välj bara det installationen behöver
+  (projekt läsa/väcka, API-nycklar läsa/skapa, databas query) hellre än
+  **Full access** (Johans råd, fynd 2) → Expires in: längsta tillåtna
+  (enligt Supabases changelog upp till ett år sedan okt 2026) →
+  *Review access* → *Create token* → kopiera
   `sbp_…`-strängen → uppdatera secreten på
   https://github.com/PerraFree/PJfrance/settings/secrets/actions.
 

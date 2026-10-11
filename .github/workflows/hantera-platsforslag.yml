@@ -3,7 +3,11 @@ name: Hantera platsförslag
 # När du kommenterar "godkänn" eller "neka" i ett gransknings-ärende
 # uppdateras posten i Supabase. Godkända platser/kommentarer visas direkt
 # för alla (appen läser godkänt live – ingen omdeploy behövs).
-# Kräver secret SUPABASE_ACCESS_TOKEN.
+#
+# Kräver secret SUPABASE_SERVICE_KEY = projektets hemliga API-nyckel (se
+# bevaka-platsforslag.yml). Går inte ut, kan bara läsa/skriva i databasen –
+# inte ändra projektet (säkerhetsfynd 2, GHSA-72p3-7774-p8h3). Jobbet
+# startas av en issue-kommentar och behöver bara ändra `status` i en rad.
 
 on:
   issue_comment:
@@ -28,7 +32,7 @@ jobs:
       - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         env:
           SUPABASE_URL: ${{ vars.SUPABASE_URL }}
-          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         with:
           script: |
             const fs = require('fs')
@@ -63,43 +67,40 @@ jobs:
             }
             const table = m[1] === 'review' ? 'reviews' : 'submissions'
             const id = m[2]
-            const token = process.env.SUPABASE_ACCESS_TOKEN
+            const key = process.env.SUPABASE_SERVICE_KEY
             let urlVar = process.env.SUPABASE_URL
             if (!urlVar && fs.existsSync('supabase.env')) {
               const m = fs.readFileSync('supabase.env', 'utf8').match(/VITE_SUPABASE_URL=(.+)/)
               if (m) urlVar = m[1].trim()
             }
-            if (!token || !urlVar) {
-              core.setFailed('SUPABASE_ACCESS_TOKEN eller Supabase-koppling saknas. Se docs/ADMIN.md.')
+            if (!key || !urlVar) {
+              core.setFailed('Secret SUPABASE_SERVICE_KEY eller Supabase-koppling saknas. Se docs/ADMIN.md.')
               return
             }
-            const ref = new URL(urlVar).hostname.split('.')[0]
-            const mgmtHeaders = { Authorization: `Bearer ${token}` }
-            // Väck databasen om den är pausad (gratisprojekt somnar av sig
-            // själva) så att godkännandet inte tappas bort.
-            let proj = await (await fetch(`https://api.supabase.com/v1/projects/${ref}`, { headers: mgmtHeaders })).json()
-            if (String(proj.status).startsWith('INACTIVE')) {
-              core.info('Databasen är pausad – väcker den …')
-              await fetch(`https://api.supabase.com/v1/projects/${ref}/restore`, { method: 'POST', headers: mgmtHeaders })
+            const base = urlVar.replace(/\/$/, '')
+            const headers = {
+              apikey: key,
+              'Content-Type': 'application/json',
+              Prefer: 'return=representation',
             }
-            for (let i = 0; i < 40 && !String(proj.status).includes('ACTIVE_HEALTHY'); i++) {
-              await new Promise((r) => setTimeout(r, 15_000))
-              proj = await (await fetch(`https://api.supabase.com/v1/projects/${ref}`, { headers: mgmtHeaders })).json()
-              if (i % 4 === 0) core.info(`  … väntar på databasen: ${proj.status}`)
-            }
-            if (!String(proj.status).includes('ACTIVE_HEALTHY')) {
-              core.setFailed(`Databasen vaknade inte i tid (${proj.status}). Kommentera "${word}" igen om en stund.`)
-              return
-            }
-            const res = await fetch(`https://api.supabase.com/v1/projects/${ref}/database/query`, {
-              method: 'POST',
-              headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                query: `update ${table} set status = '${status}' where id = '${id}'`,
-              }),
+            if (key.startsWith('eyJ')) headers.Authorization = `Bearer ${key}`
+            // Bara status-kolumnen, bara raden med exakt detta id (uuid-format
+            // kontrollerat av regexen ovan).
+            const res = await fetch(`${base}/rest/v1/${table}?id=eq.${id}`, {
+              method: 'PATCH',
+              headers,
+              body: JSON.stringify({ status }),
             })
             if (!res.ok) {
-              core.setFailed(`Supabase svarade ${res.status}: ${await res.text()}`)
+              core.setFailed(
+                `Supabase svarade ${res.status}: ${(await res.text()).slice(0, 300)}. ` +
+                  'Kontrollera SUPABASE_SERVICE_KEY, och att projektet inte är pausat. Kommentera igen om en stund.',
+              )
+              return
+            }
+            const rows = await res.json()
+            if (!Array.isArray(rows) || rows.length !== 1) {
+              core.setFailed(`Hittade ingen rad med id ${id} i ${table} – är den redan borttagen i Supabase?`)
               return
             }
             const vad = table === 'reviews' ? 'kommentaren' : 'platsen'

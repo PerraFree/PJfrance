@@ -1,6 +1,6 @@
 name: Test RLS (tillfällig)
 
-# Tillfälligt testjobb för säkerhetsfynd 3/4 (GHSA-72p3-7774-p8h3). Tas bort
+# Tillfälligt testjobb för säkerhetsfynd 2/4 (GHSA-72p3-7774-p8h3). Tas bort
 # efter verifiering. Körs från en runner eftersom Supabase är blockerat från
 # Claude-sandboxen.
 
@@ -15,39 +15,53 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Testa längdgränser + sondera headers
+      - name: Testa hemlig nyckel + sondera headers
         env:
           SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
         run: |
           set -u
           URL=$(grep VITE_SUPABASE_URL supabase.env | cut -d= -f2)
           KEY=$(grep VITE_SUPABASE_ANON_KEY supabase.env | cut -d= -f2)
           REF=$(echo "$URL" | sed -E 's#https://([^.]+)\..*#\1#')
           H=(-H "apikey: $KEY" -H "Authorization: Bearer $KEY" -H "Content-Type: application/json" -H "Prefer: return=minimal")
-          post() { curl -s -o /tmp/body -w "%{http_code}" "${H[@]}" -X POST "$URL/rest/v1/$1" -d "$2"; }
           q() { curl -s -X POST "https://api.supabase.com/v1/projects/$REF/database/query" \
                  -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN" -H "Content-Type: application/json" \
                  -d "{\"query\": $(printf '%s' "$1" | jq -Rs .)}"; }
           fail=0
 
-          LONG=$(printf 'x%.0s' $(seq 1 300))
-          c=$(post submissions "{\"name\":\"$LONG\",\"address\":\"RLS-test\",\"services\":[\"vatten\"],\"lat\":57.7,\"lon\":12.9,\"status\":\"pending\"}")
-          echo "300 tecken namn → HTTP $c ($(head -c 200 /tmp/body))"
-          case "$c" in 4*) echo "  OK: nekas";; *) echo "  FEL: skulle nekas"; fail=1;; esac
+          # --- Fynd 2: hemlig nyckel via PostgREST ---
+          if [ -z "${SUPABASE_SERVICE_KEY:-}" ]; then
+            echo "SERVICE_KEY: saknas – secret SUPABASE_SERVICE_KEY är inte skapad ännu"
+            fail=1
+          else
+            SH=(-H "apikey: $SUPABASE_SERVICE_KEY" -H "Content-Type: application/json")
+            case "$SUPABASE_SERVICE_KEY" in eyJ*) SH+=(-H "Authorization: Bearer $SUPABASE_SERVICE_KEY");; esac
+            echo "SERVICE_KEY: format $(echo "$SUPABASE_SERVICE_KEY" | cut -c1-10)…"
+            c=$(curl -s -o /tmp/body -w "%{http_code}" "${H[@]}" -X POST "$URL/rest/v1/submissions" \
+                 -d '{"name":"RLS-test nyckel","address":"RLS-test","services":["vatten"],"lat":57.7,"lon":12.9,"status":"pending"}')
+            echo "Testförslag (anon) → HTTP $c"
+            c=$(curl -s -o /tmp/body -w "%{http_code}" "${SH[@]}" "$URL/rest/v1/submissions?status=eq.pending&address=eq.RLS-test&select=id")
+            echo "Läs väntande med hemlig nyckel → HTTP $c ($(head -c 200 /tmp/body))"
+            case "$c" in 200) echo "  OK";; *) echo "  FEL"; fail=1;; esac
+            ID=$(jq -r '.[0].id // empty' /tmp/body)
+            if [ -n "$ID" ]; then
+              c=$(curl -s -o /tmp/body -w "%{http_code}" "${SH[@]}" -H "Prefer: return=representation" -X PATCH \
+                   "$URL/rest/v1/submissions?id=eq.$ID" -d '{"status":"rejected"}')
+              echo "PATCH status med hemlig nyckel → HTTP $c (rader: $(jq 'length' /tmp/body 2>/dev/null))"
+              case "$c" in 200) echo "  OK";; *) echo "  FEL"; fail=1;; esac
+            fi
+            c=$(curl -s -o /tmp/body -w "%{http_code}" "${H[@]}" -X PATCH "$URL/rest/v1/submissions?address=eq.RLS-test" -d '{"status":"approved"}')
+            echo "PATCH med anon-nyckeln → HTTP $c (ska nekas eller 0 rader)"
+            c=$(curl -s -o /tmp/body -w "%{http_code}" "${SH[@]}" "https://api.supabase.com/v1/projects/$REF")
+            echo "Hemlig nyckel mot Management API → HTTP $c (ska nekas)"
+          fi
 
-          c=$(post submissions '{"name":"RLS-test normalt","address":"RLS-test","services":["vatten"],"lat":57.7,"lon":12.9,"status":"pending"}')
-          echo "Normalt förslag → HTTP $c ($(head -c 200 /tmp/body))"
-          case "$c" in 201) echo "  OK: tillåts";; *) echo "  FEL: skulle tillåtas"; fail=1;; esac
-
-          LONGC=$(printf 'y%.0s' $(seq 1 600))
-          c=$(post reviews "{\"station_id\":\"rls-test\",\"station_name\":\"RLS\",\"rating\":5,\"comment\":\"$LONGC\",\"status\":\"pending\"}")
-          echo "600 tecken kommentar → HTTP $c"
-          case "$c" in 4*) echo "  OK: nekas";; *) echo "  FEL: skulle nekas"; fail=1;; esac
-
-          # Sondering: vilka request-headers når Postgres (för ev. IP-baserat spamskydd)?
-          q "create or replace function public.rls_probe_headers() returns text language sql stable as \$\$ select current_setting('request.headers', true) \$\$; grant execute on function public.rls_probe_headers() to anon;" > /dev/null
-          echo "Headers sedda av databasen: $(curl -s "${H[@]}" -X POST "$URL/rest/v1/rpc/rls_probe_headers" -d '{}' | sed -E 's/("(authorization|apikey)":")[^"]*/\1<dold>/g')"
-          q "drop function if exists public.rls_probe_headers();" > /dev/null
+          # --- Fynd 4: vilka request-headers når Postgres (för ev. IP-baserat spamskydd)? ---
+          q "create or replace function public.rls_probe_headers() returns text language sql stable as \$\$ select current_setting('request.headers', true) \$\$; grant execute on function public.rls_probe_headers() to anon; notify pgrst, 'reload schema';" > /dev/null
+          sleep 5
+          echo "Headers sedda av databasen: $(curl -s "${H[@]}" -X POST "$URL/rest/v1/rpc/rls_probe_headers" -d '{}' | sed -E 's/("(authorization|apikey)":")[^"]*/\1<dold>/g' | sed -E 's/[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/<ip>/g')"
+          q "drop function if exists public.rls_probe_headers(); notify pgrst, 'reload schema';" > /dev/null
 
           q "delete from submissions where address = 'RLS-test'" > /dev/null
           echo "Kvar efter städning: $(q "select count(*) as n from submissions where address = 'RLS-test'")"
