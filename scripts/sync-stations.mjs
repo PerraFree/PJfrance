@@ -602,6 +602,14 @@ function distanceKm(lat1, lon1, lat2, lon2) {
   return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
 }
 
+// Geokodningscache: ~950 registerposter har bara `query` och slogs tidigare upp
+// mot Nominatim/Photon vid VARJE synk (1,2 s per anrop ≈ 20 min, issue #15).
+// Träffar och missar sparas i en committad fil, nyckel = exakt query-sträng.
+// Missar prövas om efter 30 dagar (adresser dyker upp i OSM med tiden).
+// Ändrar man `query` på en post får den automatiskt en ny nyckel.
+const GEOCODE_CACHE = new URL('./geocode-cache.json', import.meta.url)
+const GEOCODE_MISS_RETRY_MS = 30 * 24 * 3600 * 1000
+
 async function fetchCurated() {
   let entries
   try {
@@ -609,6 +617,13 @@ async function fetchCurated() {
   } catch {
     return []
   }
+  let cache = {}
+  try {
+    cache = JSON.parse(await readFile(GEOCODE_CACHE, 'utf8'))
+  } catch {
+    /* första körningen – tom cache */
+  }
+  const stats = { cached: 0, looked: 0 }
   const stations = []
   for (const [i, e] of entries.entries()) {
     // Hoppa över trasiga poster så de aldrig kan krascha appens dedupe.
@@ -616,12 +631,28 @@ async function fetchCurated() {
       console.warn(`Register: hoppar över post utan namn/tjänster (#${i})`)
       continue
     }
+    let networkCall = false
     try {
       // Ange lat/lon direkt i posten för att hoppa över geokodning.
-      const pos =
-        typeof e.lat === 'number' && typeof e.lon === 'number'
-          ? { lat: e.lat, lon: e.lon }
-          : await geocode(e.query)
+      let pos
+      if (typeof e.lat === 'number' && typeof e.lon === 'number') {
+        pos = { lat: e.lat, lon: e.lon }
+      } else {
+        const hit = cache[e.query]
+        const fresh =
+          hit &&
+          (hit.miss ? Date.now() - Date.parse(hit.at) < GEOCODE_MISS_RETRY_MS : true)
+        if (fresh) {
+          stats.cached++
+          pos = hit.miss ? null : { lat: hit.lat, lon: hit.lon }
+        } else {
+          networkCall = true
+          stats.looked++
+          pos = await geocode(e.query)
+          const at = new Date().toISOString()
+          cache[e.query] = pos ? { lat: pos.lat, lon: pos.lon, at } : { miss: true, at }
+        }
+      }
       if (!pos) {
         console.warn(`Register: kunde inte geokoda "${e.query}" (${e.name})`)
         continue
@@ -675,9 +706,17 @@ async function fetchCurated() {
     } catch (err) {
       console.warn(`Register: hämtning misslyckades för "${e.query ?? e.name}": ${err.message}`)
     }
-    // Nominatims policy: max 1 anrop/sekund (bara när geokodning behövs)
-    if (!(typeof e.lat === 'number' && typeof e.lon === 'number')) await sleep(1200)
+    // Nominatims policy: max 1 anrop/sekund (bara när ett riktigt anrop gjordes)
+    if (networkCall) await sleep(1200)
   }
+  // Rensa bort nycklar som inte längre finns i registret så filen inte växer för evigt.
+  const live = new Set(entries.map((e) => e.query).filter(Boolean))
+  for (const k of Object.keys(cache)) if (!live.has(k)) delete cache[k]
+  const sorted = Object.fromEntries(Object.keys(cache).sort().map((k) => [k, cache[k]]))
+  await writeFile(GEOCODE_CACHE, JSON.stringify(sorted, null, 1) + '\n')
+  console.log(
+    `Register: ${stations.length} platser (${stats.cached} lägen från geokodningscachen, ${stats.looked} nya uppslag)`,
+  )
   return stations
 }
 

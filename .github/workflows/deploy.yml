@@ -1,14 +1,21 @@
 name: Deploy till GitHub Pages
 
+# Bygger appen från den COMMITTADE seed-filen (public/data/stations-seed.json)
+# och publicerar – tar ett par minuter. Själva datasynken (OSM/Trafikverket/
+# geokodning, ~30 min) sköts av sync-data.yml, som committar seeden och sedan
+# startar den här workflowen (issue #15). Vill man undantagsvis synka i samma
+# körning: kör workflowen manuellt med rutan "synk" ibockad.
 on:
   push:
     branches:
       - main
       - claude/gravatten-latrin-app-sverige-aed0qg
   workflow_dispatch:
-  schedule:
-    # Veckovis datasynk + omdeploy (körs bara när workflowen finns på default-branchen)
-    - cron: '0 4 * * 1'
+    inputs:
+      synk:
+        description: 'Synka stationsdata (OSM + Trafikverket) innan bygget (~30 min)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -27,7 +34,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Synka stationsdata (OSM + Trafikverket)
+      - name: Synka stationsdata (OSM + Trafikverket) – bara vid manuell körning med "synk"
+        if: github.event_name == 'workflow_dispatch' && inputs.synk
         run: node scripts/sync-stations.mjs
         continue-on-error: true
         env:

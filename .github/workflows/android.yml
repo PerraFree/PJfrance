@@ -55,6 +55,9 @@ jobs:
     name: Starta appen i emulator
     needs: build
     runs-on: ubuntu-latest
+    # contents: write behövs bara för att lägga skärmdumpen på grenen `emulator-skarmdump`
+    permissions:
+      contents: write
     steps:
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
@@ -94,3 +97,21 @@ jobs:
             start.png
             logcat.txt
           if-no-files-found: warn
+      # Artefakter går inte att hämta från Claude-sessionen (nedladdningen går via
+      # blob.core.windows.net som är spärrat), så skärmdumpen läggs även på en egen
+      # fristående gren som bara innehåller senaste skärmdump + logcat.
+      - name: Publicera skärmdumpen på grenen emulator-skarmdump
+        if: always()
+        run: |
+          [ -f start.png ] || { echo "Ingen skärmdump att publicera"; exit 0; }
+          mkdir -p skarmdump && cp start.png skarmdump/ && cp logcat.txt skarmdump/ 2>/dev/null || true
+          cd skarmdump
+          git init -q -b emulator-skarmdump
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          echo "Skärmdump från emulatorstart av commit ${GITHUB_SHA} ($(date -u +%Y-%m-%dT%H:%MZ))" > README.md
+          git add -A
+          git commit -q -m "Emulator-skärmdump för ${GITHUB_SHA}"
+          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" emulator-skarmdump
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

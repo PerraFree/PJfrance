@@ -28,7 +28,11 @@ granskningar: pej2727@gmail.com.
   kontots Settings → Pages (TXT-post `_github-pages-challenge-PerraFree`
   hos Inleed – ska ligga kvar permanent).
 - **Default-branch = arbetsbranch:** `claude/gravatten-latrin-app-sverige-aed0qg`
-- Push till branchen → `deploy.yml` bygger och publicerar till `gh-pages` automatiskt.
+- Push till branchen → `deploy.yml` bygger och publicerar till `gh-pages` automatiskt
+  (ett par minuter – den bygger från den COMMITTADE seed-filen, synkar inte).
+  Datasynken (~30 min) sköts av `sync-data.yml`, som körs vid push på
+  registret/synkskriptet + måndagar 03 UTC, committar seeden med `[skip ci]` och
+  startar därefter deployen själv (issue #15, okt 2026).
 
 ## Teknik
 
@@ -60,7 +64,21 @@ bumpa `CACHE`-versionen vid behov). Capacitor/Android finns förberett
 
 ## Workflows (.github/workflows/)
 
-- `deploy.yml` – bygg + datasynk + publicera till gh-pages (push/dispatch/veckocron må 04). Läser `supabase.env`.
+- `deploy.yml` – bygg + publicera till gh-pages (push/dispatch). Läser `supabase.env`.
+  Synkar INTE data sedan okt 2026 (issue #15: deployen tog ~32 min) – bara om man
+  kör den manuellt med rutan "synk" ibockad. Veckocronen är borttagen (sync-data har en).
+- `sync-data.yml` – enda datasynken: OSM + Trafikverket + registret → committar
+  `public/data/stations-seed.json`, `scripts/commons-image-cache.json` och
+  `scripts/geocode-cache.json` med `[skip ci]`, och startar sedan `deploy.yml` via
+  `gh workflow run` (workflow_dispatch med GITHUB_TOKEN ger en riktig körning).
+  Körs vid push som rör `scripts/sync-stations.mjs`/`curated-places.json` samt
+  måndagar 03 UTC. OBS: en push som ändrar registret ger alltså TVÅ deployer –
+  en direkt (gammal seed, snabb) och en när synken är klar (~30 min senare).
+  `scripts/geocode-cache.json` = Nominatim-/Photon-svar per `query`-sträng
+  (träffar + missar; missar prövas om efter 30 dagar) så ~950 registerposter inte
+  slås upp på nytt varje gång (var ~20 min ren väntetid). Nyckeln är exakt
+  `query`-text – ändra queryn så slås posten upp igen; radera raden i cachen
+  för att tvinga ny uppslagning av en oförändrad post.
 - `installera-databasen.yml` – engångsknapp: hittar Supabase-projektet, väcker pausat projekt, hämtar/skapar nyckel, skriver `supabase.env`, kör schema, dispatchar deploy. Kräver secret `SUPABASE_ACCESS_TOKEN`.
 - `bevaka-platsforslag.yml` – var 3:e timme: nya förslag/kommentarer → GitHub-ärenden (mejl till Per). Markör `<!-- submission:UUID -->` på FÖRSTA raden; användartext saneras via `cell()`.
 - `hantera-platsforslag.yml` – kommentar `godkänn`/`neka`/`avslå` i ärendet uppdaterar Supabase (ord-jämförelse, INTE `\b` – trasigt med å/ä/ö). Väcker pausad databas först.
@@ -72,8 +90,10 @@ bumpa `CACHE`-versionen vid behov). Capacitor/Android finns förberett
   `git ls-remote --tags https://github.com/<ägare>/<repo>` och lås direkt.
   `android.yml` har sedan 11 okt även jobbet `starttest` som startar
   debug-APK:n i en emulator (API 34), tar skärmdump (artefakt
-  `emulator-skarmdump`) och fallerar om appen dör eller logcat visar
-  laddningsfel (issue #13).
+  `emulator-skarmdump` + samma filer force-pushade till den fristående grenen
+  `emulator-skarmdump`, eftersom artefakter inte går att ladda ner från en
+  Claude-session – `git fetch origin emulator-skarmdump` och läs `start.png`)
+  och fallerar om appen dör eller logcat visar laddningsfel (issue #13).
 - **Claude-rutin (inte en GitHub-workflow):** "Veckosvep Tömnmingskartan"
   (skapad om 28 sep 2026, måndagar 05:15 UTC, fristående Claude-session i
   Pers miljö "Perra Lab"). Läser `docs/svep-logg.md`, kör det fokusområde
@@ -1086,7 +1106,8 @@ text, så det tekniska SEO-arbetet bygger på statiska sidor vid sidan av:
   polygon-data; reserv: förra seedens värde per id). Utfall 25 sep: 288
   kommunsidor, sitemap 291 URL:er, om/, robots.txt, og-image.png live.
   `previousOsmCount()` läser nu senast PUBLICERADE seeden (gh-pages raw) –
-  repots egen seed-fil committas inte av CI och var inaktuell. Lokalt test:
+  repots egen seed-fil committades då inte av CI (numera gör sync-data.yml det,
+  men gh-pages-kopian är fortfarande den säkra sanningen). Lokalt test:
   `SEED_PATH=<seed-med-kommun> MIN_KOMMUNER=5 node scripts/build-seo-pages.mjs`.
 - `public/om/index.html` – statisk "Om"-sida med riktig text (vad, funktioner,
   källor, gratis/ingen reklam, kontakt) + JSON-LD `WebApplication`.

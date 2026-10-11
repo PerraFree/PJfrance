@@ -1,5 +1,9 @@
 name: Synka stationsdata till repot
 
+# Enda stället där stationsdatan synkas (OSM + Trafikverket + registret, ~30 min).
+# Resultatet committas som public/data/stations-seed.json; därefter startas
+# deploy.yml så att sajten byggs om från den nya seeden (issue #15). deploy.yml
+# själv synkar inte längre – den tar bara den committade filen.
 on:
   workflow_dispatch:
   push:
@@ -14,6 +18,7 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: sync-data
@@ -32,13 +37,16 @@ jobs:
         env:
           TRV_API_KEY: ${{ secrets.TRV_API_KEY }}
       - name: Committa uppdaterad seed-fil
+        id: commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/data/stations-seed.json scripts/commons-image-cache.json
+          git add public/data/stations-seed.json scripts/commons-image-cache.json scripts/geocode-cache.json
           if git diff --cached --quiet; then
             echo "Ingen ändring i stationsdatan."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
           else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
             git commit -m "Uppdatera stationsdata (automatisk synk) [skip ci]"
             # Synken tar ~30 min – hinner någon pusha under tiden avvisas pushen
             # ("fetch first", hände 28 sep 2026). Rebasa på färsk gren och försök igen.
@@ -52,3 +60,12 @@ jobs:
             done
             [ "$ok" = 1 ] || { echo "::error::Kunde inte pusha seed-filen efter 3 försök"; exit 1; }
           fi
+      # Seed-committen har [skip ci] (annars skulle den starta ännu en synk via
+      # paths ovan), så deployen startas uttryckligen härifrån i stället.
+      # workflow_dispatch via GITHUB_TOKEN skapar en riktig körning (till skillnad
+      # från push-händelser som GITHUB_TOKEN gör – de ignoreras av GitHub).
+      - name: Starta deploy med den nya seeden
+        if: steps.commit.outputs.changed == 'true'
+        run: gh workflow run deploy.yml --ref "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
