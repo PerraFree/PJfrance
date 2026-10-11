@@ -1,0 +1,16 @@
+# Håller de SHA-låsta GitHub Actions-versionerna uppdaterade via PR:er
+# (issue #14, okt 2026). Dependabot uppdaterar både SHA:n och versions-
+# kommentaren efter @. npm-beroenden sköts manuellt (npm audit, se CLAUDE.md).
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: Europe/Stockholm
+    labels:
+      - beroenden
+    commit-message:
+      prefix: "actions"

@@ -65,6 +65,15 @@ bumpa `CACHE`-versionen vid behov). Capacitor/Android finns förberett
 - `bevaka-platsforslag.yml` – var 3:e timme: nya förslag/kommentarer → GitHub-ärenden (mejl till Per). Markör `<!-- submission:UUID -->` på FÖRSTA raden; användartext saneras via `cell()`.
 - `hantera-platsforslag.yml` – kommentar `godkänn`/`neka`/`avslå` i ärendet uppdaterar Supabase (ord-jämförelse, INTE `\b` – trasigt med å/ä/ö). Väcker pausad databas först.
 - Secrets: `SUPABASE_ACCESS_TOKEN`, `TRV_API_KEY`.
+- **Alla actions är låsta till commit-SHA** (issue #14 från Pers vän, 11 okt
+  2026) med versionen som kommentar efter `#`. `.github/dependabot.yml`
+  (github-actions, veckovis måndag) skickar PR:er när nya versioner finns –
+  Per mergar dem i webbläsaren. Ny action = slå upp peeled commit-SHA med
+  `git ls-remote --tags https://github.com/<ägare>/<repo>` och lås direkt.
+  `android.yml` har sedan 11 okt även jobbet `starttest` som startar
+  debug-APK:n i en emulator (API 34), tar skärmdump (artefakt
+  `emulator-skarmdump`) och fallerar om appen dör eller logcat visar
+  laddningsfel (issue #13).
 - **Claude-rutin (inte en GitHub-workflow):** "Veckosvep Tömnmingskartan"
   (skapad om 28 sep 2026, måndagar 05:15 UTC, fristående Claude-session i
   Pers miljö "Perra Lab"). Läser `docs/svep-logg.md`, kör det fokusområde
