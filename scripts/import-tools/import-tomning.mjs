@@ -2,7 +2,7 @@
 // node import-tomning.mjs [--dry]   (körs från repo-roten)
 import fs from 'fs'
 const DRY = process.argv.includes('--dry')
-const S = '/tmp/claude-0/-home-user-PJfrance/6140915e-86bc-5bdf-9a99-cd26fe969797/scratchpad/'
+const S = (process.env.SCRATCH ?? '/tmp') + '/'
 const path = './scripts/curated-places.json'
 const data = JSON.parse(fs.readFileSync(path, 'utf8'))
 const seed = JSON.parse(fs.readFileSync(S + 'seed.json', 'utf8')); const st = seed.stations ?? seed

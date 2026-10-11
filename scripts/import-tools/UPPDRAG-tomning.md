@@ -5,11 +5,11 @@ latrin (kassettoalett) och gråvatten (disk-/duschvatten). Du ska hitta platser 
 saknas i den publicerade datan, eller befintliga platser som saknar tjänsten fast den finns.
 
 ## Filer
-- `/tmp/claude-0/-home-user-PJfrance/6140915e-86bc-5bdf-9a99-cd26fe969797/scratchpad/existing-tomning.json`
+- `<SCRATCH>/existing-tomning.json`
   – alla 1 153 platser som REDAN har gråvatten/latrin (id, name, lat, lon, services). Läs in med node
   och filtrera på din regions lat/lon-box, så ser du vilka kommuner som redan är täckta och var
   luckorna är.
-- `/tmp/claude-0/-home-user-PJfrance/6140915e-86bc-5bdf-9a99-cd26fe969797/scratchpad/existing-all.json`
+- `<SCRATCH>/existing-all.json`
   – ALLA 5 728 platser i appen (även camping/ställplats/vatten/gasol). Innan du rapporterar en plats
   som NY: grep/sök på namnet och kolla om det finns en post inom ~400 m – då är det en KOMPLETTERING
   av den posten (ange dess `id`) i stället för en ny plats.
@@ -36,7 +36,7 @@ saknas i den publicerade datan, eller befintliga platser som saknar tjänsten fa
    (dem får du gärna ta ur eget huvud, de används bara som rimlighetskontroll för geokodningen).
 
 ## Utdata
-Skriv JSON till `/tmp/claude-0/-home-user-PJfrance/6140915e-86bc-5bdf-9a99-cd26fe969797/scratchpad/results/tomning-<REGION>.json`:
+Skriv JSON till `<SCRATCH>/results/tomning-<REGION>.json`:
 ```json
 {
   "region": "...",

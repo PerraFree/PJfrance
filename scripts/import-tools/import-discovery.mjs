@@ -3,7 +3,7 @@
 // low → grå (unverified). Dedupe mot publicerad seed (400 m, samma tjänster) och registret (namn).
 // Träffar utan koordinat geokodas av synken via `query` + kommunens medianläge (nearLat/nearLon).
 import fs from 'fs'
-const S = '/tmp/claude-0/-home-user-PJfrance/9b0981ce-396d-5ade-a574-c11dcb80a101/scratchpad'
+const S = (process.env.SCRATCH ?? '/tmp') + '/'
 const REG = '/home/user/PJfrance/scripts/curated-places.json'
 const dry = process.argv.includes('--dry')
 const dist = (a, b, c, d) => { const p = Math.PI / 180; const h = Math.sin((c - a) * p / 2) ** 2 + Math.cos(a * p) * Math.cos(c * p) * Math.sin((d - b) * p / 2) ** 2; return 2 * 6371 * Math.asin(Math.sqrt(h)) }

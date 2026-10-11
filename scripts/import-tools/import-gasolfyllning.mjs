@@ -3,7 +3,7 @@
 // node <fil> [--dry]   (från repo-roten)
 import fs from 'fs'
 const DRY = process.argv.includes('--dry')
-const S = '/tmp/claude-0/-home-user-PJfrance/6140915e-86bc-5bdf-9a99-cd26fe969797/scratchpad/'
+const S = (process.env.SCRATCH ?? '/tmp') + '/'
 const regPath = './scripts/curated-places.json'
 const reg = JSON.parse(fs.readFileSync(regPath, 'utf8'))
 const file = JSON.parse(fs.readFileSync('./docs/import/gasolfyllning_sverige.json', 'utf8'))

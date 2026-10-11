@@ -1,10 +1,12 @@
 # Importverktyg från sessionerna 24–25 sep 2026
 
 Skripten här är de som användes för att slå ihop research-resultat med
-`scripts/curated-places.json`. De skrevs för en sessions scratchpad och har
-hårdkodade sökvägar (`/tmp/claude-0/.../scratchpad/`) – **byt `S`-konstanten
-till en egen mapp** och lägg in indatafilerna där innan körning. Kör alltid
-`--dry` först. Alla körs från repo-roten.
+`scripts/curated-places.json`. De läser/skriver arbetsfiler i mappen som
+miljövariabeln `SCRATCH` pekar på (standard `/tmp`) – sätt den till sessionens
+scratchpad, t.ex. `SCRATCH=$SCRATCHPAD node scripts/import-tools/import-golf.mjs --dry`,
+och lägg indatafilerna där innan körning. Kör alltid `--dry` först. Alla körs
+från repo-roten. **Flytta bearbetade agentfiler till `<SCRATCH>/done/` efter
+import** – annars importeras de igen vid nästa körning.
 
 | Skript | Indata | Vad |
 |---|---|---|
@@ -29,4 +31,21 @@ Seed hämtas med `git show origin/gh-pages:data/stations-seed.json > <S>/seed.js
   och avståndet till `nearLat/nearLon` i registret jämförs med `maxKm`.
   Skriver "SAKNAS" / "FÖR LÅNGT BORT" / "nära gränsen". Byt ut namnlistan.
 | `import-discovery.mjs` | `disc-<län>-<n>.json` från agenterna (format i `UPPDRAG-discovery.md`) + `seed.json` | discovery-svep per län: high → bekräftad tjänst, medium → plats bekräftad + påstådda tjänster, low → grå; dedupe 400 m mot seeden, koordinat läggs på närmaste OSM-nod; saknad koordinat → `query` (adress) + kommunens medianläge |
-| `import-golf.mjs` | `golf-<n>.json` från agenterna (format i `UPPDRAG-golf.md`) + `seed.json` + `existing-golf.json` | golfklubbssvep: high → bekräftad tjänst, medium → ställplats + påstådda tjänster, low → grå; saknad koordinat → `query` + kommunens medianläge ur seeden |
+| `import-golf.mjs` | `golf-<n>.json` från agenterna (format i `UPPDRAG-golf.md`) + `seed.json` + `existing-golf.json` | golfklubbssvep: high → bekräftad tjänst, medium → ställplats + påstådda tjänster, low → grå; saknad koordinat → `query` + kommunens medianläge ur seeden (reserv `scripts/kommuner.json`) |
+
+## Uppdragstexter till agenter (ge som prompt, 45 WebSearch var, WebFetch är blockad)
+
+- `UPPDRAG-discovery.md` – discovery per län (nya platser). `UPPDRAG-tillagg-tomning.md` –
+  tillägg för tömningsfokus (varv 2, kommuner med 0–1 tömningsplatser).
+- `UPPDRAG-golf.md` – golfklubbar. `UPPDRAG-tomning.md` – tömningssvepet sep 2026.
+- `UPPDRAG-koordinater.md` – hämta exakta koordinater till poster som Nominatim missar.
+- `UPPDRAG-restposter.md` – restlistor (saker som tidigare krävde webbläsare).
+
+## Efterkontroll efter deploy (okt 2026)
+
+- `check-discovery.mjs` – jämför discovery-svepets registerposter mot publicerad seed
+  (saknade + >6 km från ankaret). Anpassa rådatafilen i `docs/import/`.
+- `check-golf3.mjs` – samma för golfsvep del 3. `check-rest.mjs` – namnlista (`NAMES`).
+- `apply-final.mjs` – koordinatsvepet 25 sep: applicerar agenternas exakta koordinater,
+  raderar dubbletter, uppgraderar poster (mönster att kopiera för nya svep).
+- Alla hämtar seeden själva med `git show origin/gh-pages:data/stations-seed.json`.

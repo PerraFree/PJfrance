@@ -172,7 +172,47 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
 (byt sessionslänken till aktuell session). Aldrig modell-ID i kod/commits.
 `git pull --rebase` före push. Inga PR utan uttrycklig begäran.
 
-## Läget just nu (2026-09-28)
+## Läget just nu (2026-10-11, överlämning från session "Gråvatten 4" till "Gråvatten 5")
+
+Allt arbete är committat och pushat; inget ligger kvar i någon scratchpad som
+behövs. Det som en ny session behöver veta utöver resten av filen:
+
+- **Öppna punkter för Per (inte för en session):** merga Dependabots fem
+  PR:er #16–#20 (checkout 4→7, setup-node 4→7, upload-artifact 4→7,
+  setup-java 4→6, github-script 7→9) en i taget i webbläsaren och kolla att
+  bygget är grönt. OBS: `upload-artifact` och `download-artifact` (i
+  `android.yml`) bör ha samma majorversion – bumpa download-artifact till
+  samma major i samma veva om Dependabot inte gjort det. Körloggarna varnar
+  redan "Node.js 20 is deprecated" för checkout/setup-node v4 – de PR:erna
+  löser det. Svarstexter till vännen för issue #13/#14/#15 är levererade i
+  chatten; Per klistrar in dem själv.
+- **Issue #13/#14/#15 (vännens ärenden) är KLARA och verifierade** – se
+  avsnitten Teknik/Workflows ovan. Emulator-skärmdumpen ligger på grenen
+  `emulator-skarmdump` (force-pushas av varje Android-körning).
+- **GitHub missade push-händelsen igen 11 okt** (tredje gången): inga
+  körningar alls för en commit som rörde src/scripts/workflows. Manuell
+  `workflow_dispatch` av deploy.yml, android.yml OCH sync-data.yml via
+  `gh api -X POST repos/PerraFree/PJfrance/actions/workflows/<fil>/dispatches -f ref=<gren>`
+  fungerade direkt. `deploy-vakt.yml` fångar bara deployen, inte Android/synk.
+- **Import-/kontrollskript:** allt återanvändbart ligger nu i
+  `scripts/import-tools/` (README där). Sökvägen till arbetsmappen styrs med
+  miljövariabeln `SCRATCH` (standard `/tmp`), inga hårdkodade sessionsvägar
+  längre. Uppdragstexterna (`UPPDRAG-*.md`) och efterkontrollerna
+  (`check-*.mjs`) finns där också.
+- **Datasvep:** golfsvepet är klart riksomfattande, discovery varv 1 + varv 2
+  (låg-täckningskommuner) klara, restlistorna körda. Kvar som kräver
+  webbläsare/telefon (ingen ringlista enligt Per): Lygnareds Camping,
+  Östanå Havscamps egen sida, Vafabmiljös lista, Skånegas Ängelholms adress,
+  kr/kg-priser för ~10 påfyllningsplatser, husbilsplats.se bakom betalvägg,
+  campingkollen (JS). Nästa naturliga steg är veckorutinens rotation i
+  `docs/svep-logg.md` (område D "kontroll av befintliga platser" och E
+  "öppettider/säsong" har flest luckor), eller crowdsourcing-lanseringen.
+- **Seed 11 okt 14:10:** 6 624 platser (OSM 4 624, Trafikverket 318, register
+  1 681 varav ~330 grå). Registret har 1 682 poster.
+- Supabase-tokenpåminnelsen (~mitten av november) är en Claude-rutin på
+  kontot, inte något i repot.
+
+## Tidigare läge (2026-09-28)
 
 - **Öppettider/säsong-svep (28 sep, veckorutinens område E, KÖRT FÖRSTA GÅNGEN):**
   se `docs/svep-logg.md` för full metod/resultat. Kort: 76 av 160 undersökta

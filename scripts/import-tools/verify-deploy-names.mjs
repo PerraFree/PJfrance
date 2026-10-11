@@ -1,7 +1,7 @@
 // Kontrollerar att de 31 rättade registerplatserna finns i publicerad seed
 // och ligger inom maxKm från nearLat/nearLon. node verify31.mjs
 import fs from 'fs'
-const S = '/tmp/claude-0/-home-user-PJfrance/6140915e-86bc-5bdf-9a99-cd26fe969797/scratchpad/'
+const S = (process.env.SCRATCH ?? '/tmp') + '/'
 const seed = JSON.parse(fs.readFileSync(S + 'seed.json', 'utf8'))
 const st = seed.stations ?? seed
 const reg = JSON.parse(fs.readFileSync('./scripts/curated-places.json', 'utf8'))

@@ -1,6 +1,6 @@
 import fs from 'fs'
 import { execSync } from 'child_process'
-const S = '/tmp/claude-0/-home-user-PJfrance/6140915e-86bc-5bdf-9a99-cd26fe969797/scratchpad/'
+const S = (process.env.SCRATCH ?? '/tmp') + '/'
 const j = JSON.parse(execSync('git show origin/gh-pages:data/stations-seed.json', { cwd: '/home/user/PJfrance', maxBuffer: 1 << 28 }).toString()); const st = j.stations ?? j
 const reg = JSON.parse(fs.readFileSync('/home/user/PJfrance/scripts/curated-places.json', 'utf8'))
 const names = fs.readFileSync(S + 'tomning-names.txt', 'utf8').split('\n').filter(Boolean)
