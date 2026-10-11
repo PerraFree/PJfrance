@@ -748,7 +748,8 @@ export default function MapView({
       attribution: '&copy; OpenTopoMap (CC-BY-SA), &copy; OpenStreetMap-bidragsgivare',
       maxZoom: 17,
     })
-    ljus.addTo(map)
+    // (ljus läggs till EFTER att lyssnarna nedan satts – addTo begär de första
+    // tiles synkront, så en lyssnare som sätts efteråt missar tileloadstart.)
     // Säkerhetsnät: om det aktiva baskartlagret plötsligt börjar ge massvis med
     // tile-fel (samma sorts leverantörsavbrott som CARTO-incidenten) byts det
     // automatiskt till OpenStreetMaps egna tiles i stället för att appen tyst
@@ -756,19 +757,38 @@ export default function MapView({
     let tileErrors = 0
     let fallbackDone = false
     const layers = { Ljus: ljus, Detaljerad: standard, Satellit: satellit, Terräng: terrang }
+    const fallBack = (namn: string, lager: L.TileLayer, varfor: string) => {
+      if (fallbackDone || !map.hasLayer(lager)) return
+      fallbackDone = true
+      console.warn(`Kartlagret "${namn}" ${varfor} – byter till OpenStreetMap.`)
+      map.removeLayer(lager)
+      standard.addTo(map)
+    }
     for (const [namn, lager] of Object.entries(layers)) {
       if (lager === standard) continue // inget att falla tillbaka på om denna felar
       lager.on('tileerror', () => {
         if (fallbackDone || !map.hasLayer(lager)) return
         tileErrors++
-        if (tileErrors >= 6) {
-          fallbackDone = true
-          console.warn(`Kartlagret "${namn}" ger upprepade tile-fel – byter till OpenStreetMap.`)
-          map.removeLayer(lager)
-          standard.addTo(map)
-        }
+        if (tileErrors >= 6) fallBack(namn, lager, 'ger upprepade tile-fel')
+      })
+      // Leverantören kan också bara TIGA (inget svar alls, inga fel) – då blir
+      // kartan tom utan att något tileerror någonsin kommer (Pers skärmbild
+      // 11 okt 2026: enfärgad yta utan karta). Har ingen tile laddats 8 s efter
+      // att de första begärts, byt lager på samma sätt.
+      let loaded = 0
+      let tystTimer: number | undefined
+      lager.on('tileload', () => {
+        loaded++
+      })
+      lager.on('tileloadstart', () => {
+        if (tystTimer !== undefined || loaded > 0 || fallbackDone) return
+        tystTimer = window.setTimeout(() => {
+          tystTimer = undefined
+          if (loaded === 0) fallBack(namn, lager, 'svarar inte (inga tiles laddade på 8 s)')
+        }, 8000)
       })
     }
+    ljus.addTo(map)
     // Nere till vänster – fri yta som aldrig hamnar bakom panelen (uppe) eller
     // krockar med zoom/lokaliseringsknapparna (nere till höger).
     L.control
