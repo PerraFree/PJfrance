@@ -263,3 +263,6 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   stallplatslerum.se (57 platser, från 350 kr/natt, året runt); Wapnö Gård Halmstad NY (Destination
   Halmstad: 50 grusplatser året runt, gråvattentömning mot avgift; el/vatten bara aggregator → påstått).
   Rådata tillagd sist i `golfklubbar-svep-del3-okt-2026.json` resp. `discovery-varv2-lagtackning-okt-2026.json`.
+  **Deploy 11 okt 11:52 (0497d5a): alla fem i seeden** (Wapnö, Lerum med vatten, Kinds, Rya, Flommen).
+  Samma deploy: svep på bottenarket + ny kategori `atervinning` – 809 återvinningscentraler har nu den
+  nya kategorin, ingen av dem har `sopor` kvar, sopor = 1 309.
