@@ -123,3 +123,35 @@ drop policy if exists "anon kan ladda upp foton" on storage.objects;
 create policy "anon kan ladda upp foton" on storage.objects
   for insert to anon
   with check (bucket_id = 'place-photos');
+
+-- Säkerhetsfynd 3 (GHSA-72p3-7774-p8h3): längdgränser på all användartext.
+-- Utan dem kunde ett enda förslag med t.ex. 300 tecken långt namn få
+-- bevakningen att fallera på samma rad varje gång (GitHub vägrar skapa ett
+-- ärende med >256 tecken i titeln) så att inga senare förslag nådde Per.
+-- `not valid` = befintliga rader kontrolleras inte, bara nya/ändrade.
+-- Gränserna speglas av `maxLength` i formulären (src/components/*Form.tsx).
+alter table submissions drop constraint if exists submissions_len;
+alter table submissions add constraint submissions_len check (
+  char_length(name) <= 120 and char_length(address) <= 200
+  and char_length(coalesce(fee, '')) <= 200 and char_length(coalesce(description, '')) <= 2000
+  and cardinality(services) <= 12
+) not valid;
+alter table reports drop constraint if exists reports_len;
+alter table reports add constraint reports_len check (
+  char_length(station_id) <= 200 and char_length(station_name) <= 200
+  and char_length(reason) <= 100 and char_length(coalesce(note, '')) <= 2000
+) not valid;
+alter table reviews drop constraint if exists reviews_len;
+alter table reviews add constraint reviews_len check (
+  char_length(station_id) <= 200 and char_length(coalesce(station_name, '')) <= 200
+  and char_length(coalesce(comment, '')) <= 500
+) not valid;
+alter table verifications drop constraint if exists verifications_len;
+alter table verifications add constraint verifications_len check (
+  char_length(station_id) <= 200
+) not valid;
+alter table photos drop constraint if exists photos_len;
+alter table photos add constraint photos_len check (
+  char_length(station_id) <= 200 and char_length(coalesce(station_name, '')) <= 200
+  and char_length(url) <= 400
+) not valid;

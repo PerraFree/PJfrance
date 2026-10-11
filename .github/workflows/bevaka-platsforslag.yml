@@ -102,19 +102,29 @@ jobs:
             // Markören ligger alltid FÖRST i ärendet – matcha bara där, så att
             // användartext aldrig kan förfalska/blockera en markör.
             const seen = (marker) => existing.some((i) => (i.body || '').startsWith(marker))
-            // Sanera användartext: ta bort HTML-kommentarer och gör den säker
-            // i markdown-tabellceller (| och radbrytningar).
+            // Sanera användartext (säkerhetsfynd 4, GHSA-72p3-7774-p8h3):
+            // ta bort HTML-kommentarer, neutralisera @ och # så att ett
+            // förslag inte kan notifiera godtyckliga GitHub-användare eller
+            // länka ärenden via Pers repo, och gör texten säker i
+            // markdown-tabellceller (| och radbrytningar).
+            const neutral = (s) => String(s).replace(/<!--|-->/g, '').replace(/@/g, '&#64;').replace(/#/g, '&#35;')
             const cell = (v) =>
-              String(v ?? '–')
-                .replace(/<!--|-->/g, '')
+              neutral(v ?? '–')
                 .replace(/\|/g, '\\|')
                 .replace(/\r?\n/g, '<br>') || '–'
+            // Titlar är ren text (HTML-entiteter visas som de är, @ ger ingen
+            // notis där) – ta bara bort HTML-kommentarer och radbrytningar.
+            const titel = (v) => String(v ?? '–').replace(/<!--|-->/g, '').replace(/\s+/g, ' ').trim() || '–'
+            // GitHub vägrar titlar >256 tecken och brödtext >65 536 tecken
+            // (säkerhetsfynd 3) – korta hellre än att låta ärendet fallera.
+            const kortTitel = (s) => (s.length > 200 ? s.slice(0, 197) + '…' : s)
+            const kortBody = (s) => (s.length > 60_000 ? s.slice(0, 59_900) + '\n\n… (texten är avkortad)' : s)
             const skapa = (title, body, label) =>
               github.rest.issues.create({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                title,
-                body,
+                title: kortTitel(title),
+                body: kortBody(body),
                 labels: [label],
               })
             const fotter = [
@@ -124,7 +134,28 @@ jobs:
               `- Skriv \`godkänn\` för att publicera`,
               `- Skriv \`neka\` för att avslå`,
             ]
+            // Tak per körning (säkerhetsfynd 4): en spam-loop mot det öppna
+            // REST-API:t ska inte kunna skapa tusentals ärenden/mejl. Resten
+            // tas nästa körning (var 3:e timme), och en varning syns i loggen.
+            const MAX_PER_RUN = 20
             let created = 0
+            let failed = 0
+            let vantar = 0
+            // En rad som inte går att göra ärende av (säkerhetsfynd 3) får
+            // inte stoppa övriga – logga och fortsätt.
+            const forsok = async (vad, fn) => {
+              if (created >= MAX_PER_RUN) {
+                vantar++
+                return
+              }
+              try {
+                await fn()
+                created++
+              } catch (e) {
+                failed++
+                core.warning(`Kunde inte skapa ärende för ${vad}: ${e.message}`)
+              }
+            }
 
             // 1) Platsförslag
             const subs = await q(
@@ -150,11 +181,10 @@ jobs:
                 `| **Kommentar** | ${cell(r.description)} |`,
                 `| **Koordinater** | ${r.lat}, ${r.lon} |`,
                 ``,
-                `[📍 Google Maps](https://www.google.com/maps?q=${r.lat},${r.lon}) · [🗺 Tömningskartan](https://tomningskartan.se/?at=${r.lat},${r.lon},15)`,
+                `[📍 Google Maps](https://www.google.com/maps?q=${Number(r.lat)},${Number(r.lon)}) · [🗺 Tömningskartan](https://tomningskartan.se/?at=${Number(r.lat)},${Number(r.lon)},15)`,
                 ...fotter,
               ].join('\n')
-              await skapa(`Nytt platsförslag: ${cell(r.name)}`, body, 'platsförslag')
-              created++
+              await forsok(`förslag ${r.id}`, () => skapa(`Nytt platsförslag: ${titel(r.name)}`, body, 'platsförslag'))
             }
 
             // 2) Kommentarer/omdömen med text
@@ -173,10 +203,16 @@ jobs:
                 `| **Plats** | ${cell(r.station_name ?? r.station_id)} |`,
                 `| **Betyg** | ${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)} (${r.rating}/5) |`,
                 ``,
-                `> ${String(r.comment || '').replace(/<!--|-->/g, '').replace(/\n/g, '\n> ')}`,
+                `> ${neutral(r.comment || '').replace(/\n/g, '\n> ')}`,
                 ...fotter,
               ].join('\n')
-              await skapa(`Ny kommentar: ${cell(r.station_name ?? r.station_id)}`, body, 'omdöme')
-              created++
+              await forsok(`kommentar ${r.id}`, () => skapa(`Ny kommentar: ${titel(r.station_name ?? r.station_id)}`, body, 'omdöme'))
             }
             core.info(`${created} nya gransknings-ärenden skapade.`)
+            if (failed) core.warning(`${failed} rad(er) gick inte att göra ärende av – se varningarna ovan.`)
+            if (vantar) {
+              core.warning(
+                `Taket på ${MAX_PER_RUN} ärenden per körning är nått – ${vantar} till väntar och tas nästa körning. ` +
+                  `Är det spam? Rensa i Supabase (Table Editor → submissions/reviews, status 'rejected').`,
+              )
+            }

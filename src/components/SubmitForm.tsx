@@ -202,6 +202,7 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
                 onChange={(e) => setName(e.target.value)}
                 placeholder="t.ex. Tömning vid Storgatan"
                 required
+                maxLength={120}
               />
             </label>
 
@@ -212,6 +213,7 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 placeholder="Lämna tom för att använda kartans mittpunkt"
+                maxLength={200}
               />
             </label>
 
@@ -234,6 +236,7 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
                 value={fee}
                 onChange={(e) => setFee(e.target.value)}
                 placeholder="t.ex. Gratis eller 50 kr"
+                maxLength={200}
               />
             </label>
 
@@ -244,6 +247,7 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Öppettider, körbeskrivning, tips …"
                 rows={2}
+                maxLength={2000}
               />
             </label>
 

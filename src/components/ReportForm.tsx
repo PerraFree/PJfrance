@@ -100,6 +100,7 @@ export default function ReportForm({ stationId, stationName, onClose }: Props) {
                 onChange={(e) => setNote(e.target.value)}
                 placeholder="Beskriv gärna vad som stämmer i stället …"
                 rows={2}
+                maxLength={2000}
               />
             </label>
 
