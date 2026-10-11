@@ -46,3 +46,51 @@ jobs:
           name: tomningskartan-debug-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
+
+  # Startar den byggda APK:n i en Android-emulator, väntar in kartan och tar en
+  # skärmdump (artefakt "emulator-skarmdump"). Fallerar om appen inte lever
+  # efter 40 s eller om Capacitor rapporterar att webbinnehållet inte laddade.
+  # Tillagt för issue #13 (okt 2026): "appen startar med kartan synlig".
+  starttest:
+    name: Starta appen i emulator
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: tomningskartan-debug-apk
+          path: apk
+      - name: Aktivera KVM för emulatorn
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          arch: x86_64
+          target: google_apis
+          profile: pixel_6
+          disable-animations: true
+          emulator-options: -no-snapshot -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim
+          script: |
+            adb install -r apk/app-debug.apk
+            adb logcat -c
+            adb shell am start -W -n se.tomningskartan.app/.MainActivity
+            sleep 40
+            adb shell screencap -p /sdcard/start.png
+            adb pull /sdcard/start.png start.png
+            adb logcat -d > logcat-full.txt
+            grep -iE "Capacitor|chromium|tomningskartan" logcat-full.txt | tail -80 > logcat.txt || true
+            echo "--- Capacitor-rader ur logcat:"; cat logcat.txt
+            if ! adb shell pidof se.tomningskartan.app > /dev/null; then echo "::error::Appen körs inte längre efter 40 s (krasch?)"; exit 1; fi
+            if grep -qiE "ERR_FILE_NOT_FOUND|net::ERR_|Uncaught (TypeError|ReferenceError|SyntaxError)" logcat.txt; then echo "::error::Webbinnehållet rapporterar fel i logcat"; exit 1; fi
+            echo "Appen lever och inga laddningsfel i logcat."
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: emulator-skarmdump
+          path: |
+            start.png
+            logcat.txt
+          if-no-files-found: warn
