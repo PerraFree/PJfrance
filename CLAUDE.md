@@ -23,9 +23,10 @@ granskningar: pej2727@gmail.com.
   GitHub-API:t `repos/…/pages` är spärrat i sessionens proxy (403, okt 2026)
   och sajten är nätblockerad, så en session kan varken ändra eller mäta det.
   Issue från Pers vän (okt 2026): HTTP svarade 200 utan omdirigering och
-  `https_enforced` var false → Per bockar i Enforce HTTPS under repots
-  Settings → Pages och verifierar domänen under kontots Settings → Pages
-  (TXT-post hos Inleed).
+  `https_enforced` var false → **åtgärdat av Per 11 okt 2026:** Enforce
+  HTTPS ibockat under repots Settings → Pages, och domänen verifierad under
+  kontots Settings → Pages (TXT-post `_github-pages-challenge-PerraFree`
+  hos Inleed – ska ligga kvar permanent).
 - **Default-branch = arbetsbranch:** `claude/gravatten-latrin-app-sverige-aed0qg`
 - Push till branchen → `deploy.yml` bygger och publicerar till `gh-pages` automatiskt.
 
