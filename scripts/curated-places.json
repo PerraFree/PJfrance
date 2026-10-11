@@ -3671,19 +3671,18 @@
     "services": [
       "gasol"
     ],
-    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full. Lösviktspåfyllning av egen flaska uppges av myLPG.eu-användare men bekräftas inte av företaget – ring 0470-480 90 innan besök. Källa: Norbro Energis återförsäljarlista, myLPG.eu. OBS: Energigas Sveriges/Kosans lista (sep 2026) anger lösviktspåfyllning här – motsäger företagets egen sida, ej ändrat. Påfyllning av egen flaska enligt branschlista/flera källor (research sep 2026): \"Hos Gasolbolaget kan du byta eller fylla din gasolflaska, de har även LPG-tankning. De kan även fylla koldioxid och andningsluft. (sammanfattning av sökträff; öppettider och e-post gasol@gasolbolaget.\"",
+    "description": "Gasolautomat/butik – köp ny eller byt tom flaska mot full, dygnet runt i automat på Sandvägen 17 och vid City Gross. Företagets egen sida (gasolbolaget.com) nämner BARA automat/byte; lösviktspåfyllning av egen flaska påstås av myLPG-användare och branschlistor men är inte bekräftad av företaget (kontrollerat igen okt 2026) – ring 0470-480 90 om du vill fylla egen flaska. Källa: gasolbolaget.com, Norbro Energis återförsäljarlista.",
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Gasolbolaget-Johnny-Ygdevik-AB-35245-Vxj-Sandvgen-17-0013X000044O0FYQA0",
     "source": "egen",
     "nearLat": 56.89,
     "nearLon": 14.82,
     "facilities": [
-      "gasol_byte",
-      "gasol_pafyllning"
+      "gasol_byte"
     ],
     "phone": "0470-480 90",
     "openingHours": "1 maj–31 aug: mån–fre 08–17; 1 sep–30 apr: mån–fre 08–16",
     "website": "https://www.facebook.com/p/Gasolbolaget-AB-V%C3%A4xj%C3%B6-100063529450069/",
-    "confidence": "medium"
+    "confidence": "high"
   },
   {
     "name": "Gasol – Byggmax, Karlstad",
@@ -8158,18 +8157,20 @@
       "gasol"
     ],
     "facilities": [
-      "gasol_pafyllning"
+      "gasol_pafyllning",
+      "gasol_byte"
     ],
-    "description": "Gasolpåfyllning i lösvikt – kontrollerar besiktningsdatum, väger flaskan och fyller mängden som saknas. Källa: gasspecialisten.se.",
+    "description": "Gasolpåfyllning i lösvikt (\"Flaskan vägs och påfylls med den mängd som saknas\") samt byte av flaskor. Källa: gasspecialisten.se/KIRUNA, okt 2026.",
     "url": "https://gasspecialisten.se/",
     "source": "egen",
     "openingHours": "Mo-Fr 07:00-16:00",
     "phone": "0980-840 40 / 073-823 88 77",
     "website": "https://www.gasspecialisten.se/KIRUNA/",
-    "gasolPrice": "Påfyllning Pris ej publicerat i sökbara källor. (sep 2026)",
+    "gasolPrice": "Påfyllning 44 kr/kg; byte PC10 419 kr, P11 469 kr (gasspecialisten.se/KIRUNA, okt 2026)",
     "confidence": "high",
     "lat": 67.85,
-    "lon": 20.22
+    "lon": 20.22,
+    "address": "Lastvägen 44, Kiruna"
   },
   {
     "name": "Gasolfyllarna Linköping",
@@ -11414,10 +11415,6 @@
   },
   {
     "name": "Gasol – jem & fix Alvesta",
-    "query": "jem & fix, Alvesta",
-    "nearLat": 56.899,
-    "nearLon": 14.556,
-    "maxKm": 6,
     "address": "Skördevägen 3, 342 37 Alvesta",
     "services": [
       "gasol"
@@ -11426,8 +11423,10 @@
       "gasol_byte"
     ],
     "source": "egen",
-    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se.",
-    "url": "https://www.jemfix.se/butiker/alvesta/"
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Källa: jemfix.se. Koordinat från eniros listning (Skördevägen 2, samma handelsområde), okt 2026.",
+    "url": "https://www.jemfix.se/butiker/alvesta/",
+    "lat": 56.91967,
+    "lon": 14.56888
   },
   {
     "name": "Gasol – jem & fix Växjö",
@@ -17164,12 +17163,12 @@
     ],
     "source": "egen",
     "address": "Per Mattiassonsväg 47, 291 92 Kristianstad",
-    "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24).",
+    "description": "Påfyllning av egen gasolflaska i lösvikt (inte byte). Källa: https://www.energigas.se/fakta-om-gas/gasol/tankstationer-for-gasol/ (branschlista (Energigas Sverige/Kosan), kontrollerad 2026-09-24). Samma företag som tidigare Nöbbelövs Gasol & Entreprenad (samma adress).",
     "confidence": "high",
     "openingHours": "Mån–Fre 09–17, Lör–Sön 10–16",
     "phone": "0734-48 48 11 / 0734-48 48 42",
     "website": "https://gasolkungen.se/gasol-i-kristianstad/",
-    "gasolPrice": "Påfyllning Pris ej publicerat i sökresultat ('olika priser per station') (sep 2026)"
+    "gasolPrice": "Påfyllning ca 35 kr/kg (gasolkartan.se, ej företagets egen sajt – kan vara inaktuellt); LPG 14 kr/l (egen sajt)"
   },
   {
     "name": "Timmernabbens Karamellfabrik, Mönsterås",
@@ -19684,17 +19683,17 @@
       "gasol_byte"
     ],
     "source": "egen",
-    "confidence": "high",
+    "confidence": "medium",
     "address": "Verkstadsgatan 4, Ängelholm (mitt emot McDonald's)",
-    "description": "Gasolautomat, byte/köp av nya flaskor PC5/PC10/P11, öppen dygnet runt. Källa: Skånegas egen webbplats (skanegas.com/gasolautomater), kontrollerad sep 2026.",
+    "description": "Gasolautomat, byte/köp av nya flaskor PC5/PC10/P11, öppen dygnet runt. Källa: Skånegas egen webbplats (skanegas.com/gasolautomater), kontrollerad sep 2026. OBS (okt 2026): adressen Verkstadsgatan 4 kunde inte bekräftas på skanegas.com; gasolautomat.com anger i stället Valhall Park (Stjernsvärds allé). Kontrollera läget på plats eller i webbläsare.",
     "website": "https://www.skanegas.com/gasolautomater/"
   },
   {
     "name": "Levol gasolautomat, Onsala",
-    "query": "Onsala",
+    "query": "Torpstigen 25, Onsala",
     "nearLat": 57.4192,
     "nearLon": 11.9767,
-    "maxKm": 10,
+    "maxKm": 8,
     "services": [
       "gasol"
     ],
@@ -19703,8 +19702,10 @@
     ],
     "source": "egen",
     "confidence": "high",
-    "description": "Gasolautomat, byte av PC5/PC10-flaskor, öppen dygnet runt. Källa: Levols egen webbplats (levol.se/gasolautomat), kontrollerad sep 2026. Exakt gatuadress saknas – platsen ligger centrerad på Onsala tätort tills adressen bekräftats.",
-    "website": "https://levol.se/gasolautomat/"
+    "description": "Gasolautomat, byte av PC5/PC10-flaskor (eller köp ny), öppen dygnet runt. Adress Torpstigen 25 bekräftad på Levols egen sida (levol.se/gasolautomat), okt 2026. Läge geokodat från adressen – verifiera.",
+    "website": "https://levol.se/gasolautomat/",
+    "address": "Torpstigen 25, 434 91 Onsala (Forsbäck)",
+    "gasolPrice": "Byte PC5 269 kr, PC10 399 kr (levol.se, okt 2026)"
   },
   {
     "name": "Koaro AB, Linköping",
@@ -23271,10 +23272,10 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.vastsverige.com/en/amal/produkter/camper-site-fengersfors/): \"Beautifully situated by Knarrbysjön in the community Fengersfors. 100 SEK per night, open April–September. Sitting areas, a grill area, fresh water, and proximity to exercise tracks. There is no electricity and no emptying of septic tanks. The parking area is run by several associations in collaboration.\" KONFLIKT: befintlig OSM-post 'Ställplats för husbil, Ämnebyn' (0 m från denna koordinat) har gravatten+latrin, men turistrådet säger uttryckligen 'no emptying of latrines or greywater ... nearest full camping site located in Åmål'. Färskvatten saknas i befintlig post och bör läggas till; gravatten/latrin bör granskas/flaggas som osäkra. Ge posten riktigt namn.",
-    "website": "https://www.vanerleden.se/boenden/stallplats-fengersfors/",
-    "fee": "100 kr/natt",
-    "openingHours": "Säsong April–september",
+    "description": "Källa (https://fengersfors.se/fengersfors-stallplats/): \"Ställplatsens egen sida (fengersfors.se/fengersfors-stallplats/): man kan inte tömma varken gråvatten eller latrin på ställplatsen; dricksvatten finns utanför affären Fröskog Fengersfors lanthandel; närmaste ställplatser med tömning är Åmål (gråvatten och latrin) och Dals Långed (latrin). Ingen el. 150 kr/dygn, öppet april–september. (återgivet från sökutdrag) Vastsverige.com: 'There is no electricity and no emptying of septic tanks.'\" KONFLIKTEN AVGJORD: byns/ställplatsens EGEN sida + Västsverige säger uttryckligen INGEN gråvatten-/latrintömning. OSM way 708866226 ('Ställplats för husbil vid Ställplats Fengersfors', gravatten+latrin) är fel → lägg i OSM_FACILITY/-tjänstöverstyrning eller EXCLUDED_OSM_ELEMENTS (BÅDA filerna) så att bara registerposten (vatten+stallplats) visas; alternativt flagga gravatten/latrin som unverifiedServices. Färskvattnet står utanför lanthandeln (Fengersfors-Fröskogs Lanthandel), inte på själva ställplatsen – koordinat för lanthandeln ej hämtad. Not Quite (bruket) nämner inget om tömning i sökindex. Uppdatera avgift 100 → 150 kr. Källa (https://www.vastsverige.com/en/amal/produkter/camper-site-fengersfors/): \"Beautifully situated by Knarrbysjön in the community Fengersfors. 100 SEK per night, open April–September. Sitting areas, a grill area, fresh water, and proximity to exercise tracks. There is no electricity and no emptying of septic tanks. The parking area is run by several associations in collaboration.\" KONFLIKT: befintlig OSM-post 'Ställplats för husbil, Ämnebyn' (0 m från denna koordinat) har gravatten+latrin, men turistrådet säger uttryckligen 'no emptying of latrines or greywater ... nearest full camping site located in Åmål'. Färskvatten saknas i befintlig post och bör läggas till; gravatten/latrin bör granskas/flaggas som osäkra. Ge posten riktigt namn.",
+    "website": "https://fengersfors.se/fengersfors-stallplats/",
+    "fee": "150 kr/dygn (fengersfors.se 2026; vastsverige anger 100 kr – äldre)",
+    "openingHours": "Säsong april–september",
     "address": "Sjövägen, 662 95 Fengersfors",
     "season": "seasonal",
     "confidence": "high"
@@ -24102,8 +24103,8 @@
   },
   {
     "name": "Ånge Camping",
-    "lat": 62.5169535,
-    "lon": 15.6174436,
+    "lat": 62.51695,
+    "lon": 15.61744,
     "services": [
       "camping",
       "stallplats",
@@ -24111,8 +24112,14 @@
       "vatten"
     ],
     "source": "egen",
-    "description": "Komplettering norr sep 2026. Källa (https://angecamping.com/): \"Ånge Camping egen sajt: latrintömning utanför herrarnas entré och färskvatten på gaveln; servicehus öppet dygnet runt; öppet maj-september\"",
-    "website": "https://angecamping.com/"
+    "description": "Källa (https://angecamping.com/): \"Latrintömning och färskvatten finns vid servicehusen som är öppna dygnet runt. Latrintömningen finns utanför herrarnas entré på huvudbyggnaden och färskvattenkranen på gaveln. (angecamping.com, återgivet från sökutdrag)\" Egen sida bekräftar latrin + färskvatten – kartans nuvarande tjänster stämmer. GRÅVATTEN EJ BELAGT: egen sida nämner inget, Campercontact har gråvatten- och kassettömning okryssade (motsäger latrin). Lägg INTE till gravatten. Drivs av ideell förening. Komplettering norr sep 2026. Källa (https://angecamping.com/): \"Ånge Camping egen sajt: latrintömning utanför herrarnas entré och färskvatten på gaveln; servicehus öppet dygnet runt; öppet maj-september\"",
+    "website": "https://angecamping.com/",
+    "fee": "Husvagn/husbil med el 300 kr/natt (angecamping.com)",
+    "openingHours": "Servicehus dygnet runt; receptionen bara sporadiskt bemannad, självincheckning; säsong maj–september",
+    "phone": "0690-103 00",
+    "address": "Albyvägen 219, Ånge",
+    "season": "seasonal",
+    "confidence": "high"
   },
   {
     "name": "Caravan Club Storsved (gästplats, Potthuset)",
@@ -24838,20 +24845,18 @@
   },
   {
     "name": "Riddares ställplats (Tingstäde träsk)",
-    "query": "Hejnum Riddare 412, Tingstäde",
-    "nearLat": 57.728,
-    "nearLon": 18.631,
-    "maxKm": 8,
     "services": [
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://campit.se/en/map/105): \"Riddare's park and stay – avskild plats mitt i naturen nära Tingstäde träsk, mellan åker och skog en bit från vägen. Tillåter släp, el, WC, dusch. Från 120 kr. (campit.se, sammandrag – aggregator)\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Bara campit → grå, koordinat saknas (campit-kartan egress-blockad). Ingen tömning/vatten nämns. Tingstäde saknar annars helt platser i datan.",
+    "description": "Källa (https://campit.se/en/map/105): \"Riddare's park and stay – avskild plats mitt i naturen nära Tingstäde träsk, mellan åker och skog en bit från vägen. Tillåter släp, el, WC, dusch. Från 120 kr. (campit.se, sammandrag – aggregator)\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Bara campit → grå, koordinat saknas (campit-kartan egress-blockad). Ingen tömning/vatten nämns. Tingstäde saknar annars helt platser i datan. Koordinat (gårdens adresspunkt) från hitta.se, okt 2026.",
     "website": "https://swedpacks.se/hyrstugapagotland/valkommen-till-riddare/",
     "fee": "Från 120 kr",
     "address": "Riddare, Tingstäde (nära Tingstäde träsk)",
     "confidence": "low",
-    "unverified": true
+    "unverified": true,
+    "lat": 57.69274,
+    "lon": 18.6104
   },
   {
     "name": "Lummelunda Bruk ställplats",
@@ -25859,27 +25864,24 @@
   },
   {
     "name": "Östanå Havscamp",
-    "query": "Östanå färjeläge, Åkersberga",
-    "nearLat": 59.4821,
-    "nearLon": 18.8044,
-    "maxKm": 40,
     "services": [
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://park4night.com/en/place/692076): \"Included in the price are electricity at the pitch, fresh water and grey water via hose, and emptying of black water or cassette toilets. There is also a service house with a shower and two toilets, plus a dishwashing area. The site is still being developed. Waste handling is limited, so guests are asked to take larger waste with them.\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Ny ställplats 2026 på gamla sågverket vid Östanå färjeläge (Ljusteröfärjan), bredvid Östanå slott och Restaurang Vin & Vänner. Texten på park4night ser operatörsskriven ut (hänvisar till bokning på ostanahavscamp.se) men operatörens egen sida gick inte att nå via sökningen – därför low. Koordinat: hämta från park4night-sidan; färjeläget ligger vid Östanå, Roslagsvägen/väg 276. Sopor begränsat – ta med större avfall.",
+    "description": "Källa (https://www.osteraker.se/upplevagora/sevardheter/osterakerssjuunderverk/matochboenden.4.5f4ce35f18ecbde7180c9e7.html): \"Destination Östanå samlar slott, barockpark och skärgårdsmiljö på samma plats. Här finns också restaurang, gårdsbutik, kanotpaddling och ställplatser för dig som vill stanna lite längre. (osteraker.se, kommunens sida). Park4night (operatörsskriven text): 'Included in the price are electricity at the pitch, fresh water and grey water via hose, and emptying of black water or cassette toilets. Service building with shower, two toilets and dishwashing area (door code at arrival).'\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. ostanahavscamp.se gav 0 träffar i sökindex (3 försök, även med allowed_domains) – PRIS OCH TJÄNSTER EJ BELAGDA från egen sida. Kommunen bekräftar ställplatserna (medium), el/vatten/gråvatten/latrin bara via park4night-texten (ser operatörsskriven ut). Behåll vatten/gravatten/latrin som unverifiedServices tills egen sida lästs. Flytta koordinat till park4night-punkten (befintlig geokodning 59.5484/18.5745 ligger ~0,9 km fel). 16 platser, två platsstorlekar, under uppbyggnad, begränsad sophantering. Källa (https://park4night.com/en/place/692076): \"Included in the price are electricity at the pitch, fresh water and grey water via hose, and emptying of black water or cassette toilets. There is also a service house with a shower and two toilets, plus a dishwashing area. The site is still being developed. Waste handling is limited, so guests are asked to take larger waste with them.\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Ny ställplats 2026 på gamla sågverket vid Östanå färjeläge (Ljusteröfärjan), bredvid Östanå slott och Restaurang Vin & Vänner. Texten på park4night ser operatörsskriven ut (hänvisar till bokning på ostanahavscamp.se) men operatörens egen sida gick inte att nå via sökningen – därför low. Koordinat: hämta från park4night-sidan; färjeläget ligger vid Östanå, Roslagsvägen/väg 276. Sopor begränsat – ta med större avfall.",
     "website": "https://ostanahavscamp.se",
-    "fee": "Avgift (el, vatten, gråvatten- och latrintömning ingår i priset); bokas och betalas online i förväg",
-    "openingHours": "Incheckning från 15:00, utcheckning senast 11:00; säsong Öppnade sommaren 2026 (park4night-post skapad 2026-07-07)",
-    "address": "Östanå färjeläge (f.d. sågverkstomten, intill Ljusteröfärjan), Östanå, Åkersberga",
-    "season": "seasonal",
-    "confidence": "low",
-    "unverified": true,
+    "fee": "Ej belagt från egen sida. Park4night: 25 EUR/24 h (en listning säger 'gratis' – motstridigt). Bokas och betalas online i förväg (kort).",
+    "openingHours": "Incheckning från 15:00, utcheckning senast 11:00",
+    "address": "Östanåvägen 24, 184 95 Åkersberga (f.d. sågverkstomten vid Östanå färjeläge/Ljusteröfärjan)",
+    "season": "year-round",
+    "confidence": "medium",
     "unverifiedServices": [
       "vatten",
       "gravatten",
       "latrin"
-    ]
+    ],
+    "lat": 59.5545,
+    "lon": 18.5855
   },
   {
     "name": "Rosersbergs slott husbilsplats",
@@ -25989,23 +25991,23 @@
   },
   {
     "name": "Camping Gålö Havsbad",
-    "query": "Gålö havsbad, Haninge",
-    "nearLat": 59.07134,
-    "nearLon": 18.22107,
-    "maxKm": 45,
     "services": [
+      "latrin",
+      "vatten",
       "camping",
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.pincamp.de/campingplaetze/camping-galoe-havsbad): \"Aggregatorer (pincamp/promobil/eurocampings): 'plats för tält, husbilar och husvagnar', 'duschar och tvättställ med färskvatten', 150 platser, säsong mitten av april–slutet av oktober. Ingen uppgift om latrin-/gråvattentömning.\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Saknas helt i existing-filen (Skärgårdsstiftelsens camping på Gålö). Bara aggregatorer – kolla galohavsbad.se / skargardsstiftelsen.se för tömning.",
-    "website": "https://www.pincamp.de/campingplaetze/camping-galoe-havsbad",
-    "fee": "24–39 EUR/natt (promobil)",
+    "description": "Källa (https://galohavsbad.se/en/accommodation/camping/our-service-houses/): \"Modern latrintömning för fasta tankar, påfyllning av färskvatten och en Camperclean [för kassett]; servicehus 3 har även latrin för lösa tankar. (galohavsbad.se/en/accommodation/camping/our-service-houses/, återgivet från sökutdrag) – 'Campingområdet har tre servicehus och en servicestation' (galohavsbad.se/bo/camping/)\" Uppgradera från grå till bekräftad: latrin (fast tank + Camperclean för kassett) och färskvatten belagda på egen sida. GRÅVATTEN EJ BELAGT (sidan säger bara 'latrintömning för fasta tankar'). Oklart om tömningen sitter i servicehus 3 eller 'servicestation 4'. Fordonstvätt förbjuden. Skärgårdsstiftelsens område. Befintlig geokodad punkt (59.0997, 18.3221) ligger ~450 m norr om camping.info-koordinaten. Källa (https://www.pincamp.de/campingplaetze/camping-galoe-havsbad): \"Aggregatorer (pincamp/promobil/eurocampings): 'plats för tält, husbilar och husvagnar', 'duschar och tvättställ med färskvatten', 150 platser, säsong mitten av april–slutet av oktober. Ingen uppgift om latrin-/gråvattentömning.\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Saknas helt i existing-filen (Skärgårdsstiftelsens camping på Gålö). Bara aggregatorer – kolla galohavsbad.se / skargardsstiftelsen.se för tömning.",
+    "website": "https://galohavsbad.se/bo/camping/",
+    "fee": "Servicehusen öppnas med Gålökortet (fås vid incheckning); kostnader läggs på bokningen",
     "openingHours": "Säsong mitten av april – slutet av oktober",
-    "address": "Gålö havsbad, Övre Bihagen, Gålö (Haninge)",
-    "season": "seasonal",
-    "confidence": "low",
-    "unverified": true
+    "address": "Skälåkersvägen 11, 137 96 Gålö (Haninge)",
+    "season": "year-round",
+    "confidence": "high",
+    "lat": 59.09561,
+    "lon": 18.322,
+    "phone": "08-500 338 80"
   },
   {
     "name": "Haninge GK ställplats (Årsta slott)",
@@ -26260,18 +26262,13 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.vastsverige.com/alingsas/boende/stallplatser-alingsas/): \"Lygnared Camping är öppet på sommaren och erbjuder fullservice under öppettiderna.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Egna sajten (campingalingsas.com) nämner husbilsplatser och el på alla platser men INGET om tömning. Turistrådet skriver 'fullservice'; Campercontact listar Waste water discharge (Free) + Chemical toilet discharge (Free) + Water (Free). Fortfarande inget ordagrant citat om latrin/gråvatten från primärkälla → medium.",
+    "description": "Källa (https://www.campingalingsas.com/): \"Egen sida (campingalingsas.com): husbilsplatser, 'alla fyra platstyper har el', säsong 18 april–30 september (2025) – INGET om tömning eller färskvatten. Turistrådet: 'Lygnared Camping är öppet på sommaren och erbjuder fullservice under öppettiderna.' (vastsverige.com)\" LATRIN/GRÅVATTEN/FÄRSKVATTEN FORTFARANDE EJ BELAGDA av primärkälla (2 nya sökningar, en med allowed_domains campingalingsas.com – sidorna Hem/Camping/Om oss/Hitta oss nämner inget). Campercontact listar 'Waste water discharge Free, Chemical toilet discharge Free, Water Free' men recensioner 2023–2024 säger 'toilet and toilet cassette emptying combined in a portable toilet', 'drinking water connection not identifiable', 'sanitary facilities very dirty'. Ingen ändring: behåll som medium med unverifiedServices. Ingen park4night-post hittad. Källa (https://www.vastsverige.com/alingsas/boende/stallplatser-alingsas/): \"Lygnared Camping är öppet på sommaren och erbjuder fullservice under öppettiderna.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Egna sajten (campingalingsas.com) nämner husbilsplatser och el på alla platser men INGET om tömning. Turistrådet skriver 'fullservice'; Campercontact listar Waste water discharge (Free) + Chemical toilet discharge (Free) + Water (Free). Fortfarande inget ordagrant citat om latrin/gråvatten från primärkälla → medium.",
     "website": "https://www.campingalingsas.com/",
-    "openingHours": "Säsong 18 april – 30 september (campingalingsas.com, 2025)",
+    "openingHours": "Säsong 18 april–30 september (2025)",
     "phone": "0322-520 59",
     "address": "Lygnaredsvägen 2, 441 95 Alingsås",
     "season": "seasonal",
-    "confidence": "medium",
-    "unverifiedServices": [
-      "gravatten",
-      "latrin",
-      "vatten"
-    ]
+    "confidence": "medium"
   },
   {
     "name": "Silverfallens ställplats (Karlsfors gård)",
@@ -26723,5 +26720,77 @@
     "phone": "040-47 50 16",
     "confidence": "low",
     "unverified": true
+  },
+  {
+    "name": "Kalvkätte ställplats (Kalvkätte trädgård)",
+    "lat": 57.49304,
+    "lon": 15.83618,
+    "services": [
+      "vatten",
+      "stallplats",
+      "sopor"
+    ],
+    "source": "egen",
+    "description": "Källa (https://visithultsfred.se/en/kalvkatte-stallplats/): \"Riktig husbilsplats vid Kalvkätte trädgård med tillgång till vatten, WC och soptunna. ('Real motorhome parking at Kalvkätte garden with access to water, WC and waste bin', visithultsfred.se/en/kalvkatte-stallplats/). Hammarsjöleden-bladet: 'Vid Kalvkätte trädgård finns parkering och under sommarmånaderna finns även toalett och vattenpost.'\" Platsen finns (Visit Hultsfred + Naturkartan 'Kalvkätte ställplats'). Trädgården drivs av ideell förening, gratis entré. INGEN latrin-/gråvattentömning – Visit Hultsfred hänvisar till Reningsverket Hultsfred (Sjövägen, 577 38) för tömning och vatten gratis (finns redan på kartan sedan varv 2). Vattenpost = färskvatten. Koordinaten är trädgårdens venue-koordinat; en annan koordinat på sidan (57.4880/15.8385) är turistbyråns kontor – använd INTE den.",
+    "website": "https://visithultsfred.se/en/kalvkatte-stallplats/",
+    "fee": "100 kr (Swish eller kontant i kuvert, enligt recension ~2023 – ej belagt av primärkälla)",
+    "openingHours": "Säsong Vatten/toalett bara sommarmånaderna (Hammarsjöleden-bladet, 2020)",
+    "address": "Kalvkätte trädgård, 577 91 Hultsfred",
+    "season": "seasonal",
+    "confidence": "high"
+  },
+  {
+    "name": "West Coast Gasol, Vänersborg",
+    "query": "Kilgatan 2, Vänersborg",
+    "nearLat": 58.3808,
+    "nearLon": 12.3234,
+    "maxKm": 8,
+    "address": "Kilgatan 2, 462 32 Vänersborg",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_pafyllning"
+    ],
+    "source": "egen",
+    "confidence": "high",
+    "website": "https://www.westcoastgasol.se/",
+    "description": "Påfyllning av egen gasolflaska i lösvikt. Källa (westcoastgasol.se): \"Har du kvar i flaskan vid gasolpåfyllning så betalar du endast för mängden som diffar mot en full flaska.\" Gatuadress Kilgatan 2 enligt egen sajt (Facebook anger \"Kilvägen 2\"). Pris kr/kg ej publicerat. Läge geokodat från adressen – verifiera."
+  },
+  {
+    "name": "Expressgasol – gasolautomat Tingsryd",
+    "query": "Strömgatan 2, Tingsryd",
+    "nearLat": 56.5245,
+    "nearLon": 14.9735,
+    "maxKm": 6,
+    "address": "Strömgatan 2, 362 31 Tingsryd (vid Meca)",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "high",
+    "website": "https://expressgasol.se/",
+    "description": "Gasolautomat (Expressgasol/Linde-handlare), byte av flaskor dygnet runt. Källa: expressgasol.se adresslista (\"Tingsryd Strömgatan 2 – Gasol dygnet runt\"), okt 2026. Läge geokodat från adressen – verifiera."
+  },
+  {
+    "name": "Expressgasol – gasolautomat Ronneby",
+    "query": "Sörbyvägen, Ronneby",
+    "nearLat": 56.2101,
+    "nearLon": 15.2761,
+    "maxKm": 6,
+    "address": "Sörbyvägen, Ronneby (husnummer ej angivet; eniro anger Sörbyvägen 4)",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "website": "https://expressgasol.se/ronneby",
+    "description": "Gasolautomat (Expressgasol), byte av flaskor dygnet runt. Källa: expressgasol.se/ronneby (\"Gasol i Ronneby – Sörbyvägen\"), okt 2026. Husnummer saknas – läget är geokodat på gatan, verifiera."
   }
 ]

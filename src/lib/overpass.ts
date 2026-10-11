@@ -9,6 +9,11 @@ const EXCLUDED_OSM_ELEMENTS = new Set([
   // Per bekräftade aug 2026 att det bara finns EN tömning där.
   // https://www.openstreetmap.org/node/12907898116
   'node/12907898116',
+  // Ställplats Fengersfors (Knarrbysjön): OSM-wayen är taggad med gråvatten- och
+  // latrintömning, men ställplatsens egen sida (fengersfors.se/fengersfors-stallplats)
+  // och Västsverige säger uttryckligen att man INTE kan tömma vare sig gråvatten
+  // eller latrin där – bara färskvatten. Registerposten täcker platsen (okt 2026).
+  'way/708866226',
   // Gasol-utredning sep 2026 (research-verifierat, se CLAUDE.md):
   // "E.ON Nobelv." – tillhör E.ON:s huvudkontor, inte en publik gasolplats.
   // https://www.openstreetmap.org/node/253856437

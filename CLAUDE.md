@@ -482,9 +482,13 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
    (lanseringen) eller telefon. Verifiera geokodningen av ~42 poster efter
    deploy (se svep-loggen).
    Kvar: Storfors utan belagd tömning, Lekeberg nästan tom, Lilla Edet
-   genuint tomt,
-   Vinön-posten motsägs (grå, låt stå), Fengersfors-konflikt (OSM tömning
-   vs. Visit Väst bara vatten – kolla på plats).
+   genuint tomt, Vinön-posten motsägs (grå, låt stå). **Restlistorna
+   körda 11 okt** (se svep-loggen): Fengersfors avgjort (egen sida: ingen
+   tömning → OSM-wayen utesluten), Gålö Havsbad bekräftad, Riddares och
+   jem & fix Alvesta har koordinat, West Coast Gasol inlagd (Kilgatan 2
+   Vänersborg), Vilhelmina kommunal tömning finns inte. Kvar som kräver
+   webbläsare: Lygnareds, Östanå Havscamps egen sida, Vafabmiljös lista,
+   Skånegas Ängelholms adress, priser Timmernabben/Kem&Gas/Aniol.
 4. **Öppettider/vinterstängt** saknas för många platser.
 5. Vilhelmina-tömningsstationen togs bort i väntan på bekräftat läge.
 6. AdminPanel: 'na'-läget och tabellkontroller är fixade; håll texterna i

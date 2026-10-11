@@ -266,3 +266,20 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   **Deploy 11 okt 11:52 (0497d5a): alla fem i seeden** (Wapnö, Lerum med vatten, Kinds, Rya, Flommen).
   Samma deploy: svep på bottenarket + ny kategori `atervinning` – 809 återvinningscentraler har nu den
   nya kategorin, ingen av dem har `sopor` kvar, sopor = 1 309.
+- **2026-10-11, restlistorna (session "Gråvatten 4"):** två agenter mot det som tidigare krävt webbläsare.
+  Platser: Gålö Havsbad grå → bekräftad latrin (fast tank + CamperClean) + vatten via galohavsbad.se;
+  Kalvkätte ställplats Hultsfred NY (vatten+sopor, Visit Hultsfred); Riddares (Gotland) fick koordinat
+  från hitta.se; Östanå Havscamp bekräftad av kommunen (tjänster fortfarande bara park4night → påstådda,
+  koordinat flyttad 0,9 km); Ånge Camping stämmer (latrin+vatten på egen sida, gråvatten EJ belagt);
+  Kolgården Vilhelmina latrin belagd på egen sida; Lygnareds fortfarande obelagt; Vilhelmina kommunal
+  tömning finns inte (lämnad borttagen); Vafabmiljös lista går inte att nå. **Fengersfors avgjort:**
+  ställplatsens egen sida säger uttryckligen ingen gråvatten/latrin → OSM way 708866226 utesluten i
+  `EXCLUDED_OSM_ELEMENTS` (båda filerna), registerposten (vatten+ställplats) täcker platsen.
+  Gasol: West Coast Gasol NY (Kilgatan 2, Vänersborg, egen sajt), Expressgasol Tingsryd (Strömgatan 2)
+  + Ronneby (Sörbyvägen, medium) NYA, Levol Onsala adress Torpstigen 25 + priser, jem & fix Alvesta
+  exakt koordinat (eniro), Gasspecialisten Kiruna 44 kr/kg + byte, Gasolbolaget Växjö → bara byte
+  (egen sajt nämner inte lös flaska), Gasolkungen Kristianstad ca 35 kr/kg (gasolkartan, medium),
+  Skånegas Ängelholm adress ifrågasatt (gasolautomat.com säger Valhall Park) → medium.
+  Expressgasol Tidaholm finns inte längre i listan. Rådata `docs/import/gasol-restlista-okt-2026.json`
+  + restlistan sist i `discovery-varv2-lagtackning-okt-2026.json`. Verifiera geokodning (West Coast,
+  Tingsryd, Ronneby, Levol Onsala) efter deploy.

@@ -1,0 +1,259 @@
+[
+ {
+  "name": "West Coast Gasol",
+  "lat": null,
+  "lon": null,
+  "address": "Kilgatan 2, 462 32 Vänersborg",
+  "coord_source": null,
+  "facilities": [
+   "gasol_pafyllning"
+  ],
+  "gasolPrice": null,
+  "quote": "Har du kvar i flaskan vid gasolpåfyllning så betalar du endast för mängden som diffar mot en full flaska.",
+  "source": "https://www.westcoastgasol.se/",
+  "confidence": "high",
+  "note": "Gatuadress nu belagd: egen sajt + hitta.se (Drax AB-listning på Kilgatan 2 nämner West Coast) säger Kilgatan 2, 462 32 Vänersborg; Facebook-sidan (facebook.com/p/West-Coast-Gasol-61577661700960/) säger 'Kilvägen 2' – egen sajt vinner. Alltså Vänersborg, inte Vargön. Flaskstorlekar 0,34/5/10/11 kg. Öppet tis+fre 15–18, lör 10–12 (annars efter överenskommelse), tel 070-573 18 11, info@westcoastgasol.se. INGET kr/kg-pris på sajten. Ingen koordinat hittad (hitta.se-sidan gav ingen lat/lon i sökindexet) – geokoda 'Kilgatan 2, Vänersborg' med snävt ankare (postnr 462 32 = centrala Vänersborg)."
+ },
+ {
+  "name": "Levol gasolautomat, Onsala",
+  "lat": 57.447,
+  "lon": 12.046,
+  "address": "Torpstigen 25, 434 91 Kungsbacka (Forsbäck/Onsala, vid Wallys Place)",
+  "coord_source": "https://www.hitta.se/wallys+wallysplace/personer/2 (strukturdata för Wallys Place AB, Torpstigen 25 – ca 57.447 N, 12.046 E, endast 3 decimaler)",
+  "facilities": [
+   "gasol_byte"
+  ],
+  "gasolPrice": "PC5 byte 269 kr, PC10 byte 399 kr (ny PC5 1 465 kr, ny PC10 1 635 kr)",
+  "quote": "Gasolautomat i Onsala och Landvetter – Torpstigen 25 … byt din tomma mot en full eller köp en ny flaska, betalning på plats dygnet runt",
+  "source": "https://levol.se/gasolautomat/",
+  "confidence": "high",
+  "note": "Adressen 'Torpstigen 25' bekräftad av Levols egen sida (expressgasol.se stavar 'Torpstiggen 25, Kungsbacka' = samma automat, Expressgasol är portalen). Endast PC5/PC10 (komposit) – byte, ingen påfyllning. Priserna skiljer mellan Levols sidor, flaggat av sökresultatet. Koordinaten är grov (3 decimaler, ~100 m) – verifiera efter deploy. Kontakt 031-53 00 90."
+ },
+ {
+  "name": "Skånegas gasolautomat, Ängelholm",
+  "lat": null,
+  "lon": null,
+  "address": "OSÄKER – gasolautomat.com (Skånegas-kopplad) anger Valhall Park, Stjernsvärds allé, 262 74 Ängelholm; 'Verkstadsgatan 4 mitt emot McDonald's' finns bara på boilerplate-sidor (jaktify.se, paqstorage.com) utan Skånegas-koppling",
+  "coord_source": null,
+  "facilities": [
+   "gasol_byte"
+  ],
+  "gasolPrice": null,
+  "quote": "Gasolautomaterna är tillgängliga 24 timmar om dygnet, året runt. Hitta den gasolautomaten närmast dig",
+  "source": "https://gasolautomat.com/ (+ https://www.skanegas.com/gasolautomater/)",
+  "confidence": "low",
+  "note": "Verkstadsgatan 4 KUNDE INTE bekräftas via skanegas.se (ingen träff) – OBS Skånegas egen domän verkar vara skanegas.COM, inte .se. Sökresultatet läste gasolautomat.com som Skånegas-kopplad med Ängelholm-automat i Valhall Park (Stjernsvärds allé). St1 ligger på Verkstadsgatan 14, Verkstadsgatan 4 listas utan gasol på hitta.se. Rekommendation: flytta/ändra INTE förrän skanegas.com/gasolautomater lästs i webbläsare; markera posten som grå/låg tills dess. Tel Skånegas 046-20 33 61."
+ },
+ {
+  "name": "Expressgasol – Tidaholm",
+  "lat": null,
+  "lon": null,
+  "address": "EJ BELAGD – 'Södra Ringvägen 25' kommer från en ~570 dagar gammal cachad sida; adressen är Tempo/Matöppet Tidaholm (livsmedel) + Dometic",
+  "coord_source": null,
+  "facilities": [
+   "gasol_byte"
+  ],
+  "gasolPrice": null,
+  "quote": "Gasolflaskor finns i våra stationer i Alvesta, Kungsbacka, Landvetter, Oskarshamn, Ronneby, Tingsryd, Växjö (inom kort på fler orter)",
+  "source": "https://expressgasol.se/ (+ https://expressgasol.se/tidaholm, inaktuell)",
+  "confidence": "low",
+  "note": "Tidaholm finns INTE i Expressgasols aktuella stationslista på startsidan. Lägg inte in / låt stå grå. Kontakt Skaraborg 0500-41 16 55, info@expressgasol.se."
+ },
+ {
+  "name": "Expressgasol – Ronneby",
+  "lat": null,
+  "lon": null,
+  "address": "Sörbyvägen, Ronneby (husnummer saknas på expressgasol.se; eniro 'Gasol Ronneby' listar Sörbyvägen 4, 372 31 Ronneby – svag träff)",
+  "coord_source": null,
+  "facilities": [
+   "gasol_byte"
+  ],
+  "gasolPrice": null,
+  "quote": "Gasol i Ronneby – Sörbyvägen … våra gasolautomater är öppna dygnet runt",
+  "source": "https://expressgasol.se/ronneby",
+  "confidence": "high",
+  "note": "Station bekräftad av Expressgasol (gata + dygnet runt), men inget husnummer och ingen koordinat. Eniros 'Sörbyvägen 4' (https://www.eniro.se/gasol+ronneby/företag) delas med Ron International Flooring AB – kan vara automatens placering på tomten. Geokoda 'Sörbyvägen, Ronneby' + ankare Ronneby, eller läs kartan på expressgasol.se/ronneby i webbläsare."
+ },
+ {
+  "name": "Expressgasol – Tingsryd",
+  "lat": null,
+  "lon": null,
+  "address": "Strömgatan 2, 362 31 Tingsryd (= Meca Tingsryd, bildelsbutik; eniro listar Meca under gasol)",
+  "coord_source": null,
+  "facilities": [
+   "gasol_byte"
+  ],
+  "gasolPrice": null,
+  "quote": "Tingsryd Strömgatan 2 – Gasol dygnet runt",
+  "source": "https://expressgasol.se/ (+ https://expressgasol.se/kungsbacka, adresslista)",
+  "confidence": "high",
+  "note": "Adress bekräftad av Expressgasol. Ingen koordinat i sökresultat (hitta.se Meca Sweden AB Strömgatan 2 utan lat/lon). Geokoda 'Strömgatan 2, Tingsryd' + ankare Tingsryd."
+ },
+ {
+  "name": "Expressgasol – Alvesta / Oskarshamn / Växjö / Lidköping",
+  "lat": null,
+  "lon": null,
+  "address": "Alvesta Ågatan 1 ✔; Oskarshamn Kolmilevägen 5 ✔ (dygnet runt); Växjö Marketenterivägen 19 ✔ + Norremarksvägen 3 + Sandvägen 17 (= Gasolbolagets egen automat); Lidköping 'Framnäsvägen' bara i sajtnavigationen, utan husnummer, ingen egen sida",
+  "coord_source": null,
+  "facilities": [
+   "gasol_byte"
+  ],
+  "gasolPrice": null,
+  "quote": "Växjö: Markententerivägen 19, Norremarksvägen 3, Sandvägen 17 … byta och köpa ny gasol dygnet runt",
+  "source": "https://expressgasol.se/vaxjo, https://expressgasol.se/oskarshamn, https://expressgasol.se/",
+  "confidence": "high",
+  "note": "Alvesta/Oskarshamn/Växjö bekräftade. Lidköping Framnäsvägen 5 EJ bekräftad (bara gatunamn i meny, ingen stationssida) – behåll som den är men flagga medium. Expressgasol = portal för regionala Linde-handlare (Levol, Gasolbolaget m.fl.), som tidigare konstaterat."
+ },
+ {
+  "name": "jem & fix Alvesta",
+  "lat": 56.9196701,
+  "lon": 14.568881,
+  "address": "Skördevägen 3, 342 37 Alvesta (butikssidan); eniro/äldre jemfix-sida säger Skördevägen 2; KB-adress Skördevägen 6",
+  "coord_source": "https://www.eniro.se/jem+%26+fix+alvesta+alvesta/301180131/firma (kartdata i listningen, adress 'Skördevägen 2')",
+  "facilities": [
+   "gasol_byte"
+  ],
+  "gasolPrice": null,
+  "quote": "Vår butik ligger på Skördevägen 3",
+  "source": "https://www.jemfix.se/butiker/alvesta/",
+  "confidence": "high",
+  "note": "Koordinaten kommer från eniros listning av jem & fix Alvesta (Skördevägen 2) – samma handelsområde (JYSK på Skördevägen 5–7), avvikelsen mot nr 3 är tiotal meter. Sätt lat/lon direkt så posten äntligen publiceras (Skördevägen saknas i OSM). Tel 0472-10100."
+ },
+ {
+  "name": "Gasolbolaget Ygdevik, Växjö",
+  "lat": null,
+  "lon": null,
+  "address": "Sandvägen 17, 352 45 Växjö",
+  "coord_source": null,
+  "facilities": [
+   "gasol_byte"
+  ],
+  "gasolPrice": null,
+  "quote": "dygnetruntförsäljning i automat på Sandvägen 17 och vid City Gross i Växjö",
+  "source": "https://www.gasolbolaget.com/",
+  "confidence": "high",
+  "note": "Egen sajt (gasolbolaget.com, sidfot 2011–2023) nämner BARA automatförsäljning (byte) – ingenting om påfyllning av lös flaska. myLPG beskriver 'op afstand vullen (buitenmontage)' = fasttank/fordonstankning 18 kr/l, inte lös flaska. Behåll befintlig bedömning: byte + ring-notis, påfyllning EJ belagd. Öppet vardagar 8–15 (lunch 12:15–13), tel 0470-480 90. Ingen koordinat i resultaten – 'Sandvägen 17, Växjö' bör geokodas fint (finns i OSM, industriområde Norremark/Sandvägen)."
+ },
+ {
+  "name": "Gasolkungen Kalmar",
+  "lat": null,
+  "lon": null,
+  "address": "Trafikplats Kalmar Dämme (enl. egen sajt)",
+  "coord_source": null,
+  "facilities": [
+   "gasol_pafyllning"
+  ],
+  "gasolPrice": null,
+  "quote": "Vi fyller upp din gasolflaska eller gasoltub medan du väntar och debiterar bara den mängd vi fyller på … LPG: Kalmar 18 kr/liter | Kristianstad 14 kr/liter",
+  "source": "https://gasolkungen.se/gasolflaskor/ + https://gasolkungen.se/tanka-lpg/",
+  "confidence": "high",
+  "note": "Egen sajt anger INGET kr/kg för flaskpåfyllning, bara literpris för fordons-LPG (sidan ~800 dagar gammal). Lämna gasolPrice tomt (ev. 'påfyllning per kg, pris ej publicerat; LPG 18 kr/l')."
+ },
+ {
+  "name": "Gasolkungen Kristianstad (= Nöbbelövs Gasol & Entreprenad)",
+  "lat": null,
+  "lon": null,
+  "address": "Per Mattissons väg 47, Nöbbelöv, Kristianstad (E22 mot Ystad)",
+  "coord_source": null,
+  "facilities": [
+   "gasol_pafyllning"
+  ],
+  "gasolPrice": "35 kr/kg (gasolkartan.se, ~2 år gammal, EJ egen sajt); LPG 14 kr/l (egen sajt)",
+  "quote": "LPG: 14 SEK/L Gasol: 35 SEK/KG",
+  "source": "https://gasolkartan.se/station/gasolkungen-kristianstad/ (pris) + https://gasolkungen.se/gasol-i-kristianstad/ (adress/tjänst)",
+  "confidence": "medium",
+  "note": "Bekräftar att 'Nöbbelövs Gasol'-OSM-noden = Gasolkungen Kristianstad (samma adress Per Mattissons väg 47, bensinpriser.nu tel 0734-484842) – slå ihop. kr/kg bara från gasolkartan (tredjepart) → medium. Egen sajt: endast literpris."
+ },
+ {
+  "name": "Gasspecialisten Kiruna",
+  "lat": null,
+  "lon": null,
+  "address": "Lastvägen 44, Kiruna",
+  "coord_source": null,
+  "facilities": [
+   "gasol_pafyllning",
+   "gasol_byte"
+  ],
+  "gasolPrice": "Påfyllning 44 kr/kg; byte PC10 419 kr, P11 469 kr, 2000 179 kr, 2006/2012 279 kr",
+  "quote": "Gasol: 44 kr per kg … Flaskan vägs och påfylls med den mängd som saknas",
+  "source": "https://www.gasspecialisten.se/KIRUNA/",
+  "confidence": "high",
+  "note": "Egen prissida, odaterad. Öppet mån–fre 07–16, tel 0980-840 40 (även 073-823 88 77). park4night (2018) sa 41 kr/kg – nu 44."
+ },
+ {
+  "name": "Aniol Gasol AB",
+  "lat": null,
+  "lon": null,
+  "address": "OKLART – husbilsklubben (>13 år gammal tråd) placerar Aniol Gasol i Ekeby utanför Helsingborg (aniolgasol.se); uppdraget sa Nacka/Saltsjö-Boo",
+  "coord_source": null,
+  "facilities": [
+   "gasol_pafyllning"
+  ],
+  "gasolPrice": null,
+  "quote": "de fyller även utländska flaskor",
+  "source": "https://www.husbilsklubben.se/threads/fylla-gasolflaskor.60749/",
+  "confidence": "low",
+  "note": "aniolgasol.se gav NOLL träffar i sökindexet (sajten troligen nere/oindexerad). Inget pris. Kontrollera var OSM-noden ligger – om den ligger i Nacka medan företaget hör hemma i Ekeby (Skåne) kan noden vara fel; läs aniolgasol.se/allabolag i webbläsare innan något ändras."
+ },
+ {
+  "name": "Gasol Depån i Svartvik (Gasoldepån i Sundsvall AB)",
+  "lat": null,
+  "lon": null,
+  "address": "Hyvelvägen 8, Kvissleby (Svartvik)",
+  "coord_source": "https://www.hitta.se/gasoldep%C3%A5n+i+sundsvall+ab/kvissleby/lpbdhntde (adress, ingen lat/lon i resultatet)",
+  "facilities": [
+   "gasol_pafyllning"
+  ],
+  "gasolPrice": "Påfyllning PC5 270 kr, PC10 440 kr (egen prissida); LPG 18 kr/l; inget kr/kg",
+  "quote": "helautomatiskt påfyllningssystem med modern digital våg som ger exakt mängd gas vid varje påfyllning",
+  "source": "https://www.gasoldepan.se/priser/ + https://www.gasoldepan.se/",
+  "confidence": "high",
+  "note": "Prissidans tabellrubriker var förvrängda i sökindexet – sökresultatet kunde inte säkert skilja kolumn 'påfyllning' från 'ny flaska' (ny PC10 inkl. gas annonseras till 1 800 kr på startsidan, så 440 kr är rimligen påfyllning). Öppet mån–fre 08–16, lör 08–14, tel 070-647 17 09, leif@gasoldepan.se. Fyller 'alla flasktyper, har i stort sett alla adaptrar' (myLPG-recensioner)."
+ },
+ {
+  "name": "Timmernabbens Karamellfabrik",
+  "lat": null,
+  "lon": null,
+  "address": "Timmernabbsvägen 4 (bensinpriser.nu) / Timmernabbsvägen 2 (myLPG), Timmernabben, Mönsterås",
+  "coord_source": null,
+  "facilities": [
+   "gasol_pafyllning"
+  ],
+  "gasolPrice": null,
+  "quote": "Vi har även gasol",
+  "source": "https://kvalitetsgodis.se/om_oss/",
+  "confidence": "high",
+  "note": "Egen sajt nämner bara att gasol finns, inget pris. Forum: ~20 kr/kg (mycket gammalt), minimibelopp 150 kr, kontant/Swish, 18 SEK (liter?) 2023 enl. myLPG-kommentar – för osäkert, lämna tomt. Öppet mån–fre 9–16, lör 11–13, tel 0499-444 20."
+ },
+ {
+  "name": "Kem och Gas AB, Jönköping",
+  "lat": null,
+  "lon": null,
+  "address": "Barnhemsgatan 20, Ljungarums industriområde, Jönköping",
+  "coord_source": null,
+  "facilities": [
+   "gasol_pafyllning"
+  ],
+  "gasolPrice": null,
+  "quote": "fyllde tyska campinggasflaskor snabbt och enkelt … 235 kr för 5 kg",
+  "source": "https://mimoji.com/se-se/listing/kem-gas-ab/816500 (recension sep 2023); egen sida http://privat.bahnhof.se/wb409702/KemGas/ nämner inget pris",
+  "confidence": "low",
+  "note": "Inget pris på egen sida (gammal bahnhof-sida: 'levererar gasol och bilgas', öppet mån–fre 07–16, lunch 12:30–13:30, tel 036-16 89 61). Enda prisspår = kundrecension 2023 (≈47 kr/kg) → inte tillräckligt för gasolPrice. Påfyllning bekräftas av Kosangas flaskfyllarlista (branschlista = medium) + myLPG."
+ },
+ {
+  "name": "Örkelljunga Gasol / GasolEsset Skåneporten",
+  "lat": null,
+  "lon": null,
+  "address": "Skåneporten 1, Örkelljunga",
+  "coord_source": null,
+  "facilities": [
+   "gasol_pafyllning",
+   "gasol_byte"
+  ],
+  "gasolPrice": "34 kr/kg (egen sajt, sidan ~2 år gammal); LPG 15–18 kr/l",
+  "quote": "34 kr/kg",
+  "source": "https://www.gasolesset.se/gasolesset-orkelljunga/ + https://gasolesset.se/kontakta-oss/%C3%B6rkelljunga.html",
+  "confidence": "high",
+  "note": "Egen sajt men gammal sida. Bonus från samma sökning: GasolEsset Åhus 34 kr/kg (sida ~184 dagar), GasolEsset Ljungby 39 kr/kg på stationssidans banner (en annan sida säger 28 kr/kg – motstridigt, använd 39), Trelleborg 37 kr/kg (stämmer med registret). Öppet mån–fre 09:30–17, lör 09–14, tel 0732-437 000."
+ }
+]
