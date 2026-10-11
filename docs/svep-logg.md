@@ -254,3 +254,4 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   kommunankaret kontrollerade – alla rätt (Dagsholm, Lyckorna, Himle, Beddingestrand, Rya, Frösåker;
   Uddevalla GK låg 550 m från klubbhuset, nu exakt koordinat Bången 310). Söderslätts GK (grå) hittades
   inte av Nominatim → exakt koordinat Elleboda/Grevievägen 260 från golfisverige.com. Verifiera nästa deploy.
+  **Deploy 10 okt 12:45 (bc3791b, 6 614 platser): 34 av 34 i seeden – klart.**
