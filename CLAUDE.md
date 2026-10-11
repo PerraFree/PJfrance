@@ -19,6 +19,13 @@ granskningar: pej2727@gmail.com.
   själva heter fortfarande `PerraFree/PJfrance` (ändras inte, bara den
   publika adressen) – gamla `perrafree.github.io/PJfrance/`-länken funkar
   inte längre.
+- **Pages-inställningar (Enforce HTTPS, domänverifiering) sköts i webbläsaren** –
+  GitHub-API:t `repos/…/pages` är spärrat i sessionens proxy (403, okt 2026)
+  och sajten är nätblockerad, så en session kan varken ändra eller mäta det.
+  Issue från Pers vän (okt 2026): HTTP svarade 200 utan omdirigering och
+  `https_enforced` var false → Per bockar i Enforce HTTPS under repots
+  Settings → Pages och verifierar domänen under kontots Settings → Pages
+  (TXT-post hos Inleed).
 - **Default-branch = arbetsbranch:** `claude/gravatten-latrin-app-sverige-aed0qg`
 - Push till branchen → `deploy.yml` bygger och publicerar till `gh-pages` automatiskt.
 
