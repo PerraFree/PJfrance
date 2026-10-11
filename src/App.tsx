@@ -910,12 +910,19 @@ export default function App() {
           type="button"
           ref={sheetHandleRef}
           className="sheet-handle"
-          aria-expanded={!collapsed}
-          aria-label={collapsed ? 'Visa hela menyn' : 'Fäll ihop menyn'}
+          aria-expanded={!mini}
+          aria-label={mini ? 'Visa menyn' : 'Göm menyn, visa bara kartan'}
           onClick={() => {
             if (swallowSwipeClick()) return
+            // Strecket gör samma sak som att dra: ner till "bara kartan", och
+            // upp igen vid nästa tryck. (Växlingen hopfällt↔utfällt sköts av
+            // pilknappen – att strecket växlade mellan två nästan lika lägen
+            // var meningslöst, Per 11 okt 2026.)
             if (mini) setMini(false)
-            else setCollapsed((v) => !v)
+            else {
+              setCollapsed(true)
+              setMini(true)
+            }
           }}
           onTouchStart={onSheetTouchStart}
           onTouchEnd={onSheetTouchEnd}

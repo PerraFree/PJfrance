@@ -244,7 +244,13 @@ Pers instruktioner). Det som en ny session behöver veta utöver resten av filen
   Nästa D-region: Skåne eller Stockholms län.
 - **Bottenarket följer fingret vid drag (11 okt, Pers önskemål):** native
   `touchmove` (passive:false) flyttar `.panel` med translateY, släpp ≥60 px
-  → mini, annars tillbaka. Playwright 8/8. sw.js v82.
+  → mini, annars tillbaka. Playwright 8/8. **Tryck på strecket = samma som
+  drag:** ner till bara kartan (mini), nästa tryck tillbaka till hopfällt.
+  Pilknappen (`.panel-toggle`) sköter hopfällt↔utfällt. (Tidigare växlade
+  strecket hopfällt↔utfällt – "helt onödigt", Per.) sw.js v84.
+- **Baskarta-säkerhetsnät utökat (11 okt):** byter till OSM-tiles även när
+  leverantören tiger (inga tiles laddade 8 s efter första begäran), inte
+  bara vid tileerror. Lyssnarna måste sättas FÖRE `ljus.addTo(map)`.
 - **Seed 11 okt 17:5x:** 6 632 platser. Registret har 1 690 poster.
 - Supabase-tokenpåminnelsen (~mitten av november) är en Claude-rutin på
   kontot, inte något i repot.
