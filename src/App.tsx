@@ -243,18 +243,64 @@ export default function App() {
   // handtaget + appnamnet syns (kartan får hela ytan), svep UPP → ett steg
   // upp (minimalt → hopfällt → helt utfällt). Pers önskemål okt 2026: man
   // ska i ALLA lägen kunna dra ner arket och se enbart kartan.
+  //
+  // Arket FÖLJER fingret medan man drar (Pers önskemål 11 okt: det ska
+  // glida ner synligt, inte bara försvinna efter svepet). Under draget
+  // flyttas panelen med translateY direkt i DOM (ingen omrendering per
+  // pixel); vid släpp glider den antingen hela vägen ner (mini) eller
+  // tillbaka. touchmove-lyssnaren sätts nativt med passive:false eftersom
+  // React registrerar touchmove som passiv – annars går preventDefault
+  // (som stoppar att panelinnehållet rullar i stället) inte att anropa.
+  const panelRef = useRef<HTMLDivElement>(null)
+  const sheetHandleRef = useRef<HTMLButtonElement>(null)
+  const sheetBrandRef = useRef<HTMLElement>(null)
   const sheetTouchStartY = useRef<number | null>(null)
   const sheetTouchLastY = useRef<number | null>(null)
   const sheetSwiped = useRef(false)
+  const SHEET_DROP_PX = 60 // så långt man måste dra ner för att arket ska fällas
   const onSheetTouchStart = (e: TouchEvent<HTMLElement>) => {
     sheetTouchStartY.current = e.touches[0]?.clientY ?? null
     sheetTouchLastY.current = sheetTouchStartY.current
     sheetSwiped.current = false
+    const panel = panelRef.current
+    if (panel) panel.style.transition = 'none'
   }
-  const onSheetTouchMove = (e: TouchEvent<HTMLElement>) => {
-    sheetTouchLastY.current = e.touches[0]?.clientY ?? sheetTouchLastY.current
-  }
+  useEffect(() => {
+    const targets = [sheetHandleRef.current, sheetBrandRef.current].filter(Boolean) as HTMLElement[]
+    const onMove = (e: globalThis.TouchEvent) => {
+      if (sheetTouchStartY.current == null) return
+      const y = e.touches[0]?.clientY
+      if (y == null) return
+      sheetTouchLastY.current = y
+      const dy = y - sheetTouchStartY.current
+      const panel = panelRef.current
+      if (!panel) return
+      if (dy > 0) {
+        // Neråt: följ fingret (i minimalt läge bara lite, med motstånd)
+        if (e.cancelable) e.preventDefault()
+        const max = panel.classList.contains('mini') ? 40 : panel.offsetHeight
+        panel.style.transform = `translateY(${Math.min(dy, max)}px)`
+      } else {
+        // Uppåt: litet motstånd som känsla, själva steget tas vid släpp
+        panel.style.transform = `translateY(${Math.max(dy * 0.25, -24)}px)`
+      }
+    }
+    for (const t of targets) t.addEventListener('touchmove', onMove, { passive: false })
+    return () => {
+      for (const t of targets) t.removeEventListener('touchmove', onMove)
+    }
+  }, [])
   const onSheetTouchEnd = () => {
+    const panel = panelRef.current
+    if (panel) {
+      // Glid till slutläget (antingen tillbaka eller ner till mini-läget –
+      // klassbytet nedan krymper arket samtidigt som transformen går mot 0).
+      panel.style.transition = 'transform 0.26s cubic-bezier(0.2, 0.75, 0.25, 1)'
+      panel.style.transform = ''
+      window.setTimeout(() => {
+        if (panelRef.current) panelRef.current.style.transition = ''
+      }, 300)
+    }
     if (sheetTouchStartY.current == null || sheetTouchLastY.current == null) return
     const dy = sheetTouchLastY.current - sheetTouchStartY.current
     sheetTouchStartY.current = null
@@ -266,7 +312,9 @@ export default function App() {
       sheetSwiped.current = false
     }, 400)
     if (dy > 0) {
-      // Ner: alltid hela vägen till "bara kartan".
+      // Ner: hela vägen till "bara kartan" – men bara om man dragit en bit,
+      // annars glider arket tillbaka dit det var.
+      if (dy < SHEET_DROP_PX) return
       setCollapsed(true)
       setMini(true)
     } else if (mini) {
@@ -844,6 +892,7 @@ export default function App() {
       {loading && <div className="loading-bar" aria-hidden="true" />}
 
       <div
+        ref={panelRef}
         className={`panel${collapsed ? ' collapsed' : ''}${mini ? ' mini' : ''}`}
         onClickCapture={
           mini
@@ -859,6 +908,7 @@ export default function App() {
       >
         <button
           type="button"
+          ref={sheetHandleRef}
           className="sheet-handle"
           aria-expanded={!collapsed}
           aria-label={collapsed ? 'Visa hela menyn' : 'Fäll ihop menyn'}
@@ -868,16 +918,17 @@ export default function App() {
             else setCollapsed((v) => !v)
           }}
           onTouchStart={onSheetTouchStart}
-          onTouchMove={onSheetTouchMove}
           onTouchEnd={onSheetTouchEnd}
+          onTouchCancel={onSheetTouchEnd}
         >
           <span aria-hidden="true" />
         </button>
         <header
           className="brand"
+          ref={sheetBrandRef}
           onTouchStart={onSheetTouchStart}
-          onTouchMove={onSheetTouchMove}
           onTouchEnd={onSheetTouchEnd}
+          onTouchCancel={onSheetTouchEnd}
         >
           <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" width="34" height="34" />
           <div>
