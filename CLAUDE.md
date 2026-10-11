@@ -32,8 +32,13 @@ granskningar: pej2727@gmail.com.
 
 ## Teknik
 
-Vite + React 18 + TypeScript + Leaflet + leaflet.markercluster. Ingen backend
-utom Supabase (crowdsourcing). PWA med egen `public/sw.js` (nätverk först;
+Vite 6 + React 18 + TypeScript + Leaflet + leaflet.markercluster. Ingen backend
+utom Supabase (crowdsourcing). **Beroenden (issue #13 från Pers vän, 11 okt
+2026):** Capacitor-paketen höjda till 8.5.3 (GHSA-rvm3-566m-v7fv, kritisk i
+8.3.5–8.4.2) och Vite 5 → 6.4.4 (vite/esbuild-sårbarheter; Vite 7 valdes bort
+eftersom den höjer webbläsarkravet). `npm audit` = 0 critical/high; 3 moderate
+kvar i `@capacitor/cli`:s dev-beroenden (xcode/uuid, ingen fix uppströms).
+Kör `npm audit` då och då och höj patch-/minorversioner. PWA med egen `public/sw.js` (nätverk först;
 bumpa `CACHE`-versionen vid behov). Capacitor/Android finns förberett
 (`docs/BUILD-MOBILE.md`).
 
