@@ -37,7 +37,10 @@ export default function RouteList({
 }: Props) {
   // Sopor döljs här av samma skäl som i närmaste-listan (svämmar över).
   const listFilters = useMemo(
-    () => new Set<ServiceType>([...activeFilters].filter((sv) => sv !== 'sopor')),
+    () =>
+      new Set<ServiceType>(
+        [...activeFilters].filter((sv) => sv !== 'sopor' && sv !== 'atervinning'),
+      ),
     [activeFilters],
   )
   const rows = useMemo(

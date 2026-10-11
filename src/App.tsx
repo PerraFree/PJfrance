@@ -36,7 +36,12 @@ import {
  * gråvatten/latrin, fylla färskvatten eller gasol. Ställplats och camping är
  * inte egna filter – de visas som märkning på platser som erbjuder ovanstående.
  */
-const ALL_SERVICES: ServiceType[] = ['gravatten', 'latrin', 'vatten', 'sopor', 'gasol']
+const ALL_SERVICES: ServiceType[] = ['gravatten', 'latrin', 'vatten', 'sopor', 'atervinning', 'gasol']
+// Kategorier som slås på automatiskt när inget är valt ("Sök där jag är",
+// ortssökning). Återvinningscentraler ingår INTE – de passar inte riktigt för
+// husbilsresenärer (grovavfall, ofta inga hushållssopor) och skulle annars
+// fylla kartan med ~700 extra nålar. Väljs i stället aktivt via sin knapp.
+const DEFAULT_SERVICES: ServiceType[] = ALL_SERVICES.filter((s) => s !== 'atervinning')
 
 // Gasol visas som TVÅ separata filterknappar i stället för en gemensam
 // "Gasol/LPG" – annars går det inte att se/söka fram bara byte eller bara
@@ -454,6 +459,7 @@ export default function App() {
       latrin: 0,
       vatten: 0,
       sopor: 0,
+      atervinning: 0,
       stallplats: 0,
       camping: 0,
       gasol: 0,
@@ -634,7 +640,7 @@ export default function App() {
   // läsa aktuellt värde via activeFiltersRef efter ett await.)
   const ensureCategories = () => {
     if (activeFilters.size === 0) {
-      setActiveFilters(new Set(ALL_SERVICES))
+      setActiveFilters(new Set(DEFAULT_SERVICES))
       ensureGasolFacilities()
     }
   }
@@ -774,7 +780,7 @@ export default function App() {
       // lita på "activeFilters" i closuren, som kan hinna bli inaktuell under
       // await:en ovan (t.ex. om användaren hann klicka ett filter under tiden).
       if (activeFiltersRef.current.size === 0) ensureGasolFacilities()
-      setActiveFilters((prev) => (prev.size === 0 ? new Set(ALL_SERVICES) : prev))
+      setActiveFilters((prev) => (prev.size === 0 ? new Set(DEFAULT_SERVICES) : prev))
       setCollapsed(true) // ge kartan plats
       // Mobil: krymp panelen till bara handtag + namn, annars täcker den
       // kartan även när "Närmaste platser"-listan dragits ner (Pers

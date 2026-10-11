@@ -3,6 +3,10 @@ export type ServiceType =
   | 'latrin'
   | 'vatten'
   | 'sopor'
+  /** Återvinningscentral (ÅVC): grovavfall/sortering – tar INTE alltid emot
+   *  hushållssopor. Egen kategori sedan okt 2026 så den inte blandas ihop
+   *  med vanliga sopstationer för husbilsresenärer (Pers önskemål). */
+  | 'atervinning'
   | 'stallplats'
   | 'camping'
   | 'gasol'
@@ -97,6 +101,7 @@ export const SERVICE_LABELS: Record<ServiceType, string> = {
   latrin: 'Latrin',
   vatten: 'Färskvatten',
   sopor: 'Sopor',
+  atervinning: 'Återvinningscentral',
   stallplats: 'Ställplats',
   camping: 'Camping',
   gasol: 'Gasol/LPG',
@@ -113,6 +118,7 @@ export const SERVICE_ICONS: Record<ServiceType, string> = {
   latrin: '🚽',
   vatten: '🚰',
   sopor: '🗑',
+  atervinning: '♻',
   stallplats: '🚐',
   camping: '⛺',
   gasol: '🔥',
@@ -123,6 +129,7 @@ export const SERVICE_COLORS: Record<ServiceType, string> = {
   latrin: '#7b1fa2',
   vatten: '#01659b',
   sopor: '#455a64',
+  atervinning: '#33691e',
   stallplats: '#c14a00',
   camping: '#00695c',
   gasol: '#c62828',

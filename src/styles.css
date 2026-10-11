@@ -34,6 +34,7 @@
      tydligt isär utan att man behöver läsa texten. */
   --gasol-pafyllning: #1a237e;
   --sopor: #455a64;
+  --atervinning: #33691e;
 }
 
 * {
@@ -628,6 +629,7 @@ button {
 .chip[data-service='gasol_byte'] .chip-ic { color: var(--gasol); }
 .chip[data-service='gasol_pafyllning'] .chip-ic { color: var(--gasol-pafyllning); }
 .chip[data-service='sopor'] .chip-ic { color: var(--sopor); }
+.chip[data-service='atervinning'] .chip-ic { color: var(--atervinning); }
 
 .chip:hover {
   border-color: var(--border-strong);
@@ -656,6 +658,7 @@ button {
 .chip.active[data-service='gasol_byte'] { background: var(--gasol); }
 .chip.active[data-service='gasol_pafyllning'] { background: var(--gasol-pafyllning); }
 .chip.active[data-service='sopor'] { background: var(--sopor); }
+.chip.active[data-service='atervinning'] { background: var(--atervinning); }
 
 .chip-count {
   font-size: 0.72rem;

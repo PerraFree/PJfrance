@@ -233,7 +233,7 @@ function popupHtml(
         const badgeFill = fill.split
           ? `linear-gradient(90deg, ${fill.color} 50%, ${fill.split} 50%)`
           : fill.color
-        return `<span class="badge" style="--badge:${badgeFill}">${serviceGlyph(station, s)} ${SERVICE_LABELS[s]}${s === 'gasol' ? gasolQualifier : ''}</span>`
+        return `<span class="badge" style="--badge:${badgeFill}">${serviceGlyph(station, s)} ${SERVICE_LABELS[s]}${s === 'gasol' ? gasolQualifier : ''}${s === 'atervinning' ? ' – grovavfall, hushållssopor ej säkert' : ''}</span>`
       })
       .join('') +
     claimed

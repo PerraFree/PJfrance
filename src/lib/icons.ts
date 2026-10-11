@@ -36,6 +36,10 @@ const SERVICE_ICON: Record<ServiceType, string> = {
   sopor: svg(
     '<path d="M4.5 6.5h15"/><path d="M9.5 6.5V5a1.2 1.2 0 0 1 1.2-1.2h2.6A1.2 1.2 0 0 1 14.5 5v1.5"/><path d="M6.5 6.5l.9 12.2a1.6 1.6 0 0 0 1.6 1.5h6a1.6 1.6 0 0 0 1.6-1.5l.9-12.2"/><path d="M10 10.5v6M14 10.5v6"/>',
   ),
+  // Återvinningscentral – två pilar i cirkel
+  atervinning: svg(
+    '<path d="M19 12a7 7 0 0 1-11.6 5.3"/><path d="M5 12a7 7 0 0 1 11.6-5.3"/><path d="M4.3 9.2 5 12l2.7-.5"/><path d="M19.7 14.8 19 12l-2.7.5"/>',
+  ),
   // Gasol/LPG – låga
   gasol: svg(
     '<path d="M12 3c.6 2.6 2.2 4.6 3.7 6C17.2 10.5 18 12 18 14a6 6 0 1 1-12 0c0-1 .4-2 1-2.6A2.4 2.4 0 0 0 9.5 13 2.5 2.5 0 0 0 12 15.5 2.5 2.5 0 0 0 11 10c-1-1-1.4-2.6-1-4.2Z"/>',

@@ -21,6 +21,7 @@ const LABELS = {
   stallplats: 'Ställplats',
   camping: 'Camping',
   sopor: 'Sopor',
+  atervinning: 'Återvinningscentral',
 }
 const ORDER = ['gravatten', 'latrin', 'vatten', 'gasol', 'stallplats', 'camping']
 
@@ -118,7 +119,7 @@ for (const k of kommuner) {
     if (!items.length) return ''
     return `<h2>${esc(LABELS[sv])} (${items.length})</h2><ul class="places">${items
       .map((s) => {
-        const svc = s.services.filter((x) => x !== 'sopor').map((x) => LABELS[x] ?? x).join(' · ')
+        const svc = s.services.filter((x) => x !== 'sopor' && x !== 'atervinning').map((x) => LABELS[x] ?? x).join(' · ')
         const extra = [s.address, s.fee, s.openingHours].filter(Boolean).map(esc).join(' · ')
         return `<li><span class="n">${esc(s.name)}</span><br><span class="s">${esc(svc)}${extra ? ' · ' + extra : ''}</span><br><a href="/?at=${s.lat.toFixed(5)},${s.lon.toFixed(5)},15">Visa på kartan →</a></li>`
       })

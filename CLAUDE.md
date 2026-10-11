@@ -35,7 +35,7 @@ bumpa `CACHE`-versionen vid behov). Capacitor/Android finns förberett
 |---|---|
 | `src/App.tsx` | Nav/panel, sök (parallell geokodning + Avbryt), filter, räknare, versionsrad |
 | `src/components/MapView.tsx` | Karta. Viktigt: viewport-rendering (CAP 600), popup-persistens (`popupOpenRef`/`rebuildPendingRef`/`focusingRef`), popupen stängs BARA av användaren |
-| `src/types.ts` | `ServiceType` (gravatten, latrin, vatten, **sopor**, stallplats, camping, gasol), färger, etiketter |
+| `src/types.ts` | `ServiceType` (gravatten, latrin, vatten, **sopor**, **atervinning** = återvinningscentral/ÅVC, stallplats, camping, gasol), färger, etiketter |
 | `src/lib/overpass.ts` | Live-hämtning per kartvy (zoom ≥ 12). Speglar synkskriptets taggtolkning – ändra ALLTID båda |
 | `scripts/sync-stations.mjs` | CI-synk: OSM (Overpass) + Trafikverket + `scripts/curated-places.json` → `public/data/stations-seed.json` |
 | `scripts/curated-places.json` | Eget register (~530 platser). Föredra `lat`/`lon` framför `query` (adressuppslag har gett felplaceringar!). Nya fält: `nearLat`/`nearLon` (+ ev. `maxKm`, standard 30) – geokodningar som hamnar längre bort än så kasseras av synkskriptet |
@@ -895,6 +895,22 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
      OSRM): Borås→Ulricehamn gav 21 platser inom 5 km, linje ritad, rensning
      tömde kartan. OBS: tomt Från-fält + känd position = start från "Sök där
      jag är"-positionen.
+   - **Återvinningscentraler = egen kategori (Pers önskemål 11 okt 2026):**
+     "Sopor" ska betyda hushållssopor; OSM:s återvinningscentraler
+     (`amenity=recycling` + `recycling_type=centre`, ~700 st) tar sällan
+     emot hushållssopor och visades ändå i samma kategori. Ny `ServiceType`
+     `atervinning` ("Återvinningscentral", ♻, mörkgrön `#33691e`) i
+     `types.ts`, `icons.ts`, `styles.css`, `App.tsx` (egen filterknapp med
+     antal), `NearestList`/`RouteList` (döljs i listorna precis som sopor),
+     `MapView` (badge-text "– grovavfall, hushållssopor ej säkert"),
+     `build-seo-pages.mjs`. Synken + `overpass.ts` (speglar varandra) ger
+     ÅVC `atervinning` i stället för `sopor` och inte längre `avfall` i
+     "Finns här". `DEFAULT_SERVICES` i App.tsx = alla kategorier utom
+     återvinning – "Sök där jag är"/ortssök slår alltså INTE på den
+     automatiskt, man väljer knappen själv. Glas-/pappersigloos
+     (`recycling_type=container`) är fortfarande helt uteslutna. Verifierat
+     med Playwright (patchad seed): knapp med antal, ♻-nålar, badge,
+     "Sök där jag är" lämnar kategorin av. sw.js → v81.
    - **Svep på bottenarket (Pers önskemål 11 okt 2026):** man ska i ALLA
      lägen kunna dra ner arkets övre del och se enbart kartan. Handtaget
      (`.sheet-handle`) och rubrikraden (`.brand`) i `App.tsx` har nu

@@ -50,7 +50,9 @@ export default function NearestList({
   // det är ikryssat tillsammans med andra filter. Ensamt valt visas det.
   const listFilters = useMemo(() => {
     if (allSelected || activeFilters.size === 1) return activeFilters
-    return new Set<ServiceType>([...activeFilters].filter((sv) => sv !== 'sopor'))
+    return new Set<ServiceType>(
+      [...activeFilters].filter((sv) => sv !== 'sopor' && sv !== 'atervinning'),
+    )
   }, [activeFilters, allSelected])
 
   const nearest = useMemo(() => {

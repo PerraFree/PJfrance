@@ -231,10 +231,14 @@ function servicesFromTags(tags) {
   if (
     tags.amenity === 'waste_disposal' ||
     tags.waste_disposal === 'yes' ||
-    (tags.amenity === 'recycling' && tags.recycling_type === 'centre') ||
     (tags.highway === 'rest_area' && (tags.waste_basket === 'yes' || tags.bin === 'yes'))
   ) {
     services.add('sopor')
+  }
+  // Återvinningscentraler (ÅVC) är en EGEN kategori sedan okt 2026 – de tar
+  // sällan emot hushållssopor och ska inte blandas med sopstationerna.
+  if (tags.amenity === 'recycling' && tags.recycling_type === 'centre') {
+    services.add('atervinning')
   }
   return [...services]
 }
@@ -415,8 +419,8 @@ function facilitiesFromTags(tags) {
   if (yes(tags.shower)) f.push('dusch')
   if (yes(tags.toilets) || yes(tags.toilet)) f.push('wc')
   if (yes(tags.laundry) || yes(tags.washing_machine)) f.push('tvatt')
-  if (yes(tags.waste_disposal) || tags.amenity === 'recycling' || 'waste_basket' in tags)
-    f.push('avfall')
+  // ÅVC får inte "Sopor/avfall" i Finns här-listan – det är just det som är oklart där.
+  if (yes(tags.waste_disposal) || 'waste_basket' in tags) f.push('avfall')
   if (['yes', 'wlan', 'terminal'].includes(tags.internet_access ?? '')) f.push('wifi')
   if (tags.dog === 'yes' || tags.dog === 'leashed') f.push('hund')
   if (yes(tags.bbq) || yes(tags.fireplace)) f.push('grill')
