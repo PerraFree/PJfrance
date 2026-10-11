@@ -286,3 +286,7 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   **Deploy 11 okt 12:56 (40ad828, 6 622 platser): 10 av 11 i seeden**, Fengersfors visar nu bara
   registerposten (vatten+ställplats) + sopstationen. Levol Onsala hittades inte av Nominatim
   ("Torpstigen 25") → hitta.se-koordinaten 57.447/12.046 satt som lat/lon. Verifiera nästa deploy.
+  **Deploy 11 okt 14:10 (3df6961, 6 624 platser): 11 av 11 i seeden**, Levol Onsala på hitta.se-läget.
+  Samma deploy var den första med issue #15-flödet (sync-data committar seeden och startar deployen
+  själv) – synk 3 min, deploy under en minut. Furusjöns Camping (Ånimskog) föll bort i den allra
+  första cachade synken (tillfälligt Nominatim-fel cachades som miss) och är tillbaka efter rättning.
