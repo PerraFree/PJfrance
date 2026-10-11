@@ -112,7 +112,23 @@ jobs:
             }
             core.info('✅ Projektet är igång.')
 
-            // 2) Hämta besöksnyckeln (gamla "anon" ELLER nya "publishable")
+            // 2) Hämta besöksnyckeln (gamla "anon" ELLER nya "publishable").
+            // Finns kopplingen redan i repot (supabase.env med URL + nyckel)
+            // hoppas steget över: en avgränsad token får ofta inte läsa
+            // API-nycklar (403, okt 2026), och då behövs det inte heller –
+            // jobbet används då bara för att köra supabase/schema.sql.
+            let befintlig = null
+            if (fs.existsSync('supabase.env')) {
+              const env = fs.readFileSync('supabase.env', 'utf8')
+              const mu = env.match(/VITE_SUPABASE_URL=(.+)/)
+              const mk = env.match(/VITE_SUPABASE_ANON_KEY=(.+)/)
+              if (mu && mk && mu[1].trim() === url && mk[1].trim()) befintlig = mk[1].trim()
+            }
+            const BRANCH = context.payload.repository?.default_branch ?? 'claude/gravatten-latrin-app-sverige-aed0qg'
+            let kopplingAndrad = false
+            if (befintlig) {
+              core.info('Kopplingen finns redan i repot (supabase.env) – hoppar över nyckelhämtningen.')
+            } else {
             const pickKey = (keys) =>
               keys.find((k) => k.name === 'anon' && k.api_key)?.api_key ??
               keys.find((k) => k.type === 'publishable' && k.api_key)?.api_key ??
@@ -145,7 +161,6 @@ jobs:
             core.info(`Besöksnyckel klar (${anon.startsWith('sb_publishable_') ? 'nya formatet' : 'anon'}).`)
             // Spara kopplingen som fil i repot (besöksnyckeln är publik per
             // design – den ligger ändå öppet i appens byggda kod).
-            const BRANCH = context.payload.repository?.default_branch ?? 'claude/gravatten-latrin-app-sverige-aed0qg'
             const envContent = `VITE_SUPABASE_URL=${url}\nVITE_SUPABASE_ANON_KEY=${anon}\n`
             let existingSha
             try {
@@ -169,6 +184,8 @@ jobs:
               ...(existingSha ? { sha: existingSha } : {}),
             })
             core.info('✅ Kopplingen sparad i repot (supabase.env).')
+            kopplingAndrad = true
+            }
 
             // 3) Installera databasen (idempotent)
             const sql = fs.readFileSync('supabase/schema.sql', 'utf8')
@@ -183,7 +200,11 @@ jobs:
             }
             core.info('✅ Databasen är installerad (alla tabeller och regler finns).')
 
-            // 4) Bygg om appen så kopplingen bakas in
+            // 4) Bygg om appen så kopplingen bakas in (bara om den ändrades)
+            if (!kopplingAndrad) {
+              core.info('Kopplingen oförändrad – ingen ny deploy behövs.')
+              return
+            }
             await github.request(
               'POST /repos/{owner}/{repo}/actions/workflows/{workflow_id}/dispatches',
               {
