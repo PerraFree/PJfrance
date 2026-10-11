@@ -93,8 +93,9 @@ Android förberett (`docs/BUILD-MOBILE.md`).
   Dependabot (`.github/dependabot.yml`, måndagar) öppnar max fem PR:er – Per
   mergar dem i webbläsaren en i taget. Håll upload-/download-artifact i samma major.
 - **Claude-rutiner** (claude.ai → Rutiner, inte i repot): "Veckosvep
-  Tömnmingskartan" (måndagar 05:15 UTC), "Veckorapport – nya/borttagna platser",
-  tokenpåminnelse. En rutin som ska pusha MÅSTE skapas i claude.ai/code → Rutiner
+  Tömnmingskartan" (måndagar 05:15 UTC), "Veckorapport – nya/borttagna platser"
+  (måndagar), "Månatlig säkerhetsgenomgång Tömningskartan" (1:a i månaden,
+  granskar och rapporterar, pushar inget), tokenpåminnelse. En rutin som ska pusha MÅSTE skapas i claude.ai/code → Rutiner
   → New routine med repot valt; rutiner skapade från en session får inget repo
   och kan inte pusha. Prompter skapade i webbgränssnittet kan inte ändras från en
   session – ge Per texten att klistra in.

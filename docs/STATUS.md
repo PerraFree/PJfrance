@@ -41,6 +41,8 @@ Se https://github.com/PerraFree/PJfrance/issues?q=is%3Aopen+label%3Abacklog
   "Gråvatten 5"; de gamla kopiorna (pekade på arkiverade "Gråvatten 4") är
   pausade och kan raderas.
 - Supabase-token byts före ~6 dec 2026 (rutinen påminner 27 nov).
+- Ny rutin 11 okt: "Månatlig säkerhetsgenomgång Tömningskartan" (1:a i månaden
+  07:27 svensk tid, rapport via push/mejl, pushar inget) – första körning 1 nov.
 
 ## Nästa steg (förslag)
 
