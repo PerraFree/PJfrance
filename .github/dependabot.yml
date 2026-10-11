@@ -10,7 +10,7 @@ updates:
       day: monday
       time: "06:00"
       timezone: Europe/Stockholm
-    labels:
-      - beroenden
+    # Ingen "labels:"-rad: etiketten måste finnas i repot i förväg, annars
+    # lägger Dependabot en felkommentar i varje PR (hände 11 okt 2026).
     commit-message:
       prefix: "actions"
