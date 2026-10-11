@@ -1,0 +1,52 @@
+name: Test RLS (tillfällig)
+
+# Tillfälligt testjobb för säkerhetsfynd 1 (GHSA-72p3-7774-p8h3): kontrollerar
+# från en GitHub-runner (Supabase är blockerat från Claude-sandboxen) att
+# anon-nyckeln INTE kan spara en främmande foto-URL men fortfarande kan spara
+# en URL i projektets egen bucket. Tas bort efter testet.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Testa foto-policyn
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: |
+          set -u
+          URL=$(grep VITE_SUPABASE_URL supabase.env | cut -d= -f2)
+          KEY=$(grep VITE_SUPABASE_ANON_KEY supabase.env | cut -d= -f2)
+          REF=$(echo "$URL" | sed -E 's#https://([^.]+)\..*#\1#')
+          H=(-H "apikey: $KEY" -H "Authorization: Bearer $KEY" -H "Content-Type: application/json" -H "Prefer: return=minimal")
+          post() { curl -s -o /tmp/body -w "%{http_code}" "${H[@]}" -X POST "$URL/rest/v1/photos" -d "$1"; }
+          fail=0
+
+          c=$(post '{"station_id":"rls-test","station_name":"RLS-test","url":"https://example.com/x.jpg","status":"approved"}')
+          echo "Främmande URL → HTTP $c ($(head -c 200 /tmp/body))"
+          case "$c" in 401|403) echo "  OK: nekas";; *) echo "  FEL: skulle nekas"; fail=1;; esac
+
+          c=$(post "{\"station_id\":\"rls-test\",\"station_name\":\"RLS-test\",\"url\":\"https://ond.se/$REF.supabase.co/storage/v1/object/public/place-photos/a/1.jpg\",\"status\":\"approved\"}")
+          echo "Look-alike-URL → HTTP $c"
+          case "$c" in 401|403) echo "  OK: nekas";; *) echo "  FEL: skulle nekas"; fail=1;; esac
+
+          OWN="$URL/storage/v1/object/public/place-photos/rls-test/1700000000000.jpg"
+          c=$(post "{\"station_id\":\"rls-test\",\"station_name\":\"RLS-test\",\"url\":\"$OWN\",\"status\":\"approved\"}")
+          echo "Egen bucket-URL → HTTP $c ($(head -c 200 /tmp/body))"
+          case "$c" in 201) echo "  OK: tillåts";; *) echo "  FEL: skulle tillåtas"; fail=1;; esac
+
+          # Städa testraden + räkna rader med främmande URL (ska vara 0)
+          q() { curl -s -X POST "https://api.supabase.com/v1/projects/$REF/database/query" \
+                 -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN" -H "Content-Type: application/json" \
+                 -d "{\"query\": $(printf '%s' "$1" | jq -Rs .)}"; }
+          q "delete from photos where station_id = 'rls-test'" > /dev/null
+          echo "Rader med främmande URL (approved): $(q "select count(*) as n from photos where status = 'approved' and url !~ '^https://$REF\\.supabase\\.co/storage/v1/object/public/place-photos/[A-Za-z0-9_-]+/[0-9]+\\.jpg\$'")"
+          echo "Rader satta till rejected av städningen: $(q "select count(*) as n from photos where status = 'rejected'")"
+          echo "Foton totalt: $(q "select count(*) as n from photos")"
+          exit $fail

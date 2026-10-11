@@ -90,9 +90,24 @@ create table if not exists photos (
   status text not null default 'approved'
 );
 alter table photos enable row level security;
+-- Säkerhetsfynd 1 (Johans granskning, GHSA-72p3-7774-p8h3, okt 2026): `url`
+-- får BARA peka på projektets egen bucket. Utan regeln kunde vem som helst
+-- med den publika anon-nyckeln spara en länk till valfri server, och bilden
+-- (eller en spårningspixel som loggar besökarnas IP) visades direkt för alla.
+-- Projekt-referensen är medvetet hårdkodad: ett mönster med `%` räcker inte
+-- (`https://ond.se/x.supabase.co/…` skulle matcha). Byter projektet ref:
+-- uppdatera BÅDE denna regex och `isOwnPhotoUrl()` i src/lib/photos.ts.
 drop policy if exists "anon kan lägga till foto" on photos;
 create policy "anon kan lägga till foto" on photos
-  for insert to anon with check (status = 'approved');
+  for insert to anon with check (
+    status = 'approved'
+    and url ~ '^https://yssyebjkejqpoenbhlfq\.supabase\.co/storage/v1/object/public/place-photos/[A-Za-z0-9_-]+/[0-9]+\.jpg$'
+  );
+-- Städa bort rader som redan hunnit in med främmande URL (idempotent – körs
+-- varje gång schemat körs, så en sådan rad kan aldrig ligga kvar publicerad).
+update photos set status = 'rejected'
+  where status = 'approved'
+    and url !~ '^https://yssyebjkejqpoenbhlfq\.supabase\.co/storage/v1/object/public/place-photos/[A-Za-z0-9_-]+/[0-9]+\.jpg$';
 drop policy if exists "anon läser foton" on photos;
 create policy "anon läser foton" on photos
   for select to anon using (status = 'approved');

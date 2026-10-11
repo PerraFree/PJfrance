@@ -160,8 +160,12 @@ create table photos (
   status text not null default 'approved'
 );
 alter table photos enable row level security;
+-- url får bara peka på projektets egen bucket (byt projekt-ref vid behov)
 create policy "anon kan lägga till foto" on photos
-  for insert to anon with check (status = 'approved');
+  for insert to anon with check (
+    status = 'approved'
+    and url ~ '^https://yssyebjkejqpoenbhlfq\.supabase\.co/storage/v1/object/public/place-photos/[A-Za-z0-9_-]+/[0-9]+\.jpg$'
+  );
 create policy "anon läser foton" on photos
   for select to anon using (status = 'approved');
 

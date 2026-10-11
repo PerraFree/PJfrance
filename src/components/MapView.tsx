@@ -28,6 +28,7 @@ import { facilityChip } from '../lib/icons'
 import { MY_PLACE_PREFIX } from '../lib/myplaces'
 import { markSelfVerified, selfVerifiedRecently, type VerificationInfo } from '../lib/verify'
 import type { StationReviews } from '../lib/reviews'
+import { isOwnPhotoUrl } from '../lib/photos'
 
 // Seed-datan täcker hela Sverige, så live-hämtning behövs bara när man zoomat
 // in nära (för färsk detalj). Håller "Hämtar stationer …" borta vid ort-zoom.
@@ -419,8 +420,12 @@ function popupHtml(
     : (SERVICE_COLORS[station.services[0]] ?? 'var(--green-700)')
   // Foto av platsen: ett community-inskickat foto (nyast) går före källans
   // eget, eftersom det oftast är färskare och tagit på plats.
+  // Community-foton visas bara från projektets egen bucket (säkerhetsfynd 1,
+  // okt 2026) – RLS i databasen stoppar främmande URL:er, det här är försvar
+  // på djupet. `station.image` är seedens Wikimedia-bild, inte användardata.
   const photoUrl =
-    communityPhoto ?? (station.image && /^https:\/\//i.test(station.image) ? station.image : undefined)
+    (isOwnPhotoUrl(communityPhoto) ? communityPhoto : undefined) ??
+    (station.image && /^https:\/\//i.test(station.image) ? station.image : undefined)
   const photo = photoUrl
     ? `<img class="popup-photo" src="${escapeAttr(photoUrl)}" alt="" loading="lazy" onerror="this.remove()">`
     : ''

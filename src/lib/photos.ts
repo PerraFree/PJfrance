@@ -21,6 +21,19 @@ const MAX_DIMENSION = 1280
 const JPEG_QUALITY = 0.72
 const MAX_UPLOAD_BYTES = 3 * 1024 * 1024
 
+/**
+ * Bara bilder i projektets egen bucket visas (säkerhetsfynd 1, okt 2026).
+ * Databasens RLS-regel (supabase/schema.sql) är det riktiga skyddet; det här
+ * är försvar på djupet så att en främmande URL aldrig renderas i appen även
+ * om en rad skulle slinka in. Samma mönster som regexen i schema.sql.
+ */
+const OWN_PHOTO_RE = new RegExp(
+  `^${base.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/storage/v1/object/public/${BUCKET}/[A-Za-z0-9_-]+/[0-9]+\\.jpg$`,
+)
+export function isOwnPhotoUrl(url: string | undefined | null): url is string {
+  return Boolean(communityEnabled && url && OWN_PHOTO_RE.test(url))
+}
+
 /** Senaste godkända community-foto per plats-id. */
 export async function fetchPhotos(): Promise<Map<string, string>> {
   const map = new Map<string, string>()
@@ -33,7 +46,7 @@ export async function fetchPhotos(): Promise<Map<string, string>> {
   const rows = (await res.json()) as Array<{ station_id?: string; url?: string }>
   for (const r of rows) {
     // Nyast först – första förekomsten per plats är senaste fotot.
-    if (r.station_id && r.url && !map.has(r.station_id)) map.set(r.station_id, r.url)
+    if (r.station_id && isOwnPhotoUrl(r.url) && !map.has(r.station_id)) map.set(r.station_id, r.url)
   }
   return map
 }
