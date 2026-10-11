@@ -31,9 +31,12 @@ export default function ReviewForm({ stationId, stationName, onClose, onSubmitte
       const result = await submitReview({ stationId, stationName, rating, comment })
       onSubmitted(rating, result === 'published')
       setStatus(result === 'published' ? 'done-published' : 'done-pending')
-    } catch {
+    } catch (err) {
       setStatus('error')
-      setError('Kunde inte spara – kontrollera nätet och försök igen.')
+      // Databasens egna meddelanden (spamskydd/längdgräns) är skrivna för
+      // användaren – visa dem; annars ett generellt råd.
+      const msg = err instanceof Error ? err.message : ''
+      setError(/många gånger|för lång/.test(msg) ? msg : 'Kunde inte spara – kontrollera nätet och försök igen.')
     }
   }
 
