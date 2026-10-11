@@ -57,11 +57,19 @@ jobs:
             echo "Hemlig nyckel mot Management API → HTTP $c (ska nekas)"
           fi
 
-          # --- Fynd 4: vilka request-headers når Postgres (för ev. IP-baserat spamskydd)? ---
-          q "create or replace function public.rls_probe_headers() returns text language sql stable as \$\$ select current_setting('request.headers', true) \$\$; grant execute on function public.rls_probe_headers() to anon; notify pgrst, 'reload schema';" > /dev/null
-          sleep 5
-          echo "Headers sedda av databasen: $(curl -s "${H[@]}" -X POST "$URL/rest/v1/rpc/rls_probe_headers" -d '{}' | sed -E 's/("(authorization|apikey)":")[^"]*/\1<dold>/g' | sed -E 's/[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+/<ip>/g')"
-          q "drop function if exists public.rls_probe_headers(); notify pgrst, 'reload schema';" > /dev/null
+          # --- Fynd 4: spamskydd – 6 snabba förslag från samma IP, det 6:e ska nekas ---
+          q "delete from rate_limits where bucket = 'submissions'" > /dev/null
+          codes=""
+          for i in 1 2 3 4 5 6; do
+            c=$(curl -s -o /tmp/body -w "%{http_code}" "${H[@]}" -X POST "$URL/rest/v1/submissions" \
+                 -d "{\"name\":\"RLS-test spam $i\",\"address\":\"RLS-test\",\"services\":[\"vatten\"],\"lat\":57.7,\"lon\":12.9,\"status\":\"pending\"}")
+            codes="$codes $c"
+          done
+          echo "6 förslag i rad → HTTP$codes"
+          echo "  sista svaret: $(head -c 300 /tmp/body)"
+          case "$codes" in " 201 201 201 201 201 400") echo "  OK: 5 släpps igenom, 6:e nekas";; *) echo "  FEL: oväntade svar"; fail=1;; esac
+          echo "Rader i rate_limits: $(q "select bucket, count(*) as n from rate_limits group by bucket")"
+          q "delete from rate_limits where bucket = 'submissions'" > /dev/null
 
           q "delete from submissions where address = 'RLS-test'" > /dev/null
           echo "Kvar efter städning: $(q "select count(*) as n from submissions where address = 'RLS-test'")"

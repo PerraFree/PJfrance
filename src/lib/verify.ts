@@ -1,4 +1,5 @@
 import { SUPABASE_ANON_KEY, SUPABASE_URL, communityEnabled } from '../config'
+import { restError } from './restError'
 
 /**
  * "Stämmer fortfarande"-verifieringar. Delas av alla användare via Supabase
@@ -49,7 +50,7 @@ export async function submitVerification(stationId: string): Promise<void> {
     headers: { ...headers, Prefer: 'return=minimal' },
     body: JSON.stringify({ station_id: stationId }),
   })
-  if (!res.ok) throw new Error(`Kunde inte spara verifieringen (${res.status}).`)
+  if (!res.ok) throw await restError(res, 'Kunde inte spara verifieringen')
 }
 
 // ---- Egna verifieringar (lokalt) – hindrar dubbelklick/spam ----

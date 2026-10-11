@@ -1,5 +1,6 @@
 import { SUPABASE_ANON_KEY, SUPABASE_URL, communityEnabled } from '../config'
 import type { ServiceType, Station } from '../types'
+import { restError } from './restError'
 
 /**
  * Minimal PostgREST-klient mot Supabase – ingen extra dependency.
@@ -35,10 +36,7 @@ export async function submitPlace(place: NewSubmission): Promise<void> {
     headers: { ...headers, Prefer: 'return=minimal' },
     body: JSON.stringify({ ...place, status: 'pending' }),
   })
-  if (!res.ok) {
-    const text = await res.text().catch(() => '')
-    throw new Error(`Kunde inte skicka förslaget (${res.status}). ${text}`)
-  }
+  if (!res.ok) throw await restError(res, 'Kunde inte skicka förslaget')
 }
 
 export interface NewReport {
@@ -56,10 +54,7 @@ export async function submitReport(report: NewReport): Promise<void> {
     headers: { ...headers, Prefer: 'return=minimal' },
     body: JSON.stringify({ ...report, status: 'open' }),
   })
-  if (!res.ok) {
-    const text = await res.text().catch(() => '')
-    throw new Error(`Kunde inte skicka rapporten (${res.status}). ${text}`)
-  }
+  if (!res.ok) throw await restError(res, 'Kunde inte skicka rapporten')
 }
 
 interface SubmissionRow {

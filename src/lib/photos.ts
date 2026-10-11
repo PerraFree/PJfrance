@@ -1,4 +1,5 @@
 import { SUPABASE_ANON_KEY, SUPABASE_URL, communityEnabled } from '../config'
+import { restError } from './restError'
 
 /**
  * Community-foton ("📷 Lägg till foto"). Publiceras direkt (ingen
@@ -111,10 +112,7 @@ export async function submitPhoto(input: NewPhoto): Promise<string> {
     headers: { ...headers, 'Content-Type': 'image/jpeg' },
     body: blob,
   })
-  if (!uploadRes.ok) {
-    const text = await uploadRes.text().catch(() => '')
-    throw new Error(`Kunde inte ladda upp bilden (${uploadRes.status}). ${text}`)
-  }
+  if (!uploadRes.ok) throw await restError(uploadRes, 'Kunde inte ladda upp bilden')
 
   const url = `${base}/storage/v1/object/public/${BUCKET}/${path}`
   const insertRes = await fetch(tableUrl, {
@@ -127,9 +125,6 @@ export async function submitPhoto(input: NewPhoto): Promise<string> {
       status: 'approved',
     }),
   })
-  if (!insertRes.ok) {
-    const text = await insertRes.text().catch(() => '')
-    throw new Error(`Kunde inte spara fotot (${insertRes.status}). ${text}`)
-  }
+  if (!insertRes.ok) throw await restError(insertRes, 'Kunde inte spara fotot')
   return url
 }

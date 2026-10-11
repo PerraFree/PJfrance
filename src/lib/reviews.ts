@@ -1,4 +1,5 @@
 import { SUPABASE_ANON_KEY, SUPABASE_URL, communityEnabled } from '../config'
+import { restError } from './restError'
 
 /**
  * Betyg & kommentarer. Stjärnbetyg utan text publiceras direkt (inget att
@@ -85,6 +86,6 @@ export async function submitReview(input: {
       status,
     }),
   })
-  if (!res.ok) throw new Error(`Kunde inte spara omdömet (${res.status}).`)
+  if (!res.ok) throw await restError(res, 'Kunde inte spara omdömet')
   return status === 'approved' ? 'published' : 'pending'
 }
