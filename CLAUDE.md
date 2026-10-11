@@ -175,7 +175,8 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
 ## Läget just nu (2026-10-11, överlämning från session "Gråvatten 4" till "Gråvatten 5")
 
 Allt arbete är committat och pushat; inget ligger kvar i någon scratchpad som
-behövs. Det som en ny session behöver veta utöver resten av filen:
+behövs. Session "Gråvatten 5" tog över 11 okt 2026 (pushtest OK, väntar på
+Pers instruktioner). Det som en ny session behöver veta utöver resten av filen:
 
 - **Öppna punkter för Per (inte för en session):** merga Dependabots fem
   PR:er #16–#20 (checkout 4→7, setup-node 4→7, upload-artifact 4→7,
