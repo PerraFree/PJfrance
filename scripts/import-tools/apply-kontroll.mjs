@@ -46,7 +46,7 @@ function applyToRegister(p, r, k) {
   let services = [...p.services]
   let unv = [...(p.unverifiedServices || [])]
   for (const s of r.contradictedServices || []) {
-    if (!CORE.includes(s)) continue
+    if (!CORE.includes(s) || !services.includes(s)) continue // bara det vi faktiskt visar
     services = services.filter((x) => x !== s)
     if (!high) unv.push(s)
   }
@@ -81,7 +81,7 @@ function newOverlay(k, r) {
     if (high) services.push(s)
     else unv.push(s)
   }
-  for (const s of r.contradictedServices || []) if (!high && CORE.includes(s)) unv.push(s)
+  for (const s of r.contradictedServices || []) if (!high && CORE.includes(s) && k.services.includes(s)) unv.push(s)
   const post = {
     name: r.nameNow || k.name,
     services: uniq(services),

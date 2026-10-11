@@ -11,7 +11,7 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 | A. Tömning latrin/gråvatten | Kommuner med 0–1 tömningsplatser: kommunsidor, turistråd, anläggningars egna sajter. Kompletteringar av befintliga camping-/ställplatsposter räknas. | 2026-10-05 |
 | B. Gasol byte/påfyllning + priser | Kedjornas butikssidor (Byggmax/Granngården/Rusta/ÖoB per butik), Norbro-/Linde-/gasolautomat.se-listor, lokala påfyllningsbolag, priser. Bara 10/11 kg-flaskor (P11/PA11/PC10/PK10). | 2026-09-28 |
 | C. Obekräftade platser: verifiera + fyll på | (1) Sök primärkälla för de OBEKRÄFTADE posterna i registret (`unverified: true` / `unverifiedServices`) – får de citat: ta bort obekräftat-flaggan. (2) Gör om lovande rader i `docs/kandidatplatser-husbilsplats-park4night.md` (tydlig tjänst + ort) till obekräftade registerposter så de syns grått på kartan. | 2026-09-25 |
-| D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. | 2026-09-25 |
+| D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. Uppdrag + import: `scripts/import-tools/UPPDRAG-kontroll.md`, `apply-kontroll.mjs`. Körda regioner: Västra Götaland (11 okt). | 2026-10-11 |
 | E. Öppettider + vinterstängt | Platser med tömning/vatten som saknar `openingHours`/`season`: hämta säsong ("1 maj–30 sep", "vinterstängt", "året runt") från kommun-/anläggningssida. Skriv `season: 'seasonal'`/`'year-round'` + `openingHours`. Prioritera kommunala tömningsstationer och Trafikverkets rastplatser med vattenavstängning. | 2026-09-28 |
 
 ## Regler som alltid gäller
@@ -27,6 +27,33 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 ## Logg
 
+- **2026-10-11, D (kontroll av befintliga platser) – Västra Götaland, första riktiga körningen
+  (session "Gråvatten 5"):** 275 platser i VG har tömning/vatten, 82 av dem en egen webbplats.
+  40 valda (max 2 per kommun, 38 kommuner, 20 OSM + 20 register) i 4 grupper à 10; 4 agenter med
+  uppdraget `scripts/import-tools/UPPDRAG-kontroll.md` (136 sökningar, WebFetch blockad mot ALLA
+  40 domäner → bara WebSearch med `allowed_domains`). Import med `apply-kontroll.mjs`
+  (registerposter uppdateras; OSM-platser får en "kontrollpost" i registret ovanpå, eftersom
+  registret vinner i appens dedupe och fälten fylls på – tjänster unionas, så en motsagd
+  OSM-tjänst kräver dessutom `EXCLUDED_OSM_ELEMENTS`). **Utfall: 16 ok, 13 ändrade, 0 nedlagda,
+  11 oklara** (egen sida nämner varken tömning eller vatten – inte motsagt). Inga felaktiga
+  tjänster hittades; ändringarna gäller säsong/avgift (21 registerposter uppdaterade, 8
+  kontrollposter nya). Viktigast: Furusjön var stängd hela 2025 (öppen 2026, 1 maj–30 sep);
+  Forsvik öppen året runt (vi sa 1 maj–30 sep), vatten bara maj–sep; Skotteksgården säsongsstängd
+  1 maj–mitten sep (Västsverige säger fel "året runt"), ny domän skottek.se; Åråshult 1 april–31 okt;
+  Nossebro 2 apr–14 sep, 285 kr; Nääs timtaxa i stället för "från 100 kr"; "Tjolmens ställplats"
+  (OSM) heter Hälsö Hamn ställplats (halsohamn.se) och har färskvatten; Kedumsvik och Dalbergså
+  fick färskvatten; nya belopp på Herrljunga GK (175/275), Vara-Bjertorp (250/300–325), Hajstorp
+  (250 inkl. tömning). Herrljunga GK och Vara-Bjertorp GK: färskvatten nämns inte på klubbens
+  sida → flyttat till påstått (grått). Agenternas avgifts-/säsongstexter var för pratiga för
+  popupen och kortades för hand efter importen (gör det alltid). **Kvar/manuellt:** Hamnservice
+  Lysekil tömning – kommunens prissida 2026 lägger husbilstömningen vid husbilsparkeringarna
+  (Kolholmarna/Valbodalen), Havsbadets "tömningsstationer" gäller båtar → pinnen kan sitta fel,
+  läs hamn.lysekil.se i webbläsare; Stenungsögården – citatet om grå-/svartvattentömning finns
+  inte längre på sajten (läs i webbläsare); Tidaholms Camping – "Camping Maplelake Adventure" på
+  samma adress, ev. ny operatör; Lisebergsbyn heter inte Kärralund längre (OSM-namn); Lövekulle
+  bygger om VA + nytt servicehus hösten 2026. Sidofynd att kolla: Åmåls kommun nämner
+  husbilstömning "intill rastplatsen vid Åmåls västra infart"; Sjöstugetomten (Ed) har enligt
+  Västsverige ingen latrintömning. Nästa D-region: Skåne eller Stockholms län.
 - **2026-10-05, A (tömning latrin/gråvatten):** äldst datum i rotationen. 7 agenter × 65 i budget
   (~300 sökningar använda, inget kvotfel) mot de 69 kommuner som hade 0–1 tömningsplatser i
   seeden (Stockholms län, Skåne, VG, Mellansverige, Norr). Kommunerna publicerar nästan aldrig
