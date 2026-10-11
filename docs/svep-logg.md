@@ -283,3 +283,6 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   Expressgasol Tidaholm finns inte längre i listan. Rådata `docs/import/gasol-restlista-okt-2026.json`
   + restlistan sist i `discovery-varv2-lagtackning-okt-2026.json`. Verifiera geokodning (West Coast,
   Tingsryd, Ronneby, Levol Onsala) efter deploy.
+  **Deploy 11 okt 12:56 (40ad828, 6 622 platser): 10 av 11 i seeden**, Fengersfors visar nu bara
+  registerposten (vatten+ställplats) + sopstationen. Levol Onsala hittades inte av Nominatim
+  ("Torpstigen 25") → hitta.se-koordinaten 57.447/12.046 satt som lat/lon. Verifiera nästa deploy.

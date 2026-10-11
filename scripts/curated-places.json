@@ -19690,10 +19690,6 @@
   },
   {
     "name": "Levol gasolautomat, Onsala",
-    "query": "Torpstigen 25, Onsala",
-    "nearLat": 57.4192,
-    "nearLon": 11.9767,
-    "maxKm": 8,
     "services": [
       "gasol"
     ],
@@ -19702,10 +19698,12 @@
     ],
     "source": "egen",
     "confidence": "high",
-    "description": "Gasolautomat, byte av PC5/PC10-flaskor (eller köp ny), öppen dygnet runt. Adress Torpstigen 25 bekräftad på Levols egen sida (levol.se/gasolautomat), okt 2026. Läge geokodat från adressen – verifiera.",
+    "description": "Gasolautomat, byte av PC5/PC10-flaskor (eller köp ny), öppen dygnet runt. Adress Torpstigen 25 bekräftad på Levols egen sida (levol.se/gasolautomat), okt 2026. Koordinat från hitta.se (Torpstigen 25, avrundad till ca 50 m) eftersom adressuppslaget inte hittar gatan.",
     "website": "https://levol.se/gasolautomat/",
     "address": "Torpstigen 25, 434 91 Onsala (Forsbäck)",
-    "gasolPrice": "Byte PC5 269 kr, PC10 399 kr (levol.se, okt 2026)"
+    "gasolPrice": "Byte PC5 269 kr, PC10 399 kr (levol.se, okt 2026)",
+    "lat": 57.447,
+    "lon": 12.046
   },
   {
     "name": "Koaro AB, Linköping",
