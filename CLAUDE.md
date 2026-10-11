@@ -194,6 +194,27 @@ Pers instruktioner). Det som en ny session behöver veta utöver resten av filen
   kommer (måndagar), en i taget, och kollar att Actions blir grönt.
   Svarstexter till vännen för issue #13/#14/#15 är levererade i chatten;
   Per klistrar in dem själv.
+- **Säkerhetsrådgivning GHSA-72p3-7774-p8h3 (Johan, 11 okt 2026) – alla fyra
+  fynd åtgärdade och verifierade mot den levande databasen samma dag.**
+  Rådgivningen är privat (API ger 403 från en session; Per klistrade in
+  texten). (1) Foto-URL: RLS-regex mot egen bucket + `isOwnPhotoUrl()` i
+  `photos.ts`/`MapView.tsx` + idempotent städning i schema.sql. (2) Token:
+  `bevaka`/`hantera` kör PostgREST med `SUPABASE_SERVICE_KEY` (sb_secret_,
+  Per lade in den 11 okt); kontotoken bara i installationen; självläkning
+  och uppväckning borttagna; installationen hoppar över nyckelhämtning
+  (tokenen får inte läsa API-nycklar, 403) och är nu enda sättet att köra
+  schema.sql. (3) Längdgränser (`*_len`-constraints, `maxLength` i formulär),
+  try/catch per rad + kortade titlar i bevakningen. (4) Spamskydd i
+  databasen: `rate_limits` + `rate_limit()` + triggers per tabell och i
+  storage-policyn (per IP via `request.headers`, verifierat att
+  `cf-connecting-ip` når Postgres), tak 20 ärenden/körning, @/#
+  neutraliseras (# FÖRE @). `src/lib/restError.ts` visar databasens svenska
+  felmeddelanden. Lokalt test av schemat: PGlite (`npm i @electric-sql/pglite`
+  i scratchpad, kör schema.sql minus storage-satserna, `set role anon` +
+  `set_config('request.headers', …)`). Live-test från en runner: tillfälligt
+  `test-rls.yml` (raderat efteråt) – mönstret finns i git-historiken.
+  Captcha (Johans alternativ 3) INTE infört – IP-spärren bedömdes räcka; kan
+  läggas ovanpå om spam ändå kommer.
 - **Issue #13/#14/#15 (vännens ärenden) är KLARA och verifierade** – se
   avsnitten Teknik/Workflows ovan. Emulator-skärmdumpen ligger på grenen
   `emulator-skarmdump` (force-pushas av varje Android-körning).
