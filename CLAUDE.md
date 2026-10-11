@@ -178,15 +178,18 @@ Allt arbete är committat och pushat; inget ligger kvar i någon scratchpad som
 behövs. Session "Gråvatten 5" tog över 11 okt 2026 (pushtest OK, väntar på
 Pers instruktioner). Det som en ny session behöver veta utöver resten av filen:
 
-- **Öppna punkter för Per (inte för en session):** merga Dependabots fem
-  PR:er #16–#20 (checkout 4→7, setup-node 4→7, upload-artifact 4→7,
-  setup-java 4→6, github-script 7→9) en i taget i webbläsaren och kolla att
-  bygget är grönt. OBS: `upload-artifact` och `download-artifact` (i
-  `android.yml`) bör ha samma majorversion – bumpa download-artifact till
-  samma major i samma veva om Dependabot inte gjort det. Körloggarna varnar
-  redan "Node.js 20 is deprecated" för checkout/setup-node v4 – de PR:erna
-  löser det. Svarstexter till vännen för issue #13/#14/#15 är levererade i
-  chatten; Per klistrar in dem själv.
+- **Dependabots första omgång KLAR (11 okt 2026, kl 16:30 UTC):** Per mergade
+  #16–#20 i webbläsaren; nu checkout v7.0.1, setup-node v7.1.0,
+  upload-artifact v7.0.2, setup-java v6.0.1, github-script v9.0.0, och
+  download-artifact höjdes av sessionen till v8.0.2 (Dependabot öppnar max
+  fem PR:er åt gången, så den PR:en kom aldrig). Alla deployer, tre
+  Android-byggen med emulatortest och datasynken blev gröna efteråt.
+  `labels: beroenden` i `dependabot.yml` togs bort (etiketten fanns inte
+  och gav en felkommentar i varje PR). Inga workflow-filer behöver röras
+  av Dependabot-PR:er framöver – Per mergar dem i webbläsaren när de
+  kommer (måndagar), en i taget, och kollar att Actions blir grönt.
+  Svarstexter till vännen för issue #13/#14/#15 är levererade i chatten;
+  Per klistrar in dem själv.
 - **Issue #13/#14/#15 (vännens ärenden) är KLARA och verifierade** – se
   avsnitten Teknik/Workflows ovan. Emulator-skärmdumpen ligger på grenen
   `emulator-skarmdump` (force-pushas av varje Android-körning).
