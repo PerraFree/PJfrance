@@ -43,8 +43,9 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   Nossebro 2 apr–14 sep, 285 kr; Nääs timtaxa i stället för "från 100 kr"; "Tjolmens ställplats"
   (OSM) heter Hälsö Hamn ställplats (halsohamn.se) och har färskvatten; Kedumsvik och Dalbergså
   fick färskvatten; nya belopp på Herrljunga GK (175/275), Vara-Bjertorp (250/300–325), Hajstorp
-  (250 inkl. tömning). Herrljunga GK och Vara-Bjertorp GK: färskvatten nämns inte på klubbens
-  sida → flyttat till påstått (grått). Agenternas avgifts-/säsongstexter var för pratiga för
+  (250 inkl. tömning). Herrljunga GK: färskvatten nämns inte på klubbens sida → flyttat till
+  påstått (grått). Vara-Bjertorp GK fick samma behandling men Per vet att färskvatten finns →
+  återställt som bekräftat (fältkännedom slår webbsaknad). Agenternas avgifts-/säsongstexter var för pratiga för
   popupen och kortades för hand efter importen (gör det alltid). **Kvar/manuellt:** Hamnservice
   Lysekil tömning – kommunens prissida 2026 lägger husbilstömningen vid husbilsparkeringarna
   (Kolholmarna/Valbodalen), Havsbadets "tömningsstationer" gäller båtar → pinnen kan sitta fel,

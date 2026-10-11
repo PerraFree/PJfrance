@@ -8328,15 +8328,14 @@
     "maxKm": 30,
     "services": [
       "gravatten",
-      "latrin"
+      "latrin",
+      "vatten"
     ],
-    "description": "Ställplats med el, färskvatten, tömning av toalett/latrin och gråvatten. Källa: Vara-Bjertorp GK. Kontroll okt 2026 (https://vara-bjertorpgk.se/?page_id=7080 ; https://www.vastsverige.com/en/vara/produkter/vara-bjertorp-golf-club/): \"vara-bjertorpgk.se/?page_id=7080: 'Vara-Bjertorp Golfklubb erbjuder 22 bokningsbara ställplatser, samtliga platser har tillgång till el.' 'Vårt fina servicehus ligger på vägen mellan klubbhus och ställplats. Här får Ni som gäster tillgång till duschar, toaletter, diskmöjligheter och tömning av latrin & gråvatten.' '25…\" Färskvatten nämns inte på klubbens egen sida (kontroll okt 2026) – visas som påstått tills belägg finns.",
+    "description": "Ställplats med el, färskvatten, tömning av toalett/latrin och gråvatten. Källa: Vara-Bjertorp GK. Kontroll okt 2026 (https://vara-bjertorpgk.se/?page_id=7080 ; https://www.vastsverige.com/en/vara/produkter/vara-bjertorp-golf-club/): \"vara-bjertorpgk.se/?page_id=7080: 'Vara-Bjertorp Golfklubb erbjuder 22 bokningsbara ställplatser, samtliga platser har tillgång till el.' 'Vårt fina servicehus ligger på vägen mellan klubbhus och ställplats. Här får Ni som gäster tillgång till duschar, toaletter, diskmöjligheter och tömning av latrin & gråvatten.' '25…\" Färskvatten bekräftat av Per (egen kännedom, okt 2026) – klubbens sida nämner det inte men det finns på plats.",
     "url": "https://www.vara-bjertorpgk.se/?page_id=7080",
     "source": "egen",
     "fee": "250 kr/natt (greenfee-gäst), 300–325 kr (icke-golfare); incheckning från 16, utcheckning senast 15",
-    "unverifiedServices": [
-      "vatten"
-    ]
+    "confidence": "high"
   },
   {
     "name": "Ronneby Golfklubb",
