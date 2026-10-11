@@ -89,7 +89,8 @@ jobs:
             // förslag inte kan notifiera godtyckliga GitHub-användare eller
             // länka ärenden via Pers repo, och gör texten säker i
             // markdown-tabellceller (| och radbrytningar).
-            const neutral = (s) => String(s).replace(/<!--|-->/g, '').replace(/@/g, '&#64;').replace(/#/g, '&#35;')
+            // OBS ordningen: # först, annars träffas #-tecknet i "&#64;".
+            const neutral = (s) => String(s).replace(/<!--|-->/g, '').replace(/#/g, '&#35;').replace(/@/g, '&#64;')
             const cell = (v) =>
               neutral(v ?? '–')
                 .replace(/\|/g, '\\|')
