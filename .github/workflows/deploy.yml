@@ -36,6 +36,10 @@ jobs:
       - run: npm ci
       - name: Kontrollera att OSM-listorna är identiska i synk och app (stoppar vid avvikelse)
         run: node scripts/check-mirrors.mjs
+      - name: Kvalitetskontroll av registret (tjänstekoder, koordinater, dubbletter inom 100 m)
+        run: node scripts/check-register.mjs
+      - name: Säkerhetskontroll av produktionsberoenden (stoppar vid high/critical)
+        run: npm audit --omit=dev --audit-level=high
       - name: Synka stationsdata (OSM + Trafikverket) – bara vid manuell körning med "synk"
         if: github.event_name == 'workflow_dispatch' && inputs.synk
         run: node scripts/sync-stations.mjs
