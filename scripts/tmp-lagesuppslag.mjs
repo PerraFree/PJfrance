@@ -9,7 +9,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 async function overpass(q) {
   for (const url of OVERPASS) {
     try {
-      const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(q), headers: { 'User-Agent': UA, 'Content-Type': 'application/x-www-form-urlencoded' }, signal: AbortSignal.timeout(60000) })
+      const res = await fetch(url, { method: 'POST', body: 'data=' + encodeURIComponent(q), headers: { 'User-Agent': UA, 'Content-Type': 'application/x-www-form-urlencoded' }, signal: AbortSignal.timeout(25000) })
       if (res.ok) return (await res.json()).elements ?? []
     } catch {}
   }
@@ -41,17 +41,19 @@ const T = [
   ['Strandstuviken/Örstig', 'Strandstuvik|Örstig', 58.72, 17.05, 12000, []],
   ['Stjärnfors GK', '[Gg]olf|Stjärnfors|Stjernfors', 59.83, 15.0, 5000, []],
   ['Örebro Truckstop', '[Tt]ruck', 59.29, 15.2, 12000, []],
+  ['Klässbol gästhamn/väveri', 'Klässbol|[Gg]ästhamn|[Hh]amn|[Bb]rygga|Linneväveri', 59.53, 12.745, 2500, ['Klässbols gästhamn, Arvika']],
 ]
 const out = {}
 for (const [label, re, lat, lon, r, addrs] of T) {
-  const q = `[out:json][timeout:50];(nwr(around:${r},${lat},${lon})["name"~"${re}"];nwr(around:${r},${lat},${lon})["amenity"="sanitary_dump_station"];nwr(around:${r},${lat},${lon})["shop"="gas"];nwr(around:${r},${lat},${lon})["vending"~"gas"];);out center tags;`
+  const q = `[out:json][timeout:20];(nwr(around:${r},${lat},${lon})["name"~"${re}"];nwr(around:${r},${lat},${lon})["amenity"="sanitary_dump_station"];nwr(around:${r},${lat},${lon})["shop"="gas"];nwr(around:${r},${lat},${lon})["vending"~"gas"];);out center tags;`
   const els = await overpass(q)
   out[label] = {
     osm: els === null ? 'OVERPASS-FEL' : els.map((e) => ({ id: `${e.type}/${e.id}`, ...pos(e), name: e.tags?.name, tags: Object.fromEntries(Object.entries(e.tags ?? {}).filter(([k]) => /^(amenity|shop|leisure|man_made|vending|addr:street|addr:housenumber|brand|operator|tourism|sport)$/.test(k))) })),
     adresser: {},
   }
   for (const a of addrs) out[label].adresser[a] = await nominatim(a)
-  await sleep(2000)
+  console.log('RAD ' + JSON.stringify({ [label]: out[label] }))
+  await sleep(1000)
 }
 console.log('RESULTAT-START')
 console.log(JSON.stringify(out))
