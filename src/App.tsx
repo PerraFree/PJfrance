@@ -549,6 +549,7 @@ export default function App() {
       if (sharedDeadlineRef.current === 0 && !community) {
         sharedDeadlineRef.current = performance.now() + 12000
         // Standardkategorierna startar livehämtningen runt länkens läge.
+        if (activeFiltersRef.current.size === 0) ensureGasolFacilities()
         setActiveFilters((prev) => (prev.size === 0 ? new Set(DEFAULT_SERVICES) : prev))
         window.setTimeout(() => setSharedTick((n) => n + 1), 12100)
         return

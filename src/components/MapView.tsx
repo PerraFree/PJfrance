@@ -445,9 +445,12 @@ function popupHtml(
 function popupMaxWidth(freeWidth = Infinity): number {
   // Liggande mobil: sidopanelen tar ~414 px och lämnar ~250 px fri karta –
   // rutan anpassas till den fria ytan i stället för att sticka ut till höger
-  // (granskning 6, 12 okt 2026). Under 230 px fri yta får den ligga över panelen.
-  const free = freeWidth >= 230 ? freeWidth - 52 : Infinity
-  return Math.max(150, Math.min(300, window.innerWidth - 64, free))
+  // (granskning 6, 12 okt 2026).
+  // Mycket smalt (667 px liggande: ~190 px mellan panel och zoomknappar):
+  // hellre en smal ruta än en som panelen eller knapparna täcker – panelen
+  // ligger ovanpå kartan, så rutan kan inte ligga över den (granskning 10).
+  if (freeWidth < 230) return Math.max(120, Math.min(300, window.innerWidth - 64, freeWidth - 50))
+  return Math.max(150, Math.min(300, window.innerWidth - 64, freeWidth - 52))
 }
 
 function readSavedView(): { lat: number; lon: number; zoom: number } | null {
@@ -600,8 +603,9 @@ export default function MapView({
     // Liggande mobil: zoom-/platsknapparna till höger låg ovanpå rutans text
     // (granskning 6). Räkna dem som kant när det ändå blir plats kvar.
     const ctrl = document.querySelector('.leaflet-control-zoom')?.getBoundingClientRect()
-    if (left > 0 && vw < 1000 && ctrl && ctrl.width > 0 && ctrl.left > vw / 2 && ctrl.left - 8 - left >= 260) {
-      right = Math.min(right, ctrl.left - 8)
+    if (left > 0 && vw < 1000 && ctrl && ctrl.width > 0 && ctrl.left > vw / 2) {
+      const loc = document.querySelector('.locate-btn')?.getBoundingClientRect()
+      right = Math.min(right, ctrl.left - 8, loc && loc.width > 0 && loc.left > vw / 2 ? loc.left - 8 : Infinity)
     }
     return { left, top, right, bottom }
   }

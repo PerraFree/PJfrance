@@ -197,10 +197,10 @@ const valid = (seed.stations ?? seed).filter(
 // sidornas "Källa"-rad.
 const sourcesOf = new Map()
 const merged0 = dedupe(valid, () => 0, () => false, (kept, m) => {
-  sourcesOf.set(kept, [...new Set([...(sourcesOf.get(kept) ?? [kept.source]), m.source])])
+  sourcesOf.set(kept.id, [...new Set([...(sourcesOf.get(kept.id) ?? [kept.source]), m.source])])
 })
 const stations = nameGenericByNearby(merged0).filter((s) => !s.unverified)
-for (const s of stations) s.sources = sourcesOf.get(s) ?? [s.source]
+for (const s of stations) s.sources = sourcesOf.get(s.id) ?? [s.source] // id: namnsättningen skapar nya objekt
 // Kommuner grupperas på exakt namn – Håbo och Habo fick samma slug och
 // slogs ihop till en sida (granskning 7). Krockande slugar får länet som tillägg.
 const byKommun = new Map()
@@ -400,6 +400,20 @@ ${neighbours.length ? `<h2>Grannkommuner</h2><ul class="cols">${neighbours.map((
   }
   await put(`kommun/${kommunSlug.get(k)}/index.html`, page({ title, description, canonical, body, jsonld: [crumbs(trail), itemList] }))
   urls.push(canonical)
+}
+// Kommuner vars namn ger samma adress (Habo/Håbo): den gamla gemensamma
+// adressen (/kommun/habo/, indexerad sedan sep 2026) blir en vägvisare i
+// stället för 404 (granskning 10). Inte i sitemapen; canonical till indexet.
+for (const [base, ks] of Object.entries(Object.groupBy ? Object.groupBy(kommuner, (k) => slug(k)) : {})) {
+  if (ks.length < 2) continue
+  await put(`kommun/${base}/index.html`, page({
+    title: `${ks.join(' eller ')}? – välj kommun | Tömningskartan`,
+    description: `Flera kommuner heter nästan likadant: ${ks.join(', ')}. Välj rätt kommun.`,
+    canonical: `${SITE}/kommun/`,
+    body: `${bcHtml([['Tömningskartan', `${SITE}/`], ['Kommuner', `${SITE}/kommun/`]])}
+<h1>Vilken kommun menar du?</h1>
+<ul class="places">${ks.map((k) => `<li><a class="n" href="${esc(kommunUrl(k).replace(SITE, ''))}">${esc(k)}</a>${lanFor(k) ? ` <span class="s">· ${esc(lanFor(k))}</span>` : ''}</li>`).join('')}</ul>`,
+  }))
 }
 const total = places.length
 await put('kommun/index.html', page({
