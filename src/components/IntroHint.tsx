@@ -6,6 +6,9 @@ export default function IntroHint() {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
+    // Öppnad via en delad platslänk: platsrutan är det viktiga – välkomsten
+    // täckte förut halva den (granskning 6, 12 okt 2026). Visas nästa besök.
+    if (new URLSearchParams(location.search).has('at')) return
     try {
       if (!localStorage.getItem(KEY)) setShow(true)
     } catch {

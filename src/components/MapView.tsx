@@ -442,8 +442,12 @@ function popupHtml(
  * kant, utfyllnad och lite luft (~64 px) – annars hamnar stängkrysset
  * utanför på en 320 px-skärm eller vid 200 % zoom.
  */
-function popupMaxWidth(): number {
-  return Math.max(150, Math.min(300, window.innerWidth - 64))
+function popupMaxWidth(freeWidth = Infinity): number {
+  // Liggande mobil: sidopanelen tar ~414 px och lämnar ~250 px fri karta –
+  // rutan anpassas till den fria ytan i stället för att sticka ut till höger
+  // (granskning 6, 12 okt 2026). Under 230 px fri yta får den ligga över panelen.
+  const free = freeWidth >= 230 ? freeWidth - 52 : Infinity
+  return Math.max(150, Math.min(300, window.innerWidth - 64, free))
 }
 
 function readSavedView(): { lat: number; lon: number; zoom: number } | null {
@@ -472,7 +476,7 @@ function sharePlace(name: string, lat: number, lon: number, id: string | undefin
   void nativeShare(name, url).then((how) => {
     if (how !== 'copied') return
     // Dator utan delningsdialog: kvitto direkt på knappen (förut alert()).
-    btn.textContent = '✓ Länk kopierad'
+    btn.textContent = '✓ Kopierad'
     window.setTimeout(() => {
       if (btn.isConnected) btn.textContent = 'Dela'
     }, 2500)
@@ -593,6 +597,12 @@ export default function MapView({
       // Desktop: listan ligger uppe till höger – popupen centreras till vänster om den.
       right = Math.min(right, nearRect.left)
     }
+    // Liggande mobil: zoom-/platsknapparna till höger låg ovanpå rutans text
+    // (granskning 6). Räkna dem som kant när det ändå blir plats kvar.
+    const ctrl = document.querySelector('.leaflet-control-zoom')?.getBoundingClientRect()
+    if (left > 0 && vw < 1000 && ctrl && ctrl.width > 0 && ctrl.left > vw / 2 && ctrl.left - 8 - left >= 260) {
+      right = Math.min(right, ctrl.left - 8)
+    }
     return { left, top, right, bottom }
   }
   const computePopupPadding = () => {
@@ -628,7 +638,10 @@ export default function MapView({
       const freeH = free.bottom - free.top
       // Ryms popupen inte i höjd: lägg den så högt som möjligt i stället.
       const targetY = rect.height >= freeH - 24 ? free.top + 12 + rect.height / 2 : free.top + freeH / 2
-      const targetX = rect.width >= freeW - 24 ? free.left + 12 + rect.width / 2 : free.left + freeW / 2
+      let targetX = rect.width >= freeW - 24 ? free.left + 12 + rect.width / 2 : free.left + freeW / 2
+      // Aldrig utanför skärmens högerkant (stängkrysset måste synas).
+      const vw = window.innerWidth || 1200
+      targetX = Math.max(rect.width / 2 + 8, Math.min(targetX, vw - 8 - rect.width / 2))
       const dx = Math.round(rect.left + rect.width / 2 - targetX)
       const dy = Math.round(rect.top + rect.height / 2 - targetY)
       if (Math.abs(dx) < 2 && Math.abs(dy) < 2) return
@@ -640,6 +653,8 @@ export default function MapView({
     const popup = marker.getPopup()
     if (!popup) return
     const { padTopLeft, padBottomRight } = computePopupPadding()
+    const free = computeFreeRect()
+    popup.options.maxWidth = popupMaxWidth(free.right - free.left)
     popup.options.autoPanPaddingTopLeft = padTopLeft
     popup.options.autoPanPaddingBottomRight = padBottomRight
   }

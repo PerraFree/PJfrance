@@ -2,8 +2,20 @@ import { Capacitor } from '@capacitor/core'
 
 export const isNative = Capacitor.isNativePlatform()
 
-/** Hämtar position via native-GPS på enhet, annars webbläsarens geolocation. */
-export async function getPosition(): Promise<{ lat: number; lon: number }> {
+/**
+ * Hämtar positionen – med tidsgräns: utan svar på frågan om platsåtkomst
+ * eller utan GPS-fäste stod "Hämtar position …" kvar för evigt (granskning 6,
+ * 12 okt 2026). Efter 25 s ges upp med ett vanligt fel.
+ */
+export function getPosition(): Promise<{ lat: number; lon: number }> {
+  let timer = 0
+  const limit = new Promise<never>((_, reject) => {
+    timer = window.setTimeout(() => reject(new Error('Tidsgräns för position')), 25000)
+  })
+  return Promise.race([readPosition(), limit]).finally(() => window.clearTimeout(timer))
+}
+
+async function readPosition(): Promise<{ lat: number; lon: number }> {
   if (isNative) {
     const { Geolocation } = await import('@capacitor/geolocation')
     const perm = await Geolocation.checkPermissions()
@@ -11,7 +23,7 @@ export async function getPosition(): Promise<{ lat: number; lon: number }> {
       const req = await Geolocation.requestPermissions()
       if (req.location !== 'granted') throw new Error('Platsåtkomst nekad')
     }
-    const pos = await Geolocation.getCurrentPosition({ enableHighAccuracy: true })
+    const pos = await Geolocation.getCurrentPosition({ enableHighAccuracy: true, timeout: 20000 })
     return { lat: pos.coords.latitude, lon: pos.coords.longitude }
   }
   return new Promise((resolve, reject) => {
@@ -22,6 +34,7 @@ export async function getPosition(): Promise<{ lat: number; lon: number }> {
     navigator.geolocation.getCurrentPosition(
       (p) => resolve({ lat: p.coords.latitude, lon: p.coords.longitude }),
       (err) => reject(err),
+      { timeout: 20000, maximumAge: 60000 },
     )
   })
 }

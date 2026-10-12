@@ -1221,6 +1221,9 @@ button {
   font-weight: 600;
   color: var(--green-700);
   cursor: pointer;
+  /* "✓ Kopierad" bröts förut på tre rader och klipptes (granskning 6). */
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .popup .share-btn:hover {

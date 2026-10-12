@@ -367,6 +367,9 @@ export default function App() {
   const [seedUpdated, setSeedUpdated] = useState<string | null>(null)
   const [freeOnly, setFreeOnly] = useState(false)
   const [communityStations, setCommunityStations] = useState<Station[]>([])
+  // Satt när första hämtningen av användarplatser är klar (eller misslyckats) –
+  // en delad länk till en sådan plats väntar på den (granskning 6, 12 okt 2026).
+  const [communityDone, setCommunityDone] = useState(!communityEnabled)
   const [showSubmit, setShowSubmit] = useState(false)
   const [reportTarget, setReportTarget] = useState<{ id: string; name: string } | null>(null)
   const [focus, setFocus] = useState<{ id: string; nonce: number } | null>(null)
@@ -740,6 +743,7 @@ export default function App() {
       .catch(() => {
         /* community-lagret är valfritt */
       })
+      .finally(() => setCommunityDone(true))
   }, [])
 
   // Grunddata för hela Sverige, förhämtad vid bygget (scripts/sync-stations.mjs)
@@ -789,23 +793,37 @@ export default function App() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+  // Platser som bara finns i livehämtningen (nya OSM-noder) eller hos
+  // användarplatserna dyker upp efter grunddatan – vänta upp till 12 s på dem
+  // innan "hittades inte" visas.
+  const sharedDeadlineRef = useRef(0)
+  const [sharedTick, setSharedTick] = useState(0)
   useEffect(() => {
     if (!sharedId || seedStations.length === 0) return
-    setSharedId(null)
     const s = stations.find((x) => x.id === sharedId)
     const own = s ? s.services.filter((sv) => ALL_SERVICES.includes(sv)) : []
     if (!s || own.length === 0) {
-      // Okänd plats (borttagen, eller en annans egna plats): säg det rakt ut
-      // i stället för att slå på sex kategorier som inte har med länken att göra.
+      if (!communityDone && sharedId.startsWith('community-')) return
+      if (sharedDeadlineRef.current === 0) {
+        sharedDeadlineRef.current = performance.now() + 12000
+        // Standardkategorierna startar livehämtningen runt länkens läge.
+        setActiveFilters((prev) => (prev.size === 0 ? new Set(DEFAULT_SERVICES) : prev))
+        window.setTimeout(() => setSharedTick((n) => n + 1), 12100)
+        return
+      }
+      if (performance.now() < sharedDeadlineRef.current) return
+      setSharedId(null)
+      // Okänd plats (borttagen, eller en annans egna plats): säg det rakt ut.
       showMessage('Platsen i länken hittades inte – den kan ha tagits bort eller bara finnas hos den som delade den.', 10000)
       return
     }
+    setSharedId(null)
     setActiveFilters((prev) => new Set([...prev, ...own]))
     ensureGasolFacilityFor(s)
     setFlyTo({ lat: s.lat, lon: s.lon, zoom: sharedZoomRef.current ?? 16 })
     setFocus({ id: s.id, nonce: Date.now() })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sharedId, stations, seedStations.length])
+  }, [sharedId, stations, seedStations.length, communityDone, sharedTick])
 
   // Godkända community-platser (crowdsourcing)
   useEffect(() => {
