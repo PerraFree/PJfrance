@@ -6160,22 +6160,23 @@
   },
   {
     "id": "curated-366-sandvikens-camping",
-    "name": "Sandvikens camping",
+    "name": "Sandvikens camping / Sandviken Strand ställplats (Havssidan)",
     "lat": 57.3999,
     "lon": 18.8751,
     "services": [
-      "camping"
+      "camping",
+      "stallplats",
+      "gravatten",
+      "vatten"
     ],
-    "description": "Källa (https://husbilskompisar.se/stallplatskartan/sandviken-strand): \"facilities for latrine emptying and grey water emptying at the forest campsite across the way\" – en recension om Sandviken Strand som syftar på Sandvikens Camping & Stugby mittemot. Campingen har egen webbplats (sandvikenscamping-stugby.com) men tjänsterna har inte kunnat läsas där. Granskning 12 okt 2026: citatet om Töcksfors (Värmland) hörde till en annan camping och är borttaget. Latrin borttagen – Region Gotland tar inte emot husbilslatrin och bara en aggregator påstår den. Gråvatten/vatten/ställplats obekräftade.",
+    "description": "Källa (https://book.destinationgotland.se/sv/stallplats-pa-havssidan-12, operatörens bokningssida via Destination Gotland): \"Electrical connection at each pitch, a newly built service building with toilets and private shower cubicles, access to a shared kitchen, washrooms equipped with washing machine and dryer, and facilities for greywater emptying, fresh water taps and latrine emptying.\" Ställplatserna Havssidan 1–12 ligger mittemot Sandvikens Camping & Stugby (sandvikenscamping-stugby.com). Rättat 12 okt 2026: citatet försvann när posterna slogs ihop och tjänsterna blev felaktigt grå. Latrin grå tills Per avgjort om Gotlandsregeln (Region Gotland tar inte emot husbilslatrin) gäller anläggningars egna stationer – operatören säger att latrintömning finns.",
     "source": "egen",
-    "website": "https://www.sandvikenscamping-stugby.com/",
+    "website": "https://book.destinationgotland.se/sv/stallplats-pa-havssidan-12",
     "address": "Sandviken, 623 68 Katthammarsvik",
     "confidence": "medium",
     "phone": "070-256 11 00",
     "unverifiedServices": [
-      "gravatten",
-      "vatten",
-      "stallplats"
+      "latrin"
     ]
   },
   {
@@ -15738,13 +15739,13 @@
       "stallplats"
     ],
     "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se + park4night, ej primärkälla): \"el, vatten, toalett, dusch, sopor, gråvatten-/kassettömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen. Sammanslagen okt 2026 med \"Engesbergs Camping\" (samma plats).",
+    "description": "Obekräftad plats (husbilsplats.se + park4night, ej primärkälla): \"el, vatten, toalett, dusch, sopor, gråvatten-/kassettömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen. Sammanslagen okt 2026 med \"Engesbergs Camping\" (samma plats). Rättat 12 okt 2026: vid sammanslagningen behölls den grå aggregatorposten i stället för den bekräftade \"Engesbergs Camping\" (riksomfattande campingsvep aug 2026, källa anläggningens webbplats) – tjänsterna är bekräftade igen.",
     "website": "https://husbilsplats.se + park4night",
     "query": "Gävle Camping Engesberg, Gävle",
     "nearLat": 60.6686,
     "nearLon": 17.173,
-    "maxKm": 25
+    "maxKm": 25,
+    "confidence": "medium"
   },
   {
     "id": "curated-924-lantmäterigatan,-gävle",
@@ -29321,5 +29322,22 @@
     "website": "https://tannforsen.se",
     "confidence": "high",
     "fee": "Parkerings-/serviceavgift 40 kr per 2 timmar; övernattningspris ej funnet"
+  },
+  {
+    "id": "curated-tomningsstation-vilhelmina-infocenter",
+    "name": "Tömningsstation Vilhelmina infocenter",
+    "query": "Turistinformationen, Vilhelmina",
+    "nearLat": 64.624,
+    "nearLon": 16.655,
+    "maxKm": 5,
+    "services": [
+      "latrin",
+      "gravatten"
+    ],
+    "unverified": true,
+    "confidence": "low",
+    "website": "https://stallplatserna.se/vilhelmina/",
+    "description": "Tömning av svart- och gråvatten vid infocentret, för betalande campinggäster. Källa: stallplatserna.se (aggregator – därför grå). Togs bort aug 2026 i väntan på exakt läge och kom aldrig tillbaka; återinlagd som obekräftad 12 okt 2026. Har du varit här? Bekräfta i appen.",
+    "source": "egen"
   }
 ]

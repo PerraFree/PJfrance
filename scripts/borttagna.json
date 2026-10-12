@@ -1,0 +1,6 @@
+{
+  "_om": "Registerposter som tagits bort med flit (inte sammanslagna). check-register.mjs kräver att varje borttagen post med bekräftad tömning/vatten/gasol antingen pekas om i public/data/id-aliases.json till en post som behåller tjänsterna, eller står här med orsak.",
+  "curated-1589-nynäshamns-gästhamn,-nynäshamn": "Båttömning; kommunen: hamnen olämplig för husbilar (granskning 12 okt 2026).",
+  "curated-1161-tranemo": "Ingen verklig plats – bara kommunens mittpunkt, aggregatorkälla (granskning 12 okt 2026).",
+  "curated-884-östersunds-stugby-&-camping,-östersund": "Bara aggregatorkälla, geokodad till fel camping (granskning 12 okt 2026)."
+}

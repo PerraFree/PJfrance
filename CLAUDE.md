@@ -148,6 +148,10 @@ Android förberett (`docs/BUILD-MOBILE.md`).
    Det han rapporterar skrivs in i `scripts/per-fakta.json` (id → tjänster);
    `check-register.mjs` stoppar deployen om de tjänsterna försvinner eller blir
    grå. Borås GK förlorade så sina tjänster sep 2026 – får inte upprepas.
+   **Förlustvakt:** en registerpost som tappar en bekräftad tömning/vatten/gasol
+   måste ha en daterad orsak i `description`; en borttagen post måste vara
+   sammanslagen (alias till en post som BEHÅLLER tjänsterna) eller stå i
+   `scripts/borttagna.json` med orsak (`check-register.mjs`).
 6. Agenternas avgifts-/säsongstexter kortas för hand till läsbara uppgifter innan
    de skrivs – de visas i popupen. Resonemang läggs i `description`.
 7. Två sessioner får aldrig arbeta mot samma öppna punkt samtidigt.

@@ -12,7 +12,7 @@
 import { readFileSync, existsSync } from 'node:fs'
 
 const REG = new URL('./curated-places.json', import.meta.url)
-const SEED = new URL('../public/data/stations-seed.json', import.meta.url)
+const SEED = process.env.SEED_PATH ? new URL('file://' + process.env.SEED_PATH) : new URL('../public/data/stations-seed.json', import.meta.url)
 const SERVICES = new Set(['gravatten', 'latrin', 'vatten', 'sopor', 'atervinning', 'stallplats', 'camping', 'gasol'])
 const SEASONS = new Set(['seasonal', 'year-round'])
 const CONF = new Set(['high', 'medium', 'low'])
@@ -152,6 +152,42 @@ if (existsSync(PER)) {
       if (!p.services?.includes(t) || p.unverified || (p.unverifiedServices ?? []).includes(t)) {
         errors.push(`Pers fakta: "${p.name}" ska ha ${t} bekräftat (${f.datum}: ${f.not ?? ''}) – ändra inte utan Pers besked`)
       }
+    }
+  }
+}
+
+// Förlustvakt (granskning 12 okt 2026: Engesberg blev helt grå vid en
+// sammanslagning, Vilhelmina försvann i en koordinat-commit – ingen märkte det).
+// Jämför med den publicerade seeden: en registerpost som tappar en BEKRÄFTAD
+// tömning/vatten/gasol måste ha en daterad orsak i beskrivningen, och en
+// borttagen post måste vara sammanslagen (alias till en post som behåller
+// tjänsterna) eller stå i scripts/borttagna.json.
+if (existsSync(SEED)) {
+  const KÄRNA = ['gravatten', 'latrin', 'vatten', 'gasol']
+  const seedSt = JSON.parse(readFileSync(SEED, 'utf8')).stations ?? []
+  const byIdReg = new Map(reg.map((p) => [p.id, p]))
+  const ALIASES2 = new URL('../public/data/id-aliases.json', import.meta.url)
+  const al = existsSync(ALIASES2) ? JSON.parse(readFileSync(ALIASES2, 'utf8')) : {}
+  const BORT = new URL('./borttagna.json', import.meta.url)
+  const bort = existsSync(BORT) ? JSON.parse(readFileSync(BORT, 'utf8')) : {}
+  const bekräftade = (p) => (p.unverified ? [] : (p.services ?? []).filter((x) => KÄRNA.includes(x) && !(p.unverifiedServices ?? []).includes(x)))
+  const ORSAK = /(kontroll|granskning|rättat|pers|sammanslagen|källa|svep|research)[^.]{0,200}20\d\d|20\d\d[^.]{0,200}(kontroll|granskning|rättat|pers|källa)/i
+  for (const s of seedSt) {
+    if (!String(s.id).startsWith('curated-')) continue
+    const had = bekräftade(s)
+    if (!had.length) continue
+    const p = byIdReg.get(s.id)
+    if (!p) {
+      const target = al[s.id] && byIdReg.get(al[s.id])
+      if (bort[s.id]) continue
+      if (!target) { errors.push(`"${s.name}" (${s.id}) med bekräftad ${had.join('/')} är borttagen utan sammanslagning – peka om i id-aliases.json eller ange orsak i scripts/borttagna.json`); continue }
+      const lostT = had.filter((x) => !bekräftade(target).includes(x))
+      if (lostT.length && !(target.name === s.name && ORSAK.test(target.description ?? ''))) errors.push(`"${s.name}" slogs ihop med "${target.name}" men bekräftad ${lostT.join('/')} gick förlorad (blev grå/borta) – behåll bekräftade tjänster vid sammanslagning`)
+      continue
+    }
+    const lost = had.filter((x) => !bekräftade(p).includes(x))
+    if (lost.length && !ORSAK.test(p.description ?? '')) {
+      errors.push(`"${p.name}" har tappat bekräftad ${lost.join('/')} utan daterad orsak i description (t.ex. "Kontroll okt 2026: …")`)
     }
   }
 }
