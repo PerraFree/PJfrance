@@ -11,7 +11,7 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 | A. Tömning latrin/gråvatten | Kommuner med 0–1 tömningsplatser: kommunsidor, turistråd, anläggningars egna sajter. Kompletteringar av befintliga camping-/ställplatsposter räknas. | 2026-10-05 |
 | B. Gasol byte/påfyllning + priser | Kedjornas butikssidor (Byggmax/Granngården/Rusta/ÖoB per butik), Norbro-/Linde-/gasolautomat.se-listor, lokala påfyllningsbolag, priser. Bara 10/11 kg-flaskor (P11/PA11/PC10/PK10). | 2026-09-28 |
 | C. Obekräftade platser: verifiera + fyll på | (1) Sök primärkälla för de OBEKRÄFTADE posterna i registret (`unverified: true` / `unverifiedServices`) – får de citat: ta bort obekräftat-flaggan. (2) Gör om lovande rader i `docs/kandidatplatser-husbilsplats-park4night.md` (tydlig tjänst + ort) till obekräftade registerposter så de syns grått på kartan. | 2026-10-12 |
-| D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. Uppdrag + import: `scripts/import-tools/UPPDRAG-kontroll.md`, `apply-kontroll.mjs`. Körda regioner: Västra Götaland (11 okt). | 2026-10-11 |
+| D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. Uppdrag + import: `scripts/import-tools/UPPDRAG-kontroll.md`, `apply-kontroll.mjs`. Körda regioner: Västra Götaland (11 okt), Skåne (12 okt). Nästa: Stockholms län, Halland, Småland. | 2026-10-12 |
 | E. Öppettider + vinterstängt | Platser med tömning/vatten som saknar `openingHours`/`season`: hämta säsong ("1 maj–30 sep", "vinterstängt", "året runt") från kommun-/anläggningssida. Skriv `season: 'seasonal'`/`'year-round'` + `openingHours`. Prioritera kommunala tömningsstationer och Trafikverkets rastplatser med vattenavstängning. | 2026-09-28 |
 
 ## Regler som alltid gäller
@@ -27,6 +27,24 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 ## Logg
 
+- **2026-10-12, D (kontroll av befintliga platser) – Skåne (session "Gråvatten 5", vald på eget
+  initiativ enligt Pers önskan att inte bli tillfrågad):** 146 platser i Skåne har tömning/vatten,
+  bara 44 en egen webbplats; 36 valda (max 3 per kommun, 19 kommuner, 21 register + 15 OSM), 4 agenter,
+  84 sökningar. **Utfall: 11 ok, 18 ändrade, 0 nedlagda, 6 oklara.** Viktigast: **Kullabergs tältplats
+  bortplockad** (OSM-way utesluten – reservatet förbjuder övernattning i husbil, bara tältplatser för
+  vandrare, ingen tömning/vatten); **Falsterbo Resort** fick latrin + gråvatten (egen sajt, vi visade bara
+  vatten); Småbåtshamnen i Limhamn, Skillinge hamn och Ängelholms Föreningshamn fick färskvatten; Källby
+  (Lund) är sommarcamping, stängd för säsongen; Skånes Djurparks Camping är inte längre First Camp (nu
+  "Grottbyn", ingen primärsida → låg säkerhet, säsong/website borttagna); Limhamns gästhamn latrintömning
+  → obekräftad (bara forumkälla, hamnens septisug gäller båtar). First Camp: tre dubblettpar i registret
+  (gammal query-post + exakt post från First Camp-jämförelsen) sammanslagna till en post var (Torekov,
+  Mölle, Åhus), OSM-polygonen för Torekov utesluten (450 m från posten, visades som andra plats utan
+  tömning), alla First Camp-länkar uppdaterade till `/destinationer/`. Tre föreslagna kontrollposter
+  slopades för hand (Kullaberg, Torekov-wayen, Åboda = befintliga "Kävlinge GK ställplats (Åboda)").
+  Nya avgifter/säsonger på ~20 poster. **Kvar/oklart:** Immelns Camping, Hälldala Ranch, Löderups
+  Strandbad (egna sajter nämner inte tömning – ring 0411-52 62 60 för Löderup), Kulturhuset Öster
+  Sallerup, Solhejdan; Skillinge hamn: masterplan 2025 föreslår att ställplatserna tas bort (bara förslag).
+  Lärdom: Skåne har få platser med egen webbplats – nästa D-region bör vara större (Stockholms län).
 - **2026-10-12, C (obekräftade platser):** äldst datum (25 sep). 135 grå poster med egen/icke-aggregator-webbplats
   (av ~424 grå) delades på 8 agenter × 60 i budget (~190 sökningar använda, inget kvotfel; WebFetch blockad, citat från
   WebSearch-sammandrag). **Resultat: 37 poster uppgraderade, varav 12 hela platser grå → bekräftade** (bl.a. Kalvsvik, Kyrkviken

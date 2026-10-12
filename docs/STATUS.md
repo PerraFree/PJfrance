@@ -21,7 +21,9 @@ händer igen: `git fetch origin <gren>` + `git merge --no-ff` + verifiera seeden
 - **Beroenden:** Dependabots första omgång (#16–#20) mergad; actions SHA-låsta.
 - **Datasvep:** golfsvep, discovery varv 1 + 2 och restlistor är klara
   riksomfattande. Område D (kontroll av befintliga platser) körd första gången
-  11 okt för Västra Götaland (40 platser, 29 rättade/bekräftade, 0 nedlagda).
+  11 okt för Västra Götaland (40 platser) och 12 okt för Skåne (36 platser,
+  Kullaberg bortplockad, Falsterbo +latrin/gråvatten, First Camp-dubbletter
+  sammanslagna). Område C kört av rutinen 12 okt.
   Webben är i stort sett uttömd för nya platser – nästa metod är crowdsourcing.
 - **UI senast:** bottenarket följer fingret vid drag, strecket = bara kartan/
   tillbaka, baskartan byter till OSM om leverantören tiger. sw.js v84.
@@ -52,5 +54,6 @@ Se https://github.com/PerraFree/PJfrance/issues?q=is%3Aopen+label%3Abacklog
 
 ## Nästa steg (förslag)
 
-Område D i Skåne (samma metod: `UPPDRAG-kontroll.md` + `apply-kontroll.mjs`),
-eller område C (grå platser), eller förbereda crowdsourcing-texter.
+Område D i Stockholms län (samma metod: `UPPDRAG-kontroll.md` +
+`apply-kontroll.mjs`), sedan Halland/Småland. Per vill inte bli tillfrågad –
+sessionen väljer själv enligt prio-etiketterna och kör.

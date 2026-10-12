@@ -24,6 +24,10 @@ const EXCLUDED_OSM_ELEMENTS = new Set([
   // "Härnösand Fordonsgas CNG" – samma fel, CNG/biogas.
   // https://www.openstreetmap.org/way/622172659
   'way/622172659',
+  // Kullabergs tältplats (Höganäs): naturreservatet förbjuder övernattning i husbil/husvagn (nattparkeringsförbud 22–06), 8 tältplatser för vandrare, ingen tömning/vatten – ingen husbilsplats (kontroll okt 2026, kullabergsnatur.se/hoganas.se).
+  'way/1052749987',
+  // First Camp Torekov: OSM-polygonen ligger ~450 m från registerposten (curated-317) och visades som en andra plats utan tömning – registerposten täcker campingen (kontroll okt 2026).
+  'way/494506962',
 ])
 
 // Gasol-utredning sep 2026: fuel:lpg=yes/service:vehicle:lpg=yes särskiljer
