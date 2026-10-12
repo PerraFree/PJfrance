@@ -107,7 +107,8 @@ export default function ReviewForm({ stationId, stationName, onClose, onSubmitte
               />
             </label>
             <p className="modal-note">
-              Betyget räknas direkt. Kommentarer granskas innan de visas.
+              Utan kommentar räknas betyget direkt. Med kommentar visas betyg och kommentar
+              när de granskats.
             </p>
 
             {error && <p className="form-error">{error}</p>}

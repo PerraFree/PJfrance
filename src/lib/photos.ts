@@ -20,8 +20,12 @@ const headers = {
 }
 
 const MAX_DIMENSION = 1280
-const JPEG_QUALITY = 0.72
-const MAX_UPLOAD_BYTES = 3 * 1024 * 1024
+/** Kvalitetssteg som provas i tur och ordning tills bilden ryms i bucketen. */
+const JPEG_QUALITIES = [0.72, 0.6, 0.5, 0.4]
+/** Bucketens gräns i supabase/schema.sql är 1 MB (1048576 byte); håll marginal. */
+const MAX_RESIZED_BYTES = 1_000_000
+/** Originalet får vara stort (mobilfoton är ofta 3–10 MB) – gränsen skyddar bara mot krasch. */
+const MAX_ORIGINAL_BYTES = 25 * 1024 * 1024
 /** Själva bilduppladdningen får längre tid än vanliga anrop (svag mobiltäckning). */
 const UPLOAD_TIMEOUT_MS = 60_000
 
@@ -55,7 +59,20 @@ export async function fetchPhotos(): Promise<Map<string, string>> {
   return map
 }
 
-/** Skalar ner en bild till max 1280px och komprimerar som JPEG. */
+function canvasToJpeg(canvas: HTMLCanvasElement, quality: number): Promise<Blob> {
+  return new Promise((resolve, reject) => {
+    canvas.toBlob(
+      (blob) => (blob ? resolve(blob) : reject(new Error('Kunde inte bearbeta bilden.'))),
+      'image/jpeg',
+      quality,
+    )
+  })
+}
+
+/**
+ * Skalar ner en bild till max 1280px och komprimerar som JPEG. Sänker
+ * kvaliteten stegvis tills resultatet är under 1 MB (bucketens gräns).
+ */
 function resizeImage(file: File): Promise<Blob> {
   return new Promise((resolve, reject) => {
     const img = new Image()
@@ -77,11 +94,20 @@ function resizeImage(file: File): Promise<Blob> {
         return
       }
       ctx.drawImage(img, 0, 0, width, height)
-      canvas.toBlob(
-        (blob) => (blob ? resolve(blob) : reject(new Error('Kunde inte bearbeta bilden.'))),
-        'image/jpeg',
-        JPEG_QUALITY,
-      )
+      void (async () => {
+        try {
+          for (const q of JPEG_QUALITIES) {
+            const blob = await canvasToJpeg(canvas, q)
+            if (blob.size <= MAX_RESIZED_BYTES) {
+              resolve(blob)
+              return
+            }
+          }
+          reject(new Error('Bilden blev för stor även efter förminskning. Prova en annan bild.'))
+        } catch (err) {
+          reject(err instanceof Error ? err : new Error('Kunde inte bearbeta bilden.'))
+        }
+      })()
     }
     img.onerror = () => {
       URL.revokeObjectURL(objectUrl)
@@ -103,8 +129,10 @@ export async function submitPhoto(input: NewPhoto): Promise<string> {
   if (!input.file.type.startsWith('image/')) {
     throw new Error('Filen måste vara en bild.')
   }
-  if (input.file.size > MAX_UPLOAD_BYTES) {
-    throw new Error('Bilden är för stor (max 3 MB).')
+  // Originalet förminskas först (nedan); den här gränsen stoppar bara
+  // orimligt stora filer som kan få telefonens minne att ta slut.
+  if (input.file.size > MAX_ORIGINAL_BYTES) {
+    throw new Error('Bilden är för stor (max 25 MB).')
   }
   const blob = await resizeImage(input.file)
   const safeId = input.stationId.replace(/[^a-zA-Z0-9_-]/g, '_')

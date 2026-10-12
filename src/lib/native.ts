@@ -26,27 +26,32 @@ export async function getPosition(): Promise<{ lat: number; lon: number }> {
   })
 }
 
-/** Delar via native-delningsdialog på enhet, annars Web Share / urklipp. */
-export async function sharePlace(title: string, url: string): Promise<void> {
+/**
+ * Delar via native-delningsdialog på enhet, annars Web Share / urklipp.
+ * Returnerar 'copied' när länken lades i urklipp (dator utan delningsdialog)
+ * så att anroparen kan visa ett kvitto i appen i stället för alert().
+ */
+export async function sharePlace(title: string, url: string): Promise<'shared' | 'copied' | 'other'> {
   const text = `${title} – Tömningskartan`
   if (isNative) {
     const { Share } = await import('@capacitor/share')
     await Share.share({ title, text, url })
-    return
+    return 'shared'
   }
   try {
     if (navigator.share) {
       await navigator.share({ title, text, url })
-      return
+      return 'shared'
     }
   } catch {
-    return
+    return 'other'
   }
   try {
     await navigator.clipboard.writeText(url)
-    alert('Länk kopierad!')
+    return 'copied'
   } catch {
     prompt('Kopiera länken:', url)
+    return 'other'
   }
 }
 

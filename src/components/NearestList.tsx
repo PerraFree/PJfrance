@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState, type TouchEvent } from 'react'
 import type { GasolFacility, ServiceType, Station } from '../types'
+import { onBack } from '../lib/backClose'
 import {
   SERVICE_COLORS,
   SERVICE_LABELS,
@@ -93,6 +94,13 @@ export default function NearestList({
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
   }, [onClose])
+
+  // Bakåtknappen stänger listan i stället för att lämna appen. onClose läses
+  // via ref – App skickar en ny funktion vid varje omrendering, och en ny
+  // registrering varje gång skulle rubba historikposten.
+  const onCloseRef = useRef(onClose)
+  onCloseRef.current = onClose
+  useEffect(() => onBack(() => onCloseRef.current()), [])
 
   // Mobil: listan är en bottensheet som täckte kartan helt (Pers skärmbild
   // sep 2026). Nu kan den dras ner till en smal remsa (bara rubriken syns)

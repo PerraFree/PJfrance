@@ -1,5 +1,6 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import type { GasolFacility, ServiceType, Station } from '../types'
+import { onBack } from '../lib/backClose'
 import {
   SERVICE_COLORS,
   SERVICE_LABELS,
@@ -63,6 +64,12 @@ export default function RouteList({
     document.addEventListener('keydown', onKey)
     return () => document.removeEventListener('keydown', onKey)
   }, [onClose])
+
+  // Bakåtknappen stänger listan (och rutten) i stället för att lämna appen.
+  // onClose läses via ref så att registreringen bara görs en gång.
+  const onCloseRef = useRef(onClose)
+  onCloseRef.current = onClose
+  useEffect(() => onBack(() => onCloseRef.current()), [])
 
   return (
     <div className="nearest route-list" role="dialog" aria-label="Platser längs vägen">

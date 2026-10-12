@@ -7,6 +7,7 @@ import { useModal } from '../lib/useModal'
 import { MY_PLACE_PREFIX } from '../lib/myplaces'
 import { submitPhoto } from '../lib/photos'
 import { reverseGeocode } from '../lib/reverse'
+import { getPosition } from '../lib/native'
 import type { ServiceType, Station } from '../types'
 import { SERVICE_LABELS } from '../types'
 
@@ -15,13 +16,20 @@ const ALL_SERVICES: ServiceType[] = ['gravatten', 'latrin', 'vatten', 'gasol']
 interface Props {
   onClose: () => void
   onAdd: (station: Station) => void
-  /** Kartans mittpunkt – används om ingen adress anges. */
-  mapCenter: { lat: number; lon: number } | null
+  /** Kartans mittpunkt + zoom – används om ingen adress anges och kartan är inzoomad. */
+  mapCenter: { lat: number; lon: number; zoom: number } | null
   /** Anropas om ett foto laddades upp samtidigt (visas direkt för alla). */
   onPhotoUploaded: (stationId: string, url: string) => void
 }
 
 type Status = 'idle' | 'saving' | 'done' | 'error'
+
+/**
+ * Kartans mittpunkt duger som läge bara när kartan är inzoomad – annars
+ * hamnar förslaget "mitt i Dalarna" (rätt före fler: inga påhittade
+ * koordinater). Zoom 14 ≈ några kvarter över skärmen.
+ */
+export const MIN_CENTER_ZOOM = 14
 
 export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded }: Props) {
   const [name, setName] = useState('')
@@ -38,6 +46,10 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
   /** Status för inskicket till granskningskön (efter att platsen sparats lokalt). */
   const [reviewStatus, setReviewStatus] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle')
   const [reviewError, setReviewError] = useState('')
+  /** Användarens GPS-position (knappen "Använd min position"). */
+  const [myPos, setMyPos] = useState<{ lat: number; lon: number } | null>(null)
+  const [posStatus, setPosStatus] = useState<'idle' | 'busy' | 'error'>('idle')
+  const centerUsable = Boolean(mapCenter && mapCenter.zoom >= MIN_CENTER_ZOOM)
   const modalRef = useModal(onClose)
   // Synkrona lås: flera klick i samma JS-händelse hinner före React-
   // omritningen som gör knappen disabled – utan låsen blir det flera POST.
@@ -45,6 +57,17 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
   const reviewBusy = useRef(false)
   /** Den sparade platsen – återanvänds när användaren försöker skicka igen. */
   const savedStation = useRef<Station | null>(null)
+  /** När tackrutan visades – Klart ignorerar klick de första 600 ms. */
+  const doneAt = useRef(0)
+  /**
+   * Dubbelklick på "Lägg till plats": andra klicket träffar Klart (eller,
+   * eftersom tackrutan är lägre än formuläret, mörkret utanför rutan) och
+   * stängde tackrutan direkt. Ignorera sådana klick de första 600 ms.
+   */
+  const closeUnlessJustDone = () => {
+    if (Date.now() - doneAt.current < 600) return
+    onClose()
+  }
 
   /**
    * Skickar platsen till granskningskön. Visar riktig status: lyckat,
@@ -99,6 +122,19 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
     })
   }
 
+  const useMyPosition = async () => {
+    if (posStatus === 'busy') return
+    setPosStatus('busy')
+    try {
+      setMyPos(await getPosition())
+      setAddress('')
+      setPosStatus('idle')
+      setError('')
+    } catch {
+      setPosStatus('error')
+    }
+  }
+
   const toggle = (s: ServiceType) => {
     setServices((prev) => {
       const next = new Set(prev)
@@ -137,18 +173,23 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
         }
         if (hits.length === 0) {
           setStatus('error')
-          setError('Hittade inte adressen. Prova en mer exakt adress, eller lämna tom för att använda kartans mittpunkt.')
+          setError('Hittade inte adressen. Prova en mer exakt adress, eller tryck "Använd min position".')
           return
         }
         lat = hits[0].lat
         lon = hits[0].lon
-      } else if (mapCenter) {
+      } else if (myPos) {
+        lat = myPos.lat
+        lon = myPos.lon
+      } else if (mapCenter && centerUsable) {
         lat = mapCenter.lat
         lon = mapCenter.lon
       }
       if (lat === undefined || lon === undefined) {
         setStatus('error')
-        setError('Ange en adress eller flytta kartan till platsen först.')
+        setError(
+          'Var ligger platsen? Skriv en adress eller ort, tryck "Använd min position", eller stäng rutan och zooma in kartan så att platsen hamnar mitt på skärmen.',
+        )
         return
       }
       const station: Station = {
@@ -182,6 +223,7 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
             setPhotoError(userMessage(err))
           })
       }
+      doneAt.current = Date.now()
       setStatus('done')
     } catch {
       setStatus('error')
@@ -192,7 +234,7 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
   }
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
+    <div className="modal-overlay" onClick={closeUnlessJustDone}>
       <div
         className="modal"
         role="dialog"
@@ -230,7 +272,11 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
             {photoStatus === 'error' && (
               <p className="form-error">Fotot kunde tyvärr inte laddas upp: {photoError}</p>
             )}
-            <button type="button" className="primary-btn" onClick={onClose}>
+            <button
+              type="button"
+              className="primary-btn"
+              onClick={closeUnlessJustDone}
+            >
               Klart
             </button>
           </div>
@@ -257,15 +303,39 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
             </label>
 
             <label>
-              Adress eller ort (valfritt)
+              Adress eller ort
               <input
                 type="text"
                 value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                placeholder="Lämna tom för att använda kartans mittpunkt"
+                onChange={(e) => {
+                  setAddress(e.target.value)
+                  if (e.target.value.trim()) setMyPos(null)
+                }}
+                placeholder="t.ex. Storgatan 1, Mora"
                 maxLength={200}
               />
             </label>
+            <div className="submit-where">
+              <button
+                type="button"
+                className="secondary-btn"
+                onClick={() => void useMyPosition()}
+                disabled={posStatus === 'busy'}
+              >
+                {posStatus === 'busy' ? 'Hämtar position …' : '📍 Använd min position'}
+              </button>
+              <p className="modal-intro" aria-live="polite">
+                {address.trim()
+                  ? 'Platsen sparas på adressen ovan.'
+                  : myPos
+                    ? '✓ Platsen sparas där du står just nu.'
+                    : posStatus === 'error'
+                      ? 'Kunde inte hämta din position. Tillåt plats för sidan i webbläsarens inställningar, eller skriv en adress.'
+                      : centerUsable
+                        ? 'Utan adress sparas platsen mitt på kartan bakom den här rutan. Stämmer det inte – skriv en adress eller använd din position.'
+                        : 'Skriv en adress eller använd din position. (Kartan är för utzoomad för att visa exakt var platsen ligger.)'}
+              </p>
+            </div>
 
             <fieldset>
               <legend>Tjänster</legend>

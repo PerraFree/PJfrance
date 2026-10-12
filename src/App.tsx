@@ -519,7 +519,7 @@ export default function App() {
   const dataCountRef = useRef(0)
   const activeFiltersRef = useRef(activeFilters)
   activeFiltersRef.current = activeFilters
-  const mapCenterRef = useRef<{ lat: number; lon: number } | null>(null)
+  const mapCenterRef = useRef<{ lat: number; lon: number; zoom: number } | null>(null)
 
   const [myPlaces, setMyPlaces] = useState<Station[]>(loadMyPlaces)
   const [verifications, setVerifications] = useState<Map<string, VerificationInfo>>(new Map())
@@ -553,6 +553,11 @@ export default function App() {
 
   const [photos, setPhotos] = useState<Map<string, string>>(new Map())
   const [photoTarget, setPhotoTarget] = useState<{ id: string; name: string } | null>(null)
+
+  // Omdöme/Foto/Rapportera stänger platsrutan när dialogen öppnas. Öppna den
+  // igen för samma plats när dialogen stängs, så att användaren ser sitt nya
+  // betyg/foto i stället för en tom karta (granskning 12 okt 2026).
+  const reopenPopup = (id: string) => setFocus({ id, nonce: performance.now() })
 
   // Godkända community-foton (delas av alla) – publiceras direkt, se
   // supabase/schema.sql för varför det INTE går via granskningskön.
@@ -747,12 +752,18 @@ export default function App() {
           if (json.updatedAt) setSeedUpdated(json.updatedAt)
           // Antalet visas via effekten nedan – med DEDUPLICERAT antal så det
           // stämmer med panelens siffra (inte råantalet före sammanslagning).
+        } else {
+          throw new Error('seed saknas eller är tom')
         }
       })
       .catch(() => {
-        /* seed saknas i dev – livehämtning täcker upp */
+        // Utan grunddata visas nästan inget – säg det i stället för en tom
+        // karta (i dev kan seeden saknas; livehämtningen täcker då upp).
+        if (import.meta.env.PROD) {
+          showMessage('Kunde inte ladda platserna – kontrollera nätet och ladda om sidan.', 20000)
+        }
       })
-  }, [])
+  }, [showMessage])
 
   // Delad plats-länk (?at=lat,lon,zoom[&id=…]) – flyg dit vid start. Förut
   // syntes ingen nål hos mottagaren eftersom inga kategorier var valda
@@ -784,9 +795,9 @@ export default function App() {
     const s = stations.find((x) => x.id === sharedId)
     const own = s ? s.services.filter((sv) => ALL_SERVICES.includes(sv)) : []
     if (!s || own.length === 0) {
-      // Okänd plats (borttagen, eller en annans egna plats): visa ändå något.
-      setActiveFilters((prev) => (prev.size === 0 ? new Set(DEFAULT_SERVICES) : prev))
-      ensureGasolFacilities()
+      // Okänd plats (borttagen, eller en annans egna plats): säg det rakt ut
+      // i stället för att slå på sex kategorier som inte har med länken att göra.
+      showMessage('Platsen i länken hittades inte – den kan ha tagits bort eller bara finnas hos den som delade den.', 10000)
       return
     }
     setActiveFilters((prev) => new Set([...prev, ...own]))
@@ -804,7 +815,7 @@ export default function App() {
   const handleBoundsChange = useCallback((bounds: L.LatLngBounds, zoom: number) => {
     clearTimeout(fetchTimer.current)
     const c = bounds.getCenter()
-    mapCenterRef.current = { lat: c.lat, lon: c.lng }
+    mapCenterRef.current = { lat: c.lat, lon: c.lng, zoom }
     // Inget valt = inget att visa; hämta då inte live (undviker onödig spinner).
     if (activeFiltersRef.current.size === 0) return
     if (zoom < MIN_FETCH_ZOOM) {
@@ -912,14 +923,14 @@ export default function App() {
   }
 
   // Har inget valts ännu? Slå på alla kategorier så sökträffen faktiskt syns.
-  // (Synkront anrop, så att läsa activeFilters direkt ur closuren är säkert
-  // – till skillnad från handleLocate nedan, som är async och därför måste
-  // läsa aktuellt värde via activeFiltersRef efter ett await.)
+  // Anropas EFTER ett await (ortsökning, rutt) – läs därför aktuellt värde
+  // via activeFiltersRef och funktionell setState, aldrig activeFilters ur
+  // closuren: den är inaktuell om användaren hann välja ett filter under
+  // sökningen, och då skulle användarens val skrivas över.
   const ensureCategories = () => {
-    if (activeFilters.size === 0) {
-      setActiveFilters(new Set(DEFAULT_SERVICES))
-      ensureGasolFacilities()
-    }
+    if (activeFiltersRef.current.size > 0) return
+    ensureGasolFacilities()
+    setActiveFilters((prev) => (prev.size === 0 ? new Set(DEFAULT_SERVICES) : prev))
   }
 
   const handleSearch = async (e: React.FormEvent) => {
@@ -1069,8 +1080,18 @@ export default function App() {
       // skärmbild sep 2026). Tryck på panelen återställer den.
       if (window.matchMedia?.('(max-width: 640px)').matches) setMini(true)
       showMessage('Visar platser nära dig – avstånd visas i varje plats.')
-    } catch {
-      showMessage('Kunde inte hämta din position.')
+    } catch (err) {
+      // Nekad platsåtkomst (webbläsarens kod 1, eller native-appens nekande):
+      // ge ett kort tips om hur man slår på den.
+      const denied =
+        (err as { code?: number })?.code === 1 ||
+        (err instanceof Error && err.message === 'Platsåtkomst nekad')
+      showMessage(
+        denied
+          ? 'Platsåtkomst är avstängd. Tillåt plats för sidan i webbläsarens inställningar (t.ex. hänglåset vid adressen) och försök igen.'
+          : 'Kunde inte hämta din position.',
+        denied ? 12000 : 6000,
+      )
     } finally {
       setLocating(false)
     }
@@ -1120,6 +1141,16 @@ export default function App() {
           if (!window.matchMedia?.('(max-width: 640px)').matches) return
           setCollapsed(true)
           setMini(true)
+          // Meddelanderutan ligger högst upp och täckte popupens rubrik i
+          // 6 s (t.ex. sökträffens namn – som popupen ju visar). Ta bort den
+          // när en plats öppnas; senare meddelanden visas längst ner medan
+          // popupen är öppen (styles.css, .status.notice).
+          if (noticeTimer.current !== undefined) {
+            window.clearTimeout(noticeTimer.current)
+            noticeTimer.current = undefined
+            setNotice(false)
+            if (routineStatusRef.current) setStatus(routineStatusRef.current)
+          }
         }}
       />
 
@@ -1465,7 +1496,10 @@ export default function App() {
         <ReportForm
           stationId={reportTarget.id}
           stationName={reportTarget.name}
-          onClose={() => setReportTarget(null)}
+          onClose={() => {
+            setReportTarget(null)
+            reopenPopup(reportTarget.id)
+          }}
         />
       )}
 
@@ -1473,7 +1507,10 @@ export default function App() {
         <ReviewForm
           stationId={rateTarget.id}
           stationName={rateTarget.name}
-          onClose={() => setRateTarget(null)}
+          onClose={() => {
+            setRateTarget(null)
+            reopenPopup(rateTarget.id)
+          }}
           onSubmitted={(rating, published) => handleReviewed(rateTarget.id, rating, published)}
         />
       )}
@@ -1482,7 +1519,10 @@ export default function App() {
         <PhotoForm
           stationId={photoTarget.id}
           stationName={photoTarget.name}
-          onClose={() => setPhotoTarget(null)}
+          onClose={() => {
+            setPhotoTarget(null)
+            reopenPopup(photoTarget.id)
+          }}
           onUploaded={handlePhotoUploaded}
         />
       )}

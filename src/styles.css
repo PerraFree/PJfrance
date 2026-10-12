@@ -508,6 +508,29 @@ button {
   cursor: default;
 }
 
+/* "Använd min position" i Lägg till plats */
+.submit-where {
+  margin: -4px 0 12px;
+}
+.submit-where .modal-intro {
+  margin: 6px 0 0;
+}
+.secondary-btn {
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+.secondary-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
 .form-error {
   margin: 0 0 12px;
   padding: 9px 12px;
@@ -1189,7 +1212,10 @@ button {
 .popup .share-btn {
   border: none;
   background: none;
-  padding: 0;
+  /* Lättträffad på mobil (förut 29×19 px): minst 40 px hög. */
+  min-height: 40px;
+  min-width: 44px;
+  padding: 0 8px;
   font: inherit;
   font-size: 0.84rem;
   font-weight: 600;
@@ -2548,6 +2574,12 @@ button {
     line-height: 1.35;
     /* Släpper igenom tryck – rutan får aldrig blockera popupen under den. */
     pointer-events: none;
+  }
+  /* Med en platsruta öppen (arket är då hopfällt, ~85 px) täckte rutan
+     popupens rubrik. Lägg den i stället längst ner, strax ovanför arket. */
+  body:has(.leaflet-popup.station-popup) .panel.mini ~ .status.notice {
+    top: auto;
+    bottom: calc(93px + env(safe-area-inset-bottom));
   }
 }
 /* "transition: all" animerade även fokusramen från 0 – den syntes inte direkt */

@@ -20,7 +20,7 @@ import {
 } from '../types'
 // (serviceIsActive används inte längre direkt här – primaryActiveService/
 //  stationIsActive i types.ts kapslar in den + obekräftat-logiken.)
-import { openNow } from '../lib/openingHours'
+import { formatOpeningHours, openNow } from '../lib/openingHours'
 import { reverseGeocode } from '../lib/reverse'
 import { fetchWeather, WEATHER_ICONS } from '../lib/weather'
 import { sharePlace as nativeShare } from '../lib/native'
@@ -295,7 +295,7 @@ function popupHtml(
   if (station.openingHours) {
     // Öppet-nu-status fylls i asynkront när popupen öppnas (se popupopen nedan)
     cards.push(
-      `<div class="info-card"><span class="info-label">Öppettider</span><span class="info-value">${esc(station.openingHours)} <span class="open-now-slot" data-oh="${escapeAttr(station.openingHours)}"></span></span></div>`,
+      `<div class="info-card"><span class="info-label">Öppettider</span><span class="info-value">${esc(formatOpeningHours(station.openingHours))} <span class="open-now-slot" data-oh="${escapeAttr(station.openingHours)}"></span></span></div>`,
     )
   }
   if (cards.length) rows.push(`<div class="info-cards">${cards.join('')}</div>`)
@@ -437,6 +437,15 @@ function popupHtml(
   return `<div class="popup" style="--accent:${accent}">${photo}<h3>${esc(station.name)}</h3>${ratingLine}<div class="badges">${services}${seasonBadge}</div>${unverifiedNote}${verifiedLine}${rows.join('')}${commentBlock}${links}${actions}${confidenceLine}<p class="source">${sourceLine}</p>${report}${del}</div>`
 }
 
+/**
+ * Popupens innehållsbredd: högst 300 px, men aldrig bredare än skärmen minus
+ * kant, utfyllnad och lite luft (~64 px) – annars hamnar stängkrysset
+ * utanför på en 320 px-skärm eller vid 200 % zoom.
+ */
+function popupMaxWidth(): number {
+  return Math.max(150, Math.min(300, window.innerWidth - 64))
+}
+
 function readSavedView(): { lat: number; lon: number; zoom: number } | null {
   try {
     const raw = localStorage.getItem(VIEW_KEY)
@@ -451,7 +460,7 @@ function readSavedView(): { lat: number; lon: number; zoom: number } | null {
 
 const SHARE_BASE = 'https://tomningskartan.se/'
 
-function sharePlace(name: string, lat: number, lon: number, id?: string) {
+function sharePlace(name: string, lat: number, lon: number, id: string | undefined, btn: HTMLElement) {
   // På webben pekar länken på appens URL; i native-appen på den publika webben.
   const base = location.protocol.startsWith('http')
     ? `${location.origin}${location.pathname}`
@@ -460,7 +469,14 @@ function sharePlace(name: string, lat: number, lon: number, id?: string) {
   // platsrutan öppen (App.tsx läser ?id=). Utan id syntes ingen nål alls.
   const idPart = id ? `&id=${encodeURIComponent(id)}` : ''
   const url = `${base}?at=${lat.toFixed(5)},${lon.toFixed(5)},16${idPart}`
-  void nativeShare(name, url)
+  void nativeShare(name, url).then((how) => {
+    if (how !== 'copied') return
+    // Dator utan delningsdialog: kvitto direkt på knappen (förut alert()).
+    btn.textContent = '✓ Länk kopierad'
+    window.setTimeout(() => {
+      if (btn.isConnected) btn.textContent = 'Dela'
+    }, 2500)
+  })
 }
 
 export default function MapView({
@@ -785,7 +801,9 @@ export default function MapView({
             canAddPhotoRef.current,
           ),
         {
-          maxWidth: 300,
+          // Rutan är innehållet + ~42 px kant/utfyllnad (styles.css). På en
+          // smal skärm (320 px) hamnade stängkrysset annars utanför bild.
+          maxWidth: popupMaxWidth(),
           className: 'station-popup',
           // Leaflets egen auto-panorering stängs av – vi centrerar själva
           // i den fria ytan (centerPopup) i stället för att bara "knuffa in"
@@ -1016,7 +1034,7 @@ export default function MapView({
         const { lat, lon, name, id } = share.dataset
         // Egna (lokala) platser finns bara i den här webbläsaren – inget id då.
         const sharedId = id && !id.startsWith(MY_PLACE_PREFIX) ? id : undefined
-        if (lat && lon && name) sharePlace(name, parseFloat(lat), parseFloat(lon), sharedId)
+        if (lat && lon && name) sharePlace(name, parseFloat(lat), parseFloat(lon), sharedId, share)
         return
       }
       const fav = target.closest('.fav-btn') as HTMLButtonElement | null

@@ -1,4 +1,23 @@
-# SEO & spridning (25 sep 2026)
+# SEO & spridning (25 sep 2026, utbyggt 12 okt 2026)
+
+## Läge 12 okt 2026 (Per: "maxa SEO")
+`scripts/build-seo-pages.mjs` bygger vid varje deploy (allt gitignorerat):
+- `/plats/<namn>-<kommun>-<id-hash>/` – en sida per BEKRÄFTAD plats med
+  tömning/vatten/gasol (~1 800). Adressen bygger på platsens permanenta id,
+  så den ändras inte när namnet ändras. Titel "Namn – tjänster i Kommun"
+  (≤65 tecken), fakta, 8 närmaste platser, knapp in i kartan (`?at=…&id=…`),
+  JSON-LD `Place` + `BreadcrumbList`. Dubbletter (flera källor inom 60 m,
+  samma namn inom 1 km) får en sida. Obekräftade platser får ingen sida.
+- `/kommun/<slug>/` – länkar varje plats + grannkommuner, `ItemList`.
+- `/lan/<slug>/` – kräver `scripts/kommun-lan.json` (kommun → län).
+- `/tjanst/latrintomning|gravattentomning|farskvatten|gasol-byte|gasol-pafyllning/`.
+- `/fragor/` – vanliga frågor, `FAQPage` (svaren använder faktiska antal).
+- `/seo.css` (gemensam stil), `sitemap.xml` med alla adresser + lastmod.
+- deploy.yml stoppar om platssidor/tjänstesidor/FAQ saknas i bygget.
+Search Console är verifierad och sitemapen inskickad av Per (25 sep) – Google
+läser den nya sitemapen själv. Kontroll: Search Console → Sidor (indexerade)
+och Sitemaps (antal upptäckta adresser ska vara ~2 100).
+
 
 Flyttat från CLAUDE.md 11 okt 2026.
 
