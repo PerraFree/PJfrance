@@ -29322,10 +29322,8 @@
   {
     "id": "curated-tomningsstation-vilhelmina-infocenter",
     "name": "Tömningsstation Vilhelmina infocenter",
-    "query": "Turistinformationen, Vilhelmina",
-    "nearLat": 64.624,
-    "nearLon": 16.655,
-    "maxKm": 5,
+    "lat": 64.626561,
+    "lon": 16.653631,
     "services": [
       "latrin",
       "gravatten"
@@ -29333,7 +29331,7 @@
     "unverified": true,
     "confidence": "low",
     "website": "https://stallplatserna.se/vilhelmina/",
-    "description": "Tömning av svart- och gråvatten vid infocentret, för betalande campinggäster. Källa: stallplatserna.se (aggregator – därför grå). Togs bort aug 2026 i väntan på exakt läge och kom aldrig tillbaka; återinlagd som obekräftad 12 okt 2026. Har du varit här? Bekräfta i appen.",
+    "description": "Tömning av svart- och gråvatten vid infocentret, för betalande campinggäster. Källa: stallplatserna.se (aggregator – därför grå). Togs bort aug 2026 i väntan på exakt läge och kom aldrig tillbaka; återinlagd som obekräftad 12 okt 2026. Läge (12 okt 2026): STF:s egen sida (swedishtouristassociation.com/vilhelmina) – receptionen/turistbyrån i Tingshuset, Tingsgatan 1, GPS 64.626561, 16.653631. Tjänsterna fortfarande obekräftade. Har du varit här? Bekräfta i appen.",
     "source": "egen"
   }
 ]
