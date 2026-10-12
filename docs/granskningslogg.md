@@ -6,7 +6,7 @@ avsnitt per körning, nyast överst. Varje fynd: vad, bevis, åtgärd, och vilke
 **vakt** (automatisk kontroll) som nu hindrar att samma sorts fel kommer tillbaka.
 Regler hör hemma i CLAUDE.md, läget i `docs/STATUS.md` – här bara loggen.
 
-## 2026-10-12 – runda 7–10 (fynden krymper: runda 10 hittade inget allvarligt)
+## 2026-10-12 – runda 7–11 (runda 11: inga riktiga fel – felsökningen avslutad)
 
 | Runda | Viktigaste fynd | Åtgärd | Vakt framåt |
 |---|---|---|---|
@@ -17,6 +17,7 @@ Regler hör hemma i CLAUDE.md, läget i `docs/STATUS.md` – här bara loggen.
 | 9 | Sök: 16 av 290 kommunnamn hamnade i fel kommun ("Malmö" → Malmöns Camping i Köping) | Hela ord; kommunnamn → ortsökning | Kontrollerat 0/290 |
 | 9 | Delad länk till plats med bara grå tjänster: "hittades inte" | Grå tjänster räknas | – |
 | 10 | Gasolknappar vid väntande länk, liggande 667 px, dubbla "vid"-namn, SEO-källrad, /kommun/habo/ 404 | Rättade; esbuild uttryckligt beroende | – |
+| 11 | Slutkontroll: inga riktiga fel. Fyra sopstationer hade tappat orten i namnet | Orten lånas från det härledda namnet | – |
 
 Kvar (medvetet): 119 platssidors adresser byttes när de fick registrets
 namn (sajten är ny, ingen omdirigering); Gotland/Orust-frågan till Per.

@@ -5,7 +5,7 @@ finns i git-loggen, `docs/svep-logg.md` och `docs/HISTORIK.md`).
 
 **Uppdaterad:** 2026-10-12, session "Gråvatten 5" (sessionslänk i senaste commit).
 
-Senaste händelse (12 okt): sex granskningsrundor (se `docs/granskningslogg.md`),
+Senaste händelse (12 okt): elva granskningsrundor (runda 11 hittade inga riktiga fel) (se `docs/granskningslogg.md`),
 försvunna registerplatser återställda (Borås GK, Engesberg, Sandviken Strand,
 Vilhelmina) med förlustvakt + `scripts/per-fakta.json`, och SEO: ~1 750
 platssidor, kommun-, läns- och tjänstesidor, vanliga frågor och sitemap
