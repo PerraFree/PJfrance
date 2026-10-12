@@ -24348,10 +24348,8 @@
   {
     "id": "curated-1430-lilla-bräcke-210,-662-97-ånimskog",
     "name": "Furusjöns Camping",
-    "query": "Lilla Bräcke 210, 662 97 Ånimskog",
-    "nearLat": 59.04622,
-    "nearLon": 12.61835,
-    "maxKm": 30,
+    "lat": 58.896992,
+    "lon": 12.5687436,
     "services": [
       "latrin",
       "vatten",
