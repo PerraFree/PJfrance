@@ -539,10 +539,15 @@
   "lon": 17.4350637,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Båsenberga, Vingåker": {
+ "Båsenberga Golfklubb, Vingåker": {
   "lat": 59.0612244,
   "lon": 15.918409,
-  "at": "2026-10-11T12:56:15.644Z"
+  "at": "2026-10-12T07:33:01.195Z"
+ },
+ "Båsenbergabacken, Vingåker": {
+  "lat": 59.0720155,
+  "lon": 15.921732,
+  "at": "2026-10-12T07:33:02.696Z"
  },
  "Båthamnsvägen 10, Fagersta": {
   "lat": 59.9842774,
@@ -2958,11 +2963,6 @@
  "Ovanåkers": {
   "lat": 61.416667,
   "lon": 15.816667,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Pite Havsbad, Piteå": {
-  "lat": 65.2347266,
-  "lon": 21.5350872,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Pjäsgatan 1, Landskrona": {
