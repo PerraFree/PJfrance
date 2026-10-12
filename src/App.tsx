@@ -82,11 +82,14 @@ function isFree(s: Station): boolean {
  *  mellan olika verksamheter ("gratis gasol"-buggen). */
 const isCurated = (s: Station) => s.id.startsWith('curated-')
 
-/** Samma gasolbutik? Samma första ord i namnet (utan "Gasol –"), eller samma punkt (≤ 15 m). */
+/** Samma gasolbutik? Samma första ord i namnet (utan "Gasol –"), eller samma
+ *  punkt (≤ 15 m) när den ena saknar riktigt namn. Två namngivna butiker i
+ *  samma byggnad (Elgiganten + jem & fix) är olika ställen. */
 const shopWord = (n: string) =>
   n.toLowerCase().replace(/^gasol\s*[–-]\s*/, '').replace(/[^a-zåäö0-9 ]/g, ' ').trim().split(/\s+/)[0] ?? ''
 function sameGasolShop(a: Station, b: Station): boolean {
-  return distMeters(a, b) <= 15 || (shopWord(a.name) !== '' && shopWord(a.name) === shopWord(b.name))
+  if (shopWord(a.name) !== '' && shopWord(a.name) === shopWord(b.name)) return true
+  return distMeters(a, b) <= 15 && (isGenericName(a.name) || isGenericName(b.name))
 }
 
 function gasolOnly(s: Station): boolean {

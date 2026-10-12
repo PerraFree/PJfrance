@@ -3878,18 +3878,18 @@
   {
     "id": "curated-235-nyemöllevägen-3,-374-32-karlshamn",
     "name": "Gasol – Elgiganten, Karlshamn",
-    "query": "Nyemöllevägen 3, 374 32 Karlshamn",
     "services": [
       "gasol"
     ],
-    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista.",
+    "description": "Återförsäljare av gasolflaskor (Primagaz/Norbro Energi) – köp ny eller byt tom flaska mot full under öppettider. Källa: Norbro Energis återförsäljarlista. Läge 12 okt 2026: OSM-byggnaden Nyemöllevägen 3 (samma byggnad som jem & fix). distinct: Elgiganten och jem & fix är två olika butiker i samma byggnad – båda säljer gasol, ska synas var för sig.",
     "url": "https://www.primagaz.se/sv-se/gasolflaskor-aaterfoersaeljare/Elgiganten-37432-Karlshamn-Nyemllevgen-3-0013X00002QBrQ7QAL",
     "source": "egen",
-    "nearLat": 56.19,
-    "nearLon": 14.86,
     "facilities": [
       "gasol_byte"
-    ]
+    ],
+    "lat": 56.1875394,
+    "lon": 14.8464166,
+    "distinct": true
   },
   {
     "id": "curated-236-wismarsvägen-6,-393-56-kalmar",
@@ -9121,10 +9121,6 @@
   {
     "id": "curated-551-göteborgsvägen-181,-borås",
     "name": "GasolAutomat.se – City Gross Borås",
-    "query": "Göteborgsvägen 181, Borås",
-    "nearLat": 57.721,
-    "nearLon": 12.94,
-    "maxKm": 12,
     "services": [
       "gasol"
     ],
@@ -9132,11 +9128,13 @@
       "gasol_byte"
     ],
     "source": "egen",
-    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se.",
+    "description": "Gasolautomat (GasolAutomat.se) – byt tom PC5/PC10-kompositflaska mot full, kortbetalning, öppet dygnet runt. Källa: gasolautomat.se. Läge 12 okt 2026: OSM-objektet City Gross, Göteborgsvägen 181 (automaten står vid butiken).",
     "gasolPrice": "Byte PC10 349 kr, PC5 229 kr; ny PC10 1 465 kr (gasolautomat.se/gasolflaskor-priser, sep 2026)",
     "openingHours": "24/7",
     "phone": "08-706 95 00",
-    "url": "https://gasolautomat.se/reseller/boras-citygross-boras/"
+    "url": "https://gasolautomat.se/reseller/boras-citygross-boras/",
+    "lat": 57.7139281,
+    "lon": 12.8667287
   },
   {
     "id": "curated-552-skaraborgsvägen-25,-borås",
@@ -11335,10 +11333,6 @@
   {
     "id": "curated-670-nyemöllevägen-3,-karlshamn",
     "name": "Gasol – jem & fix Karlshamn",
-    "query": "Nyemöllevägen 3, Karlshamn",
-    "nearLat": 56.1708,
-    "nearLon": 14.8619,
-    "maxKm": 12,
     "address": "Nyemöllevägen 3, Karlshamn",
     "services": [
       "gasol"
@@ -11347,8 +11341,11 @@
       "gasol_byte"
     ],
     "source": "egen",
-    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Samma handelsområde som Elgiganten. Källa: jemfix.se.",
-    "url": "https://www.jemfix.se/butiker/karlshamn/"
+    "description": "jem & fix byter Norbro P11/PK10/PK5/P6 i butik under öppettider. Pris visas i butik. Samma handelsområde som Elgiganten. Källa: jemfix.se. Läge 12 okt 2026: OSM-byggnaden Nyemöllevägen 3 (samma byggnad som Elgiganten). distinct: Elgiganten och jem & fix är två olika butiker i samma byggnad – båda säljer gasol, ska synas var för sig.",
+    "url": "https://www.jemfix.se/butiker/karlshamn/",
+    "lat": 56.1875394,
+    "lon": 14.8464166,
+    "distinct": true
   },
   {
     "id": "curated-671-postflyget-6,-423-37-torslanda",
@@ -11891,10 +11888,6 @@
   {
     "id": "curated-698-göteborgsvägen-181,-borås",
     "name": "Plantagen Borås",
-    "query": "Göteborgsvägen 181, Borås",
-    "nearLat": 57.721,
-    "nearLon": 12.94,
-    "maxKm": 8,
     "address": "Göteborgsvägen 181, 504 63, Borås",
     "services": [
       "gasol"
@@ -11903,11 +11896,13 @@
       "gasol_byte"
     ],
     "source": "egen",
-    "description": "Plantagen byter tom AGA-kompositflaska (PC10/PC5) mot fylld i butiken. Ligger i samma handelsområde som GasolAutomat.se:s automat vid City Gross (Göteborgsvägen 181). Källa: plantagen.se, husbilsklubben.se.",
+    "description": "Plantagen byter tom AGA-kompositflaska (PC10/PC5) mot fylld i butiken. Ligger i samma handelsområde som GasolAutomat.se:s automat vid City Gross (Göteborgsvägen 181). Källa: plantagen.se, husbilsklubben.se. Läge 12 okt 2026: OSM-objektet Plantagen, Göteborgsvägen 181.",
     "gasolPrice": "Byte PC10 449 kr (forumuppgift husbilsklubben.se, datum okänt – kontrollera aktuellt pris i butik)",
     "openingHours": "Mån–fre 10–18, lör–sön 10–16 (butik)",
     "phone": "033-44 47 80",
-    "url": "https://plantagen.se/se/p/gasol-pafyllning-aga-pc10-10-kg-513006 ; https://plantagen.se/se/p/513004/uteplats/utomhusmatlagning/bransle/gasol-pafyllning-aga-pc5-5-kg ; https://www.husbilsklubben.se/threads/gasol-ulricehamn-bor%C3%A5s-g%C3%B6teborg-eller-kungsbacka.65132/ ; https://oppettider.net/spots/plantagen-boras-goteborgsvagen-dd83d1fd3a"
+    "url": "https://plantagen.se/se/p/gasol-pafyllning-aga-pc10-10-kg-513006 ; https://plantagen.se/se/p/513004/uteplats/utomhusmatlagning/bransle/gasol-pafyllning-aga-pc5-5-kg ; https://www.husbilsklubben.se/threads/gasol-ulricehamn-bor%C3%A5s-g%C3%B6teborg-eller-kungsbacka.65132/ ; https://oppettider.net/spots/plantagen-boras-goteborgsvagen-dd83d1fd3a",
+    "lat": 57.7132216,
+    "lon": 12.864719
   },
   {
     "id": "curated-699-august-barks-gata-7,-västra-frölunda",
@@ -18881,13 +18876,11 @@
       "camping"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"Fricamping vid Hästskär is a possible overnight stop in Enköping.\" Granskning 12 okt 2026: query var bara kommunnamnet (gav mittpunkten) – nu \"Hästskär\"; exakt läge okänt.",
-    "query": "Hästskär, Enköping",
-    "nearLat": 59.6378,
-    "nearLon": 17.0605,
-    "maxKm": 25,
+    "description": "Campingkollen/primärkälla. \"Fricamping vid Hästskär is a possible overnight stop in Enköping.\" Granskning 12 okt 2026: query var bara kommunnamnet (gav mittpunkten) – nu \"Hästskär\"; exakt läge okänt. Läge 12 okt 2026: OSM-platsen Hästskär, Enköpings kommun.",
     "unverified": true,
-    "confidence": "low"
+    "confidence": "low",
+    "lat": 59.540503,
+    "lon": 16.9530618
   },
   {
     "id": "curated-1113-friiberghs-golfklubb-ställplats",
@@ -19287,14 +19280,12 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"Vandrarhem med ställplatser vid sjön Fläten i Simonstorp, ungefär halvvägs mellan Norrköping och Katrineholm längs väg 56. Inga tjänster nämnda.\" (https://campingkollen.se/stallplats/sikargarden/) Granskning 12 okt 2026: query var bara kommunnamnet (gav mittpunkten) – nu orten Simonstorp; exakt läge vid sjön Fläten okänt.",
-    "query": "Simonstorp, Norrköping",
-    "nearLat": 58.5847,
-    "nearLon": 16.3153,
-    "maxKm": 35,
+    "description": "Campingkollen/primärkälla. \"Vandrarhem med ställplatser vid sjön Fläten i Simonstorp, ungefär halvvägs mellan Norrköping och Katrineholm längs väg 56. Inga tjänster nämnda.\" (https://campingkollen.se/stallplats/sikargarden/) Granskning 12 okt 2026: query var bara kommunnamnet (gav mittpunkten) – nu orten Simonstorp; exakt läge vid sjön Fläten okänt. Läge 12 okt 2026: OSM-platsen Sikargården, Simonstorp.",
     "unverified": true,
     "confidence": "low",
-    "website": "https://campingkollen.se/stallplats/sikargarden/"
+    "website": "https://campingkollen.se/stallplats/sikargarden/",
+    "lat": 58.785775,
+    "lon": 16.1608931
   },
   {
     "id": "curated-1135-ovanåkers",
