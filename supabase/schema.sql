@@ -97,11 +97,16 @@ alter table photos enable row level security;
 -- Projekt-referensen är medvetet hårdkodad: ett mönster med `%` räcker inte
 -- (`https://ond.se/x.supabase.co/…` skulle matcha). Byter projektet ref:
 -- uppdatera BÅDE denna regex och `isOwnPhotoUrl()` i src/lib/photos.ts.
+-- Granskning 12 okt 2026: mappen i URL:en måste vara PLATSENS mapp (samma
+-- tvätt av id som appen gör i src/lib/photos.ts). Annars kunde en enda
+-- uppladdad bild kopplas till hundratals platser och ersätta deras foton.
 drop policy if exists "anon kan lägga till foto" on photos;
 create policy "anon kan lägga till foto" on photos
   for insert to anon with check (
     status = 'approved'
     and url ~ '^https://yssyebjkejqpoenbhlfq\.supabase\.co/storage/v1/object/public/place-photos/[A-Za-z0-9_-]+/[0-9]+\.jpg$'
+    and url ~ ('^https://yssyebjkejqpoenbhlfq\.supabase\.co/storage/v1/object/public/place-photos/'
+               || regexp_replace(station_id, '[^a-zA-Z0-9_-]', '_', 'g') || '/[0-9]+\.jpg$')
   );
 -- Städa bort rader som redan hunnit in med främmande URL (idempotent – körs
 -- varje gång schemat körs, så en sådan rad kan aldrig ligga kvar publicerad).
@@ -112,9 +117,11 @@ drop policy if exists "anon läser foton" on photos;
 create policy "anon läser foton" on photos
   for select to anon using (status = 'approved');
 
--- Lagringsyta för uppladdade foton (publikt läsbar, max 3 MB, bara bilder)
+-- Lagringsyta för uppladdade foton (publikt läsbar, max 1 MB, bara bilder).
+-- Appen skalar ner till 1280 px JPEG (normalt 150–500 kB) före uppladdning;
+-- 1 MB håller nere hur mycket lagring en angripare kan fylla (förut 3 MB).
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
-values ('place-photos', 'place-photos', true, 3145728, array['image/jpeg', 'image/png', 'image/webp'])
+values ('place-photos', 'place-photos', true, 1048576, array['image/jpeg', 'image/png', 'image/webp'])
 on conflict (id) do update set
   public = excluded.public,
   file_size_limit = excluded.file_size_limit,
@@ -163,7 +170,8 @@ drop policy if exists "anon kan ladda upp foton" on storage.objects;
 drop function if exists public.rate_limit(text, int, int, int) cascade;
 drop function if exists public.client_ip_hash() cascade;
 
-create or replace function private.client_ip_hash() returns text
+drop function if exists private.client_ip_hash();
+create or replace function private.client_ip_hash(p_wide boolean default false) returns text
 language plpgsql stable security definer set search_path = private, public as $$
 declare
   h json;
@@ -196,10 +204,14 @@ begin
   -- byta adress obegränsat). Via inet så att förkortningen :: byggs ut rätt –
   -- strängdelning vid ':' gav en ny nyckel per adress (granskning 12 okt 2026).
   if family(v) = 6 then
-    ip := network(set_masklen(v, 64))::text;
+    ip := network(set_masklen(v, case when p_wide then 48 else 64 end))::text;
+  elsif p_wide then
+    ip := network(set_masklen(v, 24))::text;
   else
     ip := host(v);
   end if;
+  -- p_wide: grannadresser (IPv6 /48, IPv4 /24) räknas ihop med ett högre tak –
+  -- en /48 rymmer 65 536 /64-nät, så per-/64-taket ensamt gick att kringgå.
   select value into salt from private.app_secrets where name = 'ip_salt';
   return md5(coalesce(salt, '') || ip);
 end $$;
@@ -209,9 +221,11 @@ returns boolean
 language plpgsql security definer set search_path = private, public as $$
 declare
   k text;
+  kw text;
   n int;
 begin
-  delete from public.rate_limits where bucket = p_bucket and created_at < now() - interval '1 day';
+  delete from public.rate_limits where bucket in (p_bucket, p_bucket || ':nät', p_bucket || ':plats')
+    and created_at < now() - interval '1 day';
   select count(*) into n from public.rate_limits where bucket = p_bucket;
   if n >= p_global_day then
     raise exception 'Tjänsten tar emot ovanligt många inskick just nu – försök igen i morgon.';
@@ -221,6 +235,7 @@ begin
     raise exception 'Tjänsten tar emot ovanligt många inskick just nu – försök igen om en timme.';
   end if;
   k := private.client_ip_hash();
+  kw := private.client_ip_hash(true);
   if k is not null then
     select count(*) into n from public.rate_limits
       where bucket = p_bucket and key = k and created_at > now() - interval '1 hour';
@@ -228,11 +243,19 @@ begin
       raise exception 'Du har skickat in många gånger på kort tid – vänta en stund och försök igen.';
     end if;
   end if;
+  if kw is not null and kw not in ('okänd-ip', 'ogiltig-ip') then
+    select count(*) into n from public.rate_limits
+      where bucket = p_bucket || ':nät' and key = kw and created_at > now() - interval '1 hour';
+    if n >= p_per_ip_hour * 4 then
+      raise exception 'Du har skickat in många gånger på kort tid – vänta en stund och försök igen.';
+    end if;
+    insert into public.rate_limits (key, bucket) values (kw, p_bucket || ':nät');
+  end if;
   insert into public.rate_limits (key, bucket) values (coalesce(k, 'okänd'), p_bucket);
   return true;
 end $$;
 revoke all on function private.rate_limit(text, int, int, int) from public, anon, authenticated;
-revoke all on function private.client_ip_hash() from public, anon, authenticated;
+revoke all on function private.client_ip_hash(boolean) from public, anon, authenticated;
 
 -- Är anroparen anon? I en security definer-funktion är current_user ägaren,
 -- så rollen läses ur PostgREST:s JWT-claims (och SET ROLE som reserv).
@@ -243,6 +266,26 @@ language sql stable as $$
 $$;
 revoke all on function private.is_anon() from public, anon, authenticated;
 
+create or replace function private.once_per_station(p_bucket text, p_station text) returns void
+language plpgsql security definer set search_path = private, public as $$
+declare
+  k text;
+  kp text;
+begin
+  k := private.client_ip_hash();
+  if k is null or k in ('okänd-ip', 'ogiltig-ip') then return; end if;
+  kp := md5(k || '|' || coalesce(p_station, ''));
+  if exists (select 1 from public.rate_limits where bucket = p_bucket || ':plats' and key = kp
+             and created_at > now() - interval '1 day') then
+    if p_bucket = 'verifications' then
+      raise exception 'Du har redan bekräftat den här platsen i dag – tack!';
+    end if;
+    raise exception 'Du har redan betygsatt den här platsen i dag.';
+  end if;
+  insert into public.rate_limits (key, bucket) values (kp, p_bucket || ':plats');
+end $$;
+revoke all on function private.once_per_station(text, text) from public, anon, authenticated;
+
 -- Gemensam trigger: spamskydd + databasen sätter själv tid och id för anon
 -- (fynd 12 okt: anon kunde skicka created_at 2099 och ligga överst för alltid).
 create or replace function private.guard_insert() returns trigger
@@ -251,6 +294,12 @@ begin
   if private.is_anon() then
     perform private.rate_limit(
       tg_argv[0], tg_argv[1]::int, tg_argv[2]::int, tg_argv[3]::int);
+    -- Betyg och bekräftelser: högst EN per avsändare och plats och dygn
+    -- (granskning 12 okt 2026: annars kunde en grå plats visa "Bekräftad av
+    -- 20 användare" från en och samma person).
+    if tg_nargs > 4 and tg_argv[4] = 'per_plats' then
+      perform private.once_per_station(tg_argv[0], new.station_id);
+    end if;
     new.created_at := now();
     new.id := gen_random_uuid();
   end if;
@@ -268,9 +317,9 @@ create trigger rate_limit before insert on submissions for each row execute func
 drop trigger if exists rate_limit on reports;
 create trigger rate_limit before insert on reports for each row execute function private.guard_insert('reports', '10', '100', '500');
 drop trigger if exists rate_limit on reviews;
-create trigger rate_limit before insert on reviews for each row execute function private.guard_insert('reviews', '10', '200', '1000');
+create trigger rate_limit before insert on reviews for each row execute function private.guard_insert('reviews', '10', '200', '1000', 'per_plats');
 drop trigger if exists rate_limit on verifications;
-create trigger rate_limit before insert on verifications for each row execute function private.guard_insert('verifications', '20', '300', '1500');
+create trigger rate_limit before insert on verifications for each row execute function private.guard_insert('verifications', '20', '300', '1500', 'per_plats');
 drop trigger if exists rate_limit on photos;
 create trigger rate_limit before insert on photos for each row execute function private.guard_insert('photos', '10', '60', '300');
 
@@ -288,6 +337,18 @@ grant execute on function private.rate_limit_storage() to anon;
 create policy "anon kan ladda upp foton" on storage.objects
   for insert to anon
   with check (bucket_id = 'place-photos' and private.rate_limit_storage());
+
+-- Platsförslag måste vara rimliga (granskning 12 okt 2026: NaN/Infinity-
+-- koordinater, tomt namn, tom eller 2D-tjänstelista gick igenom och hamnade
+-- i Pers ärenden). Koordinater får saknas (geokodning kan misslyckas) men
+-- annars ligga i Sverige med marginal.
+alter table submissions drop constraint if exists submissions_sane;
+alter table submissions add constraint submissions_sane check (
+  btrim(name) <> '' and btrim(address) <> ''
+  and array_ndims(services) = 1 and cardinality(services) > 0
+  and (lat is null or lat between 54 and 70.5)
+  and (lon is null or lon between 9 and 25.5)
+) not valid;
 
 -- Platsförslagens tjänster får bara vara kända koder (annars "undefined" i appen).
 alter table submissions drop constraint if exists submissions_services;
@@ -326,3 +387,14 @@ alter table photos add constraint photos_len check (
   char_length(station_id) <= 200 and char_length(coalesce(station_name, '')) <= 200
   and char_length(url) <= 400
 ) not valid;
+
+-- Sammanställningar per plats (granskning 12 okt 2026). Appen läste förut de
+-- 5 000 senaste raderna, så spam kunde tränga undan alla riktiga bekräftelser
+-- och betyg på några dagar. Vyerna räknar ALLA rader. Data är publik ändå.
+create or replace view public.verification_summary as
+  select station_id, count(*)::int as n, max(created_at) as latest
+  from public.verifications group by station_id;
+create or replace view public.review_summary as
+  select station_id, sum(rating)::int as sum, count(*)::int as n
+  from public.reviews where status = 'approved' group by station_id;
+grant select on public.verification_summary, public.review_summary to anon, authenticated;

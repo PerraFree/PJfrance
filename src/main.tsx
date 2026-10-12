@@ -5,6 +5,17 @@ import ErrorBoundary from './components/ErrorBoundary'
 import './styles.css'
 import { initNativeShell, isNative } from './lib/native'
 
+// Skydd mot att sajten bäddas in i en främmande sida (klickkapning). GitHub
+// Pages kan inte skicka X-Frame-Options/frame-ancestors, och CSP i meta-tagg
+// stöder inte frame-ancestors (granskning 12 okt 2026).
+if (window.top !== window.self && !isNative) {
+  try {
+    window.top!.location.href = window.location.href
+  } catch {
+    document.documentElement.style.display = 'none'
+  }
+}
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ErrorBoundary>

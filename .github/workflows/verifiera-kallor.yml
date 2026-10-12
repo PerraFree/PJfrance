@@ -56,7 +56,7 @@ jobs:
             const md = fs.readFileSync('kallkontroll.md', 'utf8')
             const marker = '<!-- kallkontroll -->'
             const body = `${marker}\n${md}\n\n_Automatisk rapport från verifiera-kallor.yml. Döda länkar: byt website eller ta bort; saknade citat: kontrollera platsen (område D)._`
-            const { data: open } = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, state: 'open', labels: 'backlog', per_page: 50 })
+            const open = await github.paginate(github.rest.issues.listForRepo, { owner: context.repo.owner, repo: context.repo.repo, state: 'open', labels: 'backlog', per_page: 50 })
             const mine = open.find((i) => (i.body ?? '').startsWith(marker))
             const title = `Källkontroll: döda länkar och ändrade sidor i registret`
             if (mine) {

@@ -33,6 +33,32 @@ export interface StationReviews {
 export async function fetchReviews(): Promise<Map<string, StationReviews>> {
   const map = new Map<string, StationReviews>()
   if (!communityEnabled) return map
+  // Snittbetyget från sammanställningen (vyn review_summary, ALLA rader) –
+  // förut räknades bara de 5 000 senaste, så spam kunde tränga undan riktiga
+  // betyg (granskning 12 okt 2026). Kommentarerna granskas av Per innan de
+  // publiceras och hämtas separat. Reserv: gamla sättet.
+  const sum = await fetchWithTimeout(`${base}/rest/v1/review_summary?select=station_id,sum,n`, { headers })
+  if (sum.ok) {
+    const rows = (await sum.json()) as Array<{ station_id?: string; sum?: number; n?: number }>
+    for (const r of rows) {
+      if (r.station_id && typeof r.sum === 'number' && typeof r.n === 'number' && r.n > 0) {
+        map.set(r.station_id, { sum: r.sum, count: r.n, comments: [] })
+      }
+    }
+    const cres = await fetchWithTimeout(
+      `${url}?status=eq.approved&comment=neq.&select=station_id,rating,comment,created_at&order=created_at.desc&limit=3000`,
+      { headers },
+    )
+    if (cres.ok) {
+      const crows = (await cres.json()) as Array<{ station_id?: string; rating?: number; comment?: string | null; created_at?: string }>
+      for (const r of crows) {
+        const entry = r.station_id ? map.get(r.station_id) : undefined
+        if (!entry || !r.comment || typeof r.rating !== 'number' || entry.comments.length >= 2) continue
+        entry.comments.push({ rating: r.rating, comment: r.comment, created_at: r.created_at ?? '' })
+      }
+    }
+    return map
+  }
   const res = await fetchWithTimeout(
     `${url}?status=eq.approved&select=station_id,rating,comment,created_at&order=created_at.desc&limit=5000`,
     { headers },

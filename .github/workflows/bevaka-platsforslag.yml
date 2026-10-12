@@ -74,7 +74,7 @@ jobs:
             // projekt ger 540/5xx, utgången nyckel 401) öppnas ETT ärende så att
             // Per får mejl – och stängs automatiskt när databasen svarar igen.
             const dbMarker = '<!-- supabase-vakt -->'
-            const { data: openIssues } = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100 })
+            const openIssues = await github.paginate(github.rest.issues.listForRepo, { owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100 })
             const dbIssue = openIssues.find((i) => (i.body ?? '').startsWith(dbMarker))
             let dbError = null
             for (let i = 0; i < 2; i++) {
@@ -132,13 +132,17 @@ jobs:
                 .replace(/@/g, '&#64;')
                 .replace(/[[\]()!<>`*_~]/g, (c) => '&#' + c.charCodeAt(0) + ';')
                 .replace(/(https?):\/\//gi, '$1&#58;//')
+                // www.… blir också länk i GitHub; osynliga styrtecken (RTL,
+                // nollbredd) kan vända eller dölja text (granskning 12 okt 2026).
+                .replace(/\bwww\./gi, 'www&#46;')
+                .replace(/\p{Cf}/gu, '')
             const cell = (v) =>
               neutral(v ?? '–')
                 .replace(/\|/g, '\\|')
                 .replace(/\r?\n/g, '<br>') || '–'
             // Titlar är ren text (HTML-entiteter visas som de är, @ ger ingen
             // notis där) – ta bara bort HTML-kommentarer och radbrytningar.
-            const titel = (v) => String(v ?? '–').replace(/<!--|-->/g, '').replace(/\s+/g, ' ').trim() || '–'
+            const titel = (v) => String(v ?? '–').replace(/<!--|-->/g, '').replace(/\p{Cf}/gu, '').replace(/\s+/g, ' ').trim() || '–'
             // GitHub vägrar titlar >256 tecken och brödtext >65 536 tecken
             // (säkerhetsfynd 3) – korta hellre än att låta ärendet fallera.
             const kortTitel = (s) => (s.length > 200 ? s.slice(0, 197) + '…' : s)

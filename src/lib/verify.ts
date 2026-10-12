@@ -27,6 +27,17 @@ export interface VerificationInfo {
 export async function fetchVerifications(): Promise<Map<string, VerificationInfo>> {
   const map = new Map<string, VerificationInfo>()
   if (!communityEnabled) return map
+  // Sammanställningen per plats (vyn verification_summary) räknar ALLA rader –
+  // förut lästes bara de 5 000 senaste, så spam kunde tränga undan riktiga
+  // bekräftelser (granskning 12 okt 2026). Reserv: gamla sättet.
+  const sum = await fetchWithTimeout(`${base}/rest/v1/verification_summary?select=station_id,n,latest`, { headers })
+  if (sum.ok) {
+    const rows = (await sum.json()) as Array<{ station_id?: string; n?: number; latest?: string }>
+    for (const r of rows) {
+      if (r.station_id && r.latest && typeof r.n === 'number') map.set(r.station_id, { latest: r.latest, count: r.n })
+    }
+    return map
+  }
   const res = await fetchWithTimeout(
     `${url}?select=station_id,created_at&order=created_at.desc&limit=5000`,
     { headers },

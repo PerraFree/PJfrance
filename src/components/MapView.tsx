@@ -430,7 +430,7 @@ function popupHtml(
     (isOwnPhotoUrl(communityPhoto) ? communityPhoto : undefined) ??
     (station.image && /^https:\/\/(upload|commons)\.wikimedia\.org\//i.test(station.image) ? station.image : undefined)
   const photo = photoUrl
-    ? `<img class="popup-photo" src="${escapeAttr(photoUrl)}" alt="" loading="lazy" onerror="this.remove()">`
+    ? `<img class="popup-photo" src="${escapeAttr(photoUrl)}" alt="" loading="lazy">`
     : ''
   return `<div class="popup" style="--accent:${accent}">${photo}<h3>${esc(station.name)}</h3>${ratingLine}<div class="badges">${services}${seasonBadge}</div>${unverifiedNote}${verifiedLine}${rows.join('')}${commentBlock}${links}${actions}${confidenceLine}<p class="source">${sourceLine}</p>${report}${del}</div>`
 }
@@ -793,6 +793,17 @@ export default function MapView({
     const saved = readSavedView()
     // closePopupOnClick: false – popupen stängs bara med krysset (eller när en
     // annan plats öppnas), inte av ett råkat kartklick.
+    // Trasiga popupfoton tas bort. Förut via onerror-attribut, som CSP:n
+    // (script-src 'self') stoppar – därför en lyssnare i fångstfasen
+    // (error-händelser bubblar inte). Granskning 12 okt 2026.
+    containerRef.current.addEventListener(
+      'error',
+      (ev) => {
+        const t = ev.target
+        if (t instanceof HTMLImageElement && t.classList.contains('popup-photo')) t.remove()
+      },
+      true,
+    )
     const map = L.map(containerRef.current, { zoomControl: false, closePopupOnClick: false }).setView(
       saved ? [saved.lat, saved.lon] : [62.0, 15.0],
       saved ? saved.zoom : 5,

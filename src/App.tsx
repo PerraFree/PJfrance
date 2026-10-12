@@ -65,7 +65,12 @@ const PAID_RE = /\d\s*(kr|sek|:-|€|eur)\b|betala|motstridig|\d+:e natten|avgif
 function isFreeFee(fee: string): boolean {
   return FREE_RE.test(fee) && !FREE_QUALIFIED_RE.test(fee) && !PAID_RE.test(fee)
 }
+/** Platser som fått tjänster från en granne vars avgift är okänd eller inte
+ *  gratis (t.ex. en betald ställplats intill en Trafikverket-rastplats) –
+ *  de räknas aldrig som gratis (granskning 12 okt 2026). */
+const NOT_FREE = new WeakSet<Station>()
 function isFree(s: Station): boolean {
+  if (NOT_FREE.has(s)) return false
   // Gasol är alltid ett köp – en plats som bara säljer gasol kan aldrig
   // räknas som gratis, oavsett vad avgiftsfältet råkar säga.
   if (!s.services.some((sv) => sv !== 'gasol')) return false
@@ -76,6 +81,13 @@ function isFree(s: Station): boolean {
  *  tömningsplatser/ställplatser intill, annars smittar tjänster och avgifter
  *  mellan olika verksamheter ("gratis gasol"-buggen). */
 const isCurated = (s: Station) => s.id.startsWith('curated-')
+
+/** Samma gasolbutik? Samma första ord i namnet (utan "Gasol –"), eller samma punkt (≤ 15 m). */
+const shopWord = (n: string) =>
+  n.toLowerCase().replace(/^gasol\s*[–-]\s*/, '').replace(/[^a-zåäö0-9 ]/g, ' ').trim().split(/\s+/)[0] ?? ''
+function sameGasolShop(a: Station, b: Station): boolean {
+  return distMeters(a, b) <= 15 || (shopWord(a.name) !== '' && shopWord(a.name) === shopWord(b.name))
+}
 
 function gasolOnly(s: Station): boolean {
   return s.services.length > 0 && s.services.every((sv) => sv === 'gasol')
@@ -156,7 +168,16 @@ function mergeInto(target: Station, s: Station, fillOnly = false): void {
     if (!target.description && isGenericName(target.name)) target.description = target.name
     target.name = s.name
   }
-  if (s.unverified && !target.unverified) {
+  // Tjänster som grannen tillför målet. Är grannens avgift okänd eller inte
+  // gratis blir målet aldrig "Gratis" (Polarcirkeln 180 kr + rastplats).
+  const added = s.services.filter((x) => !target.services.includes(x))
+  const paidNeighbour = s.fee ? !isFreeFee(s.fee) : added.some((x) => x === 'stallplats' || x === 'camping' || x === 'atervinning')
+  if (added.length && s.source !== 'trafikverket' && paidNeighbour) NOT_FREE.add(target)
+  if (fillOnly && target.unverified) {
+    // En ren dricksvattennod (live-hämtningen) får aldrig göra en obekräftad
+    // plats grön – dess vatten blir bara påstått (granskning 12 okt 2026).
+    target.unverifiedServices = [...new Set([...(target.unverifiedServices ?? []), ...s.services])]
+  } else if (s.unverified && !target.unverified) {
     // En obekräftad dubblett får aldrig "smitta" en bekräftad post: dess
     // tjänster blir bara påstådda på den bekräftade platsen.
     target.unverifiedServices = [
@@ -191,7 +212,10 @@ function mergeInto(target: Station, s: Station, fillOnly = false): void {
   const fac = [...new Set([...(target.facilities ?? []), ...(s.facilities ?? [])])]
   target.facilities = fac.length ? fac : undefined
   for (const k of MERGE_FIELDS) {
-    if (k === 'fee' && !inheritFee) continue
+    // Avgift, säsong och öppettider ärvs bara från samma sorts plats – annars
+    // fick t.ex. Grännastrandens Camping tömningsnodens "24/7, året runt"
+    // och hamnade fel i filtret "Året runt" (granskning 12 okt 2026).
+    if ((k === 'fee' || k === 'season' || k === 'openingHours') && !inheritFee) continue
     if (target[k] == null && s[k] != null) (target[k] as unknown) = s[k]
   }
 }
@@ -228,7 +252,15 @@ function dedupe(
           // distinct = registrets uttryckliga undantag från 100 m-regeln: två
           // REGISTERposter där någon har distinct slås inte ihop (samma regel
           // som check-register.mjs). OSM-kopior av platsen slås ihop som vanligt.
-          if (distMeters(ex, s) <= 100 && gasolOnly(ex) === gasolOnly(s) && !(isCurated(ex) && isCurated(s) && (ex.distinct || s.distinct))) {
+          if (
+            distMeters(ex, s) <= 100 &&
+            gasolOnly(ex) === gasolOnly(s) &&
+            !(isCurated(ex) && isCurated(s) && (ex.distinct || s.distinct)) &&
+            // Två olika gasolbutiker i samma handelsområde är inte samma plats
+            // (ÖoB fick automatens pris och öppettider) – bara samma butik
+            // eller samma punkt slås ihop (granskning 12 okt 2026).
+            !(gasolOnly(ex) && !sameGasolShop(ex, s))
+          ) {
             mergeInto(ex, s, isFillOnly(s))
             merged = true
             break

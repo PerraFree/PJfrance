@@ -64,7 +64,7 @@ jobs:
               }
             }
             const marker = '<!-- sajtvakt -->'
-            const { data: open } = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100 })
+            const open = await github.paginate(github.rest.issues.listForRepo, { owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100 })
             const mine = open.find((i) => (i.body ?? '').startsWith(marker))
             if (!problems.length) {
               console.log('Sajten svarar normalt.')

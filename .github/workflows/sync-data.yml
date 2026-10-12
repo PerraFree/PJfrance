@@ -39,6 +39,13 @@ jobs:
         env:
           TRV_API_KEY: ${{ secrets.TRV_API_KEY }}
           REGISTER_DROPPED: register-bortfall.json
+      # Granskning 12 okt 2026: förut kontrollerades seeden först i deployen –
+      # en trasig seed (t.ex. Overpass svarade med 60 %, Trafikverket med fel)
+      # committades och stoppade sedan ALLA deployer, även kodfixar, i upp till
+      # en vecka. Nu stoppas den här, innan commit, och ett ärende öppnas.
+      - name: Kontrollera seeden före commit
+        id: seedcheck
+        run: node scripts/check-seed.mjs
       - name: Committa uppdaterad seed-fil
         id: commit
         run: |
@@ -75,6 +82,23 @@ jobs:
       # Registerposter som inte kom med i seeden (geokodningsmiss, fel ort) –
       # tidigare bara en rad i loggen, nu ett ärende som ärenderutinen tar
       # (granskning 12 okt 2026). Ärendet uppdateras; stängs när listan är tom.
+      - name: Larma om seedkontrollen stoppade synken (stängs när den går igen)
+        if: always() && (steps.seedcheck.outcome == 'failure' || steps.seedcheck.outcome == 'success')
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const marker = '<!-- synk-seedkontroll -->'
+            const failed = '${{ steps.seedcheck.outcome }}' === 'failure'
+            const issues = await github.paginate(github.rest.issues.listForRepo, { owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100 })
+            const mine = issues.find((i) => (i.body ?? '').startsWith(marker))
+            if (!failed) {
+              if (mine) await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, state: 'closed', state_reason: 'completed' })
+              return
+            }
+            const url = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
+            const body = `${marker}\nDatasynken ${new Date().toISOString().slice(0, 16)} UTC fick en seed som inte klarar kontrollen (för få platser från en källa eller trasiga poster) och publicerade den INTE – sajten visar förra veckans data tills nästa synk lyckas.\n\nKörning: ${url}\n\n_Ärendet stängs automatiskt när en synk går igenom. Vanligaste orsaken: Overpass eller Trafikverket svarade bara delvis – kör "Synka stationsdata" igen om en stund._`
+            if (mine) await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, body })
+            else await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title: 'Datasynken stoppade en trasig seed', body, labels: ['backlog', 'prio-1'] })
       - name: Rapportera registerposter som föll bort
         if: always() && hashFiles('register-bortfall.json') != ''
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
@@ -83,7 +107,7 @@ jobs:
             const fs = require('fs')
             const list = JSON.parse(fs.readFileSync('register-bortfall.json', 'utf8'))
             const marker = '<!-- register-bortfall -->'
-            const { data: open } = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100 })
+            const open = await github.paginate(github.rest.issues.listForRepo, { owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100 })
             const mine = open.find((i) => (i.body ?? '').startsWith(marker))
             if (!list.length) {
               if (mine) await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, state: 'closed', state_reason: 'completed' })
