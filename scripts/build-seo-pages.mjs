@@ -20,6 +20,22 @@ import { existsSync, readFileSync } from 'node:fs'
 import { pathToFileURL } from 'node:url'
 
 const SITE = 'https://tomningskartan.se'
+// Appens svenska formatering av OSM-öppettider (src/lib/openingHours.ts) –
+// samma text på sidorna som i kartan. Laddas via esbuild (finns i bygget).
+let formatOH = (v) => v
+try {
+  const { transform } = await import('esbuild')
+  const src = readFileSync(new URL('../src/lib/openingHours.ts', import.meta.url), 'utf8')
+  const { code } = await transform(src, { loader: 'ts', format: 'esm' })
+  formatOH = (await import('data:text/javascript,' + encodeURIComponent(code))).formatOpeningHours ?? formatOH
+} catch (e) {
+  console.warn('SEO-sidor: kunde inte ladda öppettidsformateringen –', e.message)
+}
+// "Avgift" (OSM fee=yes) är ingen uppgift om belopp.
+const feeText = (f) => (!f ? '' : /^(avgift|yes|ja)$/i.test(f.trim()) ? 'avgift tas ut (belopp okänt)' : f)
+const safeHref = (u) => (typeof u === 'string' && /^https?:\/\/[^\s<>"\u0000-\u001f]+$/i.test(u) ? u : null)
+// Klipp på helt ord.
+const clip = (t, n) => (t.length <= n ? t : t.slice(0, n - 1).replace(/\s+\S*$/, '').replace(/[\s,–-]+$/, '') + '…')
 const SEED = process.env.SEED_PATH ? pathToFileURL(process.env.SEED_PATH) : new URL('../public/data/stations-seed.json', import.meta.url)
 const PUB = new URL('../public/', import.meta.url)
 
@@ -51,7 +67,7 @@ const TJANSTER = [
   { slug: 'farskvatten', label: 'Färskvatten', short: 'färskvatten', match: (s) => s.services.includes('vatten'),
     intro: 'Påfyllning av färskvatten (dricksvatten) för husbil och husvagn' },
   { slug: 'gasol-byte', label: 'Byt gasoltub', short: 'gasolbyte', match: (s) => s.services.includes('gasol') && (s.facilities ?? []).includes('gasol_byte'),
-    intro: 'Byte av gasolflaska (10/11 kg och kompositflaskor) i butik eller automat' },
+    intro: 'Byte av gasolflaska i butik eller automat' },
   { slug: 'gasol-pafyllning', label: 'Gasolpåfyllning', short: 'gasolpåfyllning', match: (s) => s.services.includes('gasol') && (s.facilities ?? []).includes('gasol_pafyllning'),
     intro: 'Påfyllning av egen gasolflaska eller fast gasoltank i husbilen' },
 ]
@@ -196,23 +212,44 @@ if (existsSync(KOMMUNER_FILE)) {
 // registret (eget/kommun) förtur, sedan Trafikverket, sist OSM, och en plats
 // inom 60 m från en redan vald får ingen egen sida (undviker dubbelsidor).
 const PRIO = (s) => (String(s.id).startsWith('curated-') ? 0 : s.source === 'trafikverket' ? 1 : 2)
-const cand = stations.filter((s) => confirmed(s).some((x) => CORE.includes(x))).sort((a, b) => PRIO(a) - PRIO(b))
+const GENERIC = /^(tömningsstation|tömningsplats|vattenpåfyllning|sopstation|ställplats för husbil|gasol)\b/i
+const gasolOnly = (s) => s.services.length === 1 && s.services[0] === 'gasol'
+// Osäkra registerposter (confidence low) får ingen egen sida – rätt före fler.
+const cand = stations
+  .filter((s) => confirmed(s).some((x) => CORE.includes(x)) && s.confidence !== 'low')
+  .sort((a, b) => PRIO(a) - PRIO(b) || (GENERIC.test(a.name) ? 1 : 0) - (GENERIC.test(b.name) ? 1 : 0))
+// Samma fysiska plats i flera källor: som appen (Pers 100 m-regel) – en sida,
+// bekräftade tjänster och faciliteter slås ihop. Gasolbutiker bara med samma
+// sorts plats; registrets "distinct" respekteras.
 const grid = new Map()
 const cellKey = (s) => `${Math.round(s.lat / 0.002)},${Math.round(s.lon / 0.004)}`
 const places = []
-for (const s of cand) {
-  const [cx, cy] = cellKey(s).split(',').map(Number)
-  let dup = false
-  for (let dx = -1; dx <= 1 && !dup; dx++) for (let dy = -1; dy <= 1 && !dup; dy++) {
-    for (const o of grid.get(`${cx + dx},${cy + dy}`) ?? []) if (distM(s, o) <= 60) { dup = true; break }
+for (const s0 of cand) {
+  const [cx, cy] = cellKey(s0).split(',').map(Number)
+  let host = null
+  for (let dx = -1; dx <= 1 && !host; dx++) for (let dy = -1; dy <= 1 && !host; dy++) {
+    for (const o of grid.get(`${cx + dx},${cy + dy}`) ?? []) {
+      if (distM(s0, o) > 100 || gasolOnly(o) !== gasolOnly(s0)) continue
+      if (String(o.id).startsWith('curated-') && String(s0.id).startsWith('curated-') && (o.distinct || s0.distinct)) continue
+      host = o
+      break
+    }
   }
-  if (!dup) {
+  if (!host) {
     // Samma namn i samma kommun inom 1 km (t.ex. flera tömningsnoder på en
-    // camping) = en sida – annars dubbla titlar och tunt innehåll.
-    const nm = s.name.toLowerCase()
-    dup = places.some((o) => o.name.toLowerCase() === nm && slug(o.kommun) === slug(s.kommun) && distM(s, o) <= 1000)
+    // camping) = samma sida.
+    const nm = s0.name.toLowerCase()
+    host = places.find((o) => o.name.toLowerCase() === nm && slug(o.kommun) === slug(s0.kommun) && distM(s0, o) <= 1000) ?? null
   }
-  if (dup) continue
+  if (host) {
+    for (const x of confirmed(s0)) if (!host.services.includes(x)) host.services.push(x)
+    host.unverifiedServices = (host.unverifiedServices ?? []).filter((x) => !host.services.includes(x))
+    host.facilities = [...new Set([...(host.facilities ?? []), ...(s0.facilities ?? [])])]
+    if (GENERIC.test(host.name) && !GENERIC.test(s0.name)) host.name = s0.name
+    host.sources = [...new Set([...(host.sources ?? [host.source]), s0.source])]
+    continue
+  }
+  const s = { ...s0, services: confirmed(s0), unverifiedServices: [...(s0.unverifiedServices ?? [])], sources: [s0.source] }
   places.push(s)
   const k = cellKey(s)
   grid.set(k, [...(grid.get(k) ?? []), s])
@@ -245,46 +282,61 @@ for (const s of places) {
   const SHORT = { latrintömning: 'latrin', gråvattentömning: 'gråvatten', färskvatten: 'vatten', gasol: 'gasol' }
   const tryT = (n, kort) => {
     const parts = coreSvc.slice(0, n).map((x) => (kort ? SHORT[x] ?? x : x))
-    return `${s.name} – ${listSv(parts)}${s.name.toLowerCase().includes(k.toLowerCase()) ? '' : ` i ${k}`}`
+    return `${s.name} – ${listSv(parts)}${s.name.toLowerCase().includes(k.toLowerCase()) && s.name.length > 25 ? '' : ` i ${k}`}`
   }
-  const title = [tryT(3, false), tryT(3, true), tryT(2, true), tryT(1, true)].find((t) => t.length <= 65) ?? `${s.name} i ${k}`.slice(0, 70)
-  const description0 = `${s.name} i ${k} kommun: ${listSv(svc)}${gasType.length ? ` (${listSv(gasType)})` : ''}.${s.fee ? ` Avgift: ${s.fee}.` : ''} Läge, ${s.openingHours ? 'öppettider, ' : ''}vägbeskrivning och närliggande platser på Tömningskartan.`
-  const description = description0.length > 300 ? description0.slice(0, 297).replace(/\s+\S*$/, '') + '…' : description0
+  const title = [tryT(3, false), tryT(3, true), tryT(2, true), tryT(1, true)].find((t) => t.length <= 65) ?? clip(`${s.name} – ${k}`, 65)
+  const fee = feeText(s.fee)
+  const description0 = `${s.name} i ${k}: ${listSv(svc)}${gasType.length ? ` (${listSv(gasType)})` : ''}.${fee && fee.length < 50 ? ` ${fee.replace(/^./, (c) => c.toUpperCase())}.` : ''} Läge och vägbeskrivning på Tömningskartan.`
+  const description = clip(description0, 155)
   const near = places
     .filter((o) => o !== s)
     .map((o) => ({ o, d: distM(s, o) }))
     .filter((x) => x.d <= 60000)
     .sort((a, b) => a.d - b.d)
     .slice(0, 8)
+  const web = safeHref(String(s.website ?? '').split(/\s*[;,]\s*|\s+/)[0])
+  const osmHref = safeHref(s.osmUrl) ?? 'https://www.openstreetmap.org/'
+  const curated = String(s.id).startsWith('curated-')
+  // Ärlig källa och säkerhet (granskning 12 okt 2026: branschlistor
+  // presenterades som "anläggningens egen sajt").
+  const källa = curated
+    ? s.confidence === 'medium'
+      ? 'Branschlista/återförsäljarlista (Tömningskartans register)'
+      : 'Kommunen eller anläggningens egen webbplats (Tömningskartans register)'
+    : s.source === 'trafikverket'
+      ? 'Trafikverket (rastplatsdata)'
+      : `<a href="${esc(osmHref)}" rel="nofollow noopener">OpenStreetMap</a> (frivilligt kartlagd)`
+  const säker = curated && s.confidence !== 'medium' ? 'Hög – kontrollerad mot primärkälla' : curated ? 'Medel – ring gärna innan' : s.source === 'trafikverket' ? 'Hög – Trafikverkets egna uppgifter' : 'Medel – från OpenStreetMap, inte kontrollerad av oss'
   const mapHref = `/?at=${s.lat.toFixed(5)},${s.lon.toFixed(5)},15&id=${encodeURIComponent(s.id)}`
   const rows = [
     ['Tjänster', esc(svc.map((x) => x[0].toUpperCase() + x.slice(1)).join(' · ')) + (grey.length ? ` <span class="grå">(obekräftat: ${esc(grey.join(', '))})</span>` : '')],
     gasType.length && ['Gasol', esc(listSv(gasType))],
-    s.fee && ['Avgift', esc(s.fee)],
-    s.openingHours && ['Öppettider', esc(s.openingHours)],
+    fee && ['Avgift', esc(fee)],
+    s.openingHours && ['Öppettider', esc(formatOH(s.openingHours))],
     s.season && ['Säsong', s.season === 'year-round' ? 'Öppet året runt' : 'Säsongsöppet'],
     s.gasolPrice && ['Pris', esc(s.gasolPrice)],
     extra.length && ['Även', esc(extra.join(' · '))],
     s.address && ['Adress', esc(s.address)],
     ['Kommun', `<a href="${esc(kommunUrl(k).replace(SITE, ''))}">${esc(k)}</a>${lan ? `, <a href="${esc(lanUrl(lan).replace(SITE, ''))}">${esc(lan)}</a>` : ''}`],
     ['Koordinater', `${s.lat.toFixed(5)}, ${s.lon.toFixed(5)}`],
-    s.website && /^https?:\/\//i.test(s.website) && ['Webbplats', `<a href="${esc(s.website.split(/\s*[;,]\s*|\s+/)[0])}" rel="nofollow noopener">${esc(s.website.split(/\s*[;,]\s*|\s+/)[0].replace(/^https?:\/\//, '').slice(0, 60))}</a>`],
-    ['Källa', s.source === 'trafikverket' ? 'Trafikverket (rastplats)' : s.source === 'osm' ? `<a href="${esc(s.osmUrl ?? 'https://www.openstreetmap.org/')}" rel="nofollow noopener">OpenStreetMap</a>` : 'Tömningskartans register (kommun/anläggningens egen sajt)'],
+    web && ['Webbplats', `<a href="${esc(web)}" rel="nofollow noopener">${esc(web.replace(/^https?:\/\//, '').slice(0, 60))}</a>`],
+    ['Källa', källa],
+    ['Säkerhet', säker],
   ].filter(Boolean)
   const trail = [['Tömningskartan', `${SITE}/`], ...(lan ? [[lan, lanUrl(lan)]] : []), [k, kommunUrl(k)], [s.name, canonical]]
   const body = `${bcHtml(trail)}
 <h1>${esc(s.name)}</h1>
 <p class="lead">${esc(listSv(svc).replace(/^./, (c) => c.toUpperCase()))} i ${esc(k)}${lan ? `, ${esc(lan)}` : ''}.</p>
-<a class="cta" href="${esc(mapHref)}">Visa på kartan och få vägbeskrivning →</a>
+<a class="cta" rel="nofollow" href="${esc(mapHref)}">Visa på kartan och få vägbeskrivning →</a>
 <dl class="fakta">${rows.map(([t, v]) => `<dt>${t}</dt><dd>${v}</dd>`).join('')}</dl>
 ${near.length ? `<h2>I närheten</h2><ul class="places">${near.map(({ o, d }) => `<li><a class="n" href="${esc(placeLink(o))}">${esc(o.name)}</a> <span class="s">· ${km(d)} · ${esc(serviceText(o).join(', '))}</span></li>`).join('')}</ul>` : ''}
-<p class="lead">Uppgifterna kommer från ${s.source === 'trafikverket' ? 'Trafikverket' : s.source === 'osm' ? 'OpenStreetMap' : 'kommunen eller anläggningens egen webbplats'} och kontrolleras löpande. Stämmer något inte? Öppna kartan och tryck "Rapportera fel" eller "Stämmer fortfarande".</p>`
+<p class="lead">Kartan uppdateras varje vecka. Stämmer något inte? Öppna kartan och tryck "Rapportera fel" eller "Stämmer fortfarande".</p>`
   const ld = {
     '@context': 'https://schema.org', '@type': 'Place', name: s.name, url: canonical,
     geo: { '@type': 'GeoCoordinates', latitude: +s.lat.toFixed(6), longitude: +s.lon.toFixed(6) },
     address: { '@type': 'PostalAddress', ...(s.address ? { streetAddress: s.address } : {}), addressLocality: k, ...(lan ? { addressRegion: lan } : {}), addressCountry: 'SE' },
     amenityFeature: confirmed(s).filter((x) => LABELS[x]).map((x) => ({ '@type': 'LocationFeatureSpecification', name: LABELS[x], value: true })),
-    ...(s.openingHours ? { openingHours: s.openingHours } : {}),
+    ...(s.fee && feeText(s.fee) && /gratis|kostnadsfri|utan avgift/i.test(s.fee) && !/\d\s*(kr|sek)/i.test(s.fee) ? { isAccessibleForFree: true } : {}),
   }
   await put(`.${placeLink(s)}index.html`, page({ title, description, canonical, body, jsonld: [ld, crumbs(trail)] }))
   urls.push(canonical)
@@ -300,8 +352,15 @@ for (const k of kommuner) {
   const counts = ORDER.map((sv) => [sv, count(sv)]).filter(([, n]) => n > 0)
   kommunStats.set(k, { core: core.length, counts: Object.fromEntries(counts) })
   const lan = lanFor(k)
-  const title = `Tömning för husbil i ${k} – latrin, gråvatten, vatten & gasol`
-  const description = `${core.length} platser i ${k} kommun: ${counts.map(([sv, n]) => `${n} ${LABELS[sv].toLowerCase()}`).join(', ')}. Karta, öppettider, avgifter och vägbeskrivning – gratis på Tömningskartan.`
+  // Titeln lovar bara tjänster som finns i kommunen (granskning 12 okt 2026).
+  const SH = { latrin: 'latrin', gravatten: 'gråvatten', vatten: 'vatten', gasol: 'gasol' }
+  const have = CORE.filter((sv) => counts.some(([x]) => x === sv)).map((sv) => SH[sv])
+  const tömning = have.includes('latrin') || have.includes('gråvatten')
+  const kTitle = (n) => (tömning ? `Tömning husbil ${k} – ${listSv(have.slice(0, n))}` : `${listSv(have.slice(0, n)).replace(/^./, (c) => c.toUpperCase())} för husbil i ${k}`)
+  const title = !have.length
+    ? `Ställplatser och camping för husbil i ${k}`
+    : ([4, 3, 2, 1].map(kTitle).find((t) => t.length <= 65) ?? (tömning ? `Tömning husbil ${k}` : `Husbil i ${k} – Tömningskartan`))
+  const description = clip(`${core.length} platser i ${k}: ${counts.map(([sv, n]) => `${n} ${LABELS[sv].toLowerCase()}`).join(', ')}. Karta och vägbeskrivning – gratis.`, 155)
   const sections = ORDER.map((sv) => {
     const items = core.filter((s) => confirmed(s).includes(sv)).sort((a, b) => a.name.localeCompare(b.name, 'sv'))
     if (!items.length) return ''
@@ -310,7 +369,7 @@ for (const k of kommuner) {
         const svc = confirmed(s).filter((x) => x !== 'sopor' && x !== 'atervinning').map((x) => LABELS[x] ?? x).join(' · ')
         const extra = [s.address, s.fee, s.openingHours].filter(Boolean).map(esc).join(' · ')
         const link = placeLink(s)
-        return `<li>${link ? `<a class="n" href="${esc(link)}">${esc(s.name)}</a>` : `<span class="n">${esc(s.name)}</span>`}<br><span class="s">${esc(svc)}${extra ? ' · ' + extra : ''}</span><br><a href="/?at=${s.lat.toFixed(5)},${s.lon.toFixed(5)},15&amp;id=${esc(encodeURIComponent(s.id))}">Visa på kartan →</a></li>`
+        return `<li>${link ? `<a class="n" href="${esc(link)}">${esc(s.name)}</a>` : `<span class="n">${esc(s.name)}</span>`}<br><span class="s">${esc(svc)}${extra ? ' · ' + extra : ''}</span><br><a rel="nofollow" href="/?at=${s.lat.toFixed(5)},${s.lon.toFixed(5)},15&amp;id=${esc(encodeURIComponent(s.id))}">Visa på kartan →</a></li>`
       })
       .join('')}</ul>`
   }).join('')

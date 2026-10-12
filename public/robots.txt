@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
 Disallow: /?admin=1
+# Kartlänkar från SEO-sidorna (/?at=…&id=…) pekar alla på startsidan –
+# ingen anledning för sökmotorer att genomsöka tusentals varianter.
+Disallow: /?at=
 
 Sitemap: https://tomningskartan.se/sitemap.xml
