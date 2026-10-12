@@ -31,6 +31,21 @@ try {
 } catch (e) {
   console.warn('SEO-sidor: kunde inte ladda öppettidsformateringen –', e.message)
 }
+// Appens EGEN sammanslagning (src/lib/merge.ts) och namnsättning – sidorna ska
+// visa exakt det kartan visar. Förut hade skriptet en egen kopia som gjorde
+// obekräftade tjänster gröna, gav rastplatser gråvatten och slog ihop olika
+// gasolbutiker (granskning 7, 12 okt 2026). Går den inte att ladda stoppas
+// bygget hellre än att publicera sidor med fel tjänster.
+const { build } = await import('esbuild')
+const bundled = await build({
+  stdin: {
+    contents: "export { dedupe, isFree } from './src/lib/merge.ts'; export { nameGenericByNearby } from './src/lib/naming.ts'",
+    resolveDir: new URL('..', import.meta.url).pathname,
+    loader: 'ts',
+  },
+  bundle: true, write: false, format: 'esm', platform: 'neutral', logLevel: 'silent',
+})
+const { dedupe, isFree, nameGenericByNearby } = await import('data:text/javascript,' + encodeURIComponent(bundled.outputFiles[0].text))
 // "Avgift" (OSM fee=yes) är ingen uppgift om belopp.
 const feeText = (f) => (!f ? '' : /^(avgift|yes|ja)$/i.test(f.trim()) ? 'avgift tas ut (belopp okänt)' : f)
 const safeHref = (u) => (typeof u === 'string' && /^https?:\/\/[^\s<>"\u0000-\u001f]+$/i.test(u) ? u : null)
@@ -174,14 +189,24 @@ const seed = JSON.parse(await readFile(SEED, 'utf8'))
 // Bara platser med giltiga talkoordinater och en kommun som ger en icke-tom slug
 // (granskning 12 okt 2026: sträng-lat kraschade bygget mitt i, tom slug skrev
 // över indexsidan, "Falun"/"FALUN" gav dubbla sidor).
-const stations = (seed.stations ?? seed).filter(
-  (s) => s.kommun && !s.unverified && Number.isFinite(s.lat) && Number.isFinite(s.lon) && slug(s.kommun) && Array.isArray(s.services),
+const valid = (seed.stations ?? seed).filter(
+  (s) => s.kommun && Number.isFinite(s.lat) && Number.isFinite(s.lon) && slug(s.kommun) && Array.isArray(s.services),
 )
+// Som kartan: alla källor slås ihop med appens regler (obekräftade dubbletter
+// ingår – de kan bara göra tjänster grå, aldrig gröna). Källorna samlas för
+// sidornas "Källa"-rad.
+const sourcesOf = new Map()
+const merged0 = dedupe(valid, () => 0, () => false, (kept, m) => {
+  sourcesOf.set(kept, [...new Set([...(sourcesOf.get(kept) ?? [kept.source]), m.source])])
+})
+const stations = nameGenericByNearby(merged0).filter((s) => !s.unverified)
+for (const s of stations) s.sources = sourcesOf.get(s) ?? [s.source]
+// Kommuner grupperas på exakt namn – Håbo och Habo fick samma slug och
+// slogs ihop till en sida (granskning 7). Krockande slugar får länet som tillägg.
 const byKommun = new Map()
 for (const s of stations) {
-  const key = [...byKommun.keys()].find((k) => slug(k) === slug(s.kommun)) ?? s.kommun
-  if (!byKommun.has(key)) byKommun.set(key, [])
-  byKommun.get(key).push(s)
+  if (!byKommun.has(s.kommun)) byKommun.set(s.kommun, [])
+  byKommun.get(s.kommun).push(s)
 }
 if (byKommun.size < Number(process.env.MIN_KOMMUNER ?? 100)) {
   console.warn(`SEO-sidor: bara ${byKommun.size} kommuner i datan (fältet kommun saknas?) – bygger inte om sidorna.`)
@@ -191,12 +216,17 @@ for (const d of ['kommun/', 'plats/', 'lan/', 'tjanst/', 'fragor/']) await rm(ne
 const updated = (seed.updatedAt ?? new Date().toISOString()).slice(0, 10)
 const urls = [`${SITE}/`, `${SITE}/om/`]
 const kommuner = [...byKommun.keys()].sort((a, b) => a.localeCompare(b, 'sv'))
-const kommunUrl = (k) => `${SITE}/kommun/${slug(k)}/`
 
 // Län (valfritt): scripts/kommun-lan.json { "Ale": "Västra Götalands län", … }
 const LAN_FILE = new URL('./kommun-lan.json', import.meta.url)
 const lanOf = existsSync(LAN_FILE) ? JSON.parse(readFileSync(LAN_FILE, 'utf8')) : {}
-const lanFor = (k) => lanOf[k] ?? Object.entries(lanOf).find(([n]) => slug(n) === slug(k))?.[1] ?? null
+const lanFor = (k) => lanOf[k] ?? Object.entries(lanOf).find(([n]) => n.toLowerCase() === String(k).toLowerCase())?.[1] ?? null
+const kommunSlug = new Map()
+for (const k of kommuner) {
+  const twins = kommuner.filter((o) => slug(o) === slug(k))
+  kommunSlug.set(k, twins.length > 1 ? `${slug(k)}-${slug((lanFor(k) ?? k).replace(/s? län$/, ''))}` : slug(k))
+}
+const kommunUrl = (k) => `${SITE}/kommun/${kommunSlug.get(k) ?? slug(k)}/`
 const lanUrl = (l) => `${SITE}/lan/${slug(l)}/`
 
 // Kommuncentrum för "grannkommuner".
@@ -207,52 +237,33 @@ if (existsSync(KOMMUNER_FILE)) {
 }
 
 // ---------------------------------------------------------------------------
-// Platssidor: en per plats med bekräftad tömning/vatten/gasol. Samma fysiska
-// plats kan finnas i flera källor (appen slår ihop inom 100 m) – här får
-// registret (eget/kommun) förtur, sedan Trafikverket, sist OSM, och en plats
-// inom 60 m från en redan vald får ingen egen sida (undviker dubbelsidor).
-const PRIO = (s) => (String(s.id).startsWith('curated-') ? 0 : s.source === 'trafikverket' ? 1 : 2)
+// Platssidor: en per plats med bekräftad tömning/vatten/gasol. Platserna är
+// redan sammanslagna med appens regler (ovan) – samma plats, samma tjänster,
+// samma gröna/grå som i kartan.
 const GENERIC = /^(tömningsstation|tömningsplats|vattenpåfyllning|sopstation|ställplats för husbil|gasol)\b/i
-const gasolOnly = (s) => s.services.length === 1 && s.services[0] === 'gasol'
+const gasolOnly = (s) => s.services.length > 0 && s.services.every((x) => x === 'gasol')
 // Osäkra registerposter (confidence low) får ingen egen sida – rätt före fler.
 const cand = stations
   .filter((s) => confirmed(s).some((x) => CORE.includes(x)) && s.confidence !== 'low')
-  .sort((a, b) => PRIO(a) - PRIO(b) || (GENERIC.test(a.name) ? 1 : 0) - (GENERIC.test(b.name) ? 1 : 0))
-// Samma fysiska plats i flera källor: som appen (Pers 100 m-regel) – en sida,
-// bekräftade tjänster och faciliteter slås ihop. Gasolbutiker bara med samma
-// sorts plats; registrets "distinct" respekteras.
-const grid = new Map()
-const cellKey = (s) => `${Math.round(s.lat / 0.002)},${Math.round(s.lon / 0.004)}`
+  .sort((a, b) => (GENERIC.test(a.name) ? 1 : 0) - (GENERIC.test(b.name) ? 1 : 0))
+// Samma namn i samma kommun inom 1 km (flera tömningsnoder på en camping) =
+// en sida. Aldrig gasolbutiker (två butiker i samma kedja är olika ställen).
 const places = []
-for (const s0 of cand) {
-  const [cx, cy] = cellKey(s0).split(',').map(Number)
-  let host = null
-  for (let dx = -1; dx <= 1 && !host; dx++) for (let dy = -1; dy <= 1 && !host; dy++) {
-    for (const o of grid.get(`${cx + dx},${cy + dy}`) ?? []) {
-      if (distM(s0, o) > 100 || gasolOnly(o) !== gasolOnly(s0)) continue
-      if (String(o.id).startsWith('curated-') && String(s0.id).startsWith('curated-') && (o.distinct || s0.distinct)) continue
-      host = o
-      break
-    }
-  }
-  if (!host) {
-    // Samma namn i samma kommun inom 1 km (t.ex. flera tömningsnoder på en
-    // camping) = samma sida.
-    const nm = s0.name.toLowerCase()
-    host = places.find((o) => o.name.toLowerCase() === nm && slug(o.kommun) === slug(s0.kommun) && distM(s0, o) <= 1000) ?? null
-  }
+const absorbed = new Set()
+for (const s of cand) {
+  const nm = s.name.toLowerCase()
+  const host = gasolOnly(s)
+    ? null
+    : places.find((o) => !gasolOnly(o) && o.name.toLowerCase() === nm && o.kommun === s.kommun && distM(s, o) <= 1000)
   if (host) {
-    for (const x of confirmed(s0)) if (!host.services.includes(x)) host.services.push(x)
+    for (const x of confirmed(s)) if (!host.services.includes(x)) host.services.push(x)
     host.unverifiedServices = (host.unverifiedServices ?? []).filter((x) => !host.services.includes(x))
-    host.facilities = [...new Set([...(host.facilities ?? []), ...(s0.facilities ?? [])])]
-    if (GENERIC.test(host.name) && !GENERIC.test(s0.name)) host.name = s0.name
-    host.sources = [...new Set([...(host.sources ?? [host.source]), s0.source])]
+    host.facilities = [...new Set([...(host.facilities ?? []), ...(s.facilities ?? []).filter((f) => !f.startsWith('gasol_'))])]
+    host.sources = [...new Set([...host.sources, ...s.sources])]
+    absorbed.add(s)
     continue
   }
-  const s = { ...s0, services: confirmed(s0), unverifiedServices: [...(s0.unverifiedServices ?? [])], sources: [s0.source] }
   places.push(s)
-  const k = cellKey(s)
-  grid.set(k, [...(grid.get(k) ?? []), s])
 }
 const usedSlugs = new Set()
 const placePath = new Map()
@@ -270,7 +281,7 @@ function serviceText(s) {
 }
 
 for (const s of places) {
-  const k = [...byKommun.keys()].find((x) => slug(x) === slug(s.kommun)) ?? s.kommun
+  const k = s.kommun
   const lan = lanFor(k)
   const svc = serviceText(s)
   const coreSvc = confirmed(s).filter((x) => CORE.includes(x)).sort((a, b) => ORDER.indexOf(a) - ORDER.indexOf(b)).map((x) => LABELS[x].toLowerCase())
@@ -336,7 +347,8 @@ ${near.length ? `<h2>I närheten</h2><ul class="places">${near.map(({ o, d }) =>
     geo: { '@type': 'GeoCoordinates', latitude: +s.lat.toFixed(6), longitude: +s.lon.toFixed(6) },
     address: { '@type': 'PostalAddress', ...(s.address ? { streetAddress: s.address } : {}), addressLocality: k, ...(lan ? { addressRegion: lan } : {}), addressCountry: 'SE' },
     amenityFeature: confirmed(s).filter((x) => LABELS[x]).map((x) => ({ '@type': 'LocationFeatureSpecification', name: LABELS[x], value: true })),
-    ...(s.fee && feeText(s.fee) && /gratis|kostnadsfri|utan avgift/i.test(s.fee) && !/\d\s*(kr|sek)/i.test(s.fee) ? { isAccessibleForFree: true } : {}),
+    // Samma "Gratis"-regel som kartans filter (src/lib/merge.ts isFree).
+    ...(isFree(s) ? { isAccessibleForFree: true } : {}),
   }
   await put(`.${placeLink(s)}index.html`, page({ title, description, canonical, body, jsonld: [ld, crumbs(trail)] }))
   urls.push(canonical)
@@ -346,11 +358,13 @@ ${near.length ? `<h2>I närheten</h2><ul class="places">${near.map(({ o, d }) =>
 // Kommunsidor
 const kommunStats = new Map()
 for (const k of kommuner) {
-  const list = byKommun.get(k)
-  const core = list.filter((s) => s.services.some((x) => ORDER.includes(x)))
+  // Sammanslagna platser (som i kartan) – förut den råa seeden, så samma
+  // plats listades flera gånger och antalen var uppblåsta (granskning 7).
+  const list = byKommun.get(k).filter((s) => !absorbed.has(s))
+  const core = list.filter((s) => confirmed(s).some((x) => ORDER.includes(x)))
   const count = (sv) => list.filter((s) => confirmed(s).includes(sv)).length
   const counts = ORDER.map((sv) => [sv, count(sv)]).filter(([, n]) => n > 0)
-  kommunStats.set(k, { core: core.length, counts: Object.fromEntries(counts) })
+  kommunStats.set(k, { core: core.length, places: core.filter((s) => confirmed(s).some((x) => CORE.includes(x))).length, counts: Object.fromEntries(counts) })
   const lan = lanFor(k)
   // Titeln lovar bara tjänster som finns i kommunen (granskning 12 okt 2026).
   const SH = { latrin: 'latrin', gravatten: 'gråvatten', vatten: 'vatten', gasol: 'gasol' }
@@ -367,7 +381,7 @@ for (const k of kommuner) {
     return `<h2 id="${sv}">${esc(LABELS[sv])} i ${esc(k)} (${items.length})</h2><ul class="places">${items
       .map((s) => {
         const svc = confirmed(s).filter((x) => x !== 'sopor' && x !== 'atervinning').map((x) => LABELS[x] ?? x).join(' · ')
-        const extra = [s.address, s.fee, s.openingHours].filter(Boolean).map(esc).join(' · ')
+        const extra = [s.address, feeText(s.fee), s.openingHours && formatOH(s.openingHours)].filter(Boolean).map(esc).join(' · ')
         const link = placeLink(s)
         return `<li>${link ? `<a class="n" href="${esc(link)}">${esc(s.name)}</a>` : `<span class="n">${esc(s.name)}</span>`}<br><span class="s">${esc(svc)}${extra ? ' · ' + extra : ''}</span><br><a rel="nofollow" href="/?at=${s.lat.toFixed(5)},${s.lon.toFixed(5)},15&amp;id=${esc(encodeURIComponent(s.id))}">Visa på kartan →</a></li>`
       })
@@ -385,13 +399,13 @@ for (const k of kommuner) {
 <p class="lead">${esc(description)}</p>
 <a class="cta" href="/?at=${first.lat.toFixed(4)},${first.lon.toFixed(4)},11">Öppna kartan över ${esc(k)} →</a>
 ${sections}
-${neighbours.length ? `<h2>Grannkommuner</h2><ul class="cols">${neighbours.map(({ o }) => `<li><a href="${esc(kommunUrl(o).replace(SITE, ''))}">${esc(o)}</a> (${byKommun.get(o).filter((s) => s.services.some((x) => ORDER.includes(x))).length})</li>`).join('')}</ul>` : ''}
+${neighbours.length ? `<h2>Grannkommuner</h2><ul class="cols">${neighbours.map(({ o }) => `<li><a href="${esc(kommunUrl(o).replace(SITE, ''))}">${esc(o)}</a> (${kommunStats.get(o)?.core ?? byKommun.get(o).filter((s) => !absorbed.has(s) && confirmed(s).some((x) => ORDER.includes(x))).length})</li>`).join('')}</ul>` : ''}
 <p class="lead">Saknas en plats eller stämmer något inte? Öppna kartan och använd "Lägg till en plats" eller "Rapportera fel" – uppgifterna granskas och kartan uppdateras varje vecka.</p>`
   const itemList = {
     '@context': 'https://schema.org', '@type': 'ItemList', name: `Tömning och vatten för husbil i ${k}`,
     itemListElement: core.filter((s) => placeLink(s)).slice(0, 100).map((s, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}${placeLink(s)}`, name: s.name })),
   }
-  await put(`kommun/${slug(k)}/index.html`, page({ title, description, canonical, body, jsonld: [crumbs(trail), itemList] }))
+  await put(`kommun/${kommunSlug.get(k)}/index.html`, page({ title, description, canonical, body, jsonld: [crumbs(trail), itemList] }))
   urls.push(canonical)
 }
 const total = places.length
@@ -403,7 +417,7 @@ await put('kommun/index.html', page({
 <h1>Tömning för husbil – kommun för kommun</h1>
 <p class="lead">${total.toLocaleString('sv-SE')} platser med tömning, vatten eller gasol i ${kommuner.length} kommuner. Välj kommun för listan${hasLan() ? ', eller <a href="/lan/">välj län</a>' : ''}.</p>
 <a class="cta" href="/">Öppna kartan →</a>
-<ul class="cols">${kommuner.map((k) => `<li><a href="/kommun/${slug(k)}/">${esc(k)}</a> (${kommunStats.get(k).core})</li>`).join('')}</ul>`,
+<ul class="cols">${kommuner.map((k) => `<li><a href="${esc(kommunUrl(k).replace(SITE, ''))}">${esc(k)}</a> (${kommunStats.get(k).places})</li>`).join('')}</ul>`,
 }))
 urls.push(`${SITE}/kommun/`)
 

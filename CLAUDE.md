@@ -56,14 +56,15 @@ Android förberett (`docs/BUILD-MOBILE.md`).
 
 | Fil | Roll |
 |---|---|
-| `src/App.tsx` | Panel/bottenark, sök, filter, räknare, dedupe (`mergeInto`: registret vinner, tjänster unionas, fält fylls på), versionsrad |
+| `src/App.tsx` | Panel/bottenark, sök, filter, räknare, versionsrad |
+| `src/lib/merge.ts` | Sammanslagning inom 100 m (`dedupe`/`mergeInto`: registret vinner, tjänster unionas, registrets grå tjänster låsta, rastplatsers gråvatten, gasolbutiker) + `isFree`. EN källa för både appen och SEO-sidorna (`build-seo-pages.mjs` laddar den via esbuild) – kopiera aldrig logiken |
 | `src/components/MapView.tsx` | Karta: viewport-rendering (CAP 3000, jämnt urval över kartan), popup-persistens (stängs BARA av användaren), `centerPopup()`/`computeFreeRect()`, baskarta med säkerhetsnät (tileerror ≥6 eller inga tiles på 8 s → OSM-tiles; lyssnarna sätts FÖRE `addTo`) |
 | `src/types.ts` | `ServiceType` (gravatten, latrin, vatten, sopor, atervinning, stallplats, camping, gasol), färger, ikoner, gasol byte/påfyllning-logik (`gasolFacilityStatus`, `serviceIsActive`), obekräftat-logik (`primaryActiveService`, `stationIsActive`) – EN delad källa, duplicera aldrig i komponenter |
 | `src/lib/overpass.ts` | Live-hämtning per kartvy (zoom ≥ 12). Speglar synkskriptets taggtolkning, `EXCLUDED_OSM_ELEMENTS`, `OSM_FACILITY_OVERRIDES`, `OSM_SEASON_OVERRIDES`, `OSM_UNVERIFIED_OVERRIDES` (gör OSM-tjänster grå när egen sajt/kommun är tyst) – **ändra ALLTID båda filerna** (`check-mirrors.mjs`) |
 | `scripts/sync-stations.mjs` | CI-synk: OSM (Overpass, med reserv från förra seeden vid avbrott) + Trafikverket + registret → `public/data/stations-seed.json`. Geokodningscache `scripts/geocode-cache.json` (nyckel = exakt `query`; tillfälliga Nominatim-fel cachas inte; vid miss behålls förra seedens läge). Namnsättning av namnlösa platser (`GENERIC_NAME` = `GENERIC_NAME_RE` i `src/lib/naming.ts`, ändra båda) |
 | `scripts/curated-places.json` | Eget register (~1 700 poster). Fält: `lat`/`lon` (föredra!) eller `query` + `nearLat`/`nearLon` (+ `maxKm`, standard 30; stora kommuner 60–80), `services`, `unverified`, `unverifiedServices`, `confidence` (high/medium/low), `fee`, `gasolPrice`, `openingHours`, `season`, `facilities` (`gasol_byte`/`gasol_pafyllning`), `website`, `description` med citat + källa |
 | `scripts/import-tools/` | Importskript, efterkontroller och agentuppdrag (`UPPDRAG-*.md`). `SCRATCH`-miljövariabeln pekar på arbetsmappen. Kör alltid `--dry` först |
-| `scripts/build-seo-pages.mjs` | Kommunsidor + sitemap vid deploy (se `docs/SEO.md`) |
+| `scripts/build-seo-pages.mjs` | Plats-, kommun-, läns-, tjänste- och frågesidor + sitemap vid deploy (se `docs/SEO.md`); län från `scripts/kommun-lan.json` |
 | `src/lib/photos.ts`, `restError.ts`, `community.ts`, `reviews.ts`, `verify.ts`, `http.ts` | Supabase-anrop (anon-nyckel), alla via `fetchWithTimeout` (20 s, svenska fel via `userMessage`). Formulär visar tack FÖRST efter lyckat svar och har synkront lås mot dubbelklick. Foton publiceras direkt utan kö (Pers beslut); bara egen bucket-URL visas (`isOwnPhotoUrl`). `restError` visar databasens svenska felmeddelanden |
 | `src/lib/weather.ts` | ARKIVERAD (Per: för mycket info). `SHOW_WEATHER = true` i MapView slår på |
 | `supabase/schema.sql` | Idempotent: tabeller + RLS, längdgränser (`*_len`), spamskydd (`rate_limits`, `rate_limit()`, triggers per tabell + storage-policy, per IP via `request.headers`), foto-URL-regex, storage-bucket. Ändrad fil tas i bruk med `installera-databasen.yml` |

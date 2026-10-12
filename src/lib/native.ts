@@ -34,7 +34,7 @@ async function readPosition(): Promise<{ lat: number; lon: number }> {
     navigator.geolocation.getCurrentPosition(
       (p) => resolve({ lat: p.coords.latitude, lon: p.coords.longitude }),
       (err) => reject(err),
-      { timeout: 20000, maximumAge: 60000 },
+      { timeout: 20000, maximumAge: 10000 },
     )
   })
 }
