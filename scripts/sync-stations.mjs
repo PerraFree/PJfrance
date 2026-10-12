@@ -250,21 +250,9 @@ const CLOSED_HOURS_RE = /^\s*(closed|off)\s*("[^"]*")?\s*;?\s*$/i
 function isClosedOrPrivate(tags) {
   const access = tags.access
   if (access === 'private' || access === 'no') return true
-  if (access === 'customers') {
-    // "Bara kunder" är okej där man BLIR kund genom att betala/handla eller där
-    // husbil uttryckligen välkomnas – annars (t.ex. tömning bara för en
-    // mackens eller en förenings egna kunder) räknas det som privat.
-    const publicUse =
-      yesOrDesignated(tags.motorhome) ||
-      yesOrDesignated(tags.caravan) ||
-      'fee' in tags ||
-      'charge' in tags ||
-      tags.tourism === 'camp_site' ||
-      tags.tourism === 'caravan_site' ||
-      tags.shop === 'gas' ||
-      tags.amenity === 'fuel'
-    if (!publicUse) return true
-  }
+  // access=customers räknas INTE som privat (ändrat 12 okt 2026 efter första
+  // synken): på campingar och återvinningscentraler betyder det gäster/
+  // kommuninvånare – det tog bort ~200 riktiga tömningsstationer och ÅVC.
   if (tags.disused === 'yes' || tags.abandoned === 'yes') return true
   if (CLOSED_HOURS_RE.test(tags.opening_hours ?? '')) return true
   if (CLOSED_NAME_RE.test(tags.name ?? '')) return true
