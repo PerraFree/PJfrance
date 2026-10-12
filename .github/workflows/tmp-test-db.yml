@@ -1,0 +1,39 @@
+name: Tillfälligt databastest runda 3 (tas bort efter körning)
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Testa mot levande databas
+        env:
+          SERVICE: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: |
+          set -a; . ./supabase.env; set +a
+          URL="${VITE_SUPABASE_URL}"; ANON="${VITE_SUPABASE_ANON_KEY}"
+          h=(-H "apikey: $ANON" -H "Authorization: Bearer $ANON" -H "Content-Type: application/json")
+          S="curated-dbtest-$RANDOM"
+          echo "1) två bekräftelser för samma plats (andra ska nekas):"
+          A=$(curl -s -o /dev/null -w "%{http_code}" "${h[@]}" -X POST "$URL/rest/v1/verifications" -d "{\"station_id\":\"$S\"}")
+          B=$(curl -s "${h[@]}" -w " HTTP %{http_code}" -X POST "$URL/rest/v1/verifications" -d "{\"station_id\":\"$S\"}")
+          echo "första: $A  andra: $B"
+          [ "$A" = "201" ] || { echo "FEL: första nekades"; FAIL=1; }
+          echo "$B" | grep -q "redan bekräftat" && echo "OK: per-plats-spärren fungerar (cf-connecting-ip finns)" || { echo "FEL: andra gick igenom – IP-headern saknas?"; FAIL=1; }
+          echo "2) sammanställningen går att läsa:"
+          V=$(curl -s "${h[@]}" "$URL/rest/v1/verification_summary?station_id=eq.$S&select=n")
+          echo "$V"; echo "$V" | grep -q '"n":1' || { echo "FEL: vyn"; FAIL=1; }
+          curl -s -o /dev/null -w "review_summary HTTP %{http_code}\n" "${h[@]}" "$URL/rest/v1/review_summary?limit=1"
+          echo "3) foto med annan plats mapp (ska nekas):"
+          P=$(curl -s -o /dev/null -w "%{http_code}" "${h[@]}" -X POST "$URL/rest/v1/photos" -d "{\"station_id\":\"$S\",\"url\":\"$URL/storage/v1/object/public/place-photos/annan-plats/1.jpg\"}")
+          echo "HTTP $P"; [ "$P" = "201" ] && { echo "FEL: accepterades"; FAIL=1; } || echo OK
+          echo "4) platsförslag utanför Sverige (ska nekas):"
+          Q=$(curl -s -o /dev/null -w "%{http_code}" "${h[@]}" -X POST "$URL/rest/v1/submissions" -d '{"name":"test","address":"test","lat":40,"lon":15,"services":["vatten"]}')
+          echo "HTTP $Q"; [ "$Q" = "201" ] && { echo "FEL: accepterades"; FAIL=1; } || echo OK
+          echo "5) städar:"
+          curl -s -o /dev/null -w "HTTP %{http_code}\n" -H "apikey: $SERVICE" -X DELETE "$URL/rest/v1/verifications?station_id=eq.$S"
+          exit ${FAIL:-0}
