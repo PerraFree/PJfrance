@@ -14,7 +14,7 @@ om det händer igen: `git fetch origin <gren>` + `git merge --no-ff` + verifiera
 
 ## Status
 
-- **Live:** ~6 640 platser (OSM ~4 620, Trafikverket 318, registret 1 695 poster
+- **Live:** ~6 640 platser (OSM ~4 620, Trafikverket 318, registret 1 711 poster
   varav ~330 grå/obekräftade). Alla deployer gröna, inget ligger ocommittat.
 - **Säkerhet:** Johans säkerhetsrådgivning GHSA-72p3-7774-p8h3 (4 fynd) är
   åtgärdad och verifierad mot den levande databasen 11 okt. Per har svarat Johan.
@@ -30,7 +30,10 @@ om det händer igen: `git fetch origin <gren>` + `git merge --no-ff` + verifiera
   Norraryd grå, Kyrkekvarn/Hok +tömning) och Östergötland/Örebro/Västmanland
   (49: Vadstena GK −tömning, Hällefors grå, Uskavi/Inre hamnen +tjänster),
   Värmland/Dalarna/Gävleborg (73: Flå −latrin, Orsa Grönklitt −gråvatten,
-  Stocka/Mörudden +tömning). Område C kört av rutinen 12 okt.
+  Stocka/Mörudden +tömning) och Norrland/Gotland/Blekinge (81: Härnösands
+  båtstation utesluten, Forshaga/Saxemara/Ljusnedal borttagna, Bräcke Strand
+  +tömning). **D klart för hela landet: 402 platser, 163 ändrade.** Område C
+  kört av rutinen 12 okt.
   Webben är i stort sett uttömd för nya platser – nästa metod är crowdsourcing.
 - **UI senast:** bottenarket följer fingret vid drag, strecket = bara kartan/
   tillbaka, baskartan byter till OSM om leverantören tiger. sw.js v86.
@@ -77,8 +80,11 @@ Se https://github.com/PerraFree/PJfrance/issues?q=is%3Aopen+label%3Abacklog
 
 ## Nästa steg (förslag)
 
-1. Område D i Norrland + Gotland/Blekinge (urvalsskript `valj.mjs` i
-   scratchpad – egen webbplats, max 3 per kommun, hoppa över "Kontroll okt
-   2026"; `UPPDRAG-kontroll.md` + `apply-kontroll.mjs`; korta texterna för hand).
-2. Område E (säsonger) när D-rotationen är klar. Per vill inte bli tillfrågad – sessionen väljer själv enligt
+1. Område E (säsonger/öppettider): ~1 250 platser med tömning/vatten saknar
+   `openingHours`/`season` (issue #27). Metod 28 sep: 8 agenter × 20, bara
+   kommun-/anläggningssida; OSM → `OSM_SEASON_OVERRIDES` i båda filerna.
+2. Område D varv 2 (VG först): urvalsskript `valj.mjs` i scratchpad väljer
+   bara platser utan "Kontroll okt 2026"; `UPPDRAG-kontroll.md` +
+   `apply-kontroll.mjs`; korta texterna för hand; grå-lista OSM-platser vars
+   egen sajt är tyst (`OSM_UNVERIFIED_OVERRIDES`). Per vill inte bli tillfrågad – sessionen väljer själv enligt
 prio-etiketterna och kör.

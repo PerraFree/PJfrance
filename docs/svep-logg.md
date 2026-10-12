@@ -11,7 +11,7 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 | A. Tömning latrin/gråvatten | Kommuner med 0–1 tömningsplatser: kommunsidor, turistråd, anläggningars egna sajter. Kompletteringar av befintliga camping-/ställplatsposter räknas. | 2026-10-05 |
 | B. Gasol byte/påfyllning + priser | Kedjornas butikssidor (Byggmax/Granngården/Rusta/ÖoB per butik), Norbro-/Linde-/gasolautomat.se-listor, lokala påfyllningsbolag, priser. Bara 10/11 kg-flaskor (P11/PA11/PC10/PK10). | 2026-09-28 |
 | C. Obekräftade platser: verifiera + fyll på | (1) Sök primärkälla för de OBEKRÄFTADE posterna i registret (`unverified: true` / `unverifiedServices`) – får de citat: ta bort obekräftat-flaggan. (2) Gör om lovande rader i `docs/kandidatplatser-husbilsplats-park4night.md` (tydlig tjänst + ort) till obekräftade registerposter så de syns grått på kartan. | 2026-10-12 |
-| D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. Uppdrag + import: `scripts/import-tools/UPPDRAG-kontroll.md`, `apply-kontroll.mjs`. Körda regioner: Västra Götaland (11 okt), Skåne (12 okt), Stockholm/Uppsala/Södermanland (12 okt), Halland + Kalmar län (12 okt), Jönköping/Kronoberg (12 okt), Östergötland/Örebro/Västmanland (12 okt), Värmland/Dalarna/Gävleborg (12 okt). Nästa: Norrland + Gotland/Blekinge, sedan om från början. | 2026-10-12 |
+| D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. Uppdrag + import: `scripts/import-tools/UPPDRAG-kontroll.md`, `apply-kontroll.mjs`. Körda regioner: Västra Götaland (11 okt), Skåne (12 okt), Stockholm/Uppsala/Södermanland (12 okt), Halland + Kalmar län (12 okt), Jönköping/Kronoberg (12 okt), Östergötland/Örebro/Västmanland (12 okt), Värmland/Dalarna/Gävleborg (12 okt), Norrland + Gotland/Blekinge (12 okt). Hela landet klart – nästa varv börjar om med VG, bara platser utan "Kontroll okt 2026". | 2026-10-12 |
 | E. Öppettider + vinterstängt | Platser med tömning/vatten som saknar `openingHours`/`season`: hämta säsong ("1 maj–30 sep", "vinterstängt", "året runt") från kommun-/anläggningssida. Skriv `season: 'seasonal'`/`'year-round'` + `openingHours`. Prioritera kommunala tömningsstationer och Trafikverkets rastplatser med vattenavstängning. | 2026-09-28 |
 
 ## Regler som alltid gäller
@@ -27,6 +27,26 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 ## Logg
 
+- **2026-10-12, D (kontroll av befintliga platser) – Norrland + Gotland + Blekinge (session "Gråvatten
+  5", vald själv):** 316 platser med tömning/vatten, 121 med egen webbplats; 81 valda (max 3 per kommun,
+  38 kommuner, 45 register + 36 OSM), 6 agenter, 158 sökningar, inga kvotfel. **Utfall: 33 ok, 33 ändrade,
+  0 nedlagda, 14 oklara.** Viktigast: **Septiktömningsstation Härnösand** (OSM) är en sugtömning för
+  fritidsbåtar → utesluten; **Forshagaforsens Camping** var geokodad till Timrå och driften nedlagd →
+  borttagen; **Saxemara** (Ronneby) är kommunens säsongsuthyrda husvagnsplatser, ingen publik tömning →
+  borttagen; **ÅVC Ljusnedal** – kommunen erbjuder inte latrintömning på ÅVC → borttagen (tömning "i
+  Ljusnedal" utan känt läge); **Rastplats Blåviksjön** latrin grå (källan säger nej); **Sorsele Camping**
+  alla tjänster grå; **Härnösand HEMAB** +gråvatten/vatten; **Bräcke Strand** +gråvatten/latrin och säsong
+  apr–okt (OSM sa 24/7 året runt); **Rosvik**, **Norrfällsviken**, **Sandsjögården** +vatten; Skabram
+  −gråvatten (sajten säger nej); fem namnbyten (First Camp Arcus – Luleå, First Camp Frösön – Östersund,
+  Arctic Camp Jokkmokk, Caravan Club Norsträsk, Seskarö Havsbad); 12 OSM-platser till grå-listan
+  (Kraja, Åkersjöstrand, Udden, Kvarnsjö, Ristafallet, Gällivare, Stenbräcka, Måviken, Avasund, Stöde,
+  Hoverberg gråvatten, Hammarstrand gråvatten); ~50 nya avgifter/säsonger. **Kvar/oklart:** Gäddede
+  Camping (registrets källa ej återfunnen), Österjörn, Gränssjöarna (egna sajter tysta), Aspan Ronneby
+  (säsongsuppställning – oklart för genomresande), Norrmjöle (OSM-punkten camping eller ställplats?),
+  Trångsviken (vatten bara vid Magasinet – kontrollera OSM-punkt), Ljusnedal (var ligger tömningen?).
+  **D-rotationen är därmed klar för hela landet (12 okt): 402 platser kontrollerade, 163 ändrade,
+  0 nedlagda.** Nästa varv börjar om från Västra Götaland – välj då platser som inte har "Kontroll okt
+  2026" i beskrivningen.
 - **2026-10-12, D (kontroll av befintliga platser) – Värmland + Dalarna + Gävleborg (session "Gråvatten
   5", vald själv):** 213 platser med tömning/vatten, 88 med egen webbplats; 73 valda (max 3 per kommun,
   37 kommuner, 48 register + 25 OSM), 6 agenter, 144 sökningar, inga kvotfel. **Utfall: 31 ok, 28

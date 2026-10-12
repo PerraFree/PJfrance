@@ -31,6 +31,7 @@ const EXCLUDED_OSM_ELEMENTS = new Set([
   // Samma camping, andra OSM-polygonen (kontroll okt 2026).
   'way/494506963',
   'way/324897315', // Saltsjö-Duvnäs Marina – sugtömning för fritidsbåtar, inte husbil (Nacka kommun, okt 2026)
+  'node/8972631914', // Septiktömningsstation Härnösands marina – sugtömning för fritidsbåtar, inte husbil (harnosand.se, okt 2026)
 ])
 
 // Gasol-utredning sep 2026: fuel:lpg=yes/service:vehicle:lpg=yes särskiljer
@@ -134,6 +135,18 @@ const OSM_UNVERIFIED_OVERRIDES = new Map<string, ServiceType[]>([
   ['way/1301732272', ['gravatten', 'latrin']], // Ställplats Dalarna (Gagnef) – ingen källa alls (kontroll okt 2026)
   ['node/12077225309', ['vatten']], // Camping Torp (Hagfors) – ingen källa (kontroll okt 2026)
   ['way/1193085061', ['gravatten', 'latrin']], // Rengsjö camping – kommunen hänvisar latrin till Rastplats Bollnäs (kontroll okt 2026)
+  ['way/298335948', ['gravatten', 'latrin']], // Kraja Fritidsanläggning – sajten nämner ingen tömning (kontroll okt 2026)
+  ['way/1447023893', ['gravatten', 'latrin']], // Åkersjöstrand camping – sajten nämner ingen tömning (kontroll okt 2026)
+  ['node/13980206457', ['vatten']], // naturgården Udden – ingen uppgift (kontroll okt 2026)
+  ['node/431825882', ['gravatten', 'latrin', 'vatten']], // Kvarnsjö Camp – egen sajt tyst (kontroll okt 2026)
+  ['way/783370464', ['gravatten', 'latrin']], // Ristafallet Camping – egen sajt tyst (kontroll okt 2026)
+  ['way/198088418', ['gravatten', 'latrin', 'vatten']], // Gällivare Camping – ny sajt utan tömningsinfo (kontroll okt 2026)
+  ['node/842323095', ['gravatten', 'latrin', 'vatten']], // Stenbräcka/Hägnans Camping – egen sajt tyst (kontroll okt 2026)
+  ['node/3668991153', ['vatten']], // Måviken Camping – ingen källa (OSM-sajten är ett rehabcenter) (kontroll okt 2026)
+  ['way/432760423', ['vatten']], // Avasund Fiske & Camp – ingen källa (kontroll okt 2026)
+  ['way/808435179', ['gravatten', 'latrin']], // Stöde Camping – egen sajt nämner ingen tömning (kontroll okt 2026)
+  ['way/175010595', ['gravatten']], // Hoverbergs Camping – uttömmande servicelista saknar gråvatten (kontroll okt 2026)
+  ['way/245336774', ['gravatten']], // Hammarstrands Camping – gråvatten nämns inte, recension säger ej tillåtet (kontroll okt 2026)
 ])
 
 function applyUnverifiedOverride(
