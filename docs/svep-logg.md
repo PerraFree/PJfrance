@@ -45,6 +45,11 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   Strandbad (egna sajter nämner inte tömning – ring 0411-52 62 60 för Löderup), Kulturhuset Öster
   Sallerup, Solhejdan; Skillinge hamn: masterplan 2025 föreslår att ställplatserna tas bort (bara förslag).
   Lärdom: Skåne har få platser med egen webbplats – nästa D-region bör vara större (Stockholms län).
+  **Efterkontroll (commit b921393):** Overpass var nere under synken, så förra seedens OSM-stationer
+  återanvändes ofiltrerade – Kullaberg och båda Torekov-ytorna (way/494506962 + 494506963) låg kvar.
+  Reservvägen i `sync-stations.mjs` tillämpar nu `EXCLUDED_OSM_ELEMENTS`; den andra Torekov-ytan lades
+  till i båda listorna och Grottby-dubbletten ("Skånes Djurparks Camping & Grottby") slogs ihop med
+  "Grottbyn" (grå). Lärdom: kontrollera alltid seeden efter en uteslutning, inte bara deployen.
 - **2026-10-12, C (obekräftade platser):** äldst datum (25 sep). 135 grå poster med egen/icke-aggregator-webbplats
   (av ~424 grå) delades på 8 agenter × 60 i budget (~190 sökningar använda, inget kvotfel; WebFetch blockad, citat från
   WebSearch-sammandrag). **Resultat: 37 poster uppgraderade, varav 12 hela platser grå → bekräftade** (bl.a. Kalvsvik, Kyrkviken

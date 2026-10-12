@@ -26,7 +26,9 @@ händer igen: `git fetch origin <gren>` + `git merge --no-ff` + verifiera seeden
   sammanslagna). Område C kört av rutinen 12 okt.
   Webben är i stort sett uttömd för nya platser – nästa metod är crowdsourcing.
 - **UI senast:** bottenarket följer fingret vid drag, strecket = bara kartan/
-  tillbaka, baskartan byter till OSM om leverantören tiger. sw.js v84.
+  tillbaka, baskartan byter till OSM om leverantören tiger. sw.js v86.
+- **Synk:** när Overpass är nere återanvänds förra seedens OSM-stationer, numera
+  filtrerade mot `EXCLUDED_OSM_ELEMENTS` (fix 12 okt, commit b921393).
 
 ## Öppna punkter (GitHub-issues med etiketten `backlog`)
 
