@@ -1,0 +1,30 @@
+name: Tillfälligt säkerhetstest (tas bort efter körning)
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Testa mot levande databas
+        env:
+          SERVICE: ${{ secrets.SUPABASE_SERVICE_KEY }}
+        run: |
+          set -a; . ./supabase.env; set +a
+          URL="${VITE_SUPABASE_URL}"; ANON="${VITE_SUPABASE_ANON_KEY}"
+          h=(-H "apikey: $ANON" -H "Authorization: Bearer $ANON" -H "Content-Type: application/json")
+          echo "1) anon anropar rpc/rate_limit (ska nekas):"
+          curl -s -o /dev/stderr -w " → HTTP %{http_code}\n" "${h[@]}" -X POST "$URL/rest/v1/rpc/rate_limit" -d '{"p_bucket":"x","p_per_ip_hour":9999,"p_global_hour":9999,"p_global_day":9999}'
+          echo "2) anon anropar rpc/client_ip_hash (ska nekas):"
+          curl -s -o /dev/stderr -w " → HTTP %{http_code}\n" "${h[@]}" -X POST "$URL/rest/v1/rpc/client_ip_hash" -d '{}'
+          echo "3) anon infogar verifiering med created_at 2099 (ska få dagens tid):"
+          R=$(curl -s "${h[@]}" -H "Prefer: return=representation" -X POST "$URL/rest/v1/verifications" -d '{"station_id":"curated-sakerhetstest","created_at":"2099-01-01T00:00:00Z"}')
+          echo "$R"
+          echo "$R" | grep -q '"2099' && { echo "FEL: 2099 accepterades"; FAIL=1; } || echo "OK: tiden sattes av databasen"
+          echo "4) anon skickar platsförslag med okänd tjänst (ska nekas):"
+          curl -s -o /dev/stderr -w " → HTTP %{http_code}\n" "${h[@]}" -X POST "$URL/rest/v1/submissions" -d '{"name":"test","address":"test","lat":59,"lon":15,"services":["<img>"]}'
+          echo "5) städar testraden (service-nyckel):"
+          curl -s -o /dev/null -w "HTTP %{http_code}\n" -H "apikey: $SERVICE" -X DELETE "$URL/rest/v1/verifications?station_id=eq.curated-sakerhetstest"
+          exit ${FAIL:-0}
