@@ -25,6 +25,10 @@ färskvatten, sopor, återvinningscentral och gasol (byte/påfyllning). Ställpl
 och camping är sekundär info. Ägare: Per (GitHub **PerraFree**, begränsad teknisk
 vana – förklara "för dummies", håll UI:t rent). Mejl: pej2727@gmail.com.
 Pers prioritering: **rätt före fler** – en felaktig tjänst är värre än en saknad.
+**Fråga inte Per vad som ska göras härnäst** (12 okt 2026): sessionen väljer
+själv enligt prioriteringen i issues (`prio-1` först) och `docs/STATUS.md`,
+kör, och rapporterar efteråt. Fråga bara när ett val kräver något av Per
+(pengar, konton, hans fältkännedom) eller är oåterkalleligt.
 
 - **Live:** https://tomningskartan.se/ (adminsida `?admin=1`). Egen domän (Inleed)
   → GitHub Pages via 4 A-poster + CNAME `www`. `BASE_PATH=/` i `deploy.yml` och
