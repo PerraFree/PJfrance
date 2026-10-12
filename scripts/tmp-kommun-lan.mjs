@@ -7,11 +7,12 @@ const out = {}
 for (const x of k) {
   const [lon, lat] = x.center
   let lan = null
-  for (let i = 0; i < 3 && !lan; i++) {
+  for (let i = 0; i < 2 && !lan; i++) {
     try {
       const r = await fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=8&lat=${lat}&lon=${lon}&accept-language=sv`, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(20000) })
       const j = await r.json()
-      lan = j.address?.state ?? null
+      lan = (j.address?.county && /län/.test(j.address.county) ? j.address.county : null) ?? j.address?.state ?? null
+      if (!lan) console.log("ADR", JSON.stringify(j.address))
     } catch {}
     await new Promise((res) => setTimeout(res, 1200))
   }
