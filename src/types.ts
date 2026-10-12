@@ -57,6 +57,9 @@ export interface Station {
    * om det är enda anledningen till att den visas.
    */
   unverifiedServices?: ServiceType[]
+  /** Registrets undantag från 100 m-regeln: två registerposter där någon har
+   *  distinct är olika verksamheter och slås inte ihop i appen. */
+  distinct?: boolean
   /**
    * Hur säker källan är (visas i popupen, viktigt för gasolpåfyllning):
    * 'high' = operatörens egen webbplats/kommunen säger det uttryckligen,

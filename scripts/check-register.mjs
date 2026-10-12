@@ -85,8 +85,10 @@ for (const p of exact) {
 if (existsSync(SEED)) {
   const st = JSON.parse(readFileSync(SEED, 'utf8')).stations ?? []
   const byPos = new Map()
+  const regIds = new Set(reg.map((p) => p.id))
   for (const s of st) {
-    if (!s.id.startsWith('curated-')) continue
+    // Bara poster som fortfarande finns i registret (seeden kan vara äldre).
+    if (!s.id.startsWith('curated-') || !regIds.has(s.id)) continue
     const k = `${s.lat.toFixed(5)},${s.lon.toFixed(5)}`
     byPos.set(k, [...(byPos.get(k) ?? []), s])
   }

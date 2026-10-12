@@ -838,6 +838,9 @@ async function fetchCurated() {
         'unverified',
         'unverifiedServices',
         'confidence',
+        // Undantag från 100 m-regeln – måste följa med, annars slog appen ihop
+        // ändå (granskning 12 okt 2026).
+        'distinct',
       ]) {
         if (e[key] !== undefined) station[key] = e[key]
       }

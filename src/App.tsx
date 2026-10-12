@@ -75,6 +75,8 @@ function isFree(s: Station): boolean {
 /** Platser som bara säljer gasol är butiker – de ska aldrig slås ihop med
  *  tömningsplatser/ställplatser intill, annars smittar tjänster och avgifter
  *  mellan olika verksamheter ("gratis gasol"-buggen). */
+const isCurated = (s: Station) => s.id.startsWith('curated-')
+
 function gasolOnly(s: Station): boolean {
   return s.services.length > 0 && s.services.every((sv) => sv === 'gasol')
 }
@@ -223,7 +225,10 @@ function dedupe(
         const bucket = grid.get(`${cx + dx},${cy + dy}`)
         if (!bucket) continue
         for (const ex of bucket) {
-          if (distMeters(ex, s) <= 100 && gasolOnly(ex) === gasolOnly(s)) {
+          // distinct = registrets uttryckliga undantag från 100 m-regeln: två
+          // REGISTERposter där någon har distinct slås inte ihop (samma regel
+          // som check-register.mjs). OSM-kopior av platsen slås ihop som vanligt.
+          if (distMeters(ex, s) <= 100 && gasolOnly(ex) === gasolOnly(s) && !(isCurated(ex) && isCurated(s) && (ex.distinct || s.distinct))) {
             mergeInto(ex, s, isFillOnly(s))
             merged = true
             break

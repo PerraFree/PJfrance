@@ -1529,18 +1529,6 @@
     "openingHours": "Ställplats året runt; vatten och tömning stängt 1 nov–15 apr"
   },
   {
-    "id": "curated-96-bangårdsgatan,-ulricehamn",
-    "name": "Tömningsplats Ulricehamn",
-    "query": "Bangårdsgatan, Ulricehamn",
-    "services": [
-      "latrin",
-      "vatten"
-    ],
-    "description": "Vatten, latrintömning, toaletter och dusch vid parkeringen. Källa: husbilsplats.se. Granskning 12 okt 2026: Turistrådet (vastsverige.com, Ställplatser i Ulricehamn centrum): vid Bangårdsgatan \"opportunity to stock up on fresh water and empty the latrine\" – latrin/vatten belagda.",
-    "url": "https://husbilsplats.se/locations/tomningsplats-ulricehamn/",
-    "source": "egen"
-  },
-  {
     "id": "curated-97-vänersborgs-gästhamn,-vänersborg",
     "name": "Vänersborgs Gästhamn ställplats",
     "query": "Vänersborgs gästhamn, Vänersborg",
@@ -4460,7 +4448,7 @@
       "latrin",
       "vatten"
     ],
-    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats. Kontroll okt 2026 (https://vbcl.se/camping/): \"vbcl.se: \"I campingplats priser ingår följande service: användning av servicebyggnaden, tömning av gråvatten, avlopp och påfyllning av vatten till 50 liter\" / \"70 elplatser för husvagnar och husbilar\" / \"Ställplatser utan service: 150,- P/N (Gäller inte midsommar)\" / \"ACSI MEDLEMMAR: 190,- P/N Lågsäsong / inkl. full s…\"",
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats. Kontroll okt 2026 (https://vbcl.se/camping/): \"vbcl.se: \"I campingplats priser ingår följande service: användning av servicebyggnaden, tömning av gråvatten, avlopp och påfyllning av vatten till 50 liter\" / \"70 elplatser för husvagnar och husbilar\" / \"Ställplatser utan service: 150,- P/N (Gäller inte midsommar)\" / \"ACSI MEDLEMMAR: 190,- P/N Lågsäsong / inkl. full s…\" Granskning 12 okt 2026: sammanslagen med \"Västanviksbadets Camping\" (samma plats inom 100 m, Pers regel).",
     "url": "https://vbcl.se/",
     "source": "egen",
     "fee": "Ingår i campingavgiften; ställplats utan service 150 kr/natt",
@@ -4919,7 +4907,6 @@
   {
     "id": "curated-294-first-camp-malnbaden,-hudiksvall",
     "name": "First Camp Malnbaden",
-    "query": "First Camp Malnbaden, Hudiksvall",
     "services": [
       "camping",
       "stallplats",
@@ -4927,11 +4914,10 @@
       "latrin",
       "vatten"
     ],
-    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats. Tidigare källänk (död okt 2026): https://firstcamp.se/destination/malnbaden-hudiksvall/.",
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats. Tidigare källänk (död okt 2026): https://firstcamp.se/destination/malnbaden-hudiksvall/. Granskning 12 okt 2026: sammanslagen med \"Malnbadens Camping & Vandrarhem\" (samma plats inom 100 m, Pers regel).",
     "source": "egen",
-    "nearLat": 61.72,
-    "nearLon": 17.15,
-    "maxKm": 20
+    "lat": 61.7188956,
+    "lon": 17.1787614
   },
   {
     "id": "curated-295-camp-ripan",
@@ -15149,21 +15135,6 @@
     "maxKm": 25
   },
   {
-    "id": "curated-884-östersunds-stugby-&-camping,-östersund",
-    "name": "Östersunds Stugby & Camping",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se + park4night.com, ej primärkälla): \"150 platser, bokningsbar\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se + park4night.com/en/place/35823",
-    "query": "Östersunds Stugby & Camping, Östersund",
-    "nearLat": 63.1656,
-    "nearLon": 14.688,
-    "maxKm": 25
-  },
-  {
     "id": "curated-885-östersund-frösö-golfklubb-ställplats",
     "name": "Östersund-Frösö Golfklubb ställplats",
     "services": [
@@ -15515,24 +15486,6 @@
     "description": "Obekräftad plats (husbilsplats.se + park4night, ej primärkälla): \"vatten, toalett, sopor, svartvattentömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
     "website": "https://husbilsplats.se + park4night",
     "query": "Leksands rastplats, Leksand",
-    "nearLat": 60.7475,
-    "nearLon": 14.9729,
-    "maxKm": 25
-  },
-  {
-    "id": "curated-907-västanviksbadets-camping,-leksand",
-    "name": "Västanviksbadets Camping",
-    "services": [
-      "latrin",
-      "gravatten",
-      "vatten",
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, vatten, toalett, dusch, sopor, wifi, tömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/rest-area/vastanviksbadets-camping/",
-    "query": "Västanviksbadets Camping, Leksand",
     "nearLat": 60.7475,
     "nearLon": 14.9729,
     "maxKm": 25
@@ -16998,22 +16951,6 @@
     "openingHours": "Incheckning 15:00, utcheckning senast 15:00"
   },
   {
-    "id": "curated-1000-lanthotell-lögnäs-gård,-laholm",
-    "name": "Lanthotell Lögnäs Gård",
-    "services": [
-      "vatten",
-      "stallplats"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"dusch, el, färskvatten, hc-wc, wifi, husbilsövernattning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/rest-area/lanthotell-lognas-gard/",
-    "query": "Lanthotell Lögnäs Gård, Laholm",
-    "nearLat": 56.5014,
-    "nearLon": 13.0035,
-    "maxKm": 25
-  },
-  {
     "id": "curated-1001-strömstad-golfklubb-ställplats",
     "name": "Strömstad Golfklubb ställplats",
     "services": [
@@ -17028,21 +16965,6 @@
     "openingHours": "Klubbhus 06:00–22:00",
     "phone": "0526-61788",
     "confidence": "medium"
-  },
-  {
-    "id": "curated-1002-lökholmens-camping,-strömstad",
-    "name": "Lökholmens Camping",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen. Sammanslagen okt 2026 med \"Strömstad Camping\" (samma plats).",
-    "website": "https://husbilsplats.se/rest-area/lokholmens-camping/",
-    "query": "Lökholmens Camping, Strömstad",
-    "nearLat": 58.9473,
-    "nearLon": 11.1995,
-    "maxKm": 25
   },
   {
     "id": "curated-1003-hovetorps-ställplats,-linköping",
@@ -18760,7 +18682,8 @@
       "latrin"
     ],
     "source": "egen",
-    "description": "First Camp (egen sida): servicehus 4. \"\"Latrintömning för husbilar finns vid servicehus 4.\" / \"Tömningsstationen: se campingkartan.\" / \"Tillgång till servicehus ingår alltid och på platser med el ingår ström i priset.\" / \"I alla tre servicehusen finns duschar\" (https://firstcamp.se/destinationer/city-stromstad/camping)"
+    "description": "First Camp (egen sida): servicehus 4. \"\"Latrintömning för husbilar finns vid servicehus 4.\" / \"Tömningsstationen: se campingkartan.\" / \"Tillgång till servicehus ingår alltid och på platser med el ingår ström i priset.\" / \"I alla tre servicehusen finns duschar\" (https://firstcamp.se/destinationer/city-stromstad/camping) Granskning 12 okt 2026: sammanslagen med \"Lökholmens Camping\" (samma plats inom 100 m, Pers regel).",
+    "website": "https://husbilsplats.se/rest-area/lokholmens-camping/"
   },
   {
     "id": "curated-1100-first-camp-herrgårdsliv-–-kristinehamn",
@@ -20323,22 +20246,6 @@
     ],
     "unverified": true,
     "confidence": "low"
-  },
-  {
-    "id": "curated-1193-malnbadens-camping-&-vandrarhem",
-    "name": "Malnbadens Camping & Vandrarhem",
-    "lat": 61.7188956,
-    "lon": 17.1787614,
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "description": "rastplatserna.se/husbilsplats.se. \"Registret (scripts/curated-places.json) har redan \"First Camp Malnbaden\" med gravatten+latrin+vatten, källa \"anläggningens webbplats\" (First Camp). Ingen ny sökning gjord i detta svep.\" (https://husbilsplats.se/guiden/halsingland/) Granskning 12 okt 2026: enda källan är aggregatorer – latrin/vatten flyttade till obekräftade tills en primärkälla (kommun, anläggningens sajt, turistråd) belägger tjänsten. Sökt primärkälla: husbilhusvagn.se anger tvärtom \"Latrin: Nej\".",
-    "confidence": "medium",
-    "unverifiedServices": [
-      "latrin",
-      "vatten"
-    ]
   },
   {
     "id": "curated-1194-järvsö-camping",
@@ -24913,12 +24820,14 @@
   },
   {
     "id": "curated-1455-ställplats-sturebadet-/-ågatan,-ulricehamn",
-    "name": "Ställplats Sturebadet / Ågatan, Ulricehamn",
+    "name": "Ställplats Ågatan/Sturebadet och tömning Bangårdsgatan, Ulricehamn",
     "services": [
-      "stallplats"
+      "stallplats",
+      "latrin",
+      "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://www.vastsverige.com/en/ulricehamn/produkter/motor-homes-parking-locations-in-ulricehamn/): \"Ågatan ligger bara några meter från Bangårdsgatan och är gratis i 24 timmar. Längst in på Ågatan finns en yta avsedd för ställplatser, inga andra platser på Ågatan är avsedda för husbilar, inte heller gräsmattorna.\" 4–5 platser. Troligen inom ~400 m från befintlig 'Ställplats för husbil vid Tömningsplats Ulricehamn' (Bangårdsgatan, 57.7989,13.4140) – hoppa över om avståndet är kort. Vatten/latrin görs på Bangårdsgatan i den röda sexkantiga byggnaden vid bryggan till Kallbadhuset (finns redan som 'Tömningsplats Ulricehamn'). Tidigare källänk (död okt 2026): https://www3.ulricehamn.se/innehall/2020/07/St%C3%A4llplatskarta.pdf.",
+    "description": "Källa (https://www.vastsverige.com/en/ulricehamn/produkter/motor-homes-parking-locations-in-ulricehamn/): \"Ågatan ligger bara några meter från Bangårdsgatan och är gratis i 24 timmar. Längst in på Ågatan finns en yta avsedd för ställplatser, inga andra platser på Ågatan är avsedda för husbilar, inte heller gräsmattorna.\" 4–5 platser. Troligen inom ~400 m från befintlig 'Ställplats för husbil vid Tömningsplats Ulricehamn' (Bangårdsgatan, 57.7989,13.4140) – hoppa över om avståndet är kort. Vatten/latrin görs på Bangårdsgatan i den röda sexkantiga byggnaden vid bryggan till Kallbadhuset (finns redan som 'Tömningsplats Ulricehamn'). Tidigare källänk (död okt 2026): https://www3.ulricehamn.se/innehall/2020/07/St%C3%A4llplatskarta.pdf. Granskning 12 okt 2026: sammanslagen med \"Tömningsplats Ulricehamn\" (samma plats inom 100 m, Pers regel).",
     "fee": "Gratis, 24 timmar",
     "address": "Ågatan (längst in) vid Sturebadet, Ulricehamn",
     "confidence": "medium",
@@ -25502,11 +25411,12 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.borgholm.se/borgholms-hamn/): \"borgholm.se: Borgholms hamn är gästhamn och erbjuder latrintömning och gråvattentömning samt tvättstuga. Bokning hos personal på The Bay-hotellet intill hamnen under bemannade tider. Barometern: för 140 kronor får husbilsägare parkera på anvisade platser i Borgholms hamn och tillgång till latrintömning och toalett i hamnens servicebyggnad.\" Befintlig 'Ställplats för husbil, Borgholm' (56.8659/16.6401) ligger ~1,5 km SV om hamnen – oklart om det är samma plats. Den kommunala tömningsstationen på Kapellvägen (befintlig 'Borgholms tömningsstation') ligger ~500 m bort. Koordinat saknas i källan.",
+    "description": "Källa (https://www.borgholm.se/borgholms-hamn/): \"borgholm.se: Borgholms hamn är gästhamn och erbjuder latrintömning och gråvattentömning samt tvättstuga. Bokning hos personal på The Bay-hotellet intill hamnen under bemannade tider. Barometern: för 140 kronor får husbilsägare parkera på anvisade platser i Borgholms hamn och tillgång till latrintömning och toalett i hamnens servicebyggnad.\" Befintlig 'Ställplats för husbil, Borgholm' (56.8659/16.6401) ligger ~1,5 km SV om hamnen – oklart om det är samma plats. Den kommunala tömningsstationen på Kapellvägen (befintlig 'Borgholms tömningsstation') ligger ~500 m bort. Koordinat saknas i källan. Granskning 12 okt 2026: distinct – ställplatsen Sunset (Yttre hamnen) och gästhamnens servicebyggnad är olika anläggningar; Sunsets egen källa säger att tömning INTE finns där, så de får inte slås ihop.",
     "website": "https://www.borgholm.se/borgholms-hamn/",
     "fee": "140 kr/dygn (enligt Barometern, äldre uppgift)",
     "address": "Borgholms hamn (gästhamnen), Borgholm",
-    "confidence": "high"
+    "confidence": "high",
+    "distinct": true
   },
   {
     "id": "curated-1488-hamnvägen-18,-387-31-borgholm",
@@ -25521,12 +25431,13 @@
       "sopor"
     ],
     "source": "egen",
-    "description": "Källa (https://www.oland.se/en/pitch-sunset): \"Parkeringsplats vid Yttre Hamnen längs Kalmarsund. Öppen året runt med undantag för snö, 33 platser med el, vatten och 3 toaletter. Tömning av latrinkassett och fasta tankar finns på Kapellvägen och på campingen; sopkärl; tvättstuga på campingen. Ingen gråvattentömning. Betalning via parkeringsapp eller automat.\" Latrintömning sker INTE på platsen utan vid Borgholms tömningsstation (Kapellvägen) / Kapelluddens Camping. Kan vara samma yta som befintlig 'Ställplats för husbil, Borgholm' eller 'Aimo Park Sollidenvägen' – kontrollera läge.",
+    "description": "Källa (https://www.oland.se/en/pitch-sunset): \"Parkeringsplats vid Yttre Hamnen längs Kalmarsund. Öppen året runt med undantag för snö, 33 platser med el, vatten och 3 toaletter. Tömning av latrinkassett och fasta tankar finns på Kapellvägen och på campingen; sopkärl; tvättstuga på campingen. Ingen gråvattentömning. Betalning via parkeringsapp eller automat.\" Latrintömning sker INTE på platsen utan vid Borgholms tömningsstation (Kapellvägen) / Kapelluddens Camping. Kan vara samma yta som befintlig 'Ställplats för husbil, Borgholm' eller 'Aimo Park Sollidenvägen' – kontrollera läge. Granskning 12 okt 2026: distinct – ställplatsen Sunset (Yttre hamnen) och gästhamnens servicebyggnad är olika anläggningar; Sunsets egen källa säger att tömning INTE finns där, så de får inte slås ihop.",
     "website": "https://www.oland.se/en/pitch-sunset",
     "fee": "Parkeringsavgift (app/automat)",
     "address": "Hamnvägen 18, 387 31 Borgholm",
     "season": "year-round",
-    "confidence": "high"
+    "confidence": "high",
+    "distinct": true
   },
   {
     "id": "curated-1489-tjusby-11,-387-93-borgholm",
@@ -28665,7 +28576,7 @@
       "stallplats",
       "vatten"
     ],
-    "description": "Kontrollpost okt 2026 ovanpå OSM-objektet (https://www.openstreetmap.org/way/1385534775). Kontroll okt 2026 (https://lognasgard.se/camping/stallplats): \"lognasgard.se/camping/stallplats: 30 platser med el plus platser utan el; 295 kr/natt utan el, el 99 kr/natt; in-/utcheckning 12:00. Servicehuset har fyra badrum, kök, tvättmaskin samt påfyllning av färskvatten och tömning av gråvatten och latrintank (husbilspaket-sidan: 'tömning av gråvatten och latrin' samt 'påfylln…\" Säsong okt 2026 (https://lognasgard.se/camping/paket-nyar): \"Julbordspaket för husbil & husvagn: 'Fredagar & Lördagar 27/11–20/12 2026'; Nyårspaket HUSBIL & HUSVAGN; PÅSKPAKET med ställplats; reception 'Mån-fre 07.00-17.00. Lör 08.00-17.00. Sön 08.00-12.00'\"",
+    "description": "Kontrollpost okt 2026 ovanpå OSM-objektet (https://www.openstreetmap.org/way/1385534775). Kontroll okt 2026 (https://lognasgard.se/camping/stallplats): \"lognasgard.se/camping/stallplats: 30 platser med el plus platser utan el; 295 kr/natt utan el, el 99 kr/natt; in-/utcheckning 12:00. Servicehuset har fyra badrum, kök, tvättmaskin samt påfyllning av färskvatten och tömning av gråvatten och latrintank (husbilspaket-sidan: 'tömning av gråvatten och latrin' samt 'påfylln…\" Säsong okt 2026 (https://lognasgard.se/camping/paket-nyar): \"Julbordspaket för husbil & husvagn: 'Fredagar & Lördagar 27/11–20/12 2026'; Nyårspaket HUSBIL & HUSVAGN; PÅSKPAKET med ställplats; reception 'Mån-fre 07.00-17.00. Lör 08.00-17.00. Sön 08.00-12.00'\" Granskning 12 okt 2026: sammanslagen med \"Lanthotell Lögnäs Gård\" (samma plats inom 100 m, Pers regel).",
     "source": "egen",
     "lat": 56.4741534,
     "lon": 12.9927327,
