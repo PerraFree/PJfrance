@@ -3,7 +3,13 @@
 Skrivs ÖVER vid varje överlämning (lägg inte äldre lägesbilder på hög – historik
 finns i git-loggen, `docs/svep-logg.md` och `docs/HISTORIK.md`).
 
-**Uppdaterad:** 2026-10-11, session "Gråvatten 5" (sessionslänk i senaste commit).
+**Uppdaterad:** 2026-10-12, session "Gråvatten 5" (sessionslänk i senaste commit).
+
+Senaste händelse: veckorutinen körde område C 12 okt (37 grå poster
+uppgraderade, 12 hela platser bekräftade) men pushade till sidogrenen
+`claude/happy-pasteur-gvt1b9` eftersom dess session var låst till den; slogs
+ihop till default-grenen av Gråvatten 5 samma morgon (commit 8396320). Om det
+händer igen: `git fetch origin <gren>` + `git merge --no-ff` + verifiera seeden.
 
 ## Status
 
