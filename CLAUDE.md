@@ -261,3 +261,11 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
   utan uttrycklig OSM-tagg).
 - Bekräftelser och betyg: en per avsändare, plats och dygn i databasen; appen
   läser sammanställningsvyerna `verification_summary`/`review_summary`.
+- **Agenter som ändrar filer:** ge varje agent egna filer, kör ALDRIG `git pull
+  --autostash`/`git stash` medan en agent har ocommittade ändringar (12 okt
+  hamnade en agents arbete i en stash mitt i), och committa bara egna filer
+  (`git add <filer>`). Stoppa servrar med `kill <pid>` – `pkill -f` matchar
+  det egna skalet och dödar kommandot.
+- När Overpass inte svarar återanvänder synken förra veckans OSM-data
+  (`sources.osm.fresh=false`) – en tolkningsrättning syns först vid en synk
+  där Overpass svarar. Kontrollera `sources` i seeden efter synken.
