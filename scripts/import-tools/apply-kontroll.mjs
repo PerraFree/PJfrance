@@ -86,7 +86,7 @@ function newOverlay(k, r) {
     name: r.nameNow || k.name,
     services: uniq(services),
     description:
-      `Kontrollpost ${DATUM} ovanpå OSM-objektet (${k.osmUrl}). ` +
+      `Kontrollpost ${DATUM} ovanpå OSM-objektet (${k.osmUrl ?? "https://www.openstreetmap.org/" + k.id.replace(/^osm-/, "").replace(/-(\d+)$/, "/$1")}). ` +
       `Kontroll ${DATUM} (${r.source}): "${short(r.evidence)}"`,
     source: 'egen',
     lat: k.lat,

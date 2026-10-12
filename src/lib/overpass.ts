@@ -30,6 +30,7 @@ const EXCLUDED_OSM_ELEMENTS = new Set([
   'way/494506962',
   // Samma camping, andra OSM-polygonen (kontroll okt 2026).
   'way/494506963',
+  'way/324897315', // Saltsjö-Duvnäs Marina – sugtömning för fritidsbåtar, inte husbil (Nacka kommun, okt 2026)
 ])
 
 // Gasol-utredning sep 2026: fuel:lpg=yes/service:vehicle:lpg=yes särskiljer

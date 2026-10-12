@@ -13,17 +13,17 @@ händer igen: `git fetch origin <gren>` + `git merge --no-ff` + verifiera seeden
 
 ## Status
 
-- **Live:** 6 632 platser (OSM ~4 600, Trafikverket 318, registret 1 690 poster
+- **Live:** ~6 640 platser (OSM ~4 620, Trafikverket 318, registret 1 699 poster
   varav ~330 grå/obekräftade). Alla deployer gröna, inget ligger ocommittat.
 - **Säkerhet:** Johans säkerhetsrådgivning GHSA-72p3-7774-p8h3 (4 fynd) är
   åtgärdad och verifierad mot den levande databasen 11 okt. Per har svarat Johan.
   `SUPABASE_SERVICE_KEY` finns som secret; kontotoken används bara av installationen.
 - **Beroenden:** Dependabots första omgång (#16–#20) mergad; actions SHA-låsta.
 - **Datasvep:** golfsvep, discovery varv 1 + 2 och restlistor är klara
-  riksomfattande. Område D (kontroll av befintliga platser) körd första gången
-  11 okt för Västra Götaland (40 platser) och 12 okt för Skåne (36 platser,
-  Kullaberg bortplockad, Falsterbo +latrin/gråvatten, First Camp-dubbletter
-  sammanslagna). Område C kört av rutinen 12 okt.
+  riksomfattande. Område D (kontroll av befintliga platser) körd 11 okt för
+  Västra Götaland (40 platser), 12 okt för Skåne (36) och 12 okt för Stockholm/
+  Uppsala/Södermanland (39: Åkersberga GK −tömning, Båsenberga-dubbletten isär,
+  Saltsjö-Duvnäs båtstation utesluten). Område C kört av rutinen 12 okt.
   Webben är i stort sett uttömd för nya platser – nästa metod är crowdsourcing.
 - **UI senast:** bottenarket följer fingret vid drag, strecket = bara kartan/
   tillbaka, baskartan byter till OSM om leverantören tiger. sw.js v86.
@@ -56,6 +56,7 @@ Se https://github.com/PerraFree/PJfrance/issues?q=is%3Aopen+label%3Abacklog
 
 ## Nästa steg (förslag)
 
-Område D i Stockholms län (samma metod: `UPPDRAG-kontroll.md` +
-`apply-kontroll.mjs`), sedan Halland/Småland. Per vill inte bli tillfrågad –
-sessionen väljer själv enligt prio-etiketterna och kör.
+Område D i Halland + Småland (samma metod: `UPPDRAG-kontroll.md` +
+`apply-kontroll.mjs`; ta med `osmUrl` i kandidatfilen), sedan Mellansverige/
+Norr. Per vill inte bli tillfrågad – sessionen väljer själv enligt
+prio-etiketterna och kör.

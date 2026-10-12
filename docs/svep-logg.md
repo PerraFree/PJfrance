@@ -11,7 +11,7 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 | A. Tömning latrin/gråvatten | Kommuner med 0–1 tömningsplatser: kommunsidor, turistråd, anläggningars egna sajter. Kompletteringar av befintliga camping-/ställplatsposter räknas. | 2026-10-05 |
 | B. Gasol byte/påfyllning + priser | Kedjornas butikssidor (Byggmax/Granngården/Rusta/ÖoB per butik), Norbro-/Linde-/gasolautomat.se-listor, lokala påfyllningsbolag, priser. Bara 10/11 kg-flaskor (P11/PA11/PC10/PK10). | 2026-09-28 |
 | C. Obekräftade platser: verifiera + fyll på | (1) Sök primärkälla för de OBEKRÄFTADE posterna i registret (`unverified: true` / `unverifiedServices`) – får de citat: ta bort obekräftat-flaggan. (2) Gör om lovande rader i `docs/kandidatplatser-husbilsplats-park4night.md` (tydlig tjänst + ort) till obekräftade registerposter så de syns grått på kartan. | 2026-10-12 |
-| D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. Uppdrag + import: `scripts/import-tools/UPPDRAG-kontroll.md`, `apply-kontroll.mjs`. Körda regioner: Västra Götaland (11 okt), Skåne (12 okt). Nästa: Stockholms län, Halland, Småland. | 2026-10-12 |
+| D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. Uppdrag + import: `scripts/import-tools/UPPDRAG-kontroll.md`, `apply-kontroll.mjs`. Körda regioner: Västra Götaland (11 okt), Skåne (12 okt), Stockholm/Uppsala/Södermanland (12 okt). Nästa: Halland, Småland, sedan Mellansverige/Norr. | 2026-10-12 |
 | E. Öppettider + vinterstängt | Platser med tömning/vatten som saknar `openingHours`/`season`: hämta säsong ("1 maj–30 sep", "vinterstängt", "året runt") från kommun-/anläggningssida. Skriv `season: 'seasonal'`/`'year-round'` + `openingHours`. Prioritera kommunala tömningsstationer och Trafikverkets rastplatser med vattenavstängning. | 2026-09-28 |
 
 ## Regler som alltid gäller
@@ -27,6 +27,28 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 ## Logg
 
+- **2026-10-12, D (kontroll av befintliga platser) – Stockholms, Uppsala och Södermanlands län
+  (session "Gråvatten 5", vald själv):** 140 platser med tömning/vatten i de tre länen, 44 med egen
+  webbplats (aggregatorer husbil.se/stallplatserna.se räknas bort); 39 valda (max 3 per kommun, 23
+  kommuner, 28 register + 11 OSM), 4 agenter, 87 sökningar, inga kvotfel. **Utfall: 15 ok, 15
+  ändrade, 0 nedlagda, 9 oklara.** Viktigast: **Åkersberga GK** visade gråvatten + latrin trots att
+  klubben uttryckligen säger nej → borttagna; **Båsenberga (Vingåker)** – två registerposter låg på
+  samma punkt fast kommunen skiljer på golfklubben (ingen tömning) och slalombacken
+  (gråvatten/latrin): golfposten har nu bara ställplats, backen egen query + bslk.se, färskvatten grått;
+  **Saltsjö-Duvnäs Marina** (OSM) är en sugtömningsstation för fritidsbåtar → `EXCLUDED_OSM_ELEMENTS`;
+  **Rullsand** +latrin (egen sajt); **Farstanäs** drivs nu av Södertälje kommun (nytt namn/länk, 13 jun–
+  31 aug); **Enköpings hamn** ingen service under lågsäsong; **NSS Nynäshamn** 300 kr; **Tumbo**
+  färskvatten avstängt 1 okt–30 apr; **Gnesta** vattenkiosk/latrin på Ågatan stängd sedan maj 2025
+  (husbilstömningen vid vändplanen öppen). Sex kontrollposter ovanpå OSM (Skeppsmyra, Fyrishov – OSM:s
+  "Gratis" ersatt, Rullsand, Gällnö, Tumbo, Klubbensborg). Namnbyten: First Camp Nickstabadet –
+  Nynäshamn, First Camp City – Stockholm, Caravan Club Östnora. Sidofynd: Pite Havsbad-dubblett
+  sammanslagen. **Kvar/oklart:** Sunnanö (registrets "egen webbplats"-källa går inte att återfinna),
+  Berkinge (kassettömning ej återfunnen), Rörholmsbadet (ny sajt, inget om tömning), Klubbensborg
+  (tömning nämns inte på egen sajt), skärgårdens tältplatser (Landsort, Finnhamn N/S, Lådna: vatten ej
+  bekräftat på själva platsen; bilfria öar – Finnhamn N har orimlig `stallplats` från OSM).
+  Lärdom: välj kontrollplatser med osmUrl i kandidatfilen, annars skriver `apply-kontroll.mjs`
+  "undefined" i kontrollposternas beskrivning. Nästa D-region: Halland + Småland (Kalmar/Kronoberg/
+  Jönköping).
 - **2026-10-12, D (kontroll av befintliga platser) – Skåne (session "Gråvatten 5", vald på eget
   initiativ enligt Pers önskan att inte bli tillfrågad):** 146 platser i Skåne har tömning/vatten,
   bara 44 en egen webbplats; 36 valda (max 3 per kommun, 19 kommuner, 21 register + 15 OSM), 4 agenter,
