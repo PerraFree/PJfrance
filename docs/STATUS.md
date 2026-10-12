@@ -80,9 +80,9 @@ Se https://github.com/PerraFree/PJfrance/issues?q=is%3Aopen+label%3Abacklog
 
 ## Nästa steg (förslag)
 
-1. Område E (säsonger/öppettider): ~1 250 platser med tömning/vatten saknar
-   `openingHours`/`season` (issue #27). Metod 28 sep: 8 agenter × 20, bara
-   kommun-/anläggningssida; OSM → `OSM_SEASON_OVERRIDES` i båda filerna.
+1. Område E skiva 3: de ~150 OSM-platserna med egen webbplats utan säsong
+   (`UPPDRAG-sasong.md` + `apply-sasong.mjs`, urval `valj.mjs` i scratchpad
+   med OSM i stället för register), sedan registerposter utan webbplats.
 2. Område D varv 2 (VG först): urvalsskript `valj.mjs` i scratchpad väljer
    bara platser utan "Kontroll okt 2026"; `UPPDRAG-kontroll.md` +
    `apply-kontroll.mjs`; korta texterna för hand; grå-lista OSM-platser vars

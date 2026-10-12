@@ -12,7 +12,7 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 | B. Gasol byte/påfyllning + priser | Kedjornas butikssidor (Byggmax/Granngården/Rusta/ÖoB per butik), Norbro-/Linde-/gasolautomat.se-listor, lokala påfyllningsbolag, priser. Bara 10/11 kg-flaskor (P11/PA11/PC10/PK10). | 2026-09-28 |
 | C. Obekräftade platser: verifiera + fyll på | (1) Sök primärkälla för de OBEKRÄFTADE posterna i registret (`unverified: true` / `unverifiedServices`) – får de citat: ta bort obekräftat-flaggan. (2) Gör om lovande rader i `docs/kandidatplatser-husbilsplats-park4night.md` (tydlig tjänst + ort) till obekräftade registerposter så de syns grått på kartan. | 2026-10-12 |
 | D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. Uppdrag + import: `scripts/import-tools/UPPDRAG-kontroll.md`, `apply-kontroll.mjs`. Körda regioner: Västra Götaland (11 okt), Skåne (12 okt), Stockholm/Uppsala/Södermanland (12 okt), Halland + Kalmar län (12 okt), Jönköping/Kronoberg (12 okt), Östergötland/Örebro/Västmanland (12 okt), Värmland/Dalarna/Gävleborg (12 okt), Norrland + Gotland/Blekinge (12 okt). Hela landet klart – nästa varv börjar om med VG, bara platser utan "Kontroll okt 2026". | 2026-10-12 |
-| E. Öppettider + vinterstängt | Platser med tömning/vatten som saknar `openingHours`/`season`: hämta säsong ("1 maj–30 sep", "vinterstängt", "året runt") från kommun-/anläggningssida. Skriv `season: 'seasonal'`/`'year-round'` + `openingHours`. Prioritera kommunala tömningsstationer och Trafikverkets rastplatser med vattenavstängning. | 2026-09-28 |
+| E. Öppettider + vinterstängt | Platser med tömning/vatten som saknar `openingHours`/`season`: hämta säsong ("1 maj–30 sep", "vinterstängt", "året runt") från kommun-/anläggningssida. Skriv `season: 'seasonal'`/`'year-round'` + `openingHours`. Prioritera kommunala tömningsstationer och Trafikverkets rastplatser med vattenavstängning. | 2026-10-12 |
 
 ## Regler som alltid gäller
 
@@ -27,6 +27,20 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 ## Logg
 
+- **2026-10-12, E (öppettider/säsong), andra skivan (session "Gråvatten 5", vald själv):** 314 platser med
+  tömning/vatten, egen webbplats och utan `openingHours`/`season` (seed 08:32); 160 valda (18 kommunala +
+  142 register, geografiskt spridda syd→nord i 8 grupper), 8 agenter × 25 sökningar (199 använda, inga
+  kvotfel). Nytt uppdrag `UPPDRAG-sasong.md` + `apply-sasong.mjs` (register direkt, OSM →
+  `OSM_SEASON_OVERRIDES` i båda filerna). **Resultat: 70 av 160 belagda, 49 registerposter uppdaterade**
+  (15 hade redan fått säsong av dagens D-svep, 3 low utelämnade: Tostarp, Ransäter, SkiStar Sälen);
+  87 utan primärkälla – golfklubbar och kommunala tömningsstationer anger nästan aldrig säsong. Texter
+  kortade för hand. Bifynd att ta i nästa D-varv: Sunnanå hamn nämner gråvatten (vi visar bara
+  latrin/vatten); Hörsjöns Camping överlåten till ny ägare, bokningsstopp från 31 aug 2025; Nabbelund utan
+  vatten/dusch fr.o.m. v. 26 2026 (vattenbrist); Grums kommun säger i sin VA-FAQ att de inte tar emot
+  husbilslatrin trots stationen vid Gruvön; Kivik saknar ställplats i hamnen enligt Simrishamns taxa;
+  Lidköpings kommun listar bara latrin för Kartåsen. Nästa E-skiva: de ~150 OSM-platserna med egen
+  webbplats (inga valda denna gång eftersom kommun- och registerposter prioriterades), sedan registerposter
+  utan webbplats via kommunsök.
 - **2026-10-12, D (kontroll av befintliga platser) – Norrland + Gotland + Blekinge (session "Gråvatten
   5", vald själv):** 316 platser med tömning/vatten, 121 med egen webbplats; 81 valda (max 3 per kommun,
   38 kommuner, 45 register + 36 OSM), 6 agenter, 158 sökningar, inga kvotfel. **Utfall: 33 ok, 33 ändrade,
