@@ -5,11 +5,12 @@ finns i git-loggen, `docs/svep-logg.md` och `docs/HISTORIK.md`).
 
 **Uppdaterad:** 2026-10-12, session "Gråvatten 5" (sessionslänk i senaste commit).
 
-Senaste händelse: veckorutinen körde område C 12 okt (37 grå poster
-uppgraderade, 12 hela platser bekräftade) men pushade till sidogrenen
-`claude/happy-pasteur-gvt1b9` eftersom dess session var låst till den; slogs
-ihop till default-grenen av Gråvatten 5 samma morgon (commit 8396320). Om det
-händer igen: `git fetch origin <gren>` + `git merge --no-ff` + verifiera seeden.
+Senaste händelse (12 okt): sex regioner i område D körda på en dag (248
+platser, 102 rättade), 27 registerdubbletter sammanslagna, synkens reservväg
+filtrerar nu OSM-undantag, ny CI-kontroll `check-mirrors.mjs` i deployen, ny
+rutin som bevakar GitHub-issues var 3:e timme. Veckorutinens C-körning pushade
+till en sidogren (rutinens session var låst till den) – slogs ihop manuellt;
+om det händer igen: `git fetch origin <gren>` + `git merge --no-ff` + verifiera seeden.
 
 ## Status
 

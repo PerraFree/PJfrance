@@ -70,8 +70,9 @@ Android förberett (`docs/BUILD-MOBILE.md`).
 
 ## Workflows (.github/workflows/)
 
-- `deploy.yml` – bygg + publicera till gh-pages (push/dispatch). Synkar bara om
-  rutan "synk" bockas i vid manuell körning.
+- `deploy.yml` – bygg + publicera till gh-pages (push/dispatch). Kör först
+  `scripts/check-mirrors.mjs` (stoppar om OSM-listorna skiljer sig mellan
+  synk och app). Synkar bara om rutan "synk" bockas i vid manuell körning.
 - `sync-data.yml` – enda datasynken; vid push på synkskript/register + måndagar
   03 UTC. Committar seed + cacher `[skip ci]` och dispatchar deployen.
 - `deploy-vakt.yml` – var 15:e minut: startar deployen om grenens topp inte är
@@ -184,7 +185,8 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
 ## Bestående lärdomar (regel + varför)
 
 - Speglade listor i `sync-stations.mjs` och `overpass.ts` ändras alltid i båda,
-  annars visar live-hämtningen något annat än seeden.
+  annars visar live-hämtningen något annat än seeden. `check-mirrors.mjs` i
+  deployen fångar missen; kör den lokalt före push.
 - Uppladdade foton får bara ha egen bucket-URL; längdgränser och spamskydd ligger
   i databasen – frontend-kontroller går att kringgå med anon-nyckeln.
 - OSM-taggen `fuel:lpg=yes` betyder fordonsgas, inte flaskbyte/-påfyllning; bara
