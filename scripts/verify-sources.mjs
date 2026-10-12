@@ -63,7 +63,8 @@ export function quotesOf(description) {
     const url = m[1].split(' ')[0].replace(/[;,.]+$/, '')
     const raw = m[2]
     const inner = [...raw.matchAll(/'([^']{25,})'/g)].map((x) => x[1]).sort((a, b) => b.length - a.length)[0]
-    let probe = inner ?? raw.replace(/^[^:]{0,80}:\s*/, '')
+    if (!inner) continue // bara ordagranna citat ('…') går att kontrollera; parafraser ger falsklarm
+    let probe = inner
     probe = probe.replace(/\[\.\.\.\]|\(\.\.\.\)|…|\.\.\./g, ' ').replace(/^[\s:;,.'"-]+/, '').trim()
     // 40–60 tecken räcker och tål redigeringar runt omkring
     const n = norm(probe)
@@ -87,6 +88,12 @@ export function quoteFound(text, probe) {
   return hits / shingles.length >= 0.4
 }
 
+/** Första http(s)-adressen i ett fält som kan innehålla flera ("a ; b", "a (kommentar)"). */
+export function firstUrl(v) {
+  const m = /https?:\/\/[^\s;,()'"]+/i.exec(String(v ?? ''))
+  return m ? m[0].replace(/[.,]+$/, '') : null
+}
+
 async function fetchText(url) {
   const ctrl = new AbortController()
   const t = setTimeout(() => ctrl.abort(), TIMEOUT_MS)
@@ -106,7 +113,7 @@ async function fetchText(url) {
 async function main() {
   const jobs = []
   for (const p of reg) {
-    const site = [p.website, p.url].find((u) => typeof u === 'string' && /^https?:\/\//i.test(u))
+    const site = [p.website, p.url].map(firstUrl).find(Boolean)
     const quotes = quotesOf(p.description)
     if (!site && !quotes.length) continue
     jobs.push({ name: p.name, site, quotes })
@@ -129,7 +136,7 @@ async function main() {
       }
       for (const q of job.quotes) {
         const f = await get(q.url)
-        const readable = f.status === 200 && f.text.length > 300
+        const readable = f.status === 200 && f.text.length > 1500 // kortare = troligen JS-skal utan innehåll
         r.quotes.push({ url: q.url, status: f.status || f.error, found: readable ? quoteFound(f.text, q.probe) : null, probe: q.probe })
       }
       results.push(r)
@@ -137,8 +144,8 @@ async function main() {
     }
   }))
 
-  const dead = results.filter((r) => r.site && (r.siteStatus === 404 || r.siteStatus === 410 || /ENOTFOUND|timeout|ECONNREFUSED|CERT|EAI_AGAIN/i.test(String(r.siteStatus))))
-  const blocked = results.filter((r) => r.site && [403, 429, 503, 406].includes(r.siteStatus))
+  const dead = results.filter((r) => r.site && (r.siteStatus === 404 || r.siteStatus === 410 || /ENOTFOUND|EAI_AGAIN|ECONNREFUSED/i.test(String(r.siteStatus))))
+  const blocked = results.filter((r) => r.site && ([403, 429, 503, 406].includes(r.siteStatus) || /CERT|TLS|timeout|TIMEOUT/i.test(String(r.siteStatus))))
   const missing = results.flatMap((r) => r.quotes.filter((q) => q.found === false).map((q) => ({ name: r.name, url: q.url, probe: q.probe })))
   const okSites = results.filter((r) => r.site && r.siteStatus === 200).length
   const okQuotes = results.flatMap((r) => r.quotes).filter((q) => q.found === true).length
@@ -157,7 +164,7 @@ async function main() {
     ...missing.slice(0, 80).map((m) => `- ${m.name} – ${m.url} (sökte "${m.probe.slice(0, 50)}…")`),
     missing.length > 80 ? `… och ${missing.length - 80} till (se artefakten)` : '',
     '',
-    `## Bot-skyddade/svarar inte normalt (${blocked.length}) – ingen åtgärd, bara info`,
+    `## Bot-skydd, certifikat- eller tidsfel (${blocked.length}) – fungerar ofta i webbläsare, bara info`,
     ...report.blocked.slice(0, 30).map(line),
   ].filter((l) => l !== undefined).join('\n')
   writeFileSync(SUMMARY, md)
