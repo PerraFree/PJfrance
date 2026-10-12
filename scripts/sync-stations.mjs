@@ -1172,8 +1172,7 @@ async function nameGenericStations(stations) {
   const grid = new Map()
   const key = (lat, lon) => `${Math.round(lat / CELL)},${Math.round(lon / CELL)}`
   for (const s of stations) {
-    // Härledda namn ("X vid Y") duger inte som förebild (granskning 10).
-    if (GENERIC_NAME.test(s.name) || s.nameFrom === 'nearby') continue
+    if (GENERIC_NAME.test(s.name)) continue
     const k = key(s.lat, s.lon)
     if (grid.has(k)) grid.get(k).push(s)
     else grid.set(k, [s])

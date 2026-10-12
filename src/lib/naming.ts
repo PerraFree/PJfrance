@@ -35,9 +35,7 @@ export function nameGenericByNearby(stations: Station[], maxKm = 0.25): Station[
   const grid = new Map<string, Station[]>()
   const key = (lat: number, lon: number) => `${Math.round(lat / CELL)},${Math.round(lon / CELL)}`
   for (const s of stations) {
-    // Härledda namn duger inte som förebild – gav "Sopstation vid Sopstation
-    // vid Skeppsbron" (granskning 10, 12 okt 2026).
-    if (isGenericName(s.name) || s.nameFrom === 'nearby') continue
+    if (isGenericName(s.name)) continue
     const k = key(s.lat, s.lon)
     const bucket = grid.get(k)
     if (bucket) bucket.push(s)
@@ -60,6 +58,11 @@ export function nameGenericByNearby(stations: Station[], maxKm = 0.25): Station[
         }
       }
     }
-    return best ? { ...s, name: `${s.name} vid ${best.name}`, nameFrom: 'nearby' as const } : s
+    if (!best) return s
+    // Härlett förebildsnamn: låna bara orten efter "vid" – annars "Sopstation
+    // vid Sopstation vid Skeppsbron" (granskning 10–11, 12 okt 2026).
+    const model = best as Station
+    const place = model.nameFrom === 'nearby' && model.name.includes(' vid ') ? model.name.slice(model.name.indexOf(' vid ') + 5) : model.name
+    return { ...s, name: `${s.name} vid ${place}`, nameFrom: 'nearby' as const }
   })
 }
