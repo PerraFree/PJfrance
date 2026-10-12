@@ -13,7 +13,7 @@ händer igen: `git fetch origin <gren>` + `git merge --no-ff` + verifiera seeden
 
 ## Status
 
-- **Live:** ~6 640 platser (OSM ~4 620, Trafikverket 318, registret 1 681 poster
+- **Live:** ~6 640 platser (OSM ~4 620, Trafikverket 318, registret 1 683 poster
   varav ~330 grå/obekräftade). Alla deployer gröna, inget ligger ocommittat.
 - **Säkerhet:** Johans säkerhetsrådgivning GHSA-72p3-7774-p8h3 (4 fynd) är
   åtgärdad och verifierad mot den levande databasen 11 okt. Per har svarat Johan.
@@ -25,8 +25,10 @@ händer igen: `git fetch origin <gren>` + `git merge --no-ff` + verifiera seeden
   Uppsala/Södermanland (39: Åkersberga GK −tömning, Båsenberga-dubbletten isär,
   Saltsjö-Duvnäs båtstation utesluten) och Halland + Kalmar län (46: Stenhamra
   Västervik var en vanlig parkering, fyra f.d. First Camp-poster rättade, Bua
-  hamn +gråvatten) och Jönköping/Kronoberg (38: Askelövsgatan Växjö och
-  Norraryd grå, Kyrkekvarn/Hok +tömning). Område C kört av rutinen 12 okt.
+  hamn +gråvatten), Jönköping/Kronoberg (38: Askelövsgatan Växjö och
+  Norraryd grå, Kyrkekvarn/Hok +tömning) och Östergötland/Örebro/Västmanland
+  (49: Vadstena GK −tömning, Hällefors grå, Uskavi/Inre hamnen +tjänster).
+  Område C kört av rutinen 12 okt.
   Webben är i stort sett uttömd för nya platser – nästa metod är crowdsourcing.
 - **UI senast:** bottenarket följer fingret vid drag, strecket = bara kartan/
   tillbaka, baskartan byter till OSM om leverantören tiger. sw.js v86.
@@ -71,9 +73,8 @@ Se https://github.com/PerraFree/PJfrance/issues?q=is%3Aopen+label%3Abacklog
 
 ## Nästa steg (förslag)
 
-Område D i Östergötland/Örebro/Västmanland (samma metod: urvalsskript `valj.mjs`
-i scratchpad – välj platser med egen webbplats, max 3 per kommun, hoppa över
-"Kontroll okt 2026"; `UPPDRAG-kontroll.md` + `apply-kontroll.mjs`), sedan
-Norrland. Kontrollera efter deploy att "Ställplats Järnet", "Barlastudden" och
-"Brohagen ställplats Habo" geokodats rätt (query-baserade). Per vill inte bli tillfrågad – sessionen väljer själv enligt
+Område D i Värmland/Dalarna/Gävleborg (samma metod: urvalsskript `valj.mjs` i
+scratchpad – välj platser med egen webbplats, max 3 per kommun, hoppa över
+"Kontroll okt 2026"; `UPPDRAG-kontroll.md` + `apply-kontroll.mjs`; korta
+agenternas texter för hand), sedan Norrland, sedan område E (säsonger). Per vill inte bli tillfrågad – sessionen väljer själv enligt
 prio-etiketterna och kör.

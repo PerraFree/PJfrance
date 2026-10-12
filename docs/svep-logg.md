@@ -11,7 +11,7 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 | A. Tömning latrin/gråvatten | Kommuner med 0–1 tömningsplatser: kommunsidor, turistråd, anläggningars egna sajter. Kompletteringar av befintliga camping-/ställplatsposter räknas. | 2026-10-05 |
 | B. Gasol byte/påfyllning + priser | Kedjornas butikssidor (Byggmax/Granngården/Rusta/ÖoB per butik), Norbro-/Linde-/gasolautomat.se-listor, lokala påfyllningsbolag, priser. Bara 10/11 kg-flaskor (P11/PA11/PC10/PK10). | 2026-09-28 |
 | C. Obekräftade platser: verifiera + fyll på | (1) Sök primärkälla för de OBEKRÄFTADE posterna i registret (`unverified: true` / `unverifiedServices`) – får de citat: ta bort obekräftat-flaggan. (2) Gör om lovande rader i `docs/kandidatplatser-husbilsplats-park4night.md` (tydlig tjänst + ort) till obekräftade registerposter så de syns grått på kartan. | 2026-10-12 |
-| D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. Uppdrag + import: `scripts/import-tools/UPPDRAG-kontroll.md`, `apply-kontroll.mjs`. Körda regioner: Västra Götaland (11 okt), Skåne (12 okt), Stockholm/Uppsala/Södermanland (12 okt), Halland + Kalmar län (12 okt), Jönköping/Kronoberg (12 okt). Nästa: Östergötland/Örebro/Västmanland, sedan Norrland. | 2026-10-12 |
+| D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. Uppdrag + import: `scripts/import-tools/UPPDRAG-kontroll.md`, `apply-kontroll.mjs`. Körda regioner: Västra Götaland (11 okt), Skåne (12 okt), Stockholm/Uppsala/Södermanland (12 okt), Halland + Kalmar län (12 okt), Jönköping/Kronoberg (12 okt), Östergötland/Örebro/Västmanland (12 okt). Nästa: Värmland/Dalarna/Gävleborg, sedan Norrland. | 2026-10-12 |
 | E. Öppettider + vinterstängt | Platser med tömning/vatten som saknar `openingHours`/`season`: hämta säsong ("1 maj–30 sep", "vinterstängt", "året runt") från kommun-/anläggningssida. Skriv `season: 'seasonal'`/`'year-round'` + `openingHours`. Prioritera kommunala tömningsstationer och Trafikverkets rastplatser med vattenavstängning. | 2026-09-28 |
 
 ## Regler som alltid gäller
@@ -27,6 +27,21 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 ## Logg
 
+- **2026-10-12, D (kontroll av befintliga platser) – Östergötland + Örebro + Västmanland (session
+  "Gråvatten 5", vald själv):** 139 platser med tömning/vatten, 52 med egen webbplats; 49 valda (max 3 per
+  kommun, 27 kommuner, 42 register + 7 OSM), 4 agenter, 88 sökningar, inga kvotfel. **Utfall: 27 ok,
+  19 ändrade, 0 nedlagda, 3 oklara.** Viktigast: **Vadstena Golfklubb** – klubben hänvisar latrintömning
+  till en plats inne i Vadstena → latrin/gråvatten borttagna (bara vatten); **Hällefors** – bergslagen.se
+  säger "utan service", tömningsposten slogs ihop med ställplatsposten och latrin/vatten är grå;
+  **Uskavigården** +gråvatten/latrin, **Inre hamnen Norrköping** +vatten (tömning 400 m bort, stängd
+  15 okt–15 apr), **Källbukten** +vatten, **KustCamp Ekön** +latrin, **Motala Verkstad/Göta kanal
+  Söderköping** +vatten med säsong; DHR Camping heter Vättersol; Kolmården och Ånnaboda = First Camp
+  (nya namn/länkar); Skantzö gråvatten obekräftat kvar; ~35 poster med nya avgifter/säsonger (Karlskoga,
+  Westerqwarn, Kvarntorpshögen, Lindesbergs GK, Askersunds GK, Sala GK m.fl.). **Kvar/oklart:** Vreten
+  (ligger i Nora, inte Lindesberg; sajten tyst), Sannabadet (OSM-tömning obelagd), Stationsområdet
+  Finspång (kommunens mening gäller troligen Grosvad); Arena Grosvad bygger nytt servicehus från sep
+  2026; Vadstena Parkstop (ny anläggning) bara i nyhetstext. Nästa D-region: Värmland/Dalarna/Gävleborg,
+  sedan Norrland.
 - **2026-10-12, registerhygien (session "Gråvatten 5"):** 23 par registerposter inom 60 m med gemensamt
   namnled sammanslagna (t.ex. First Camp Skutberget/−Karlstad, First Camp Umeå/Nydala, Löderup,
   Herrfallet, Kedumsvik, Doro Camp, 15 grå husbilsplats-kopior ovanpå bekräftade campingar). Appen
