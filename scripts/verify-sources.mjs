@@ -10,8 +10,8 @@
 // markdown-sammanfattning (SUMMARY) som workflowen lägger i ett GitHub-ärende.
 // Stoppar aldrig bygget (exit 0) – det är en rapport, inte en vakt.
 //
-// Avsiktligt försiktig med larm: bara 404/410, DNS-fel och timeout räknas som
-// "död länk"; 403/429/503 betyder oftast bot-skydd och rapporteras separat.
+// Avsiktligt försiktig med larm: bara 404/410 och DNS-fel räknas som "död länk";
+// 403/429/503, certifikat- och tidsfel rapporteras separat (bot-skydd m.m.).
 // Citat jämförs normaliserat (gemener, ett blanksteg) på ett 40–60 teckens
 // utdrag ur citatet, så att små redigeringar på sidan inte ger falsklarm.
 import { readFileSync, writeFileSync } from 'node:fs'

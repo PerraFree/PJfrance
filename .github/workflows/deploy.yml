@@ -27,6 +27,7 @@ concurrency:
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
@@ -40,6 +41,8 @@ jobs:
         run: node scripts/check-mirrors.mjs
       - name: Kvalitetskontroll av registret (tjänstekoder, koordinater, dubbletter inom 100 m)
         run: node scripts/check-register.mjs
+      - name: Kontroll av seeden (golv per källa, koordinater, tjänster, dubbla id)
+        run: node scripts/check-seed.mjs
       - name: Säkerhetskontroll av produktionsberoenden (stoppar vid high/critical)
         run: npm audit --omit=dev --audit-level=high
       - name: Synka stationsdata (OSM + Trafikverket) – bara vid manuell körning med "synk"

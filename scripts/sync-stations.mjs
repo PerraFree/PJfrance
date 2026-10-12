@@ -342,8 +342,8 @@ function placeKind(tags) {
   return undefined
 }
 
-/** Antal OSM-stationer i senast PUBLICERADE seeden (gh-pages) – repots egen
- *  seed-fil committas inte längre av CI och är därför gammal. 0 om okänt. */
+/** Antal OSM-stationer i senast PUBLICERADE seeden (gh-pages) – den säkra
+ *  sanningen om vad användarna ser (repots seed committas av sync-data.yml). 0 om okänt. */
 async function previousOsmCount() {
   try {
     const res = await fetch(PREV_SEED_URL, { signal: AbortSignal.timeout(60_000) })
@@ -696,13 +696,15 @@ function slugify(t) {
 const GEOCODE_CACHE = new URL('./geocode-cache.json', import.meta.url)
 const GEOCODE_MISS_RETRY_MS = 30 * 24 * 3600 * 1000
 
+// Registerposter som inte kom med i seeden – skrivs till REGISTER_DROPPED (om
+// satt) så att sync-data.yml kan lägga dem i ett GitHub-ärende.
+const dropped = []
+
 async function fetchCurated() {
-  let entries
-  try {
-    entries = JSON.parse(await readFile(CURATED, 'utf8'))
-  } catch {
-    return []
-  }
+  // Ett trasigt register får aldrig ge en seed utan registerposter
+  // (granskning 12 okt 2026): kasta fel så att synken stoppar i stället.
+  const entries = JSON.parse(await readFile(CURATED, 'utf8'))
+  if (!Array.isArray(entries) || entries.length === 0) throw new Error('registret är tomt eller inte en lista')
   let cache = {}
   try {
     cache = JSON.parse(await readFile(GEOCODE_CACHE, 'utf8'))
@@ -714,17 +716,22 @@ async function fetchCurated() {
   try {
     const prev = JSON.parse(await readFile(OUT, 'utf8'))
     for (const s of prev.stations ?? prev) {
-      if (typeof s.id === 'string' && s.id.startsWith('curated-')) prevPos.set(s.name, { lat: s.lat, lon: s.lon })
+      if (typeof s.id === 'string' && s.id.startsWith('curated-')) {
+        prevPos.set(s.id, { lat: s.lat, lon: s.lon })
+        if (!prevPos.has('namn:' + s.name)) prevPos.set('namn:' + s.name, { lat: s.lat, lon: s.lon })
+      }
     }
   } catch {
     /* ingen tidigare seed */
   }
+  for (const [k, v] of Object.entries(cache)) if (v && v.from === 'prev-seed') delete cache[k]
   const stats = { cached: 0, looked: 0 }
   const stations = []
   for (const [i, e] of entries.entries()) {
     // Hoppa över trasiga poster så de aldrig kan krascha appens dedupe.
     if (!Array.isArray(e.services) || e.services.length === 0 || !e.name) {
       console.warn(`Register: hoppar över post utan namn/tjänster (#${i})`)
+      dropped.push({ name: e.name ?? `#${i}`, id: e.id ?? null, reason: 'saknar namn eller tjänster' })
       continue
     }
     let networkCall = false
@@ -744,15 +751,21 @@ async function fetchCurated() {
         } else {
           networkCall = true
           stats.looked++
-          pos = await geocode(e.query)
+          try {
+            pos = await geocode(e.query)
+          } catch (err) {
+            console.warn(`Register: geokodning av "${e.query}" kastade fel: ${err.message}`)
+            pos = null
+          }
           const at = new Date().toISOString()
-          if (!pos && prevPos.has(e.name)) {
+          const prevHit = prevPos.get(e.id) ?? prevPos.get('namn:' + e.name)
+          if (!pos && prevHit) {
             // Geokodaren hittar inget NU men platsen låg i förra seeden –
-            // behåll det läget hellre än att tappa platsen (hände 11 okt 2026
-            // med Furusjöns Camping efter ett tillfälligt Nominatim-fel).
-            pos = prevPos.get(e.name)
+            // behåll det läget för den här körningen (hände 11 okt 2026 med
+            // Furusjöns Camping). Sparas INTE i cachen: då prövades det aldrig
+            // om och en felplacering kunde bli permanent (granskning 12 okt).
+            pos = prevHit
             console.warn(`Register: "${e.query}" (${e.name}) hittades inte nu – behåller läget från förra seeden`)
-            cache[e.query] = { lat: pos.lat, lon: pos.lon, at, from: 'prev-seed' }
           } else {
             cache[e.query] = pos ? { lat: pos.lat, lon: pos.lon, at } : { miss: true, at }
           }
@@ -760,6 +773,7 @@ async function fetchCurated() {
       }
       if (!pos) {
         console.warn(`Register: kunde inte geokoda "${e.query}" (${e.name})`)
+        dropped.push({ name: e.name, id: e.id ?? null, reason: `kunde inte geokoda "${e.query}"` })
         continue
       }
       // Rimlighetskontroll: om posten anger nearLat/nearLon (ungefärligt läge för
@@ -772,6 +786,7 @@ async function fetchCurated() {
           console.warn(
             `Register: "${e.name}" geokodades ${km.toFixed(0)} km från förväntat läge (max ${maxKm}) – hoppar över`,
           )
+          dropped.push({ name: e.name, id: e.id ?? null, reason: `geokodades ${km.toFixed(0)} km från förväntat läge (max ${maxKm})` })
           continue
         }
       }
@@ -1181,17 +1196,43 @@ if (trvKey) {
     stations.push(...tv)
   } catch (err) {
     console.error(`Trafikverket-hämtning misslyckades: ${err.message}`)
+    // Samma reserv som för OSM: återanvänd förra seedens rastplatser hellre
+    // än att 300+ platser försvinner för att API:t svarade fel en gång.
+    try {
+      const prev = JSON.parse(await readFile(OUT, 'utf8'))
+      const reused = (prev.stations ?? prev).filter((s) => s.source === 'trafikverket')
+      if (reused.length) {
+        console.warn(`Återanvänder ${reused.length} Trafikverket-platser från förra seeden.`)
+        stations.push(...reused)
+      }
+    } catch {
+      /* ingen tidigare seed */
+    }
   }
 } else {
   console.log('TRV_API_KEY ej satt – hoppar över Trafikverket.')
 }
 
+let curatedCount = 0
+let curatedTotal = 0
 try {
+  curatedTotal = JSON.parse(await readFile(CURATED, 'utf8')).length
   const curated = await fetchCurated()
-  console.log(`Register: ${curated.length} platser`)
+  curatedCount = curated.length
+  console.log(`Register: ${curated.length} av ${curatedTotal} poster kom med`)
   stations.push(...curated)
 } catch (err) {
-  console.error(`Register-geokodning misslyckades: ${err.message}`)
+  console.error(`Avbryter: registret kunde inte läsas/geokodas (${err.message}) – behåller befintlig seed-fil.`)
+  process.exit(1)
+}
+if (process.env.REGISTER_DROPPED) {
+  await writeFile(process.env.REGISTER_DROPPED, JSON.stringify(dropped, null, 1))
+}
+// Golv för registret: tappas mer än 5 % av posterna är något fel (t.ex. alla
+// geokodare nere och tom cache) – skriv då inte över seeden.
+if (curatedTotal > 0 && curatedCount < curatedTotal * 0.95) {
+  console.error(`Avbryter: bara ${curatedCount} av ${curatedTotal} registerposter kom med (golv 95 %). Behåller befintlig seed-fil.`)
+  process.exit(1)
 }
 
 // Skydd mot att en tillfällig störning hos en källa (t.ex. att alla tre

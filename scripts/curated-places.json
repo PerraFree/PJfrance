@@ -21849,9 +21849,9 @@
     "id": "curated-visby-golfklubb-husbilsparkering",
     "name": "Visby Golfklubb husbilsparkering",
     "query": "Kronholmen, Västerhejde",
-    "nearLat": 57.59,
-    "nearLon": 18.22,
-    "maxKm": 10,
+    "nearLat": 57.445,
+    "nearLon": 18.128,
+    "maxKm": 8,
     "services": [
       "stallplats"
     ],

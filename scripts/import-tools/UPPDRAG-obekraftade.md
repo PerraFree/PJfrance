@@ -25,7 +25,7 @@ Tjänstekoder: `gravatten`, `latrin`, `vatten`, `stallplats`, `camping`.
 Skriv `<SCRATCH>/c/res-<N>.json`:
 ```json
 { "group": 0, "searchesUsed": 0, "quotaHit": false,
-  "places": [ { "id": 12, "status": "bekraftad|delvis|ej_belagd|motsagd|nedlagd",
+  "places": [ { "id": "curated-…", "name": "…", "status": "bekraftad|delvis|ej_belagd|motsagd|nedlagd",
      "confirmedServices": ["latrin"], "contradictedServices": [],
      "fee": "kort text eller null", "openingHours": "kort eller null", "season": "seasonal|year-round|null",
      "evidence": "ORDAGRANT citat", "source": "https://...", "confidence": "high|medium|low", "notes": "" } ] }

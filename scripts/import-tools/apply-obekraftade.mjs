@@ -23,8 +23,11 @@ const log = []
 for (const f of fs.readdirSync(path.join(S, 'c')).filter((x) => /^res-\d+\.json$/.test(x))) {
   const res = JSON.parse(fs.readFileSync(path.join(S, 'c', f), 'utf8'))
   for (const r of res.places) {
-    const p = reg[r.id]
-    if (!p) continue
+    // Slå upp på permanent id (sedan 12 okt 2026) eller, för äldre urval där
+    // r.id var radnumret, kräv att namnet stämmer – annars hamnar rättningen
+    // på fel plats om registret ändrats mellan urval och körning.
+    const p = reg.find((x) => x.id === r.id) ?? (typeof r.id === 'number' && reg[r.id]?.name === r.name ? reg[r.id] : null)
+    if (!p) { st.skipped++; log.push(`HOPPAR ÖVER (hittar inte ${r.id} "${r.name}" – registret har ändrats)`); continue }
     const conf = r.confidence
     if (/Eremit/.test(p.name)) { st.skipped++; continue } // vatten = hämtning på gården, tvetydigt
     const trusted = conf === 'high' || (conf === 'medium' && !AGG.test(r.source || ''))

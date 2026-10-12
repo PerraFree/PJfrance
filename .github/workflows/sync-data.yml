@@ -19,6 +19,7 @@ on:
 permissions:
   contents: write
   actions: write
+  issues: write
 
 concurrency:
   group: sync-data
@@ -27,6 +28,7 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
@@ -36,6 +38,7 @@ jobs:
         run: node scripts/sync-stations.mjs
         env:
           TRV_API_KEY: ${{ secrets.TRV_API_KEY }}
+          REGISTER_DROPPED: register-bortfall.json
       - name: Committa uppdaterad seed-fil
         id: commit
         run: |
@@ -69,3 +72,26 @@ jobs:
         run: gh workflow run deploy.yml --ref "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # Registerposter som inte kom med i seeden (geokodningsmiss, fel ort) –
+      # tidigare bara en rad i loggen, nu ett ärende som ärenderutinen tar
+      # (granskning 12 okt 2026). Ärendet uppdateras; stängs när listan är tom.
+      - name: Rapportera registerposter som föll bort
+        if: always() && hashFiles('register-bortfall.json') != ''
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const fs = require('fs')
+            const list = JSON.parse(fs.readFileSync('register-bortfall.json', 'utf8'))
+            const marker = '<!-- register-bortfall -->'
+            const { data: open } = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100 })
+            const mine = open.find((i) => (i.body ?? '').startsWith(marker))
+            if (!list.length) {
+              if (mine) await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, state: 'closed', state_reason: 'completed' })
+              return
+            }
+            const esc = (t) => String(t ?? '').replace(/[[\]()<>`*_@#|]/g, ' ').slice(0, 200)
+            const body = `${marker}\n${list.length} registerposter kom inte med i seeden vid synken ${new Date().toISOString().slice(0, 16)} UTC – de syns inte på kartan.\n\n` +
+              list.slice(0, 150).map((d) => `- ${esc(d.name)}${d.id ? ` (${esc(d.id)})` : ''}: ${esc(d.reason)}`).join('\n') +
+              `\n\n_Åtgärd: exakta lat/lon från källan, eller rätta query/nearLat/nearLon/maxKm i scripts/curated-places.json._`
+            if (mine) await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, body })
+            else await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title: 'Registerposter som föll bort ur kartan vid synk', body, labels: ['backlog', 'prio-1'] })

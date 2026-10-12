@@ -1,0 +1,80 @@
+name: Sajtvakt (svarar tomningskartan.se?)
+
+# Var 30:e minut: hämtar startsidan och seeden från den publicerade sajten.
+# Svarar den inte (fel status, certifikatfel, för få platser) öppnas ett
+# ärende – och stängs automatiskt när sajten fungerar igen. Ingen secret.
+# (Granskning 12 okt 2026: inget larmade om sajten låg nere.)
+
+on:
+  schedule:
+    - cron: '7,37 * * * *'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+concurrency:
+  group: sajtvakt
+  cancel-in-progress: true
+
+jobs:
+  vakt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const BASE = 'https://tomningskartan.se'
+            const problems = []
+            async function get(path) {
+              // Två försök – en enstaka tappad anslutning ska inte larma.
+              for (let i = 0; i < 2; i++) {
+                try {
+                  const ctrl = new AbortController()
+                  const t = setTimeout(() => ctrl.abort(), 20000)
+                  const r = await fetch(BASE + path + (path.includes('?') ? '&' : '?') + 'vakt=' + Date.now(), { signal: ctrl.signal, cache: 'no-store' })
+                  clearTimeout(t)
+                  if (r.ok) return r
+                  if (i === 1) problems.push(`${path} svarade ${r.status}`)
+                } catch (e) {
+                  if (i === 1) problems.push(`${path}: ${e.cause?.code ?? e.name} ${e.message}`)
+                }
+                await new Promise((res) => setTimeout(res, 5000))
+              }
+              return null
+            }
+            const home = await get('/')
+            if (home) {
+              const html = await home.text()
+              if (!/Tömningskartan/i.test(html)) problems.push('startsidan saknar texten "Tömningskartan"')
+            }
+            const seedRes = await get('/data/stations-seed.json')
+            if (seedRes) {
+              try {
+                const seed = await seedRes.json()
+                const n = (seed.stations ?? seed).length
+                if (n < 5000) problems.push(`seeden har bara ${n} platser`)
+                const age = (Date.now() - Date.parse(seed.updatedAt)) / 86400000
+                if (age > 9) problems.push(`seeden är ${age.toFixed(0)} dagar gammal (synken har inte publicerat på över en vecka)`)
+              } catch (e) {
+                problems.push('seeden är inte giltig JSON')
+              }
+            }
+            const marker = '<!-- sajtvakt -->'
+            const { data: open } = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100 })
+            const mine = open.find((i) => (i.body ?? '').startsWith(marker))
+            if (!problems.length) {
+              console.log('Sajten svarar normalt.')
+              if (mine) {
+                await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, body: `Sajten svarar normalt igen (${new Date().toISOString().slice(0, 16)} UTC).` })
+                await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, state: 'closed', state_reason: 'completed' })
+              }
+              return
+            }
+            const body = `${marker}\nSajtvakten ${new Date().toISOString().slice(0, 16)} UTC:\n\n` + problems.map((p) => `- ${p}`).join('\n') +
+              `\n\n_Ärendet stängs automatiskt när sajten fungerar igen. Ligger den nere länge: kontrollera GitHub Pages-inställningarna och DNS hos Inleed._`
+            if (mine) await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, body })
+            else await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title: 'Sajten tomningskartan.se svarar inte normalt', body, labels: ['backlog', 'prio-1'] })
+            core.setFailed(problems.join('; '))

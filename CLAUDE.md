@@ -73,12 +73,15 @@ Android förberett (`docs/BUILD-MOBILE.md`).
 - `deploy.yml` – bygg + publicera till gh-pages (push/dispatch). Stoppar före
   bygget om `scripts/check-mirrors.mjs` (OSM-listorna lika i synk och app),
   `scripts/check-register.mjs` (registret: tjänstekoder, koordinater, dubbletter
-  inom 100 m, URL:er) eller `npm audit --omit=dev --audit-level=high` slår
-  larm. Kör alla tre lokalt före push. Synkar bara om rutan "synk" bockas i.
+  inom 100 m, URL:er, id), `scripts/check-seed.mjs` (golv per källa, koordinater)
+  eller `npm audit --omit=dev --audit-level=high` slår larm. Kör alla tre lokalt före push. Synkar bara om rutan "synk" bockas i.
 - `sync-data.yml` – enda datasynken; vid push på synkskript/register + måndagar
-  03 UTC. Committar seed + cacher `[skip ci]` och dispatchar deployen.
-- `deploy-vakt.yml` – var 15:e minut: startar deployen om grenens topp inte är
-  publicerad (GitHub missar ibland push-händelsen).
+  03 UTC. Committar seed + cacher `[skip ci]` och dispatchar deployen. Stoppar
+  om registret är trasigt eller <95 % av posterna kommer med; registerposter
+  som faller bort läggs i ett ärende (`<!-- register-bortfall -->`).
+- `deploy-vakt.yml` – var 15:e minut: startar deployen om grenens topp (inkl.
+  seeden) inte är publicerad; har deployen redan misslyckats för toppen öppnas
+  ett ärende i stället för att försöka igen.
 - `installera-databasen.yml` – manuell: hittar projektet, väcker det, kör
   `schema.sql`. Hoppar över nyckelhämtning när `supabase.env` finns. **Enda
   workflowen med `SUPABASE_ACCESS_TOKEN`.**
@@ -88,6 +91,8 @@ Android förberett (`docs/BUILD-MOBILE.md`).
   `cell()` (# före @); max 20 ärenden per körning; try/catch per rad.
 - `hantera-platsforslag.yml` – kommentar `godkänn`/`neka`/`avslå` → PATCH via
   PostgREST med `SUPABASE_SERVICE_KEY` (ord-jämförelse, inte `\b` – trasigt med å/ä/ö).
+- `sajtvakt.yml` – var 30:e minut: hämtar tomningskartan.se och seeden; öppnar
+  ett ärende (`<!-- sajtvakt -->`) om sajten inte svarar, stänger det när den gör det.
 - `verifiera-kallor.yml` – tisdagar 04:20 UTC + manuell: `scripts/verify-sources.mjs`
   hämtar registrets webbadresser från runnern (som har nät) och kontrollerar att
   länkar svarar och att sveparnas citat finns kvar på sidorna; rapport som
