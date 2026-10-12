@@ -2,13 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://tomningskartan.se/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/om/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/svenljunga-tomningsplats-moga-returen-svenljunga-466gb8/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/alvesta-tomningsplats-alvesta-jf5gn2/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/vetlanda-ostana-camping-vetlanda-5qqcgk/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/norrkoping-inre-hamnen-norrkoping-9umek7/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gnesta-tomningsstation-gnesta-2ubvgw/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/harnosand-latrintomning-harnosand-sb4zal/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/atvidaberg-servicestalle-for-husbilar-atvidaberg-5purjb/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/boras-golfklubb-stallplats-boras-4cr6pq/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-illharjen-vetlanda-i29bwf/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/axvalls-if-s-familjecamping-skara-t1ixtk/</loc><lastmod>2026-10-12</lastmod></url>
@@ -25,6 +18,8 @@
   <url><loc>https://tomningskartan.se/plats/skillinge-hamn-latrintomning-simrishamn-7jtfbk/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-burlovs-egnahem-burlov-o4ymub/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/kristianstads-stallplats-kristianstad-yz71dz/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/stallplats-lagunen-limhamn-malmo-oytldr/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/osby-camping-osby-dd6ng9/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/smabatshamnen-simrishamn-stallplats-simrishamn-p6n4z5/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/skane-camp-bara-svedala-7hxe95/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-bengtsfors-bengtsfors-ac0dp3/</loc><lastmod>2026-10-12</lastmod></url>
@@ -48,7 +43,9 @@
   <url><loc>https://tomningskartan.se/plats/stallplats-gota-kanal-soderkoping-soderkoping-g7s5ti/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/valdemarsviks-gasthamn-stallplats-valdemarsvik-wu3e5a/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rasta-eksjo-tomningsstation-eksjo-4t4izn/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/sjotorpets-camping-markaryd-markaryd-hqhtj3/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/oskarshamns-gasthamn-oskarshamn-ytv04w/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/stallplats-tuna-torg-vimmerby-tlo7ys/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-vaggaviken-karlshamn-karlshamn-njrtwh/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/boda-stallplats-borgholm-u3ixl2/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/karehamn-stallplats-borgholm-jdmbdo/</loc><lastmod>2026-10-12</lastmod></url>
@@ -517,13 +514,29 @@
   <url><loc>https://tomningskartan.se/plats/ekna-naturcamping-vaxjo-pe935s/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/first-camp-morudden-hammaro-hammaro-06804t/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/mjolkekilen-husbilsplatser-kungalv-ck2mpb/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/kamlunge-camping-kalix-c4ga2h/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/storumans-camping-storuman-om8s4y/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/ostersund-froso-golfklubb-stallplats-ostersund-vnig7b/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/first-camp-siljansbadet-rattvik-9v68li/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/leksands-rastplats-leksand-mfatkd/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/harnasgarden-stallplats-ludvika-smedjebacken-bfnxde/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/gavle-camping-engesberg-gavle-2fksdp/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/stallplats-stockholm-skutskepparvagen-stockholm-tsdjk3/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/first-camp-stallplats-stockholm-flaten-stockholm-q0enqa/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/vilsta-camping-stugby-eskilstuna-3hzln8/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/lots-camping-strangnas-oeol74/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/fagersta-golfklubb-stallplats-fagersta-rttron/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/surahammars-golfklubb-stallplats-surahammar-x3gmpg/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/lisebergs-stallplats-skatas-goteborg-rhlfzu/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/boras-camping-boras-39at2t/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/trollhattans-camping-city-trollhattan-j9c29y/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/yttre-hamnen-i-mariestad-mariestad-vqgok6/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/sundsorn-stallplats-mariestad-eiqqqt/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/bjornhults-golfklubb-stallplats-falkenberg-xwq6wx/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/trafikverkets-rastplats-mjolby-mjolby-7djxt4/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/varnamo-camping-varnamo-qv34gw/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/eksjo-camping-eksjo-lvaprf/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/ronneby-marina-ronneby-q797zh/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/svenska-gas-gasol-ab-stenungsund-stenungsund-uqsf35/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/svenska-gas-gasol-ab-fjaras-varberg-a7s7ks/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/svenska-gas-gasol-ab-uddevalla-uddevalla-q5xle7/</loc><lastmod>2026-10-12</lastmod></url>
@@ -562,12 +575,14 @@
   <url><loc>https://tomningskartan.se/plats/tbm-byggmaskiner-i-motala-ab-motala-q6ztnu/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/nb-energi-sala-sala-88uomz/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/first-camp-ahus-kristianstad-kristianstad-jyg87b/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/first-camp-skonstavik-karlskrona-karlskrona-jbdteg/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/first-camp-molle-hoganas-hoganas-ijlquo/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/first-camp-torekov-bastad-bastad-5emonj/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/first-camp-stenso-kalmar-kalmar-ubfasc/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/citycamp-halmstad-halmstad-p4o6y6/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/lottorps-camping-borgholm-203k2q/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tidaholm-hokensas-semesterby-och-camping-tidaholm-bnnxf1/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/camping-vid-solvik-camping-och-stugby-sotenas-4uwdrj/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/first-camp-glyttinge-linkoping-2rdj56/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vadstena-camping-vadstena-7ct8q5/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/first-camp-edsvik-grebbestad-tanum-mych0h/</loc><lastmod>2026-10-12</lastmod></url>
@@ -604,6 +619,7 @@
   <url><loc>https://tomningskartan.se/plats/julared-stallplats-habo-ww0oph/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/herrljunga-golfklubb-stallplats-herrljunga-491q1r/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/camping-skara-skara-vsqvnd/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/karlsborgs-camping-karlsborg-6ydhc2/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/husabergsudde-camping-askersund-by36yl/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-vasteras-gasthamn-vasteras-wcuzkq/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vemdalens-camping-harjedalen-j1edli/</loc><lastmod>2026-10-12</lastmod></url>
@@ -773,8 +789,6 @@
   <url><loc>https://tomningskartan.se/plats/risebo-gard-camping-vastervik-jw8l2h/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/bigard-birgittas-stallplats-nybro-lj0hr3/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/lognas-gard-stallplats-laholm-fj6s56/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/stallplats-jarnet-vastervik-vastervik-ggaoqd/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/stallplats-barlastudden-vastervik-vastervik-y7a44l/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/mycklaflons-camping-eksjo-195uyj/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-skeda-strand-varnamo-l8safq/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/uskavigarden-lindesberg-o46isi/</loc><lastmod>2026-10-12</lastmod></url>
@@ -810,256 +824,15 @@
   <url><loc>https://tomningskartan.se/plats/hammarstrands-camping-stugby-och-fiske-ragunda-99q0ev/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/kolgardens-stugby-camping-vilhelmina-bl4idg/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tannforsen-stallplats-are-ve32yu/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/rastplats-amal-amal-kwriql/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-saffle-saffle-9wylqi/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-marios-gata-kungsbacka-kungsbacka-4b230o/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsplats-riggargatan-gavle-gavle-36j2yp/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-sjalvservice-linde-helsingborg-helsingborg-fw31om/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-uppsala-handelsstal-uppsala-kgbx0x/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-svetshuset-orebro-orebro-2cxgq6/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-brantestigs-vasteras-vasteras-x4qixk/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-kalles-bud-transport-kiruna-kiruna-a0pg9y/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-ergocraft-maskin-falun-falu-7e2gn5/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-handelsstal-i-norrland-sundsvall-sundsvall-uyoxzg/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-svenska-elektrod-alvsjo-stockholm-rjn41y/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-telge-stalcenter-sodertalje-sodertalje-2nbl06/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-woody-bygghandel-nykoping-nykoping-3380vp/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-lantmannen-maskin-uddevalla-uddevalla-a2s68g/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-plastmodeller-k-r-johansson-trollhattan-trollhattan-8rdrd2/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-beijer-byggmaterial-stromstad-stromstad-608r4n/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-kristianstads-kylservice-kristianstad-sps50b/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-cramo-karlstad-karlstad-5z4kvs/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jarn-ab-sodertorg-visby-gotland-mele1e/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-snicken-slite-jarn-gotland-gotland-ai3fqt/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-connys-skog-tradgard-motala-motala-q979gr/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-gustafsson-uthyrning-oskarshamn-oskarshamn-7zpjnu/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-laitis-umea-umea-nf9ucu/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-skene-jarn-varberg-varberg-8utovc/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-dahl-bromma-stockholm-pmmoo7/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-svetsexperten-kalmar-kalmar-oywao6/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-gasolspecialisten-jonkoping-jonkoping-ktef4i/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-gasolexperten-liljeholmen-stockholm-stockholm-ag30ib/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-oob-uppsala-uppsala-u9we77/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-uppsala-uppsala-khva26/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-industriverktyg-uppsala-uppsala-jl9vmc/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-gasservice-i-stockholm-hagersten-stockholm-cyqrjz/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-boras-boras-xgshn4/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-hornbach-goteborg-goteborg-vkik60/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-halvorsang-goteborg-goteborg-6en0gw/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-svetscenter-jonkoping-jonkoping-es65av/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-hornbach-kristianstad-kristianstad-gkfglw/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-kristianstad-kristianstad-d2a5v0/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-eldabutiken-malmo-malmo-gbpjya/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-campea-arlov-burlov-u4u2t0/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-hornbach-helsingborg-helsingborg-57040i/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-orebro-orebro-fboe5b/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-cramo-landvetter-harryda-8iu3ox/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-air-liquide-vasteras-vasteras-1lwaar/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-norrkoping-norrkoping-89hli9/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-lulea-lulea-q36aqj/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-larssons-service-sundsvall-sundsvall-fy0gjm/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-oob-umea-umea-25662d/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-ostersund-ostersund-gfsao9/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-sandbergs-i-jamtland-ostersund-ostersund-r15fdj/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-gavle-gavle-fsgksx/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-karlstad-karlstad-drfy9d/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-granngarden-karlstad-karlstad-inrt5g/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-peter-bergkvist-service-karlskoga-karlskoga-n88iot/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-elgiganten-falun-falu-fxukkq/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-elgiganten-mora-mora-l6nssq/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-karl-hedin-bygghandel-mora-mora-gi296w/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-karlskrona-karlskrona-f8hmo2/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-borlange-borlange-6n9yzu/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-elgiganten-karlshamn-karlshamn-v4iyto/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-granngarden-kalmar-kalmar-yoogxc/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-kalmar-kalmar-vx7r79/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-visby-gotland-vaomdh/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-karlskrona-karlskrona-pv92pt/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-kalmar-kalmar-ssb3uy/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-gasolbolaget-ygdevik-vaxjo-vaxjo-hyhidj/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-karlstad-karlstad-9403e9/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-halmstad-halmstad-cx7ta9/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-varberg-varberg-tud93n/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-skovde-skovde-ejeds6/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-renta-uddevalla-uddevalla-01i2w2/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-halmstad-halmstad-udnq8a/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-hudiksvall-hudiksvall-1zd908/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-pitea-transport-ojebyn-pitea-ly3el0/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-kiruna-kiruna-ifmrpu/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-ludvika-ludvika-nanz0f/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-oob-nykoping-nykoping-i071dn/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-sodertalje-sodertalje-381c3l/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-enkoping-enkoping-9znzy2/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-samuelssons-hyr-tradgardsmaskiner-nysattra-norrtalje-reeaz6/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-dragsviks-husvagnsklubb-nykoping-nykoping-txu6qr/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-trelleborg-trelleborg-ut7ia7/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-angelholm-angelholm-roc5ph/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-trelleborg-trelleborg-ftu4b7/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-hassleholm-hassleholm-irqyhp/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-ystad-ystad-iu9zso/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-ahusmacken-ahus-kristianstad-pi1o13/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-liljekvist-motor-laholm-laholm-28mkgh/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-malmo-lpg-ab-malmo-95fe54/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-von-lingens-vag-boras-boras-ojqsc0/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-oob-boras-boras-kcbumq/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-boras-elmotor-drivteknik-boras-5cq300/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-rusta-boras-boras-jh3zk6/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-granngarden-boras-boras-phkd46/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-ulricehamn-ulricehamn-u6d2ls/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-dollarstore-ulricehamn-ulricehamn-2hzcn4/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-fyndlagret-tranemo-tranemo-n50ous/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-kinna-husvagnsservice-mark-v9xuol/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-skene-mark-8emuhp/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-skene-jarnhandel-mark-rxd848/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-bollebygd-bollebygd-dqf8gw/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-vargarda-vargarda-jeznkb/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-granngarden-alingsas-alingsas-jms9dx/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-johansson-jarn-tradgard-jordnara-alingsas-alingsas-gibkmm/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-alingsas-alingsas-4k3k23/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-hajlift-alingsas-alingsas-gaefpe/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-hyreslandslaget-savelunds-maskinuthyrning-alingsas-alingsas-bx5oas/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-lerums-jarn-lerum-kv2m8q/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-molnlycke-harryda-79w0gf/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-beijer-byggmaterial-molnlycke-harryda-dwmfy7/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-partille-partille-hzsmgp/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-wangeskog-hyrcenter-partille-partille-arzck2/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-savedalen-partille-edpoqn/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-24-7-skanegas-gasolautomat-flygstaden-eslov-eslov-8yc46e/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-24-7-skanegas-gasolautomat-landskrona-landskrona-gm8ms1/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-gammelstad-lulea-lulea-uepj7m/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-bjorkbacksvagen-tyreso-tyreso-jucy2t/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-svampen-orebro-orebro-bsujdy/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-stenungsund-stenungsund-c2nqfj/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-torsboda-soraker-timra-3o6oiz/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-bergslagsvagen-vasteras-vasteras-xudpdk/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-eslov-eslov-ld4hwo/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-jonkoping-jonkoping-hwda01/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-oob-borlange-borlange-6w0qsr/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-oob-pitea-pitea-p10siu/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-hisings-backa-goteborg-goteborg-6d74ck/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-elgiganten-eslov-eslov-1laj1s/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-melleruds-nya-jarn-mellerud-tnth8x/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-flodamotet-floda-lerum-lijbez/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-gasmontage-i-goteborg-ab-kungsbacka-1p2lmq/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-lindstroms-svets-verktyg-ab-stockholm-mdosr9/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-24-7-skanegas-gasolautomat-laholm-laholm-bl9j7z/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-center-f-d-gasolfyllarna-karlstad-skare-karlstad-hn3b5d/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-hornbach-sundbyberg-stockholm-sundbyberg-dmvfey/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-hornbach-norsborg-botkyrka-stockholm-botkyrka-6th75f/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-hornbach-trollhattan-overby-trollhattan-1vua9t/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-goteborg-sisjon-goteborg-btj8jz/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-karlstad-karlstad-jbp2qz/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-hyllinge-astorp-3ggdu2/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-sundsvall-birsta-sundsvall-f9q94f/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-umea-umea-ew7vvq/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-vasteras-vasteras-kkw5as/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-motonet-sundsvall-birsta-sundsvall-xmd151/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-motonet-orebro-marieberg-orebro-4z0cx2/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-motonet-vasteras-vasteras-toyn8b/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-motonet-linkoping-linkoping-hra8qo/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-motonet-jonkoping-jonkoping-7290gu/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-skare-karlstad-karlstad-jetdsz/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-sundsvall-sundsvall-oulov4/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-sjobo-sjobo-riqte0/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-solvesborg-solvesborg-wo60ug/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-hassleholm-hassleholm-u6xvjj/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-kristianstad-kristianstad-6hlhf9/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-trollhattan-trollhattan-dmkk7u/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-varberg-varberg-klcfkp/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-vanersborg-vanersborg-m1pzcc/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-eskilstuna-eskilstuna-rm436l/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-borlange-borlange-0qcs9m/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-falun-falu-ig6bqe/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-karlshamn-karlshamn-07jqkw/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-24-7-skanegas-gasolautomat-karlshamn-karlshamn-0dnjfc/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-sala-sala-3k30pl/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-ljusdal-ljusdal-fr893g/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-landskrona-landskrona-72ixas/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-simrishamn-simrishamn-tprdz5/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-horby-horby-747k76/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-hoor-hoor-tx0d3d/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-karlskrona-karlskrona-tyik8q/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-ronneby-ronneby-9fgkwz/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-olofstrom-olofstrom-q3hb0e/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-osby-osby-0g0wio/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-klippan-klippan-wxboqc/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-hoganas-hoganas-p9m1vz/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-staffanstorp-staffanstorp-a9jaiq/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-lomma-lomma-lcqyc6/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-almhult-almhult-vknrwn/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-ljungby-ljungby-q6ljs8/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-alvesta-alvesta-j138l8/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-vaxjo-vaxjo-a1m92b/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-nybro-nybro-gv4yv1/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-oskarshamn-oskarshamn-oxxovw/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-vastervik-vastervik-gio9xg/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-vimmerby-vimmerby-w31ved/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-gislaved-gislaved-jq04v2/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-varnamo-varnamo-xntp0g/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-vetlanda-vetlanda-wn2uex/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-nassjo-nassjo-c8z7yq/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-eksjo-eksjo-czfdd3/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-jonkoping-solasen-jonkoping-49sdev/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-habo-habo-jyadou/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-falkenberg-falkenberg-efcxbl/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-laholm-laholm-qxz7o0/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-skene-kinna-mark-p8o9zi/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-kungalv-kungalv-xl5vmv/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-stromstad-stromstad-4sni8e/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-vara-vara-5l2y7e/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-skara-skara-1lij3h/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-lidkoping-lidkoping-bzwl81/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-mariestad-mariestad-mhwuq8/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-falkoping-falkoping-l66zq9/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-tidaholm-tidaholm-9o6xr7/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-kristinehamn-kristinehamn-o0sz93/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-arvika-arvika-8k8emz/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-saffle-saffle-0mkw38/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-torsby-torsby-s2hyyp/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-sunne-sunne-7ma9e4/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-karlskoga-karlskoga-75d644/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-hallsberg-hallsberg-xg97bl/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-motala-motala-k7risc/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-mjolby-mjolby-1z3tav/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-linkoping-linkoping-gx5n4r/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-finspang-finspang-dma38y/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-katrineholm-katrineholm-kgqnzo/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-flen-flen-hxq75p/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-koping-koping-su4j7o/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-fagersta-fagersta-ce191m/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-avesta-avesta-714lvh/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-hedemora-hedemora-42rkni/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-sandviken-sandviken-su1rxc/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-soderhamn-soderhamn-ie16jt/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-visby-gotland-1zbed4/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-bromma-stockholm-stockholm-4ksj80/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-lanna-stockholm-huddinge-qtm4p9/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-norsborg-botkyrka-stockholm-botkyrka-wux46d/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-barkarby-jarfalla-stockholm-jarfalla-8xteo1/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-upplands-vasby-stockholm-upplands-vasby-s0ydvb/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-sickla-nacka-stockholm-nacka-8kjbb9/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-knivsta-knivsta-qr1znx/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-orebro-marieberg-orebro-bkjxgt/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-linkoping-tornby-linkoping-krm1bd/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-norrkoping-ingelsta-norrkoping-t2oyl3/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-kalmar-hansa-city-kalmar-x8m64q/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-vaxjo-vaxjo-8cae71/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-malmo-svagertorp-malmo-dvmfko/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-malmo-bernstorp-burlov-burlov-nlbm2t/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-loddekopinge-center-syd-kavlinge-le8a17/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-uddevalla-uddevalla-xp7zup/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-motonet-gavle-valbo-gavle-x56aua/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-motonet-umea-umea-jqmd12/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-motonet-vaxjo-vaxjo-r942mn/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-askersunds-reningsverk-askersund-ogowxd/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsplats-lilla-hanasavagen-hogsby-hogsby-bam2p5/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-skara-bjorkelundsgatan-skara-aqkp9w/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-laxa-rabatt-torget-revirvagen-laxa-hxrhem/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-haradsback-motesplats-haradsback-f-d-almhultsgasol-almhult-5yoen8/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/gasol-malmo-lpg-limhamn-smabatshamnen-malmo-bbzdao/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-karradal-varberg-peza6r/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsplats-grums-grums-8nhfyu/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-storfors-smabatshamn-battoalett-aven-husbil-storfors-d7xmra/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/svenljunga-tomningsplats-moga-returen-svenljunga-466gb8/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/alvesta-tomningsplats-alvesta-jf5gn2/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/vetlanda-ostana-camping-vetlanda-5qqcgk/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/norrkoping-inre-hamnen-norrkoping-9umek7/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gnesta-tomningsstation-gnesta-2ubvgw/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/harnosand-latrintomning-harnosand-sb4zal/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/atvidaberg-servicestalle-for-husbilar-atvidaberg-5purjb/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/stallplats-jarnet-vastervik-vastervik-ggaoqd/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/stallplats-barlastudden-vastervik-vastervik-y7a44l/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-vantorp-o-kalmar-v3wadn/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-trandansen-skara-ry2cup/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-ahedan-n-umea-ev94jk/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1106,6 +879,7 @@
   <url><loc>https://tomningskartan.se/plats/rastplats-kullen-ulricehamn-f38847/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-meselefors-vilhelmina-i3u1zx/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-himle-varberg-a6gti3/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/rastplats-tjornbron-tjorn-qc3y9n/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-eman-o-oskarshamn-t5k39c/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-hornoberget-v-kramfors-smhgb7/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-vista-kulle-o-jonkoping-sex7m7/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1114,7 +888,6 @@
   <url><loc>https://tomningskartan.se/plats/rastplats-galtsjon-s-ronneby-qibih5/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-arvidsbo-tierp-ge1coy/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-are-bjornange-are-n2ymkl/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/rastplats-albacken-mjolby-3lie3k/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-laxbacken-ljusnarsberg-feb3wg/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-sjoboda-s-markaryd-0zsoih/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-marsjon-skelleftea-006zam/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1204,6 +977,7 @@
   <url><loc>https://tomningskartan.se/plats/rastplats-stora-transassjon-v-boras-ck443t/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-holsljunga-svenljunga-bb0cvl/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-rallsjon-leksand-13liqh/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/rastplats-gransen-storuman-pydp5o/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-ljusselforsen-arvidsjaur-v0xsi9/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-edefors-boden-o94ucx/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-hallandsas-bastad-m8754s/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1221,6 +995,7 @@
   <url><loc>https://tomningskartan.se/plats/rastplats-sandsjon-s-uppvidinge-vjbwlw/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-skoftesta-v-koping-gn7ctz/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-frosvi-v-enkoping-nntoyp/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/rastplats-morokulien-eda-z0uusl/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-rabyhed-s-eskilstuna-2d2w9m/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-raby-vasteras-65q6sn/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-skoftesta-o-koping-ba4ix0/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1238,6 +1013,7 @@
   <url><loc>https://tomningskartan.se/plats/rastplats-forsmollan-s-klippan-eahy0e/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-spekerod-stenungsund-293nf8/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-ekhammar-hjo-d097oc/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/rastplats-kaldhagen-gotland-27o8vt/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-granberget-robertsfors-otu5s6/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-saten-orust-kbwg6q/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rastplats-skuleberget-kramfors-a6z960/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1258,18 +1034,19 @@
   <url><loc>https://tomningskartan.se/plats/preem-goteborg-05sr56/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/gala-fjallgard-berg-u3kpff/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/branna-camping-overkalix-94vl4j/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/hultsfreds-camping-hultsfred-pq6uv1/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/kristianopel-resort-karlskrona-r8jd51/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/grastorps-camping-grastorp-1d8s9d/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/olsjobadets-camping-lindesberg-wczcpo/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/nas-camping-vansbro-r2cnn4/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/snibbens-camping-stugby-harnosand-rm5k14/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/ljusdals-camping-ljusdal-wyy3vu/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/kvarnsjo-camp-vandrarhem-kvarnsjo-berg-q1t655/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/abbas-stugby-och-camping-torsby-pcsyef/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/dangeboortens-samhallsforening-tingsryd-h2nsny/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/norra-dellen-familjecamping-hudiksvall-hzsu25/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/lpg-flygstadens-gasol-halmstad-axqqjq/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/sandviks-camping-nykoping-rgrbpy/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/bodagardens-camping-borgholm-jpl929/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stora-hammersjo-hultsfred-leb0r0/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/aniol-gasol-ab-bjuv-dtn7iz/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-strangnas-gasthamn-strangnas-zuruph/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1278,21 +1055,17 @@
   <url><loc>https://tomningskartan.se/plats/gronfjalls-fritidsby-vilhelmina-h5j3u9/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/skaneleden-shelter-koarp-laholm-ivin7v/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/hjorthalans-camping-stugby-ronneby-1g07b1/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/kamlunge-husvagnscamping-kalix-3j3tau/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/blasinge-gard-camping-hoganas-3sbx6j/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/camping-vid-bjorkhaga-camping-gotland-rt1093/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/yttre-hamnen-stallplats-mariestad-l4l06s/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/jokkmokks-camping-center-jokkmokk-zbhy5u/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/atervinningscentral-vid-smaangens-camping-motala-eik3pp/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/jokkmokks-camping-center-jokkmokk-zlhjut/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/camp-alta-kiruna-x5rb5h/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/ketilok-mora-9mjpu0/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/nornas-reningsverk-alvdalen-lybw5t/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/ronneby-hamn-ronneby-ief8t0/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplatset-getterons-smabatshamn-varberg-l46ead/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/toalett-hamnboden-haninge-loqajm/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-lyckarp-eksjo-o6vpfx/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/sandhamns-camping-gotland-4dpq9u/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/kaldhagen-gotland-5goqbr/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/camping-nybostrand-trelleborg-z1nsa9/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/flotemarkens-vildmarkscamp-tanum-weondv/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/solans-mack-ystad-41jrdq/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rano-camping-haninge-z0mgsn/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1306,10 +1079,8 @@
   <url><loc>https://tomningskartan.se/plats/langviks-norra-taltplats-namdo-varmdo-v47q1d/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stenshult-mellangard-almhult-vo5jux/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/ostervikens-taltplats-pa-lokaon-varmdo-wc6ieh/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/munkhamna-taltplats-pa-norra-granholmen-varmdo-w26wpi/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/evelund-sala-fd15e5/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/honungsfarmens-stallplats-hoor-f4uygz/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/upperud-gasthamn-mellerud-jq6yi6/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tosteberga-hamn-kristianstad-pu0sy1/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/bralands-gard-munkedal-6g5hjd/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/hallsjo-vildmarkscamping-ljungby-agfrc5/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1319,7 +1090,6 @@
   <url><loc>https://tomningskartan.se/plats/hunnebergs-gard-vanersborg-835upy/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/loofs-gasol-karlstad-h4fa2q/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/lungers-hamn-arboga-ynrvtu/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/hallarnas-camping-arboga-5swl10/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/bondbacken-vastervik-cdftgg/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/torna-stallplats-simrishamn-qxjuta/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/camp-kajutan-skelleftea-umw1u8/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1335,8 +1105,8 @@
   <url><loc>https://tomningskartan.se/plats/sandhamn-stallplatser-och-stugor-karlskrona-63w5sz/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/lieblingsplatz-savsjo-8v6uhi/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vallasen-laholm-7f7qev/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/yttre-hamnen-mariestad-dm6prn/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/lansmansgarden-jonkoping-efwisa/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/arabadets-stallplats-malung-salen-q6qffk/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/bobergs-kustvag-falkenberg-qgw3aa/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomning-latrin-ragunda-due3y0/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/smabatshamnen-lidkoping-pjf16t/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1346,25 +1116,18 @@
   <url><loc>https://tomningskartan.se/plats/mines-camping-ljusdal-sjzbhp/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stockholm-swecamp-flottsbro-huddinge-l8meem/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/strandbadet-uppvidinge-gpfhfc/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/first-camp-skonstavik-karlskrona-karlskrona-4r1got/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/dragso-camping-karlskrona-lset99/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/lisebergs-camping-stugbyar-karralund-goteborg-hr4i9p/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/slagnasforsens-camping-arjeplog-o0bth7/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/parken-zoo-camping-stugby-eskilstuna-rk9hts/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/evedals-camping-vaxjo-js052d/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/camping-vammerviken-bengtsfors-pocw6v/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-gavlean-gavle-8ikmrw/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/kronocamping-lidkoping-lidkoping-cd0ddv/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tallbergs-camping-leksand-n7pr1z/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tyllsnas-vandrarhem-camping-borlange-j6biex/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/skokloster-camping-habo-14w6gp/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/bredang-camping-stockholm-stockholm-ejaw2b/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/osby-camping-osby-czfok4/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/lovsjobadens-camping-jonkoping-wvdqx1/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/naturcamping-hudiksvall-4mt4x7/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/dalslands-camping-kanotcentral-bengtsfors-nj9edk/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rigeleje-strand-camping-kristianstad-2zvjm0/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/boras-camping-saltemad-boras-qr3fbd/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/burtrask-camping-skelleftea-qmoru0/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/barsebackstrands-camping-kavlinge-m3fntx/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/norra-hamnen-marina-ab-helsingborg-qze2ln/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1373,70 +1136,47 @@
   <url><loc>https://tomningskartan.se/plats/landons-camping-kristianstad-3p0bke/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rotviken-camping-krokom-vylzw6/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/strandbadets-familjecamping-motala-kqpu8b/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/strandangens-camping-vandrarhem-bromolla-8fnxaj/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/ivo-camping-kristianstad-b4y808/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/varnas-camping-torsby-w84pkm/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/osta-camping-heby-cd2e6x/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/torne-camping-alvesta-vy8dn4/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/getno-gard-lake-asnen-resort-tingsryd-d9wlcl/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/getingaryds-camping-jonkoping-auuc79/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/storumans-bad-och-camping-storuman-4ba0fz/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/lofsdalsfjallen-camping-harjedalen-ixk30k/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/circle-k-bandhagen-hogdalen-stockholm-ns1a8w/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/sikea-havscamping-robertsfors-wf8k8o/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/solje-camping-arvika-d5qiit/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/partille-stallplats-partille-5x00uw/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/trehorningsjo-camping-och-stugby-ornskoldsvik-nd6vft/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/ramgarde-kanotuthyrning-vastervik-6pn1jd/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/movanta-camping-eksjo-91j8aq/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/eksjo-camping-konferens-eksjo-r05xa2/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/overhornas-camping-ornskoldsvik-dbpr9o/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/marina-dals-langed-bengtsfors-9wlsrw/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/hatte-camping-tranas-e5y0kz/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/marstrands-familjecamping-kungalv-xlsbpj/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/trellebystrand-camping-lysekil-d3ffmd/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/hansagards-camping-falkenberg-a8lp3o/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/amot-husvagensforening-ockelbo-t6hiky/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/yxningens-camping-valdemarsvik-61fx1m/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/yngsjo-camping-kristianstad-9eayoc/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/kaseberga-stallplats-ystad-1lglu5/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/sandbybadets-camping-borgholm-aj3vjv/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tokenas-camping-borgholm-dl72g3/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/vita-sands-camping-kalmar-f7qxho/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/valjevikens-camping-solvesborg-ie35fp/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/charlottsborgs-camping-vandrarhem-kristianstad-jhyepm/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/jarnaviks-camping-ronneby-2tzwc4/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/first-camp-granna-vattern-jonkoping-ybm0g3/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/torpons-camping-ydre-b42o05/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/langsjons-rastplats-sater-elswgb/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vivstavarvstjarns-camping-timra-ay5yds/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/askeviksbadets-camping-stugby-mariestad-sbbbde/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/jogerso-camping-oxelosund-y65q4z/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tobisviks-camping-simrishamn-76jfv1/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vens-camping-landskrona-j10hch/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/langholmens-husbilscamping-stockholm-wazkt2/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/otterbergets-bad-camping-gullspang-w7kfq1/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/ekeby-camping-arjang-ifo58c/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/pinnarp-camping-kinda-5c3xwk/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/treens-natur-fiskecamp-arvika-mjmml3/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/trollhattans-camping-hjulkvarnelund-trollhattan-7idc65/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/mariefreds-camping-strangnas-y6eog1/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/malmkopings-bad-camping-flen-fmfsrl/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/kerstins-camping-mellerud-cxzt6b/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/langsele-camping-solleftea-whq1m3/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/bolmens-camping-ljungby-2407m3/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/wilderness-camping-sweden-smedjebacken-lke2r3/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/elfdalens-camping-klippan-36uiti/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/snackan-gotland-bjtqt4/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/sikhalls-camping-restaurang-vanersborg-06jexa/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/sorbostrands-camping-vanersborg-369iz9/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/trelleborg-stallplats-trelleborg-9zsn4c/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/abisko-turiststation-kiruna-69it8r/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/grasobadens-familjecamping-osthammar-n25zai/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/haveruds-camping-mellerud-pqqec3/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/skarsa-naturcamping-soderhamn-y9gyt2/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/byske-stallplats-skelleftea-h0bwfm/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/karrasands-camping-tingsryd-fn12gj/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/jockfall-camping-overkalix-2amusg/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/hornabergs-camping-kinda-bizgsh/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/falabola-rastplats-tingsryd-rmh5dr/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1450,11 +1190,9 @@
   <url><loc>https://tomningskartan.se/plats/overlida-camping-svenljunga-fyoeuw/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/rodlix-vandrarhem-camping-varberg-22cssf/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/blankaholm-bad-och-naturcamping-vastervik-vbsl89/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/hunnebostrands-camping-stugor-sotenas-3tih4o/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/boda-camping-emmaboda-rcc42v/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/flammabadets-camping-laholm-5pv4xq/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vallistegarden-are-lwgn1p/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/dals-eds-batklubb-dals-ed-a7qfc4/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/filipsborgs-herrgard-kalix-dds1yu/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/kalvs-familjecamping-svenljunga-9p48tc/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/skummeslovsstrands-camping-laholm-un4abl/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1462,19 +1200,16 @@
   <url><loc>https://tomningskartan.se/plats/norrakers-camping-stromsund-ck4css/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/asarna-skicenter-berg-doi23b/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/alvkarleby-fiskecamping-alvkarleby-czajjs/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/sarna-camping-turistbyra-alvdalen-xhie7j/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/okq8-goteborg-ws5ori/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-gallstasjon-kramfors-vfbint/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/camping-vid-nya-malingsbo-camping-smedjebacken-mixa9e/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-middalarna-tanum-c2lxy2/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/axamo-camping-jonkoping-3ah8p5/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/lagunen-husbilsparkering-malmo-8n1y7l/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/angdala-camping-pa-osterlen-simrishamn-gqjgcn/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/orrvikens-bygdegard-ostersund-stuirq/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-parkering-for-husbil-varberg-l4zdl1/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/norra-dellen-camping-hudiksvall-4gs2d0/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/seglora-camping-boras-p6vu62/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tolgs-naturcamping-vaxjo-fbcl3e/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/furudals-fritidsby-camping-rattvik-f1o2j6/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/sordala-naturcamp-hudiksvall-xro17z/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/sundbyholms-camping-eskilstuna-6ohm0s/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1483,42 +1218,30 @@
   <url><loc>https://tomningskartan.se/plats/havsstugorna-laholm-iuri8g/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/noto-camping-oskarshamn-fcimaa/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stugsunds-stallplats-soderhamn-q9lvtd/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/stallplats-tuna-vimmerby-q6ll4o/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/soralgens-camping-hallefors-tyl6r6/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vindhaga-stallplats-karlskrona-p9fqhh/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/sudersand-caravan-area-gotland-7t2nv6/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/camping-i-gotlands-kommun-gotland-8329k5/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/smedjans-stallplatser-kopingsvik-borgholm-9mc9d4/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/astrid-lindgrens-varld-husvagns-och-husbilsplatser-vimmerby-jq7n5j/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/revsuddens-camping-kalmar-gkxzty/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/friluftsbyn-kramfors-acswqp/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/kungalvs-camping-och-b-b-kungalv-6fwf36/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/taltplats-skog-kramfors-bhmq6g/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/gasolforsaljning-osthammar-4mxndf/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/visit-ore-strand-hoganas-ree0zq/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-storsjostrand-ostersund-x950r8/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-hammarlunda-simrishamn-91wqch/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/grannas-camping-och-stugby-valdemarsvik-6wfw66/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/farila-if-camping-ljusdal-dk6j9z/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/jarvso-camping-ljusdal-w0717f/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/camping-saganas-almhult-rkpfoq/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tjadersdals-camping-tingsryd-atqtw7/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-svenstavik-berg-0cgcmc/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/urshult-camping-tingsryd-9kk0ua/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/alsterbro-camping-nybro-dcqnxo/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/smogen-sotenas-cfbj40/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/rastplats-atlanten-hultsfred-6vr2vt/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/first-camp-solvik-kungshamn-sotenas-3af82k/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/sorsjon-malung-salen-2cd5ql/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/boda-hamn-stallplats-borgholm-9nuhj6/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/holsljunga-camping-svenljunga-c19udt/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/simbadets-camping-osthammar-drvoao/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-sportshopen-tanum-20mre8/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/jetesjons-camping-markaryd-2jw5bf/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/fonebo-camping-hudiksvall-c0261i/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/skogsvallen-i-ale-ale-p4t5cl/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/kullsvedens-stallplats-sater-knmke6/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/fallfors-camping-skelleftea-7466xt/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/paradiset-pa-kulla-hoganas-nsmbm2/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/linneryds-camping-tingsryd-489ep8/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/skeppsdockans-camping-soderkoping-i2hr88/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/forssa-herrgard-stallplats-hudiksvall-g3kk9y/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1528,13 +1251,11 @@
   <url><loc>https://tomningskartan.se/plats/svabensverk-stallplats-ovanaker-skuykz/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/moheds-camping-soderhamn-40th06/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/femettan-stallplats-hudiksvall-05c56d/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/stallplats-klovsjofjall-berg-yvum0o/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/barken1-stallplats-smedjebacken-3k0hsz/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/piilijarvi-camping-kiruna-ji1ekp/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/alpackagarden-stallplats-ljungby-dkjs9t/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/sjostjarnan-arvidsjaur-whyqc7/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-hagforsparken-hagfors-57fr94/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/perskops-stallplats-orkelljunga-mru18r/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/aviken-fly-camp-ornskoldsvik-njrlmf/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stamhems-stallplats-i-skane-vellinge-tgszdy/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/gasolforsaljning-uddevalla-lsmzd2/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1544,58 +1265,319 @@
   <url><loc>https://tomningskartan.se/plats/barfotens-camping-gullspang-cholhv/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/hedesunda-camping-ab-gavle-06ji8h/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/hjortsjons-camping-vaggeryd-4bkfd5/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/varnamo-camping-prostsjon-varnamo-wdsxbs/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/borgaruddens-camping-pitea-hfhp57/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stenkallegardens-camping-tiveden-karlsborg-qcm1u0/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/jagersbo-camping-horby-v1r0iy/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/ankarvattnets-vildmarkscamping-stromsund-cbj97n/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/rastplats-tjornbron-tjorn-cxdj04/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/mellanfjarden-camping-nordanstig-s0t49u/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/lappudden-friluftcenter-kramfors-bg25j9/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vindons-camping-marina-orust-3y9lhn/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/kalmar-camping-kalmar-ec5tol/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/lokna-husvagnscamping-och-stugby-ljungby-n5qeda/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/saxnas-fjallcamping-vilhelmina-dii2z7/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/henans-stallplats-orust-40knly/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/isabergs-camping-gislaved-q4hwsp/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stocken-camping-orust-xfhejy/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/lomma-camping-lomma-nshdkt/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/bjalverod-camping-stromstad-mgzsy0/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/camp-stora-blasjon-stromsund-bkg4pg/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/espeviks-camping-varberg-gtl1e5/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-amals-vastra-infart-amal-kwriql/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-saffle-saffle-9wylqi/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-marios-gata-kungsbacka-kungsbacka-4b230o/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsplats-riggargatan-gavle-gavle-36j2yp/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-sjalvservice-linde-helsingborg-helsingborg-fw31om/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-uppsala-handelsstal-uppsala-kgbx0x/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-svetshuset-orebro-orebro-2cxgq6/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-brantestigs-vasteras-vasteras-x4qixk/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-kalles-bud-transport-kiruna-kiruna-a0pg9y/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-ergocraft-maskin-falun-falu-7e2gn5/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-handelsstal-i-norrland-sundsvall-sundsvall-uyoxzg/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-svenska-elektrod-alvsjo-stockholm-rjn41y/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-telge-stalcenter-sodertalje-sodertalje-2nbl06/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-woody-bygghandel-nykoping-nykoping-3380vp/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-lantmannen-maskin-uddevalla-uddevalla-a2s68g/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-plastmodeller-k-r-johansson-trollhattan-trollhattan-8rdrd2/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-beijer-byggmaterial-stromstad-stromstad-608r4n/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-kristianstads-kylservice-kristianstad-sps50b/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-cramo-karlstad-karlstad-5z4kvs/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jarn-ab-sodertorg-visby-gotland-mele1e/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-snicken-slite-jarn-gotland-gotland-ai3fqt/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-connys-skog-tradgard-motala-motala-q979gr/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-gustafsson-uthyrning-oskarshamn-oskarshamn-7zpjnu/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-laitis-umea-umea-nf9ucu/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-skene-jarn-varberg-varberg-8utovc/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-dahl-bromma-stockholm-pmmoo7/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-svetsexperten-kalmar-kalmar-oywao6/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-gasolspecialisten-jonkoping-jonkoping-ktef4i/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-gasolexperten-liljeholmen-stockholm-stockholm-ag30ib/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-oob-uppsala-uppsala-u9we77/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-uppsala-uppsala-khva26/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-industriverktyg-uppsala-uppsala-jl9vmc/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-gasservice-i-stockholm-hagersten-stockholm-cyqrjz/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-oob-jonkoping-jonkoping-szlb7d/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-boras-boras-xgshn4/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-hornbach-goteborg-goteborg-vkik60/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-halvorsang-goteborg-goteborg-6en0gw/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-svetscenter-jonkoping-jonkoping-es65av/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-hornbach-kristianstad-kristianstad-gkfglw/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-kristianstad-kristianstad-d2a5v0/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-eldabutiken-malmo-malmo-gbpjya/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-campea-arlov-burlov-u4u2t0/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-hornbach-helsingborg-helsingborg-57040i/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-orebro-orebro-fboe5b/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-cramo-landvetter-harryda-8iu3ox/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-air-liquide-vasteras-vasteras-1lwaar/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-norrkoping-norrkoping-89hli9/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-lulea-lulea-q36aqj/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-larssons-service-sundsvall-sundsvall-fy0gjm/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-oob-umea-umea-25662d/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-ostersund-ostersund-gfsao9/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-sandbergs-i-jamtland-ostersund-ostersund-r15fdj/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-gavle-gavle-fsgksx/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-karlstad-karlstad-drfy9d/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-granngarden-karlstad-karlstad-inrt5g/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-peter-bergkvist-service-karlskoga-karlskoga-n88iot/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-elgiganten-falun-falu-fxukkq/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-elgiganten-mora-mora-l6nssq/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-karl-hedin-bygghandel-mora-mora-gi296w/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-karlskrona-karlskrona-f8hmo2/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-borlange-borlange-6n9yzu/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-elgiganten-karlshamn-karlshamn-v4iyto/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-granngarden-kalmar-kalmar-yoogxc/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-kalmar-kalmar-vx7r79/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-visby-gotland-vaomdh/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-karlskrona-karlskrona-pv92pt/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-kalmar-kalmar-ssb3uy/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-gasolbolaget-ygdevik-vaxjo-vaxjo-hyhidj/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-karlstad-karlstad-9403e9/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-halmstad-halmstad-cx7ta9/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-varberg-varberg-tud93n/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-skovde-skovde-ejeds6/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-renta-uddevalla-uddevalla-01i2w2/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-halmstad-halmstad-udnq8a/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-hudiksvall-hudiksvall-1zd908/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-pitea-transport-ojebyn-pitea-ly3el0/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-kiruna-kiruna-ifmrpu/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-ludvika-ludvika-nanz0f/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-oob-nykoping-nykoping-i071dn/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-sodertalje-sodertalje-381c3l/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-enkoping-enkoping-9znzy2/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-samuelssons-hyr-tradgardsmaskiner-nysattra-norrtalje-reeaz6/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-dragsviks-husvagnsklubb-nykoping-nykoping-txu6qr/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-trelleborg-trelleborg-ut7ia7/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-angelholm-angelholm-roc5ph/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-trelleborg-trelleborg-ftu4b7/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-hassleholm-hassleholm-irqyhp/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-ystad-ystad-iu9zso/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-ahusmacken-ahus-kristianstad-pi1o13/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-liljekvist-motor-laholm-laholm-28mkgh/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-malmo-lpg-ab-malmo-95fe54/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-von-lingens-vag-boras-boras-ojqsc0/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-oob-boras-boras-kcbumq/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-boras-elmotor-drivteknik-boras-5cq300/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-rusta-boras-boras-jh3zk6/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-granngarden-boras-boras-phkd46/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-ulricehamn-ulricehamn-u6d2ls/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-dollarstore-ulricehamn-ulricehamn-2hzcn4/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-lantmannen-maskin-ulricehamn-ulricehamn-1niijy/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-fyndlagret-tranemo-tranemo-n50ous/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-kinna-husvagnsservice-mark-v9xuol/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-skene-mark-8emuhp/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-dollarstore-skene-mark-uvem3c/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-skene-jarnhandel-mark-rxd848/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-bollebygd-bollebygd-dqf8gw/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-vargarda-vargarda-jeznkb/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-granngarden-alingsas-alingsas-jms9dx/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-johansson-jarn-tradgard-jordnara-alingsas-alingsas-gibkmm/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-alingsas-alingsas-4k3k23/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-hajlift-alingsas-alingsas-gaefpe/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-hyreslandslaget-savelunds-maskinuthyrning-alingsas-alingsas-bx5oas/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-lerums-jarn-lerum-kv2m8q/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-molnlycke-harryda-79w0gf/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-beijer-byggmaterial-molnlycke-harryda-dwmfy7/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-partille-partille-hzsmgp/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-wangeskog-hyrcenter-partille-partille-arzck2/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-savedalen-partille-edpoqn/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-24-7-skanegas-gasolautomat-flygstaden-eslov-eslov-8yc46e/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-24-7-skanegas-gasolautomat-landskrona-landskrona-gm8ms1/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-gammelstad-lulea-lulea-uepj7m/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-bjorkbacksvagen-tyreso-tyreso-jucy2t/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-svampen-orebro-orebro-bsujdy/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-stenungsund-stenungsund-c2nqfj/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-torsboda-soraker-timra-3o6oiz/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-bergslagsvagen-vasteras-vasteras-xudpdk/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-eslov-eslov-ld4hwo/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-byggmax-jonkoping-jonkoping-hwda01/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-oob-borlange-borlange-6w0qsr/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-oob-pitea-pitea-p10siu/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-hisings-backa-goteborg-goteborg-6d74ck/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-elgiganten-eslov-eslov-1laj1s/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-melleruds-nya-jarn-mellerud-tnth8x/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-circle-k-flodamotet-floda-lerum-lijbez/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-gasmontage-i-goteborg-ab-kungsbacka-1p2lmq/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-lindstroms-svets-verktyg-ab-stockholm-mdosr9/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-24-7-skanegas-gasolautomat-laholm-laholm-bl9j7z/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-center-f-d-gasolfyllarna-karlstad-skare-karlstad-hn3b5d/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-hornbach-sundbyberg-stockholm-sundbyberg-dmvfey/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-hornbach-norsborg-botkyrka-stockholm-botkyrka-6th75f/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-hornbach-trollhattan-overby-trollhattan-1vua9t/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-goteborg-sisjon-goteborg-btj8jz/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-karlstad-karlstad-jbp2qz/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-hyllinge-astorp-3ggdu2/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-sundsvall-birsta-sundsvall-f9q94f/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-umea-umea-ew7vvq/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-vasteras-vasteras-kkw5as/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-motonet-sundsvall-birsta-sundsvall-xmd151/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-motonet-orebro-marieberg-orebro-4z0cx2/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-motonet-vasteras-vasteras-toyn8b/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-motonet-linkoping-linkoping-hra8qo/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-motonet-jonkoping-jonkoping-7290gu/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-skare-karlstad-karlstad-jetdsz/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-sundsvall-sundsvall-oulov4/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-sjobo-sjobo-riqte0/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-solvesborg-solvesborg-wo60ug/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-hassleholm-hassleholm-u6xvjj/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-kristianstad-kristianstad-6hlhf9/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-trollhattan-trollhattan-dmkk7u/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-varberg-varberg-klcfkp/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-vanersborg-vanersborg-m1pzcc/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-eskilstuna-eskilstuna-rm436l/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-borlange-borlange-0qcs9m/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-falun-falu-ig6bqe/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-hornbach-boras-boras-fmf8uo/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-karlshamn-karlshamn-07jqkw/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-24-7-skanegas-gasolautomat-karlshamn-karlshamn-0dnjfc/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-sala-sala-3k30pl/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-ljusdal-ljusdal-fr893g/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-landskrona-landskrona-72ixas/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-eslov-eslov-cd9wfq/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-simrishamn-simrishamn-tprdz5/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-horby-horby-747k76/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-hoor-hoor-tx0d3d/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-karlskrona-karlskrona-tyik8q/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-ronneby-ronneby-9fgkwz/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-olofstrom-olofstrom-q3hb0e/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-osby-osby-0g0wio/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-klippan-klippan-wxboqc/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-skurup-skurup-6m4ill/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-hoganas-hoganas-p9m1vz/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-staffanstorp-staffanstorp-a9jaiq/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-lomma-lomma-lcqyc6/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-almhult-almhult-vknrwn/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-ljungby-ljungby-q6ljs8/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-alvesta-alvesta-j138l8/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-vaxjo-vaxjo-a1m92b/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-nybro-nybro-gv4yv1/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-oskarshamn-oskarshamn-oxxovw/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-vastervik-vastervik-gio9xg/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-vimmerby-vimmerby-w31ved/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-gislaved-gislaved-jq04v2/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-varnamo-varnamo-xntp0g/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-vetlanda-vetlanda-wn2uex/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-nassjo-nassjo-c8z7yq/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-eksjo-eksjo-czfdd3/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-jonkoping-solasen-jonkoping-49sdev/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-habo-habo-jyadou/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-falkenberg-falkenberg-efcxbl/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-laholm-laholm-qxz7o0/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-skene-kinna-mark-p8o9zi/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-kungalv-kungalv-xl5vmv/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-stromstad-stromstad-4sni8e/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-vara-vara-5l2y7e/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-skara-skara-1lij3h/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-lidkoping-lidkoping-bzwl81/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-mariestad-mariestad-mhwuq8/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-falkoping-falkoping-l66zq9/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-tidaholm-tidaholm-9o6xr7/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-kristinehamn-kristinehamn-o0sz93/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-arvika-arvika-8k8emz/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-saffle-saffle-0mkw38/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-torsby-torsby-s2hyyp/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-sunne-sunne-7ma9e4/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-karlskoga-karlskoga-75d644/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-hallsberg-hallsberg-xg97bl/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-motala-motala-k7risc/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-mjolby-mjolby-1z3tav/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-linkoping-linkoping-gx5n4r/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-finspang-finspang-dma38y/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-soderkoping-soderkoping-cz5aa2/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-katrineholm-katrineholm-kgqnzo/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-flen-flen-hxq75p/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-koping-koping-su4j7o/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-fagersta-fagersta-ce191m/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-avesta-avesta-714lvh/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-hedemora-hedemora-42rkni/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-sandviken-sandviken-su1rxc/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-soderhamn-soderhamn-ie16jt/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-jem-fix-visby-gotland-1zbed4/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-bromma-stockholm-stockholm-4ksj80/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-lanna-stockholm-huddinge-qtm4p9/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-norsborg-botkyrka-stockholm-botkyrka-wux46d/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-barkarby-jarfalla-stockholm-jarfalla-8xteo1/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-upplands-vasby-stockholm-upplands-vasby-s0ydvb/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-sickla-nacka-stockholm-nacka-8kjbb9/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-knivsta-knivsta-qr1znx/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-orebro-marieberg-orebro-bkjxgt/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-linkoping-tornby-linkoping-krm1bd/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-norrkoping-ingelsta-norrkoping-t2oyl3/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-kalmar-hansa-city-kalmar-x8m64q/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-vaxjo-vaxjo-8cae71/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-malmo-svagertorp-malmo-dvmfko/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-malmo-bernstorp-burlov-burlov-nlbm2t/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-loddekopinge-center-syd-kavlinge-le8a17/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-bauhaus-uddevalla-uddevalla-xp7zup/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-motonet-gavle-valbo-gavle-x56aua/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-motonet-umea-umea-jqmd12/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-motonet-vaxjo-vaxjo-r942mn/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-askersunds-reningsverk-askersund-ogowxd/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsplats-lilla-hanasavagen-hogsby-hogsby-bam2p5/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-skara-bjorkelundsgatan-skara-aqkp9w/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-laxa-rabatt-torget-revirvagen-laxa-hxrhem/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-haradsback-motesplats-haradsback-f-d-almhultsgasol-almhult-5yoen8/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/gasol-malmo-lpg-limhamn-smabatshamnen-malmo-bbzdao/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-karradal-varberg-peza6r/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsplats-grums-grums-8nhfyu/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-storfors-smabatshamn-battoalett-aven-husbil-storfors-d7xmra/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-getno-gard-lake-asnen-resort-tingsryd-5jy227/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-almons-camping-tjorn-tu1k65/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-tallbacken-1-leksand-cghwcb/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/sopstation-vid-strandangens-camping-vandrarhem-bromolla-z1lz36/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/sopstation-vid-venjans-camping-mora-gd67wi/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/sopstation-vid-trehorningsjo-camping-och-stugby-ornskoldsvik-8duagk/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-i-arjeplogs-kommun-arjeplog-oeq3g6/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/sopstation-vid-delsbo-camping-hudiksvall-terwh7/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-for-husbil-vid-trosa-gasthamn-trosa-m4r07d/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-kukkolaforsens-camping-haparanda-v9d2vg/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-pitea-pitea-e7n9bg/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-ornskoldsviks-gasthamn-ornskoldsvik-2adeki/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-sikea-havscamping-robertsfors-cs48qs/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-solbacken-ornskoldsvik-la51o0/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-lenungshammar-arvika-b97ply/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/sopstation-vid-getterons-camping-varberg-ya4e9p/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/sopstation-vid-vita-sands-camping-kalmar-6e4ett/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-for-husbil-hallevadsholm-munkedal-239qyc/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-smaangens-camping-motala-d8vzji/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-wassbacken-camping-toreboda-n408mx/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/sopstation-vid-wassbacken-camping-toreboda-ma1fk0/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-orserum-vastervik-l9nkxw/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-vilsta-camping-stugby-eskilstuna-6jjz65/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-varmdo-varmdo-3hnego/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-tobisviks-camping-simrishamn-1mt2db/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-revelbadets-camping-laxa-hc77m5/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-grannas-camping-och-stugby-valdemarsvik-pmbfwl/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-rastplats-morokulien-eda-pmrwyr/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-malmkopings-bad-camping-flen-vuq2cp/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-byske-havsbad-skelleftea-tmz8os/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-delsbo-camping-hudiksvall-xofp4o/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-byske-stallplats-skelleftea-rw7tun/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-lacko-slott-camping-lidkoping-3fhsw9/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-nornas-camping-alvdalen-0cv9wj/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-nykoping-nykoping-z5ug82/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-ekeby-camping-arjang-f96zs0/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-ekeby-camping-arjang-4ioqlq/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-i-osterakers-kommun-osteraker-3dnx6u/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-stora-agno-tyreso-3nnivt/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-malarbadens-camping-eskilstuna-lcoiuw/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-torne-camping-alvesta-grmc6a/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-ovre-aramo-tingsryd-mecuud/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-hatteboda-vildmarkscamping-tingsryd-kqf8oj/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-falkudden-camping-cafe-och-stugby-avesta-rvgjh1/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-gastplats-granna-jonkoping-sl4u0i/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-bolmens-camping-ljungby-ad7rfa/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-svino-tomningsstation-kalmar-use900/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-stallplats-foreningshamnen-i-skaldervike-angelholm-1gzv1a/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-viringe-mjolby-r8yozl/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1603,7 +1585,6 @@
   <url><loc>https://tomningskartan.se/plats/tomningsstation-spelhagen-nykoping-gst5zz/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-abisko-kiruna-iccpq6/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-nya-malingsbo-camping-smedjebacken-zp1q00/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-venjans-camping-mora-xrqbnv/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-svenserod-sotenas-at69kr/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-tyresta-by-haninge-ei39z6/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-backen-orust-dwdfpy/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1624,31 +1605,35 @@
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-sandvik-gislaved-awery9/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-klenby-nykoping-59rkiz/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-spillersboda-norrtalje-85o64n/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-friluftsbyn-kramfors-mzrure/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-i-alvdalens-kommun-alvdalen-w6s9ny/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-burea-camping-skelleftea-waul6d/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-ingarostrand-varmdo-6va89o/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-stocken-camping-orust-8vu6m1/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/sopstation-vid-munkhamna-taltplats-pa-norra-granholmen-varmdo-abt83v/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-lilla-ursvik-sundbyberg-m41ik8/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-nya-malingsbo-camping-smedjebacken-cuqhu9/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-stallplats-middalarna-tanum-5alaaq/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-rastplats-gransen-storuman-1m3kc3/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/sopstation-vid-stallplats-middalarna-tanum-64k3dn/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-akered-goteborg-hld8wm/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-stallplats-skuthamn-ludvika-ludvika-12tito/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-klubbensborgs-camping-stockholm-cgusth/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-lerdal-fargelanda-37ayw1/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-stommen-fargelanda-540aad/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-lomma-camping-lomma-f3urdz/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-tolgs-naturcamping-vaxjo-7jjldp/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/sopstation-vid-lomma-camping-lomma-etv5p0/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-waxholms-camping-vaxholm-hymb2r/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-waxholms-camping-vaxholm-jckbjm/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-falkenbergs-batsallskap-stallplats-falkenberg-2453tm/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-upperud-gasthamn-mellerud-fa70eo/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-for-husbil-lerkil-kungsbacka-twc21v/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-stallplats-for-husbil-osby-osby-cfz2as/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-kungalvs-camping-och-b-b-kungalv-nq3zac/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-trelleborg-stallplats-trelleborg-r7bgei/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-yttre-hamnen-stallplats-mariestad-3io05h/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-stenso-camping-kalmar-i4td1n/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-stridsholm-oskarshamn-3vebma/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-noto-camping-oskarshamn-86klj1/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-espeviks-camping-varberg-dhype1/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-bronnestad-hassleholm-b255oh/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-kalmar-camping-kalmar-fh8bpd/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/sopstation-vid-stallplats-klovsjofjall-berg-i615i7/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-camping-svaningen-stromsund-0zmn51/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-stallplats-css-karlsborg-karlsborg-zmiphm/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-skovde-skovde-a1p8rw/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1660,65 +1645,74 @@
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-astrid-lindgrens-varld-husvagns-och-husb-vimmerby-644feo/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-astrid-lindgrens-varld-husvagns-och-hus-vimmerby-1au0p5/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-klippan-klippan-8eor4q/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-sorbostrands-camping-vanersborg-vexxl2/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-bjursas-ovre-husvagnscamping-falu-xbpiq1/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-sveden-osthammar-mvw4z0/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-natra-distrikt-ornskoldsvik-b4qmq7/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vreten-lindesberg-lnxvcf/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-ankarvattnets-vildmarkscamping-stromsund-w2154p/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-edsangen-sollentuna-ugb6lc/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-akulla-resort-varberg-efhfyj/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/vattenpafyllning-astad-varberg-4jyar7/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/stallplats-for-husbil-astad-varberg-85t4ru/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-falsterbo-camping-resort-vellinge-zh0pd0/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-overhornas-camping-ornskoldsvik-vv46d7/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-korpalycke-tingsryd-vtzhgx/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-hjalmargarden-vingaker-cs8g8l/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-for-husbil-osterby-ydre-p5q4kt/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-borensberg-motala-ecingt/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-visselmyra-motala-n1bmfj/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-orebro-truckstop-tomningsstation-orebro-1g0uey/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-bogesund-vaxholm-xhnw4s/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-karr-nykoping-cwm7qw/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-stockvik-trosa-j79zfs/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-lilla-nyckelviken-nacka-nvm2xn/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-kvarnsjo-camp-vandrarhem-kvarnsjo-berg-gz7hc8/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-skottorp-laholm-hhklpl/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-urshult-camping-tingsryd-a0osle/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-vittsjo-camping-hassleholm-r6tnmx/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-ramsele-camping-solleftea-my0kmx/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-borensberg-motala-rxo3f6/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-fallinge-mjolby-qcrpfd/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-partille-stallplats-partille-gtp7oj/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-caravan-club-lot-strangnas-014qpj/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-rastplats-atlanten-hultsfred-tscj5t/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-hunnebostrands-camping-stugor-sotenas-p9p2db/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-hoor-hoor-oob4hk/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-hornsberg-ostersund-lftr1i/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-bodele-stallplats-uddevalla-uddevalla-gd251l/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-ronneby-hamn-ronneby-61x809/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-immelns-camping-vandrarhem-ostra-goinge-fk0mvd/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-goteborgs-camping-goteborg-zvndne/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-fonebo-camping-hudiksvall-n9ktz3/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-agrell-s-stugor-o-camping-varberg-gu3qgl/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-visit-ore-strand-hoganas-cbq84g/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-landskrona-landskrona-xtyvwg/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-leksands-rastplats-leksand-tl7fhu/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-saiva-camping-stugby-vilhelmina-57angc/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/sopstation-vid-saiva-camping-stugby-vilhelmina-bayr7r/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-munkebergs-camping-filipstad-lc53gc/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-backamo-lagerplats-stallplats-uddevalla-8x7bzi/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-kalmar-camping-kalmar-2wvtfc/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-paradiset-pa-kulla-hoganas-8ygacw/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-marstrands-familjecamping-kungalv-w6y37x/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-stromsnas-naturcamping-karlsborg-e9kgml/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-hultsfreds-camping-hultsfred-0vlumq/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-tomningsplats-arboga-arboga-8jobfg/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-karlsborgs-camping-karlsborg-m3yblu/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-haveruds-camping-mellerud-0uxli7/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-sorsjon-malung-salen-lia4zv/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-tisarstrands-camping-hallsberg-or1d5l/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-stora-alingsaker-trollhattan-8dk7vb/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-sanden-soderkoping-epzyjb/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-sanden-soderkoping-kpw7zs/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-funasdalens-atervinningscentral-harjedalen-ol1fjv/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-torso-camping-mariestad-ujomu7/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-grinda-taltplats-varmdo-db71ys/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-karlshem-varmdo-ll2sko/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-arabadets-stallplats-malung-salen-pr4sf8/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-haveruds-camping-mellerud-hjv6pu/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-kungshagen-nykoping-hr6y3s/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-fornby-varmdo-6o48v4/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-spikens-fiskelage-lidkoping-g51asn/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-tisarstrands-camping-hallsberg-6l69p0/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-saxnas-fjallcamping-vilhelmina-94wn7p/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-tisarstrand-hallsberg-tuwd49/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-i-are-kommun-are-tashju/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-idenor-hudiksvall-wjkgte/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-skokloster-camping-habo-uipj1a/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-tatto-havsbad-vastervik-tu7cae/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-kaseberga-stallplats-ystad-3v6rmy/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-evlinge-varmdo-1nmo1q/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-ovra-ogan-sodertalje-euxns6/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/sopstation-vid-perskops-stallplats-orkelljunga-d1e1cu/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-for-husbil-arjang-arjang-9f791k/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-tocksfors-arjang-t2xoi6/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/vattenpafyllning-i-arjangs-kommun-arjang-gtml17/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1736,9 +1730,12 @@
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-stenkallegardens-camping-tiveden-karlsborg-s0wvg7/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-annaboda-camping-orebro-mjqrqy/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-pajala-camping-pajala-klmqst/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/vattenpafyllning-vid-slagnasforsens-camping-arjeplog-e155n9/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-karrasands-camping-tingsryd-k81xl9/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-first-camp-nydala-umea-umea-x8qjlb/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-for-husbil-vasterbacken-alvdalen-cp8318/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/plats/tomningsstation-vid-caravan-club-silvkoparen-sala-2r4kun/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/sopstation-vid-sarna-camping-turistbyra-alvdalen-b02y3b/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/plats/sopstation-vid-dals-eds-batklubb-dals-ed-xo1iys/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-for-husbil-nassundet-kristinehamn-cgyb13/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/stallplats-for-husbil-skanor-vellinge-bzfiwq/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/plats/tomningsstation-i-tingsryds-kommun-tingsryd-3xrb7o/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1806,6 +1803,7 @@
   <url><loc>https://tomningskartan.se/kommun/gavle/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/kommun/goteborg/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/kommun/gotene/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/kommun/habo-jonkoping/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/kommun/hagfors/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/kommun/hallsberg/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/kommun/hallstahammar/</loc><lastmod>2026-10-12</lastmod></url>
@@ -1823,7 +1821,7 @@
   <url><loc>https://tomningskartan.se/kommun/hudiksvall/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/kommun/hultsfred/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/kommun/hylte/</loc><lastmod>2026-10-12</lastmod></url>
-  <url><loc>https://tomningskartan.se/kommun/habo/</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://tomningskartan.se/kommun/habo-uppsala/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/kommun/hallefors/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/kommun/harjedalen/</loc><lastmod>2026-10-12</lastmod></url>
   <url><loc>https://tomningskartan.se/kommun/harnosand/</loc><lastmod>2026-10-12</lastmod></url>
