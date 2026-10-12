@@ -28,7 +28,7 @@ for (const f of files) {
     if (!ok(host)) bad.push(`${f.split('/src/')[1]}: ${m[1]}`)
   }
 }
-if (!/http-equiv': 'Content-Security-Policy'/.test(cfg)) bad.push('vite.config.ts saknar CSP-meta')
+if (!/http-equiv="Content-Security-Policy"/.test(cfg)) bad.push('vite.config.ts saknar CSP-meta')
 if (bad.length) {
   console.error('Värdar som varken finns i CSP:n (vite.config.ts) eller i LINK_ONLY (scripts/check-csp.mjs):')
   for (const b of [...new Set(bad)]) console.error('  - ' + b)

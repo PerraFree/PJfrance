@@ -1,5 +1,5 @@
 import { SUPABASE_ANON_KEY, SUPABASE_URL, communityEnabled } from '../config'
-import { fetchWithTimeout } from './http'
+import { fetchPaged, fetchWithTimeout } from './http'
 import { restError } from './restError'
 
 /**
@@ -37,9 +37,10 @@ export async function fetchReviews(): Promise<Map<string, StationReviews>> {
   // förut räknades bara de 5 000 senaste, så spam kunde tränga undan riktiga
   // betyg (granskning 12 okt 2026). Kommentarerna granskas av Per innan de
   // publiceras och hämtas separat. Reserv: gamla sättet.
-  const sum = await fetchWithTimeout(`${base}/rest/v1/review_summary?select=station_id,sum,n`, { headers })
-  if (sum.ok) {
-    const rows = (await sum.json()) as Array<{ station_id?: string; sum?: number; n?: number }>
+  // Sidvis (1 000 åt gången): Supabase returnerar högst 1 000 rader per anrop.
+  const sum = await fetchPaged(`${base}/rest/v1/review_summary?select=station_id,sum,n&order=station_id`, headers)
+  if (sum) {
+    const rows = sum as Array<{ station_id?: string; sum?: number; n?: number }>
     for (const r of rows) {
       if (r.station_id && typeof r.sum === 'number' && typeof r.n === 'number' && r.n > 0) {
         map.set(r.station_id, { sum: r.sum, count: r.n, comments: [] })

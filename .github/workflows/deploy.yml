@@ -83,6 +83,9 @@ jobs:
           test -s dist/sitemap.xml
           test "$(ls dist/kommun | wc -l)" -ge 200
           grep -q 'Content-Security-Policy' dist/index.html
+          # CSP i meta gäller bara det som kommer EFTER taggen – den måste ligga
+          # före första skriptet, och charset inom första 1024 byte.
+          node -e "const h=require('fs').readFileSync('dist/index.html','utf8');const c=h.indexOf('Content-Security-Policy'),s=h.indexOf('<script type=\"module\"'),m=h.indexOf('<meta charset');if(!(c>0&&c<s&&m>=0&&m<1024)){console.error('CSP/charset i fel ordning',{c,s,m});process.exit(1)}"
       - name: Publicera till gh-pages
         uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
         with:

@@ -61,3 +61,20 @@ export function userMessage(err: unknown): string {
   }
   return NETWORK_MESSAGE
 }
+
+/**
+ * Hämtar alla rader från en PostgREST-vy sida för sida (Supabase ger högst
+ * 1 000 rader per anrop – annars tappades platser tyst). Returnerar null om
+ * första sidan misslyckas (anroparen faller då tillbaka på gamla sättet).
+ */
+export async function fetchPaged(url: string, headersInit?: HeadersInit, page = 1000, maxPages = 50): Promise<unknown[] | null> {
+  const out: unknown[] = []
+  for (let i = 0; i < maxPages; i++) {
+    const res = await fetchWithTimeout(`${url}&limit=${page}&offset=${i * page}`, { headers: headersInit })
+    if (!res.ok) return i === 0 ? null : out
+    const rows = (await res.json()) as unknown[]
+    out.push(...rows)
+    if (rows.length < page) break
+  }
+  return out
+}

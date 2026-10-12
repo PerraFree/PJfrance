@@ -60,6 +60,8 @@ export interface Station {
   /** Registrets undantag från 100 m-regeln: två registerposter där någon har
    *  distinct är olika verksamheter och slås inte ihop i appen. */
   distinct?: boolean
+  /** Bara i appen: platsen har fått tjänster från en betald granne (aldrig "Gratis"). */
+  notFree?: boolean
   /**
    * Hur säker källan är (visas i popupen, viktigt för gasolpåfyllning):
    * 'high' = operatörens egen webbplats/kommunen säger det uttryckligen,

@@ -68,9 +68,8 @@ function isFreeFee(fee: string): boolean {
 /** Platser som fått tjänster från en granne vars avgift är okänd eller inte
  *  gratis (t.ex. en betald ställplats intill en Trafikverket-rastplats) –
  *  de räknas aldrig som gratis (granskning 12 okt 2026). */
-const NOT_FREE = new WeakSet<Station>()
 function isFree(s: Station): boolean {
-  if (NOT_FREE.has(s)) return false
+  if (s.notFree) return false
   // Gasol är alltid ett köp – en plats som bara säljer gasol kan aldrig
   // räknas som gratis, oavsett vad avgiftsfältet råkar säga.
   if (!s.services.some((sv) => sv !== 'gasol')) return false
@@ -89,6 +88,10 @@ const shopWord = (n: string) =>
   n.toLowerCase().replace(/^gasol\s*[–-]\s*/, '').replace(/[^a-zåäö0-9 ]/g, ' ').trim().split(/\s+/)[0] ?? ''
 function sameGasolShop(a: Station, b: Station): boolean {
   if (shopWord(a.name) !== '' && shopWord(a.name) === shopWord(b.name)) return true
+  // Registret + OSM inom 30 m = samma butik under olika namn (Gasol Depån /
+  // Gasoldepån i Sundsvall) – registret ska vinna, inte bli två nålar.
+  // Namnregeln ovan gäller bara mellan två registerposter (granskning 12 okt 2026).
+  if ((isCurated(a) !== isCurated(b)) && distMeters(a, b) <= 30) return true
   return distMeters(a, b) <= 15 && (isGenericName(a.name) || isGenericName(b.name))
 }
 
@@ -152,10 +155,15 @@ function mergeInto(target: Station, s: Station, fillOnly = false): void {
     (target.source === 'trafikverket' && s.source === 'osm') || (s.source === 'trafikverket' && target.source === 'osm')
   if (tvPair) {
     const explicit = (x: Station) => x.facilities?.includes('gravatten_tomning') ?? false
-    if (s.source === 'osm' && !explicit(s) && s.services.includes('gravatten')) {
+    // Bara rena tömningsnoder – en egen ställplats/camping intill rastplatsen
+    // kan ha riktig gråvattentömning (Hammarsundet, Polarcirkeln).
+    const overnightPlace = (x: Station) => x.services.some((v) => v === 'stallplats' || v === 'camping')
+    if (s.source === 'osm' && !explicit(s) && !overnightPlace(s) && s.services.includes('gravatten')) {
       s = { ...s, services: s.services.filter((x) => x !== 'gravatten') }
     }
-    if (target.source === 'osm' && !explicit(target)) target.services = target.services.filter((x) => x !== 'gravatten')
+    if (target.source === 'osm' && !explicit(target) && !overnightPlace(target)) {
+      target.services = target.services.filter((x) => x !== 'gravatten')
+    }
   }
   // Registrets (egen/kommun, högst prioritet) egna obekräftade tjänster
   // förblir obekräftade – en lägre prioriterad källa får inte göra dem gröna.
@@ -188,7 +196,10 @@ function mergeInto(target: Station, s: Station, fillOnly = false): void {
   // gratis blir målet aldrig "Gratis" (Polarcirkeln 180 kr + rastplats).
   const added = s.services.filter((x) => !target.services.includes(x))
   const paidNeighbour = s.fee ? !isFreeFee(s.fee) : added.some((x) => x === 'stallplats' || x === 'camping' || x === 'atervinning')
-  if (added.length && s.source !== 'trafikverket' && paidNeighbour) NOT_FREE.add(target)
+  // Rastplatsens egen husbilsparkering (OSM utan avgift) är inte en betald
+  // granne – bara en uttrycklig avgift gör en rastplats "inte gratis".
+  const tvOwnParking = target.source === 'trafikverket' && s.source === 'osm' && !s.fee
+  if (added.length && s.source !== 'trafikverket' && paidNeighbour && !tvOwnParking) target.notFree = true
   if (fillOnly && target.unverified) {
     // En ren dricksvattennod (live-hämtningen) får aldrig göra en obekräftad
     // plats grön – dess vatten blir bara påstått (granskning 12 okt 2026).

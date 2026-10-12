@@ -1,5 +1,5 @@
 import { SUPABASE_ANON_KEY, SUPABASE_URL, communityEnabled } from '../config'
-import { fetchWithTimeout } from './http'
+import { fetchPaged, fetchWithTimeout } from './http'
 import { restError } from './restError'
 
 /**
@@ -30,9 +30,10 @@ export async function fetchVerifications(): Promise<Map<string, VerificationInfo
   // Sammanställningen per plats (vyn verification_summary) räknar ALLA rader –
   // förut lästes bara de 5 000 senaste, så spam kunde tränga undan riktiga
   // bekräftelser (granskning 12 okt 2026). Reserv: gamla sättet.
-  const sum = await fetchWithTimeout(`${base}/rest/v1/verification_summary?select=station_id,n,latest`, { headers })
-  if (sum.ok) {
-    const rows = (await sum.json()) as Array<{ station_id?: string; n?: number; latest?: string }>
+  // Sidvis (1 000 åt gången): Supabase returnerar högst 1 000 rader per anrop.
+  const sum = await fetchPaged(`${base}/rest/v1/verification_summary?select=station_id,n,latest&order=station_id`, headers)
+  if (sum) {
+    const rows = sum as Array<{ station_id?: string; n?: number; latest?: string }>
     for (const r of rows) {
       if (r.station_id && r.latest && typeof r.n === 'number') map.set(r.station_id, { latest: r.latest, count: r.n })
     }

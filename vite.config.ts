@@ -1,5 +1,17 @@
 import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
+import { existsSync, readFileSync } from 'node:fs'
+
+// Den publika Supabase-kopplingen (supabase.env) läses in i ALLA byggen –
+// förut bara i deploy.yml, så Android-appen byggdes utan databas (inga
+// förslag, betyg, foton). Redan satta miljövariabler vinner (tester).
+// (Granskning 12 okt 2026.)
+if (existsSync('supabase.env')) {
+  for (const line of readFileSync('supabase.env', 'utf8').split(/\r?\n/)) {
+    const m = /^(VITE_[A-Z_]+)=(.*)$/.exec(line.trim())
+    if (m && !process.env[m[1]]) process.env[m[1]] = m[2].trim()
+  }
+}
 
 // Content-Security-Policy + referrer-policy som meta-taggar, BARA i
 // produktionsbygget (dev-servern injicerar ett inline-skript som CSP:n skulle
@@ -44,10 +56,19 @@ function securityMeta(): Plugin {
   return {
     name: 'security-meta',
     apply: 'build',
-    transformIndexHtml: () => [
-      { tag: 'meta', attrs: { 'http-equiv': 'Content-Security-Policy', content: CSP }, injectTo: 'head-prepend' },
-      { tag: 'meta', attrs: { name: 'referrer', content: 'strict-origin-when-cross-origin' }, injectTo: 'head-prepend' },
-    ],
+    // Direkt EFTER <meta charset> (som måste ligga inom första 1024 byte) men
+    // FÖRE alla skript – en CSP i meta-tagg gäller bara det som kommer efter.
+    transformIndexHtml: {
+      order: 'post',
+      handler: (html) => {
+        const tags =
+          `<meta http-equiv="Content-Security-Policy" content="${CSP.replace(/"/g, '&quot;')}" />` +
+          '<meta name="referrer" content="strict-origin-when-cross-origin" />'
+        const out = html.replace(/(<meta charset="[^"]*"\s*\/?>)/i, `$1${tags}`)
+        if (out === html) throw new Error('security-meta: hittade inte <meta charset> i index.html')
+        return out
+      },
+    },
   }
 }
 

@@ -275,8 +275,10 @@ begin
   k := private.client_ip_hash();
   if k is null or k in ('okänd-ip', 'ogiltig-ip') then return; end if;
   kp := md5(k || '|' || coalesce(p_station, ''));
-  if exists (select 1 from public.rate_limits where bucket = p_bucket || ':plats' and key = kp
-             and created_at > now() - interval '1 day') then
+  -- Högst 3 per IP-adress, plats och dygn: flera personer på samma camping-
+  -- wifi eller mobiloperatörs-IP ska kunna bekräfta/betygsätta samma plats.
+  if (select count(*) from public.rate_limits where bucket = p_bucket || ':plats' and key = kp
+             and created_at > now() - interval '1 day') >= 3 then
     if p_bucket = 'verifications' then
       raise exception 'Du har redan bekräftat den här platsen i dag – tack!';
     end if;
