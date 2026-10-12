@@ -137,6 +137,30 @@ if (existsSync(ALIASES)) {
   if (chain.length) errors.push(`${chain.length} alias har ett nuvarande id som nyckel (t.ex. ${chain[0]})`)
 }
 
+// Pers egen fältkännedom (scripts/per-fakta.json) får aldrig tas bort eller
+// göras grå av ett svep eller en granskning (Borås GK tappade sina tjänster
+// sep 2026 trots att Per sagt att de finns – granskning 12 okt 2026).
+const PER = new URL('./per-fakta.json', import.meta.url)
+if (existsSync(PER)) {
+  const per = JSON.parse(readFileSync(PER, 'utf8'))
+  const byId = new Map(reg.map((p) => [p.id, p]))
+  for (const [id, f] of Object.entries(per)) {
+    if (id.startsWith('_')) continue
+    const p = byId.get(id)
+    if (!p) { errors.push(`Pers fakta: posten ${id} finns inte längre i registret`); continue }
+    for (const t of f.tjanster ?? []) {
+      if (!p.services?.includes(t) || p.unverified || (p.unverifiedServices ?? []).includes(t)) {
+        errors.push(`Pers fakta: "${p.name}" ska ha ${t} bekräftat (${f.datum}: ${f.not ?? ''}) – ändra inte utan Pers besked`)
+      }
+    }
+  }
+}
+
+// Poster utan valbar tjänst (bara ställplats/camping) syns aldrig på kartan.
+const VALBARA = ['gravatten', 'latrin', 'vatten', 'sopor', 'atervinning', 'gasol']
+const osynliga = reg.filter((p) => !(p.services ?? []).some((x) => VALBARA.includes(x)) && !(p.unverifiedServices ?? []).some((x) => VALBARA.includes(x)))
+if (osynliga.length) warnings.push(`${osynliga.length} poster har bara ställplats/camping och syns inte på kartan (t.ex. ${osynliga.slice(0, 3).map((p) => p.name).join(', ')})`)
+
 if (errors.length) {
   console.error('\nFEL i scripts/curated-places.json – rätta före push:')
   for (const e of errors) console.error('  - ' + e)

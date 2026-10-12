@@ -145,6 +145,9 @@ Android förberett (`docs/BUILD-MOBILE.md`).
    `EXCLUDED_OSM_ELEMENTS` (hela platsen) eller `OSM_UNVERIFIED_OVERRIDES`
    (enskilda tjänster blir grå) i båda filerna.
 5. Pers egen kännedom om en plats väger tyngre än att webbplatsen saknar uppgiften.
+   Det han rapporterar skrivs in i `scripts/per-fakta.json` (id → tjänster);
+   `check-register.mjs` stoppar deployen om de tjänsterna försvinner eller blir
+   grå. Borås GK förlorade så sina tjänster sep 2026 – får inte upprepas.
 6. Agenternas avgifts-/säsongstexter kortas för hand till läsbara uppgifter innan
    de skrivs – de visas i popupen. Resonemang läggs i `description`.
 7. Två sessioner får aldrig arbeta mot samma öppna punkt samtidigt.

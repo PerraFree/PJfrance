@@ -97,16 +97,21 @@
   {
     "id": "curated-7-borås-golfklubb,-borås",
     "name": "Borås Golfklubb – ställplats",
-    "query": "Borås Golfklubb, Borås",
     "source": "egen",
     "services": [
-      "stallplats"
+      "stallplats",
+      "latrin",
+      "vatten",
+      "sopor"
     ],
     "facilities": [
       "restaurang"
     ],
-    "description": "Ställplats för husbil vid golfklubben, med restaurang. Se webbplatsen för el, vatten och avgift.",
-    "url": "https://www.borasgolfklubb.se/restaurang-boende/stallplats"
+    "description": "Ställplats för husbil vid golfklubben, med restaurang. Pers egen kännedom (fält, 12 okt 2026): påfyllning av vatten, sopor och latrintömning finns. Gråvatten ej bekräftat. (Sep 2026 bedömdes klubben sakna tömning utifrån webbplats/park4night – Pers fältkännedom väger tyngre, CLAUDE.md princip 5.)",
+    "url": "https://www.borasgolfklubb.se/restaurang-boende/stallplats",
+    "confidence": "high",
+    "lat": 57.670936,
+    "lon": 12.9351678
   },
   {
     "id": "curated-8-vinbergs-if,-falkenberg",
