@@ -124,6 +124,56 @@ const OSM_SEASON_OVERRIDES = new Map([
   ['way/251360292', { season: 'year-round', openingHours: 'Öppet året runt' }], // Trehörningsjö Camping och Stugby – trehorningsjocamping.se
 ])
 
+// Gör angivna OSM-tjänster obekräftade (grå) på platser där anläggningens
+// egen sajt eller kommunen inte nämner tjänsten (område D-kontroller). OSM-
+// taggen kan vara riktig – därför grått, inte borttaget. Blir alla tjänster
+// grå markeras hela platsen som obekräftad. Speglas i src/lib/overpass.ts – ändra ALLTID
+// båda (check-mirrors.mjs stoppar deployen annars).
+const OSM_UNVERIFIED_OVERRIDES = new Map([
+  ['way/1290118511', ['vatten']], // Kulturhuset Öster Sallerup (Hörby) – ingen källa för vatten (kontroll okt 2026)
+  ['way/294060302', ['gravatten', 'latrin', 'vatten']], // Immelns Camping – egen sajt tyst om tömning/vatten (kontroll okt 2026)
+  ['node/12879399396', ['gravatten', 'latrin', 'vatten']], // Hälldala Ranch – egen sajt tyst (kontroll okt 2026)
+  ['way/244261940', ['vatten']], // Solhejdans Naturistcamping – ingen källa (kontroll okt 2026)
+  ['node/2543291323', ['vatten']], // Lådna tältplats – vatten ej belagt på platsen (bilfri ö) (kontroll okt 2026)
+  ['way/1416109141', ['vatten']], // Norra tältplatsen Finnhamn – ej belagt (bilfri ö) (kontroll okt 2026)
+  ['way/1416109773', ['vatten']], // Södra tältplatsen Finnhamn – ej belagt (bilfri ö) (kontroll okt 2026)
+  ['way/694128677', ['vatten']], // Landsorts tältplats – ej belagt (bilfri ö) (kontroll okt 2026)
+  ['way/92557500', ['gravatten', 'latrin']], // Klubbensborgs camping – egen sajt nämner ingen tömning (kontroll okt 2026)
+  ['way/640649831', ['gravatten', 'latrin']], // Rörviks Camping Onsala – egen sajt nämner ingen tömning (kontroll okt 2026)
+  ['way/120416495', ['gravatten', 'latrin', 'vatten']], // Havslätts Camping – egen sajt tyst (kontroll okt 2026)
+  ['way/511217086', ['gravatten', 'latrin', 'vatten']], // Långsjön Camping – bara covid-notis 2020 (kontroll okt 2026)
+  ['way/147163010', ['gravatten', 'latrin']], // Apelvikens Camping – ingen tömningsstation belagd (kontroll okt 2026)
+  ['way/1547921689', ['vatten']], // Välenbadets Camping – sajten tyst (kontroll okt 2026)
+  ['way/61274886', ['gravatten', 'latrin', 'vatten']], // Spilhammars Camping – egen sajt/Visit Eksjö tysta (kontroll okt 2026)
+  ['node/431824851', ['gravatten', 'latrin', 'vatten']], // Lövhults Camping – nassjo.se nämner ingen tömning (kontroll okt 2026)
+  ['way/404586033', ['gravatten', 'latrin', 'vatten']], // Habo Camping & Stugby – egen sajt/kommun tysta (kontroll okt 2026)
+  ['node/431824885', ['gravatten', 'latrin', 'vatten']], // Sävsjö Camping – ny arrendator 2026, kommunen tyst (kontroll okt 2026)
+  ['node/11080216650', ['gravatten', 'latrin', 'vatten']], // Camping Vreten (Nora) – egen sajt tyst (kontroll okt 2026)
+  ['node/2382863123', ['gravatten', 'latrin']], // Sannabadet (Lekeberg) – egen sajt/kommun tysta (kontroll okt 2026)
+  ['way/506105201', ['vatten']], // Grums Fish'n Camp – kranvatten ej garanterat som dricksvatten (kontroll okt 2026)
+  ['way/1307453003', ['gravatten', 'latrin', 'vatten']], // Rogsta Hembygdsgård – ingen källa (kontroll okt 2026)
+  ['way/164031028', ['gravatten']], // Barken Lodge – egen sajt nämner inte gråvatten (kontroll okt 2026)
+  ['way/951573089', ['gravatten', 'latrin']], // Sanda båthamn Mora – latrinstation för båtar (kontroll okt 2026)
+  ['way/990576270', ['gravatten', 'latrin', 'vatten']], // Fox & Elk Camping Idre – egen sajt tyst (kontroll okt 2026)
+  ['node/5037674540', ['gravatten', 'latrin', 'vatten']], // Falkudden Camping – egen sajt tyst (kontroll okt 2026)
+  ['node/3684658324', ['gravatten']], // Vikarbygården – gråvatten nämns inte (kontroll okt 2026)
+  ['way/1020275645', ['gravatten', 'latrin']], // Söderhamns City Camping – tömningen finns vid Stugsundskajen (kontroll okt 2026)
+  ['relation/21255848', ['gravatten', 'latrin']], // Sjöstugan Grövelsjön – tjänster okända (kontroll okt 2026)
+  ['way/1301732272', ['gravatten', 'latrin']], // Ställplats Dalarna (Gagnef) – ingen källa alls (kontroll okt 2026)
+  ['node/12077225309', ['vatten']], // Camping Torp (Hagfors) – ingen källa (kontroll okt 2026)
+  ['way/1193085061', ['gravatten', 'latrin']], // Rengsjö camping – kommunen hänvisar latrin till Rastplats Bollnäs (kontroll okt 2026)
+])
+
+function applyUnverifiedOverride(key, services) {
+  const unv = OSM_UNVERIFIED_OVERRIDES.get(key)
+  if (!unv) return { services }
+  const hit = services.filter((s) => unv.includes(s))
+  if (!hit.length) return { services }
+  const rest = services.filter((s) => !unv.includes(s))
+  if (!rest.length) return { services, unverified: true }
+  return { services: rest, unverifiedServices: hit }
+}
+
 // ---------- OpenStreetMap ----------
 
 const OVERPASS_MIRRORS = [
@@ -385,12 +435,15 @@ async function fetchOsmFrom(url) {
     const kind = placeKind(tags)
     const amenity = amenityFields(tags)
     if (override) amenity.facilities = [...new Set([...(amenity.facilities ?? []), ...override])]
+    const unv = applyUnverifiedOverride(`${el.type}/${el.id}`, services)
     stations.push({
       id: `osm-${el.type}-${el.id}`,
       name: tags.name ?? kind ?? 'Tömningsstation',
       lat,
       lon,
-      services,
+      services: unv.services,
+      unverifiedServices: unv.unverifiedServices,
+      unverified: unv.unverified,
       source: 'osm',
       description: tags.name && kind ? kind : undefined,
       // fee=no på en gasolbutik/mack betyder inte gratis gasol (gasol är alltid
@@ -1084,6 +1137,11 @@ try {
         return services.length ? { ...s, services } : null
       })
       .filter(Boolean)
+      // Grå-listan ska gälla även återanvända stationer från förra seeden.
+      .map((s) => {
+        const m = /^osm-(node|way|relation)-(\d+)$/.exec(s.id ?? '')
+        return m ? { ...s, ...applyUnverifiedOverride(`${m[1]}/${m[2]}`, s.services) } : s
+      })
     if (reused.length) {
       console.warn(`Återanvänder ${reused.length} OSM-stationer från förra seeden (${prev.updatedAt ?? 'okänt datum'}).`)
       stations.push(...reused)

@@ -4209,15 +4209,17 @@
     "lat": 57.0864294,
     "lon": 12.2491973,
     "services": [
-      "gravatten",
-      "latrin",
       "camping",
       "stallplats",
       "vatten"
     ],
     "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
     "url": "https://www.apelviken.se/",
-    "source": "egen"
+    "source": "egen",
+    "unverifiedServices": [
+      "gravatten",
+      "latrin"
+    ]
   },
   {
     "name": "Skrea Camping",
@@ -26923,8 +26925,6 @@
   {
     "name": "Klubbensborgs camping",
     "services": [
-      "gravatten",
-      "latrin",
       "camping",
       "stallplats"
     ],
@@ -26936,13 +26936,15 @@
     "confidence": "medium",
     "fee": "Husbil 440 kr/natt, 455 kr med el (2026)",
     "openingHours": "14 maj–15 september",
-    "season": "seasonal"
+    "season": "seasonal",
+    "unverifiedServices": [
+      "gravatten",
+      "latrin"
+    ]
   },
   {
     "name": "Rörviks Camping Onsala",
     "services": [
-      "gravatten",
-      "latrin",
       "vatten",
       "camping",
       "stallplats"
@@ -26955,7 +26957,11 @@
     "confidence": "medium",
     "fee": "Husbil 270 kr/natt (340 kr 18 jun–31 aug), el 40 kr",
     "openingHours": "1 maj–31 augusti",
-    "season": "seasonal"
+    "season": "seasonal",
+    "unverifiedServices": [
+      "gravatten",
+      "latrin"
+    ]
   },
   {
     "name": "Kaffetorpets camping",
@@ -27295,7 +27301,6 @@
   {
     "name": "Vikarbygården",
     "services": [
-      "gravatten",
       "latrin",
       "vatten",
       "camping",
@@ -27309,7 +27314,10 @@
     "confidence": "high",
     "fee": "250 kr/dygn + el 50 kr",
     "openingHours": "Husbilsplatser när gården är stängd: 8 maj–14 juni och 15 aug–27 sep (2026)",
-    "season": "seasonal"
+    "season": "seasonal",
+    "unverifiedServices": [
+      "gravatten"
+    ]
   },
   {
     "name": "Söderhamns City Camping",

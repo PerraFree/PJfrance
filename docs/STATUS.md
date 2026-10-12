@@ -39,7 +39,9 @@ om det händer igen: `git fetch origin <gren>` + `git merge --no-ff` + verifiera
   Stjärnfors GK/Kaffestuga, Luleå Norra hamnen/Husvagnscenter (samma geokod),
   Varbergs GK Östra/Västra (samma geokod).
 - **Synk:** när Overpass är nere återanvänds förra seedens OSM-stationer, numera
-  filtrerade mot `EXCLUDED_OSM_ELEMENTS` (fix 12 okt, commit b921393).
+  filtrerade mot `EXCLUDED_OSM_ELEMENTS` (fix 12 okt). Ny speglad lista
+  `OSM_UNVERIFIED_OVERRIDES` (32 platser) gör OSM-tjänster grå där egen sajt/
+  kommun är tyst; `check-mirrors.mjs` i deployen vaktar alla fyra listorna.
 
 ## Öppna punkter (GitHub-issues med etiketten `backlog`)
 
@@ -75,11 +77,8 @@ Se https://github.com/PerraFree/PJfrance/issues?q=is%3Aopen+label%3Abacklog
 
 ## Nästa steg (förslag)
 
-1. `OSM_UNVERIFIED_OVERRIDES` (speglad lista i `sync-stations.mjs` +
-   `overpass.ts`, kontrolleras av `check-mirrors.mjs`): gör angivna OSM-tjänster
-   grå när anläggningens egen sajt är tyst – lista i svep-loggen 12 okt.
-2. Område D i Norrland + Gotland/Blekinge (urvalsskript `valj.mjs` i
+1. Område D i Norrland + Gotland/Blekinge (urvalsskript `valj.mjs` i
    scratchpad – egen webbplats, max 3 per kommun, hoppa över "Kontroll okt
    2026"; `UPPDRAG-kontroll.md` + `apply-kontroll.mjs`; korta texterna för hand).
-3. Område E (säsonger) när D-rotationen är klar. Per vill inte bli tillfrågad – sessionen väljer själv enligt
+2. Område E (säsonger) när D-rotationen är klar. Per vill inte bli tillfrågad – sessionen väljer själv enligt
 prio-etiketterna och kör.

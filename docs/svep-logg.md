@@ -39,8 +39,8 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   Herrgårdsliv Kristinehamn, Mörudden); ~45 nya avgifter/säsonger. **Strukturell lucka:** OSM-platser
   vars egen sajt är tyst om tömning (Rengsjö, Söderhamns City Camping, Barken Lodge gråvatten, Vikarbygården
   gråvatten, Rogsta, Björkebo, Frykenbaden, Falkudden, Dalarna Älvcamping, Ställplats Dalarna, Camping Torp,
-  Fox & Elk) visas fortfarande gröna – registret kan inte göra OSM-tjänster grå. Nästa tekniska steg: en
-  speglad lista `OSM_UNVERIFIED_OVERRIDES` i båda filerna. **Kvar/oklart:** First Camp Malnbaden (ingen
+  Fox & Elk) visas fortfarande gröna – registret kan inte göra OSM-tjänster grå. Löst samma dag: speglad lista
+  `OSM_UNVERIFIED_OVERRIDES` (32 platser från alla D-regioner) i båda filerna, även i synkens reservväg. **Kvar/oklart:** First Camp Malnbaden (ingen
   destinationssida – kanske inte First Camp längre), Avesta gästhamn/OKQ8 Rättvik (bara dalarna.nu), Sanda
   båthamn (båtstation?), Harsa (citat ej återfunnet), First Camp Sunne-koordinat (avrundad?). Nästa D-region:
   Norrland (Västernorrland, Jämtland, Västerbotten, Norrbotten) + Gotland/Blekinge.

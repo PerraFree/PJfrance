@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Kontrollerar att de speglade OSM-listorna är identiska i synkskriptet och
 // appens live-hämtning: EXCLUDED_OSM_ELEMENTS, OSM_FACILITY_OVERRIDES och
-// OSM_SEASON_OVERRIDES. De måste ändras i BÅDA filerna (CLAUDE.md), annars
+// OSM_SEASON_OVERRIDES, OSM_UNVERIFIED_OVERRIDES. De måste ändras i BÅDA filerna (CLAUDE.md), annars
 // visar live-hämtningen något annat än seeden. Körs i deploy.yml före bygget
 // och stoppar deployen vid avvikelse. Kör lokalt: node scripts/check-mirrors.mjs
 import { readFileSync } from 'node:fs'
@@ -10,7 +10,7 @@ const FILES = {
   synk: new URL('./sync-stations.mjs', import.meta.url),
   app: new URL('../src/lib/overpass.ts', import.meta.url),
 }
-const LISTS = ['EXCLUDED_OSM_ELEMENTS', 'OSM_FACILITY_OVERRIDES', 'OSM_SEASON_OVERRIDES']
+const LISTS = ['EXCLUDED_OSM_ELEMENTS', 'OSM_FACILITY_OVERRIDES', 'OSM_SEASON_OVERRIDES', 'OSM_UNVERIFIED_OVERRIDES']
 
 /** Plockar ut texten mellan "const NAMN = new Set([|new Map(...[" och det avslutande "])". */
 function block(src, name) {

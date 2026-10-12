@@ -58,7 +58,7 @@ Android förberett (`docs/BUILD-MOBILE.md`).
 | `src/App.tsx` | Panel/bottenark, sök, filter, räknare, dedupe (`mergeInto`: registret vinner, tjänster unionas, fält fylls på), versionsrad |
 | `src/components/MapView.tsx` | Karta: viewport-rendering (CAP 600), popup-persistens (stängs BARA av användaren), `centerPopup()`/`computeFreeRect()`, baskarta med säkerhetsnät (tileerror ≥6 eller inga tiles på 8 s → OSM-tiles; lyssnarna sätts FÖRE `addTo`) |
 | `src/types.ts` | `ServiceType` (gravatten, latrin, vatten, sopor, atervinning, stallplats, camping, gasol), färger, ikoner, gasol byte/påfyllning-logik (`gasolFacilityStatus`, `serviceIsActive`), obekräftat-logik (`primaryActiveService`, `stationIsActive`) – EN delad källa, duplicera aldrig i komponenter |
-| `src/lib/overpass.ts` | Live-hämtning per kartvy (zoom ≥ 12). Speglar synkskriptets taggtolkning, `EXCLUDED_OSM_ELEMENTS`, `OSM_FACILITY_OVERRIDES`, `OSM_SEASON_OVERRIDES` – **ändra ALLTID båda filerna** |
+| `src/lib/overpass.ts` | Live-hämtning per kartvy (zoom ≥ 12). Speglar synkskriptets taggtolkning, `EXCLUDED_OSM_ELEMENTS`, `OSM_FACILITY_OVERRIDES`, `OSM_SEASON_OVERRIDES`, `OSM_UNVERIFIED_OVERRIDES` (gör OSM-tjänster grå när egen sajt/kommun är tyst) – **ändra ALLTID båda filerna** (`check-mirrors.mjs`) |
 | `scripts/sync-stations.mjs` | CI-synk: OSM (Overpass, med reserv från förra seeden vid avbrott) + Trafikverket + registret → `public/data/stations-seed.json`. Geokodningscache `scripts/geocode-cache.json` (nyckel = exakt `query`; tillfälliga Nominatim-fel cachas inte; vid miss behålls förra seedens läge). Namnsättning av namnlösa platser (`GENERIC_NAME` = `GENERIC_NAME_RE` i `src/lib/naming.ts`, ändra båda) |
 | `scripts/curated-places.json` | Eget register (~1 700 poster). Fält: `lat`/`lon` (föredra!) eller `query` + `nearLat`/`nearLon` (+ `maxKm`, standard 30; stora kommuner 60–80), `services`, `unverified`, `unverifiedServices`, `confidence` (high/medium/low), `fee`, `gasolPrice`, `openingHours`, `season`, `facilities` (`gasol_byte`/`gasol_pafyllning`), `website`, `description` med citat + källa |
 | `scripts/import-tools/` | Importskript, efterkontroller och agentuppdrag (`UPPDRAG-*.md`). `SCRATCH`-miljövariabeln pekar på arbetsmappen. Kör alltid `--dry` först |
@@ -122,7 +122,8 @@ Android förberett (`docs/BUILD-MOBILE.md`).
 4. **Dedupa före skrivning:** samma namn eller inom ~400 m i publicerad seed =
    komplettering, inte ny post. OSM-platser rättas med en registerpost ovanpå
    (registret vinner, tjänster unionas); en felaktig OSM-tjänst kräver dessutom
-   `EXCLUDED_OSM_ELEMENTS` i båda filerna.
+   `EXCLUDED_OSM_ELEMENTS` (hela platsen) eller `OSM_UNVERIFIED_OVERRIDES`
+   (enskilda tjänster blir grå) i båda filerna.
 5. Pers egen kännedom om en plats väger tyngre än att webbplatsen saknar uppgiften.
 6. Agenternas avgifts-/säsongstexter kortas för hand till läsbara uppgifter innan
    de skrivs – de visas i popupen. Resonemang läggs i `description`.
