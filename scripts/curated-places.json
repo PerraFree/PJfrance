@@ -4826,7 +4826,6 @@
   },
   {
     "name": "Grottbyn – Skånes Djurparks Camping",
-    "query": "Skånes Djurparks Camping, Jularp, Höör",
     "services": [
       "camping",
       "stallplats",
@@ -4834,14 +4833,12 @@
       "latrin",
       "vatten"
     ],
-    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats. Kontroll okt 2026: inte längre First Camp (sidan borta); heter nu Grottbyn – Skånes Djurparks Camping, Jularp 145. Ingen egen primärsida hittad – tjänsterna vilar på äldre uppgifter, låg säkerhet. Sammanslagen okt 2026 med den grå posten \"Skånes Djurparks Camping & Grottby\" (husbilsplats.se). Visas grå tills en primärkälla bekräftar.",
-    "url": "https://firstcamp.se/destination/skanes-djurpark-hoor/",
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats. Kontroll okt 2026: inte längre First Camp (sidan borta); heter nu Grottbyn – Skånes Djurparks Camping, Jularp 145. Ingen egen primärsida hittad – tjänsterna vilar på äldre uppgifter, låg säkerhet. Sammanslagen okt 2026 med den grå posten \"Skånes Djurparks Camping & Grottby\" (husbilsplats.se). Visas grå tills en primärkälla bekräftar. Läge från OSM-ytan \"Grottbyn Vandrarhem och Camping\" (way/118132362) så att posten och OSM-platsen visas som en.",
     "source": "egen",
-    "nearLat": 55.97,
-    "nearLon": 13.53,
-    "maxKm": 20,
     "confidence": "low",
-    "unverified": true
+    "unverified": true,
+    "lat": 55.9596413,
+    "lon": 13.5358444
   },
   {
     "name": "Löderups Strandbad Camping",
