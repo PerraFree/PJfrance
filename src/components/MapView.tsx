@@ -31,6 +31,7 @@ import type { StationReviews } from '../lib/reviews'
 import { isOwnPhotoUrl } from '../lib/photos'
 import { validView } from '../lib/view'
 import { userMessage } from '../lib/http'
+import { onBack } from '../lib/backClose'
 
 // Seed-datan täcker hela Sverige, så live-hämtning behövs bara när man zoomat
 // in nära (för färsk detalj). Håller "Hämtar stationer …" borta vid ort-zoom.
@@ -146,7 +147,7 @@ function serviceFill(station: Station, service: ServiceType): { color: string; s
 }
 
 let pinIconIdCounter = 0
-function pinIcon(color: string, glyph: string, splitColor?: string): L.DivIcon {
+function pinIcon(color: string, glyph: string, splitColor?: string, label = ''): L.DivIcon {
   // Två ihopsatta glyfer (t.ex. gasol byte+påfyllning 🔥⛽) ryms inte i den
   // lilla cirkeln vid samma storlek som en enda – krymp texten då.
   const fontSize = Array.from(glyph).length > 1 ? 8 : 11
@@ -157,7 +158,7 @@ function pinIcon(color: string, glyph: string, splitColor?: string): L.DivIcon {
   // en renodlad byte-plats trots att den även har påfyllning.
   const clipId = splitColor ? `pin-split-${pinIconIdCounter++}` : ''
   const svg = `
-    <svg width="34" height="44" viewBox="0 0 34 44" xmlns="http://www.w3.org/2000/svg">
+    ${label ? `<span class="sr-only">${esc(label)}</span>` : ''}<svg width="34" height="44" viewBox="0 0 34 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       ${splitColor ? `<defs><clipPath id="${clipId}"><rect x="17" y="0" width="17" height="44"/></clipPath></defs>` : ''}
       <path d="${pinPath}" fill="${color}" stroke="#ffffff" stroke-width="2"/>
       ${splitColor ? `<path d="${pinPath}" fill="${splitColor}" clip-path="url(#${clipId})"/>` : ''}
@@ -347,7 +348,7 @@ function popupHtml(
   // Källtexten ("Källa: OpenStreetMap") finns kvar längst ner.
   const links =
     `<div class="links"><a class="primary" href="${nav}" target="_blank" rel="noopener">Vägbeskrivning →</a>` +
-    `<button type="button" class="share-btn" data-lat="${station.lat}" data-lon="${station.lon}" data-name="${escapeAttr(station.name)}">Dela</button>` +
+    `<button type="button" class="share-btn" data-lat="${station.lat}" data-lon="${station.lon}" data-name="${escapeAttr(station.name)}" data-id="${escapeAttr(station.id)}">Dela</button>` +
     '</div>'
   const verifyLabel = unverifiedPlace || claimed.length ? '✓ Stämmer – jag har varit här' : '✓ Stämmer fortfarande'
   const verifyBtn = canVerify
@@ -449,12 +450,15 @@ function readSavedView(): { lat: number; lon: number; zoom: number } | null {
 
 const SHARE_BASE = 'https://tomningskartan.se/'
 
-function sharePlace(name: string, lat: number, lon: number) {
+function sharePlace(name: string, lat: number, lon: number, id?: string) {
   // På webben pekar länken på appens URL; i native-appen på den publika webben.
   const base = location.protocol.startsWith('http')
     ? `${location.origin}${location.pathname}`
     : SHARE_BASE
-  const url = `${base}?at=${lat.toFixed(5)},${lon.toFixed(5)},16`
+  // Platsens id följer med så att mottagaren får rätt kategori påslagen och
+  // platsrutan öppen (App.tsx läser ?id=). Utan id syntes ingen nål alls.
+  const idPart = id ? `&id=${encodeURIComponent(id)}` : ''
+  const url = `${base}?at=${lat.toFixed(5)},${lon.toFixed(5)},16${idPart}`
   void nativeShare(name, url)
 }
 
@@ -534,6 +538,9 @@ export default function MapView({
   const openMarkerRef = useRef<{ id: string; marker: L.Marker } | null>(null)
   // Den öppna markören, utlyft ur klustret och lagd direkt på kartan.
   const liftedMarkerRef = useRef<L.Marker | null>(null)
+  const popupBackReleaseRef = useRef<(() => void) | null>(null)
+  // Kartan flyger/panorerar just nu (movestart → moveend).
+  const movingRef = useRef(false)
 
   /**
    * Auto-panoreringsmarginaler som håller popupen fri från panelen – topp-
@@ -565,6 +572,9 @@ export default function MapView({
     const nearRect = document.querySelector('.nearest')?.getBoundingClientRect()
     if (nearRect && nearRect.width >= vw * 0.8 && nearRect.top > vh / 3) {
       bottom = Math.min(bottom, nearRect.top)
+    } else if (nearRect && nearRect.width > 0 && nearRect.left > vw / 2) {
+      // Desktop: listan ligger uppe till höger – popupen centreras till vänster om den.
+      right = Math.min(right, nearRect.left)
     }
     return { left, top, right, bottom }
   }
@@ -587,6 +597,14 @@ export default function MapView({
       const map = mapRef.current
       const el = popup.getElement()
       if (!map || !el || !popup.isOpen()) return
+      // Öppnades rutan medan kartan fortfarande flyger dit (platsen låg redan
+      // i bild, t.ex. från närmaste-listan) skrev flygningen över
+      // centreringen och rutan hamnade utanför skärmen – centrera när
+      // flygningen landat (granskning 12 okt 2026).
+      if (movingRef.current) {
+        map.once('moveend', () => centerPopup(popup))
+        return
+      }
       const rect = el.getBoundingClientRect()
       const free = computeFreeRect()
       const freeW = free.right - free.left
@@ -640,6 +658,16 @@ export default function MapView({
         kept = open
       } else {
         map.closePopup()
+      }
+    }
+    // Tangentbord: har en nål fokus byts den ut nedan – kom ihåg vilken, så
+    // att fokus kan flyttas till den nya nålen (annars hamnade fokus på
+    // sidans början efter att platsrutan stängts med Escape).
+    let focusedId: string | null = null
+    const ae = document.activeElement
+    if (ae?.classList.contains('leaflet-marker-icon')) {
+      for (const [id, m] of markersById.current) {
+        if (m.getElement() === ae && m !== kept?.marker) focusedId = id
       }
     }
     // En tidigare lyft markör (se nedan) som inte längre är den öppna tas bort.
@@ -721,8 +749,10 @@ export default function MapView({
       const pick = primaryActiveService(station, active, gasolFacilitiesNow)
       const primary = pick?.service ?? station.services[0]
       const fill = pick?.unverified ? { color: UNVERIFIED_COLOR } : serviceFill(station, primary)
+      // Namn för skärmläsare (nålen är annars en knapp med bara en bild).
+      const label = `${station.name}: ${station.services.map((sv) => SERVICE_LABELS[sv].toLowerCase()).join(', ')}${station.unverified ? ' (obekräftad)' : ''}`
       const marker = L.marker([station.lat, station.lon], {
-        icon: pinIcon(fill.color, serviceGlyph(station, primary), fill.split),
+        icon: pinIcon(fill.color, serviceGlyph(station, primary), fill.split, label),
       })
       // Registreras FÖRE bindPopup så att marginalerna hinner uppdateras
       // innan Leaflet öppnar popupen på klicket.
@@ -732,6 +762,12 @@ export default function MapView({
       })
       marker.on('popupclose', () => {
         if (openMarkerRef.current?.marker === marker) openMarkerRef.current = null
+        // Tangentbord: tillbaka till nålen om fokus låg i platsrutan.
+        const active = document.activeElement
+        const popEl = marker.getPopup()?.getElement()
+        if (active === document.body || (popEl && active && popEl.contains(active))) {
+          marker.getElement()?.focus({ preventScroll: true })
+        }
       })
       marker.bindPopup(
         () =>
@@ -762,7 +798,23 @@ export default function MapView({
       return marker
     })
     cluster.addLayers(markers)
-    if (pendingFocusRef.current) {
+    if (focusedId) {
+      // Markörerna läggs till i omgångar (chunkedLoading) – försök en stund.
+      const id = focusedId
+      let tries = 0
+      const refocus = () => {
+        const now = document.activeElement
+        if (now && now !== document.body && now.isConnected) return // användaren har gått vidare
+        const el = markersById.current.get(id)?.getElement()
+        if (el) el.focus({ preventScroll: true })
+        else if (++tries < 10) window.setTimeout(refocus, 100)
+      }
+      refocus()
+    }
+    // Ett väntande fokus öppnas först när kartan landat (moveend bygger om
+    // igen). Öppnades rutan mitt i flygningen kunde den hamna utanför bild
+    // eller stängas av nästa ombyggnad – delade länkar visade då ingen ruta.
+    if (pendingFocusRef.current && !movingRef.current) {
       // Ett fokus som aldrig hittar sin markör (t.ex. filtret stängdes av
       // under flygningen) får inte ligga kvar och kapa kartan senare.
       if (performance.now() > pendingFocusRef.current.expires) {
@@ -808,7 +860,9 @@ export default function MapView({
       saved ? [saved.lat, saved.lon] : [62.0, 15.0],
       saved ? saved.zoom : 5,
     )
-    L.control.zoom({ position: 'bottomright' }).addTo(map)
+    L.control.zoom({ position: 'bottomright', zoomInTitle: 'Zooma in', zoomOutTitle: 'Zooma ut' }).addTo(map)
+    // Leaflets egen rad ("A JavaScript library for interactive maps") på svenska.
+    map.attributionControl.setPrefix('<span title="Ett JavaScript-bibliotek för interaktiva kartor">Leaflet</span>')
 
     const osmAttr =
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-bidragsgivare'
@@ -882,15 +936,31 @@ export default function MapView({
     ljus.addTo(map)
     // Nere till vänster – fri yta som aldrig hamnar bakom panelen (uppe) eller
     // krockar med zoom/lokaliseringsknapparna (nere till höger).
-    L.control
+    const layersControl = L.control
       .layers(layers, {}, { position: 'bottomleft', collapsed: true })
       .addTo(map)
+    const layersToggle = layersControl.getContainer()?.querySelector<HTMLElement>('.leaflet-control-layers-toggle')
+    if (layersToggle) {
+      layersToggle.title = 'Kartlager'
+      layersToggle.setAttribute('aria-label', 'Byt kartlager')
+    }
 
     const cluster = L.markerClusterGroup({
       maxClusterRadius: 55,
       spiderfyOnMaxZoom: true,
       showCoverageOnHover: false,
       chunkedLoading: true,
+      // Samma utseende som standardikonen, men med svensk text för
+      // skärmläsare ("12 platser") i stället för "markers".
+      iconCreateFunction: (c) => {
+        const n = c.getChildCount()
+        const size = n < 10 ? 'small' : n < 100 ? 'medium' : 'large'
+        return L.divIcon({
+          html: `<div><span aria-hidden="true">${n}</span><span class="sr-only">${n} platser – tryck för att zooma in</span></div>`,
+          className: `marker-cluster marker-cluster-${size}`,
+          iconSize: L.point(40, 40),
+        })
+      },
     })
     map.addLayer(cluster)
     clusterRef.current = cluster
@@ -909,6 +979,12 @@ export default function MapView({
         /* privat läge m.m. */
       }
     }
+    map.on('movestart', () => {
+      movingRef.current = true
+    })
+    map.on('moveend', () => {
+      movingRef.current = false
+    })
     map.on('moveend', notify)
     notify()
 
@@ -936,8 +1012,10 @@ export default function MapView({
       }
       const share = target.closest('.share-btn') as HTMLElement | null
       if (share) {
-        const { lat, lon, name } = share.dataset
-        if (lat && lon && name) sharePlace(name, parseFloat(lat), parseFloat(lon))
+        const { lat, lon, name, id } = share.dataset
+        // Egna (lokala) platser finns bara i den här webbläsaren – inget id då.
+        const sharedId = id && !id.startsWith(MY_PLACE_PREFIX) ? id : undefined
+        if (lat && lon && name) sharePlace(name, parseFloat(lat), parseFloat(lon), sharedId)
         return
       }
       const fav = target.closest('.fav-btn') as HTMLButtonElement | null
@@ -1030,11 +1108,23 @@ export default function MapView({
     }
     const container = map.getContainer()
     container.addEventListener('click', onPopupClick)
+    // Escape stänger platsrutan (en öppen dialog tar Escape först, se useModal).
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape' || !popupOpenRef.current) return
+      // Ett Escape stänger bara EN sak: platsrutan före ruttlistan/närmaste-listan.
+      e.stopImmediatePropagation()
+      map.closePopup()
+    }
+    document.addEventListener('keydown', onKey)
 
     // Popupen ska stanna tills användaren själv stänger den: flagga öppen
     // popup så att markör-ombyggnaden behåller den öppna markören, och bygg
     // om helt (även den markören) när popupen stängs.
-    map.on('popupclose', () => {
+    map.on('popupclose', (e) => {
+      if ((e as L.PopupEvent).popup.options.className === 'station-popup') {
+        popupBackReleaseRef.current?.()
+        popupBackReleaseRef.current = null
+      }
       popupOpenRef.current = false
       if (rebuildPendingRef.current) {
         rebuildPendingRef.current = false
@@ -1047,12 +1137,26 @@ export default function MapView({
       const popup = (e as L.PopupEvent).popup
       // Bara plats-popuper ska pausa markörbygget – "Din position"-bubblan
       // får inte frysa kartan när man panorerar vidare.
+      const el = popup.getElement()
+      el?.querySelector('.leaflet-popup-close-button')?.setAttribute('aria-label', 'Stäng')
       if (popup.options.className === 'station-popup') {
         popupOpenRef.current = true
         onStationPopupOpenRef.current?.()
         centerPopup(popup)
+        // Bakåtknappen stänger platsrutan (se backClose.ts).
+        popupBackReleaseRef.current?.()
+        popupBackReleaseRef.current = onBack(() => map.closePopup())
+        // Tangentbord: öppnades rutan från en fokuserad nål flyttas fokus in
+        // i rutan (Escape stänger och lämnar tillbaka fokus till nålen).
+        const active = document.activeElement as HTMLElement | null
+        if (active?.classList.contains('leaflet-marker-icon')) {
+          const wrap = el?.querySelector<HTMLElement>('.leaflet-popup-content-wrapper')
+          if (wrap) {
+            wrap.tabIndex = -1
+            wrap.focus({ preventScroll: true })
+          }
+        }
       }
-      const el = popup.getElement()
       if (!el) return
 
       const ohSlot = el.querySelector<HTMLElement>('.open-now-slot')
@@ -1105,6 +1209,7 @@ export default function MapView({
 
     return () => {
       container.removeEventListener('click', onPopupClick)
+      document.removeEventListener('keydown', onKey)
       map.remove()
       mapRef.current = null
       clusterRef.current = null
@@ -1118,7 +1223,10 @@ export default function MapView({
     if (flyTo && mapRef.current) {
       const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
       if (reduce) mapRef.current.setView([flyTo.lat, flyTo.lon], flyTo.zoom ?? 12)
-      else mapRef.current.flyTo([flyTo.lat, flyTo.lon], flyTo.zoom ?? 12)
+      // Högst 1 s flygning: Leaflets standardtid växer med avståndet, och
+      // en sökning från Ystad till Kiruna tog 6–7 s innan platsrutan kom
+      // (granskning 12 okt 2026).
+      else mapRef.current.flyTo([flyTo.lat, flyTo.lon], flyTo.zoom ?? 12, { duration: 1 })
     }
   }, [flyTo])
 
@@ -1177,18 +1285,21 @@ export default function MapView({
     }
   }, [userLoc])
 
-  // Byter användaren filter medan en popup är öppen stängs den – annars kan
-  // kartan visa en öppen markör som inte längre matchar filtren (den behålls
-  // vid ombyggnad så länge popupen är öppen). Ett filterbyte är ett aktivt val, så
-  // att popupen stängs är väntat – till skillnad från panorering/datahämtning
-  // som aldrig ska stänga den.
+  // Byter användaren filter medan en popup är öppen får den stå kvar så länge
+  // platsen fortfarande matchar de nya filtren (Pers regel: popupen stängs
+  // bara av användaren). Visas platsen inte längre stängs den – annars stod en
+  // öppen markör kvar som inte hör till något valt filter (granskning 12 okt 2026).
   const prevFiltersRef = useRef(activeFilters)
   const prevGasolFacilitiesRef = useRef(gasolFacilities)
   useEffect(() => {
     if (prevFiltersRef.current !== activeFilters || prevGasolFacilitiesRef.current !== gasolFacilities) {
       prevFiltersRef.current = activeFilters
       prevGasolFacilitiesRef.current = gasolFacilities
-      if (popupOpenRef.current) mapRef.current?.closePopup()
+      const open = openMarkerRef.current
+      if (popupOpenRef.current && open) {
+        const st = stationsRef.current.find((s) => s.id === open.id)
+        if (!st || !stationIsActive(st, activeFilters, gasolFacilities)) mapRef.current?.closePopup()
+      }
     }
   }, [activeFilters, gasolFacilities])
 

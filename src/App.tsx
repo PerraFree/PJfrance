@@ -4,7 +4,8 @@ import MapView, { MIN_FETCH_ZOOM } from './components/MapView'
 import SubmitForm from './components/SubmitForm'
 import ReportForm from './components/ReportForm'
 import NearestList from './components/NearestList'
-import RouteList from './components/RouteList'
+import RouteList, { routeListRows } from './components/RouteList'
+import { setBackFallback } from './lib/backClose'
 import { fetchRoute, stationsAlongRoute, type RouteHit } from './lib/route'
 import { isGenericName, nameGenericByNearby } from './lib/naming'
 import IntroHint from './components/IntroHint'
@@ -17,7 +18,7 @@ import { fetchVerifications, submitVerification, type VerificationInfo } from '.
 import { fetchReviews, type StationReviews } from './lib/reviews'
 import ReviewForm from './components/ReviewForm'
 import { fetchPhotos } from './lib/photos'
-import { loadAliases, remapKeys } from './lib/idAliases'
+import { loadAliases, remapKeys, resolveId } from './lib/idAliases'
 import { parseAt } from './lib/view'
 import PhotoForm from './components/PhotoForm'
 import AdminPanel from './components/AdminPanel'
@@ -329,6 +330,29 @@ export default function App() {
   const [userLoc, setUserLoc] = useState<{ lat: number; lon: number } | null>(null)
   const [query, setQuery] = useState('')
   const [status, setStatus] = useState('Zooma in eller sök på en ort för att hämta stationer.')
+  // Meddelanden (sökträff, fel, väginfo) står kvar en stund i stället för att
+  // genast skrivas över av "5 184 platser tillgängliga" när kartan flyttas.
+  // På mobil är statusraden annars dold – ett meddelande visas där som en kort
+  // ruta överst (klassen "notice") och försvinner av sig själv
+  // (granskning 12 okt 2026).
+  const [notice, setNotice] = useState(false)
+  const noticeTimer = useRef<number>()
+  const routineStatusRef = useRef<string | null>(null)
+  const showMessage = useCallback((msg: string, holdMs = 6000) => {
+    window.clearTimeout(noticeTimer.current)
+    setStatus(msg)
+    setNotice(true)
+    noticeTimer.current = window.setTimeout(() => {
+      noticeTimer.current = undefined
+      setNotice(false)
+      if (routineStatusRef.current) setStatus(routineStatusRef.current)
+    }, holdMs)
+  }, [])
+  /** Löpande status (antal, hämtning) – väntar tills ett meddelande visats klart. */
+  const setRoutineStatus = useCallback((msg: string) => {
+    routineStatusRef.current = msg
+    if (noticeTimer.current === undefined) setStatus(msg)
+  }, [])
   const [loading, setLoading] = useState(false)
   const fetchTimer = useRef<ReturnType<typeof setTimeout>>()
   const cacheRef = useRef(new Map<string, Station>())
@@ -453,6 +477,18 @@ export default function App() {
     sheetSwiped.current = false
     return true
   }
+  // Android-appens bakåtknapp: när ingen dialog/platsruta är öppen fälls den
+  // utfällda menyn ihop först; först därefter avslutas appen (backClose.ts).
+  const collapsedRef = useRef(collapsed)
+  collapsedRef.current = collapsed
+  useEffect(() => {
+    setBackFallback(() => {
+      if (collapsedRef.current) return false
+      setCollapsed(true)
+      return true
+    })
+    return () => setBackFallback(null)
+  }, [])
   const [locating, setLocating] = useState(false)
   const [showMore, setShowMore] = useState(false)
   const [favorites, setFavorites] = useState<Set<string>>(loadFavorites)
@@ -615,7 +651,7 @@ export default function App() {
   // panelen), så statusraden och panelen aldrig visar olika antal.
   useEffect(() => {
     if (seedStations.length > 0) {
-      setStatus(`${stations.length.toLocaleString('sv-SE')} platser tillgängliga`)
+      setRoutineStatus(`${stations.length.toLocaleString('sv-SE')} platser tillgängliga`)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [seedStations])
@@ -640,6 +676,12 @@ export default function App() {
   const shownStations = useMemo(
     () => (routeHits ? routeHits.map((h) => h.station) : baseStations),
     [routeHits, baseStations],
+  )
+  // Samma urval som ruttlistan visar – siffran på "Längs min väg"-knappen ska
+  // stämma med listans "N platser".
+  const routeRows = useMemo(
+    () => (routeHits ? routeListRows(routeHits, activeFilters, gasolFacilities) : null),
+    [routeHits, activeFilters, gasolFacilities],
   )
 
   // Antal synliga pins med hänsyn till aktiva kategorifilter (för tomt-läge)
@@ -707,13 +749,47 @@ export default function App() {
       })
   }, [])
 
-  // Delad plats-länk (?at=lat,lon,zoom) – flyg dit vid start
+  // Delad plats-länk (?at=lat,lon,zoom[&id=…]) – flyg dit vid start. Förut
+  // syntes ingen nål hos mottagaren eftersom inga kategorier var valda
+  // (granskning 12 okt 2026). Med id slås platsens egna kategorier på och dess
+  // platsruta öppnas när datan laddats; utan id slås standardkategorierna på.
+  const [sharedId, setSharedId] = useState<string | null>(null)
+  const sharedZoomRef = useRef<number | undefined>(undefined)
   useEffect(() => {
-    const at = new URLSearchParams(location.search).get('at')
-    if (!at) return
-    const v = parseAt(at)
+    const params = new URLSearchParams(location.search)
+    const at = params.get('at')
+    const rawId = params.get('id')
+    const v = at ? parseAt(at) : null
     if (v) setFlyTo(v)
+    sharedZoomRef.current = v?.zoom
+    // Bara rimliga id: kort och bara tecken som finns i platsernas id.
+    const id =
+      rawId && rawId.length <= 120 && /^[\p{L}\p{N} &(),.'_:/–-]+$/u.test(rawId) ? rawId : null
+    if (id) {
+      void resolveId(id).then(setSharedId)
+    } else if (v) {
+      setActiveFilters((prev) => (prev.size === 0 ? new Set(DEFAULT_SERVICES) : prev))
+      ensureGasolFacilities()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+  useEffect(() => {
+    if (!sharedId || seedStations.length === 0) return
+    setSharedId(null)
+    const s = stations.find((x) => x.id === sharedId)
+    const own = s ? s.services.filter((sv) => ALL_SERVICES.includes(sv)) : []
+    if (!s || own.length === 0) {
+      // Okänd plats (borttagen, eller en annans egna plats): visa ändå något.
+      setActiveFilters((prev) => (prev.size === 0 ? new Set(DEFAULT_SERVICES) : prev))
+      ensureGasolFacilities()
+      return
+    }
+    setActiveFilters((prev) => new Set([...prev, ...own]))
+    ensureGasolFacilityFor(s)
+    setFlyTo({ lat: s.lat, lon: s.lon, zoom: sharedZoomRef.current ?? 16 })
+    setFocus({ id: s.id, nonce: Date.now() })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sharedId, stations, seedStations.length])
 
   // Godkända community-platser (crowdsourcing)
   useEffect(() => {
@@ -728,7 +804,7 @@ export default function App() {
     if (activeFiltersRef.current.size === 0) return
     if (zoom < MIN_FETCH_ZOOM) {
       // Seed-datan täcker hela Sverige, så visa inte en missvisande "zooma in"-text.
-      setStatus(
+      setRoutineStatus(
         dataCountRef.current > 0
           ? `${dataCountRef.current.toLocaleString('sv-SE')} platser tillgängliga`
           : 'Zooma in eller sök på en ort för att hämta stationer.',
@@ -738,7 +814,7 @@ export default function App() {
     fetchTimer.current = setTimeout(async () => {
       const reqId = ++reqIdRef.current
       setLoading(true)
-      setStatus('Hämtar stationer …')
+      setRoutineStatus('Hämtar stationer …')
       try {
         const fetched = await fetchOsmStations(bounds)
         if (reqId !== reqIdRef.current) return // en nyare hämtning har startat
@@ -756,18 +832,18 @@ export default function App() {
           }
         }
         setOsmStations([...cache.values()])
-        setStatus(`${dataCountRef.current.toLocaleString('sv-SE')} platser tillgängliga`)
+        setRoutineStatus(`${dataCountRef.current.toLocaleString('sv-SE')} platser tillgängliga`)
       } catch (err) {
         // Avbruten av en nyare hämtning (eller en nyare har startat): inget fel.
         if (reqId !== reqIdRef.current || isAbortError(err)) return
         // Seed-datan täcker hela Sverige, så en misslyckad live-uppdatering
         // är inte kritisk – visa ett lugnt meddelande i stället för ett fel.
-        setStatus('Visar sparade platser – live-uppdatering från OpenStreetMap gick inte just nu.')
+        setRoutineStatus('Visar sparade platser – live-uppdatering från OpenStreetMap gick inte just nu.')
       } finally {
         if (reqId === reqIdRef.current) setLoading(false)
       }
     }, 600)
-  }, [])
+  }, [setRoutineStatus])
 
   const toggleFilter = (service: ServiceType) => {
     setActiveFilters((prev) => {
@@ -867,7 +943,7 @@ export default function App() {
       ensureGasolFacilityFor(named)
       setFlyTo({ lat: named.lat, lon: named.lon, zoom: 14 })
       setFocus({ id: named.id, nonce: Date.now() })
-      setStatus(named.name)
+      showMessage(named.name)
       setCollapsed(true) // ge kartan plats efter sökning
       return
     }
@@ -876,22 +952,22 @@ export default function App() {
     const ac = new AbortController()
     searchAbortRef.current = ac
     setSearching(true)
-    setStatus(`Söker efter ”${q}” …`)
+    showMessage(`Söker efter ”${q}” …`, 30000)
     try {
       const results = await searchPlace(q, ac.signal)
       if (ac.signal.aborted) return
       if (results.length === 0) {
-        setStatus('Ingen träff – prova en ort eller ett platsnamn.')
+        showMessage('Ingen träff – prova en ort eller ett platsnamn.')
         return
       }
       const hit = results[0]
       ensureCategories()
-      setStatus(hit.name.split(',').slice(0, 2).join(','))
+      showMessage(hit.name.split(',').slice(0, 2).join(','))
       setFlyTo({ lat: hit.lat, lon: hit.lon, zoom: 11 })
       setCollapsed(true) // ge kartan plats efter sökning
     } catch {
       if (!ac.signal.aborted) {
-        setStatus('Sökningen misslyckades – kontrollera nätet och försök igen.')
+        showMessage('Sökningen misslyckades – kontrollera nätet och försök igen.')
       }
     } finally {
       if (searchAbortRef.current === ac) {
@@ -905,7 +981,7 @@ export default function App() {
     searchAbortRef.current?.abort()
     searchAbortRef.current = null
     setSearching(false)
-    setStatus('Sökning avbruten.')
+    showMessage('Sökning avbruten.')
   }
 
   // "Längs min väg": geokoda start + mål parallellt, hämta bilvägen (OSRM,
@@ -915,14 +991,14 @@ export default function App() {
     const from = routeFrom.trim()
     const to = routeTo.trim()
     if (!to || (!from && !userLoc)) {
-      setStatus('Ange både start och mål – eller tryck "Sök där jag är" först så blir din position start.')
+      showMessage('Ange både start och mål – eller tryck "Sök där jag är" först så blir din position start.')
       return
     }
     routeAbortRef.current?.abort()
     const ac = new AbortController()
     routeAbortRef.current = ac
     setRouting(true)
-    setStatus(`Beräknar vägen ${from || 'från din position'} → ${to} …`)
+    showMessage(`Beräknar vägen ${from || 'från din position'} → ${to} …`, 30000)
     try {
       const [a, b] = await Promise.all([
         from
@@ -932,7 +1008,7 @@ export default function App() {
       ])
       if (ac.signal.aborted) return
       if (!a || !b) {
-        setStatus(`Hittade inte ”${!a ? from : to}” – prova en ort eller adress.`)
+        showMessage(`Hittade inte ”${!a ? from : to}” – prova en ort eller adress.`)
         return
       }
       const r = await fetchRoute(a, b, ac.signal)
@@ -942,13 +1018,13 @@ export default function App() {
       setRoute({ label: `${short(a.name)} → ${short(b.name)}`, coords: r.coords, distanceKm: r.distanceKm, straight: r.straight })
       setShowNearest(false)
       setCollapsed(true)
-      setStatus(
+      showMessage(
         r.straight
           ? 'Vägtjänsten svarade inte – visar platser längs fågelvägen i stället.'
           : `Vägen ${short(a.name)} → ${short(b.name)}: ${Math.round(r.distanceKm)} km. Platserna listas i färdriktningen.`,
       )
     } catch {
-      if (!ac.signal.aborted) setStatus('Kunde inte beräkna vägen – kontrollera nätet och försök igen.')
+      if (!ac.signal.aborted) showMessage('Kunde inte beräkna vägen – kontrollera nätet och försök igen.')
     } finally {
       if (routeAbortRef.current === ac) {
         routeAbortRef.current = null
@@ -958,16 +1034,18 @@ export default function App() {
   }
 
   const clearRoute = useCallback(() => {
+    // Avbruten mitt i beräkningen: ta bort "Beräknar vägen …" direkt.
+    if (routeAbortRef.current) showMessage('Vägsökningen avbröts.', 3000)
     routeAbortRef.current?.abort()
     routeAbortRef.current = null
     setRouting(false)
     setRoute(null)
-  }, [])
+  }, [showMessage])
 
   const handleLocate = async () => {
     if (locating) return
     setLocating(true)
-    setStatus('Hämtar din position …')
+    showMessage('Hämtar din position …', 30000)
     void tap()
     try {
       const loc = await getPosition()
@@ -985,9 +1063,9 @@ export default function App() {
       // kartan även när "Närmaste platser"-listan dragits ner (Pers
       // skärmbild sep 2026). Tryck på panelen återställer den.
       if (window.matchMedia?.('(max-width: 640px)').matches) setMini(true)
-      setStatus('Visar platser nära dig – avstånd visas i varje plats.')
+      showMessage('Visar platser nära dig – avstånd visas i varje plats.')
     } catch {
-      setStatus('Kunde inte hämta din position.')
+      showMessage('Kunde inte hämta din position.')
     } finally {
       setLocating(false)
     }
@@ -1005,7 +1083,7 @@ export default function App() {
   }
 
   return (
-    <div className="app">
+    <main className="app">
       <IntroHint />
       <MapView
         stations={shownStations}
@@ -1045,6 +1123,8 @@ export default function App() {
       <div
         ref={panelRef}
         className={`panel${collapsed ? ' collapsed' : ''}${mini ? ' mini' : ''}`}
+        role="region"
+        aria-label="Sök och filter"
         onClickCapture={
           mini
             ? (e) => {
@@ -1161,7 +1241,7 @@ export default function App() {
           onClick={() => setShowRouteForm((v) => !v)}
         >
           🛣 Längs min väg
-          {route && routeHits && <span className="fac-count">{routeHits.length}</span>}
+          {route && routeRows && <span className="fac-count">{routeRows.length}</span>}
         </button>
         {showRouteForm && (
           <form className="route-form" onSubmit={handleRoute} aria-label="Platser längs vägen">
@@ -1327,9 +1407,9 @@ export default function App() {
           ➕ Lägg till en plats
         </button>
 
-        <p className="foot-links">
+        <nav className="foot-links" aria-label="Mer om Tömningskartan">
           <a href="/om/">Om Tömningskartan</a> · <a href="/kommun/">Platser per kommun</a>
-        </p>
+        </nav>
         <p className="version-line">Version {import.meta.env.VITE_BUILD_ID}</p>
       </div>
 
@@ -1338,7 +1418,7 @@ export default function App() {
           {favOnly && favorites.size === 0
             ? 'Du har inga sparade platser än – tryck ★ Spara i en plats för att lägga till den här.'
             : activeFilters.size === 0
-              ? 'Vad letar du efter? Välj en eller flera kategorier ovan för att visa platser.'
+              ? 'Vad letar du efter? Välj en eller flera kategorier i menyn för att visa platser.'
               : 'Inga platser matchar valda filter.'}
         </div>
       )}
@@ -1358,7 +1438,11 @@ export default function App() {
         </svg>
       </button>
 
-      <div className={loading ? 'status loading' : 'status'} aria-live="polite">
+      <div
+        className={`status${loading ? ' loading' : ''}${notice ? ' notice' : ''}`}
+        role="status"
+        aria-live="polite"
+      >
         {loading && <span className="spinner" aria-hidden="true" />}
         {status}
       </div>
@@ -1437,6 +1521,6 @@ export default function App() {
           onClose={() => setShowNearest(false)}
         />
       )}
-    </div>
+    </main>
   )
 }

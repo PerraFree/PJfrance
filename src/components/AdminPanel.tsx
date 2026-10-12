@@ -53,7 +53,7 @@ function tableText(state: CheckState, okText: string): string {
     case 'missing':
       return 'Saknas – gör engångsfixen i rutan nedan.'
     case 'denied':
-      return 'Nyckeln nekades av databasen – kör "Installera databasen" igen så hämtas en färsk nyckel.'
+      return 'Nyckeln nekades av databasen. Besöksnyckeln (den publika anon-nyckeln) står i filen supabase.env i repot. Hämta en giltig i Supabase → Project Settings → API Keys (den publika nyckeln), lägg in den i supabase.env och låt appen byggas om.'
     case 'unreachable':
       return 'Kunde inte nå databasen just nu (nätet eller pausat projekt). Ladda om sidan om en stund.'
     case 'na':
@@ -73,7 +73,7 @@ export default function AdminPanel() {
   )
 
   return (
-    <div className="admin">
+    <main className="admin">
       <header className="admin-head">
         <h1>Tömningskartan – adminstatus</h1>
         <p>
@@ -151,8 +151,10 @@ export default function AdminPanel() {
             <a href="https://supabase.com/dashboard/account/tokens" target="_blank" rel="noopener noreferrer">
               Öppna denna sida hos Supabase
             </a>{' '}
-            → klicka <em>Generate new token</em> → döp den till <code>tomningskartan</code> →
-            kopiera den långa texten som visas.
+            → klicka <em>Generate new token</em> → döp den till <code>tomningskartan</code> → under{' '}
+            <em>Resource access</em> välj <em>Project</em> → bara projektet <strong>Greywater</strong>,
+            bara de rättigheter som behövs, längsta giltighetstid → kopiera den långa texten som
+            visas. (Aldrig en nyckel för hela kontot.)
           </li>
           <li>
             <a href={`${REPO}/settings/secrets/actions/new`} target="_blank" rel="noopener noreferrer">
@@ -179,8 +181,9 @@ export default function AdminPanel() {
             <a href={`${REPO}/settings/secrets/actions/new`} target="_blank" rel="noopener noreferrer">
               ny secret hos GitHub
             </a>{' '}
-            med namnet <code>SUPABASE_SERVICE_KEY</code>. Den går aldrig ut och kan bara läsa/skriva
-            i databasen – inte ändra projektet.
+            med namnet <code>SUPABASE_SERVICE_KEY</code>. Den går aldrig ut och går förbi alla
+            behörighetsregler i databasen – lägg den bara som secret hos GitHub och dela den
+            aldrig med någon.
           </li>
         </ol>
         <p>
@@ -220,6 +223,6 @@ export default function AdminPanel() {
       <p className="adm-back">
         <a href="./">← Tillbaka till kartan</a>
       </p>
-    </div>
+    </main>
   )
 }

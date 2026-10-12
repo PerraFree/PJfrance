@@ -66,10 +66,28 @@ export async function initNativeShell(): Promise<void> {
   if (!isNative) return
   try {
     const { StatusBar, Style } = await import('@capacitor/status-bar')
-    await StatusBar.setStyle({ style: Style.Dark })
-    await StatusBar.setBackgroundColor({ color: '#1b5e20' })
+    // Ljus bakgrund + MÖRK text/ikoner. Förut mörkgrön bakgrund + Style.Dark
+    // (vita ikoner) – men på nya Android (kant-till-kant) slår
+    // setBackgroundColor inte igenom, så det blev vita ikoner på ljusgrått och
+    // klockan/batteriet gick inte att läsa (emulatortest 12 okt 2026).
+    // Style.Light = mörk text för ljus bakgrund.
+    await StatusBar.setBackgroundColor({ color: '#f6f8f6' })
+    await StatusBar.setStyle({ style: Style.Light })
   } catch {
     /* status bar ej tillgänglig (iOS hanterar via Info.plist) */
+  }
+  try {
+    // Android-bakåtknappen: stäng dialog → platsruta → fäll ihop menyn →
+    // annars avsluta appen. Utan lyssnare gjorde knappen ingenting.
+    const [{ App }, { handleNativeBack }] = await Promise.all([
+      import('@capacitor/app'),
+      import('./backClose'),
+    ])
+    await App.addListener('backButton', () => {
+      if (!handleNativeBack()) void App.exitApp()
+    })
+  } catch {
+    /* @capacitor/app ej tillgänglig */
   }
   try {
     const { SplashScreen } = await import('@capacitor/splash-screen')

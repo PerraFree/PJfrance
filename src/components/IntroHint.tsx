@@ -31,7 +31,7 @@ export default function IntroHint() {
         &amp; latrin och fylla på färskvatten och gasol i hela Sverige.{' '}
         <strong>Välj vad du letar efter</strong> med kategoriknapparna, använd{' '}
         <strong>Sök där jag är</strong> för de närmaste platserna, och{' '}
-        <strong>Föreslå en plats</strong> om något saknas. Ställplatser och
+        <strong>Lägg till en plats</strong> om något saknas. Ställplatser och
         campingar visas när de erbjuder någon av tjänsterna.
       </p>
       <button type="button" onClick={dismiss}>

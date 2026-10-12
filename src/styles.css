@@ -2487,3 +2487,68 @@ button {
   box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.35), 0 1px 4px rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
 }
+
+/* ---------- Granskning 12 okt 2026 (UI-runda) ---------- */
+
+/* Text bara för skärmläsare (kartnålarnas och klustrens namn) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Tydligare fokusram (mörkare grön syns mot den ljusgröna panelen) */
+:where(button, a, input, select, [tabindex]):focus-visible {
+  outline: 3px solid var(--green-700);
+  outline-offset: 2px;
+}
+.submit-place-btn:focus-visible {
+  background: var(--green-100);
+  border-color: var(--green-700);
+}
+
+/* Desktop: närmaste-listan, ruttlistan och dess knapp ligger uppe till höger –
+   nere till vänster täckte de den utfällda panelen och lagerväljaren. */
+@media (min-width: 641px) {
+  .nearest {
+    left: auto;
+    right: max(14px, env(safe-area-inset-right));
+    top: max(14px, env(safe-area-inset-top));
+    bottom: auto;
+    width: min(340px, calc(100vw - 460px));
+    max-height: calc(100dvh - 200px);
+  }
+  .nearest-toggle {
+    left: auto;
+    right: max(14px, env(safe-area-inset-right));
+    top: max(14px, env(safe-area-inset-top));
+    bottom: auto;
+  }
+}
+
+/* Mobil: statusraden är dold (arket visar antalet), men meddelanden –
+   sökträff, "Ingen träff", "Kunde inte hämta din position" – visas en kort
+   stund som en ruta högst upp. */
+@media (max-width: 640px) {
+  .status.notice {
+    display: flex;
+    top: calc(62px + env(safe-area-inset-top));
+    bottom: auto;
+    z-index: 1300;
+    max-width: calc(100vw - 32px);
+    white-space: normal;
+    text-align: center;
+    border-radius: 14px;
+    line-height: 1.35;
+  }
+}
+/* "transition: all" animerade även fokusramen från 0 – den syntes inte direkt */
+.submit-place-btn {
+  transition: background 0.15s, border-color 0.15s;
+}

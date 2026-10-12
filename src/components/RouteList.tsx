@@ -24,6 +24,24 @@ function fmtKm(km: number): string {
   return km < 1 ? `${Math.round(km * 1000)} m` : `${km.toFixed(km < 10 ? 1 : 0)} km`
 }
 
+/** Sopor/återvinning döljs här av samma skäl som i närmaste-listan (svämmar
+ *  över) – utom när det är det enda som valts. */
+export function routeListFilters(activeFilters: Set<ServiceType>): Set<ServiceType> {
+  const rest = [...activeFilters].filter((sv) => sv !== 'sopor' && sv !== 'atervinning')
+  return new Set<ServiceType>(rest.length ? rest : activeFilters)
+}
+
+/** Raderna i listan – samma urval används för siffran på "Längs min väg"-knappen
+ *  (förut räknade knappen alla platser längs vägen: 67 mot listans 32). */
+export function routeListRows(
+  hits: RouteHit[],
+  activeFilters: Set<ServiceType>,
+  gasolFacilities: Set<GasolFacility>,
+): RouteHit[] {
+  const f = routeListFilters(activeFilters)
+  return hits.filter((h) => stationIsActive(h.station, f, gasolFacilities)).slice(0, 80)
+}
+
 /** Lista över platser längs vägen, i färdriktningen. Samma utseende som "Närmaste platser". */
 export default function RouteList({
   hits,
@@ -35,18 +53,8 @@ export default function RouteList({
   onPick,
   onClose,
 }: Props) {
-  // Sopor döljs här av samma skäl som i närmaste-listan (svämmar över).
-  const listFilters = useMemo(
-    () =>
-      new Set<ServiceType>(
-        [...activeFilters].filter((sv) => sv !== 'sopor' && sv !== 'atervinning'),
-      ),
-    [activeFilters],
-  )
-  const rows = useMemo(
-    () => hits.filter((h) => stationIsActive(h.station, listFilters, gasolFacilities)).slice(0, 80),
-    [hits, listFilters, gasolFacilities],
-  )
+  const rows = useMemo(() => routeListRows(hits, activeFilters, gasolFacilities), [hits, activeFilters, gasolFacilities])
+  const listFilters = useMemo(() => routeListFilters(activeFilters), [activeFilters])
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
