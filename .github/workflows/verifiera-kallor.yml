@@ -1,0 +1,65 @@
+name: Källkontroll av registret
+
+# Veckovis: hämtar registrets webbadresser från en GitHub-runner (som har
+# internet, till skillnad från Claude-sessionerna) och kontrollerar att
+# länkarna svarar och att sveparnas citat fortfarande står på sidorna.
+# Resultatet läggs i ett GitHub-ärende (uppdateras om ett redan är öppet)
+# som ärenderutinen och nästa område D-svep plockar upp. Stoppar inget.
+#
+# Säkerhet: inga secrets. Sidornas innehåll hamnar aldrig i ärendet – bara
+# våra egna platsnamn, URL:er och statuskoder.
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit:
+        description: 'Max antal poster (0 = alla)'
+        default: '0'
+  schedule:
+    - cron: '20 4 * * 2'
+
+permissions:
+  issues: write
+  contents: read
+
+concurrency:
+  group: kallkontroll
+  cancel-in-progress: false
+
+jobs:
+  kallkontroll:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+      - name: Hämta källsidor och jämför citat
+        env:
+          LIMIT: ${{ github.event.inputs.limit || '0' }}
+        run: node scripts/verify-sources.mjs
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: kallkontroll
+          path: |
+            kallkontroll.json
+            kallkontroll.md
+          retention-days: 30
+      - name: Skriv eller uppdatera ärendet
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const fs = require('fs')
+            const md = fs.readFileSync('kallkontroll.md', 'utf8')
+            const marker = '<!-- kallkontroll -->'
+            const body = `${marker}\n${md}\n\n_Automatisk rapport från verifiera-kallor.yml. Döda länkar: byt website eller ta bort; saknade citat: kontrollera platsen (område D)._`
+            const { data: open } = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, state: 'open', labels: 'backlog', per_page: 50 })
+            const mine = open.find((i) => (i.body ?? '').startsWith(marker))
+            const title = `Källkontroll: döda länkar och ändrade sidor i registret`
+            if (mine) {
+              await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, body })
+              await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, body: `Ny körning ${new Date().toISOString().slice(0, 10)} – ärendetexten är uppdaterad.` })
+            } else {
+              await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title, body, labels: ['backlog', 'prio-2'] })
+            }

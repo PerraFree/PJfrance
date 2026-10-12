@@ -37,6 +37,8 @@ om det händer igen: `git fetch origin <gren>` + `git merge --no-ff` + verifiera
   Webben är i stort sett uttömd för nya platser – nästa metod är crowdsourcing.
 - **UI senast:** bottenarket följer fingret vid drag, strecket = bara kartan/
   tillbaka, baskartan byter till OSM om leverantören tiger. sw.js v86.
+- **Källkontroll (12 okt):** `verifiera-kallor.yml` kör tisdagar och lägger döda
+  länkar + försvunna citat i ett ärende som ärenderutinen/område D tar vidare.
 - **Kvalitetsvakter i deployen (12 okt):** `check-mirrors.mjs`, `check-register.mjs`
   (0 fel krävs; ~85 varningar om gamla query-poster utan nearLat/nearLon är
   kända) och `npm audit --audit-level=high` på produktionsberoenden.

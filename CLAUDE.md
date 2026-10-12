@@ -88,6 +88,10 @@ Android förberett (`docs/BUILD-MOBILE.md`).
   `cell()` (# före @); max 20 ärenden per körning; try/catch per rad.
 - `hantera-platsforslag.yml` – kommentar `godkänn`/`neka`/`avslå` → PATCH via
   PostgREST med `SUPABASE_SERVICE_KEY` (ord-jämförelse, inte `\b` – trasigt med å/ä/ö).
+- `verifiera-kallor.yml` – tisdagar 04:20 UTC + manuell: `scripts/verify-sources.mjs`
+  hämtar registrets webbadresser från runnern (som har nät) och kontrollerar att
+  länkar svarar och att sveparnas citat finns kvar på sidorna; rapport som
+  ärende med markör `<!-- kallkontroll -->` (uppdateras). Inga secrets.
 - `android.yml` – debug-APK + `starttest` i emulator; skärmdump force-pushas till
   grenen `emulator-skarmdump` (artefakter går inte att hämta från en session).
 - Secrets: `SUPABASE_ACCESS_TOKEN` (bara installationen; scoped token, går ut
