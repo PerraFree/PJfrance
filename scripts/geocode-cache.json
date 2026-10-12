@@ -199,11 +199,6 @@
   "lon": 15.7893058,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Bangårdsgatan, Ulricehamn": {
-  "lat": 57.7977824,
-  "lon": 13.411734,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Banvaktarvägen 5, Karlstad": {
   "lat": 59.3955672,
   "lon": 13.5843063,
@@ -277,11 +272,6 @@
  "Bilbyggarvägen 5, Kalmar": {
   "lat": 56.6836814,
   "lon": 16.3185405,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Biltema, Borlänge": {
-  "lat": 60.4794823,
-  "lon": 15.4152543,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Birger Svenssons väg 16, Varberg": {
@@ -447,11 +437,6 @@
  "Brädholmen, Oskarshamn": {
   "lat": 57.2663284,
   "lon": 16.4518606,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Brändö Konferens, Luleå": {
-  "lat": 65.5934625,
-  "lon": 22.0332379,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Brännaregatan 2, Hyllinge": {
@@ -744,11 +729,6 @@
   "lon": 13.1761629,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Enköpings": {
-  "lat": 59.666667,
-  "lon": 17.1,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Enköpingsvägen 41, Järfälla": {
   "lat": 59.4104384,
   "lon": 17.8566082,
@@ -827,11 +807,6 @@
  "Finnflovägen 14, 824 92 Hudiksvall": {
   "lat": 61.7382196,
   "lon": 17.080866,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "First Camp Malnbaden, Hudiksvall": {
-  "lat": 61.7196662,
-  "lon": 17.17902,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "First Camp Mellbystrand, Laholm": {
@@ -985,11 +960,6 @@
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Färjeleden 5, 621 58 Visby": {
-  "lat": 57.6256645,
-  "lon": 18.2746563,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Färjeleden 5, Visby": {
   "lat": 57.6256645,
   "lon": 18.2746563,
   "at": "2026-10-11T12:56:15.644Z"
@@ -1594,6 +1564,11 @@
   "lon": 14.638577,
   "at": "2026-10-11T12:56:15.644Z"
  },
+ "Hästskär, Enköping": {
+  "lat": 59.540503,
+  "lon": 16.9530618,
+  "at": "2026-10-12T10:09:37.320Z"
+ },
  "Höganäs hamn, Höganäs": {
   "lat": 56.19879,
   "lon": 12.55032,
@@ -1909,6 +1884,11 @@
   "lon": 13.2346006,
   "at": "2026-10-11T12:56:15.644Z"
  },
+ "Klågerupsvägen 469, Malmö": {
+  "lat": 55.5887775,
+  "lon": 13.1056956,
+  "at": "2026-10-12T10:09:41.132Z"
+ },
  "Klåveröd 1714, 286 76 Kågeröd": {
   "lat": 56.0380579,
   "lon": 13.1650727,
@@ -2163,11 +2143,6 @@
   "lon": 16.0210268,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Lanthotell Lögnäs Gård, Laholm": {
-  "lat": 56.4743567,
-  "lon": 12.9917107,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Lantmannagatan 6, Laholm": {
   "lat": 56.514775,
   "lon": 13.0510614,
@@ -2328,6 +2303,11 @@
   "lon": 12.1116761,
   "at": "2026-10-11T12:56:15.644Z"
  },
+ "Lodgatan 14, 741 71 Knivsta": {
+  "lat": 59.7454238,
+  "lon": 17.8076836,
+  "at": "2026-10-12T10:09:36.006Z"
+ },
  "Loftahammars Golfklubb, Loftahammar, Västerviks kommun": {
   "lat": 57.9096033,
   "lon": 16.6990544,
@@ -2366,11 +2346,6 @@
  "Lökholmen, Hunnebostrand": {
   "lat": 58.4342924,
   "lon": 11.2926434,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Lökholmens Camping, Strömstad": {
-  "lat": 58.9297943,
-  "lon": 11.1787,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Lönnerbladsgatan 12, Falköping": {
@@ -2421,11 +2396,6 @@
  "Malexandervägen 22, 590 13 Boxholm": {
   "lat": 58.1831535,
   "lon": 15.058696,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Malmö City Golfklubb, Malmö": {
-  "lat": 55.6180794,
-  "lon": 13.0737667,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Margaretagatan 40, Söderköping": {
@@ -2492,6 +2462,11 @@
   "lat": 55.8501815,
   "lon": 13.6407592,
   "at": "2026-10-11T12:56:15.644Z"
+ },
+ "Mekanikergatan 6, Borlänge": {
+  "lat": 60.4794823,
+  "lon": 15.4152543,
+  "at": "2026-10-12T10:09:34.164Z"
  },
  "Melleruds golfbana, Mellerud": {
   "lat": 58.7018002,
@@ -2698,11 +2673,6 @@
   "lon": 16.3164806,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Norrköpings": {
-  "lat": 58.583333,
-  "lon": 16.333333,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Norrmalmsvägen 11, Malmslätt": {
   "lat": 58.414094,
   "lon": 15.520541,
@@ -2771,11 +2741,6 @@
  "Nynäshamns Golfklubb, Nynäshamn": {
   "lat": 59.0026629,
   "lon": 17.8860239,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Nynäshamns gästhamn, Nynäshamn": {
-  "lat": 58.8906965,
-  "lon": 17.9437375,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Nysäters gästhamn, Nysäter, Säffle kommun": {
@@ -3162,6 +3127,11 @@
   "lat": 59.78381,
   "lon": 14.51732,
   "at": "2026-10-11T12:56:15.644Z"
+ },
+ "Simonstorp, Norrköping": {
+  "lat": 58.7861083,
+  "lon": 16.1545926,
+  "at": "2026-10-12T10:09:38.679Z"
  },
  "Sjöviksvägen, 623 65 Ljugarn": {
   "lat": 57.3283205,
@@ -3598,16 +3568,6 @@
   "lon": 12.4987637,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Sunne": {
-  "lat": 59.85,
-  "lon": 13.15,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Sunne Camping Kolsnäs, Sunne": {
-  "lat": 59.8241988,
-  "lon": 13.1397969,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Sunne Golfklubb, Sunne": {
   "lat": 59.8611961,
   "lon": 13.1133759,
@@ -3818,11 +3778,6 @@
   "lon": 14.4953795,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Tranemo": {
-  "lat": 57.5,
-  "lon": 13.433333,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Transportgatan 19, Hisings Backa": {
   "lat": 57.7699364,
   "lon": 12.0011804,
@@ -3976,11 +3931,6 @@
  "Ullsättersvägen 22, Hudiksvall": {
   "lat": 61.7495554,
   "lon": 17.114036,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Upplands Bil & Fritidscenter, Uppsala": {
-  "lat": 59.7453394,
-  "lon": 17.8076517,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Uranvägen, 371 49 Karlskrona": {
@@ -4153,6 +4103,11 @@
   "lon": 15.7197712,
   "at": "2026-10-11T12:56:15.644Z"
  },
+ "Visby reningsverk, Visby": {
+  "lat": 57.6379361,
+  "lon": 18.297982,
+  "at": "2026-10-12T10:09:32.751Z"
+ },
  "Vist Kyrkväg 1, Ulricehamn": {
   "lat": 57.8135891,
   "lon": 13.4180731,
@@ -4206,11 +4161,6 @@
  "Värnamo Golfklubb, Värnamo": {
   "lat": 57.184902,
   "lon": 14.0410977,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Västanviksbadets Camping, Leksand": {
-  "lat": 60.7302059,
-  "lon": 14.9537006,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Västerbyn, Gräsö": {
@@ -4438,11 +4388,6 @@
   "lon": 13.4871856,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Örnviksvägen 87, 975 94 Luleå, Luleå": {
-  "lat": 65.5934625,
-  "lon": 22.0332379,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Örstig Camping, Nyköping": {
   "lat": 58.7204154,
   "lon": 17.0852538,
@@ -4451,11 +4396,6 @@
  "Östanå Camping, Vetlanda": {
   "lat": 57.408132,
   "lon": 15.0457723,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Östersunds Stugby & Camping, Östersund": {
-  "lat": 63.152119,
-  "lon": 14.5827769,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Östervångsplan 14, Landskrona": {
