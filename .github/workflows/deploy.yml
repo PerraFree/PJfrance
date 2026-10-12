@@ -82,6 +82,11 @@ jobs:
         run: |
           test -s dist/sitemap.xml
           test "$(ls dist/kommun | wc -l)" -ge 200
+          # SEO (12 okt 2026): platssidor, tjänstesidor och FAQ ska finnas
+          test "$(ls dist/plats | wc -l)" -ge 1000
+          test -s dist/tjanst/latrintomning/index.html
+          test -s dist/fragor/index.html
+          test -s dist/seo.css
           grep -q 'Content-Security-Policy' dist/index.html
           # CSP i meta gäller bara det som kommer EFTER taggen – den måste ligga
           # före första skriptet, och charset inom första 1024 byte.

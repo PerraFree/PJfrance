@@ -18,3 +18,9 @@ ios/App/Pods
 # Genereras i CI av scripts/build-seo-pages.mjs
 public/kommun/
 public/sitemap.xml
+
+public/plats/
+public/lan/
+public/tjanst/
+public/fragor/
+public/seo.css
