@@ -192,6 +192,15 @@ if (existsSync(SEED)) {
   }
 }
 
+// Exakt lat/lon + kontrollpunkt (nearLat/nearLon) som ligger längre bort än
+// maxKm = synken förkastar det RÄTTA läget (Voxnabruk 12 okt 2026).
+for (const p of reg) {
+  if (typeof p.lat === 'number' && typeof p.nearLat === 'number' && typeof p.nearLon === 'number') {
+    const m = dist(p, { lat: p.nearLat, lon: p.nearLon })
+    if (m / 1000 > (typeof p.maxKm === 'number' ? p.maxKm : 30)) errors.push(`"${p.name}": exakt läge ligger ${Math.round(m / 1000)} km från kontrollpunkten (nearLat/nearLon, max ${p.maxKm ?? 30}) – synken skulle förkasta det; ta bort query/nearLat/nearLon`)
+  }
+}
+
 // Poster utan valbar tjänst (bara ställplats/camping) syns aldrig på kartan.
 const VALBARA = ['gravatten', 'latrin', 'vatten', 'sopor', 'atervinning', 'gasol']
 const osynliga = reg.filter((p) => !(p.services ?? []).some((x) => VALBARA.includes(x)) && !(p.unverifiedServices ?? []).some((x) => VALBARA.includes(x)))
