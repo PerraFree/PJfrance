@@ -60,6 +60,11 @@ Se https://github.com/PerraFree/PJfrance/issues?q=is%3Aopen+label%3Abacklog
   "Veckorapport" och tokenpåminnelsen är återskapade kopplade till sessionen
   "Gråvatten 5"; de gamla kopiorna (pekade på arkiverade "Gråvatten 4") är
   pausade och kan raderas.
+- Ny rutin 12 okt: "Bevaka GitHub-issues Tömningskartan" (trig_01JGzLszwk5ktSPNELVCg9ng,
+  var 3:e timme kl :10 UTC in i Gråvatten 5): läser nya/ändrade ärenden,
+  verifierar platsförslag mot primärkälla, kommenterar `godkänn`/`neka`,
+  åtgärdar buggar, kommenterar alltid. Första körning 12 okt 09:10 UTC –
+  kontrollera att den får GitHub-verktygen.
 - Supabase-token byts före ~6 dec 2026 (rutinen påminner 27 nov).
 - Ny rutin 11 okt: "Månatlig säkerhetsgenomgång Tömningskartan" (1:a i månaden
   07:27 svensk tid, rapport via push/mejl, pushar inget) – första körning 1 nov.

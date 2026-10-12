@@ -99,7 +99,9 @@ Android förberett (`docs/BUILD-MOBILE.md`).
 - **Claude-rutiner** (claude.ai → Rutiner, inte i repot): "Veckosvep
   Tömnmingskartan" (måndagar 05:15 UTC), "Veckorapport – nya/borttagna platser"
   (måndagar), "Månatlig säkerhetsgenomgång Tömningskartan" (1:a i månaden,
-  granskar och rapporterar, pushar inget), tokenpåminnelse. En rutin som ska pusha MÅSTE skapas i claude.ai/code → Rutiner
+  granskar och rapporterar, pushar inget), "Bevaka GitHub-issues" (var 3:e
+  timme in i sessionen Gråvatten 5: hanterar nya ärenden/platsförslag och
+  kommenterar), tokenpåminnelse. En rutin som ska pusha MÅSTE skapas i claude.ai/code → Rutiner
   → New routine med repot valt; rutiner skapade från en session får inget repo
   och kan inte pusha. Prompter skapade i webbgränssnittet kan inte ändras från en
   session – ge Per texten att klistra in.
