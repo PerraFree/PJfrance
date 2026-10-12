@@ -14,14 +14,6 @@ export function isGenericName(name: string): boolean {
   return GENERIC_NAME_RE.test(name.trim())
 }
 
-/** Namn som synken/appen satt efter en granne ("Vattenpåfyllning vid Lilla
- *  Camping") – svagare än platsens eget namn vid sammanslagning (granskning 8,
- *  12 okt 2026: en vattennod tog annars över campingens tömning och namn). */
-const DERIVED_NAME_RE = new RegExp(`^(${GENERIC_NAME_RE.source.slice(2, -2)}) vid \\S`)
-export function isDerivedName(name: string): boolean {
-  return DERIVED_NAME_RE.test(name.trim())
-}
-
 function distKm(a: { lat: number; lon: number }, b: { lat: number; lon: number }): number {
   const R = 6371
   const dLat = ((b.lat - a.lat) * Math.PI) / 180

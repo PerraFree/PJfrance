@@ -461,7 +461,7 @@ function placeKind(tags) {
     return 'Ställplats för husbil'
   if (tags.tourism === 'camp_site') return 'Camping'
   if (tags.leisure === 'golf_course') return 'Ställplats vid golfklubb'
-  if (tags.amenity === 'parking') return 'Ställplats (parkering för husbil)'
+  if (tags.amenity === 'parking') return 'Ställplats för husbil'
   if (tags.leisure === 'marina' || tags.mooring) return 'Gästhamn/marina'
   if (tags.shop === 'gas') return 'Gasolförsäljning'
   if (tags.amenity === 'fuel') return 'Drivmedelsstation'

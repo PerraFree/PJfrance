@@ -370,11 +370,11 @@ export default function App() {
     // Live-hämtade OSM-objekt saknar de namn synken räknat fram (ortsuppslag/
     // närliggande plats) – ta seedens namn för samma id så att det generiska
     // live-namnet inte vinner i dedupen bara för att det kommer först.
-    const seedNameById = new Map<string, string>()
-    for (const s of seedStations) if (!isGenericName(s.name)) seedNameById.set(s.id, s.name)
+    const seedNameById = new Map<string, Pick<Station, 'name' | 'nameFrom'>>()
+    for (const s of seedStations) if (!isGenericName(s.name)) seedNameById.set(s.id, { name: s.name, nameFrom: s.nameFrom })
     const live = osmStations.map((s) => {
       const better = isGenericName(s.name) ? seedNameById.get(s.id) : undefined
-      return better ? { ...s, name: better } : s
+      return better ? { ...s, ...better } : s
     })
     // Inom samma källprioritet vinner det som finns i seeden (live-kopian av
     // samma OSM-objekt räknas dit), sedan övriga live-objekt och sist rena
@@ -538,7 +538,9 @@ export default function App() {
   useEffect(() => {
     if (!sharedId || seedStations.length === 0) return
     const s = stations.find((x) => x.id === sharedId)
-    const own = s ? s.services.filter((sv) => ALL_SERVICES.includes(sv)) : []
+    // Även grå (obekräftade) tjänster – en plats med bara grått gråvatten syns
+    // på kartan och kan delas; mottagaren fick förut "hittades inte" (granskning 9).
+    const own = s ? [...s.services, ...unverifiedServicesOf(s)].filter((sv) => ALL_SERVICES.includes(sv)) : []
     if (!s || own.length === 0) {
       const community = sharedId.startsWith('community-')
       if (!communityDone && community) return
@@ -724,18 +726,30 @@ export default function App() {
     // Mora") – då ska ortsökningen gå, inte första bästa station (granskning
     // 12 okt 2026). En stationsträff gäller bara vid exakt namn, namn som
     // BÖRJAR med sökordet, eller när bara en station innehåller det.
-    const selectable = (s: Station) => s.services.some((sv) => ALL_SERVICES.includes(sv))
+    const kinds = (s: Station) => [...s.services, ...unverifiedServicesOf(s)].filter((sv) => ALL_SERVICES.includes(sv))
+    const selectable = (s: Station) => kinds(s).length > 0
+    // Hela ord: "Malmö" fick förut "Malmöns Camping" i Köping (469 km bort),
+    // "Berg" fick "Bergbetningen" – 16 av 290 kommunnamn hamnade i fel kommun
+    // (granskning 9, 12 okt 2026). Sökordet måste sluta vid en ordgräns.
+    const esc = ql.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const word = new RegExp(`(^|[^\\p{L}\\p{N}])${esc}(?![\\p{L}\\p{N}])`, 'u')
+    const startWord = new RegExp(`^${esc}(?![\\p{L}\\p{N}])`, 'u')
     const containing =
-      q.length >= 3 ? shownStations.filter((s) => selectable(s) && s.name.toLowerCase().includes(ql)) : []
+      q.length >= 3 ? shownStations.filter((s) => selectable(s) && word.test(s.name.toLowerCase())) : []
+    // Är sökordet ett kommunnamn gäller bara exakt platsnamn – annars ortsökning
+    // ("Stockholm" gav en plats i Huddinge).
+    const isKommun = stations.some((s) => s.kommun?.toLowerCase() === ql)
     const named =
       containing.find((s) => s.name.toLowerCase() === ql) ??
-      containing.find((s) => s.name.toLowerCase().startsWith(ql)) ??
-      (containing.length === 1 ? containing[0] : undefined)
+      (isKommun
+        ? undefined
+        : (containing.find((s) => startWord.test(s.name.toLowerCase())) ??
+          (containing.length === 1 ? containing[0] : undefined)))
     if (named) {
       // Slå på just den träffens kategori(er) så pinnen faktiskt visas,
       // även om användaren redan smalnat av filtren.
       setActiveFilters(
-        (prev) => new Set([...prev, ...named.services.filter((s) => ALL_SERVICES.includes(s))]),
+        (prev) => new Set([...prev, ...kinds(named)]),
       )
       ensureGasolFacilityFor(named)
       setFlyTo({ lat: named.lat, lon: named.lon, zoom: 14 })

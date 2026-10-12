@@ -4,7 +4,7 @@
 // hade generatorn en egen kopia som visade obekräftade tjänster som gröna
 // (granskning 7, 12 okt 2026). Ändra bara här.
 import type { ServiceType, Station } from '../types'
-import { isDerivedName, isGenericName } from './naming'
+import { isGenericName } from './naming'
 
 // "Gratis" = gratis för den som kör förbi. Förut räckte ordet "gratis" eller
 // "ingår" var som helst i texten, så "Gratis för gäster; genomresande 60 kr"
@@ -140,11 +140,14 @@ function mergeInto(target: Station, s: Station, fillOnly = false): void {
   // Ett riktigt namn slår alltid ett generiskt ("Tömningsstation"): en
   // namnlös tömningsnod 70 m från "Ställplats Skeda Strand" ska heta Skeda
   // Strand, inte "Tömningsstation" (Pers fältrapport sep 2026).
-  // Ett härlett namn ("Vattenpåfyllning vid X") slår inte grannens eget namn.
-  const weak = (n: string) => isGenericName(n) || isDerivedName(n)
-  if (weak(target.name) && !weak(s.name)) {
+  // Ett av synken härlett namn ("Sopstation vid Venjans Camping",
+  // nameFrom 'nearby') slår inte grannens eget namn (granskning 8). Bara
+  // synkens markering räknas – registrets egna "X vid Y"-namn vinner alltid.
+  const weak = (x: Station) => isGenericName(x.name) || x.nameFrom === 'nearby'
+  if (weak(target) && !weak(s)) {
     if (!target.description && isGenericName(target.name)) target.description = target.name
     target.name = s.name
+    target.nameFrom = s.nameFrom
   }
   // Tjänster som grannen tillför målet. Är grannens avgift okänd eller inte
   // gratis blir målet aldrig "Gratis" (Polarcirkeln 180 kr + rastplats).

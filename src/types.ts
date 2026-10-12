@@ -14,6 +14,10 @@ export type ServiceType =
 export interface Station {
   id: string
   name: string
+  /** Satt av synken när namnet är härlett: 'nearby' = "<Typ> vid <granne>",
+   *  'reverse' = efter ort. Ett härlett namn viker för grannens eget vid
+   *  sammanslagning (src/lib/merge.ts). */
+  nameFrom?: 'nearby' | 'reverse'
   lat: number
   lon: number
   services: ServiceType[]
