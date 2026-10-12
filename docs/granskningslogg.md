@@ -6,6 +6,54 @@ avsnitt per körning, nyast överst. Varje fynd: vad, bevis, åtgärd, och vilke
 **vakt** (automatisk kontroll) som nu hindrar att samma sorts fel kommer tillbaka.
 Regler hör hemma i CLAUDE.md, läget i `docs/STATUS.md` – här bara loggen.
 
+## 2026-10-12 – tredje granskningen (5 granskare + 2 rättningsagenter)
+
+Granskare: datakedjan synk→app, säkerhet runda 2, webbläsartest runda 2,
+OSM-/Trafikverket-data, drift och tysta fel. Plus Pers önskan: exakta lägen
+för gasolbutikerna och de nio registerparen inom 100 m.
+
+### Allvarligast
+| Fynd | Åtgärd | Vakt framåt |
+|---|---|---|
+| Appen blev en tom sida offline direkt efter varje uppdatering (sw.js raderade gamla JS innan nya hämtats) | JS/CSS cachas vid installation, föregående versions filer följer med, serverfel ger sparad kopia | Återskapat + verifierat i Chromium (granskarens test `swtest.cjs`) |
+| En trasig seed committades och stoppade ALLA deployer i upp till en vecka | `check-seed.mjs` körs i synken före commit + ärende `<!-- synk-seedkontroll -->` | sync-data.yml |
+| Ny taggregel (access=customers = privat) tog i första synken bort ~200 riktiga campingtömningar/ÅVC – upptäckt i efterkontrollen, rättad samma timme | Regeln borttagen | **Ny:** `check-seed-diff.mjs` stoppar synken om >25 OSM/TRV-platser med tömning/vatten/gasol försvinner (testad: hade stoppat, 52 > 25) |
+| `distinct` följde aldrig med till appen – undantag från 100 m-regeln slogs ihop ändå | Fältet skrivs till seeden; appen följer samma regel som check-register | – |
+
+### Säkerhet (35 PGlite-tester + test mot levande databas)
+- Ett foto kunde kopplas till hundratals platser → URL:en måste ligga i platsens egen mapp.
+- "Bekräftad av 20 användare" från en person → en bekräftelse/ett betyg per avsändare, plats och dygn (verifierat live: andra försöket nekas).
+- /48-nät kringgick /64-spärren → även /48 (IPv4 /24) räknas, 4× tak.
+- Spam kunde tränga undan riktiga bekräftelser/betyg (appen läste 5 000 senaste) → sammanställningsvyer.
+- Platsförslag med NaN-koordinater, tomt namn, 2D-listor → nekas i databasen.
+- Phishing via `www.` och osynliga styrtecken i Pers mejl → neutraliseras.
+- Bucketgräns 3 → 1 MB. onerror-attribut (stoppat av CSP) ersatt; skydd mot inbäddning.
+
+### Data
+- Rastplatser visade gråvatten (56 av 298) – Trafikverkets tar bara kassett → 0.
+- Nedlagda/privata platser, båttömning i marinor, industrigasbutiker, FTI-stationer som "ÅVC", BRF-/hundkärl som "sopor" → borta (båda tolkningsvägarna lika, 51 taggtester).
+- Trafikverket "tillfälligt stängd" → tjänsten grå (Tollered, Ljusdal).
+- Gratisfiltret: plats som fått en betald grannes ställplats räknas inte som gratis (−25).
+- Säsong/öppettider smittade mellan olika verksamheter; dricksvattennod gjorde grå plats grön; olika gasolbutiker slogs ihop (ÖoB fick automatens pris) → rättat.
+- Registerpar inom 100 m: Västanvik, Lökholmen, Malnbaden, Lögnäs, Ulricehamn ihop; Östersunds Stugby bort (fel läge); Borgholm Sunset/gästhamn distinct.
+- Exakta lägen: GasolAutomat City Gross + Plantagen Borås, Elgiganten + jem & fix Karlshamn (samma byggnad, distinct), Sikargården, Hästskär.
+
+### Drift
+- Trafikverket-felsvar (200 + ERROR) gav tyst 0 platser → räknas som fel, reserven används.
+- Gammal data såg färsk ut → `sources.osm/trafikverket {fresh, at, count, error}` i seeden; sajtvakten larmar efter 9 dagar.
+- deploy-vakt: ett nytt försök vid tillfälligt fel; ärendet stängs när det fungerar.
+- Ärendelistor pagineras; commons-felsvar cachas inte; namn-cachen kastade 28 riktiga ortnamn.
+
+### Kvar
+- Overpass svarade inte vid lägesuppslaget: Skurup och Eslöv (bara gatuläge),
+  Visby reningsverk, Östhammar, Stenungsunds BK, Färgelanda RK, Malmö City GK,
+  Strandstuviken, Stjärnfors (kaffestuga + golf), Klässbols gästhamn – står
+  kvar som osäkra/grå. Görs om när Overpass svarar (veckogranskningen).
+- Gotlandsregeln mot OSM: 10 OSM-tömningar på Gotland och 3 på Orust (bl.a.
+  Rastplats Såten) krockar med regeln i CLAUDE.md – kräver Pers fältkännedom
+  om regeln gäller campingarnas egna stationer.
+- 813 "Sopstation"-noder utan husbilstjänst inom 500 m (troligen bostadskärl).
+
 ## 2026-10-12 – andra granskningen (5 oberoende granskare)
 
 Granskare: ny kod (fientligt), datakvalitet i registret, leverantörskedja/

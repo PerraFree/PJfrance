@@ -80,7 +80,9 @@ Android förberett (`docs/BUILD-MOBILE.md`).
   --audit-level=high` slår larm, och efter bygget om sitemap/kommunsidor/CSP
   saknas. Kör vakterna lokalt före push. Synkar bara om rutan "synk" bockas i.
 - `sync-data.yml` – enda datasynken; vid push på synkskript/register + måndagar
-  03 UTC. Committar seed + cacher `[skip ci]` och dispatchar deployen. Stoppar
+  03 UTC. Kör `check-seed.mjs` + `check-seed-diff.mjs` FÖRE commit (trasig seed
+  eller stort bortfall publiceras inte, ärende `<!-- synk-seedkontroll -->`).
+  Committar seed + cacher `[skip ci]` och dispatchar deployen. Stoppar
   om registret är trasigt eller <95 % av posterna kommer med; registerposter
   som faller bort läggs i ett ärende (`<!-- register-bortfall -->`).
 - `deploy-vakt.yml` – var 15:e minut: startar deployen om grenens topp (inkl.
@@ -247,3 +249,15 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
   och räknar IPv6 per /64 via `inet` – strängdelning vid `:` gick att kringgå.
 - Delade länkar (`?at=`) och sparat kartläge valideras i `src/lib/view.ts` –
   en trasig länk kraschade förut hela appen.
+- **Varje ny taggregel i synken kontrolleras mot en riktig synk** (jämför
+  borttagna/ändrade platser mot förra seeden). `access=customers` tog 12 okt
+  bort ~200 riktiga campingtömningar och ÅVC – på campingar betyder det gäster.
+  `check-seed-diff.mjs` stoppar nu synken vid >25 försvunna tömning/vatten/
+  gasol; avsiktliga ändringar godkänns med `tillat_bortfall` vid manuell körning.
+- Service workern måste cacha JS/CSS vid installation och låta föregående
+  versions filer följa med – annars blir appen tom offline efter en uppdatering.
+- Gasolbutiker med olika namn är olika platser även i samma byggnad (`distinct`
+  i registret); Trafikverkets rastplatser tar bara kassett (inget gråvatten
+  utan uttrycklig OSM-tagg).
+- Bekräftelser och betyg: en per avsändare, plats och dygn i databasen; appen
+  läser sammanställningsvyerna `verification_summary`/`review_summary`.
