@@ -27,6 +27,11 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 ## Logg
 
+- **2026-10-12, registerhygien (session "Gråvatten 5"):** 23 par registerposter inom 60 m med gemensamt
+  namnled sammanslagna (t.ex. First Camp Skutberget/−Karlstad, First Camp Umeå/Nydala, Löderup,
+  Herrfallet, Kedumsvik, Doro Camp, 15 grå husbilsplats-kopior ovanpå bekräftade campingar). Appen
+  slog redan ihop dem inom 100 m, men dubbletterna gav fel vid kontrollsvepen (Böda/Ekerum/Gunnarsö).
+  Skript: `dedupe.mjs` i scratchpad (parlista för hand). Kvar: par >100 m med olika namn.
 - **2026-10-12, D (kontroll av befintliga platser) – Jönköpings + Kronobergs län (session "Gråvatten 5",
   vald själv):** 148 platser med tömning/vatten, 52 med egen webbplats; 38 valda (max 3 per kommun, 19
   kommuner, 29 register + 9 OSM), 4 agenter, 86 sökningar. **Utfall: 14 ok, 18 ändrade, 0 nedlagda, 6

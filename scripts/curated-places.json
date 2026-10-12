@@ -686,7 +686,7 @@
       "latrin",
       "stallplats"
     ],
-    "description": "7 platser, öppen året runt. Latrintömning i hamnen, servicehus och dusch. Källa: Simrishamns kommun. Kontroll okt 2026 (https://www.simrishamn.se/om-kommunen/ekonomi/taxor ; https://www.simrishamn.se/om-kommunen/hamnar): \"Taxor 2026: husbilsställplats Simrishamn och Skillinge – sommarsäsong (1 juni–31 augusti) 410 kr/dygn, vintersäsong 280 kr/dygn, \"kostnad per dygn exklusive el\"; \"I avgiften ingår tillgång till servicehus\"; \"Endast betalande ställplatsgäster har tillgång till faciliteter\"; \"I Simrishamns småbåtshamn finns latrintömnin…\"",
+    "description": "7 platser, öppen året runt. Latrintömning i hamnen, servicehus och dusch. Källa: Simrishamns kommun. Kontroll okt 2026 (https://www.simrishamn.se/om-kommunen/ekonomi/taxor ; https://www.simrishamn.se/om-kommunen/hamnar): \"Taxor 2026: husbilsställplats Simrishamn och Skillinge – sommarsäsong (1 juni–31 augusti) 410 kr/dygn, vintersäsong 280 kr/dygn, \"kostnad per dygn exklusive el\"; \"I avgiften ingår tillgång till servicehus\"; \"Endast betalande ställplatsgäster har tillgång till faciliteter\"; \"I Simrishamns småbåtshamn finns latrintömnin…\" Sammanslagen okt 2026 med dubblettposten \"Småbåtshamnen i Simrishamn\" (grå, ej primärkälla).",
     "url": "https://www.simrishamn.se/gata-park-och-natur/trafik/husbilar",
     "source": "egen",
     "fee": "410 kr/dygn sommar (1 jun–31 aug), 280 kr vinter, exkl. el (2026)",
@@ -951,7 +951,7 @@
     "services": [
       "stallplats"
     ],
-    "description": "Fem kommunala husbilsplatser med el, gångavstånd till centrum. Källa: Norrtälje kommun.",
+    "description": "Fem kommunala husbilsplatser med el, gångavstånd till centrum. Källa: Norrtälje kommun. Sammanslagen okt 2026 med dubblettposten \"Norrtälje Sportcentrum\" (grå, ej primärkälla).",
     "url": "https://www.norrtalje.se/info/trafik-gator-parker/resa-parkera-och-ladda/stallplatser/",
     "source": "egen"
   },
@@ -1482,7 +1482,7 @@
       "stallplats"
     ],
     "fee": "från 180 kr/natt",
-    "description": "22 elplatser nära Skrea strand, maj–sep. Latrin- och gråvattentömning. Källa: husbil.se.",
+    "description": "22 elplatser nära Skrea strand, maj–sep. Latrin- och gråvattentömning. Källa: husbil.se. Sammanslagen okt 2026 med dubblettposten \"Falkenbergs båtsällskap\" (grå, ej primärkälla).",
     "url": "https://www.husbil.se/stallplatser/p/336/",
     "source": "egen"
   },
@@ -1550,7 +1550,7 @@
       "latrin",
       "stallplats"
     ],
-    "description": "Ställplats med toalett och latrintömning. Källa: husbil.se.",
+    "description": "Ställplats med toalett och latrintömning. Källa: husbil.se. Sammanslagen okt 2026 med dubblettposten \"Varbergs innerhamn\" (grå, ej primärkälla).",
     "url": "https://www.husbil.se/stallplatser/p/37/",
     "source": "egen"
   },
@@ -4331,23 +4331,6 @@
     "source": "egen"
   },
   {
-    "name": "First Camp Skutberget",
-    "query": "First Camp Skutberget, Karlstad",
-    "services": [
-      "camping",
-      "stallplats",
-      "gravatten",
-      "latrin",
-      "vatten"
-    ],
-    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
-    "url": "https://firstcamp.se/destination/skutberget-karlstad/",
-    "source": "egen",
-    "nearLat": 59.36,
-    "nearLon": 13.4,
-    "maxKm": 20
-  },
-  {
     "name": "Årjäng SweCamp Resort Sommarvik",
     "lat": 59.3678286,
     "lon": 12.1396401,
@@ -4584,23 +4567,6 @@
     "maxKm": 20
   },
   {
-    "name": "First Camp Umeå",
-    "query": "First Camp Umeå, Umeå",
-    "services": [
-      "camping",
-      "stallplats",
-      "gravatten",
-      "latrin",
-      "vatten"
-    ],
-    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
-    "url": "https://firstcamp.se/destination/umea/",
-    "source": "egen",
-    "nearLat": 63.83,
-    "nearLon": 20.33,
-    "maxKm": 20
-  },
-  {
     "name": "Camp Ripan",
     "lat": 67.86052,
     "lon": 20.24338,
@@ -4715,7 +4681,7 @@
       "latrin",
       "vatten"
     ],
-    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
+    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats. Sammanslagen okt 2026 med dubblettposten \"Leksand Strand Camping & Resort\" (grå, ej primärkälla).",
     "url": "https://www.leksandresort.se/",
     "source": "egen",
     "nearLat": 60.72,
@@ -4892,24 +4858,6 @@
     "lon": 13.5358444
   },
   {
-    "name": "Löderups Strandbad Camping",
-    "query": "Löderups Strandbad Camping, Löderup",
-    "services": [
-      "camping",
-      "stallplats",
-      "gravatten",
-      "latrin",
-      "vatten"
-    ],
-    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
-    "url": "https://www.loderupsstrandbad.se/",
-    "source": "egen",
-    "nearLat": 55.38,
-    "nearLon": 14.05,
-    "maxKm": 20,
-    "website": "https://www.loderupsstrandbad.com/"
-  },
-  {
     "name": "Kiviks Familjecamping",
     "query": "Kiviks Familjecamping, Kivik",
     "services": [
@@ -5030,23 +4978,6 @@
     "source": "egen",
     "lat": 59.5456523,
     "lon": 13.342058
-  },
-  {
-    "name": "Herrfallets Camping",
-    "query": "Herrfallets Camping, Arboga",
-    "services": [
-      "camping",
-      "stallplats",
-      "gravatten",
-      "latrin",
-      "vatten"
-    ],
-    "description": "Fullservicecamping: tömning av gråvatten och latrin, färskvatten och platser för husbil/husvagn. Källa: anläggningens webbplats.",
-    "url": "https://www.herrfallet.se/",
-    "source": "egen",
-    "nearLat": 59.32,
-    "nearLon": 15.93,
-    "maxKm": 20
   },
   {
     "name": "Skantzö Bad & Camping",
@@ -5299,7 +5230,7 @@
       "latrin",
       "vatten"
     ],
-    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats. Sammanslagen okt 2026 med dubblettposten \"Mössebergs Camping\" (grå, ej primärkälla).",
     "url": "https://www.mossebergcamping.se/",
     "source": "egen"
   },
@@ -5494,19 +5425,22 @@
     "source": "egen"
   },
   {
-    "name": "Löderups Strandbads camping",
+    "name": "Löderups Strandbad Camping",
     "lat": 55.381719,
     "lon": 14.1291571,
     "services": [
       "camping",
       "gravatten",
-      "latrin"
+      "latrin",
+      "stallplats",
+      "vatten"
     ],
-    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats. Sammanslagen okt 2026 med dubblettposten \"Löderups Strandbad Camping\".",
     "url": "https://www.loderupscamping.se/",
     "source": "egen",
     "season": "seasonal",
-    "openingHours": "10 april–13 september (säsong 2026)"
+    "openingHours": "10 april–13 september (säsong 2026)",
+    "website": "https://www.loderupsstrandbad.com/"
   },
   {
     "name": "Nybrostrands camping",
@@ -5766,7 +5700,7 @@
       "latrin",
       "vatten"
     ],
-    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats. Sammanslagen okt 2026 med dubblettposten \"Ljugarns Semesterby & Camping\" (grå, ej primärkälla).",
     "url": "https://www.semesterby.se/",
     "source": "egen"
   },
@@ -5868,7 +5802,7 @@
       "vatten",
       "stallplats"
     ],
-    "description": "Källa (https://nynashamn.se/uppleva/boende--gasthamnar/husbilsplatser): \"Nynäshamns kommun: 'Nickstabadets camping: här kan du tömma grå- och svartvatten för 60 kr, i priset ingår påfyllning av färskvatten. Checka in i receptionen; tömningen sker ca 50 meter norr om receptionen.'\" Komplettering: avgift + var tömningen finns + att genomresande får tömma. Den grå dubbletten 'First Camp Nickstabadet' i existing kan slås ihop. Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats. First Camp: Latrintömning i samma byggnad som vandrarhem och reception, samt bakom servicehus 2; gråvattenavlopp i servicehus 1 Kontroll okt 2026 (https://firstcamp.se/destinationer/nickstabadet-nynashamn/camping): \"First Camp: 'Servicehus 1: WC, dusch, skötrum, kök, gråvattentömning'; 'Servicehus 2: ... latrintömning lös tank'; 'Latrintömning finns i samma byggnad som vandrarhemmet och receptionen. Även bakom servicehus 2.'; 'First Camp Nickstabadet – Nynäshamn är öppen året om.' Nynäshamns kommun: 'Du kan tömma ditt grå- och sv…\"",
+    "description": "Källa (https://nynashamn.se/uppleva/boende--gasthamnar/husbilsplatser): \"Nynäshamns kommun: 'Nickstabadets camping: här kan du tömma grå- och svartvatten för 60 kr, i priset ingår påfyllning av färskvatten. Checka in i receptionen; tömningen sker ca 50 meter norr om receptionen.'\" Komplettering: avgift + var tömningen finns + att genomresande får tömma. Den grå dubbletten 'First Camp Nickstabadet' i existing kan slås ihop. Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats. First Camp: Latrintömning i samma byggnad som vandrarhem och reception, samt bakom servicehus 2; gråvattenavlopp i servicehus 1 Kontroll okt 2026 (https://firstcamp.se/destinationer/nickstabadet-nynashamn/camping): \"First Camp: 'Servicehus 1: WC, dusch, skötrum, kök, gråvattentömning'; 'Servicehus 2: ... latrintömning lös tank'; 'Latrintömning finns i samma byggnad som vandrarhemmet och receptionen. Även bakom servicehus 2.'; 'First Camp Nickstabadet – Nynäshamn är öppen året om.' Nynäshamns kommun: 'Du kan tömma ditt grå- och sv…\" Sammanslagen okt 2026 med dubblettposten \"First Camp Nickstabadet\" (grå, ej primärkälla).",
     "url": "https://firstcamp.se/destinationer/nickstabadet-nynashamn",
     "source": "egen",
     "fee": "Tömning 60 kr inkl. färskvatten för genomresande; gratis för gäster",
@@ -6268,15 +6202,17 @@
     "source": "egen"
   },
   {
-    "name": "First Camp Nydala - Umeå",
+    "name": "First Camp Nydala – Umeå",
     "lat": 63.8438462,
     "lon": 20.3445644,
     "services": [
       "camping",
       "gravatten",
-      "latrin"
+      "latrin",
+      "stallplats",
+      "vatten"
     ],
-    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats. First Camp: Latrintömning på tre ställen på området; tömningsstation/ränna för fast tank till höger efter receptionen. Färskvattenkranar och avlopp intill campingtomterna.",
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats. First Camp: Latrintömning på tre ställen på området; tömningsstation/ränna för fast tank till höger efter receptionen. Färskvattenkranar och avlopp intill campingtomterna. Sammanslagen okt 2026 med dubblettposten \"First Camp Umeå\".",
     "url": "https://firstcamp.de/destination/nydala-umea/",
     "source": "egen",
     "fee": "Gratis för boende gäster; genomresande kan tömma och fylla för 60 kr/dag (från kl 12) enligt First Camp"
@@ -6453,7 +6389,7 @@
       "latrin",
       "vatten"
     ],
-    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats. rastplatserna.se/husbilsplats.se. \"Registret har redan \"Gäddede Camping & Stugby\" (64.505972/14.1483848) med gravatten+latrin+vatten, källa \"anläggningens webbplats\", PLUS en obekräftad dubblett \"Gäddede Camping och Stugby\" (query-baserad, unverified). In\" (https://husbilsplats.se/rest-area/gaddede-camping-och-stugby/)",
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats. rastplatserna.se/husbilsplats.se. \"Registret har redan \"Gäddede Camping & Stugby\" (64.505972/14.1483848) med gravatten+latrin+vatten, källa \"anläggningens webbplats\", PLUS en obekräftad dubblett \"Gäddede Camping och Stugby\" (query-baserad, unverified). In\" (https://husbilsplats.se/rest-area/gaddede-camping-och-stugby/) Sammanslagen okt 2026 med dubblettposten \"Gäddede Camping och Stugby\" (grå, ej primärkälla).",
     "url": "https://www.gaddedecamping.com/",
     "source": "egen",
     "confidence": "medium",
@@ -6685,7 +6621,7 @@
       "gravatten",
       "latrin"
     ],
-    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen. Sammanslagen okt 2026 med dubblettposten \"Stenrösets Camping\" (grå, ej primärkälla).",
     "source": "egen"
   },
   {
@@ -6711,7 +6647,7 @@
       "latrin",
       "vatten"
     ],
-    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen. Sammanslagen okt 2026 med dubblettposten \"Unda Camping & Stugby\" (grå, ej primärkälla).",
     "source": "egen"
   },
   {
@@ -6993,7 +6929,7 @@
       "latrin",
       "vatten"
     ],
-    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen. Sammanslagen okt 2026 med dubblettposten \"Billingens Stugby och Camping\" (grå, ej primärkälla).",
     "source": "egen"
   },
   {
@@ -7119,7 +7055,7 @@
       "latrin",
       "vatten"
     ],
-    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen. Sammanslagen okt 2026 med dubblettposten \"Strandstuvikens Camping\" (grå, ej primärkälla).",
     "source": "egen"
   },
   {
@@ -7334,7 +7270,7 @@
       "latrin",
       "vatten"
     ],
-    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: sammanställd information om anläggningen. Sammanslagen okt 2026 med dubblettposten \"Alfta Camping\" (grå, ej primärkälla).",
     "source": "egen"
   },
   {
@@ -13413,21 +13349,6 @@
     "website": "https://husbilskompisar.se/stallplatskartan/taernaby-camping"
   },
   {
-    "name": "Doro Camping Lappland",
-    "lat": 64.2574101,
-    "lon": 16.3910273,
-    "services": [
-      "camping"
-    ],
-    "unverifiedServices": [
-      "latrin",
-      "gravatten"
-    ],
-    "source": "egen",
-    "description": "Obekräftat (https://husbilsplats.se/rest-area/doro-camp-lapland/): \"husbilsplats.se 'Doro Camp Lapland': färskvatten, toalett, dusch, sopor samt tömning av gråvatten och latrin (kassett och tank). Endast husbilsplats.se → low. Dorotea kommun hade 0 tömningsplatser i appen.\"",
-    "website": "https://husbilsplats.se/rest-area/doro-camp-lapland/"
-  },
-  {
     "name": "Tjamstan Camping",
     "lat": 65.1829445,
     "lon": 18.7547457,
@@ -14344,23 +14265,6 @@
     "confidence": "low"
   },
   {
-    "name": "Gäddede Camping och Stugby",
-    "services": [
-      "latrin",
-      "gravatten",
-      "vatten",
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, färskvatten, toalett, dusch, kassettömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/rest-area/gaddede-camping-och-stugby",
-    "query": "Gäddede Camping och Stugby, Gäddede",
-    "nearLat": 64.506,
-    "nearLon": 14.1484,
-    "maxKm": 25
-  },
-  {
     "name": "Hoting – Europaväg 45",
     "services": [
       "stallplats"
@@ -14583,23 +14487,6 @@
     "query": "Karlsviks Herrgård, Rättvik",
     "nearLat": 60.8879,
     "nearLon": 15.1084,
-    "maxKm": 25
-  },
-  {
-    "name": "Leksand Strand Camping & Resort",
-    "services": [
-      "latrin",
-      "gravatten",
-      "vatten",
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, vatten, toalett, dusch, sopor, gråvatten-/svartvattentömning\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/rest-area/leksand-strand-camping-resort/",
-    "query": "Leksand Strand Camping & Resort, Leksand",
-    "nearLat": 60.7475,
-    "nearLon": 14.9729,
     "maxKm": 25
   },
   {
@@ -15005,20 +14892,6 @@
     "lon": 15.8289
   },
   {
-    "name": "Alfta Camping",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"20 platser el, servicehus\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://park4night.com/en/place/180092",
-    "query": "Alfta Camping, Alfta",
-    "nearLat": 61.3431,
-    "nearLon": 16.0476,
-    "maxKm": 25
-  },
-  {
     "name": "Citycamp Stockholm",
     "services": [
       "latrin",
@@ -15141,20 +15014,6 @@
     "maxKm": 25
   },
   {
-    "name": "First Camp Nickstabadet",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping vid strand. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/rest-area/first-camp-nickstabadet/",
-    "query": "First Camp Nickstabadet, Nynäshamn",
-    "nearLat": 58.9327,
-    "nearLon": 17.9431,
-    "maxKm": 25
-  },
-  {
     "name": "Nynäshamn – Centralgatan 93",
     "services": [
       "stallplats"
@@ -15189,20 +15048,6 @@
     "address": "Lommarvägen 42, 761 52 Norrtälje"
   },
   {
-    "name": "Norrtälje Sportcentrum",
-    "services": [
-      "stallplats"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"grusplan, el\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/locations/norrtalje-sportcentrum/",
-    "query": "Norrtälje Sportcentrum, Norrtälje",
-    "nearLat": 59.7496,
-    "nearLon": 18.778,
-    "maxKm": 25
-  },
-  {
     "name": "Mobolets Gård (bisonfarm)",
     "services": [
       "latrin",
@@ -15229,20 +15074,6 @@
     "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"50 kr/dygn\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
     "website": "https://husbilsplats.se/locations/dahlgrens-auto-stallplats/",
     "query": "Dahlgrens Auto Ställplats, Uppsala",
-    "nearLat": 59.8536,
-    "nearLon": 17.6874,
-    "maxKm": 25
-  },
-  {
-    "name": "Fyrishov Stugby och Camping",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping/stugby. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/rest-area/fyrishov-stugby-och-camping/",
-    "query": "Fyrishov Stugby och Camping, Uppsala",
     "nearLat": 59.8536,
     "nearLon": 17.6874,
     "maxKm": 25
@@ -15377,20 +15208,6 @@
     "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): ställplats vid bad. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
     "website": "https://husbilsplats.se/locations/sibrobadet-stallplats/",
     "query": "Sibrobadet ställplats, Nyköping",
-    "nearLat": 58.7465,
-    "nearLon": 17.0112,
-    "maxKm": 25
-  },
-  {
-    "name": "Strandstuvikens Camping",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/locations/strandstuvikens-camping/",
-    "query": "Strandstuvikens Camping, Nyköping",
     "nearLat": 58.7465,
     "nearLon": 17.0112,
     "maxKm": 25
@@ -15750,34 +15567,6 @@
     "maxKm": 25
   },
   {
-    "name": "Stenrösets Camping",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/locations/stenrosets-camping/",
-    "query": "Stenrösets Camping, Trollhättan",
-    "nearLat": 58.2935,
-    "nearLon": 12.3009,
-    "maxKm": 25
-  },
-  {
-    "name": "Billingens Stugby och Camping",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se + park4night.com, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se + park4night.com/en/place/357532",
-    "query": "Billingens Stugby och Camping, Skövde",
-    "nearLat": 58.3952,
-    "nearLon": 13.89,
-    "maxKm": 25
-  },
-  {
     "name": "Skövde Golfklubb ställplats",
     "services": [
       "stallplats"
@@ -15834,20 +15623,6 @@
     "maxKm": 25
   },
   {
-    "name": "Unda Camping & Stugby",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/rest-area/unda-camping-stugby/",
-    "query": "Unda Camping & Stugby, Uddevalla",
-    "nearLat": 58.3502,
-    "nearLon": 11.859,
-    "maxKm": 25
-  },
-  {
     "name": "Kloster Marina",
     "services": [
       "stallplats"
@@ -15874,26 +15649,6 @@
     "nearLat": 58.5106,
     "nearLon": 13.1851,
     "maxKm": 25
-  },
-  {
-    "name": "Ställplats Kedumsvik",
-    "services": [
-      "gravatten",
-      "latrin",
-      "vatten",
-      "stallplats"
-    ],
-    "source": "egen",
-    "description": "Källa (https://kedumsvik.se/st%C3%A4llplats): \"15 platser med el direkt vid Kedums kanal med egen brygga och grillplats. Platserna har el och dricksvatten; toalett, dusch, pentry och tvättmaskin i byggnad 150 meter bort. Öppet året runt, gråvattentömning och toalettömning finns.\" Saknas helt i existing. Husbil.se listar den under Vara men läget vid Tun/Kedums kanal kan ligga i Lidköpings kommun – kontrollera kommun efter geokodning. Koordinat saknas: husbil.se/stallplatser/p/732/ och lakevanern.se/plats/kedumsvik/ har troligen GPS. Citat återgivet från söksammanfattning av kedumsvik.se – kontrollera ordalydelsen. Obekräftad plats (husbilsplats.se, ej primärkälla): ställplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://www.kedumsvik.se/",
-    "query": "Ställplats Kedumsvik, Vara",
-    "nearLat": 58.25987,
-    "nearLon": 13.0815,
-    "maxKm": 30,
-    "fee": "Från 150 kr/natt (husbil.se); kanotuthyrning 250/300/400 kr",
-    "address": "Kedumsvik, vid Kedums kanal mot Vänern; väg 2559 Lidköping–Grästorp via Örslösa och Tun, 17 km från Lidköping",
-    "season": "year-round",
-    "confidence": "high"
   },
   {
     "name": "Spikens fiskeläge",
@@ -15980,20 +15735,6 @@
     "maxKm": 25
   },
   {
-    "name": "Mössebergs Camping",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se (nämnd i sökresultat), ej primärkälla): camping. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se (nämnd i sökresultat)",
-    "query": "Mössebergs Camping, Falköping",
-    "nearLat": 58.1553,
-    "nearLon": 13.5357,
-    "maxKm": 25
-  },
-  {
     "name": "Varbergs Fästning",
     "services": [
       "stallplats"
@@ -16033,20 +15774,6 @@
     "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): tömningsstation. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
     "website": "https://husbilsplats.se/rest-area/tomningsplats-varberg/",
     "query": "Tömningsplats Varberg, Varberg",
-    "nearLat": 57.1202,
-    "nearLon": 12.2763,
-    "maxKm": 25
-  },
-  {
-    "name": "Varbergs innerhamn",
-    "services": [
-      "stallplats"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (park4night.com, ej primärkälla): bokning via QR. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://park4night.com/en/place/37359",
-    "query": "Varbergs innerhamn, Varberg",
     "nearLat": 57.1202,
     "nearLon": 12.2763,
     "maxKm": 25
@@ -16107,20 +15834,6 @@
     "lon": 12.1098,
     "phone": "0300-566 350",
     "confidence": "low"
-  },
-  {
-    "name": "Falkenbergs båtsällskap",
-    "services": [
-      "stallplats"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se + park4night.com, ej primärkälla): båtsällskap/ställplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se + park4night.com/de/place/144297 (matchande adress)",
-    "query": "Falkenbergs båtsällskap, Falkenberg",
-    "nearLat": 56.8929,
-    "nearLon": 12.5006,
-    "maxKm": 25
   },
   {
     "name": "Hule Gård",
@@ -16543,35 +16256,6 @@
     "confidence": "high"
   },
   {
-    "name": "Ljugarns Semesterby & Camping",
-    "services": [
-      "vatten",
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"el, färskvatten, wc, dusch, avfall\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/rest-area/ljugarns-semesterby-camping/",
-    "query": "Ljugarns Semesterby & Camping, Ljugarn",
-    "nearLat": 57.3415,
-    "nearLon": 18.7179,
-    "maxKm": 25
-  },
-  {
-    "name": "Camping Visby Strandby",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (park4night.com, ej primärkälla): \"63 platser, alla el, servicehus\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://park4night.com/en/place/210328",
-    "query": "Camping Visby Strandby, Visby",
-    "nearLat": 57.6352,
-    "nearLon": 18.3156,
-    "maxKm": 25
-  },
-  {
     "name": "Visby – 2 Färjeleden",
     "services": [
       "stallplats"
@@ -16689,20 +16373,6 @@
     "maxKm": 25
   },
   {
-    "name": "Småbåtshamnen i Simrishamn",
-    "services": [
-      "stallplats"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (husbilsplats.se, ej primärkälla): \"7 platser, el\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://husbilsplats.se/rest-area/smabatshamnen-i-simrishamn/",
-    "query": "Småbåtshamnen i Simrishamn, Simrishamn",
-    "nearLat": 55.559,
-    "nearLon": 14.3524,
-    "maxKm": 25
-  },
-  {
     "name": "Helsingborgs Bryggeri – Oxhallen",
     "services": [
       "stallplats"
@@ -16787,20 +16457,6 @@
     "description": "Obekräftad plats (park4night.com, ej primärkälla): \"9–16 5 kr/h, fri övrig tid\". Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
     "website": "https://park4night.com/en/place/39693",
     "query": "Karlskrona centrum, Karlskrona",
-    "nearLat": 56.2004,
-    "nearLon": 15.6368,
-    "maxKm": 25
-  },
-  {
-    "name": "First Camp Skönstavik",
-    "services": [
-      "camping"
-    ],
-    "source": "egen",
-    "unverified": true,
-    "description": "Obekräftad plats (park4night (sökträff), ej primärkälla): campingkedja, fullservice. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen.",
-    "website": "https://park4night (sökträff)",
-    "query": "First Camp Skönstavik, Karlskrona",
     "nearLat": 56.2004,
     "nearLon": 15.6368,
     "maxKm": 25
@@ -17714,7 +17370,7 @@
     ],
     "source": "egen",
     "fee": "Gratis för boende gäster; genomresande kan tömma och fylla för 60 kr/dag (från kl 12) enligt First Camp",
-    "description": "First Camp: Latrintömning strax till vänster om receptionen (enligt kartan)"
+    "description": "First Camp: Latrintömning strax till vänster om receptionen (enligt kartan) Sammanslagen okt 2026 med dubblettposten \"First Camp Skönstavik\" (grå, ej primärkälla)."
   },
   {
     "name": "First Camp Mölle – Höganäs",
@@ -17919,7 +17575,7 @@
     "description": "First Camp: lös tank i alla servicehus; fast tank vid Norra och Östra servicehuset"
   },
   {
-    "name": "First Camp Skutberget-Karlstad",
+    "name": "First Camp Skutberget – Karlstad",
     "lat": 59.3741669,
     "lon": 13.3874037,
     "services": [
@@ -17931,7 +17587,7 @@
     ],
     "source": "egen",
     "fee": "Gratis för boende gäster; genomresande kan tömma och fylla för 60 kr/dag (från kl 12) enligt First Camp",
-    "description": "First Camp: latrin i servicehus 1 och i separat byggnad vid 400-området; fast tank bakom servicehus 1"
+    "description": "First Camp: latrin i servicehus 1 och i separat byggnad vid 400-området; fast tank bakom servicehus 1 Sammanslagen okt 2026 med dubblettposten \"First Camp Skutberget\"."
   },
   {
     "name": "Nordic camping Nora",
@@ -19253,14 +18909,18 @@
     "website": "https://husbilskompisar.se/service/990-industrigatan-arboga-tomningsstation"
   },
   {
-    "name": "Camping vid Herrfallets Camping",
+    "name": "Herrfallets Camping",
     "lat": 59.2740013,
     "lon": 15.8575974,
     "services": [
-      "camping"
+      "camping",
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
     ],
     "source": "egen",
-    "description": "rastplatserna.se/husbilsplats.se. \"Hällarnas camping i Arboga – camping med utrustning för att tömma latrin från kassett\" (https://husbilsplats.se/rest-area/hallarnas-camping/)",
+    "description": "rastplatserna.se/husbilsplats.se. \"Hällarnas camping i Arboga – camping med utrustning för att tömma latrin från kassett\" (https://husbilsplats.se/rest-area/hallarnas-camping/) Sammanslagen okt 2026 med dubblettposten \"Herrfallets Camping\".",
     "unverifiedServices": [
       "latrin"
     ]
@@ -19555,7 +19215,7 @@
       "camping"
     ],
     "source": "egen",
-    "description": "Källa (https://doro.camp/en/facilities/): \"tömningsplats för kemtoalettavfall på bottenvåningen i bad-/servicebyggnaden; 'beroende på vädret är toalettbyggnaden i maj och september antingen helt eller delvis öppen eller stängd' (söksammandrag)\" Verifierad okt 2026 (område C).",
+    "description": "Källa (https://doro.camp/en/facilities/): \"tömningsplats för kemtoalettavfall på bottenvåningen i bad-/servicebyggnaden; 'beroende på vädret är toalettbyggnaden i maj och september antingen helt eller delvis öppen eller stängd' (söksammandrag)\" Verifierad okt 2026 (område C). Sammanslagen okt 2026 med dubblettposten \"Doro Camping Lappland\".",
     "address": "Storgatan 1A, Dorotea",
     "confidence": "medium",
     "website": "https://doro.camp/en/campground/",
@@ -24800,7 +24460,7 @@
       "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://visbystrandby.se/wp-content/uploads/2023/09/Omradeskarta-Visby-Strandby.pdf): \"Områdeskartan markerar latrintömning och gråvattentömning på Norderstrand\" Verifierad okt 2026 (område C).",
+    "description": "Källa (https://visbystrandby.se/wp-content/uploads/2023/09/Omradeskarta-Visby-Strandby.pdf): \"Områdeskartan markerar latrintömning och gråvattentömning på Norderstrand\" Verifierad okt 2026 (område C). Sammanslagen okt 2026 med dubblettposten \"Camping Visby Strandby\" (grå, ej primärkälla).",
     "website": "https://visbystrandby.se/boende-visby/husbil/",
     "address": "Snäckgärdsvägen 32, 621 41 Visby",
     "confidence": "medium"
@@ -26845,7 +26505,7 @@
       "stallplats",
       "vatten"
     ],
-    "description": "Kontrollpost okt 2026 ovanpå OSM-objektet (https://www.openstreetmap.org/way/606501855). Kontroll okt 2026 (https://kedumsvik.se/st%C3%A4llplats): \"kedumsvik.se/ställplats: 'El, dusch, toalett, pentry, tvättmaskin, dricksvatten, gråvattentömning och latrintömning finns.' 'Vid ställplatserna finns el och dricksvatten. Toalett, dusch, pentry och tvättmaskin finns i en byggnad 150 m bort.' 15 platser med el, 250 kr/natt inkl. el, öppet året runt. Adress Norra Kedum …\"",
+    "description": "Kontrollpost okt 2026 ovanpå OSM-objektet (https://www.openstreetmap.org/way/606501855). Kontroll okt 2026 (https://kedumsvik.se/st%C3%A4llplats): \"kedumsvik.se/ställplats: 'El, dusch, toalett, pentry, tvättmaskin, dricksvatten, gråvattentömning och latrintömning finns.' 'Vid ställplatserna finns el och dricksvatten. Toalett, dusch, pentry och tvättmaskin finns i en byggnad 150 m bort.' 15 platser med el, 250 kr/natt inkl. el, öppet året runt. Adress Norra Kedum …\" Sammanslagen okt 2026 med dubblettposten \"Ställplats Kedumsvik\".",
     "source": "egen",
     "lat": 58.4816336,
     "lon": 12.8911946,
@@ -26853,7 +26513,8 @@
     "confidence": "high",
     "fee": "250 kr/natt inklusive el (kedumsvik.se)",
     "openingHours": "Öppet året runt",
-    "season": "year-round"
+    "season": "year-round",
+    "address": "Kedumsvik, vid Kedums kanal mot Vänern; väg 2559 Lidköping–Grästorp via Örslösa och Tun, 17 km från Lidköping"
   },
   {
     "name": "Dalbergså Camping och Gästhamn",
@@ -27097,7 +26758,7 @@
       "camping",
       "stallplats"
     ],
-    "description": "Kontrollpost okt 2026 ovanpå OSM-objektet (https://www.openstreetmap.org/way/296746219). Kontroll okt 2026 (https://destinationuppsala.se/bo/campingplatser-i-uppland/): \"Destination Uppsala (campingplatser i Uppland): 'för latrintömning och färskvattenpåfyllning hänvisar vi till Fyrishovs stugby och camping'. fyrishov.se: 'ställplatser för husbil och husvagn med eller utan el inkl. servicehus'; engelska sidan: service building has 'kitchen, shower, toilet, laundry and sewage disposal'…\"",
+    "description": "Kontrollpost okt 2026 ovanpå OSM-objektet (https://www.openstreetmap.org/way/296746219). Kontroll okt 2026 (https://destinationuppsala.se/bo/campingplatser-i-uppland/): \"Destination Uppsala (campingplatser i Uppland): 'för latrintömning och färskvattenpåfyllning hänvisar vi till Fyrishovs stugby och camping'. fyrishov.se: 'ställplatser för husbil och husvagn med eller utan el inkl. servicehus'; engelska sidan: service building has 'kitchen, shower, toilet, laundry and sewage disposal'…\" Sammanslagen okt 2026 med dubblettposten \"Fyrishov Stugby och Camping\" (grå, ej primärkälla).",
     "source": "egen",
     "lat": 59.8715092,
     "lon": 17.6168842,

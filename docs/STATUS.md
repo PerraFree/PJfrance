@@ -13,7 +13,7 @@ händer igen: `git fetch origin <gren>` + `git merge --no-ff` + verifiera seeden
 
 ## Status
 
-- **Live:** ~6 640 platser (OSM ~4 620, Trafikverket 318, registret 1 704 poster
+- **Live:** ~6 640 platser (OSM ~4 620, Trafikverket 318, registret 1 681 poster
   varav ~330 grå/obekräftade). Alla deployer gröna, inget ligger ocommittat.
 - **Säkerhet:** Johans säkerhetsrådgivning GHSA-72p3-7774-p8h3 (4 fynd) är
   åtgärdad och verifierad mot den levande databasen 11 okt. Per har svarat Johan.
@@ -30,6 +30,10 @@ händer igen: `git fetch origin <gren>` + `git merge --no-ff` + verifiera seeden
   Webben är i stort sett uttömd för nya platser – nästa metod är crowdsourcing.
 - **UI senast:** bottenarket följer fingret vid drag, strecket = bara kartan/
   tillbaka, baskartan byter till OSM om leverantören tiger. sw.js v86.
+- **Registerhygien:** 23 dubblettpar (samma plats inom 60 m, grå kopia eller
+  gammal query-post ovanpå exakt post) sammanslagna 12 okt; kvar att se över:
+  Stjärnfors GK/Kaffestuga, Luleå Norra hamnen/Husvagnscenter (samma geokod),
+  Varbergs GK Östra/Västra (samma geokod).
 - **Synk:** när Overpass är nere återanvänds förra seedens OSM-stationer, numera
   filtrerade mot `EXCLUDED_OSM_ELEMENTS` (fix 12 okt, commit b921393).
 
