@@ -184,11 +184,6 @@
   "lon": 13.4459533,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Axvalls IF idrottsplats, Axvall, Skara kommun": {
-  "lat": 58.3922327,
-  "lon": 13.5788038,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Bangårdsgatan 1, 553 03 Jönköping": {
   "lat": 57.7680814,
   "lon": 14.1730733,
@@ -747,11 +742,6 @@
  "Engelbrektsgatan 113, Trelleborg": {
   "lat": 55.3749253,
   "lon": 13.1761629,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Engesbergs Camping, Gävle": {
-  "lat": 60.7305644,
-  "lon": 17.291702,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Enköpings": {
@@ -1464,6 +1454,11 @@
   "lon": 13.1615876,
   "at": "2026-10-11T12:56:15.644Z"
  },
+ "Himle golfbana, Varberg": {
+  "lat": 57.0835606,
+  "lon": 12.3165635,
+  "at": "2026-10-12T08:47:49.570Z"
+ },
  "Himnavägen 155, Linghem": {
   "lat": 58.4271738,
   "lon": 15.78167,
@@ -1542,11 +1537,6 @@
  "Husbilsparkering västra Kungsholmen, Stockholm": {
   "lat": 59.3295459,
   "lon": 18.0114591,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Husvagnscenter i Luleå, Luleå": {
-  "lat": 65.5839322,
-  "lon": 22.1507123,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Hyltevägen, Landeryd, Hylte kommun": {
@@ -2009,6 +1999,12 @@
   "lon": 16.1654267,
   "at": "2026-10-11T12:56:15.644Z"
  },
+ "Kronholmen, Västerhejde": {
+  "lat": 57.4454975,
+  "lon": 18.1285129,
+  "at": "2026-10-12T08:47:46.973Z",
+  "from": "prev-seed"
+ },
  "Krontallsvägen 24B, Falun": {
   "lat": 60.5763091,
   "lon": 15.6134821,
@@ -2350,11 +2346,6 @@
   "lon": 18.4061381,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Luossavaara Fritidsområde, Kiruna": {
-  "lat": 67.8753333,
-  "lon": 20.2219722,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Lyckorna Golfklubb, Uddevalla": {
   "lat": 58.1987862,
   "lon": 11.9016243,
@@ -2668,11 +2659,6 @@
  "Norra Backagatan 8, Borlänge": {
   "lat": 60.4794798,
   "lon": 15.418231,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Norra hamnen i Luleå, Luleå": {
-  "lat": 65.5839322,
-  "lon": 22.1507123,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Norra vägen 10, Sundsvall": {
@@ -3560,11 +3546,6 @@
   "lon": 16.5120527,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Strömstad Camping, Strömstad": {
-  "lat": 58.9297943,
-  "lon": 11.1787,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Ställdalen, Ljusnarsberg": {
   "lat": 59.9347572,
   "lon": 14.9457683,
@@ -3810,11 +3791,6 @@
   "lon": 11.6510161,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Tobo Golfklubb, Tobo, Hultsfreds kommun": {
-  "lat": 57.576815,
-  "lon": 15.8109958,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Topplocksgatan 15, Malmö": {
   "lat": 55.596031,
   "lon": 13.0980813,
@@ -4055,11 +4031,6 @@
   "lon": 12.2400065,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Varbergs Golfklubb Västra, Varberg": {
-  "lat": 57.0566474,
-  "lon": 12.3499617,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Varbergs Golfklubb, Varberg": {
   "lat": 57.0566474,
   "lon": 12.3499617,
@@ -4188,11 +4159,6 @@
  "Vinön, Örebro": {
   "lat": 59.1948811,
   "lon": 15.7197712,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Visby Golfklubb, Gotland": {
-  "lat": 57.4454975,
-  "lon": 18.1285129,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Vist Kyrkväg 1, Ulricehamn": {
