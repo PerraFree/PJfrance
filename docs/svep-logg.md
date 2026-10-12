@@ -11,7 +11,7 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 | A. Tömning latrin/gråvatten | Kommuner med 0–1 tömningsplatser: kommunsidor, turistråd, anläggningars egna sajter. Kompletteringar av befintliga camping-/ställplatsposter räknas. | 2026-10-05 |
 | B. Gasol byte/påfyllning + priser | Kedjornas butikssidor (Byggmax/Granngården/Rusta/ÖoB per butik), Norbro-/Linde-/gasolautomat.se-listor, lokala påfyllningsbolag, priser. Bara 10/11 kg-flaskor (P11/PA11/PC10/PK10). | 2026-09-28 |
 | C. Obekräftade platser: verifiera + fyll på | (1) Sök primärkälla för de OBEKRÄFTADE posterna i registret (`unverified: true` / `unverifiedServices`) – får de citat: ta bort obekräftat-flaggan. (2) Gör om lovande rader i `docs/kandidatplatser-husbilsplats-park4night.md` (tydlig tjänst + ort) till obekräftade registerposter så de syns grått på kartan. | 2026-10-12 |
-| D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. Uppdrag + import: `scripts/import-tools/UPPDRAG-kontroll.md`, `apply-kontroll.mjs`. Körda regioner: Västra Götaland (11 okt), Skåne (12 okt), Stockholm/Uppsala/Södermanland (12 okt). Nästa: Halland, Småland, sedan Mellansverige/Norr. | 2026-10-12 |
+| D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. Uppdrag + import: `scripts/import-tools/UPPDRAG-kontroll.md`, `apply-kontroll.mjs`. Körda regioner: Västra Götaland (11 okt), Skåne (12 okt), Stockholm/Uppsala/Södermanland (12 okt), Halland + Kalmar län (12 okt). Nästa: Jönköping/Kronoberg, sedan Mellansverige/Norr. | 2026-10-12 |
 | E. Öppettider + vinterstängt | Platser med tömning/vatten som saknar `openingHours`/`season`: hämta säsong ("1 maj–30 sep", "vinterstängt", "året runt") från kommun-/anläggningssida. Skriv `season: 'seasonal'`/`'year-round'` + `openingHours`. Prioritera kommunala tömningsstationer och Trafikverkets rastplatser med vattenavstängning. | 2026-09-28 |
 
 ## Regler som alltid gäller
@@ -27,6 +27,22 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 ## Logg
 
+- **2026-10-12, D (kontroll av befintliga platser) – Halland + Kalmar län (session "Gråvatten 5",
+  vald själv):** 190 platser med tömning/vatten, 91 med egen webbplats; 46 valda (max 3 per kommun, 17
+  kommuner, 35 register + 11 OSM), 4 agenter, 114 sökningar, inga kvotfel. **Utfall: 24 ok, 17
+  ändrade, 0 nedlagda, 5 oklara.** Viktigast: **Ställplats Stenhamra Västervik** var en sammanblandning
+  – Stenhamra är en vanlig parkering (max 24 h, ingen service), tjänsterna i texten gällde kommunens
+  **Ställplats Järnet** (ny post, query-baserad); **Kungsbacka Marios gata**: vattenkiosken är för
+  tankbilar med nyckel → färskvatten grått; **fyra "First Camp"-poster som lämnat kedjan** rättade (Böda
+  Sand, Mellbystrands Camping, Skrea Camping – nya namn/länkar) och tre som ÄR First Camp döpta om
+  (Ekerum, Gunnarsö, Stensö); **Bua hamn** +gråvatten/ställplats (hamnens egen sajt, tömning ingår);
+  Lögnäs +vatten, Kaffetorpet +latrin (kontrollposter); Rörvik säsong 1 maj–31 aug (OSM sa året runt);
+  Målilla säsong; ~25 poster med nya avgifter/säsonger. Dubbletter sammanslagna: Böda Sand/Böda Sand
+  Beach Resort, Ekerum/Ekerums Camping & Stugor, Gunnarsö/First Camp Gunnarsö (grå), Broakulla (grå).
+  **Kvar/oklart:** Havslätt, Långsjön, Välenbadet (OSM; sajterna tysta om tömning), Gullbrannagården,
+  Apelviken (tomter med VA, ingen uttrycklig tömningsstation). Tips från kalmar.se: latrintömning +
+  dricksvatten vid rastplatsen Kalmar Dämme (ej kontrollerat mot registret). Jönköping/Kronoberg (43
+  platser med webbplats) återstår – körs nästa gång.
 - **2026-10-12, D (kontroll av befintliga platser) – Stockholms, Uppsala och Södermanlands län
   (session "Gråvatten 5", vald själv):** 140 platser med tömning/vatten i de tre länen, 44 med egen
   webbplats (aggregatorer husbil.se/stallplatserna.se räknas bort); 39 valda (max 3 per kommun, 23
