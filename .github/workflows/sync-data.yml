@@ -6,6 +6,11 @@ name: Synka stationsdata till repot
 # själv synkar inte längre – den tar bara den committade filen.
 on:
   workflow_dispatch:
+    inputs:
+      tillat_bortfall:
+        description: 'Godkänn ett stort bortfall av tömning/vatten/gasol jämfört med förra seeden (bara efter granskning av listan i ärendet)'
+        type: boolean
+        default: false
   push:
     branches:
       - claude/gravatten-latrin-app-sverige-aed0qg
@@ -45,7 +50,12 @@ jobs:
       # en vecka. Nu stoppas den här, innan commit, och ett ärende öppnas.
       - name: Kontrollera seeden före commit
         id: seedcheck
-        run: node scripts/check-seed.mjs
+        run: |
+          node scripts/check-seed.mjs
+          node scripts/check-seed-diff.mjs
+        env:
+          SEED_DIFF: seed-bortfall.txt
+          TILLAT_BORTFALL: ${{ inputs.tillat_bortfall }}
       - name: Committa uppdaterad seed-fil
         id: commit
         run: |
@@ -96,7 +106,12 @@ jobs:
               return
             }
             const url = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`
-            const body = `${marker}\nDatasynken ${new Date().toISOString().slice(0, 16)} UTC fick en seed som inte klarar kontrollen (för få platser från en källa eller trasiga poster) och publicerade den INTE – sajten visar förra veckans data tills nästa synk lyckas.\n\nKörning: ${url}\n\n_Ärendet stängs automatiskt när en synk går igenom. Vanligaste orsaken: Overpass eller Trafikverket svarade bara delvis – kör "Synka stationsdata" igen om en stund._`
+            const fs = require('fs')
+            const esc = (t) => String(t ?? '').replace(/[[\]()<>`*_@#|]/g, ' ')
+            const diff = fs.existsSync('seed-bortfall.txt') ? fs.readFileSync('seed-bortfall.txt', 'utf8').split('\n').filter(Boolean) : []
+            const body = `${marker}\nDatasynken ${new Date().toISOString().slice(0, 16)} UTC fick en seed som inte klarar kontrollen och publicerade den INTE – sajten visar förra data tills nästa synk lyckas. Antingen för få platser från en källa, trasiga poster, eller att många platser med tömning/vatten/gasol försvann på en gång (se listan).\n\nKörning: ${url}\n\n` +
+              (diff.length ? `Försvunna/ändrade platser (${diff.length}):\n` + diff.slice(0, 120).map(esc).join('\n') + '\n\n' : '') +
+              `_Ärendet stängs automatiskt när en synk går igenom. Delvis svar från Overpass/Trafikverket: kör "Synka stationsdata" igen om en stund. Avsiktlig ändring (t.ex. ny taggregel): granska listan och kör synken manuellt med rutan "tillat_bortfall"._`
             if (mine) await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, body })
             else await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title: 'Datasynken stoppade en trasig seed', body, labels: ['backlog', 'prio-1'] })
       - name: Rapportera registerposter som föll bort
