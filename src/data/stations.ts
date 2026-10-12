@@ -1,27 +1,11 @@
 import type { Station } from '../types'
 
 /**
- * Eget register: platser som inte finns (eller är dåligt taggade) i OpenStreetMap.
- * Lägg till nya platser här tills ett admin-gränssnitt/backend finns.
+ * Hårdkodade platser i appen. Tom med flit: allt eget ligger i registret
+ * (scripts/curated-places.json) med källa, id-regler och förlustvakter.
+ * De två gamla posterna härifrån togs bort 12 okt 2026 (granskning 8):
+ * "Ställplats Nynäshamns gästhamn" (registret har tagit bort gästhamnen –
+ * båttömning, kommunen: olämplig för husbilar) och "Circle K Gnesta" (ingen
+ * källa). Lägg inte till platser här – använd registret.
  */
-export const OWN_STATIONS: Station[] = [
-  {
-    id: 'egen-1',
-    name: 'Ställplats Nynäshamns gästhamn',
-    lat: 58.9036,
-    lon: 17.9481,
-    services: ['gravatten', 'latrin', 'vatten'],
-    source: 'egen',
-    description: 'Ställplats med servicehus, latrintömning och färskvatten.',
-    fee: 'Avgift ingår i ställplatsavgiften',
-  },
-  {
-    id: 'egen-2',
-    name: 'Circle K Gnesta – husbilsservice',
-    lat: 59.048,
-    lon: 17.3078,
-    services: ['gravatten', 'latrin', 'vatten'],
-    source: 'egen',
-    description: 'Tömningsstation för husbil vid drivmedelsstation.',
-  },
-]
+export const OWN_STATIONS: Station[] = []

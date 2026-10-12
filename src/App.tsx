@@ -629,10 +629,17 @@ export default function App() {
   const hadFiltersRef = useRef(false)
   useEffect(() => {
     const has = activeFilters.size > 0
-    if (has && !hadFiltersRef.current && lastBoundsRef.current) {
-      handleBoundsChange(lastBoundsRef.current.bounds, lastBoundsRef.current.zoom)
-    }
+    const first = has && !hadFiltersRef.current
     hadFiltersRef.current = has
+    const seen = lastBoundsRef.current
+    if (!first || !seen) return
+    // "Sök där jag är"/sökning slår på kategorier OCH flyger iväg – vänta
+    // tills flygningen hunnit landa; har kartan rört sig sköter landningen
+    // hämtningen (granskning 8: annars ett onödigt anrop för den gamla vyn).
+    // Ingen städning: ett andra kategoriklick inom 1,5 s får inte stoppa den.
+    window.setTimeout(() => {
+      if (lastBoundsRef.current === seen && activeFiltersRef.current.size > 0) handleBoundsChange(seen.bounds, seen.zoom)
+    }, 1500)
   }, [activeFilters, handleBoundsChange])
 
   const toggleFilter = (service: ServiceType) => {

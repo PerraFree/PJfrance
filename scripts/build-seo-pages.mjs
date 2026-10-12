@@ -233,8 +233,16 @@ const lanUrl = (l) => `${SITE}/lan/${slug(l)}/`
 const KOMMUNER_FILE = new URL('./kommuner.json', import.meta.url)
 const centers = new Map()
 if (existsSync(KOMMUNER_FILE)) {
-  for (const k of JSON.parse(readFileSync(KOMMUNER_FILE, 'utf8')).kommuner ?? []) centers.set(slug(k.name), { lat: k.center[1], lon: k.center[0] })
+  // Exakt namn (Habo ≠ Håbo – via slug fick båda Håbos grannar, granskning 8).
+  // kommuner.json har genitivformer ("Arjeplogs", "Göteborgs Stad"); seeden
+  // grundformer – slå upp exakt, sedan utan genitiv-s.
+  for (const k of JSON.parse(readFileSync(KOMMUNER_FILE, 'utf8')).kommuner ?? []) {
+    const c = { lat: k.center[1], lon: k.center[0] }
+    centers.set(k.name, c)
+    for (const alt of [k.name.replace(/s Stad$/, ''), k.name.replace(/s$/, '')]) if (!centers.has(alt)) centers.set(alt, c)
+  }
 }
+const centerOf = (k) => centers.get(k) ?? centers.get(k + 's')
 
 // ---------------------------------------------------------------------------
 // Platssidor: en per plats med bekräftad tömning/vatten/gasol. Platserna är
@@ -246,25 +254,10 @@ const gasolOnly = (s) => s.services.length > 0 && s.services.every((x) => x === 
 const cand = stations
   .filter((s) => confirmed(s).some((x) => CORE.includes(x)) && s.confidence !== 'low')
   .sort((a, b) => (GENERIC.test(a.name) ? 1 : 0) - (GENERIC.test(b.name) ? 1 : 0))
-// Samma namn i samma kommun inom 1 km (flera tömningsnoder på en camping) =
-// en sida. Aldrig gasolbutiker (två butiker i samma kedja är olika ställen).
-const places = []
-const absorbed = new Set()
-for (const s of cand) {
-  const nm = s.name.toLowerCase()
-  const host = gasolOnly(s)
-    ? null
-    : places.find((o) => !gasolOnly(o) && o.name.toLowerCase() === nm && o.kommun === s.kommun && distM(s, o) <= 1000)
-  if (host) {
-    for (const x of confirmed(s)) if (!host.services.includes(x)) host.services.push(x)
-    host.unverifiedServices = (host.unverifiedServices ?? []).filter((x) => !host.services.includes(x))
-    host.facilities = [...new Set([...(host.facilities ?? []), ...(s.facilities ?? []).filter((f) => !f.startsWith('gasol_'))])]
-    host.sources = [...new Set([...host.sources, ...s.sources])]
-    absorbed.add(s)
-    continue
-  }
-  places.push(s)
-}
+// En sida per kartnål – samma sammanslagning som kartan, inget extra
+// (granskning 8: en egen "samma namn inom 1 km"-regel flyttade tjänster
+// 200 m mellan nålar). Två noder med samma namn får två sidor (olika adress).
+const places = cand
 const usedSlugs = new Set()
 const placePath = new Map()
 for (const s of places) {
@@ -360,7 +353,7 @@ const kommunStats = new Map()
 for (const k of kommuner) {
   // Sammanslagna platser (som i kartan) – förut den råa seeden, så samma
   // plats listades flera gånger och antalen var uppblåsta (granskning 7).
-  const list = byKommun.get(k).filter((s) => !absorbed.has(s))
+  const list = byKommun.get(k)
   const core = list.filter((s) => confirmed(s).some((x) => ORDER.includes(x)))
   const count = (sv) => list.filter((s) => confirmed(s).includes(sv)).length
   const counts = ORDER.map((sv) => [sv, count(sv)]).filter(([, n]) => n > 0)
@@ -387,9 +380,9 @@ for (const k of kommuner) {
       })
       .join('')}</ul>`
   }).join('')
-  const c = centers.get(slug(k))
+  const c = centerOf(k)
   const neighbours = c
-    ? kommuner.filter((o) => o !== k && centers.get(slug(o))).map((o) => ({ o, d: distM(c, centers.get(slug(o))) })).sort((a, b) => a.d - b.d).slice(0, 6)
+    ? kommuner.filter((o) => o !== k && centerOf(o)).map((o) => ({ o, d: distM(c, centerOf(o)) })).sort((a, b) => a.d - b.d).slice(0, 6)
     : []
   const canonical = kommunUrl(k)
   const trail = [['Tömningskartan', `${SITE}/`], ...(lan ? [[lan, lanUrl(lan)]] : [['Kommuner', `${SITE}/kommun/`]]), [k, canonical]]
@@ -399,7 +392,7 @@ for (const k of kommuner) {
 <p class="lead">${esc(description)}</p>
 <a class="cta" href="/?at=${first.lat.toFixed(4)},${first.lon.toFixed(4)},11">Öppna kartan över ${esc(k)} →</a>
 ${sections}
-${neighbours.length ? `<h2>Grannkommuner</h2><ul class="cols">${neighbours.map(({ o }) => `<li><a href="${esc(kommunUrl(o).replace(SITE, ''))}">${esc(o)}</a> (${kommunStats.get(o)?.core ?? byKommun.get(o).filter((s) => !absorbed.has(s) && confirmed(s).some((x) => ORDER.includes(x))).length})</li>`).join('')}</ul>` : ''}
+${neighbours.length ? `<h2>Grannkommuner</h2><ul class="cols">${neighbours.map(({ o }) => `<li><a href="${esc(kommunUrl(o).replace(SITE, ''))}">${esc(o)}</a> (${kommunStats.get(o)?.core ?? byKommun.get(o).filter((s) => confirmed(s).some((x) => ORDER.includes(x))).length})</li>`).join('')}</ul>` : ''}
 <p class="lead">Saknas en plats eller stämmer något inte? Öppna kartan och använd "Lägg till en plats" eller "Rapportera fel" – uppgifterna granskas och kartan uppdateras varje vecka.</p>`
   const itemList = {
     '@context': 'https://schema.org', '@type': 'ItemList', name: `Tömning och vatten för husbil i ${k}`,

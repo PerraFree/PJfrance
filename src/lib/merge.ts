@@ -4,7 +4,7 @@
 // hade generatorn en egen kopia som visade obekräftade tjänster som gröna
 // (granskning 7, 12 okt 2026). Ändra bara här.
 import type { ServiceType, Station } from '../types'
-import { isGenericName } from './naming'
+import { isDerivedName, isGenericName } from './naming'
 
 // "Gratis" = gratis för den som kör förbi. Förut räckte ordet "gratis" eller
 // "ingår" var som helst i texten, så "Gratis för gäster; genomresande 60 kr"
@@ -140,7 +140,9 @@ function mergeInto(target: Station, s: Station, fillOnly = false): void {
   // Ett riktigt namn slår alltid ett generiskt ("Tömningsstation"): en
   // namnlös tömningsnod 70 m från "Ställplats Skeda Strand" ska heta Skeda
   // Strand, inte "Tömningsstation" (Pers fältrapport sep 2026).
-  if (isGenericName(target.name) && !isGenericName(s.name)) {
+  // Ett härlett namn ("Vattenpåfyllning vid X") slår inte grannens eget namn.
+  const weak = (n: string) => isGenericName(n) || isDerivedName(n)
+  if (weak(target.name) && !weak(s.name)) {
     if (!target.description && isGenericName(target.name)) target.description = target.name
     target.name = s.name
   }
