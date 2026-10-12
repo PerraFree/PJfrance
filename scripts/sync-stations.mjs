@@ -232,7 +232,136 @@ function isBoatStation(tags) {
   )
 }
 
+// ---------- Tolkningsregler för "rätt före fler" (granskning 12 okt 2026) ----------
+// Allt i detta block speglas i src/lib/overpass.ts – ändra ALLTID båda.
+
+const yesOrDesignated = (v) => v === 'yes' || v === 'designated'
+
+// Livscykelprefix: "disused:amenity=sanitary_dump_station" = tömningen är nedlagd.
+const LIFECYCLE_RE = /^(disused|abandoned|demolished|removed|razed|was):(.+)$/
+const MAIN_KEYS = ['amenity', 'tourism', 'shop', 'leisure', 'highway']
+// Namn som uttryckligen säger att platsen är nedlagd/privat.
+const CLOSED_NAME_RE = /\b(abandoned|nedlagd|nedlagt|nedlagda)\b|\bprivate camping\b/i
+// opening_hours som BARA säger stängt ("closed", "off", ev. med kommentar).
+// "off; May-Sep 24/7" är säsongsöppet, inte nedlagt – därför hela värdet.
+const CLOSED_HOURS_RE = /^\s*(closed|off)\s*("[^"]*")?\s*;?\s*$/i
+
+/** Hela elementet ska bort: privat, bara för kunder, nedlagt eller stängt. */
+function isClosedOrPrivate(tags) {
+  const access = tags.access
+  if (access === 'private' || access === 'no') return true
+  if (access === 'customers') {
+    // "Bara kunder" är okej där man BLIR kund genom att betala/handla eller där
+    // husbil uttryckligen välkomnas – annars (t.ex. tömning bara för en
+    // mackens eller en förenings egna kunder) räknas det som privat.
+    const publicUse =
+      yesOrDesignated(tags.motorhome) ||
+      yesOrDesignated(tags.caravan) ||
+      'fee' in tags ||
+      'charge' in tags ||
+      tags.tourism === 'camp_site' ||
+      tags.tourism === 'caravan_site' ||
+      tags.shop === 'gas' ||
+      tags.amenity === 'fuel'
+    if (!publicUse) return true
+  }
+  if (tags.disused === 'yes' || tags.abandoned === 'yes') return true
+  if (CLOSED_HOURS_RE.test(tags.opening_hours ?? '')) return true
+  if (CLOSED_NAME_RE.test(tags.name ?? '')) return true
+  // Huvudtaggen finns bara med livscykelprefix (t.ex. disused:tourism=camp_site
+  // utan tourism) och ingen annan levande huvudtagg → hela platsen är nedlagd.
+  const deadMain = Object.keys(tags).some((k) => {
+    const m = LIFECYCLE_RE.exec(k)
+    return m && MAIN_KEYS.includes(m[2]) && !(m[2] in tags)
+  })
+  if (deadMain && !MAIN_KEYS.some((k) => k in tags)) return true
+  return false
+}
+
+/** Tjänster som en livscykelprefixad tagg säger är nedlagda på en annars levande plats. */
+function lifecycleRemovedServices(tags) {
+  const gone = new Set()
+  for (const [k, v] of Object.entries(tags)) {
+    const m = LIFECYCLE_RE.exec(k)
+    if (!m || v === 'no') continue
+    const key = m[2]
+    const val = key === 'amenity' || key === 'shop' ? v : key
+    if (val === 'sanitary_dump_station') { gone.add('gravatten'); gone.add('latrin') }
+    if (val === 'water_point' || val === 'drinking_water') gone.add('vatten')
+    if (val === 'waste_disposal') gone.add('sopor')
+    if (val === 'recycling') gone.add('atervinning')
+    if (val === 'gas' || val === 'fuel:lpg') gone.add('gasol')
+  }
+  return gone
+}
+
+// Båttömning: sugtömning/septik i en marina eller gästhamn är oanvändbar för
+// husbil. Gäller bara tömningstjänsterna – platsens övriga tjänster står kvar.
+const BOAT_NAME_RE = /båt|gästhamn|marina|sugtömning|septik|pump.?out/i
+function isBoatDump(tags) {
+  const dump =
+    tags.amenity === 'sanitary_dump_station' ||
+    (tags.sanitary_dump_station !== undefined && tags.sanitary_dump_station !== 'no')
+  if (!dump) return false
+  if (yesOrDesignated(tags.motorhome) || yesOrDesignated(tags.caravan)) return false
+  if (
+    tags.boat === 'designated' ||
+    tags.leisure === 'marina' ||
+    'mooring' in tags ||
+    Object.keys(tags).some((k) => k.startsWith('seamark:'))
+  )
+    return true
+  // Namnregeln gäller inte campingar/ställplatser: en ställplats i en gästhamn
+  // med sanitary_dump_station=yes har oftast husbilstömning (t.ex. Blankaholm).
+  if (tags.tourism === 'camp_site' || tags.tourism === 'caravan_site') return false
+  return BOAT_NAME_RE.test(tags.name ?? '')
+}
+
+// Rastplatser (Trafikverkets och andras) tar i regel bara kassett ("endast
+// avsedda för portabla toaletter", docs/DATAKALLOR.md). Gråvatten bara om OSM
+// uttryckligen säger det.
+function isRestArea(tags) {
+  return tags.highway === 'rest_area' || tags.highway === 'services' || /rastplats/i.test(tags.name ?? '')
+}
+
+// Sopkärl som bara är till för en förening, ett koloniområde eller hundbajs.
+const PRIVATE_WASTE_RE = /\bbrf\b|bostadsr[äa]ttsf[öo]rening|koloni|hundlatrin|hundbajs/i
+function isPrivateWaste(tags) {
+  if (tags.amenity !== 'waste_disposal' && tags.amenity !== 'waste_basket') return false
+  if ('dog' in tags) return true
+  if (tags.waste && tags.waste.split(';').every((w) => w.trim() === 'dog_excrement')) return true
+  return PRIVATE_WASTE_RE.test(tags.name ?? '') || PRIVATE_WASTE_RE.test(tags.operator ?? '')
+}
+
+// Industrigas (svets-/specialgas) är inte gasol för husbil – bara en verifierad
+// rad i OSM_FACILITY_OVERRIDES ger gasol där. AGA skiftlägeskänsligt så att
+// t.ex. "Saga" inte träffas.
+const INDUSTRIAL_GAS_RE = /hydraulic|industripartner|svets|welding|linde gas|air liquide|strandmøllen/i
+const AGA_RE = /(^|[\s,(])AGA($|[\s,)])/
+const INDUSTRIAL_GAS_TYPES = ['oxygen', 'acetylene', 'argon', 'nitrogen', 'carbon_dioxide', 'co2', 'helium', 'hydrogen', 'mixed_gas']
+const LPG_GAS_KEYS = ['gas:lpg', 'gas:propane', 'gas:butane', 'gas:gasol', 'fuel:lpg']
+function isIndustrialGas(tags) {
+  const texts = [tags.name, tags.brand, tags.operator].filter(Boolean)
+  // AGA och Linde säljer också gasol ("AGA Gasolautomat") – nämns gasol/propan/
+  // LPG är det ALDRIG industrigas (granskning 12 okt 2026).
+  if (texts.some((t) => /gasol|propan|\blpg\b/i.test(t))) return false
+  if (texts.some((t) => INDUSTRIAL_GAS_RE.test(t) || AGA_RE.test(t))) return true
+  if (tags.shop !== 'gas') return false
+  const industrial = Object.keys(tags).some((k) => {
+    const m = /^(gas|fuel):(.+)$/.exec(k)
+    return m && INDUSTRIAL_GAS_TYPES.includes(m[2]) && yesOrDesignated(tags[k])
+  })
+  return industrial && !LPG_GAS_KEYS.some((k) => yesOrDesignated(tags[k]))
+}
+
+// Förpackningsinsamling (FTI-station/återvinningsstation) är ingen ÅVC.
+const RECYCLING_STATION_NAME_RE = /återvinningsstation|\bFTI\b|förpackningsinsamling/i
+
+// Gasolbutik vars namn säger att den fyller flaskor → påfyllning, inte byte.
+const GAS_FILLER_RE = /fyll|gasolfyllarna/i
+
 function servicesFromTags(tags) {
+  if (isClosedOrPrivate(tags)) return []
   const services = new Set()
   if (tags.amenity === 'sanitary_dump_station') {
     services.add('gravatten')
@@ -245,6 +374,11 @@ function servicesFromTags(tags) {
   }
   if (tags['sanitary_dump_station:grey_water'] === 'no') services.delete('gravatten')
   if (tags['sanitary_dump_station:chemical_toilet'] === 'no') services.delete('latrin')
+  if (isRestArea(tags) && !yes(tags['sanitary_dump_station:grey_water'])) services.delete('gravatten')
+  if (isBoatDump(tags)) {
+    services.delete('gravatten')
+    services.delete('latrin')
+  }
   if (tags.amenity === 'water_point' || tags.water_point === 'yes' || tags.drinking_water === 'yes') {
     services.add('vatten')
   }
@@ -304,17 +438,26 @@ function servicesFromTags(tags) {
   // Sopor: sopstationer, återvinningscentraler och rastplatser med sopkärl.
   // Glas-/pappersigloos (recycling_type=container) tas inte med.
   if (
-    tags.amenity === 'waste_disposal' ||
-    tags.waste_disposal === 'yes' ||
-    (tags.highway === 'rest_area' && (tags.waste_basket === 'yes' || tags.bin === 'yes'))
+    (tags.amenity === 'waste_disposal' ||
+      tags.waste_disposal === 'yes' ||
+      (tags.highway === 'rest_area' && (tags.waste_basket === 'yes' || tags.bin === 'yes'))) &&
+    !isPrivateWaste(tags)
   ) {
     services.add('sopor')
   }
   // Återvinningscentraler (ÅVC) är en EGEN kategori sedan okt 2026 – de tar
   // sällan emot hushållssopor och ska inte blandas med sopstationerna.
-  if (tags.amenity === 'recycling' && tags.recycling_type === 'centre') {
+  // Återvinningsstationer (recycling_type=container, FTI) räknas inte – inte
+  // heller när de felaktigt taggats centre men heter "…återvinningsstation"/"FTI"
+  // (29 sådana i seeden okt 2026).
+  if (
+    tags.amenity === 'recycling' &&
+    tags.recycling_type === 'centre' &&
+    !RECYCLING_STATION_NAME_RE.test(tags.name ?? '')
+  ) {
     services.add('atervinning')
   }
+  for (const s of lifecycleRemovedServices(tags)) services.delete(s)
   return [...services]
 }
 
@@ -429,52 +572,68 @@ async function fetchOsmFrom(url) {
   }
   const stations = []
   for (const el of json.elements ?? []) {
-    if (EXCLUDED_OSM_ELEMENTS.has(`${el.type}/${el.id}`)) continue
-    const lat = el.lat ?? el.center?.lat
-    const lon = el.lon ?? el.center?.lon
-    if (lat === undefined || lon === undefined) continue
-    const tags = el.tags ?? {}
-    if (isBoatStation(tags)) continue
-    const override = OSM_FACILITY_OVERRIDES.get(`${el.type}/${el.id}`)
-    const seasonOverride = OSM_SEASON_OVERRIDES.get(`${el.type}/${el.id}`)
-    // En mack som bara har fuel:lpg=yes (ingen shop=gas, ingen platsvis
-    // verifierad override) är fordonsgas/autogas vid pump – inte flaskbyte.
-    // Utan detta hade den visats som "byt tub" via okänt-fallbacken.
-    // Speglas i src/lib/overpass.ts – ändra ALLTID båda.
-    const services = servicesFromTags(tags).filter(
-      (s) => s !== 'gasol' || tags.shop === 'gas' || override,
-    )
-    if (services.length === 0) continue
-    const kind = placeKind(tags)
-    const amenity = amenityFields(tags)
-    if (override) amenity.facilities = [...new Set([...(amenity.facilities ?? []), ...override])]
-    const unv = applyUnverifiedOverride(`${el.type}/${el.id}`, services)
-    stations.push({
-      id: `osm-${el.type}-${el.id}`,
-      name: tags.name ?? kind ?? 'Tömningsstation',
-      lat,
-      lon,
-      services: unv.services,
-      unverifiedServices: unv.unverifiedServices,
-      unverified: unv.unverified,
-      source: 'osm',
-      description: tags.name && kind ? kind : undefined,
-      // fee=no på en gasolbutik/mack betyder inte gratis gasol (gasol är alltid
-      // ett köp) – sätt aldrig "Gratis" på platser som bara har gasol.
-      fee:
-        tags.fee === 'yes'
-          ? (tags.charge ?? 'Avgift')
-          : tags.fee === 'no' && !(services.length === 1 && services[0] === 'gasol')
-            ? 'Gratis'
-            : undefined,
-      openingHours: tags.opening_hours ?? seasonOverride?.openingHours,
-      season: seasonFromTags(tags) ?? seasonOverride?.season,
-      image: imageFromTags(tags),
-      osmUrl: `https://www.openstreetmap.org/${el.type}/${el.id}`,
-      ...amenity,
-    })
+    const s = toStation(el)
+    if (s) stations.push(s)
   }
   return stations
+}
+
+/** Ett Overpass-element → station (eller null). Speglar toStation i
+ *  src/lib/overpass.ts – ändra ALLTID båda. */
+function toStation(el) {
+  if (EXCLUDED_OSM_ELEMENTS.has(`${el.type}/${el.id}`)) return null
+  const lat = el.lat ?? el.center?.lat
+  const lon = el.lon ?? el.center?.lon
+  if (lat === undefined || lon === undefined) return null
+  const tags = el.tags ?? {}
+  if (isBoatStation(tags)) return null
+  const override = OSM_FACILITY_OVERRIDES.get(`${el.type}/${el.id}`)
+  const seasonOverride = OSM_SEASON_OVERRIDES.get(`${el.type}/${el.id}`)
+  // En mack som bara har fuel:lpg=yes (ingen shop=gas, ingen platsvis
+  // verifierad override) är fordonsgas/autogas vid pump – inte flaskbyte.
+  // Utan detta hade den visats som "byt tub" via okänt-fallbacken.
+  // Industrigas (svets/AGA/Linde …) ger aldrig gasol utan override.
+  // Speglas i src/lib/overpass.ts – ändra ALLTID båda.
+  const industrialGas = isIndustrialGas(tags)
+  const services = servicesFromTags(tags).filter(
+    (s) => s !== 'gasol' || override || (tags.shop === 'gas' && !industrialGas),
+  )
+  if (services.length === 0) return null
+  const kind = placeKind(tags)
+  const amenity = amenityFields(tags)
+  if (override) {
+    amenity.facilities = [...new Set([...(amenity.facilities ?? []), ...override])]
+  } else if (industrialGas) {
+    amenity.facilities = amenity.facilities?.filter((f) => f !== 'gasol_byte')
+    if (!amenity.facilities?.length) amenity.facilities = undefined
+  } else if (tags.shop === 'gas' && GAS_FILLER_RE.test(tags.name ?? '')) {
+    amenity.facilities = amenity.facilities?.map((f) => (f === 'gasol_byte' ? 'gasol_pafyllning' : f))
+  }
+  const unv = applyUnverifiedOverride(`${el.type}/${el.id}`, services)
+  return {
+    id: `osm-${el.type}-${el.id}`,
+    name: tags.name ?? kind ?? 'Tömningsstation',
+    lat,
+    lon,
+    services: unv.services,
+    unverifiedServices: unv.unverifiedServices,
+    unverified: unv.unverified,
+    source: 'osm',
+    description: tags.name && kind ? kind : undefined,
+    // fee=no på en gasolbutik/mack betyder inte gratis gasol (gasol är alltid
+    // ett köp) – sätt aldrig "Gratis" på platser som bara har gasol.
+    fee:
+      tags.fee === 'yes'
+        ? (tags.charge ?? 'Avgift')
+        : tags.fee === 'no' && !(services.length === 1 && services[0] === 'gasol')
+          ? 'Gratis'
+          : undefined,
+    openingHours: tags.opening_hours ?? seasonOverride?.openingHours,
+    season: seasonFromTags(tags) ?? seasonOverride?.season,
+    image: imageFromTags(tags),
+    osmUrl: `https://www.openstreetmap.org/${el.type}/${el.id}`,
+    ...amenity,
+  }
 }
 
 function seasonFromTags(tags) {
@@ -557,8 +716,29 @@ function amenityFields(tags) {
 // Bredare mönster så att inga varianter av Trafikverkets utrustningsnamn
 // missas ("Latrintömning", "Toalettömning", "Tömningsstation", "Sanitet" …).
 const LATRIN_RE = /latrin|sanit|dump|töm/i
-const WATER_RE = /f[äa]rskvatten|s[öo]tvatten|freshwater|drinking|dricksvatten|tappst[äa]lle|vattenp[åa]fyllning/i
+const WATER_RE = /f[äa]rskvatten|s[öo]tvatten|freshwater|drinking|dricksvatten|tappst[äa]lle|vattenp[åa]fyllning|vattentappning/i
 const WASTE_RE = /sop|avfall|återvinning|waste|refuse/i
+
+// Beskrivningstexten kan säga att tömningen/vattnet är stängt ("Latrintömningen
+// är tillfälligt stängd", "Vattnet ur funktion"). Sådana tjänster blir grå
+// (obekräftade), inte borttagna – texten kan vara gammal. Meningsvis, så att
+// "stängd" bara räknas tillsammans med den tjänst den gäller.
+const TV_CLOSED_RE = /stängd|stängt|ur funktion|ej i funktion|ur drift|ej i drift|ur bruk|fungerar (inte|ej)|trasig/i
+const TV_LATRIN_TEXT_RE = /latrin|toalett|töm|kassett|sanit/i
+const TV_WATER_TEXT_RE = /vatt(en|n)/i // vatten, vattnet, vattenposten
+const TV_WHOLE_TEXT_RE = /rastplats|anläggning/i
+function tvClosedServices(description, services) {
+  const closed = new Set()
+  for (const part of String(description ?? '').split(/[.!?;\n]+/)) {
+    if (!TV_CLOSED_RE.test(part)) continue
+    const latrin = TV_LATRIN_TEXT_RE.test(part)
+    const water = TV_WATER_TEXT_RE.test(part)
+    if (latrin) closed.add('latrin')
+    if (water) closed.add('vatten')
+    if (!latrin && !water && TV_WHOLE_TEXT_RE.test(part)) for (const s of services) closed.add(s)
+  }
+  return services.filter((s) => closed.has(s))
+}
 
 async function fetchTrafikverket(apiKey) {
   const body = `
@@ -581,7 +761,15 @@ async function fetchTrafikverket(apiKey) {
   })
   if (!res.ok) throw new Error(`Trafikverket svarade ${res.status}`)
   const json = await res.json()
-  const parkings = json.RESPONSE?.RESULT?.[0]?.Parking ?? []
+  // Trafikverket svarar 200 även vid fel (ogiltig nyckel, schemafel …) med
+  // RESULT[0].ERROR – tidigare blev det tyst 0 rastplatser. Kasta i stället så
+  // att reserven (förra seedens rastplatser) används.
+  const result = json.RESPONSE?.RESULT?.[0]
+  const apiError = result?.ERROR ?? json.RESPONSE?.ERROR
+  if (apiError) throw new Error(`Trafikverket svarade 200 med ERROR: ${JSON.stringify(apiError).slice(0, 300)}`)
+  if (!Array.isArray(result?.Parking)) throw new Error('Trafikverket-svaret saknar Parking-lista')
+  const parkings = result.Parking
+  if (parkings.length === 0) throw new Error('Trafikverket-svaret innehöll 0 parkeringar')
   const stations = []
   for (const p of parkings) {
     const m = p.Geometry?.WGS84?.match(/POINT\s*\(\s*([\d.,-]+)\s+([\d.,-]+)\s*\)/i)
@@ -599,12 +787,17 @@ async function fetchTrafikverket(apiKey) {
     if (hasLatrin) services.push('latrin')
     if (hasWater) services.push('vatten')
     if (hasWaste) services.push('sopor')
+    const closed = tvClosedServices(p.Description, services)
+    const open = services.filter((s) => !closed.includes(s))
     stations.push({
       id: `tv-${p.Id ?? `${lat},${lon}`}`,
       name: p.Name ? `Rastplats ${p.Name}` : 'Rastplats',
       lat,
       lon,
-      services,
+      // Samma form som applyUnverifiedOverride: alla stängda → hela platsen grå.
+      services: open.length ? open : services,
+      unverifiedServices: open.length && closed.length ? closed : undefined,
+      unverified: open.length ? undefined : true,
       source: 'trafikverket',
       description: p.Description,
       fee: 'Gratis (Trafikverkets rastplats)',
@@ -881,7 +1074,11 @@ async function commonsImageFor(station) {
   })
   if (!res.ok) throw new Error(`Commons svarade ${res.status}`)
   const json = await res.json()
-  for (const hit of json?.query?.geosearch ?? []) {
+  // Commons svarar 200 med {"error": …} vid t.ex. maxlag/ratelimit. Det får
+  // inte cachas som "ingen bild" för alltid – kasta så att platsen provas igen.
+  if (json?.error) throw new Error(`Commons-fel: ${json.error.code ?? JSON.stringify(json.error).slice(0, 100)}`)
+  if (!Array.isArray(json?.query?.geosearch)) throw new Error('Commons-svaret saknar geosearch')
+  for (const hit of json.query.geosearch) {
     const title = hit.title ?? ''
     if (!/\.(jpe?g|png|webp)$/i.test(title)) continue
     // Trafikverkets rastplatser: närmsta foto duger (omgivningen ÄR platsen).
@@ -992,6 +1189,19 @@ async function nameGenericStations(stations) {
     if (grid.has(k)) grid.get(k).push(s)
     else grid.set(k, [s])
   }
+  // Kommunnamn (grundform) för att känna igen genitivfelet "…, Linköpings":
+  // "Linköping" är en kommun men "Linköpings" inte. Saknas filen kastas inget.
+  const kommunNamn = new Set()
+  try {
+    const data = JSON.parse(await readFile(KOMMUNER, 'utf8'))
+    for (const k of data.kommuner ?? data) if (k.name) kommunNamn.add(normalizeKommunName(k.name))
+  } catch {
+    /* utan kommunlista behålls alla namn */
+  }
+  const isGenitiveKommun = (name) => {
+    const m = /, ([^,]+)s$/.exec(name)
+    return !!m && kommunNamn.has(m[1]) && !kommunNamn.has(`${m[1]}s`)
+  }
   let prevNames = new Map()
   try {
     const res = await fetch(PREV_SEED_URL, { signal: AbortSignal.timeout(60_000) })
@@ -999,8 +1209,9 @@ async function nameGenericStations(stations) {
       const prev = await res.json()
       for (const s of prev.stations ?? prev) {
         // Hoppa över första körningens genitivfel ("Camping, Linköpings") så
-        // de slås upp på nytt med det nya formatet.
-        if (s.nameFrom === 'reverse' && !GENERIC_NAME.test(s.name) && !/, [^,]+s$/.test(s.name))
+        // de slås upp på nytt med det nya formatet. Bara kommunnamn i genitiv
+        // – riktiga ortsnamn på -s ("Näs", "Västerås", "Nusnäs") behålls.
+        if (s.nameFrom === 'reverse' && !GENERIC_NAME.test(s.name) && !isGenitiveKommun(s.name))
           prevNames.set(s.id, s.name)
       }
     }
@@ -1158,12 +1369,28 @@ async function assignMunicipalities(stations) {
 // ---------- Kör ----------
 
 const stations = []
+const runAt = new Date().toISOString()
+// Källstatus i seeden: fresh=false när förra seedens data återanvändes.
+// `at` = när datan senast hämtades färskt (bevaras från förra seeden vid reserv).
+let prevSeed = null
+try {
+  prevSeed = JSON.parse(await readFile(OUT, 'utf8'))
+} catch {
+  /* ingen tidigare seed */
+}
+const prevSourceAt = (name) => prevSeed?.sources?.[name]?.at ?? prevSeed?.updatedAt ?? null
+const sources = {
+  osm: { fresh: true, at: runAt, count: 0 },
+  trafikverket: { fresh: true, at: runAt, count: 0 },
+}
 
 try {
   const osm = await fetchOsm()
   console.log(`OSM: ${osm.length} stationer`)
   stations.push(...osm)
+  sources.osm.count = osm.length
 } catch (err) {
+  sources.osm = { fresh: false, at: prevSourceAt('osm'), count: 0, error: String(err.message).slice(0, 200) }
   console.error(`OSM-hämtning misslyckades helt: ${err.message}`)
   // Overpass är nere i timmar ibland (alla speglar 504 samtidigt, t.ex.
   // 24 sep 2026). Utan detta stoppade säkerhetsspärren nedan HELA
@@ -1193,13 +1420,23 @@ try {
       })
       .filter(Boolean)
       // Grå-listan ska gälla även återanvända stationer från förra seeden.
+      // Idempotent: förra körningen kan redan ha flyttat tjänster till
+      // unverifiedServices (eller satt unverified) – återställ först
+      // originaltjänsterna (services ∪ unverifiedServices; för OSM-platser
+      // kommer unverifiedServices bara från grå-listan) och tillämpa sedan
+      // listan på nytt. Annars tappades t.ex. vatten när listan utökades.
       .map((s) => {
         const m = /^osm-(node|way|relation)-(\d+)$/.exec(s.id ?? '')
-        return m ? { ...s, ...applyUnverifiedOverride(`${m[1]}/${m[2]}`, s.services) } : s
+        if (!m) return s
+        const original = [...new Set([...s.services, ...(s.unverifiedServices ?? [])])]
+        const { unverifiedServices: _u, unverified: _v, ...rest } = s
+        const unv = applyUnverifiedOverride(`${m[1]}/${m[2]}`, original)
+        return { ...rest, ...unv }
       })
     if (reused.length) {
       console.warn(`Återanvänder ${reused.length} OSM-stationer från förra seeden (${prev.updatedAt ?? 'okänt datum'}).`)
       stations.push(...reused)
+      sources.osm.count = reused.length
     }
   } catch (e) {
     console.error(`Kunde inte återanvända förra seeden: ${e.message}`)
@@ -1212,8 +1449,10 @@ if (trvKey) {
     const tv = await fetchTrafikverket(trvKey)
     console.log(`Trafikverket: ${tv.length} rastplatser`)
     stations.push(...tv)
+    sources.trafikverket.count = tv.length
   } catch (err) {
-    console.error(`Trafikverket-hämtning misslyckades: ${err.message}`)
+    console.error(`FEL: Trafikverket-hämtning misslyckades – reserven används: ${err.message}`)
+    sources.trafikverket = { fresh: false, at: prevSourceAt('trafikverket'), count: 0, error: String(err.message).slice(0, 200) }
     // Samma reserv som för OSM: återanvänd förra seedens rastplatser hellre
     // än att 300+ platser försvinner för att API:t svarade fel en gång.
     try {
@@ -1222,6 +1461,7 @@ if (trvKey) {
       if (reused.length) {
         console.warn(`Återanvänder ${reused.length} Trafikverket-platser från förra seeden.`)
         stations.push(...reused)
+        sources.trafikverket.count = reused.length
       }
     } catch {
       /* ingen tidigare seed */
@@ -1229,6 +1469,8 @@ if (trvKey) {
   }
 } else {
   console.log('TRV_API_KEY ej satt – hoppar över Trafikverket.')
+  // Ingen nyckel = inga rastplatser alls i seeden; ingen gissad ålder.
+  sources.trafikverket = { fresh: false, at: prevSeed?.sources?.trafikverket?.at ?? null, count: 0, error: 'TRV_API_KEY saknas' }
 }
 
 let curatedCount = 0
@@ -1300,6 +1542,6 @@ try {
 await mkdir(new URL('../public/data/', import.meta.url), { recursive: true })
 await writeFile(
   OUT,
-  JSON.stringify({ updatedAt: new Date().toISOString(), stations }),
+  JSON.stringify({ updatedAt: new Date().toISOString(), sources, stations }),
 )
 console.log(`Skrev ${stations.length} stationer till public/data/stations-seed.json`)

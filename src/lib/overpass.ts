@@ -197,7 +197,136 @@ interface OverpassElement {
   tags?: Record<string, string>
 }
 
+// ---------- Tolkningsregler för "rätt före fler" (granskning 12 okt 2026) ----------
+// Allt i detta block speglas i scripts/sync-stations.mjs – ändra ALLTID båda.
+
+const yesOrDesignated = (v?: string) => v === 'yes' || v === 'designated'
+
+// Livscykelprefix: "disused:amenity=sanitary_dump_station" = tömningen är nedlagd.
+const LIFECYCLE_RE = /^(disused|abandoned|demolished|removed|razed|was):(.+)$/
+const MAIN_KEYS = ['amenity', 'tourism', 'shop', 'leisure', 'highway']
+// Namn som uttryckligen säger att platsen är nedlagd/privat.
+const CLOSED_NAME_RE = /\b(abandoned|nedlagd|nedlagt|nedlagda)\b|\bprivate camping\b/i
+// opening_hours som BARA säger stängt ("closed", "off", ev. med kommentar).
+// "off; May-Sep 24/7" är säsongsöppet, inte nedlagt – därför hela värdet.
+const CLOSED_HOURS_RE = /^\s*(closed|off)\s*("[^"]*")?\s*;?\s*$/i
+
+/** Hela elementet ska bort: privat, bara för kunder, nedlagt eller stängt. */
+function isClosedOrPrivate(tags: Record<string, string>): boolean {
+  const access = tags.access
+  if (access === 'private' || access === 'no') return true
+  if (access === 'customers') {
+    // "Bara kunder" är okej där man BLIR kund genom att betala/handla eller där
+    // husbil uttryckligen välkomnas – annars (t.ex. tömning bara för en
+    // mackens eller en förenings egna kunder) räknas det som privat.
+    const publicUse =
+      yesOrDesignated(tags.motorhome) ||
+      yesOrDesignated(tags.caravan) ||
+      'fee' in tags ||
+      'charge' in tags ||
+      tags.tourism === 'camp_site' ||
+      tags.tourism === 'caravan_site' ||
+      tags.shop === 'gas' ||
+      tags.amenity === 'fuel'
+    if (!publicUse) return true
+  }
+  if (tags.disused === 'yes' || tags.abandoned === 'yes') return true
+  if (CLOSED_HOURS_RE.test(tags.opening_hours ?? '')) return true
+  if (CLOSED_NAME_RE.test(tags.name ?? '')) return true
+  // Huvudtaggen finns bara med livscykelprefix (t.ex. disused:tourism=camp_site
+  // utan tourism) och ingen annan levande huvudtagg → hela platsen är nedlagd.
+  const deadMain = Object.keys(tags).some((k) => {
+    const m = LIFECYCLE_RE.exec(k)
+    return m && MAIN_KEYS.includes(m[2]) && !(m[2] in tags)
+  })
+  if (deadMain && !MAIN_KEYS.some((k) => k in tags)) return true
+  return false
+}
+
+/** Tjänster som en livscykelprefixad tagg säger är nedlagda på en annars levande plats. */
+function lifecycleRemovedServices(tags: Record<string, string>): Set<ServiceType> {
+  const gone = new Set<ServiceType>()
+  for (const [k, v] of Object.entries(tags)) {
+    const m = LIFECYCLE_RE.exec(k)
+    if (!m || v === 'no') continue
+    const key = m[2]
+    const val = key === 'amenity' || key === 'shop' ? v : key
+    if (val === 'sanitary_dump_station') { gone.add('gravatten'); gone.add('latrin') }
+    if (val === 'water_point' || val === 'drinking_water') gone.add('vatten')
+    if (val === 'waste_disposal') gone.add('sopor')
+    if (val === 'recycling') gone.add('atervinning')
+    if (val === 'gas' || val === 'fuel:lpg') gone.add('gasol')
+  }
+  return gone
+}
+
+// Båttömning: sugtömning/septik i en marina eller gästhamn är oanvändbar för
+// husbil. Gäller bara tömningstjänsterna – platsens övriga tjänster står kvar.
+const BOAT_NAME_RE = /båt|gästhamn|marina|sugtömning|septik|pump.?out/i
+function isBoatDump(tags: Record<string, string>): boolean {
+  const dump =
+    tags.amenity === 'sanitary_dump_station' ||
+    (tags.sanitary_dump_station !== undefined && tags.sanitary_dump_station !== 'no')
+  if (!dump) return false
+  if (yesOrDesignated(tags.motorhome) || yesOrDesignated(tags.caravan)) return false
+  if (
+    tags.boat === 'designated' ||
+    tags.leisure === 'marina' ||
+    'mooring' in tags ||
+    Object.keys(tags).some((k) => k.startsWith('seamark:'))
+  )
+    return true
+  // Namnregeln gäller inte campingar/ställplatser: en ställplats i en gästhamn
+  // med sanitary_dump_station=yes har oftast husbilstömning (t.ex. Blankaholm).
+  if (tags.tourism === 'camp_site' || tags.tourism === 'caravan_site') return false
+  return BOAT_NAME_RE.test(tags.name ?? '')
+}
+
+// Rastplatser (Trafikverkets och andras) tar i regel bara kassett ("endast
+// avsedda för portabla toaletter", docs/DATAKALLOR.md). Gråvatten bara om OSM
+// uttryckligen säger det.
+function isRestArea(tags: Record<string, string>): boolean {
+  return tags.highway === 'rest_area' || tags.highway === 'services' || /rastplats/i.test(tags.name ?? '')
+}
+
+// Sopkärl som bara är till för en förening, ett koloniområde eller hundbajs.
+const PRIVATE_WASTE_RE = /\bbrf\b|bostadsr[äa]ttsf[öo]rening|koloni|hundlatrin|hundbajs/i
+function isPrivateWaste(tags: Record<string, string>): boolean {
+  if (tags.amenity !== 'waste_disposal' && tags.amenity !== 'waste_basket') return false
+  if ('dog' in tags) return true
+  if (tags.waste && tags.waste.split(';').every((w) => w.trim() === 'dog_excrement')) return true
+  return PRIVATE_WASTE_RE.test(tags.name ?? '') || PRIVATE_WASTE_RE.test(tags.operator ?? '')
+}
+
+// Industrigas (svets-/specialgas) är inte gasol för husbil – bara en verifierad
+// rad i OSM_FACILITY_OVERRIDES ger gasol där. AGA skiftlägeskänsligt så att
+// t.ex. "Saga" inte träffas.
+const INDUSTRIAL_GAS_RE = /hydraulic|industripartner|svets|welding|linde gas|air liquide|strandmøllen/i
+const AGA_RE = /(^|[\s,(])AGA($|[\s,)])/
+const INDUSTRIAL_GAS_TYPES = ['oxygen', 'acetylene', 'argon', 'nitrogen', 'carbon_dioxide', 'co2', 'helium', 'hydrogen', 'mixed_gas']
+const LPG_GAS_KEYS = ['gas:lpg', 'gas:propane', 'gas:butane', 'gas:gasol', 'fuel:lpg']
+function isIndustrialGas(tags: Record<string, string>): boolean {
+  const texts = [tags.name, tags.brand, tags.operator].filter(Boolean) as string[]
+  // AGA och Linde säljer också gasol ("AGA Gasolautomat") – nämns gasol/propan/
+  // LPG är det ALDRIG industrigas (granskning 12 okt 2026).
+  if (texts.some((t) => /gasol|propan|\blpg\b/i.test(t))) return false
+  if (texts.some((t) => INDUSTRIAL_GAS_RE.test(t) || AGA_RE.test(t))) return true
+  if (tags.shop !== 'gas') return false
+  const industrial = Object.keys(tags).some((k) => {
+    const m = /^(gas|fuel):(.+)$/.exec(k)
+    return m && INDUSTRIAL_GAS_TYPES.includes(m[2]) && yesOrDesignated(tags[k])
+  })
+  return industrial && !LPG_GAS_KEYS.some((k) => yesOrDesignated(tags[k]))
+}
+
+// Förpackningsinsamling (FTI-station/återvinningsstation) är ingen ÅVC.
+const RECYCLING_STATION_NAME_RE = /återvinningsstation|\bFTI\b|förpackningsinsamling/i
+
+// Gasolbutik vars namn säger att den fyller flaskor → påfyllning, inte byte.
+const GAS_FILLER_RE = /fyll|gasolfyllarna/i
+
 function servicesFromTags(tags: Record<string, string>): ServiceType[] {
+  if (isClosedOrPrivate(tags)) return []
   const services = new Set<ServiceType>()
 
   // Dedikerade tömningsstationer
@@ -213,6 +342,11 @@ function servicesFromTags(tags: Record<string, string>): ServiceType[] {
   }
   if (tags['sanitary_dump_station:grey_water'] === 'no') services.delete('gravatten')
   if (tags['sanitary_dump_station:chemical_toilet'] === 'no') services.delete('latrin')
+  if (isRestArea(tags) && !yes(tags['sanitary_dump_station:grey_water'])) services.delete('gravatten')
+  if (isBoatDump(tags)) {
+    services.delete('gravatten')
+    services.delete('latrin')
+  }
 
   if (
     tags.amenity === 'water_point' ||
@@ -293,17 +427,26 @@ function servicesFromTags(tags: Record<string, string>): ServiceType[] {
   // Glas-/pappersigloos (recycling_type=container) tas inte med – där får
   // man inte slänga hushållssopor.
   if (
-    tags.amenity === 'waste_disposal' ||
-    tags.waste_disposal === 'yes' ||
-    (tags.highway === 'rest_area' && (tags.waste_basket === 'yes' || tags.bin === 'yes'))
+    (tags.amenity === 'waste_disposal' ||
+      tags.waste_disposal === 'yes' ||
+      (tags.highway === 'rest_area' && (tags.waste_basket === 'yes' || tags.bin === 'yes'))) &&
+    !isPrivateWaste(tags)
   ) {
     services.add('sopor')
   }
   // Återvinningscentraler (ÅVC) är en EGEN kategori sedan okt 2026 – de tar
   // sällan emot hushållssopor och ska inte blandas med sopstationerna.
-  if (tags.amenity === 'recycling' && tags.recycling_type === 'centre') {
+  // Återvinningsstationer (recycling_type=container, FTI) räknas inte – inte
+  // heller när de felaktigt taggats centre men heter "…återvinningsstation"/"FTI"
+  // (29 sådana i seeden okt 2026).
+  if (
+    tags.amenity === 'recycling' &&
+    tags.recycling_type === 'centre' &&
+    !RECYCLING_STATION_NAME_RE.test(tags.name ?? '')
+  ) {
     services.add('atervinning')
   }
+  for (const s of lifecycleRemovedServices(tags)) services.delete(s)
 
   return [...services]
 }
@@ -387,9 +530,11 @@ function toStation(el: OverpassElement): Station | null {
   // En mack som bara har fuel:lpg=yes (ingen shop=gas, ingen platsvis
   // verifierad override) är fordonsgas/autogas vid pump – inte flaskbyte.
   // Utan detta hade den visats som "byt tub" via okänt-fallbacken.
+  // Industrigas (svets/AGA/Linde …) ger aldrig gasol utan override.
   // Speglas i scripts/sync-stations.mjs – ändra ALLTID båda.
+  const industrialGas = isIndustrialGas(tags)
   const services = servicesFromTags(tags).filter(
-    (s) => s !== 'gasol' || tags.shop === 'gas' || override,
+    (s) => s !== 'gasol' || override || (tags.shop === 'gas' && !industrialGas),
   )
   if (services.length === 0) return null
   if (tags.amenity === 'drinking_water' && services.length === 1 && services[0] === 'vatten') {
@@ -397,7 +542,14 @@ function toStation(el: OverpassElement): Station | null {
   }
   const kind = placeKind(tags)
   const amenity = amenityFields(tags)
-  if (override) amenity.facilities = [...new Set([...(amenity.facilities ?? []), ...override])]
+  if (override) {
+    amenity.facilities = [...new Set([...(amenity.facilities ?? []), ...override])]
+  } else if (industrialGas) {
+    amenity.facilities = amenity.facilities?.filter((f) => f !== 'gasol_byte')
+    if (!amenity.facilities?.length) amenity.facilities = undefined
+  } else if (tags.shop === 'gas' && GAS_FILLER_RE.test(tags.name ?? '')) {
+    amenity.facilities = amenity.facilities?.map((f) => (f === 'gasol_byte' ? 'gasol_pafyllning' : f))
+  }
   const unv = applyUnverifiedOverride(`${el.type}/${el.id}`, services)
   return {
     id: `osm-${el.type}-${el.id}`,

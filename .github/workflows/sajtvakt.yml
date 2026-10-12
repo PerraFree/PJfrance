@@ -59,6 +59,13 @@ jobs:
                 const age = (Date.now() - Date.parse(seed.updatedAt)) / 86400000
                 if (!Number.isFinite(age)) problems.push('seeden saknar giltigt updatedAt')
                 else if (age > 9) problems.push(`seeden är ${age.toFixed(0)} dagar gammal (synken har inte publicerat på över en vecka)`)
+                // Per källa (granskning 12 okt 2026): när Overpass eller
+                // Trafikverket inte svarar återanvänds förra veckans data och
+                // updatedAt ser färsk ut – sources.<källa>.at visar riktig ålder.
+                for (const [namn, src] of Object.entries(seed.sources ?? {})) {
+                  const a = (Date.now() - Date.parse(src?.at)) / 86400000
+                  if (Number.isFinite(a) && a > 9) problems.push(`${namn}-datan är ${a.toFixed(0)} dagar gammal${src.error ? ` (${String(src.error).slice(0, 120)})` : ''} – källan har inte svarat vid synkerna`)
+                }
               } catch (e) {
                 problems.push('seeden är inte giltig JSON')
               }

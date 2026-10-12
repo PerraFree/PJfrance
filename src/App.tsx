@@ -141,6 +141,19 @@ const MERGE_FIELDS: (keyof Station)[] = [
 const LOCKED_UNVERIFIED = new WeakMap<Station, ServiceType[]>()
 
 function mergeInto(target: Station, s: Station, fillOnly = false): void {
+  // Trafikverkets rastplatser tar bara kassett. En OSM-tömningsnod vid en
+  // rastplats får gråvatten av OSM:s standardtolkning – det stryks här om inte
+  // noden UTTRYCKLIGEN säger gråvatten (facilities gravatten_tomning).
+  // 56 av 298 rastplatser fick annars felaktigt gråvatten (granskning 12 okt 2026).
+  const tvPair =
+    (target.source === 'trafikverket' && s.source === 'osm') || (s.source === 'trafikverket' && target.source === 'osm')
+  if (tvPair) {
+    const explicit = (x: Station) => x.facilities?.includes('gravatten_tomning') ?? false
+    if (s.source === 'osm' && !explicit(s) && s.services.includes('gravatten')) {
+      s = { ...s, services: s.services.filter((x) => x !== 'gravatten') }
+    }
+    if (target.source === 'osm' && !explicit(target)) target.services = target.services.filter((x) => x !== 'gravatten')
+  }
   // Registrets (egen/kommun, högst prioritet) egna obekräftade tjänster
   // förblir obekräftade – en lägre prioriterad källa får inte göra dem gröna.
   // En fyll-på-dubblett får dessutom aldrig bekräfta något som målet just nu
