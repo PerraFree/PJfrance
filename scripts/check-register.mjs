@@ -16,7 +16,7 @@ const SEED = new URL('../public/data/stations-seed.json', import.meta.url)
 const SERVICES = new Set(['gravatten', 'latrin', 'vatten', 'sopor', 'atervinning', 'stallplats', 'camping', 'gasol'])
 const SEASONS = new Set(['seasonal', 'year-round'])
 const CONF = new Set(['high', 'medium', 'low'])
-const FIELDS = new Set(['name', 'lat', 'lon', 'query', 'nearLat', 'nearLon', 'maxKm', 'services', 'unverified',
+const FIELDS = new Set(['id', 'name', 'lat', 'lon', 'query', 'nearLat', 'nearLon', 'maxKm', 'services', 'unverified',
   'unverifiedServices', 'confidence', 'fee', 'gasolPrice', 'openingHours', 'season', 'facilities', 'website', 'url',
   'description', 'source', 'phone', 'address', 'operator', 'payment', 'image', 'distinct'])
 
@@ -24,10 +24,18 @@ const reg = JSON.parse(readFileSync(REG, 'utf8'))
 const errors = []
 const warnings = []
 const names = new Map()
+const ids = new Map()
 
 for (const [i, p] of reg.entries()) {
   const tag = `#${i} "${p.name ?? '?'}"`
   if (!p.name || typeof p.name !== 'string') errors.push(`${tag}: saknar namn`)
+  // Stabilt id (fryst 12 okt 2026): foton, betyg, bekräftelser och favoriter hänger på det.
+  // Nya poster utan id får curated-<namn> i synken; ändra ALDRIG ett befintligt id.
+  if (p.id != null) {
+    if (!/^curated-[a-z0-9][a-z0-9.,&()'\-åäöéü/:–]*$/i.test(p.id)) errors.push(`${tag}: ogiltigt id "${p.id}"`)
+    if (ids.has(p.id)) errors.push(`${tag}: id "${p.id}" används redan av #${ids.get(p.id)}`)
+    ids.set(p.id, i)
+  } else warnings.push(`${tag}: saknar id – får curated-<namn> i synken; kör node scripts/assign-ids.mjs`)
   const key = (p.name ?? '').trim().toLowerCase()
   if (names.has(key)) errors.push(`${tag}: dubblettnamn (samma som #${names.get(key)}) – slå ihop eller särskilj med ort`)
   names.set(key, i)

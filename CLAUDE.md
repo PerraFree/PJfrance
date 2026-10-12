@@ -194,6 +194,13 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
 
 ## Bestående lärdomar (regel + varför)
 
+- **Registrets `id` är permanent** (fryst 12 okt 2026). Det byggdes tidigare av
+  listpositionen, så varje borttagen post flyttade id:t för alla senare och
+  foton/betyg/bekräftelser/favoriter hamnade fel. Ändra aldrig ett id; vid
+  sammanslagning behålls den kvarvarande postens id. Nya poster utan id får
+  `curated-<namn>` (`scripts/assign-ids.mjs`). Gamla id översätts via
+  `public/data/id-aliases.json` (`scripts/build-id-aliases.mjs`, `src/lib/idAliases.ts`).
+
 - Speglade listor i `sync-stations.mjs` och `overpass.ts` ändras alltid i båda,
   annars visar live-hämtningen något annat än seeden. `check-mirrors.mjs` i
   deployen fångar missen; kör den lokalt före push.

@@ -17,6 +17,7 @@ import { fetchVerifications, submitVerification, type VerificationInfo } from '.
 import { fetchReviews, type StationReviews } from './lib/reviews'
 import ReviewForm from './components/ReviewForm'
 import { fetchPhotos } from './lib/photos'
+import { remapKeys, remapSet } from './lib/idAliases'
 import PhotoForm from './components/PhotoForm'
 import AdminPanel from './components/AdminPanel'
 import { searchPlace } from './lib/geocode'
@@ -333,6 +334,16 @@ export default function App() {
   const [locating, setLocating] = useState(false)
   const [showMore, setShowMore] = useState(false)
   const [favorites, setFavorites] = useState<Set<string>>(loadFavorites)
+  // Favoriter sparade under gamla register-id (före 12 okt 2026) flyttas till rätt plats.
+  useEffect(() => {
+    void remapSet(loadFavorites()).then((next) => {
+      setFavorites((prev) => {
+        if (next.size === prev.size && [...next].every((k) => prev.has(k))) return prev
+        saveFavorites(next)
+        return next
+      })
+    })
+  }, [])
   const [favOnly, setFavOnly] = useState(false)
   const [yearRoundOnly, setYearRoundOnly] = useState(false)
   const [searching, setSearching] = useState(false)
@@ -348,6 +359,9 @@ export default function App() {
   // Senaste "stämmer fortfarande"-datum per plats (delas av alla användare)
   useEffect(() => {
     fetchVerifications()
+      .then((m) =>
+        remapKeys(m, (a, b) => ({ latest: a.latest > b.latest ? a.latest : b.latest, count: a.count + b.count })),
+      )
       .then(setVerifications)
       .catch(() => {
         /* valfritt lager */
@@ -360,6 +374,9 @@ export default function App() {
   // Godkända betyg & kommentarer (delas av alla)
   useEffect(() => {
     fetchReviews()
+      .then((m) =>
+        remapKeys(m, (a, b) => ({ ...a, sum: a.sum + b.sum, count: a.count + b.count, comments: [...a.comments, ...b.comments] })),
+      )
       .then(setReviews)
       .catch(() => {
         /* valfritt lager */
@@ -373,6 +390,7 @@ export default function App() {
   // supabase/schema.sql för varför det INTE går via granskningskön.
   useEffect(() => {
     fetchPhotos()
+      .then((m) => remapKeys(m, (a) => a)) // första (nyaste) fotot vinner
       .then(setPhotos)
       .catch(() => {
         /* valfritt lager */

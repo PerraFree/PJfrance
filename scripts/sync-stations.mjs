@@ -688,6 +688,11 @@ function distanceKm(lat1, lon1, lat2, lon2) {
 // Träffar och missar sparas i en committad fil, nyckel = exakt query-sträng.
 // Missar prövas om efter 30 dagar (adresser dyker upp i OSM med tiden).
 // Ändrar man `query` på en post får den automatiskt en ny nyckel.
+/** Namn → id-del: gemener, utan diakritik, bara a–z/0–9 och bindestreck. */
+function slugify(t) {
+  return String(t).toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60)
+}
+
 const GEOCODE_CACHE = new URL('./geocode-cache.json', import.meta.url)
 const GEOCODE_MISS_RETRY_MS = 30 * 24 * 3600 * 1000
 
@@ -771,7 +776,11 @@ async function fetchCurated() {
         }
       }
       const station = {
-        id: `curated-${i}-${(e.query ?? e.name).replace(/\s+/g, '-').toLowerCase()}`,
+        // Stabilt id: fryst i registret (fältet id) sedan 12 okt 2026. Tidigare
+        // byggdes id av listpositionen, så varje borttagen post flyttade id:t för
+        // alla senare – foton, betyg, bekräftelser och favoriter hamnade fel.
+        // Saknas id (ny post) används namnet; check-register.mjs kräver unika id.
+        id: e.id ?? `curated-${slugify(e.name)}`,
         name: e.name,
         lat: pos.lat,
         lon: pos.lon,
