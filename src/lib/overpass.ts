@@ -172,6 +172,21 @@ const OVERPASS_MIRRORS = [
 // Se säkringen i fetchOsmStations: pausar live-hämtning när alla speglar felar.
 let failedFetches = 0
 let backoffUntil = 0
+// Pågående hämtning – ett nytt anrop avbryter det förra (kartan har flyttats).
+let currentFetch: AbortController | null = null
+
+/** Sant för ett anrop som avbrutits av ett nyare – inget riktigt fel. */
+export function isAbortError(err: unknown): boolean {
+  return err instanceof Error && err.name === 'AbortError'
+}
+
+// Rena dricksvattennoder (amenity=drinking_water utan annan tjänst) hämtas
+// bara live – synken tar inte med dem. I sammanslagningen (App.tsx dedupe)
+// får de bara fylla på en befintlig plats, aldrig bli den som behålls.
+const drinkingWaterOnlyIds = new Set<string>()
+export function isDrinkingWaterOnly(s: Pick<Station, 'id' | 'source'>): boolean {
+  return s.source === 'osm' && drinkingWaterOnlyIds.has(s.id)
+}
 
 interface OverpassElement {
   type: 'node' | 'way' | 'relation'
@@ -374,6 +389,9 @@ function toStation(el: OverpassElement): Station | null {
     (s) => s !== 'gasol' || tags.shop === 'gas' || override,
   )
   if (services.length === 0) return null
+  if (tags.amenity === 'drinking_water' && services.length === 1 && services[0] === 'vatten') {
+    drinkingWaterOnlyIds.add(`osm-${el.type}-${el.id}`)
+  }
   const kind = placeKind(tags)
   const amenity = amenityFields(tags)
   if (override) amenity.facilities = [...new Set([...(amenity.facilities ?? []), ...override])]
@@ -510,33 +528,60 @@ export async function fetchOsmStations(bounds: LatLngBounds): Promise<Station[]>
     );
     out center tags;
   `
-  // Kort timeout så en trög spegel inte får appen att kännas långsam.
-  const withTimeout =
-    typeof AbortSignal !== 'undefined' && 'timeout' in AbortSignal
-      ? () => AbortSignal.timeout(12_000)
-      : () => undefined
-  // Säkring: när Overpass är nere tuggade appen 3 speglar × 12 s vid VARJE
-  // kartrörelse. Efter två helt misslyckade hämtningar pausas live-flödet i
-  // fem minuter – seed-datan täcker hela Sverige under tiden.
-  if (Date.now() < backoffUntil) throw new Error('Overpass pausad (backoff)')
-  let lastError: unknown
-  for (const url of OVERPASS_MIRRORS) {
-    try {
-      const res = await fetch(url, {
-        method: 'POST',
-        body: 'data=' + encodeURIComponent(query),
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        signal: withTimeout(),
-      })
-      if (!res.ok) throw new Error(`Overpass svarade ${res.status}`)
-      const json = (await res.json()) as { elements: OverpassElement[] }
-      failedFetches = 0
-      return json.elements.map(toStation).filter((s): s is Station => s !== null)
-    } catch (err) {
-      lastError = err
-    }
+  // Ett nytt anrop avbryter det föregående – svaret för en gammal kartvy
+  // behövs inte och ska inte uppta nätet (eller räknas som fel nedan).
+  currentFetch?.abort()
+  const ctrl = new AbortController()
+  currentFetch = ctrl
+  const aborted = () => {
+    const e = new Error('Overpass-hämtningen avbröts av en nyare')
+    e.name = 'AbortError'
+    return e
   }
-  failedFetches++
-  if (failedFetches >= 2) backoffUntil = Date.now() + 5 * 60_000
-  throw lastError instanceof Error ? lastError : new Error('Overpass ej nåbar')
+  try {
+    // Säkring: när Overpass är nere tuggade appen 3 speglar × 12 s vid VARJE
+    // kartrörelse. Efter två helt misslyckade hämtningar pausas live-flödet i
+    // fem minuter – seed-datan täcker hela Sverige under tiden.
+    if (Date.now() < backoffUntil) throw new Error('Overpass pausad (backoff)')
+    let lastError: unknown
+    for (const url of OVERPASS_MIRRORS) {
+      if (ctrl.signal.aborted) throw aborted()
+      // Kort timeout per spegel så en trög spegel inte får appen att kännas
+      // långsam; avbryts även när ett nyare anrop startar.
+      const attempt = new AbortController()
+      const onAbort = () => attempt.abort()
+      ctrl.signal.addEventListener('abort', onAbort)
+      const timer = setTimeout(() => attempt.abort(), 12_000)
+      try {
+        const res = await fetch(url, {
+          method: 'POST',
+          body: 'data=' + encodeURIComponent(query),
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          signal: attempt.signal,
+        })
+        if (!res.ok) throw new Error(`Overpass svarade ${res.status}`)
+        const json = (await res.json()) as { elements?: OverpassElement[]; remark?: string }
+        // Overpass kan svara 200 med ett AVHUGGET resultat och en `remark`
+        // ("Query timed out …") – räkna det som fel och prova nästa spegel,
+        // precis som scripts/sync-stations.mjs gör. Ändra ALLTID båda.
+        if (json.remark && /timed out|runtime error|out of memory|load too high/i.test(json.remark)) {
+          throw new Error(`avhugget svar: ${json.remark}`)
+        }
+        failedFetches = 0
+        return (json.elements ?? []).map(toStation).filter((s): s is Station => s !== null)
+      } catch (err) {
+        if (ctrl.signal.aborted) throw aborted()
+        lastError = err
+      } finally {
+        clearTimeout(timer)
+        ctrl.signal.removeEventListener('abort', onAbort)
+      }
+    }
+    // Bara riktiga misslyckanden räknas – ett avbrutet anrop har kastat ovan.
+    failedFetches++
+    if (failedFetches >= 2) backoffUntil = Date.now() + 5 * 60_000
+    throw lastError instanceof Error ? lastError : new Error('Overpass ej nåbar')
+  } finally {
+    if (currentFetch === ctrl) currentFetch = null
+  }
 }

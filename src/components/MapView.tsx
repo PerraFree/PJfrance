@@ -529,6 +529,10 @@ export default function MapView({
   const focusingRef = useRef(false)
   const popupOpenRef = useRef(false)
   const rebuildPendingRef = useRef(false)
+  // Markören vars plats-popup är öppen (behålls vid ombyggnad, se rebuildMarkers).
+  const openMarkerRef = useRef<{ id: string; marker: L.Marker } | null>(null)
+  // Den öppna markören, utlyft ur klustret och lagd direkt på kartan.
+  const liftedMarkerRef = useRef<L.Marker | null>(null)
 
   /**
    * Auto-panoreringsmarginaler som håller popupen fri från panelen – topp-
@@ -621,13 +625,45 @@ export default function MapView({
       return
     }
     // Riv aldrig en ÖPPEN popup – t.ex. när kartans auto-panorering efter
-    // popup-öppning triggar moveend. Ombyggnaden körs när popupen stängts.
-    if (popupOpenRef.current) {
-      rebuildPendingRef.current = true
-      return
+    // popup-öppning triggar moveend. Övriga markörer byggs ändå om (annars
+    // blev kartan tom när man panorerade till en annan ort med popupen
+    // öppen); den öppna markören behålls som den är. Har den hamnat utanför
+    // vyn stängs popupen och allt byggs om som vanligt.
+    let kept: { id: string; marker: L.Marker } | null = null
+    if (popupOpenRef.current && openMarkerRef.current) {
+      const open = openMarkerRef.current
+      if (map.getBounds().contains(open.marker.getLatLng())) {
+        kept = open
+      } else {
+        map.closePopup()
+      }
+    }
+    // En tidigare lyft markör (se nedan) som inte längre är den öppna tas bort.
+    const lifted = liftedMarkerRef.current
+    if (lifted && lifted !== kept?.marker) {
+      map.removeLayer(lifted)
+      liftedMarkerRef.current = null
+    }
+    if (kept && liftedMarkerRef.current !== kept.marker) {
+      // Lyft ut den öppna markören ur klustret och lägg den direkt på kartan.
+      // Annars plockar markercluster tillfälligt bort den när nya grannar
+      // läggs till (addLayers), och då stänger Leaflet popupen. Under själva
+      // flytten kopplas markörens "stäng popup vid remove" bort.
+      const mk = kept.marker
+      mk.off('remove', mk.closePopup)
+      cluster.removeLayer(mk)
+      map.addLayer(mk)
+      mk.on('remove', mk.closePopup)
+      liftedMarkerRef.current = mk
     }
     cluster.clearLayers()
+    if (kept) {
+      // Den behållna markören har data från förra bygget – bygg om helt när
+      // popupen stängs så att den också blir aktuell (och läggs i klustret).
+      rebuildPendingRef.current = true
+    }
     markersById.current.clear()
+    if (kept) markersById.current.set(kept.id, kept.marker)
     const active = activeFiltersRef.current
     if (active.size === 0) return
     const gasolFacilitiesNow = gasolFacilitiesRef.current
@@ -647,6 +683,10 @@ export default function MapView({
     const { padTopLeft, padBottomRight } = computePopupPadding()
     const canReportNow = canReportRef.current
     const userLocNow = userLocRef.current
+    if (kept) {
+      const keptId = kept.id
+      list = list.filter((s) => s.id !== keptId)
+    }
     const markers = list.map((station) => {
       // Obekräftad plats/tjänst ⇒ grå nål (samma glyf), så man ser direkt på
       // kartan vad som är belagt och vad som bara påstås.
@@ -659,6 +699,12 @@ export default function MapView({
       // Registreras FÖRE bindPopup så att marginalerna hinner uppdateras
       // innan Leaflet öppnar popupen på klicket.
       marker.on('click', () => refreshPopupPadding(marker))
+      marker.on('popupopen', () => {
+        openMarkerRef.current = { id: station.id, marker }
+      })
+      marker.on('popupclose', () => {
+        if (openMarkerRef.current?.marker === marker) openMarkerRef.current = null
+      })
       marker.bindPopup(
         () =>
           popupHtml(
@@ -703,7 +749,7 @@ export default function MapView({
           focusingRef.current = true
           window.setTimeout(() => {
             focusingRef.current = false
-            if (rebuildPendingRef.current && !popupOpenRef.current) {
+            if (rebuildPendingRef.current) {
               rebuildPendingRef.current = false
               rebuildMarkers()
             }
@@ -754,7 +800,10 @@ export default function MapView({
     // tile-fel (samma sorts leverantörsavbrott som CARTO-incidenten) byts det
     // automatiskt till OpenStreetMaps egna tiles i stället för att appen tyst
     // visar en trasig/blank karta för alla tills någon hinner rätta koden.
-    let tileErrors = 0
+    // Bara fel i en tät följd räknas (6 inom 20 s): enstaka fel under en lång
+    // session får inte byta baskartan för gott.
+    const TILE_ERROR_LIMIT = 6
+    const TILE_ERROR_WINDOW_MS = 20_000
     let fallbackDone = false
     const layers = { Ljus: ljus, Detaljerad: standard, Satellit: satellit, Terräng: terrang }
     const fallBack = (namn: string, lager: L.TileLayer, varfor: string) => {
@@ -766,10 +815,13 @@ export default function MapView({
     }
     for (const [namn, lager] of Object.entries(layers)) {
       if (lager === standard) continue // inget att falla tillbaka på om denna felar
+      let tileErrorTimes: number[] = []
       lager.on('tileerror', () => {
         if (fallbackDone || !map.hasLayer(lager)) return
-        tileErrors++
-        if (tileErrors >= 6) fallBack(namn, lager, 'ger upprepade tile-fel')
+        const now = Date.now()
+        tileErrorTimes = tileErrorTimes.filter((t) => now - t < TILE_ERROR_WINDOW_MS)
+        tileErrorTimes.push(now)
+        if (tileErrorTimes.length >= TILE_ERROR_LIMIT) fallBack(namn, lager, 'ger upprepade tile-fel')
       })
       // Leverantören kan också bara TIGA (inget svar alls, inga fel) – då blir
       // kartan tom utan att något tileerror någonsin kommer (Pers skärmbild
@@ -927,7 +979,8 @@ export default function MapView({
     container.addEventListener('click', onPopupClick)
 
     // Popupen ska stanna tills användaren själv stänger den: flagga öppen
-    // popup så att markör-ombyggnad väntar, och kör ombyggnaden vid stängning.
+    // popup så att markör-ombyggnaden behåller den öppna markören, och bygg
+    // om helt (även den markören) när popupen stängs.
     map.on('popupclose', () => {
       popupOpenRef.current = false
       if (rebuildPendingRef.current) {
@@ -1072,8 +1125,8 @@ export default function MapView({
   }, [userLoc])
 
   // Byter användaren filter medan en popup är öppen stängs den – annars kan
-  // kartan visa markörer som inte längre matchar filtren (ombyggnaden skjuts
-  // ju upp så länge en popup är öppen). Ett filterbyte är ett aktivt val, så
+  // kartan visa en öppen markör som inte längre matchar filtren (den behålls
+  // vid ombyggnad så länge popupen är öppen). Ett filterbyte är ett aktivt val, så
   // att popupen stängs är väntat – till skillnad från panorering/datahämtning
   // som aldrig ska stänga den.
   const prevFiltersRef = useRef(activeFilters)

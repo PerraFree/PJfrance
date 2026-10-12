@@ -21,7 +21,7 @@ import { remapKeys, remapSet } from './lib/idAliases'
 import PhotoForm from './components/PhotoForm'
 import AdminPanel from './components/AdminPanel'
 import { searchPlace } from './lib/geocode'
-import { fetchOsmStations } from './lib/overpass'
+import { fetchOsmStations, isAbortError, isDrinkingWaterOnly } from './lib/overpass'
 import { getPosition, tap } from './lib/native'
 import { gasolFacilityIcon, serviceIcon } from './lib/icons'
 import type { GasolFacility, ServiceType, Station } from './types'
@@ -105,8 +105,27 @@ const MERGE_FIELDS: (keyof Station)[] = [
   'confidence',
 ]
 
-/** Fyller på det som redan behållits (högre prioritet) med det som saknas från en dubblett. */
-function mergeInto(target: Station, s: Station): void {
+/** Fyller på det som redan behållits (högre prioritet) med det som saknas från en dubblett.
+ *  `fillOnly`: dubbletten (t.ex. en ren dricksvattennod från live-hämtningen)
+ *  får bara fylla på – den kan aldrig bekräfta en tjänst målet själv
+ *  markerat som obekräftad. */
+function mergeInto(target: Station, s: Station, fillOnly = false): void {
+  // Målets EGNA obekräftade tjänster (före sammanslagningen). För registret
+  // (egen/kommun, högst prioritet) och för fyll-på-dubbletter gäller att de
+  // förblir obekräftade – en lägre prioriterad källa får inte göra dem gröna.
+  const ownUnverified =
+    !target.unverified &&
+    (target.source === 'egen' || target.source === 'kommun' || fillOnly)
+      ? (target.unverifiedServices ?? []).filter((x) => !target.services.includes(x))
+      : []
+  // Avgiften ärvs bara när grannen är "samma sorts" plats: dess tjänster är
+  // en delmängd av målets bekräftade, och är målet en övernattningsplats
+  // (camping/ställplats) måste grannen också vara det. Annars får t.ex. en
+  // camping utan avgiftsuppgift tömningsnodens "Gratis" intill och hamnar
+  // fel i filtret "Gratis" (Lindesbergs citycamping m.fl.).
+  const overnight = (x: Station) => x.services.some((sv) => sv === 'camping' || sv === 'stallplats')
+  const inheritFee =
+    s.services.every((x) => target.services.includes(x)) && (!overnight(target) || overnight(s))
   // Ett riktigt namn slår alltid ett generiskt ("Tömningsstation"): en
   // namnlös tömningsnod 70 m från "Ställplats Skeda Strand" ska heta Skeda
   // Strand, inte "Tömningsstation" (Pers fältrapport sep 2026).
@@ -136,6 +155,11 @@ function mergeInto(target: Station, s: Station): void {
       ]
     }
   }
+  if (ownUnverified.length) {
+    // Registret vinner: dess obekräftade tjänster förblir grå.
+    target.services = target.services.filter((x) => !ownUnverified.includes(x))
+    target.unverifiedServices = [...new Set([...(target.unverifiedServices ?? []), ...ownUnverified])]
+  }
   if (target.unverifiedServices) {
     // Påstådda tjänster som nu är bekräftade behövs inte i listan längre.
     const rest = target.unverifiedServices.filter((x) => !target.services.includes(x))
@@ -144,6 +168,7 @@ function mergeInto(target: Station, s: Station): void {
   const fac = [...new Set([...(target.facilities ?? []), ...(s.facilities ?? [])])]
   target.facilities = fac.length ? fac : undefined
   for (const k of MERGE_FIELDS) {
+    if (k === 'fee' && !inheritFee) continue
     if (target[k] == null && s[k] != null) (target[k] as unknown) = s[k]
   }
 }
@@ -153,9 +178,17 @@ function mergeInto(target: Station, s: Station): void {
  * hamnar i samma rutnätscell – så att samma fysiska plats bara får en pin.
  * Mer tillförlitliga källor vinner och kompletteras med detaljer från övriga.
  */
-function dedupe(stations: Station[]): Station[] {
+function dedupe(
+  stations: Station[],
+  /** Ordning INOM samma källprioritet (lägre först). Sorteringen är stabil,
+   *  så lika rang behåller indatans ordning. */
+  rank: (s: Station) => number = () => 0,
+  /** Dubbletter som bara får fylla på (se mergeInto). */
+  isFillOnly: (s: Station) => boolean = () => false,
+): Station[] {
   const sorted = [...stations].sort(
-    (a, b) => (SOURCE_PRIORITY[a.source] ?? 9) - (SOURCE_PRIORITY[b.source] ?? 9),
+    (a, b) =>
+      (SOURCE_PRIORITY[a.source] ?? 9) - (SOURCE_PRIORITY[b.source] ?? 9) || rank(a) - rank(b),
   )
   const CELL = 0.003 // ~200–330 m; grannceller täcker 100 m-radien
   const grid = new Map<string, Station[]>()
@@ -170,7 +203,7 @@ function dedupe(stations: Station[]): Station[] {
         if (!bucket) continue
         for (const ex of bucket) {
           if (distMeters(ex, s) <= 100 && gasolOnly(ex) === gasolOnly(s)) {
-            mergeInto(ex, s)
+            mergeInto(ex, s, isFillOnly(s))
             merged = true
             break
           }
@@ -465,13 +498,18 @@ export default function App() {
       const better = isGenericName(s.name) ? seedNameById.get(s.id) : undefined
       return better ? { ...s, name: better } : s
     })
-    const merged = dedupe([
-      ...myPlaces,
-      ...OWN_STATIONS,
-      ...communityStations,
-      ...live,
-      ...seedStations,
-    ])
+    // Inom samma källprioritet vinner det som finns i seeden (live-kopian av
+    // samma OSM-objekt räknas dit), sedan övriga live-objekt och sist rena
+    // dricksvattennoder (som synken inte tar med) – annars kunde en ny
+    // live-nod 50 m bort bli den behållna och byta platsens id, så favoriter,
+    // foton och betyg försvann vid inzoomning.
+    const seedIds = new Set(seedStations.map((s) => s.id))
+    const rank = (s: Station) => (isDrinkingWaterOnly(s) ? 2 : seedIds.has(s.id) ? 0 : 1)
+    const merged = dedupe(
+      [...myPlaces, ...OWN_STATIONS, ...communityStations, ...live, ...seedStations],
+      rank,
+      isDrinkingWaterOnly,
+    )
     // Kvarvarande generiska namn: "Tömningsstation vid <närmaste namngivna plats>"
     return nameGenericByNearby(merged)
   }, [osmStations, seedStations, communityStations, myPlaces])
@@ -628,8 +666,9 @@ export default function App() {
         }
         setOsmStations([...cache.values()])
         setStatus(`${dataCountRef.current.toLocaleString('sv-SE')} platser tillgängliga`)
-      } catch {
-        if (reqId !== reqIdRef.current) return
+      } catch (err) {
+        // Avbruten av en nyare hämtning (eller en nyare har startat): inget fel.
+        if (reqId !== reqIdRef.current || isAbortError(err)) return
         // Seed-datan täcker hela Sverige, så en misslyckad live-uppdatering
         // är inte kritisk – visa ett lugnt meddelande i stället för ett fel.
         setStatus('Visar sparade platser – live-uppdatering från OpenStreetMap gick inte just nu.')

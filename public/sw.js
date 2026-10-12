@@ -1,5 +1,5 @@
 /* Enkel service worker: cachar appskal + stationsdata så appen fungerar offline. */
-const CACHE = 'tomningskartan-v94'
+const CACHE = 'tomningskartan-v95'
 const APP_SHELL = [
   './',
   './manifest.webmanifest',
@@ -29,15 +29,34 @@ self.addEventListener('activate', (event) => {
 })
 
 self.addEventListener('fetch', (event) => {
-  const url = new URL(event.request.url)
-  if (event.request.method !== 'GET' || url.origin !== self.location.origin) return
+  const req = event.request
+  const url = new URL(req.url)
+  if (req.method !== 'GET' || url.origin !== self.location.origin) return
+  const isNav = req.mode === 'navigate'
+  // Navigeringar cachas utan query-sträng – annars blir det en cachepost per
+  // delad ?at=-länk. Sidan är densamma oavsett query.
+  const key = isNav ? url.origin + url.pathname : req
+  // Stationsdatan ska hämtas färskt ("nätverk först" på riktigt): no-cache
+  // tvingar webbläsaren att fråga servern i stället för att ta HTTP-cachen.
+  const isData = /\/data\/[^/]+\.json$/.test(url.pathname)
   event.respondWith(
-    fetch(event.request)
+    (isData ? fetch(req, { cache: 'no-cache' }) : fetch(req))
       .then((res) => {
-        const copy = res.clone()
-        caches.open(CACHE).then((c) => c.put(event.request, copy))
+        // Bara lyckade svar cachas – en 404/500 får aldrig ersätta en bra kopia.
+        if (res.ok) {
+          const copy = res.clone()
+          event.waitUntil(caches.open(CACHE).then((c) => c.put(key, copy)))
+        }
         return res
       })
-      .catch(() => caches.match(event.request).then((hit) => hit ?? caches.match('./'))),
+      .catch(() =>
+        caches.match(key).then((hit) => {
+          if (hit) return hit
+          // Offline-reserven (startsidan) bara för sidnavigeringar – aldrig
+          // som svar på en JS-/JSON-begäran.
+          if (isNav) return caches.match('./').then((shell) => shell ?? Response.error())
+          return Response.error()
+        }),
+      ),
   )
 })
