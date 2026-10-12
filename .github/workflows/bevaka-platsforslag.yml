@@ -90,7 +90,16 @@ jobs:
             // länka ärenden via Pers repo, och gör texten säker i
             // markdown-tabellceller (| och radbrytningar).
             // OBS ordningen: # först, annars träffas #-tecknet i "&#64;".
-            const neutral = (s) => String(s).replace(/<!--|-->/g, '').replace(/#/g, '&#35;').replace(/@/g, '&#64;')
+            // Säkerhetsgranskning 12 okt 2026: även markdown-länkar/bilder och
+            // klickbara adresser neutraliseras (annars kunde ett förslag med
+            // [Logga in här](https://ond.se) hamna som länk i Pers mejl).
+            const neutral = (s) =>
+              String(s)
+                .replace(/<!--|-->/g, '')
+                .replace(/#/g, '&#35;')
+                .replace(/@/g, '&#64;')
+                .replace(/[[\]()!<>`*_~]/g, (c) => '&#' + c.charCodeAt(0) + ';')
+                .replace(/(https?):\/\//gi, '$1&#58;//')
             const cell = (v) =>
               neutral(v ?? '–')
                 .replace(/\|/g, '\\|')

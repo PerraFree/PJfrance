@@ -138,11 +138,37 @@ create index if not exists rate_limits_bucket_key_idx on rate_limits (bucket, ke
 alter table rate_limits enable row level security;
 revoke all on rate_limits from anon, authenticated;
 
-create or replace function public.client_ip_hash() returns text
-language plpgsql stable as $$
+-- Säkerhetsgranskning 12 okt 2026: spamskyddets funktioner ligger i schemat
+-- `private`, som PostgREST INTE exponerar. Tidigare låg rate_limit() i public
+-- med execute för anon – vem som helst kunde anropa /rest/v1/rpc/rate_limit
+-- med egna bucket-namn och tak, fylla dygnstaket (alla inskick stoppade) eller
+-- fylla databasen med rader. Nu: inga parametrar från anon, tak hårdkodade i
+-- triggrarna, och triggrarna körs som ägaren (security definer).
+create schema if not exists private;
+revoke all on schema private from public;
+grant usage on schema private to anon, authenticated;
+
+-- Hemligt salt för IP-hashen (slumpas en gång i databasen, kan inte läsas av
+-- anon). Tidigare stod saltet i det publika repot, så hashen gick att räkna
+-- baklänges för alla IPv4-adresser.
+create table if not exists private.app_secrets (name text primary key, value text not null);
+alter table private.app_secrets enable row level security;
+revoke all on private.app_secrets from public, anon, authenticated;
+insert into private.app_secrets (name, value)
+  values ('ip_salt', replace(gen_random_uuid()::text || gen_random_uuid()::text, '-', ''))
+  on conflict (name) do nothing;
+
+-- Gamla public-versioner bort (de var anropbara via API:t).
+drop policy if exists "anon kan ladda upp foton" on storage.objects;
+drop function if exists public.rate_limit(text, int, int, int) cascade;
+drop function if exists public.client_ip_hash() cascade;
+
+create or replace function private.client_ip_hash() returns text
+language plpgsql stable security definer set search_path = private, public as $$
 declare
   h json;
   ip text;
+  salt text;
 begin
   begin
     h := current_setting('request.headers', true)::json;
@@ -151,72 +177,107 @@ begin
   end;
   if h is null then return null; end if;
   ip := coalesce(nullif(h->>'cf-connecting-ip', ''), split_part(coalesce(h->>'x-forwarded-for', ''), ',', 1));
-  ip := trim(ip);
+  ip := lower(trim(ip));
   if ip is null or ip = '' then return null; end if;
-  return md5('tomningskartan-ip-' || ip);
+  -- IPv6: räkna per /64 (en vanlig abonnent har en hel /64 och kan annars
+  -- byta adress obegränsat). Förkortade adresser (::) normaliseras grovt.
+  if position(':' in ip) > 0 then
+    ip := array_to_string((string_to_array(ip, ':'))[1:4], ':') || '::/64';
+  end if;
+  select value into salt from private.app_secrets where name = 'ip_salt';
+  return md5(coalesce(salt, '') || ip);
 end $$;
 
-create or replace function public.rate_limit(p_bucket text, p_per_ip_hour int, p_global_hour int, p_global_day int)
+create or replace function private.rate_limit(p_bucket text, p_per_ip_hour int, p_global_hour int, p_global_day int)
 returns boolean
-language plpgsql security definer set search_path = public as $$
+language plpgsql security definer set search_path = private, public as $$
 declare
   k text;
   n int;
 begin
-  delete from rate_limits where bucket = p_bucket and created_at < now() - interval '1 day';
-  select count(*) into n from rate_limits where bucket = p_bucket;
+  delete from public.rate_limits where bucket = p_bucket and created_at < now() - interval '1 day';
+  select count(*) into n from public.rate_limits where bucket = p_bucket;
   if n >= p_global_day then
     raise exception 'Tjänsten tar emot ovanligt många inskick just nu – försök igen i morgon.';
   end if;
-  select count(*) into n from rate_limits where bucket = p_bucket and created_at > now() - interval '1 hour';
+  select count(*) into n from public.rate_limits where bucket = p_bucket and created_at > now() - interval '1 hour';
   if n >= p_global_hour then
     raise exception 'Tjänsten tar emot ovanligt många inskick just nu – försök igen om en timme.';
   end if;
-  k := client_ip_hash();
+  k := private.client_ip_hash();
   if k is not null then
-    select count(*) into n from rate_limits
+    select count(*) into n from public.rate_limits
       where bucket = p_bucket and key = k and created_at > now() - interval '1 hour';
     if n >= p_per_ip_hour then
       raise exception 'Du har skickat in många gånger på kort tid – vänta en stund och försök igen.';
     end if;
   end if;
-  insert into rate_limits (key, bucket) values (coalesce(k, 'okänd'), p_bucket);
+  insert into public.rate_limits (key, bucket) values (coalesce(k, 'okänd'), p_bucket);
   return true;
 end $$;
-revoke all on function public.rate_limit(text, int, int, int) from public;
-grant execute on function public.rate_limit(text, int, int, int) to anon, authenticated;
+revoke all on function private.rate_limit(text, int, int, int) from public, anon, authenticated;
+revoke all on function private.client_ip_hash() from public, anon, authenticated;
 
--- Triggers: bara anon begränsas (service-nyckeln/Per i Table Editor inte).
-create or replace function public.rate_limit_submissions() returns trigger language plpgsql as $$
-begin if current_user = 'anon' then perform rate_limit('submissions', 5, 60, 300); end if; return new; end $$;
-create or replace function public.rate_limit_reports() returns trigger language plpgsql as $$
-begin if current_user = 'anon' then perform rate_limit('reports', 10, 100, 500); end if; return new; end $$;
-create or replace function public.rate_limit_reviews() returns trigger language plpgsql as $$
-begin if current_user = 'anon' then perform rate_limit('reviews', 10, 200, 1000); end if; return new; end $$;
-create or replace function public.rate_limit_verifications() returns trigger language plpgsql as $$
-begin if current_user = 'anon' then perform rate_limit('verifications', 20, 300, 1500); end if; return new; end $$;
-create or replace function public.rate_limit_photos() returns trigger language plpgsql as $$
-begin if current_user = 'anon' then perform rate_limit('photos', 10, 60, 300); end if; return new; end $$;
-grant execute on function public.rate_limit_submissions(), public.rate_limit_reports(), public.rate_limit_reviews(),
-  public.rate_limit_verifications(), public.rate_limit_photos(), public.client_ip_hash() to anon, authenticated;
+-- Är anroparen anon? I en security definer-funktion är current_user ägaren,
+-- så rollen läses ur PostgREST:s JWT-claims (och SET ROLE som reserv).
+create or replace function private.is_anon() returns boolean
+language sql stable as $$
+  select coalesce(nullif(current_setting('request.jwt.claims', true), '')::json->>'role',
+                  nullif(current_setting('role', true), 'none'), '') = 'anon'
+$$;
+revoke all on function private.is_anon() from public, anon, authenticated;
+
+-- Gemensam trigger: spamskydd + databasen sätter själv tid och id för anon
+-- (fynd 12 okt: anon kunde skicka created_at 2099 och ligga överst för alltid).
+create or replace function private.guard_insert() returns trigger
+language plpgsql security definer set search_path = private, public as $$
+begin
+  if private.is_anon() then
+    perform private.rate_limit(
+      tg_argv[0], tg_argv[1]::int, tg_argv[2]::int, tg_argv[3]::int);
+    new.created_at := now();
+    new.id := gen_random_uuid();
+  end if;
+  return new;
+end $$;
+revoke all on function private.guard_insert() from public, anon, authenticated;
+
+drop function if exists public.rate_limit_submissions() cascade;
+drop function if exists public.rate_limit_reports() cascade;
+drop function if exists public.rate_limit_reviews() cascade;
+drop function if exists public.rate_limit_verifications() cascade;
+drop function if exists public.rate_limit_photos() cascade;
 drop trigger if exists rate_limit on submissions;
-create trigger rate_limit before insert on submissions for each row execute function rate_limit_submissions();
+create trigger rate_limit before insert on submissions for each row execute function private.guard_insert('submissions', '5', '60', '300');
 drop trigger if exists rate_limit on reports;
-create trigger rate_limit before insert on reports for each row execute function rate_limit_reports();
+create trigger rate_limit before insert on reports for each row execute function private.guard_insert('reports', '10', '100', '500');
 drop trigger if exists rate_limit on reviews;
-create trigger rate_limit before insert on reviews for each row execute function rate_limit_reviews();
+create trigger rate_limit before insert on reviews for each row execute function private.guard_insert('reviews', '10', '200', '1000');
 drop trigger if exists rate_limit on verifications;
-create trigger rate_limit before insert on verifications for each row execute function rate_limit_verifications();
+create trigger rate_limit before insert on verifications for each row execute function private.guard_insert('verifications', '20', '300', '1500');
 drop trigger if exists rate_limit on photos;
-create trigger rate_limit before insert on photos for each row execute function rate_limit_photos();
+create trigger rate_limit before insert on photos for each row execute function private.guard_insert('photos', '10', '60', '300');
 
--- Uppladdning till bucketen: samma tak (Storage-API:t skickar ingen IP-header
--- till Postgres, så här gäller i praktiken bara de gemensamma taken – det
--- räcker för att fylla lagringen inte ska gå: max 60 filer/timme, 300/dygn).
-drop policy if exists "anon kan ladda upp foton" on storage.objects;
+-- Uppladdning till bucketen: parameterlös wrapper i private (inte nåbar via
+-- API:t). Storage-API:t skickar ingen IP-header, så här gäller de gemensamma
+-- taken – nu i en egen bucket med högre tak än foto-raderna, så att en
+-- angripare inte kan stänga av fotoraderna genom att fylla uppladdningstaket.
+create or replace function private.rate_limit_storage() returns boolean
+language plpgsql security definer set search_path = private, public as $$
+begin
+  return private.rate_limit('storage', 20, 120, 600);
+end $$;
+revoke all on function private.rate_limit_storage() from public;
+grant execute on function private.rate_limit_storage() to anon;
 create policy "anon kan ladda upp foton" on storage.objects
   for insert to anon
-  with check (bucket_id = 'place-photos' and public.rate_limit('storage', 10, 60, 300));
+  with check (bucket_id = 'place-photos' and private.rate_limit_storage());
+
+-- Platsförslagens tjänster får bara vara kända koder (annars "undefined" i appen).
+alter table submissions drop constraint if exists submissions_services;
+alter table submissions add constraint submissions_services check (
+  services <@ array['gravatten','latrin','vatten','sopor','atervinning','stallplats','camping','gasol']::text[]
+) not valid;
 
 -- Säkerhetsfynd 3 (GHSA-72p3-7774-p8h3): längdgränser på all användartext.
 -- Utan dem kunde ett enda förslag med t.ex. 300 tecken långt namn få

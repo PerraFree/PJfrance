@@ -33,7 +33,9 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      # --ignore-scripts: inga installationsskript från beroenden i ett jobb med
+      # skrivrätt till repot (säkerhetsgranskning 12 okt 2026).
+      - run: npm ci --ignore-scripts
       - name: Kontrollera att OSM-listorna är identiska i synk och app (stoppar vid avvikelse)
         run: node scripts/check-mirrors.mjs
       - name: Kvalitetskontroll av registret (tjänstekoder, koordinater, dubbletter inom 100 m)
