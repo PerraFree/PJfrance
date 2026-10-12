@@ -61,6 +61,7 @@ export function gasolFacilityIcon(facility: GasolFacility): string {
 }
 
 export function facilityChip(key: string): string {
-  const label = FACILITY_LABELS[key] ?? key
+  // key kan komma från data (OSM/register) – escapa alltid (granskning 12 okt 2026)
+  const label = String(FACILITY_LABELS[key] ?? key).replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`)
   return `<span class="amenity">${label}</span>`
 }

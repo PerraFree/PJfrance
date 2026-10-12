@@ -1,6 +1,7 @@
 # Håller de SHA-låsta GitHub Actions-versionerna uppdaterade via PR:er
 # (issue #14, okt 2026). Dependabot uppdaterar både SHA:n och versions-
-# kommentaren efter @. npm-beroenden sköts manuellt (npm audit, se CLAUDE.md).
+# kommentaren efter @. npm: EN samlad PR i veckan med bara minor/patch
+# (major, t.ex. Vite 7, väljs bort medvetet – se CLAUDE.md). Granskning 12 okt 2026.
 version: 2
 updates:
   - package-ecosystem: github-actions
@@ -14,3 +15,19 @@ updates:
     # lägger Dependabot en felkommentar i varje PR (hände 11 okt 2026).
     commit-message:
       prefix: "actions"
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:30"
+      timezone: Europe/Stockholm
+    open-pull-requests-limit: 1
+    groups:
+      alla-npm:
+        patterns: ["*"]
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]
+    commit-message:
+      prefix: "npm"

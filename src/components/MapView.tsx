@@ -422,10 +422,11 @@ function popupHtml(
   // eget, eftersom det oftast är färskare och tagit på plats.
   // Community-foton visas bara från projektets egen bucket (säkerhetsfynd 1,
   // okt 2026) – RLS i databasen stoppar främmande URL:er, det här är försvar
-  // på djupet. `station.image` är seedens Wikimedia-bild, inte användardata.
+  // på djupet. `station.image` släpps bara igenom från Wikimedia (OSM-taggen
+  // image kan annars peka på valfri server – granskning 12 okt 2026).
   const photoUrl =
     (isOwnPhotoUrl(communityPhoto) ? communityPhoto : undefined) ??
-    (station.image && /^https:\/\//i.test(station.image) ? station.image : undefined)
+    (station.image && /^https:\/\/(upload|commons)\.wikimedia\.org\//i.test(station.image) ? station.image : undefined)
   const photo = photoUrl
     ? `<img class="popup-photo" src="${escapeAttr(photoUrl)}" alt="" loading="lazy" onerror="this.remove()">`
     : ''

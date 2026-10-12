@@ -12,7 +12,9 @@ dig – skapa tabeller, läsa förslag och publicera det du godkänner. Du behö
 aldrig skriva SQL eller pilla i Supabase.
 
 1. **Hämta nyckeln:** öppna https://supabase.com/dashboard/account/tokens
-   → *Generate new token* → döp den till `tomningskartan` → kopiera texten.
+   → *Generate new token* → döp den till `tomningskartan` → under **Resource access**
+   välj *Project* → bara projektet **Greywater**, bara de rättigheter som behövs,
+   längsta giltighetstid → kopiera texten. (Aldrig en token för hela kontot.)
 2. **Ge den till GitHub:** öppna
    https://github.com/PerraFree/PJfrance/settings/secrets/actions/new
    → Name: `SUPABASE_ACCESS_TOKEN` → Secret: klistra in → *Add secret*.

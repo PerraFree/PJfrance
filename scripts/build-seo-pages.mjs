@@ -30,7 +30,7 @@ const esc = (s) =>
 export const slug = (s) =>
   String(s)
     .toLowerCase()
-    .replace(/å/g, 'a').replace(/ä/g, 'a').replace(/ö/g, 'o').replace(/é/g, 'e')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
 
 function page({ title, description, canonical, body, breadcrumb }) {
@@ -38,6 +38,8 @@ function page({ title, description, canonical, body, breadcrumb }) {
 <html lang="sv">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
@@ -50,7 +52,7 @@ function page({ title, description, canonical, body, breadcrumb }) {
 <meta property="og:image" content="${SITE}/og-image.png">
 <meta property="og:url" content="${esc(canonical)}">
 <meta name="twitter:card" content="summary_large_image">
-${breadcrumb ? `<script type="application/ld+json">${JSON.stringify(breadcrumb)}</script>` : ''}
+${breadcrumb ? `<script type="application/ld+json">${JSON.stringify(breadcrumb).replace(/</g, '\\u003c')}</script>` : ''}
 <style>
   :root{--g:#1b5e20;--g2:#2e7d32;--t:#1f2a1f;--d:#5a6b5a;--bg:#f4f7f4;--card:#fff;--b:#dbe4db}
   *{box-sizing:border-box}
@@ -88,11 +90,18 @@ ${body}
 }
 
 const seed = JSON.parse(await readFile(SEED, 'utf8'))
-const stations = (seed.stations ?? seed).filter((s) => s.kommun && !s.unverified)
+// Bara platser med giltiga talkoordinater och en kommun som ger en icke-tom slug
+// (granskning 12 okt 2026: sträng-lat kraschade bygget mitt i, tom slug skrev
+// över indexsidan, "Falun"/"FALUN" gav dubbla sidor).
+const stations = (seed.stations ?? seed).filter(
+  (s) => s.kommun && !s.unverified && Number.isFinite(s.lat) && Number.isFinite(s.lon) && slug(s.kommun),
+)
 const byKommun = new Map()
 for (const s of stations) {
-  if (!byKommun.has(s.kommun)) byKommun.set(s.kommun, [])
-  byKommun.get(s.kommun).push(s)
+  // Gruppera på slug så att varianter av samma namn blir en sida.
+  const key = [...byKommun.keys()].find((k) => slug(k) === slug(s.kommun)) ?? s.kommun
+  if (!byKommun.has(key)) byKommun.set(key, [])
+  byKommun.get(key).push(s)
 }
 if (byKommun.size < Number(process.env.MIN_KOMMUNER ?? 100)) {
   console.warn(`SEO-sidor: bara ${byKommun.size} kommuner i datan (fältet kommun saknas?) – bygger inte om sidorna.`)

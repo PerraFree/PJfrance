@@ -557,7 +557,7 @@ button {
 }
 
 .search input::placeholder {
-  color: #90a191;
+  color: #5f6f60; /* 4.5:1 mot vit bakgrund (WCAG AA), förut #90a191 ≈ 2.6:1 */
 }
 
 .search input:focus {

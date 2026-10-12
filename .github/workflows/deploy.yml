@@ -8,7 +8,6 @@ name: Deploy till GitHub Pages
 on:
   push:
     branches:
-      - main
       - claude/gravatten-latrin-app-sverige-aed0qg
   workflow_dispatch:
     inputs:
@@ -30,6 +29,10 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # Ingen skrivtoken i .git/config som byggkoden kan läsa – publiceringen
+          # får sin token direkt via github_token (granskning 12 okt 2026).
+          persist-credentials: false
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22
@@ -41,8 +44,8 @@ jobs:
         run: node scripts/check-mirrors.mjs
       - name: Kvalitetskontroll av registret (tjänstekoder, koordinater, dubbletter inom 100 m)
         run: node scripts/check-register.mjs
-      - name: Kontroll av seeden (golv per källa, koordinater, tjänster, dubbla id)
-        run: node scripts/check-seed.mjs
+      - name: Kontrollera att CSP:n täcker alla externa värdar i appen
+        run: node scripts/check-csp.mjs
       - name: Säkerhetskontroll av produktionsberoenden (stoppar vid high/critical)
         run: npm audit --omit=dev --audit-level=high
       - name: Synka stationsdata (OSM + Trafikverket) – bara vid manuell körning med "synk"
@@ -51,9 +54,11 @@ jobs:
         continue-on-error: true
         env:
           TRV_API_KEY: ${{ secrets.TRV_API_KEY }}
+      # Seedkontrollen EFTER ev. synk, så att en manuell synk också kontrolleras
+      - name: Kontroll av seeden (golv per källa, koordinater, tjänster, dubbla id)
+        run: node scripts/check-seed.mjs
       - name: Bygg SEO-sidor (kommunsidor + sitemap) från seed-datan
         run: node scripts/build-seo-pages.mjs
-        continue-on-error: true
       - name: Läs Supabase-koppling (supabase.env eller repo-variabler)
         run: |
           if [ -f supabase.env ]; then
@@ -73,6 +78,11 @@ jobs:
       - run: npm run build
         env:
           BASE_PATH: /
+      - name: Kontrollera bygget (sitemap, kommunsidor, CSP finns)
+        run: |
+          test -s dist/sitemap.xml
+          test "$(ls dist/kommun | wc -l)" -ge 200
+          grep -q 'Content-Security-Policy' dist/index.html
       - name: Publicera till gh-pages
         uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4.1.0
         with:

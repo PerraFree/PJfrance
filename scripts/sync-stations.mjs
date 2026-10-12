@@ -668,8 +668,11 @@ function imageFromTags(tags) {
       '?width=480'
     )
   }
+  // Bara Wikimedia-bilder (granskning 12 okt 2026): tags.image kan peka på
+  // valfri server – en OSM-redigerare kunde då logga besökarnas IP vid varje
+  // popupvisning eller visa olämpligt innehåll. Speglas i båda filerna.
   const img = tags.image
-  if (img && /^https?:\/\//i.test(img)) return img.replace(/^http:\/\//i, 'https://')
+  if (img && /^https?:\/\/(upload|commons)\.wikimedia\.org\//i.test(img)) return img.replace(/^http:\/\//i, 'https://')
   return undefined
 }
 
