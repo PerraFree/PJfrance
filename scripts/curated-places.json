@@ -27307,7 +27307,7 @@
   },
   {
     "name": "Ställplats Barlastudden, Västervik",
-    "query": "Barlastudden, Västervik",
+    "query": "Barlastgatan 11, Västervik",
     "nearLat": 57.76,
     "nearLon": 16.65,
     "maxKm": 3,
@@ -27323,10 +27323,11 @@
     "source": "kommun",
     "confidence": "high",
     "website": "https://www.vastervik.se/Trafik-och-gator/Parkering/parkering-for-husbilar/",
-    "openingHours": "Sommartid",
+    "openingHours": "Sommartid (15 juni–1 sep enligt bokningsplattform)",
     "season": "seasonal",
     "fee": "Avgift via psidan.se (belopp ej angivet)",
-    "description": "Obemannad kommunal ställplats nära stadskärnan och gästhamnen. Källa (vastervik.se, parkering för husbilar, okt 2026): \"Totalt 31 uppställningsplatser med el, färskvatten, toaletter, duschar, diskstation, avfallshantering, badplats samt latrintömning\", öppen sommartid. Kommunens parkeringsstrategi 2024 listar latrintömning + färskvatten men inte gråvatten – gråvatten därför obekräftat. Bokning via psidan.se."
+    "description": "Obemannad kommunal ställplats nära stadskärnan och gästhamnen. Källa (vastervik.se, parkering för husbilar, okt 2026): \"Totalt 31 uppställningsplatser med el, färskvatten, toaletter, duschar, diskstation, avfallshantering, badplats samt latrintömning\", öppen sommartid. Kommunens parkeringsstrategi 2024 listar latrintömning + färskvatten men inte gråvatten – gråvatten därför obekräftat. Bokning via psidan.se. Adress Barlastgatan enligt kommunens parkeringsfolder 2024 (husnummer 11 resp. 13 i bokningsplattformar).",
+    "address": "Barlastgatan, 593 31 Västervik"
   },
   {
     "name": "Mycklaflons Camping",
