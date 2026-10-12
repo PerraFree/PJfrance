@@ -10,7 +10,7 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 |---|---|---|
 | A. Tömning latrin/gråvatten | Kommuner med 0–1 tömningsplatser: kommunsidor, turistråd, anläggningars egna sajter. Kompletteringar av befintliga camping-/ställplatsposter räknas. | 2026-10-05 |
 | B. Gasol byte/påfyllning + priser | Kedjornas butikssidor (Byggmax/Granngården/Rusta/ÖoB per butik), Norbro-/Linde-/gasolautomat.se-listor, lokala påfyllningsbolag, priser. Bara 10/11 kg-flaskor (P11/PA11/PC10/PK10). | 2026-09-28 |
-| C. Obekräftade platser: verifiera + fyll på | (1) Sök primärkälla för de OBEKRÄFTADE posterna i registret (`unverified: true` / `unverifiedServices`) – får de citat: ta bort obekräftat-flaggan. (2) Gör om lovande rader i `docs/kandidatplatser-husbilsplats-park4night.md` (tydlig tjänst + ort) till obekräftade registerposter så de syns grått på kartan. | 2026-09-25 |
+| C. Obekräftade platser: verifiera + fyll på | (1) Sök primärkälla för de OBEKRÄFTADE posterna i registret (`unverified: true` / `unverifiedServices`) – får de citat: ta bort obekräftat-flaggan. (2) Gör om lovande rader i `docs/kandidatplatser-husbilsplats-park4night.md` (tydlig tjänst + ort) till obekräftade registerposter så de syns grått på kartan. | 2026-10-12 |
 | D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. Uppdrag + import: `scripts/import-tools/UPPDRAG-kontroll.md`, `apply-kontroll.mjs`. Körda regioner: Västra Götaland (11 okt). | 2026-10-11 |
 | E. Öppettider + vinterstängt | Platser med tömning/vatten som saknar `openingHours`/`season`: hämta säsong ("1 maj–30 sep", "vinterstängt", "året runt") från kommun-/anläggningssida. Skriv `season: 'seasonal'`/`'year-round'` + `openingHours`. Prioritera kommunala tömningsstationer och Trafikverkets rastplatser med vattenavstängning. | 2026-09-28 |
 
@@ -27,6 +27,13 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 ## Logg
 
+- **2026-10-12, C (obekräftade platser):** äldst datum (25 sep). 135 grå poster med egen/icke-aggregator-webbplats
+  (av ~424 grå) delades på 8 agenter × 60 i budget (~190 sökningar använda, inget kvotfel; WebFetch blockad, citat från
+  WebSearch-sammandrag). **Resultat: 37 poster uppgraderade, varav 12 hela platser grå → bekräftade** (bl.a. Kalvsvik, Kyrkviken
+  Filipstad, Hudiksvalls GK, Målsånna, Fiskepuben, Lindesnäs, Uvaparken, Nysäter, Sunne Ski & Bike, Ransäter, Rixö, Gangvidefarm);
+  regel: bara high, eller medium från annan källa än camping.se/campio/gästhamnsguiden (`apply-obekraftade.mjs`). 87 lämnades grå.
+  Restlista, motsagda och nya kandidater: `docs/obekraftade-svep-okt-2026-lag-evidens.md`. Kvar: ~290 grå poster (234 med bara
+  husbilsplats.se/park4night som webbplats) – nästa C-varv bör ta dem via kommun-/turistrådssidor eller crowdsourcing.
 - **2026-10-11, D (kontroll av befintliga platser) – Västra Götaland, första riktiga körningen
   (session "Gråvatten 5"):** 275 platser i VG har tömning/vatten, 82 av dem en egen webbplats.
   40 valda (max 2 per kommun, 38 kommuner, 20 OSM + 20 register) i 4 grupper à 10; 4 agenter med

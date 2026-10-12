@@ -361,7 +361,8 @@
   {
     "name": "Kalvsviks Bygdegård ställplats",
     "services": [
-      "stallplats"
+      "stallplats",
+      "vatten"
     ],
     "facilities": [
       "el",
@@ -370,7 +371,7 @@
       "wc",
       "wifi"
     ],
-    "description": "Källa (https://bygdegardarna.se/kalvsviks/stallplatser/): \"Iordningställda ställplatser med vatten, dusch, toalett, el och wifi. Tillgång till Arena Kalvsvik (multisport/gym) och padelbana. Bokning 0703-250 100. (bygdegardarna.se/kalvsviks via söksammandrag)\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Befintlig post har bara stallplats – bygdegårdens egen sida nämner vatten (ej preciserat om påfyllning för husbil), dusch, toalett, el. Ingen tömning nämnd. Medium eftersom citatet är sammandrag, inte ordagrant. Ställplatser vid bygdegården söder om Växjö, med vatten, dusch, toalett, el och wifi.",
+    "description": "Källa (https://bygdegardarna.se/kalvsviks/stallplatser/): \"Vatten, Dusch, Toa, El, samt wifi finns\" Verifierad okt 2026 (område C).",
     "url": "https://bygdegardarna.se/kalvsviks/stallplatser/",
     "source": "egen",
     "lat": 56.7207,
@@ -378,10 +379,7 @@
     "website": "https://bygdegardarna.se/kalvsviks/stallplatser/",
     "phone": "0703-250 100",
     "address": "Kalvsviks Bygdegård, Kalvsvik",
-    "confidence": "medium",
-    "unverifiedServices": [
-      "vatten"
-    ]
+    "confidence": "high"
   },
   {
     "name": "Älgå Hembygdsgård ställplats",
@@ -852,22 +850,20 @@
     "services": [
       "latrin",
       "vatten",
-      "stallplats"
+      "stallplats",
+      "gravatten"
     ],
-    "description": "Källa (https://visitvarmland.com/filipstad/boende/stallplatser/tomning-av-gravatten + https://www.filipstad.se/toppmeny/bogataochmiljo/avfallochrenhallning/slamochlatrintomning/latrin.3130.html): \"Gråvatten kan tömmas vid vattenmaskinen på parkeringen vid Kyrkviken. (Visit Värmland 'Tömning av Gråvatten' – sammandrag). filipstad.se: 'Latrintömning från din husbil eller husvagn kan göras vid småbåtshamnen Kyrkviken (endast lösa toalettlösningar kan tömmas här) eller Munkåsen. Latrintömning vid småbåtshamnen Kyrkviken kan ske under perioden 1 juni–15 oktober.' visitvarmland: 'Latrintömning belägen ca 100 meter bort vid Kyrkvikens ställplats. Där finns dessutom möjligheten att fylla på med vatten (från ca maj–mitten av oktober).'\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Befintlig post saknar 'gravatten'. Bara kassett/lös toalett kan tömmas här. 6 ställplatser med el. Medium eftersom gråvatten-citatet är sammandrag (sidan egress-blockad). Latrintömning (lösa kassetter) 1/6–15/10, sex elplatser, vatten maj–oktober. Källa: Filipstads kommun.",
+    "description": "Källa (https://www.visitvarmland.com/filipstad/boende/stallplatser/tomning-av-gravatten): \"Gråvatten kan tömmas vid vattenmaskinen på parkeringen vid Kyrkviken. (Visit Värmland); filipstad.se: endast löstagbar latrinlösning går att tömma här, under perioden 1/6-15/10. Övrig tid hänvisar vi till Munkåsen\" Verifierad okt 2026 (område C).",
     "url": "https://www.filipstad.se/toppmeny/bogataochmiljo/avfallochrenhallning/slamochlatrintomning/latrin.3130.html",
     "source": "egen",
     "lat": 59.712,
     "lon": 14.1725,
     "website": "https://www.filipstad.se/toppmeny/upplevaochgora/turismochkultur/stallplatser.3007.html",
-    "fee": "Ställplats 200 kr/natt inkl el (betalning via Outby: kort/Swish/Vipps, QR-kod på infotavlan)",
+    "fee": "Ställplats 200 kr/natt inkl el",
     "openingHours": "Säsong Latrintömning 1 juni–15 oktober; vatten ca maj–mitten av oktober",
     "address": "Kyrkviken, Daglösens båthamn intill Filipstads kyrka",
     "season": "seasonal",
-    "confidence": "high",
-    "unverifiedServices": [
-      "gravatten"
-    ]
+    "confidence": "high"
   },
   {
     "name": "Forshagaforsens Camping",
@@ -1446,19 +1442,17 @@
     "name": "Hudiksvalls GK ställplats",
     "services": [
       "latrin",
-      "stallplats"
+      "stallplats",
+      "vatten"
     ],
-    "description": "Källa (https://www.hudiksvallsgk.se/gaest/staellplatser): \"Söksammandrag av hudiksvallsgk.se/gaest/staellplatser (egress-blockad): Nytt servicehus med toalett, dusch, disk och tömning av avloppstank finns vid ställplatsen. Kod till dörren på servicehuset 6543*. 9 platser varav 8 med el. Dricksvatten och klubbtvätt/högtrycksluft finns vid klubbhuset under rampen till logen. Grillplats och sopkärl vid ställplatsen. Pris 290 kr/natt inkl el, 200 kr om du spelar golf.\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. SAMMA PLATS som den bekräftade posten 'Hudiksvalls GK ställplats' (latrin+stallplats, exakt samma lat/lon) – den grå posten 'Hudiksvalls Golfklubb' bör raderas/slås ihop. Nytt: 'dricksvatten vid klubbhuset' → lägg till 'vatten' på den bekräftade posten. 'Tömning av avloppstank' är inte preciserad (gråvatten och/eller latrin) – den befintliga 'latrin'-tolkningen kommer från samma sida; överväg att även tagga gravatten eller behålla som är. Glada Hudik (turistråd) anger 4 elplatser + platser utan el, klubbhus med dusch/toalett – äldre uppgift än klubbens egen (9 platser, 8 el).",
+    "description": "Källa (https://www.hudiksvallsgk.se/gaest/staellplatser): \"Nytt servicehus med toalett, dusch, disk och tömning av avloppstank finns vid ställplatsen. ... Dricksvatten och klubbtvätt/högtrycksluft finns vid klubbhuset under rampen till logen.\" Verifierad okt 2026 (område C).",
     "url": "https://www.hudiksvallsgk.se/gaest/staellplatser",
     "source": "egen",
     "lat": 61.76782,
     "lon": 17.08164,
     "website": "https://www.hudiksvallsgk.se/gaest/staellplatser",
-    "fee": "290 kr/natt inkl el, 200 kr/natt om man spelar golf",
-    "confidence": "high",
-    "unverifiedServices": [
-      "vatten"
-    ]
+    "fee": "290 kr/natt inkl el, 200 kr om man spelar golf",
+    "confidence": "medium"
   },
   {
     "name": "Falkenbergs Båtsällskap ställplats",
@@ -6903,21 +6897,18 @@
       "camping",
       "gravatten",
       "latrin",
-      "stallplats"
+      "stallplats",
+      "vatten"
     ],
-    "description": "Källa (https://www.husbil.se/stallplatser/p/149/): \"husbil.se: El, toaletter, dusch, dricksvatten och latrintömning. 7 ställplatser (3 med el), från 170 kr, maj–september.\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Befintlig post har redan gravatten+latrin; husbil.se (aggregator) lägger till dricksvatten + ställplats + säsong/pris. Bara ledtråd. Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: sammanställd information om anläggningen.",
+    "description": "Källa (https://www.malsanna.com/camping/): \"Freshwater, Wastewater, Electricity, Toilets, Showers; (tyska sidan) Frischwasser-Versorgung, Abwasser-Entsorgung, Fäkalien-Entsorgung\" Verifierad okt 2026 (område C).",
     "source": "egen",
     "website": "https://www.malsanna.com/",
-    "fee": "Från 170 kr",
+    "fee": "220 kr/dygn, med el 270 kr",
     "openingHours": "Säsong Maj–september",
     "phone": "070-658 88 81",
     "address": "Målsånna, 578 92 Aneby",
     "season": "seasonal",
-    "confidence": "high",
-    "unverified": true,
-    "unverifiedServices": [
-      "vatten"
-    ]
+    "confidence": "medium"
   },
   {
     "name": "Ragelunds-Camping",
@@ -13339,13 +13330,14 @@
     "nearLon": 13.15,
     "maxKm": 20,
     "address": "Bockalt, Halmstads kommun (ca 25 min från Halmstad)",
-    "description": "Källa (https://www.destinationhalmstad.se/en/accommodation/motorhome-and-caravan-pitches): \"Fiskepuben – Located in Bockalt, just 25 minutes from Halmstad, a nature-close motorhome stop with excellent opportunities for fishing.\"",
+    "description": "Källa (https://www.destinationhalmstad.se/en/accommodation/motorhome-and-caravan-pitches): \"Fiskepuben – Located in Bockalt, just 25 minutes from Halmstad, a nature-close motorhome stop with excellent opportunities for fishing.\" Källa (https://www.destinationhalmstad.se/en/accommodation/motorhome-and-caravan-pitches): \"facilities for emptying latrines and greywater, plus fresh water refills (Fiskepuben, Bockalt)\" Verifierad okt 2026 (område C).",
     "services": [
       "latrin",
-      "gravatten"
+      "gravatten",
+      "vatten"
     ],
-    "unverified": true,
-    "website": "https://www.destinationhalmstad.se/en/accommodation/motorhome-and-caravan-pitches"
+    "website": "https://www.destinationhalmstad.se/en/accommodation/motorhome-and-caravan-pitches",
+    "confidence": "medium"
   },
   {
     "name": "Lindesnäs ställplats, Uddevalla",
@@ -13355,16 +13347,17 @@
     "nearLon": 11.905,
     "maxKm": 8,
     "address": "Lindesnäs (vid Rödöns båthamn), Gustafsbergsområdet, Uddevalla",
-    "description": "Källa (https://hamn.uddevalla.se/sv/Stallplats-Lindesnas): \"Vid bokning skickas en kod som används i servicehuset för tömning av toa/gråvatten. [...] Kostnaden för tömning av toa/gråvatten för ej bokade platser är 100 kr. Tillgång till toaletter och vatten sommartid.\"",
+    "description": "Källa (https://hamn.uddevalla.se/sv/Stallplats-Lindesnas): \"Vid bokning skickas en kod som används i servicehuset för tömning av toa/gråvatten. [...] Kostnaden för tömning av toa/gråvatten för ej bokade platser är 100 kr. Tillgång till toaletter och vatten sommartid.\" Källa (https://hamn.uddevalla.se/sv/Stallplats-Lindesnas): \"Tillgång till toaletter och vatten sommartid.\" Verifierad okt 2026 (område C).",
     "services": [
       "latrin",
       "gravatten",
-      "vatten"
+      "vatten",
+      "stallplats"
     ],
-    "unverified": true,
     "openingHours": "Toaletter och vatten sommartid; tömning toa/gråvatten året runt",
-    "fee": "250 kr/dygn apr–aug, 100 kr/dygn sep–mar (el, tömning ingår); enbart tömning för ej bokade: 100 kr",
-    "website": "https://hamn.uddevalla.se/sv/Stallplats-Lindesnas"
+    "fee": "250 kr/dygn apr–aug, 100 kr/dygn sep–mar",
+    "website": "https://hamn.uddevalla.se/sv/Stallplats-Lindesnas",
+    "confidence": "high"
   },
   {
     "name": "Nordmalings Camping",
@@ -13623,16 +13616,16 @@
     "services": [
       "vatten",
       "camping",
-      "stallplats"
-    ],
-    "unverifiedServices": [
-      "gravatten",
+      "stallplats",
       "latrin"
     ],
+    "unverifiedServices": [
+      "gravatten"
+    ],
     "source": "egen",
-    "description": "Källa (https://hammaro.se/uppleva-och-gora/visit-hammaro/overnattning/stallplatser): \"Det finns möjlighet att tömma din husbil hos Möruddens camping mot betalning. Du betalar i receptionen och får då tillgång att tömma inne på området. Kostnad 60kr.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Kommunens bekräftelse av att icke-gäster får tömma mot 60 kr – komplettering av avgift på redan befintlig tömningspost. Kommunen skriver bara 'tömma din husbil' utan att specificera gråvatten/latrin. Obekräftat (https://anstalld.hammaro.se/uppleva-gora/turism/overnattning/gasthamn-och-stallplatser/): \"Det finns möjlighet att tömma din husbil på Möruddens camping mot betalning. Du betalar i receptionen och får då tillgång att tömma på området. Kostnad 60 kr. (Hammarö kommun, sidan om gästhamn och ställplatser i Lillängshamnen)\" First Camp: vid servicehuset/sopstationen",
+    "description": "Källa (https://firstcamp.se/destinationer/morudden-hammaro/camping): \"Hammarö kommun: \"Det finns möjlighet att tömma din husbil hos Möruddens camping mot betalning. Du betalar i receptionen och får då tillgång att tömma inne på området. Kostnad 60kr.\" First Camp (egen sajt): tömningsstation för latrin vid servicehuset/sopstationen, plus tömning för fast tank.\" Verifierad okt 2026 (område C).",
     "website": "https://firstcamp.se/destination/morudden-hammaro/",
-    "fee": "60 kr för genomresande (betalas i receptionen)",
+    "fee": "60 kr per tömning (betalas i receptionen)",
     "address": "Mörudden, Hammarö",
     "confidence": "high"
   },
@@ -13641,15 +13634,15 @@
     "lat": 57.8863465,
     "lon": 11.6028212,
     "services": [
-      "stallplats"
-    ],
-    "unverifiedServices": [
+      "stallplats",
       "latrin",
       "vatten"
     ],
     "source": "egen",
-    "description": "Obekräftat: Kungälvs kommun (kungalv.se/parkera-stora-fordon) anger färskvatten + latrintömning (ej gråvatten) 1 maj–30 sep, 180 kr/dygn, på Koön och Vrångholmen – oklart om Mjölkekilen är samma anläggning som Koön-posten 550 m bort.",
-    "website": "https://www.kungalv.se"
+    "description": "Obekräftat: Kungälvs kommun (kungalv.se/parkera-stora-fordon) anger färskvatten + latrintömning (ej gråvatten) 1 maj–30 sep, 180 kr/dygn, på Koön och Vrångholmen – oklart om Mjölkekilen är samma anläggning som Koön-posten 550 m bort. Källa (https://www.kungalv.se/trafik--gator/parkering/parkera-stora-fordon/): \"Kungälvs kommun (parkera stora fordon): husbilsplatserna på Koön (Mjölkekilen) och Vrångholmen har färskvatten, latrintömning och toaletter; uppställningsbiljett 180 kr/dygn, max 24 h i följd vardagar (sammanfattning, ej ordagrant).\" Verifierad okt 2026 (område C).",
+    "website": "https://www.kungalv.se",
+    "fee": "180 kr per dygn",
+    "confidence": "high"
   },
   {
     "name": "Tömningsstation Laxå (Rabatt-Torget, Revirvägen)",
@@ -19019,19 +19012,17 @@
     "name": "Herrljunga Golfklubb ställplats",
     "services": [
       "latrin",
-      "stallplats"
+      "stallplats",
+      "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://www.vastsverige.com/herrljunga/boende/husbilsparkeringar---stallplatser/): \"Turistrådet Västsverige (vastsverige.com, Herrljunga – husbilsparkeringar & ställplatser), sökmotorns sammandrag: ställplatsen ligger intill drivingrangen, gott om platser som alla har eluttag; tillgång till el, vatten, sopor, toalettömning, toalett och dusch. Ingen förbokning – ställ dig på ledig plats och betala avgiften i kansliet vid ankomst, billigare om man spelar en golfrunda. Klubbens produktsida på vastsverige.com: 'erbjuder latrintömning för övernattande gäster'.\" Klubbens egen sida 'Husvagn & Husbil' finns (herrljungagk.se/gaster/husvagn---husbil-x) men innehållet gick inte att läsa via sökning (tre försök med allowed_domains). Tjänsterna bygger på turistrådet Västsverige (= medium enligt reglerna). Befintlig registerkoordinat 58.03333/13.11667 är en avrundad platshållare ~1,9 km fel – ersätt med koordinaten ovan. 'Toalettömning' tolkat som latrin (kassett); gråvatten ej nämnt. Kontroll okt 2026 (https://www.herrljungagk.se/gaster/husvagn---husbil-x): \"herrljungagk.se/gaster/husvagn---husbil-x (sökmotorns sammandrag): '175 kr per natt för husbil om du spelar golf och 275 kr per natt om du inte gör det. Ingen förbokning krävs, du ställer dig på en ledig plats, och avgiften betalas i kansliet vid ankomst. Alla ställplatser har eluttag.' vastsverige.com (Herrljunga – h…\" Färskvatten nämns inte på klubbens egen sida (kontroll okt 2026) – visas som påstått tills belägg finns.",
+    "description": "Källa (https://www.vastsverige.com/herrljunga/boende/husbilsparkeringar---stallplatser/): \"Turistrådet Västsverige (vastsverige.com, Herrljunga – husbilsparkeringar & ställplatser), sökmotorns sammandrag: ställplatsen ligger intill drivingrangen, gott om platser som alla har eluttag; tillgång till el, vatten, sopor, toalettömning, toalett och dusch. Ingen förbokning – ställ dig på ledig plats och betala avgiften i kansliet vid ankomst, billigare om man spelar en golfrunda. Klubbens produktsida på vastsverige.com: 'erbjuder latrintömning för övernattande gäster'.\" Klubbens egen sida 'Husvagn & Husbil' finns (herrljungagk.se/gaster/husvagn---husbil-x) men innehållet gick inte att läsa via sökning (tre försök med allowed_domains). Tjänsterna bygger på turistrådet Västsverige (= medium enligt reglerna). Befintlig registerkoordinat 58.03333/13.11667 är en avrundad platshållare ~1,9 km fel – ersätt med koordinaten ovan. 'Toalettömning' tolkat som latrin (kassett); gråvatten ej nämnt. Kontroll okt 2026 (https://www.herrljungagk.se/gaster/husvagn---husbil-x): \"herrljungagk.se/gaster/husvagn---husbil-x (sökmotorns sammandrag): '175 kr per natt för husbil om du spelar golf och 275 kr per natt om du inte gör det. Ingen förbokning krävs, du ställer dig på en ledig plats, och avgiften betalas i kansliet vid ankomst. Alla ställplatser har eluttag.' vastsverige.com (Herrljunga – h…\" Färskvatten nämns inte på klubbens egen sida (kontroll okt 2026) – visas som påstått tills belägg finns. Källa (https://www.herrljungagk.se/UserFiles/St_llplatserna_Golfklubben.pdf): \"Klubbens gästdokument (herrljungagk.se, Ställplatserna Golfklubben): färskvattenkran i hörnet mot övningsområdet; latrintömning bakom toalettbyggnaden (sammanfattning, ej ordagrant). Turistrådet: latrintömning för övernattande gäster.\" Verifierad okt 2026 (område C).",
     "confidence": "high",
     "website": "https://www.herrljungagk.se/gaster/husvagn---husbil-x",
     "lat": 58.04678,
     "lon": 13.09468,
     "fee": "175 kr/natt med golf, 275 kr utan; betalas i kansliet; el på alla platser",
-    "phone": "0513-239 10",
-    "unverifiedServices": [
-      "vatten"
-    ]
+    "phone": "0513-239 10"
   },
   {
     "name": "Orust-Vasseröd",
@@ -19568,7 +19559,7 @@
       "camping"
     ],
     "source": "egen",
-    "description": "Källa (https://www.campercontact.com/en/md/21418): \"Facilities: Waste water discharge (Free), Chemical toilet discharge (Free), Water (Campercontact). 'Strom, Wasser, Entsorgung Chemie-WC, WC, Dusche, Hunde im Übernachtungspreis enthalten' (Promobil). 'Motorhome service point' (camping.info)\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Befintlig post har redan gravatten+latrin bekräftat. Komplettering: färskvatten (vatten) påstås av tre aggregatorer – obekräftat; avgift/säsongsinfo kan läggas i beskrivningen. rastplatserna.se/husbilsplats.se. \"Egen sajt doro.camp (/en/campground): \"rymliga platser med el för husvagn, husbil eller tält – alla dessa platser är anslutna till avloppssystemet\" (gråvatten vid platsen). Ingen uttrycklig text om latrin-/kassettömnings\" (https://doro.camp/en/campground/)",
+    "description": "Källa (https://doro.camp/en/facilities/): \"tömningsplats för kemtoalettavfall på bottenvåningen i bad-/servicebyggnaden; 'beroende på vädret är toalettbyggnaden i maj och september antingen helt eller delvis öppen eller stängd' (söksammandrag)\" Verifierad okt 2026 (område C).",
     "address": "Storgatan 1A, Dorotea",
     "confidence": "medium",
     "website": "https://doro.camp/en/campground/",
@@ -19577,7 +19568,6 @@
     "lat": 64.2574,
     "lon": 16.391,
     "fee": "Tömning gratis; ca 250 kr/natt för 2 vuxna högsäsong inkl. el, vatten, tömning (Promobil)",
-    "unverified": true,
     "unverifiedServices": [
       "vatten"
     ]
@@ -20521,11 +20511,11 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Bara aggregator (husbilsplats.se) + golfpaket.com nämner 'Husvagn/Husbil'. Klubbens egen sida ej läst. Lägg in grå om alls.",
+    "description": "Källa (https://www.onsjogk.com/boende/): \"Boendesidan: platser vid banan för husbilar och husvagnar, 250 kr per natt med eller utan el (söksammandrag, ej ordagrant)\" Verifierad okt 2026 (område C).",
     "website": "https://onsjogk.com",
     "phone": "0521-68870",
-    "confidence": "low",
-    "unverified": true
+    "confidence": "medium",
+    "fee": "250 kr per natt, med eller utan el"
   },
   {
     "name": "Forsbacka Golfklubb ställplats",
@@ -20537,10 +20527,9 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://golfupplevelser.se/forsbacka-gk/): \"15 bokningsbara ställplatser med el nära klubbhuset.\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Bara aggregator (golfupplevelser.se). Klubbens egen sida (forsbackagk.se) ej läst – budget slut. Dalslands GK (Bengtsfors) och Åmåls GK gav inga träffar alls.",
+    "description": "Källa (https://forsbackagk.se/boende/stallplatser/): \"15 ställplatser med el, dessa platser är endast förbokningsbara (söksammandrag av klubbens sida)\" Verifierad okt 2026 (område C).",
     "website": "https://golfupplevelser.se/forsbacka-gk/",
-    "confidence": "low",
-    "unverified": true
+    "confidence": "medium"
   },
   {
     "name": "Eksjö Golfklubb ställplats",
@@ -20800,17 +20789,16 @@
     "lat": 57.905,
     "lon": 13.82446,
     "services": [
-      "stallplats"
+      "stallplats",
+      "vatten",
+      "latrin"
     ],
     "source": "egen",
-    "description": "Källa (https://www.ryforsgk.se/v%C3%A4lkommen/g%C3%A4st-30518845): \"Ställplats 175 kr/natt för medlemmar och greenfeegäster (275 kr för övriga), inkl. el. Elplatser, servicehus med vatten, WC och tanktömning alldeles intill.\" Ställplats bekräftad av klubben; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. BÄSTA FYNDET i regionen: servicehus med vatten + 'tanktömning' på klubbens egen sida. 'Tanktömning' är inte preciserad (latrin och/eller gråvatten) → services_unclear för tömningen, vatten räknas. 10 platser. Kommun Mullsjö (Jönköpings län).",
+    "description": "Källa (https://www.ryforsgk.se/v%C3%A4lkommen/g%C3%A4st-30518845): \"Elplatser, servicehus med vatten, WC och latrintömning strax intill. (söksammandrag av gästsidan; äldre post citerar 'tanktömning'; sidan listar även 'Ställplats husbil - husvagn')\" Verifierad okt 2026 (område C).",
     "website": "https://www.ryforsgk.se/v%C3%A4lkommen/g%C3%A4st-30518845",
     "fee": "175 kr/natt medlem/greenfeegäst, 275 kr övriga, inkl. el",
     "phone": "0392-128 84",
-    "confidence": "medium",
-    "unverifiedServices": [
-      "vatten"
-    ]
+    "confidence": "medium"
   },
   {
     "name": "Hooks Golfklubb ställplats",
@@ -20986,13 +20974,12 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.husbil.se/stallplatser/p/278/): \"Husbil.se (aggregator): '14 ställplatser, alla med el … el, toaletter, tillgång till dusch, dricksvatten, restaurang, grillplats, wifi. 200 kr per natt och ekipage (2026). Öppen året runt. Alla husbil- och husvagnsgäster har fri tillgång till klubbens omklädningsrum, toaletter och handdukar.'\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Klubbens egen sajt (katrineholmsgolf.se) gav inga sökträffar om ställplats – bara aggregatorer. 'Dricksvatten' enligt husbil.se, EJ bekräftat av klubben → grå plats, ev. unverifiedServices ['vatten']. Läge: väg 52 mot Nyköping, ca 7 km från Katrineholm.",
+    "description": "Källa (https://www.katrineholmsgolf.se/greenfee/): \"Vi har en stor husbil- och husvagnsparkering med ström. Det kostar 100kr per natt och ekipage att stå på klubben\" Verifierad okt 2026 (område C).",
     "website": "https://www.katrineholmsgolf.se/",
-    "fee": "200 kr/natt (husbil.se)",
+    "fee": "100 kr per natt och ekipage",
     "phone": "0150-392 70",
     "season": "year-round",
-    "confidence": "low",
-    "unverified": true
+    "confidence": "high"
   },
   {
     "name": "Nyköpings Golfklubb ställplats (Ärila)",
@@ -22017,16 +22004,20 @@
   {
     "name": "Uppställningsplatser vid Uvaparken, Fröseke",
     "services": [
-      "stallplats"
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://smp.se/2020-06-17/badsugen-smalandsposten-listar-de-basta-badstranderna-kommun-for-kommun): \"Nära Uvaparken finns uppställningsplatser för husvagn eller husbil. (Smålandsposten, badplatslista 2020)\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Enda källan är en tidningsartikel från 2020; ingen kommun-/förenings-sida hittad. Kan vara ren parkering utan service. Koordinat saknas – Uvasjöns badplats i Fröseke (naturkartan) om någon vill läsa av.",
+    "description": "Källa (https://glasriket.se/resa/uvaparkens-stallplatser/): \"Uvaparkens ställplatser har totalt 10 platser, alla med el. Vid ställplatsen finns ett servicehus med dusch, toalett, HWC och latrintömning. I anslutning till servicehuset finns också möjlighet att fylla på dricksvatten samt en lättåtkomlig tömningsplats för husbilens spillvattentank.\" Verifierad okt 2026 (område C).",
     "website": "https://smp.se/2020-06-17/badsugen-smalandsposten-listar-de-basta-badstranderna-kommun-for-kommun",
     "address": "Uvaparken / Uvasjöns badplats, Fröseke",
-    "confidence": "low",
-    "unverified": true,
+    "confidence": "high",
     "lat": 56.94736,
-    "lon": 15.79557
+    "lon": 15.79557,
+    "openingHours": "Dygnet runt",
+    "season": "year-round"
   },
   {
     "name": "Lanna Bokcafé ställplats",
@@ -22097,16 +22088,14 @@
     "nearLon": 14.57368,
     "maxKm": 30,
     "services": [
-      "stallplats"
+      "stallplats",
+      "gravatten"
     ],
     "source": "egen",
-    "description": "Källa (https://www.tiveden.se/mer/laxaa/): \"Vid Rastpunkt kan husbilar tömma gråvatten.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Turistrådet Tiveden nämner platsen men bara gråvatten. Rastpunkt Laxå är vägkrogen vid E20 (Laxå) – koordinat ej hämtad, ligger inte nära någon befintlig post (tömningsstationen på Revirvägen är en annan plats). Verifiera läge (hitta.se 'Rastpunkt Laxå').",
+    "description": "Källa (https://www.tiveden.se/mer/laxaa/): \"Vid Rastpunkt kan husbilar tömma gråvatten.\" Verifierad okt 2026 (område C).",
     "website": "https://www.tiveden.se/mer/laxaa/",
     "address": "Rastpunkt Laxå, vid E20, Laxå",
-    "confidence": "medium",
-    "unverifiedServices": [
-      "gravatten"
-    ]
+    "confidence": "medium"
   },
   {
     "name": "Dammtorp – naturnära övernattningsplats för husbil",
@@ -22442,20 +22431,19 @@
     "maxKm": 30,
     "services": [
       "stallplats",
-      "sopor"
+      "sopor",
+      "latrin",
+      "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://www.visitvarmland.com/saffle/boende/stallplatser/nysaters-gasthamn): \"I gästhamnen finns vatten, dusch, wc, tömningsstation och sopstation. 20 stycken ställplatser, tillgång till el.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. 'Tömningsstation' utan precisering – i gästhamnssammanhang normalt båttoalett/latrin; lägg 'latrin' som obekräftad tjänst. Koordinat: husbil.se/stallplatser/p/464/ har GPS (kunde inte läsas ut inom sökbudgeten). Även på unionsleden.com.",
+    "description": "Källa (https://www.visitvarmland.com/saffle/boende/stallplatser/nysaters-gasthamn): \"I gästhamnen finns vatten, dusch, wc, tömningsstation och sopstation. 20 stycken ställplatser, tillgång till el. / Husbilslatrin: För husbilsägare finns en tömningsstation i anslutning till en huvudpumpstation. Där finns en bricka att placera under husbilen samt spolvatten att utnyttja.\" Verifierad okt 2026 (område C).",
     "website": "https://www.visitvarmland.com/saffle/boende/stallplatser/nysaters-gasthamn",
-    "fee": "Från 100 SEK",
+    "fee": "175 kr/dygn inkl. el (kommunens taxa)",
     "openingHours": "Säsong April–september (förlängs vid bra väder)",
     "phone": "Hamnkapten 076-631 57 23, hamnvärd Föreningen Vikingaleden 0533-303 20 / 073-039 49 95",
     "address": "Nysäters gästhamn, Nysäter (Byälven), Säffle kommun",
     "season": "seasonal",
-    "confidence": "medium",
-    "unverifiedServices": [
-      "vatten"
-    ]
+    "confidence": "high"
   },
   {
     "name": "Ställplats Bjurbäckens slussar",
@@ -22476,15 +22464,15 @@
   {
     "name": "Tömningsstation Storfors småbåtshamn (båttoalett, även husbil/buss)",
     "services": [
-      "stallplats"
+      "stallplats",
+      "latrin"
     ],
     "source": "egen",
-    "description": "Källa (https://www.storfors.se/upplevaochgora/fritidsaktiviteterochfriluftsliv/vattenledensexmillangtsjosystem/bat.4.55cd3a5d147583335eb1811.html): \"I Storfors småbåtshamn finns en tömningsstation för båttoaletter, placerad så att den även kan användas av husbilar och bussar. (återgivet ur storfors.se – sammandrag, ej ordagrant)\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Kommunens egen sida, men bara sammandrag – läs sidan i webbläsare för ordagrant citat och läge. Sugtömning för båttoa = latrin (fast tank), sannolikt inte kassett; gråvatten ej nämnt. Storfors kommun saknar annars helt tömning (Badsta Camping har enligt husbilhusvagn.se varken latrin, gråvatten eller färskvatten). Småbåtshamnen ligger troligen vid Mögsjön/Öjevettern nära Badsta – koordinat via hitta.se 'Storfors småbåtshamn'. Källa (https://www.storfors.se/upplevaochgora/fritidsaktiviteterochfriluftsliv/vattenledensexmillangtsjosystem/bat.4.55cd3a5d147583335eb1811.html): \"Sugtömningsstation för båttoaletter [...] placerad så att den även kan användas av husvagnar och bussar. [...] gästhamn med fritt vatten och el [...] det finns gott om plats för att parkera bil och kärra.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Befintlig post har bara 'stallplats' trots namnet. Kommunens sida bekräftar att sugtömningsstationen (fast tank, ej kassett) är placerad för husvagnar/bussar – husbil nämns inte ordagrant. Gästhamn med fritt vatten och el. Drivs av Storfors Båtklubb. Enda belagda tömningen i Storfors kommun (Lungsund Camping-posten finns redan).",
+    "description": "Källa (https://www.storfors.se/upplevaochgora/fritidsaktiviteterochfriluftsliv/vattenledensexmillangtsjosystem/bat.4.55cd3a5d147583335eb1811.html): \"I Storfors småbåtshamn finns en tömningsstation för båttoaletter, placerad så att den även kan användas av husbilar och bussar.\" Verifierad okt 2026 (område C).",
     "website": "https://www.storfors.se/upplevaochgora/fritidsaktiviteterochfriluftsliv/vattenledensexmillangtsjosystem/bat.4.55cd3a5d147583335eb1811.html",
     "address": "Storfors småbåtshamn, Storfors tätort",
     "confidence": "medium",
     "unverifiedServices": [
-      "latrin",
       "vatten"
     ],
     "lat": 59.5298,
@@ -22510,18 +22498,16 @@
     "nearLon": 14.17508,
     "maxKm": 30,
     "services": [
-      "stallplats"
+      "stallplats",
+      "latrin"
     ],
     "source": "egen",
-    "description": "Källa (https://www.filipstad.se/toppmeny/bogataochmiljo/avfallochrenhallning/slamochlatrintomning/latrin.3130.html): \"Latrintömning från din husbil eller husvagn kan göras vid småbåtshamnen Kyrkviken (endast lösa toalettlösningar kan tömmas här) eller Munkåsen. Latrintömning vid småbåtshamnen Kyrkviken kan ske under perioden 1 juni–15 oktober. Övrig tid hänvisar vi till Munkåsen.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Munkåsen är sannolikt kommunens reningsverk/VA-anläggning – exakt läge och om det är självservice eller inlämning framgår inte. Kolla filipstad.se-sidan i webbläsare. OBS: Filipstads ÅVC heter Långskogen, inte Munkåsen.",
+    "description": "Källa (https://www.filipstad.se/toppmeny/bogataochmiljo/avfallochrenhallning/slamochlatrintomning/latrin.3130.html): \"Latrintömning från din husbil eller husvagn kan göras vid småbåtshamnen Kyrkviken (endast lösa toalettlösningar kan tömmas här) eller Munkåsen. Latrintömning vid småbåtshamnen Kyrkviken kan ske under perioden 1 juni–15 oktober. Övrig tid hänvisar vi till Munkåsen.\" Verifierad okt 2026 (område C).",
     "website": "https://www.filipstad.se/toppmeny/bogataochmiljo/avfallochrenhallning/slamochlatrintomning/latrin.3130.html",
     "openingHours": "Slam- och latrintömningens expedition: må/on/fr 08:00–09:30 och 10:00–11:30 (gäller kontoret, ej säkert platsen)",
     "address": "Munkåsen, Filipstad",
     "season": "year-round",
-    "confidence": "medium",
-    "unverifiedServices": [
-      "latrin"
-    ]
+    "confidence": "high"
   },
   {
     "name": "Ställplats Flakudden, Filipstad",
@@ -22693,22 +22679,20 @@
     "lat": 59.80291,
     "lon": 13.03546,
     "services": [
-      "stallplats"
+      "stallplats",
+      "gravatten",
+      "latrin",
+      "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://sunneskibike.se/products/stallplats-med-el): \"Ställplats med el – 450 kr/natt; ställplats utan el 250 kr/natt (sunneskibike.se). husbil.se: 50 ställplatser varav 10 med el; latrintömning av kassett, gråvattentömning, påfyllning av färskvatten, toaletter, dusch.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Operatörens sida bekräftar ställplatsen och priset, men tjänsterna (latrin/gråvatten/vatten) kommer bara från husbil.se – därför medium. Koordinaten är anläggningens (skidbacken), ställplatsen ligger på området. Grannar med Rottneros 45.",
+    "description": "Källa (https://sunneskibike.se/sunne-ski-bike-camping/): \"Här finns tillgång till el, dusch, toalett och dricksvatten, samt möjlighet till tömning av grå- och svartvatten.\" Verifierad okt 2026 (område C).",
     "website": "https://sunneskibike.se/sunne-ski-bike-camping/",
     "fee": "450 kr/natt med el, 250 kr utan el",
     "openingHours": "Säsong husbil.se anger tömning/vatten april–september",
     "phone": "0565-747 047",
     "address": "Hån 67, 686 94 Rottneros",
     "season": "seasonal",
-    "confidence": "medium",
-    "unverifiedServices": [
-      "latrin",
-      "gravatten",
-      "vatten"
-    ]
+    "confidence": "high"
   },
   {
     "name": "Ställplatser för husbilar vid Larstomta, Gunnarskog",
@@ -22800,17 +22784,16 @@
     "nearLon": 13.46113,
     "maxKm": 30,
     "services": [
-      "camping"
+      "camping",
+      "latrin",
+      "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://www.ransater.com/brollop-fest/boende/camping/): \"Camping direkt intill hembygdsgården med servicehus med toaletter, duschar och tömning. Två nyrenoverade tillgänglighetsanpassade toaletter. Färskvatten finns. El finns inte. Ingen föranmälan – betala med Swish eller i receptionen.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. 'Tömning' utan precisering (latrin eller gråvatten?) → services_unclear. Storängens Camping (Erlandervägen 2, 59.7638/13.4484, redan i existing med gravatten+latrin+vatten) ligger nära hembygdsgården – kontrollera avstånd efter geokodning så att det inte är samma anläggning; husbilskompisar beskriver dem som två olika (hembygdsgårdens camping 3 km söder om SF Gården). Citat via söksammandrag.",
+    "description": "Källa (https://www.ransater.com/brollop-fest/boende/camping/): \"Här hittar du ett servicehus med toaletter, dusch och latrintömning. ... Tillgång till färskvatten. ... Pris: 200kr/dygn\" Verifierad okt 2026 (område C).",
     "website": "https://www.ransater.com/brollop-fest/boende/camping/",
-    "fee": "betalas via Swish/reception",
+    "fee": "200 kr/dygn",
     "address": "Högsbyvägen 2, 684 93 Ransäter",
-    "confidence": "medium",
-    "unverifiedServices": [
-      "vatten"
-    ]
+    "confidence": "high"
   },
   {
     "name": "Valfjällbyn",
@@ -22889,19 +22872,18 @@
     "lat": 58.368,
     "lon": 11.447,
     "services": [
-      "stallplats"
+      "stallplats",
+      "latrin",
+      "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://rixobk.se/hamn/): \"Rixö Gästhamn är en gästhamn och husbilsparkering med toaletter, kassettömning, el och vatten. Vatten finns ej vintertid. För tanktömning för husbilar hänvisas till Anderssons kaj i Lysekil.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Kassettömning (latrin) bekräftad, INGEN tanktömning/gråvatten. Citatet är sammanställt ur sökutdrag (husbilskompisar + rixobk.se) – klubbsidan själv egress-blockad, därför medium. Koordinaten är hamnens position ur klubbens sidtitel (grader/minuter omräknade), ±100 m.",
+    "description": "Källa (https://rixobk.se/hamn/): \"Toaletter: Ja  Latrintömning kassett: Ja  Septitankstömning hänvisas till: Båt/Norra Hamnen Lysekil Husbil/Anderssons kaj Lysekil  El: Ja  Vatten: Ja (återgivet via sökverktyget; vatten/el ej vintertid)\" Verifierad okt 2026 (område C).",
     "website": "https://rixobk.se/hamn/",
     "openingHours": "Säsong vatten avstängt vintertid",
     "address": "Rixö hamn, Brastad, Lysekils kommun",
     "season": "seasonal",
-    "confidence": "medium",
-    "unverifiedServices": [
-      "vatten",
-      "latrin"
-    ]
+    "confidence": "high",
+    "fee": "150 kr (Swish/kontant), äldre uppgift"
   },
   {
     "name": "Skaftö Golfklubb ställplats",
@@ -23326,20 +23308,20 @@
     "services": [
       "sopor",
       "camping",
-      "stallplats"
+      "stallplats",
+      "latrin",
+      "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://www.vastsverige.com/en/dals-ed/produkter/nossemarks-cafe-camping-gasthamn--stugor/): \"vastsverige.com: 'Nössemarks Camping is a small campsite located 3 miles north of Dals-Ed and features showers, restrooms, laundry facilities, waste recycling and a latrine.' husbilhusvagn.se (aggregator): 'Latrin: Ja, Gråvatten: Nej, Färskvatten: Ja, Sopkärl: Ja'.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Befintlig post har bara camping+stallplats (59.1353, 11.8375). Turistrådet skriver 'a latrine' (oklart om det avser tömning eller torrtoalett); aggregatorn preciserar latrintömning ja, gråvatten NEJ, färskvatten ja. Rekommendation: latrin+vatten som medium/unverified, INTE gråvatten. Egen sajt egress-blockad.",
+    "description": "Källa (https://www.vastsverige.com/en/dals-ed/produkter/nossemarks-gasthamn/): \"Nössemarks Camping ... features showers, restrooms, laundry facilities, waste recycling and a latrine. (vastsverige.com); gästhamnen: fresh water, toilet, latrine washing\" Verifierad okt 2026 (område C).",
     "website": "https://www.nossemarkscamping.com/",
     "phone": "0706-960892 / 0705-221793",
     "address": "Nössemark strand 640, 668 91 Ed",
     "confidence": "medium",
-    "unverifiedServices": [
-      "latrin",
-      "vatten"
-    ],
     "lat": 59.13527,
-    "lon": 11.83805
+    "lon": 11.83805,
+    "fee": "200 kr/natt + 50 kr el (gästhamn)",
+    "season": "seasonal"
   },
   {
     "name": "Gästhamn och ställplats Mustadfors, Dals Långed",
@@ -23365,17 +23347,17 @@
   {
     "name": "Ragnerudssjöns Camping & Stugby",
     "services": [
-      "camping"
+      "camping",
+      "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://ragnerud.com/eng/camping-1/info-camping-1): \"Servicehouse 2: kitchen, laundry, showers, toilets, latrine room; dog parking; water station\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Egen sida nämner 'latrine room' och 'water station' i servicehus 2 – trolig kassettömning + vattenpost men inte ordagrant 'latrintömning för husbil'. NorCamp/park4night listar chemical toilet + greywater + freshwater (aggregator). Gäller posten med website ragnerud.com (58.6570,12.0644); den andra posten (58.6496,12.1036, ragnerudssjonscamping.se) är en generisk sajt med annan koordinat – troligen dubblett/fel. Källa (https://ragnerud.com/swe/bo-i-naturen/camping/info-camping): \"ragnerud.com (egen sida, sökutdrag): 'The facilities include toilets, showers, laundry facilities, and a service building ... the campsite has a latrine room, dog parking, and a water station.' husbilhusvagn.se (aggregator): 'tank/greywater emptying, cassette toilet emptying, and tank/latrine emptying services ... refilling of fresh water'.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Befintlig post har bara 'camping' (58.6496, 12.1036). Egen sida nämner 'latrinrum' och 'vattenstation' (otydligt), aggregatorer anger full tömning. Rekommendation: latrin+vatten medium, gråvatten som obekräftad. Sajten egress-blockad – kan inte läsa fulltext.",
+    "description": "Källa (https://ragnerud.com/eng/camping-1/info-camping-1): \"Servicehouse 2: kitchen, laundry, showers, toilets, latrine room; dog parking; water station\" Verifierad okt 2026 (område C).",
     "website": "https://www.ragnerud.com/",
     "phone": "0528-400 64",
     "address": "Jolsäter 15, 458 97 Högsäter",
     "confidence": "medium",
     "unverifiedServices": [
-      "latrin",
-      "vatten"
+      "latrin"
     ],
     "lat": 58.657,
     "lon": 12.0644,
@@ -24087,17 +24069,17 @@
     "lon": 14.54937,
     "services": [
       "camping",
-      "stallplats"
+      "stallplats",
+      "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://granvik.se/vildmarkscamping): \"Vildmarkscampingen har 14 campingplatser med el [...] 350 kr per natt inklusive el samt tillgång till dusch och toalett. Färskvatten finns i anslutning till campingen.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Befintlig post har bara camping. Egen sida (via sökindex) belägger 14 elplatser och färskvatten 'i anslutning till campingen'; en resblogg (husbilsresorochaventyr.se) uppger att ett servicehus med gråvattentömning och vattenpåfyllning planerades till våren 2021 – gråvatten ej belagt av primärkälla. E-post info@granvik.se. Citatet är sökindexets sammandrag av granvik.se – verifiera ordalydelsen i webbläsare.",
+    "description": "Källa (https://granvik.se/vildmarkscamping): \"Färskvatten finns i anslutning till campingen. (granvik.se/vildmarkscamping; 14 platser med el, 6 platser vid Puben utan el med tillgång till hamnens servicehus)\" Verifierad okt 2026 (område C).",
     "website": "https://granvik.se/vildmarkscamping",
     "fee": "350 kr/natt inkl. el, dusch och toalett",
     "phone": "070-543 36 46",
     "address": "Granvik, Karlsborg (ca 10 km norr om Karlsborg längs riksväg 49)",
-    "confidence": "medium",
+    "confidence": "high",
     "unverifiedServices": [
-      "vatten",
       "gravatten"
     ]
   },
@@ -24599,20 +24581,18 @@
     "nearLon": 16.48174,
     "maxKm": 50,
     "services": [
-      "stallplats"
+      "stallplats",
+      "latrin"
     ],
     "source": "egen",
-    "description": "Källa (https://www.morbylanga.se/samhallsplanering-trafik/hamnar-och-batplatser/morbylanga-hamn/): \"Mörbylånga hamn: liten parkering för husbilar, bokas via betala.morbylanga.se (förbokning möjlig). Hamnen har latrintömningsstation, miljöstation, septicsug, kran och ramp. Gäster har tillgång till dusch, toalett, tvättmaskin, torktumlare och miljörum. Hamnavgift från 220 kr/dygn, el 50 kr/dygn.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. SAKNAS i befintlig data. 'Latrintömningsstation' i hamnen kan vara båtarnas sugtömning – oklart om husbilskassetter får tömmas. Ingen koordinat i utdraget.",
+    "description": "Källa (https://www.morbylanga.se/samhallsplanering-trafik/hamnar-och-batplatser/morbylanga-hamn/): \"Hamnservice: Båtkran, Latrintömningsstation\" Verifierad okt 2026 (område C).",
     "website": "https://www.morbylanga.se/samhallsplanering-trafik/hamnar-och-batplatser/morbylanga-hamn/",
     "fee": "Från 220 kr/dygn (hamnavgift), el 50 kr – husbilstaxa ej bekräftad",
     "openingHours": "Säsong Hamnkapten bemannad 29 maj–31 aug",
     "phone": "0761-09 20 88 (hamnkapten), 070-392 07 00 (övrig tid)",
     "address": "Mörbylånga hamn, 386 50 Mörbylånga",
     "season": "seasonal",
-    "confidence": "medium",
-    "unverifiedServices": [
-      "latrin"
-    ]
+    "confidence": "medium"
   },
   {
     "name": "Mörbylånga Camping (Skansgatan)",
@@ -24662,20 +24642,18 @@
     "lon": 18.28013,
     "services": [
       "stallplats",
-      "sopor"
+      "sopor",
+      "gravatten",
+      "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://www.parkandstay.se/en/where-we-are/visby-gotland/): \"Quickstop för husbil och husvagn på Gutevägen 10 i Visby – 25 platser, betalning Visa/Mastercard, sopor/återvinning, vattenpåfyllning och tömning av gråvatten/avloppstank. Ingen el, ingen toalett (offentlig toalett vid Träffpunkt Gotland). Öppet dygnet runt. (sammandrag av parkandstay.se/naturkartan – sidorna egress-blockade, citat ej verbatim)\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Operatörens egen sida + Naturkartan/gotland.com listar gråvattentömning + färskvatten + sopor; ingen latrintömning nämns. Ligger ~450 m från grå posten 'Visby – 2 Färjeleden' (annan plats). Region Gotlands egna husbilsparkeringar i Visby har INGA tjänster – detta är den enda kommersiella tömningen i stan utöver reningsverket.",
+    "description": "Källa (https://www.parkandstay.se/en/where-we-are/visby-gotland/): \"waste water drainage, water filling, and garbage disposal, with a maximum of 25 vehicles\" Verifierad okt 2026 (område C).",
     "website": "https://www.parkandstay.se/en/where-we-are/visby-gotland/",
     "fee": "200 kr/dygn",
     "phone": "076-946 20 31",
     "address": "Gutevägen 10, 621 58 Visby",
     "season": "year-round",
-    "confidence": "medium",
-    "unverifiedServices": [
-      "gravatten",
-      "vatten"
-    ]
+    "confidence": "high"
   },
   {
     "name": "Svaidestugans ställplats (Svaide Roma SOK)",
@@ -24820,34 +24798,30 @@
     "lon": 18.30708,
     "services": [
       "camping",
-      "stallplats"
+      "stallplats",
+      "latrin",
+      "gravatten",
+      "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://visbystrandby.se/boende-visby/husbil/): \"Husbilsplatser i olika storlekar – med eller utan vatten och avlopp – alltid med el. Områdeskartan markerar latrintömning och gråvattentömning på Norderstrand. (visbystrandby.se/boende-visby/husbil + områdeskarta PDF, sammandrag – sidorna egress-blockade)\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Komplettering: befintlig post har bara vatten. Egen sida + kartor anger latrin- och gråvattentömning; citatet är ett sammandrag, verifiera i webbläsare. Troligen bara för gäster. Grå dubbletten 'Camping Visby Strandby' (57.6543/18.3071) kan slås ihop.",
+    "description": "Källa (https://visbystrandby.se/wp-content/uploads/2023/09/Omradeskarta-Visby-Strandby.pdf): \"Områdeskartan markerar latrintömning och gråvattentömning på Norderstrand\" Verifierad okt 2026 (område C).",
     "website": "https://visbystrandby.se/boende-visby/husbil/",
     "address": "Snäckgärdsvägen 32, 621 41 Visby",
-    "confidence": "medium",
-    "unverifiedServices": [
-      "vatten",
-      "latrin",
-      "gravatten"
-    ]
+    "confidence": "medium"
   },
   {
     "name": "Åminne Fritid & Havsbad (camping)",
     "lat": 57.61387,
     "lon": 18.7566,
     "services": [
-      "camping"
+      "camping",
+      "latrin"
     ],
     "source": "egen",
-    "description": "Källa (https://camping.se/en/camping/3239/Aminne-Fritid-Havsbad-AB): \"Ingen gråvattentömning. Latrintömning för lös tank finns. 50 platser med el, servicehus. 10 km söder om Slite. (camping.se-listning / husbilhusvagn.se, sammandrag)\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Komplettering: latrin (kassett) JA, gråvatten uttryckligen NEJ. camping.se är branschorganisationens portal (operatören fyller i) – medium. aminnefritid.se egress-blockad. Vitvikens Café & Camping ligger 500 m bort (annan anläggning).",
+    "description": "Källa (https://www.aminnefritid.se/faq.html): \"Vi har endast latrintömning med kassett. / ingen tömning av gråvatten\" Verifierad okt 2026 (område C).",
     "website": "https://www.aminnefritid.se/camping.html",
     "address": "Åminne, 624 49 Slite",
-    "confidence": "medium",
-    "unverifiedServices": [
-      "latrin"
-    ]
+    "confidence": "high"
   },
   {
     "name": "Alnäsa ställplats (Fårö)",
@@ -24954,17 +24928,15 @@
     "nearLon": 18.32167,
     "maxKm": 70,
     "services": [
-      "stallplats"
+      "stallplats",
+      "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://ljugarnshamn.se/fakta-om-ljugarns-hamn-27108721): \"Ljugarns Hamn has 4-5 motorhome/car parking spaces available at 250 SEK per day. The harbor has fresh water and electric power available (30 SEK per night).\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Citatet är söksammandrag av hamnens egen sida (ljugarnshamn.se egress-blockad). husbilsplats.se påstår dessutom gråvattentömning + kassett-/tanktömning i hamnen – EJ belagt av hamnens sida, lägg som unverifiedServices ['gravatten','latrin'] om så önskas. Koordinat saknas: hamnen ligger ca 300–500 m från befintliga Ljugarns Camping (57.3415, 18.7179); ta hamnens läge från karta innan import.",
+    "description": "Källa (https://ljugarnshamn.se/fakta-om-ljugarns-hamn-27108721): \"Färskvatten : Ja\" Verifierad okt 2026 (område C).",
     "website": "https://ljugarnshamn.se/",
     "fee": "250 kr/dygn, el 30 kr/natt",
     "address": "Sjöviksvägen, 623 65 Ljugarn (gästhamnen)",
-    "confidence": "medium",
-    "unverifiedServices": [
-      "vatten"
-    ]
+    "confidence": "high"
   },
   {
     "name": "Ronehamn ställplats (Region Gotland, hamnen)",
@@ -25005,11 +24977,10 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://husbilsplats.se/locations/herrviks-hamn/): \"Herrvik harbor in Katthammarsvik, Gotland is listed as one of the motorhome parking areas (husbilsparkering).\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Region Gotland kräver ställplatser i sina gästhamnar (Herrvik är en av dem) men gotland.se:s lista nämner bara Visby/Slite/Fårösund/Ronehamn/Vändburg uttryckligen. Gästhamnen: 12 platser, färskvatten + el 89 kr/dag, WC/dusch med passerkort, bastu, septiksug + miljöstation – inget om husbilstömning. Koordinaten är gästhamnens position, inte en utpekad husbilsruta.",
+    "description": "Källa (https://www.svenskagasthamnar.se/gotland/herrvik/): \"Herrvik listed with ställplatser (Svenska Gästhamnar)\" Verifierad okt 2026 (område C).",
     "website": "https://www.svenskagasthamnar.se/gotland/herrvik/",
     "address": "Herrviks hamn, 623 68 Katthammarsvik",
-    "confidence": "low",
-    "unverified": true
+    "confidence": "medium"
   },
   {
     "name": "Katthammarsviks Rökeri ställplats",
@@ -25070,19 +25041,17 @@
     "services": [
       "camping",
       "stallplats",
-      "sopor"
+      "sopor",
+      "latrin",
+      "gravatten",
+      "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://gotland.com/companies/camping-pa-gotland-gangvidefarm-i-nar/): \"Gangvidefarm erbjuder camping för tält, husvagn och husbil till 340 kr per dygn. [...] Här finns en servicebyggnad med toaletter, duschar och kök. / Latrine emptying costs 50 SEK, and latrine cassette toilet and gray water emptying is available for 50 SEK. [...] fresh water (Färskvatten), waste bins (Sopkärl), electricity (El)\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Första delen av citatet från gotland.com (turistrådet), andra delen från husbilhusvagn.se:s anläggningslista (där 'Latrin: Nej' avser latrintunna, medan kassettömning = ja). Gårdscamping vid bäck på sydöstra Gotland, fiske/kanot/ponnyridning. Helt ny plats – När saknar allt i befintlig data.",
+    "description": "Källa (https://gangvidefarm.se/en/om-gangvide/prislista/): \"Water, grey water and latrine: 50 SEK (prislistan, tjänster); 'Tvättmaskin och latrintömning finns mot en avgift på 50 kr per användning' (gruppresor-sidan). Citaten återgivna via söksammanfattning, inte läst direkt på sidan.\" Verifierad okt 2026 (område C).",
     "website": "https://gangvidefarm.se/",
-    "fee": "340 kr/dygn; latrin-/gråvattentömning 50 kr",
+    "fee": "50 kr per tömning/användning",
     "address": "När Gangvide 503, 623 48 Stånga",
-    "confidence": "medium",
-    "unverifiedServices": [
-      "vatten",
-      "gravatten",
-      "latrin"
-    ]
+    "confidence": "medium"
   },
   {
     "name": "Ansarve Ställplats, Fröjel",
@@ -25108,17 +25077,17 @@
   {
     "name": "Nissevikens stugby ställplats",
     "services": [
-      "stallplats"
+      "stallplats",
+      "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://campit.se/en/camp/nissevikens-stugby): \"Nissevikens stugby has a small number of parking spots for motorhomes. The motorhome pitches are open year-round and has many spots, several of which have electricity. [...] showers, electrical connections, washing machines, toilets\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Sydvästkusten vid Nisseviken (Näs socken). Egen webbplats finns men gick inte att läsa. Ingen uppgift om tömning/vatten. Koordinat saknas.",
+    "description": "Källa (https://nissevikenstugby.se/bokningsvillkor/): \"Bokningsvillkor: 'Vattenpåfyllning sker på anvisad plats.' Ställplatser med el: 'Tillgång till dusch och WC, Elutag för längre vistelser'. Hemsidan: platser med och utan el.\" Verifierad okt 2026 (område C).",
     "website": "http://nissevikenstugby.se",
     "fee": "elplats 150–350 kr beroende på säsong/storlek",
     "phone": "070-836 36 37",
     "address": "Näs Stugbyvägen 1A, 623 37 Havdhem",
     "season": "year-round",
-    "confidence": "low",
-    "unverified": true,
+    "confidence": "medium",
     "lat": 57.133,
     "lon": 18.2207
   },
@@ -25947,13 +25916,12 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.campercontact.com/en/md/82677): \"Parking area about 800 m from the center, maximum of 3 places, maximum stay of 12 hours. Facilities list does not include waste water discharge or chemical toilet discharge. Stellplatzführer: marked spaces for 3 motorhomes, maximum parking time 12 hours, no service is offered, free.\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Badplats i Steningedalens naturpark med 3 markerade husbilsrutor, ingen service. Bara aggregatorer (campercontact 82677, stellplatzfuehrer.de 18616).",
+    "description": "Källa (https://www.sigtuna.se/bygga-bo-och-miljo/trafik-och-parkering/parkering-och-tillstand/parkeringsplatser.html): \"Sigtuna kommun listar två husbilsplatser, Steningebadet i Märsta (max 12 timmar) och Prästängarna i Sigtuna stad (max 24 timmar) ... inga faciliteter på platserna (återgivet via söksammanfattning av kommunens parkeringssida)\" Verifierad okt 2026 (område C).",
     "website": "https://www.campercontact.com/en/md/82677",
     "fee": "Gratis",
     "openingHours": "Max 12 timmar",
     "address": "Steninge allé, Steningebadet, Märsta",
-    "confidence": "low",
-    "unverified": true
+    "confidence": "medium"
   },
   {
     "name": "Sollentuna – Pommernvägen naturparkering",
@@ -25994,20 +25962,20 @@
     "nearLon": 18.22107,
     "maxKm": 45,
     "services": [
-      "stallplats"
+      "stallplats",
+      "latrin"
     ],
     "source": "egen",
-    "description": "Källa (https://visitskargarden.se/baatliv/gaesthamnar/dalaroe-gaesthamn-turistbyraa.aspx): \"visitskargarden.se (Dalarö Information): 'sop- och miljöstation och 10 ställplatser för husbil med toatömning'. Dalaröguiden 2026: '12 ställplatser för husbil', öppet 15 maj–15 sept, hamnavgift 350–450 kr/dygn.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. KONFLIKT: husbilsplats.se (https://husbilsplats.se/rest-area/askfatshamnen/) listar el, färskvatten, toalett, sopkärl men INGEN tömning. Turistrådet säger 'toatömning' – kan vara kassett-tömning i hamnens toalett. Satt medium; koordinat saknas (husbilsplats.se-sidan har GPS – läs i webbläsare).",
+    "description": "Källa (https://visitskargarden.se/baatliv/gaesthamnar/dalaroe-gaesthamn-turistbyraa.aspx): \"10 ställplatser för husbil med toatömning (Visit Skärgården, sidan Dalarö Information; återgivet via sökutdrag, ej ordagrant hämtat från sidan)\" Verifierad okt 2026 (område C).",
     "website": "https://www.dalarogasthamn.se/",
-    "fee": "Husbil 400 kr/natt inkl. el (visitskargarden, äldre uppgift); Dalaröguiden 2026: 350–450 kr/dygn",
+    "fee": "Husbil 400 kr/natt inkl. el",
     "openingHours": "Säsong 15 maj–15 september",
     "phone": "08-501 508 00",
     "address": "Askfatshamnen, 137 70 Dalarö",
     "season": "seasonal",
     "confidence": "medium",
     "unverifiedServices": [
-      "vatten",
-      "latrin"
+      "vatten"
     ]
   },
   {
@@ -26040,13 +26008,12 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.husbil.se/stallplatser/p/214/): \"husbil.se: 'Haninge GK är en uppställningsplats för golfspelare som betalar greenfee'. 1golf.eu listar 'Wohnmobilstellplatz' bland klubbens faciliteter. Inget om el/vatten/tömning.\" Obekräftad plats (aggregator/forum, ej primärkälla). Har du varit här? Bekräfta i appen. Bara aggregator. Klubbens egen sida ej läst (ej i sökträffar).",
+    "description": "Källa (https://www.haningegk.se/boende/): \"10 st ställplatser för husbil/husvagn, samtliga med laddstolpe; 200 kr/dygn, bokas och betalas via receptionen (haningegk.se/boende, återgivet via sökutdrag)\" Verifierad okt 2026 (område C).",
     "website": "https://www.haningegk.se/",
-    "fee": "Endast för greenfee-gäster (500–600 kr/person greenfee)",
+    "fee": "200 kr/dygn",
     "phone": "08-500 328 50",
     "address": "Årsta slott, Österhaninge",
-    "confidence": "low",
-    "unverified": true
+    "confidence": "medium"
   },
   {
     "name": "Lövhagens vandrarhem – husbilsplatser",
@@ -26089,17 +26056,17 @@
     "lat": 59.29437,
     "lon": 17.65181,
     "services": [
-      "stallplats"
+      "stallplats",
+      "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://ekero.se/uppleva-gora/att-gora/idrott-motion--friluftsliv/batar-och-hamnar): \"Ekerö kommun (Gästhamnar och färjetrafik): Rastaholm – 'Färskvatten, El-uttag för båt eller husbil', toalett, dusch, miljöstation. visitskargarden.se: 'El (50 kr/dygn)', 'färskvattenslangar på bryggan', 'Latrintömning (SSS Hamn)'. Campercontact: gratis vatten, el, toalett, dusch, waste water- och chemical toilet-tömning.\" Platsen bekräftad av primärkälla; tömning/vatten ej entydigt belagt. Har du varit här? Bekräfta i appen. Ställplats + färskvatten + el belagt av Ekerö kommun (high). Latrin/gråvatten för HUSBIL bara via campercontact (aggregator) – 'Latrintömning (SSS Hamn)' på turistrådssidan gäller troligen båtar. Vissa kranar på bryggan ger sjövatten (recension) – kolla skylt.",
+    "description": "Källa (https://ekero.se/uppleva-gora/att-gora/idrott-motion--friluftsliv/batar-och-hamnar): \"Rastaholm: färskvatten, el-uttag för båt eller husbil, septisug och miljöstation (Ekerö kommun, gästhamnslistan; via sökutdrag)\" Verifierad okt 2026 (område C).",
     "website": "https://www.rastaholm.se/",
     "fee": "El 50 kr/dygn (visitskargarden); recension 2022: hamnkaptenen tar 200 kr för el",
     "phone": "08-560 230 70",
     "address": "Rastaholms allé, 178 90 Ekerö",
     "confidence": "medium",
     "unverifiedServices": [
-      "vatten",
       "latrin",
       "gravatten"
     ]
