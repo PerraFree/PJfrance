@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { userMessage } from '../lib/http'
 import { submitReport } from '../lib/community'
 import { useModal } from '../lib/useModal'
 
@@ -23,14 +24,18 @@ export default function ReportForm({ stationId, stationName, onClose }: Props) {
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState('')
   const modalRef = useModal(onClose)
+  // Synkront lås mot dubbelinskick (flera klick innan knappen hunnit bli disabled).
+  const busy = useRef(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (busy.current) return
     setError('')
     if (!reason) {
       setError('Välj vad som är fel.')
       return
     }
+    busy.current = true
     setStatus('submitting')
     try {
       await submitReport({
@@ -42,7 +47,9 @@ export default function ReportForm({ stationId, stationName, onClose }: Props) {
       setStatus('done')
     } catch (err) {
       setStatus('error')
-      setError(err instanceof Error ? err.message : 'Något gick fel. Försök igen.')
+      setError(userMessage(err))
+    } finally {
+      busy.current = false
     }
   }
 

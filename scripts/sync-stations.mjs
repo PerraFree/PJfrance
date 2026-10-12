@@ -720,8 +720,8 @@ async function fetchCurated() {
     const prev = JSON.parse(await readFile(OUT, 'utf8'))
     for (const s of prev.stations ?? prev) {
       if (typeof s.id === 'string' && s.id.startsWith('curated-')) {
-        prevPos.set(s.id, { lat: s.lat, lon: s.lon })
-        if (!prevPos.has('namn:' + s.name)) prevPos.set('namn:' + s.name, { lat: s.lat, lon: s.lon })
+        prevPos.set(s.id, { lat: s.lat, lon: s.lon, geoQuery: s.geoQuery })
+        if (!prevPos.has('namn:' + s.name)) prevPos.set('namn:' + s.name, { lat: s.lat, lon: s.lon, geoQuery: s.geoQuery })
       }
     }
   } catch {
@@ -754,22 +754,31 @@ async function fetchCurated() {
         } else {
           networkCall = true
           stats.looked++
+          // Kastar geocode() är det ett TILLFÄLLIGT fel (nätet, 5xx) – det får
+          // aldrig cachas som "hittas inte" i 30 dagar (granskning 12 okt 2026).
+          let threw = false
           try {
             pos = await geocode(e.query)
           } catch (err) {
             console.warn(`Register: geokodning av "${e.query}" kastade fel: ${err.message}`)
             pos = null
+            threw = true
           }
           const at = new Date().toISOString()
           const prevHit = prevPos.get(e.id) ?? prevPos.get('namn:' + e.name)
-          if (!pos && prevHit) {
+          // Reserven gäller bara om förra läget kom från SAMMA query. Har någon
+          // rättat query (för att flytta en felplacerad nål) och den nya inte
+          // hittas, ska det gamla, felaktiga läget inte leva vidare tyst.
+          const sameQuery = prevHit && (prevHit.geoQuery === undefined || prevHit.geoQuery === e.query)
+          if (!pos && prevHit && sameQuery) {
             // Geokodaren hittar inget NU men platsen låg i förra seeden –
             // behåll det läget för den här körningen (hände 11 okt 2026 med
             // Furusjöns Camping). Sparas INTE i cachen: då prövades det aldrig
-            // om och en felplacering kunde bli permanent (granskning 12 okt).
-            pos = prevHit
+            // om och en felplacering kunde bli permanent. Rapporteras i ärendet.
+            pos = { lat: prevHit.lat, lon: prevHit.lon }
             console.warn(`Register: "${e.query}" (${e.name}) hittades inte nu – behåller läget från förra seeden`)
-          } else {
+            dropped.push({ name: e.name, id: e.id ?? null, kept: true, reason: `"${e.query}" hittades inte${threw ? ' (geokodarfel)' : ''} – visas med förra synkens läge` })
+          } else if (!threw) {
             cache[e.query] = pos ? { lat: pos.lat, lon: pos.lon, at } : { miss: true, at }
           }
         }
@@ -794,6 +803,9 @@ async function fetchCurated() {
         }
       }
       const station = {
+        // Vilken query läget kom från (bara geokodade poster) – reserven ovan
+        // jämför den så att en ändrad query inte ärver ett gammalt läge.
+        ...(typeof e.lat === 'number' ? {} : { geoQuery: e.query }),
         // Stabilt id: fryst i registret (fältet id) sedan 12 okt 2026. Tidigare
         // byggdes id av listpositionen, så varje borttagen post flyttade id:t för
         // alla senare – foton, betyg, bekräftelser och favoriter hamnade fel.

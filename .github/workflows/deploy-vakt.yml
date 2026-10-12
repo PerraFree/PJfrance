@@ -67,8 +67,9 @@ jobs:
           # inte en ny körning var 15:e minut (t.ex. en kvalitetsvakt som
           # stoppar) – öppna ett ärende i stället (granskning 12 okt 2026).
           FAILED=$(echo "$RUNS" | jq -r --arg h "$HEAD" '[.workflow_runs[] | select(.head_sha==$h and .status=="completed")][0].conclusion // empty')
-          if [ "$FAILED" = "failure" ]; then
-            URL=$(echo "$RUNS" | jq -r --arg h "$HEAD" '[.workflow_runs[] | select(.head_sha==$h and .conclusion=="failure")][0].html_url')
+          # timed_out räknas också (deployen har timeout 20 min sedan 12 okt 2026)
+          if [ "$FAILED" = "failure" ] || [ "$FAILED" = "timed_out" ]; then
+            URL=$(echo "$RUNS" | jq -r --arg h "$HEAD" '[.workflow_runs[] | select(.head_sha==$h and (.conclusion=="failure" or .conclusion=="timed_out"))][0].html_url')
             OPEN=$(gh issue list --repo "$REPO" --state open --search "Deployen misslyckas in:title" --json number --jq 'length')
             if [ "$OPEN" = "0" ]; then
               gh issue create --repo "$REPO" --title "Deployen misslyckas – sajten visar en äldre version" --label backlog --label prio-1 \

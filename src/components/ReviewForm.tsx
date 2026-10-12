@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { userMessage } from '../lib/http'
 import { submitReview } from '../lib/reviews'
 import { useModal } from '../lib/useModal'
 
@@ -18,14 +19,19 @@ export default function ReviewForm({ stationId, stationName, onClose, onSubmitte
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState('')
   const modalRef = useModal(onClose)
+  // Synkront lås: flera klick i samma JS-händelse hinner före React-
+  // omritningen som gör knappen disabled – utan låset blir det flera POST.
+  const busy = useRef(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (busy.current) return
     if (rating === 0) {
       setError('Välj antal stjärnor först.')
       return
     }
     setError('')
+    busy.current = true
     setStatus('saving')
     try {
       const result = await submitReview({ stationId, stationName, rating, comment })
@@ -33,10 +39,11 @@ export default function ReviewForm({ stationId, stationName, onClose, onSubmitte
       setStatus(result === 'published' ? 'done-published' : 'done-pending')
     } catch (err) {
       setStatus('error')
-      // Databasens egna meddelanden (spamskydd/längdgräns) är skrivna för
-      // användaren – visa dem; annars ett generellt råd.
-      const msg = err instanceof Error ? err.message : ''
-      setError(/många gånger|för lång/.test(msg) ? msg : 'Kunde inte spara – kontrollera nätet och försök igen.')
+      // Databasens egna meddelanden (spamskydd/längdgräns) och nät-/tids-
+      // gränsfel är redan svenska (restError/fetchWithTimeout) – visa dem.
+      setError(userMessage(err))
+    } finally {
+      busy.current = false
     }
   }
 

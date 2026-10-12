@@ -5,12 +5,13 @@ finns i git-loggen, `docs/svep-logg.md` och `docs/HISTORIK.md`).
 
 **Uppdaterad:** 2026-10-12, session "Gråvatten 5" (sessionslänk i senaste commit).
 
-Senaste händelse (12 okt): sex regioner i område D körda på en dag (248
-platser, 102 rättade), 27 registerdubbletter sammanslagna, synkens reservväg
-filtrerar nu OSM-undantag, ny CI-kontroll `check-mirrors.mjs` i deployen, ny
-rutin som bevakar GitHub-issues var 3:e timme. Veckorutinens C-körning pushade
-till en sidogren (rutinens session var låst till den) – slogs ihop manuellt;
-om det händer igen: `git fetch origin <gren>` + `git merge --no-ff` + verifiera seeden.
+Senaste händelse (12 okt, kväll): andra systemgranskningen med fem oberoende
+granskare – ~45 bekräftade fynd åtgärdade (säkerhet, data, kod, drift, UI),
+se `docs/granskningslogg.md`. Nya vakter: `check-csp.mjs`, aliaskontroll och
+100 m-par i seeden i `check-register.mjs`, efterkontroll av bygget, databasvakt
+i förslagsbevakningen. Schemat (IPv6-spärren) ska installeras med
+`installera-databasen.yml` efter push. Rutinen "Veckogranskning" (onsdagar)
+upprepar granskningen varje vecka.
 
 ## Status
 
@@ -35,8 +36,9 @@ om det händer igen: `git fetch origin <gren>` + `git merge --no-ff` + verifiera
   +tömning). **D klart för hela landet: 402 platser, 163 ändrade.** Område C
   kört av rutinen 12 okt.
   Webben är i stort sett uttömd för nya platser – nästa metod är crowdsourcing.
-- **UI senast:** bottenarket följer fingret vid drag, strecket = bara kartan/
-  tillbaka, baskartan byter till OSM om leverantören tiger. sw.js v86.
+- **UI senast:** CSP, svenska fel + tidsgräns i alla formulär, tack först efter
+  lyckat svar, jämnt markörurval (tak 3 000), räknare per filter, mindre
+  hopfällt ark på mobil, ortsökning före stationsträff. sw.js v97.
 - **Källkontroll (12 okt):** `verifiera-kallor.yml` kör tisdagar och lägger döda
   länkar + försvunna citat i ett ärende som ärenderutinen/område D tar vidare.
 - **Kvalitetsvakter i deployen (12 okt):** `check-mirrors.mjs`, `check-register.mjs`
@@ -85,11 +87,10 @@ Se https://github.com/PerraFree/PJfrance/issues?q=is%3Aopen+label%3Abacklog
 
 ## Nästa steg (förslag)
 
-1. Område E skiva 3: de ~150 OSM-platserna med egen webbplats utan säsong
-   (`UPPDRAG-sasong.md` + `apply-sasong.mjs`, urval `valj.mjs` i scratchpad
-   med OSM i stället för register), sedan registerposter utan webbplats.
-2. Område D varv 2 (VG först): urvalsskript `valj.mjs` i scratchpad väljer
-   bara platser utan "Kontroll okt 2026"; `UPPDRAG-kontroll.md` +
-   `apply-kontroll.mjs`; korta texterna för hand; grå-lista OSM-platser vars
-   egen sajt är tyst (`OSM_UNVERIFIED_OVERRIDES`). Per vill inte bli tillfrågad – sessionen väljer själv enligt
-prio-etiketterna och kör.
+1. Granskningsloggens "Kvar"-lista: exakta koordinater för fyra gasolpar och
+   nio osäkra poster; de nio geokodade registerparen inom 100 m.
+2. Område E skiva 3: de ~150 OSM-platserna med egen webbplats utan säsong
+   (`UPPDRAG-sasong.md` + `apply-sasong.mjs`).
+3. Område D varv 2 (VG först) med `UPPDRAG-kontroll.md` + `apply-kontroll.mjs`.
+
+Per vill inte bli tillfrågad – sessionen väljer själv enligt prio-etiketterna och kör.

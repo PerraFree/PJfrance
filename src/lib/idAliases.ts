@@ -8,7 +8,7 @@
  */
 let pending: Promise<Record<string, string>> | null = null
 
-function loadAliases(): Promise<Record<string, string>> {
+export function loadAliases(): Promise<Record<string, string>> {
   if (!pending) {
     pending = fetch(`${import.meta.env.BASE_URL}data/id-aliases.json`)
       .then((r) => (r.ok ? r.json() : {}))

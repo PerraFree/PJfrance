@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import { userMessage } from '../lib/http'
 import { submitPhoto } from '../lib/photos'
 import { useModal } from '../lib/useModal'
 
@@ -17,6 +18,8 @@ export default function PhotoForm({ stationId, stationName, onClose, onUploaded 
   const [status, setStatus] = useState<Status>('idle')
   const [error, setError] = useState('')
   const modalRef = useModal(onClose)
+  // Synkront lås mot dubbelinskick (flera klick innan knappen hunnit bli disabled).
+  const busy = useRef(false)
 
   const handleFile = (f: File | null) => {
     setError('')
@@ -29,11 +32,13 @@ export default function PhotoForm({ stationId, stationName, onClose, onUploaded 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (busy.current) return
     setError('')
     if (!file) {
       setError('Välj en bild först.')
       return
     }
+    busy.current = true
     setStatus('uploading')
     try {
       const url = await submitPhoto({ stationId, stationName, file })
@@ -41,7 +46,9 @@ export default function PhotoForm({ stationId, stationName, onClose, onUploaded 
       setStatus('done')
     } catch (err) {
       setStatus('error')
-      setError(err instanceof Error ? err.message : 'Något gick fel. Försök igen.')
+      setError(userMessage(err))
+    } finally {
+      busy.current = false
     }
   }
 

@@ -168,6 +168,7 @@ language plpgsql stable security definer set search_path = private, public as $$
 declare
   h json;
   ip text;
+  v inet;
   salt text;
 begin
   begin
@@ -176,13 +177,28 @@ begin
     return null;
   end;
   if h is null then return null; end if;
-  ip := coalesce(nullif(h->>'cf-connecting-ip', ''), split_part(coalesce(h->>'x-forwarded-for', ''), ',', 1));
-  ip := lower(trim(ip));
-  if ip is null or ip = '' then return null; end if;
+  -- Bara cf-connecting-ip (sätts av Cloudflare framför Supabase och går inte
+  -- att förfalska). x-forwarded-for:s första värde väljer klienten själv –
+  -- som reserv gav det en ny nyckel per inskick. Saknas cf-headern delar
+  -- alla sådana anrop EN nyckel (granskning 12 okt 2026).
+  ip := lower(trim(coalesce(h->>'cf-connecting-ip', '')));
+  if ip = '' then return 'okänd-ip'; end if;
+  begin
+    v := ip::inet;
+  exception when others then
+    return 'ogiltig-ip';
+  end;
+  -- IPv4 inbäddad i IPv6 (::ffff:1.2.3.4) = samma avsändare som 1.2.3.4.
+  if family(v) = 6 and v << '::ffff:0:0/96'::inet then
+    v := split_part(host(v), ':', 4)::inet;
+  end if;
   -- IPv6: räkna per /64 (en vanlig abonnent har en hel /64 och kan annars
-  -- byta adress obegränsat). Förkortade adresser (::) normaliseras grovt.
-  if position(':' in ip) > 0 then
-    ip := array_to_string((string_to_array(ip, ':'))[1:4], ':') || '::/64';
+  -- byta adress obegränsat). Via inet så att förkortningen :: byggs ut rätt –
+  -- strängdelning vid ':' gav en ny nyckel per adress (granskning 12 okt 2026).
+  if family(v) = 6 then
+    ip := network(set_masklen(v, 64))::text;
+  else
+    ip := host(v);
   end if;
   select value into salt from private.app_secrets where name = 'ip_salt';
   return md5(coalesce(salt, '') || ip);

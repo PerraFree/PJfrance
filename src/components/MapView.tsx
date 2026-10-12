@@ -29,6 +29,8 @@ import { MY_PLACE_PREFIX } from '../lib/myplaces'
 import { markSelfVerified, selfVerifiedRecently, type VerificationInfo } from '../lib/verify'
 import type { StationReviews } from '../lib/reviews'
 import { isOwnPhotoUrl } from '../lib/photos'
+import { validView } from '../lib/view'
+import { userMessage } from '../lib/http'
 
 // Seed-datan täcker hela Sverige, så live-hämtning behövs bara när man zoomat
 // in nära (för färsk detalj). Håller "Hämtar stationer …" borta vid ort-zoom.
@@ -61,7 +63,7 @@ interface Props {
   onDeleteMyPlace: (id: string) => void
   /** Senaste "stämmer fortfarande"-datum + antal per plats-id. */
   verifications: Map<string, VerificationInfo>
-  onVerify: (id: string) => void
+  onVerify: (id: string) => Promise<void>
   canVerify: boolean
   /** Godkända betyg/kommentarer per plats-id. */
   reviews: Map<string, StationReviews>
@@ -438,9 +440,7 @@ function readSavedView(): { lat: number; lon: number; zoom: number } | null {
     const raw = localStorage.getItem(VIEW_KEY)
     if (!raw) return null
     const v = JSON.parse(raw)
-    if (typeof v.lat === 'number' && typeof v.lon === 'number' && typeof v.zoom === 'number') {
-      return v
-    }
+    return validView(v?.lat, v?.lon, v?.zoom)
   } catch {
     /* ignorera trasigt värde */
   }
@@ -628,12 +628,15 @@ export default function MapView({
     // Riv aldrig en ÖPPEN popup – t.ex. när kartans auto-panorering efter
     // popup-öppning triggar moveend. Övriga markörer byggs ändå om (annars
     // blev kartan tom när man panorerade till en annan ort med popupen
-    // öppen); den öppna markören behålls som den är. Har den hamnat utanför
-    // vyn stängs popupen och allt byggs om som vanligt.
+    // öppen); den öppna markören behålls som den är. Har användaren
+    // panorerat LÅNGT bort (markören mer än en halv skärm utanför vyn) stängs
+    // popupen och allt byggs om som vanligt. Marginalen behövs: på mobil kan
+    // markören hamna strax under kanten medan popupen ovanför fortfarande
+    // syns – den ska inte stängas då (CLAUDE.md: stängs bara av användaren).
     let kept: { id: string; marker: L.Marker } | null = null
     if (popupOpenRef.current && openMarkerRef.current) {
       const open = openMarkerRef.current
-      if (map.getBounds().contains(open.marker.getLatLng())) {
+      if (map.getBounds().pad(0.5).contains(open.marker.getLatLng())) {
         kept = open
       } else {
         map.closePopup()
@@ -673,13 +676,37 @@ export default function MapView({
     let list = stationsRef.current.filter(
       (s) => bounds.contains([s.lat, s.lon]) && stationIsActive(s, active, gasolFacilitiesNow),
     )
-    const CAP = 600
+    // Tak för antalet markörer per ombyggnad (prestanda på enklare telefoner).
+    // Över taket väljs platserna JÄMNT över kartan – rutvis, närmast mitten
+    // först i varje ruta – i stället för bara de närmast mitten: med det
+    // gamla taket (600, närmast mitten) blev hela Skåne tomt i översikten
+    // med Latrin vald (granskning 12 okt 2026). Uppmätt med 4× strypt CPU:
+    // 3 000 markörer ger samma längsta låsning som 600 tack vare chunkedLoading.
+    const CAP = 3000
     if (list.length > CAP) {
-      list = list
-        .map((s) => ({ s, d: (s.lat - center.lat) ** 2 + (s.lon - center.lng) ** 2 }))
-        .sort((a, b) => a.d - b.d)
-        .slice(0, CAP)
-        .map((x) => x.s)
+      const cell = Math.max(bounds.getNorth() - bounds.getSouth(), bounds.getEast() - bounds.getWest()) / 40
+      const cells = new Map<string, { s: Station; d: number }[]>()
+      for (const s of list) {
+        const k = `${Math.floor(s.lat / cell)},${Math.floor(s.lon / cell)}`
+        const d = (s.lat - center.lat) ** 2 + (s.lon - center.lng) ** 2
+        const arr = cells.get(k)
+        if (arr) arr.push({ s, d })
+        else cells.set(k, [{ s, d }])
+      }
+      const queues = [...cells.values()].map((arr) => arr.sort((x, y) => x.d - y.d))
+      const picked: Station[] = []
+      for (let round = 0; picked.length < CAP; round++) {
+        let any = false
+        for (const q of queues) {
+          if (round < q.length) {
+            any = true
+            picked.push(q[round].s)
+            if (picked.length >= CAP) break
+          }
+        }
+        if (!any) break
+      }
+      list = picked
     }
     const { padTopLeft, padBottomRight } = computePopupPadding()
     const canReportNow = canReportRef.current
@@ -862,7 +889,7 @@ export default function MapView({
       onBoundsChange(map.getBounds(), map.getZoom())
       rebuildMarkers() // rendera om markörer för den nya vyn
       const c = map.getCenter()
-      try {
+      if (validView(c.lat, c.lng, map.getZoom())) try {
         localStorage.setItem(
           VIEW_KEY,
           JSON.stringify({ lat: c.lat, lon: c.lng, zoom: map.getZoom() }),
@@ -938,22 +965,36 @@ export default function MapView({
       if (verify && !verify.disabled) {
         const id = verify.dataset.verifyId
         if (id) {
-          markSelfVerified(id)
-          onVerifyRef.current(id)
+          // Tack och lokalt kvitto först när databasen faktiskt sparat –
+          // förut visades "✓ Tack!" även vid fel, och kvittot spärrade nya
+          // försök i 30 dagar (granskning 12 okt 2026). disabled = låset.
+          const label = verify.textContent
           verify.disabled = true
-          verify.classList.add('done')
-          verify.textContent = '✓ Tack!'
-          // Uppdatera/injicera bekräftelseraden i den öppna popupen
+          verify.textContent = 'Skickar …'
           const pop = verify.closest('.popup')
-          const line = pop?.querySelector('.verified-line')
-          if (line) line.textContent = '✓ Bekräftad av användare idag'
-          else
-            pop
-              ?.querySelector('.badges')
-              ?.insertAdjacentHTML(
-                'afterend',
-                '<p class="verified-line">✓ Bekräftad av användare idag</p>',
-              )
+          pop?.querySelector('.verify-error')?.remove()
+          onVerifyRef.current(id).then(
+            () => {
+              markSelfVerified(id)
+              verify.classList.add('done')
+              verify.textContent = '✓ Tack!'
+              // Uppdatera/injicera bekräftelseraden i den öppna popupen
+              const line = pop?.querySelector('.verified-line')
+              if (line) line.textContent = '✓ Bekräftad av användare idag'
+              else
+                pop
+                  ?.querySelector('.badges')
+                  ?.insertAdjacentHTML('afterend', '<p class="verified-line">✓ Bekräftad av användare idag</p>')
+            },
+            (err: unknown) => {
+              verify.disabled = false
+              verify.textContent = label
+              const p = document.createElement('p')
+              p.className = 'form-error verify-error'
+              p.textContent = userMessage(err)
+              verify.insertAdjacentElement('afterend', p)
+            },
+          )
         }
         return
       }

@@ -12,7 +12,11 @@ const FILES = {
 }
 const LISTS = ['EXCLUDED_OSM_ELEMENTS', 'OSM_FACILITY_OVERRIDES', 'OSM_SEASON_OVERRIDES', 'OSM_UNVERIFIED_OVERRIDES']
 
-/** Plockar ut texten mellan "const NAMN = new Set([|new Map(...[" och det avslutande "])". */
+/**
+ * Plockar ut texten mellan "const NAMN = new Set([" / "new Map<…>([" och det
+ * avslutande "])". Hoppar över strängar och kommentarer när hakparenteser
+ * räknas, så att t.ex. "(" i en öppettidstext inte bryter av blocket.
+ */
 function block(src, name) {
   const start = src.indexOf(`const ${name} = `)
   if (start < 0) throw new Error(`${name} saknas`)
@@ -21,42 +25,57 @@ function block(src, name) {
   let depth = 0
   for (let i = open + 1; i < src.length; i++) {
     const c = src[i]
+    if (c === "'" || c === '"' || c === '`') {
+      for (i++; i < src.length && src[i] !== c; i++) if (src[i] === '\\') i++
+      continue
+    }
+    if (c === '/' && src[i + 1] === '/') { i = src.indexOf('\n', i); continue }
+    if (c === '/' && src[i + 1] === '*') { i = src.indexOf('*/', i) + 1; continue }
     if (c === '[' || c === '{' || c === '(') depth++
     else if (c === ']' || c === '}' || c === ')') {
-      if (depth === 0) return src.slice(open + 2, i)
       depth--
+      if (depth === 0) return src.slice(open + 1, i + 1)
     }
   }
   throw new Error(`${name}: oavslutad lista`)
 }
 
-/** Tar bort kommentarer och normaliserar citattecken/blanksteg så att TS och JS jämförs lika. */
-function normalize(s) {
-  return s
-    .replace(/\/\/[^\n]*/g, '')
-    .replace(/\/\*[\s\S]*?\*\//g, '')
-    .replace(/"/g, "'")
-    .replace(/\s+/g, '')
-    .replace(/,(?=[\]}])/g, '')
-}
-
-/** Delar upp ett normaliserat listblock i poster: nyckel → värdetext. */
-function entries(norm, isMap) {
-  const out = new Map()
-  if (!isMap) {
-    for (const m of norm.matchAll(/'((?:node|way|relation)\/\d+)'/g)) out.set(m[1], '')
-    return out
+/**
+ * Tolkar blocket som riktiga värden (inte textjämförelse – den släppte igenom
+ * ändrade blanksteg inne i texter och klippte vid "//" i URL:er, granskning
+ * 12 okt 2026). Listorna får bara innehålla literaler; en variabel eller en
+ * typkonvertering ger fel här i stället för att tyst hoppas över.
+ */
+function entries(text, name) {
+  let arr
+  try {
+    arr = new Function(`"use strict"; return ${text}`)()
+  } catch (e) {
+    throw new Error(`${name}: kunde inte tolkas som literaler (${e.message})`)
   }
-  for (const m of norm.matchAll(/\['((?:node|way|relation)\/\d+)',(\[[^\]]*\]|\{[^}]*\})\]/g)) out.set(m[1], m[2])
+  if (!Array.isArray(arr)) throw new Error(`${name}: inte en lista`)
+  const canon = (v) => JSON.stringify(v, (k, x) => (x && typeof x === 'object' && !Array.isArray(x) ? Object.fromEntries(Object.entries(x).sort()) : x))
+  const out = new Map()
+  for (const item of arr) {
+    const key = Array.isArray(item) ? item[0] : item
+    if (typeof key !== 'string' || !/^(node|way|relation)\/\d+$/.test(key)) throw new Error(`${name}: ogiltig nyckel ${JSON.stringify(key)}`)
+    if (out.has(key)) throw new Error(`${name}: ${key} finns två gånger`)
+    out.set(key, Array.isArray(item) ? canon(item.slice(1)) : '')
+  }
   return out
 }
 
 const src = Object.fromEntries(Object.entries(FILES).map(([k, f]) => [k, readFileSync(f, 'utf8')]))
 const problems = []
 for (const name of LISTS) {
-  const isMap = name !== 'EXCLUDED_OSM_ELEMENTS'
-  const a = entries(normalize(block(src.synk, name)), isMap)
-  const b = entries(normalize(block(src.app, name)), isMap)
+  let a, b
+  try {
+    a = entries(block(src.synk, name), name + ' (synk)')
+    b = entries(block(src.app, name), name + ' (app)')
+  } catch (e) {
+    problems.push(e.message)
+    continue
+  }
   for (const [k, v] of a) {
     if (!b.has(k)) problems.push(`${name}: ${k} finns bara i sync-stations.mjs`)
     else if (b.get(k) !== v) problems.push(`${name}: ${k} skiljer sig (synk ${v} / app ${b.get(k)})`)

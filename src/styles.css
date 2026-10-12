@@ -132,7 +132,14 @@ button {
 .panel.collapsed .settings,
 .panel.collapsed .submit-place-btn,
 .panel.collapsed .here-btn,
-.panel.collapsed .brand p {
+.panel.collapsed .brand p,
+/* Vägknappen (om ingen väg är vald), sidfotslänkar och versionsrad låg kvar
+   i hopfällt läge – arket täckte ~60 % av en mobilskärm och sökträffen
+   hamnade under det (granskning 12 okt 2026). */
+.panel.collapsed .route-btn:not(.active),
+.panel.collapsed .route-form,
+.panel.collapsed .foot-links,
+.panel.collapsed .version-line {
   display: none;
 }
 

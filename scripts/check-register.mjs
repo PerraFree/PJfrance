@@ -65,7 +65,10 @@ const dist = (a, b) => {
 }
 const gasolOnly = (p) => p.services?.length === 1 && p.services[0] === 'gasol'
 const exact = reg.filter((p) => typeof p.lat === 'number' && typeof p.lon === 'number')
-const cell = (p) => `${Math.round(p.lat / 0.001)},${Math.round(p.lon / 0.001)}`
+// Cellstorlek: 0,001° lat ≈ 111 m, men 0,001° lon är bara ≈ 43 m vid lat 67 –
+// därför 0,003° i lon (≥ 100 m upp till lat 72). Med lika stora celler i båda
+// leder missades par inom 100 m i öst-västlig led i norr (granskning 12 okt 2026).
+const cell = (p) => `${Math.round(p.lat / 0.001)},${Math.round(p.lon / 0.003)}`
 const grid = new Map()
 for (const p of exact) {
   const [cx, cy] = cell(p).split(',').map(Number)
@@ -93,10 +96,45 @@ if (existsSync(SEED)) {
     if (g.length < 2) continue
     warnings.push(`samma geokodade punkt i seeden: ${g.map((s) => `"${s.name}"`).join(' + ')} – ge egna queries eller exakta koordinater, eller slå ihop`)
   }
+  // Pers 100 m-regel gäller även geokodade poster: två registerposter inom
+  // 100 m i den publicerade seeden slås ihop i appen (tjänsterna unionas),
+  // så två olika verksamheter kan smitta varandra. Varning – läget kommer
+  // från geokodningen och kan ändras vid nästa synk (granskning 12 okt 2026).
+  const byId = new Map(reg.map((p) => [p.id, p]))
+  const cur = st.filter((s) => s.id.startsWith('curated-') && byId.has(s.id) && !(s.services.length === 1 && s.services[0] === 'gasol'))
+  const g2 = new Map()
+  for (const s of cur) {
+    const cx = Math.round(s.lat / 0.001), cy = Math.round(s.lon / 0.003)
+    for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) {
+      for (const q of g2.get(`${cx + dx},${cy + dy}`) ?? []) {
+        const pa = byId.get(s.id), pb = byId.get(q.id)
+        if (pa.distinct || pb.distinct) continue
+        if (typeof pa.lat === 'number' && typeof pb.lat === 'number') continue // exakta par = fel ovan
+        const m = dist(s, q)
+        if (m <= 100) warnings.push(`"${s.name}" och "${q.name}" ligger ${Math.round(m)} m isär i seeden (geokodat) – slås ihop i appen; slå ihop i registret, ge exakta lägen eller sätt distinct: true`)
+      }
+    }
+    const k = `${cx},${cy}`
+    g2.set(k, [...(g2.get(k) ?? []), s])
+  }
 }
 
 console.log(`Register: ${reg.length} poster, ${errors.length} fel, ${warnings.length} varningar`)
 for (const w of warnings) console.log('  varning: ' + w)
+// Alias (gamla id → nuvarande, public/data/id-aliases.json): varje mål måste
+// finnas i registret och inget gammalt id får vara ett nuvarande id. Annars
+// pekar sparade favoriter/betyg/foton på en plats som inte finns (en post som
+// tas bort eller slås ihop måste peka om sina alias). Granskning 12 okt 2026.
+const ALIASES = new URL('../public/data/id-aliases.json', import.meta.url)
+if (existsSync(ALIASES)) {
+  const ids = new Set(reg.map((p) => p.id))
+  const al = JSON.parse(readFileSync(ALIASES, 'utf8'))
+  const bad = Object.entries(al).filter(([, v]) => !ids.has(v))
+  const chain = Object.keys(al).filter((k) => ids.has(k))
+  if (bad.length) errors.push(`${bad.length} alias pekar på id som inte finns i registret (t.ex. ${bad[0][0]} → ${bad[0][1]}) – peka om till posten som tog över, eller ta bort aliaset`)
+  if (chain.length) errors.push(`${chain.length} alias har ett nuvarande id som nyckel (t.ex. ${chain[0]})`)
+}
+
 if (errors.length) {
   console.error('\nFEL i scripts/curated-places.json – rätta före push:')
   for (const e of errors) console.error('  - ' + e)

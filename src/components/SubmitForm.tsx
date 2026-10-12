@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { communityEnabled } from '../config'
 import { submitPlace } from '../lib/community'
+import { userMessage } from '../lib/http'
 import { searchPlace } from '../lib/geocode'
 import { useModal } from '../lib/useModal'
 import { MY_PLACE_PREFIX } from '../lib/myplaces'
@@ -34,7 +35,61 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
   const [error, setError] = useState('')
   const [photoStatus, setPhotoStatus] = useState<'idle' | 'uploading' | 'done' | 'error'>('idle')
   const [photoError, setPhotoError] = useState('')
+  /** Status för inskicket till granskningskön (efter att platsen sparats lokalt). */
+  const [reviewStatus, setReviewStatus] = useState<'idle' | 'sending' | 'sent' | 'failed'>('idle')
+  const [reviewError, setReviewError] = useState('')
   const modalRef = useModal(onClose)
+  // Synkrona lås: flera klick i samma JS-händelse hinner före React-
+  // omritningen som gör knappen disabled – utan låsen blir det flera POST.
+  const busy = useRef(false)
+  const reviewBusy = useRef(false)
+  /** Den sparade platsen – återanvänds när användaren försöker skicka igen. */
+  const savedStation = useRef<Station | null>(null)
+
+  /**
+   * Skickar platsen till granskningskön. Visar riktig status: lyckat,
+   * eller databasens svenska fel / nätfel / tidsgräns med "Försök igen".
+   */
+  const sendForReview = async () => {
+    const station = savedStation.current
+    if (!station || reviewBusy.current) return
+    reviewBusy.current = true
+    setReviewStatus('sending')
+    setReviewError('')
+    try {
+      // Ingen adress angiven av användaren: slå upp ett riktigt ortsnamn
+      // i stället för att visa rå koordinat-text i granskningsärendet.
+      let submittedAddress = station.address
+      if (!submittedAddress) {
+        try {
+          // reverseGeocode saknar egen tidsgräns – vänta högst 8 s, annars
+          // skickas koordinaterna (granskningen ska inte hänga på Nominatim).
+          submittedAddress =
+            (await Promise.race([
+              reverseGeocode(station.lat, station.lon),
+              new Promise<string>((resolve) => setTimeout(() => resolve(''), 8000)),
+            ])) || undefined
+        } catch {
+          /* faller tillbaka på koordinater nedan */
+        }
+      }
+      await submitPlace({
+        name: station.name,
+        address: submittedAddress ?? `${station.lat.toFixed(5)}, ${station.lon.toFixed(5)}`,
+        services: station.services,
+        fee: station.fee,
+        description: station.description,
+        lat: station.lat,
+        lon: station.lon,
+      })
+      setReviewStatus('sent')
+    } catch (err) {
+      setReviewStatus('failed')
+      setReviewError(userMessage(err))
+    } finally {
+      reviewBusy.current = false
+    }
+  }
 
   const handlePhotoFile = (f: File | null) => {
     setPhotoFile(f)
@@ -55,6 +110,7 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (busy.current || savedStation.current) return
     setError('')
     if (!name.trim()) {
       setError('Fyll i ett namn på platsen.')
@@ -64,6 +120,7 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
       setError('Välj minst en tjänst.')
       return
     }
+    busy.current = true
     setStatus('saving')
     try {
       let lat: number | undefined
@@ -105,34 +162,12 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
         fee: fee.trim() || undefined,
         description: description.trim() || undefined,
       }
+      savedStation.current = station
       onAdd(station)
       // Hybrid: skicka samtidigt in förslaget för granskning – godkänns det
-      // visas platsen för ALLA. Blockerar inte den lokala sparningen.
-      if (communityEnabled) {
-        void (async () => {
-          // Ingen adress angiven av användaren: slå upp ett riktigt ortsnamn
-          // i stället för att visa rå koordinat-text i granskningsärendet.
-          let submittedAddress = station.address
-          if (!submittedAddress) {
-            try {
-              submittedAddress = (await reverseGeocode(lat, lon)) || undefined
-            } catch {
-              /* faller tillbaka på koordinater nedan */
-            }
-          }
-          await submitPlace({
-            name: station.name,
-            address: submittedAddress ?? `${lat.toFixed(5)}, ${lon.toFixed(5)}`,
-            services: station.services,
-            fee: station.fee,
-            description: station.description,
-            lat,
-            lon,
-          })
-        })().catch(() => {
-          /* granskningskön är bäst-möjligt – platsen är ändå sparad lokalt */
-        })
-      }
+      // visas platsen för ALLA. Blockerar inte den lokala sparningen, men
+      // resultatet visas (lyckat/fel + "Försök igen") i tack-rutan.
+      if (communityEnabled) void sendForReview()
       if (communityEnabled && photoFile) {
         setPhotoStatus('uploading')
         void submitPhoto({ stationId: station.id, stationName: station.name, file: photoFile })
@@ -144,13 +179,15 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
             // Fotot är trevligt att ha men inte kritiskt – platsen är ändå
             // sparad. Visa ändå felet så det inte försvinner spårlöst.
             setPhotoStatus('error')
-            setPhotoError(err instanceof Error ? err.message : 'Okänt fel.')
+            setPhotoError(userMessage(err))
           })
       }
       setStatus('done')
     } catch {
       setStatus('error')
       setError('Något gick fel. Försök igen.')
+    } finally {
+      busy.current = false
     }
   }
 
@@ -173,9 +210,22 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
             <h2 id="submit-title">Tillagd! 📍</h2>
             <p>
               Platsen är sparad och syns nu på kartan hos dig.
-              {communityEnabled &&
+              {reviewStatus === 'sent' &&
                 ' Den har också skickats in för granskning – godkänns den visas den för alla.'}
             </p>
+            {reviewStatus === 'sending' && (
+              <p className="modal-intro">Skickar in platsen för granskning …</p>
+            )}
+            {reviewStatus === 'failed' && (
+              <>
+                <p className="form-error" role="alert">
+                  Platsen kunde inte skickas in för granskning: {reviewError}
+                </p>
+                <button type="button" className="primary-btn" onClick={() => void sendForReview()}>
+                  Försök skicka igen
+                </button>
+              </>
+            )}
             {photoStatus === 'uploading' && <p className="modal-intro">Laddar upp fotot …</p>}
             {photoStatus === 'error' && (
               <p className="form-error">Fotot kunde tyvärr inte laddas upp: {photoError}</p>

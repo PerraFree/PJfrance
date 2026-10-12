@@ -574,7 +574,10 @@ export async function fetchOsmStations(bounds: LatLngBounds): Promise<Station[]>
         return (json.elements ?? []).map(toStation).filter((s): s is Station => s !== null)
       } catch (err) {
         if (ctrl.signal.aborted) throw aborted()
-        lastError = err
+        // En egen timeout ger också ett AbortError från fetch – det får inte
+        // se ut som "avbruten av nyare anrop" (då visade appen inget fel alls
+        // när alla speglar var tröga). Granskning 12 okt 2026.
+        lastError = isAbortError(err) ? new Error('Overpass svarade inte inom 12 s') : err
       } finally {
         clearTimeout(timer)
         ctrl.signal.removeEventListener('abort', onAbort)

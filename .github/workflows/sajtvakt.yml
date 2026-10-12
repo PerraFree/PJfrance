@@ -57,7 +57,8 @@ jobs:
                 const n = (seed.stations ?? seed).length
                 if (n < 5000) problems.push(`seeden har bara ${n} platser`)
                 const age = (Date.now() - Date.parse(seed.updatedAt)) / 86400000
-                if (age > 9) problems.push(`seeden är ${age.toFixed(0)} dagar gammal (synken har inte publicerat på över en vecka)`)
+                if (!Number.isFinite(age)) problems.push('seeden saknar giltigt updatedAt')
+                else if (age > 9) problems.push(`seeden är ${age.toFixed(0)} dagar gammal (synken har inte publicerat på över en vecka)`)
               } catch (e) {
                 problems.push('seeden är inte giltig JSON')
               }
@@ -75,6 +76,12 @@ jobs:
             }
             const body = `${marker}\nSajtvakten ${new Date().toISOString().slice(0, 16)} UTC:\n\n` + problems.map((p) => `- ${p}`).join('\n') +
               `\n\n_Ärendet stängs automatiskt när sajten fungerar igen. Ligger den nere länge: kontrollera GitHub Pages-inställningarna och DNS hos Inleed._`
-            if (mine) await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, body })
-            else await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title: 'Sajten tomningskartan.se svarar inte normalt', body, labels: ['backlog', 'prio-1'] })
-            core.setFailed(problems.join('; '))
+            if (mine) {
+              // Redan larmat – uppdatera bara ärendet. Ingen misslyckad körning
+              // (= inget felmejl) var 30:e minut medan felet står kvar.
+              await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, body })
+              core.warning(problems.join('; '))
+            } else {
+              await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title: 'Sajten tomningskartan.se svarar inte normalt', body, labels: ['backlog', 'prio-1'] })
+              core.setFailed(problems.join('; '))
+            }

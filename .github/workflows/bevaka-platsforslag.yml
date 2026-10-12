@@ -70,6 +70,36 @@ jobs:
               return res.json()
             }
 
+            // Databasvakt (granskning 12 okt 2026): svarar inte Supabase (pausat
+            // projekt ger 540/5xx, utgången nyckel 401) öppnas ETT ärende så att
+            // Per får mejl – och stängs automatiskt när databasen svarar igen.
+            const dbMarker = '<!-- supabase-vakt -->'
+            const { data: openIssues } = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100 })
+            const dbIssue = openIssues.find((i) => (i.body ?? '').startsWith(dbMarker))
+            let dbError = null
+            for (let i = 0; i < 2; i++) {
+              try {
+                await q('submissions?select=id&limit=1')
+                dbError = null
+                break
+              } catch (e) {
+                dbError = e
+                await new Promise((r) => setTimeout(r, 15000))
+              }
+            }
+            if (dbError) {
+              const body = `${dbMarker}\nDatabasen (Supabase) svarade inte ${new Date().toISOString().slice(0, 16)} UTC:\n\n\`${String(dbError.message).replace(/`/g, '').slice(0, 400)}\`\n\n` +
+                `_Vanligaste orsaken: projektet har pausats. Öppna supabase.com/dashboard → projektet Greywater → **Restore**, eller kör workflowen "Installera databasen". Ärendet stängs automatiskt när databasen svarar igen._`
+              if (dbIssue) await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: dbIssue.number, body })
+              else await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title: 'Databasen (Supabase) svarar inte – förslag, betyg och foton fungerar inte', body, labels: ['backlog', 'prio-1'] })
+              core.setFailed(dbError.message)
+              return
+            }
+            if (dbIssue) {
+              await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: dbIssue.number, body: 'Databasen svarar normalt igen.' })
+              await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: dbIssue.number, state: 'closed', state_reason: 'completed' })
+            }
+
             // Befintliga gransknings-ärenden (dedup)
             const labels = ['platsförslag', 'omdöme']
             const existing = []

@@ -12,6 +12,7 @@ issues – aldrig här. Ny regel här bara om den gäller varje framtida session
 |---|---|
 | `docs/STATUS.md` | Vid sessionsstart: aktuellt läge + nästa steg. Skrivs ÖVER vid överlämning. |
 | `docs/svep-logg.md` | Före ett datasvep: rotationen A–E, regler, logg över körda svep. |
+| `docs/granskningslogg.md` | Före en systemgranskning: tidigare fynd, åtgärder och vilken vakt som täcker dem. |
 | `docs/HISTORIK.md` | Vid behov: arkiv med tidigare lägesbilder, metoder, beslut och gasol-/svepdetaljer (t.o.m. 11 okt 2026). |
 | `docs/KALLJAMFORELSER.md`, `docs/SEO.md`, `docs/LANSERING.md` | Vid behov: källjämförelser (First Camp m.fl.), SEO/spridning, lanseringstexter för crowdsourcing. |
 | `docs/ADMIN.md`, `docs/SUPABASE.md`, `docs/DATAKALLOR.md`, `docs/BUILD-MOBILE.md` | Pers adminguide, databasen, datakällor, Android-bygge. |
@@ -56,14 +57,14 @@ Android förberett (`docs/BUILD-MOBILE.md`).
 | Fil | Roll |
 |---|---|
 | `src/App.tsx` | Panel/bottenark, sök, filter, räknare, dedupe (`mergeInto`: registret vinner, tjänster unionas, fält fylls på), versionsrad |
-| `src/components/MapView.tsx` | Karta: viewport-rendering (CAP 600), popup-persistens (stängs BARA av användaren), `centerPopup()`/`computeFreeRect()`, baskarta med säkerhetsnät (tileerror ≥6 eller inga tiles på 8 s → OSM-tiles; lyssnarna sätts FÖRE `addTo`) |
+| `src/components/MapView.tsx` | Karta: viewport-rendering (CAP 3000, jämnt urval över kartan), popup-persistens (stängs BARA av användaren), `centerPopup()`/`computeFreeRect()`, baskarta med säkerhetsnät (tileerror ≥6 eller inga tiles på 8 s → OSM-tiles; lyssnarna sätts FÖRE `addTo`) |
 | `src/types.ts` | `ServiceType` (gravatten, latrin, vatten, sopor, atervinning, stallplats, camping, gasol), färger, ikoner, gasol byte/påfyllning-logik (`gasolFacilityStatus`, `serviceIsActive`), obekräftat-logik (`primaryActiveService`, `stationIsActive`) – EN delad källa, duplicera aldrig i komponenter |
 | `src/lib/overpass.ts` | Live-hämtning per kartvy (zoom ≥ 12). Speglar synkskriptets taggtolkning, `EXCLUDED_OSM_ELEMENTS`, `OSM_FACILITY_OVERRIDES`, `OSM_SEASON_OVERRIDES`, `OSM_UNVERIFIED_OVERRIDES` (gör OSM-tjänster grå när egen sajt/kommun är tyst) – **ändra ALLTID båda filerna** (`check-mirrors.mjs`) |
 | `scripts/sync-stations.mjs` | CI-synk: OSM (Overpass, med reserv från förra seeden vid avbrott) + Trafikverket + registret → `public/data/stations-seed.json`. Geokodningscache `scripts/geocode-cache.json` (nyckel = exakt `query`; tillfälliga Nominatim-fel cachas inte; vid miss behålls förra seedens läge). Namnsättning av namnlösa platser (`GENERIC_NAME` = `GENERIC_NAME_RE` i `src/lib/naming.ts`, ändra båda) |
 | `scripts/curated-places.json` | Eget register (~1 700 poster). Fält: `lat`/`lon` (föredra!) eller `query` + `nearLat`/`nearLon` (+ `maxKm`, standard 30; stora kommuner 60–80), `services`, `unverified`, `unverifiedServices`, `confidence` (high/medium/low), `fee`, `gasolPrice`, `openingHours`, `season`, `facilities` (`gasol_byte`/`gasol_pafyllning`), `website`, `description` med citat + källa |
 | `scripts/import-tools/` | Importskript, efterkontroller och agentuppdrag (`UPPDRAG-*.md`). `SCRATCH`-miljövariabeln pekar på arbetsmappen. Kör alltid `--dry` först |
 | `scripts/build-seo-pages.mjs` | Kommunsidor + sitemap vid deploy (se `docs/SEO.md`) |
-| `src/lib/photos.ts`, `restError.ts`, `community.ts`, `reviews.ts`, `verify.ts` | Supabase-anrop (anon-nyckel). Foton publiceras direkt utan kö (Pers beslut); bara egen bucket-URL visas (`isOwnPhotoUrl`). `restError` visar databasens svenska felmeddelanden |
+| `src/lib/photos.ts`, `restError.ts`, `community.ts`, `reviews.ts`, `verify.ts`, `http.ts` | Supabase-anrop (anon-nyckel), alla via `fetchWithTimeout` (20 s, svenska fel via `userMessage`). Formulär visar tack FÖRST efter lyckat svar och har synkront lås mot dubbelklick. Foton publiceras direkt utan kö (Pers beslut); bara egen bucket-URL visas (`isOwnPhotoUrl`). `restError` visar databasens svenska felmeddelanden |
 | `src/lib/weather.ts` | ARKIVERAD (Per: för mycket info). `SHOW_WEATHER = true` i MapView slår på |
 | `supabase/schema.sql` | Idempotent: tabeller + RLS, längdgränser (`*_len`), spamskydd (`rate_limits`, `rate_limit()`, triggers per tabell + storage-policy, per IP via `request.headers`), foto-URL-regex, storage-bucket. Ändrad fil tas i bruk med `installera-databasen.yml` |
 | `supabase.env` | Publik Supabase-koppling (anon-nyckeln är publik per design) |
@@ -73,8 +74,11 @@ Android förberett (`docs/BUILD-MOBILE.md`).
 - `deploy.yml` – bygg + publicera till gh-pages (push/dispatch). Stoppar före
   bygget om `scripts/check-mirrors.mjs` (OSM-listorna lika i synk och app),
   `scripts/check-register.mjs` (registret: tjänstekoder, koordinater, dubbletter
-  inom 100 m, URL:er, id), `scripts/check-seed.mjs` (golv per källa, koordinater)
-  eller `npm audit --omit=dev --audit-level=high` slår larm. Kör alla tre lokalt före push. Synkar bara om rutan "synk" bockas i.
+  inom 100 m, URL:er, id, alias), `scripts/check-csp.mjs` (alla externa värdar i
+  `src/` finns i CSP:n i `vite.config.ts`), `scripts/check-seed.mjs` (golv per
+  källa, koordinater; körs efter ev. synk) eller `npm audit --omit=dev
+  --audit-level=high` slår larm, och efter bygget om sitemap/kommunsidor/CSP
+  saknas. Kör vakterna lokalt före push. Synkar bara om rutan "synk" bockas i.
 - `sync-data.yml` – enda datasynken; vid push på synkskript/register + måndagar
   03 UTC. Committar seed + cacher `[skip ci]` och dispatchar deployen. Stoppar
   om registret är trasigt eller <95 % av posterna kommer med; registerposter
@@ -232,3 +236,14 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
   läsa API-nycklar (403) – därför hoppar installationen över det steget.
 - Anon-rollen ser besökarens IP via `request.headers` (`cf-connecting-ip`), vilket
   gör IP-spärrar i Postgres möjliga utan captcha.
+- Tar man bort eller slår ihop en registerpost måste `public/data/id-aliases.json`
+  pekas om till posten som tog över (annars hamnar favoriter/betyg/foton i
+  tomma intet) – `check-register.mjs` stoppar deployen om ett alias pekar fel.
+- CSP:n (meta-tagg, bara i produktionsbygget) blockerar tyst varje ny extern
+  tjänst: lägg värden i `CSP_HOSTS` i `vite.config.ts` (`check-csp.mjs` vaktar).
+- De speglade OSM-listorna får bara innehålla literaler – `check-mirrors.mjs`
+  tolkar dem som riktiga värden och stoppar på variabler.
+- IP-spärren använder BARA `cf-connecting-ip` (x-forwarded-for kan förfalskas)
+  och räknar IPv6 per /64 via `inet` – strängdelning vid `:` gick att kringgå.
+- Delade länkar (`?at=`) och sparat kartläge valideras i `src/lib/view.ts` –
+  en trasig länk kraschade förut hela appen.

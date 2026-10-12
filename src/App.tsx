@@ -17,7 +17,8 @@ import { fetchVerifications, submitVerification, type VerificationInfo } from '.
 import { fetchReviews, type StationReviews } from './lib/reviews'
 import ReviewForm from './components/ReviewForm'
 import { fetchPhotos } from './lib/photos'
-import { remapKeys, remapSet } from './lib/idAliases'
+import { loadAliases, remapKeys } from './lib/idAliases'
+import { parseAt } from './lib/view'
 import PhotoForm from './components/PhotoForm'
 import AdminPanel from './components/AdminPanel'
 import { searchPlace } from './lib/geocode'
@@ -53,12 +54,22 @@ const GASOL_FACILITY_LABELS: Record<GasolFacility, string> = {
   gasol_pafyllning: 'Gasol – fyll på',
 }
 
-const FREE_RE = /gratis|free|ingår|kostnadsfri|utan avgift/i
+// "Gratis" = gratis för den som kör förbi. Förut räckte ordet "gratis" eller
+// "ingår" var som helst i texten, så "Gratis för gäster; genomresande 60 kr"
+// och "Ingår i campingavgiften" hamnade i filtret – 87 betalplatser
+// (granskning 12 okt 2026). Nu krävs ett gratisord utan villkor och utan pris.
+const FREE_RE = /gratis|kostnadsfri|utan avgift|avgiftsfri|\bfree\b/i
+const FREE_QUALIFIED_RE =
+  /(för|bara|endast)\s+(boende\s+|betalande\s+|egna\s+)?(camping|ställplats|båt|natt|hamn)?-?\s*(gäster|gäst|medlemmar|kunder|boende)|greenfee|för\s+gäs|med\s+(camping|övernatt)/i
+const PAID_RE = /\d\s*(kr|sek|:-|€|eur)\b|betala|motstridig|\d+:e natten|avgift i/i
+function isFreeFee(fee: string): boolean {
+  return FREE_RE.test(fee) && !FREE_QUALIFIED_RE.test(fee) && !PAID_RE.test(fee)
+}
 function isFree(s: Station): boolean {
   // Gasol är alltid ett köp – en plats som bara säljer gasol kan aldrig
   // räknas som gratis, oavsett vad avgiftsfältet råkar säga.
   if (!s.services.some((sv) => sv !== 'gasol')) return false
-  return s.source === 'trafikverket' || (s.fee ? FREE_RE.test(s.fee) : false)
+  return s.source === 'trafikverket' || (s.fee ? isFreeFee(s.fee) : false)
 }
 
 /** Platser som bara säljer gasol är butiker – de ska aldrig slås ihop med
@@ -109,15 +120,25 @@ const MERGE_FIELDS: (keyof Station)[] = [
  *  `fillOnly`: dubbletten (t.ex. en ren dricksvattennod från live-hämtningen)
  *  får bara fylla på – den kan aldrig bekräfta en tjänst målet själv
  *  markerat som obekräftad. */
+/** Registerpostens EGNA obekräftade tjänster, låsta när kopian skapas i dedupe.
+ *  Räknades förut om vid varje sammanslagning och tog då med tjänster som
+ *  ärvts från tidigare grannar – ordningen avgjorde om en tjänst blev grå eller
+ *  grön (granskning 12 okt 2026). */
+const LOCKED_UNVERIFIED = new WeakMap<Station, ServiceType[]>()
+
 function mergeInto(target: Station, s: Station, fillOnly = false): void {
-  // Målets EGNA obekräftade tjänster (före sammanslagningen). För registret
-  // (egen/kommun, högst prioritet) och för fyll-på-dubbletter gäller att de
+  // Registrets (egen/kommun, högst prioritet) egna obekräftade tjänster
   // förblir obekräftade – en lägre prioriterad källa får inte göra dem gröna.
-  const ownUnverified =
-    !target.unverified &&
-    (target.source === 'egen' || target.source === 'kommun' || fillOnly)
-      ? (target.unverifiedServices ?? []).filter((x) => !target.services.includes(x))
-      : []
+  // En fyll-på-dubblett får dessutom aldrig bekräfta något som målet just nu
+  // har som obekräftat.
+  const ownUnverified = target.unverified
+    ? []
+    : [
+        ...new Set([
+          ...(LOCKED_UNVERIFIED.get(target) ?? []),
+          ...(fillOnly ? (target.unverifiedServices ?? []).filter((x) => !target.services.includes(x)) : []),
+        ]),
+      ]
   // Avgiften ärvs bara när grannen är "samma sorts" plats: dess tjänster är
   // en delmängd av målets bekräftade, och är målet en övernattningsplats
   // (camping/ställplats) måste grannen också vara det. Annars får t.ex. en
@@ -215,6 +236,10 @@ function dedupe(
         ...s,
         services: [...s.services],
         facilities: s.facilities ? [...s.facilities] : undefined,
+      }
+      if (!copy.unverified && (copy.source === 'egen' || copy.source === 'kommun')) {
+        const own = (copy.unverifiedServices ?? []).filter((x) => !copy.services.includes(x))
+        if (own.length) LOCKED_UNVERIFIED.set(copy, own)
       }
       const key = `${cx},${cy}`
       const bucket = grid.get(key)
@@ -369,8 +394,13 @@ export default function App() {
   const [favorites, setFavorites] = useState<Set<string>>(loadFavorites)
   // Favoriter sparade under gamla register-id (före 12 okt 2026) flyttas till rätt plats.
   useEffect(() => {
-    void remapSet(loadFavorites()).then((next) => {
+    // Översätt det AKTUELLA tillståndet (prev) när alias-filen laddats – inte
+    // en kopia från starten, annars skrevs en favorit som lagts till medan
+    // filen laddades över (granskning 12 okt 2026).
+    if (![...loadFavorites()].some((k) => k.startsWith('curated-'))) return
+    void loadAliases().then((a) => {
       setFavorites((prev) => {
+        const next = new Set([...prev].map((k) => a[k] ?? k))
         if (next.size === prev.size && [...next].every((k) => prev.has(k))) return prev
         saveFavorites(next)
         return next
@@ -448,10 +478,9 @@ export default function App() {
     })
   }, [])
 
-  const handleVerify = useCallback((id: string) => {
-    void submitVerification(id).catch(() => {
-      /* bäst-möjligt – det lokala kvittot visas ändå */
-    })
+  const handleVerify = useCallback(async (id: string) => {
+    // Kastar vid fel (svenskt meddelande) – MapView visar det vid knappen.
+    await submitVerification(id)
     setVerifications((prev) => {
       const next = new Map(prev)
       next.set(id, { latest: new Date().toISOString(), count: (prev.get(id)?.count ?? 0) + 1 })
@@ -618,10 +647,8 @@ export default function App() {
   useEffect(() => {
     const at = new URLSearchParams(location.search).get('at')
     if (!at) return
-    const [lat, lon, zoom] = at.split(',').map(Number)
-    if (!Number.isNaN(lat) && !Number.isNaN(lon)) {
-      setFlyTo({ lat, lon, zoom: Number.isNaN(zoom) ? 15 : zoom })
-    }
+    const v = parseAt(at)
+    if (v) setFlyTo(v)
   }, [])
 
   // Godkända community-platser (crowdsourcing)
@@ -756,14 +783,17 @@ export default function App() {
     if (!q) return
     // 1) Matcha först en namngiven plats i datat som faktiskt går att välja.
     const ql = q.toLowerCase()
+    // Ortnamn som "Mora" finns i många stationsnamn ("Gasol – Elgiganten,
+    // Mora") – då ska ortsökningen gå, inte första bästa station (granskning
+    // 12 okt 2026). En stationsträff gäller bara vid exakt namn, namn som
+    // BÖRJAR med sökordet, eller när bara en station innehåller det.
+    const selectable = (s: Station) => s.services.some((sv) => ALL_SERVICES.includes(sv))
+    const containing =
+      q.length >= 3 ? shownStations.filter((s) => selectable(s) && s.name.toLowerCase().includes(ql)) : []
     const named =
-      q.length >= 3
-        ? shownStations.find(
-            (s) =>
-              s.services.some((sv) => ALL_SERVICES.includes(sv)) &&
-              s.name.toLowerCase().includes(ql),
-          )
-        : undefined
+      containing.find((s) => s.name.toLowerCase() === ql) ??
+      containing.find((s) => s.name.toLowerCase().startsWith(ql)) ??
+      (containing.length === 1 ? containing[0] : undefined)
     if (named) {
       // Slå på just den träffens kategori(er) så pinnen faktiskt visas,
       // även om användaren redan smalnat av filtren.
@@ -1175,7 +1205,11 @@ export default function App() {
               </span>
             </button>
             <span className="stats">
-              {shownStations.length.toLocaleString('sv-SE')} platser
+              {/* Med filter valt: antal som matchar (förut alltid totalen, som
+                  inte ändrades när man valde t.ex. "Gasol – fyll på"). */}
+              {activeFilters.size > 0
+                ? `${visibleCount.toLocaleString('sv-SE')} av ${shownStations.length.toLocaleString('sv-SE')} platser`
+                : `${shownStations.length.toLocaleString('sv-SE')} platser`}
               {seedUpdated &&
                 ` · uppd. ${new Date(seedUpdated).toLocaleDateString('sv-SE', { day: 'numeric', month: 'short' })}`}
             </span>

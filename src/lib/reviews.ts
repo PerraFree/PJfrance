@@ -1,4 +1,5 @@
 import { SUPABASE_ANON_KEY, SUPABASE_URL, communityEnabled } from '../config'
+import { fetchWithTimeout } from './http'
 import { restError } from './restError'
 
 /**
@@ -32,7 +33,7 @@ export interface StationReviews {
 export async function fetchReviews(): Promise<Map<string, StationReviews>> {
   const map = new Map<string, StationReviews>()
   if (!communityEnabled) return map
-  const res = await fetch(
+  const res = await fetchWithTimeout(
     `${url}?status=eq.approved&select=station_id,rating,comment,created_at&order=created_at.desc&limit=5000`,
     { headers },
   )
@@ -75,7 +76,7 @@ export async function submitReview(input: {
 }): Promise<'published' | 'pending'> {
   const comment = input.comment?.trim() ?? ''
   const status = comment ? 'pending' : 'approved'
-  const res = await fetch(url, {
+  const res = await fetchWithTimeout(url, {
     method: 'POST',
     headers: { ...headers, Prefer: 'return=minimal' },
     body: JSON.stringify({

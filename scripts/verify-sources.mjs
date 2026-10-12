@@ -152,7 +152,11 @@ async function main() {
   const report = { date: new Date().toISOString(), checked: results.length, okSites, dead: dead.map((r) => ({ name: r.name, url: r.site, status: r.siteStatus })), blocked: blocked.map((r) => ({ name: r.name, url: r.site, status: r.siteStatus })), quotesChecked: results.flatMap((r) => r.quotes).filter((q) => q.found !== null).length, okQuotes, missingQuotes: missing }
   writeFileSync(REPORT, JSON.stringify(report, null, 1))
 
-  const line = (x) => `- ${x.name} – ${x.url} (${x.status ?? ''})`
+  // All text i ärendet kommer från registret eller främmande sajter – gör
+  // @namn, #nr, länkar och markdown ofarligt (granskning 12 okt 2026).
+  const safe = (t) => String(t ?? '').replace(/[@#[\]()<>`*_|!~]/g, ' ').replace(/\s+/g, ' ').trim()
+  const safeUrl = (u) => '`' + String(u ?? '').replace(/`/g, '') + '`'
+  const line = (x) => `- ${safe(x.name)} – ${safeUrl(x.url)} (${safe(x.status)})`
   const md = [
     `Källkontroll ${report.date.slice(0, 10)}: ${results.length} poster, ${okSites} webbadresser svarar 200, ${report.quotesChecked} citat kontrollerade varav ${okQuotes} hittade på sidan.`,
     '',
@@ -161,7 +165,7 @@ async function main() {
     dead.length > 80 ? `… och ${dead.length - 80} till (se artefakten)` : '',
     '',
     `## Citat som inte längre hittas på sidan (${missing.length}) – sidan kan ha ändrats, kandidater för område D`,
-    ...missing.slice(0, 80).map((m) => `- ${m.name} – ${m.url} (sökte "${m.probe.slice(0, 50)}…")`),
+    ...missing.slice(0, 80).map((m) => `- ${safe(m.name)} – ${safeUrl(m.url)} (sökte "${safe(m.probe.slice(0, 50))}…")`),
     missing.length > 80 ? `… och ${missing.length - 80} till (se artefakten)` : '',
     '',
     `## Bot-skydd, certifikat- eller tidsfel (${blocked.length}) – fungerar ofta i webbläsare, bara info`,

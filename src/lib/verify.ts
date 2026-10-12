@@ -1,4 +1,5 @@
 import { SUPABASE_ANON_KEY, SUPABASE_URL, communityEnabled } from '../config'
+import { fetchWithTimeout } from './http'
 import { restError } from './restError'
 
 /**
@@ -26,7 +27,7 @@ export interface VerificationInfo {
 export async function fetchVerifications(): Promise<Map<string, VerificationInfo>> {
   const map = new Map<string, VerificationInfo>()
   if (!communityEnabled) return map
-  const res = await fetch(
+  const res = await fetchWithTimeout(
     `${url}?select=station_id,created_at&order=created_at.desc&limit=5000`,
     { headers },
   )
@@ -42,10 +43,17 @@ export async function fetchVerifications(): Promise<Map<string, VerificationInfo
   return map
 }
 
-/** Skickar in en verifiering för en plats. */
+/**
+ * Skickar in en verifiering för en plats. Kastar ett Error med svensk text
+ * om det misslyckas – felstatus från databasen (t.ex. spamspärren), nätfel
+ * eller tidsgräns (20 s). Anroparen ska visa felet och INTE markera platsen
+ * som bekräftad lokalt (markSelfVerified) förrän anropet lyckats.
+ * Utan Supabase-konfiguration (communityEnabled = false) kastas ett fel utan
+ * anrop (knappen visas då inte ändå – canVerify = communityEnabled).
+ */
 export async function submitVerification(stationId: string): Promise<void> {
-  if (!communityEnabled) return
-  const res = await fetch(url, {
+  if (!communityEnabled) throw new Error('Bekräftelser är inte påslagna i den här versionen.')
+  const res = await fetchWithTimeout(url, {
     method: 'POST',
     headers: { ...headers, Prefer: 'return=minimal' },
     body: JSON.stringify({ station_id: stationId }),

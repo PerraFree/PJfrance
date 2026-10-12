@@ -1,5 +1,6 @@
 import { SUPABASE_ANON_KEY, SUPABASE_URL, communityEnabled } from '../config'
 import type { ServiceType, Station } from '../types'
+import { fetchWithTimeout } from './http'
 import { restError } from './restError'
 
 /**
@@ -31,7 +32,7 @@ export interface NewSubmission {
 /** Skickar ett platsförslag för moderering. */
 export async function submitPlace(place: NewSubmission): Promise<void> {
   if (!communityEnabled) throw new Error('Crowdsourcing är inte konfigurerad.')
-  const res = await fetch(restUrl, {
+  const res = await fetchWithTimeout(restUrl, {
     method: 'POST',
     headers: { ...headers, Prefer: 'return=minimal' },
     body: JSON.stringify({ ...place, status: 'pending' }),
@@ -49,7 +50,7 @@ export interface NewReport {
 /** Rapporterar ett fel på en befintlig plats (nedlagd, fel uppgifter m.m.). */
 export async function submitReport(report: NewReport): Promise<void> {
   if (!communityEnabled) throw new Error('Crowdsourcing är inte konfigurerad.')
-  const res = await fetch(reportsUrl, {
+  const res = await fetchWithTimeout(reportsUrl, {
     method: 'POST',
     headers: { ...headers, Prefer: 'return=minimal' },
     body: JSON.stringify({ ...report, status: 'open' }),
@@ -74,7 +75,7 @@ export async function fetchApprovedPlaces(): Promise<Station[]> {
   const url =
     `${restUrl}?status=eq.approved&lat=not.is.null` +
     `&select=id,name,address,services,fee,description,lat,lon`
-  const res = await fetch(url, { headers })
+  const res = await fetchWithTimeout(url, { headers })
   if (!res.ok) throw new Error(`Kunde inte hämta community-platser (${res.status}).`)
   const rows = (await res.json()) as SubmissionRow[]
   return rows

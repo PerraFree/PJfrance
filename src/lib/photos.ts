@@ -1,4 +1,5 @@
 import { SUPABASE_ANON_KEY, SUPABASE_URL, communityEnabled } from '../config'
+import { fetchWithTimeout } from './http'
 import { restError } from './restError'
 
 /**
@@ -21,6 +22,8 @@ const headers = {
 const MAX_DIMENSION = 1280
 const JPEG_QUALITY = 0.72
 const MAX_UPLOAD_BYTES = 3 * 1024 * 1024
+/** Själva bilduppladdningen får längre tid än vanliga anrop (svag mobiltäckning). */
+const UPLOAD_TIMEOUT_MS = 60_000
 
 /**
  * Bara bilder i projektets egen bucket visas (säkerhetsfynd 1, okt 2026).
@@ -39,7 +42,7 @@ export function isOwnPhotoUrl(url: string | undefined | null): url is string {
 export async function fetchPhotos(): Promise<Map<string, string>> {
   const map = new Map<string, string>()
   if (!communityEnabled) return map
-  const res = await fetch(
+  const res = await fetchWithTimeout(
     `${tableUrl}?status=eq.approved&select=station_id,url,created_at&order=created_at.desc&limit=3000`,
     { headers },
   )
@@ -107,15 +110,15 @@ export async function submitPhoto(input: NewPhoto): Promise<string> {
   const safeId = input.stationId.replace(/[^a-zA-Z0-9_-]/g, '_')
   const path = `${safeId}/${Date.now()}.jpg`
 
-  const uploadRes = await fetch(`${base}/storage/v1/object/${BUCKET}/${path}`, {
+  const uploadRes = await fetchWithTimeout(`${base}/storage/v1/object/${BUCKET}/${path}`, {
     method: 'POST',
     headers: { ...headers, 'Content-Type': 'image/jpeg' },
     body: blob,
-  })
+  }, UPLOAD_TIMEOUT_MS)
   if (!uploadRes.ok) throw await restError(uploadRes, 'Kunde inte ladda upp bilden')
 
   const url = `${base}/storage/v1/object/public/${BUCKET}/${path}`
-  const insertRes = await fetch(tableUrl, {
+  const insertRes = await fetchWithTimeout(tableUrl, {
     method: 'POST',
     headers: { ...headers, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
     body: JSON.stringify({
