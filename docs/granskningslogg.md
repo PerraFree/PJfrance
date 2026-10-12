@@ -6,6 +6,41 @@ avsnitt per körning, nyast överst. Varje fynd: vad, bevis, åtgärd, och vilke
 **vakt** (automatisk kontroll) som nu hindrar att samma sorts fel kommer tillbaka.
 Regler hör hemma i CLAUDE.md, läget i `docs/STATUS.md` – här bara loggen.
 
+## 2026-10-12 – runda 4–6 + försvunna platser + SEO
+
+### Runda 4 (regressioner från runda 3)
+- CSP-taggen hamnade efter skripten (gällde inte) → direkt efter `<meta charset>`;
+  efterkontroll i deploy.yml. Android-bygget saknade databasen → `supabase.env`
+  läses i alla byggen.
+- Gränssnittet: felmeddelanden dolda bakom tangentbordet på mobil, popupen
+  stängdes vid filterbyte, delade länkar (`?at=`) öppnade inte platsen,
+  tillbakaknappen stängde appen, tillgänglighet (etiketter, fokus).
+
+### Runda 5
+- Storfors "byt tub" tolkades som gasol, bortfallsvakten såg inte tjänster som
+  blivit grå/tappats på kvarvarande platser (74 av 831 ÅVC hade tappats tyst)
+  → **vakt:** kategorigräns 5 % i `check-seed-diff.mjs`.
+- Webbläsartest: mobilfoton, platsförslag på fel ställe, filterval, smal
+  skärm, öppettider på svenska.
+
+### Försvunna platser (Pers fråga om Borås GK)
+- Borås GK: en septembersession körde över Pers fältkännedom → återställd
+  (latrin, vatten, sopor). **Vakt:** `scripts/per-fakta.json` + förlustvakten i
+  `check-register.mjs` (en bekräftad tjänst som försvinner kräver daterat skäl;
+  borttagen post kräver alias eller rad i `scripts/borttagna.json`).
+- Genomgång av alla registerposter som tappat tjänster sedan augusti:
+  Gävle Camping Engesberg, Sandviken Strand Havssidan och Vilhelmina
+  infocenter återställda. Voxnabruk och Visby GK (#33) rättade lägen.
+  **Vakt:** exakt `lat`/`lon` som motsäger `nearLat`/`nearLon`/`maxKm` stoppar deployen.
+
+### Runda 6 – SEO-sidorna
+- Ärlig källa/säkerhet per plats (branschlista = "Medel – ring gärna innan",
+  OSM = "inte kontrollerad av oss"), en sida per plats inom 100 m, titlar som
+  bara lovar tjänster som finns, nofollow på kartlänkar, `safeHref`.
+- Nytt: ~1 750 platssidor, 289 kommunsidor, 21 länssidor, 5 tjänstesidor,
+  vanliga frågor (FAQPage), sitemap ~2 065 URL:er. 0 trasiga länkar, all
+  JSON-LD giltig. Länstillhörigheten: `scripts/kommun-lan.json`.
+
 ## 2026-10-12 – tredje granskningen (5 granskare + 2 rättningsagenter)
 
 Granskare: datakedjan synk→app, säkerhet runda 2, webbläsartest runda 2,

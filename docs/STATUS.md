@@ -5,13 +5,12 @@ finns i git-loggen, `docs/svep-logg.md` och `docs/HISTORIK.md`).
 
 **Uppdaterad:** 2026-10-12, session "Gråvatten 5" (sessionslänk i senaste commit).
 
-Senaste händelse (12 okt, kväll): andra systemgranskningen med fem oberoende
-granskare – ~45 bekräftade fynd åtgärdade (säkerhet, data, kod, drift, UI),
-se `docs/granskningslogg.md`. Nya vakter: `check-csp.mjs`, aliaskontroll och
-100 m-par i seeden i `check-register.mjs`, efterkontroll av bygget, databasvakt
-i förslagsbevakningen. Schemat (IPv6-spärren) ska installeras med
-`installera-databasen.yml` efter push. Rutinen "Veckogranskning" (onsdagar)
-upprepar granskningen varje vecka.
+Senaste händelse (12 okt): sex granskningsrundor (se `docs/granskningslogg.md`),
+försvunna registerplatser återställda (Borås GK, Engesberg, Sandviken Strand,
+Vilhelmina) med förlustvakt + `scripts/per-fakta.json`, och SEO: ~1 750
+platssidor, kommun-, läns- och tjänstesidor, vanliga frågor och sitemap
+(`docs/SEO.md`). Schemat är installerat och testat mot den levande databasen.
+Rutinen "Veckogranskning" (onsdagar) upprepar granskningen varje vecka.
 
 ## Status
 
@@ -38,7 +37,7 @@ upprepar granskningen varje vecka.
   Webben är i stort sett uttömd för nya platser – nästa metod är crowdsourcing.
 - **UI senast:** CSP, svenska fel + tidsgräns i alla formulär, tack först efter
   lyckat svar, jämnt markörurval (tak 3 000), räknare per filter, mindre
-  hopfällt ark på mobil, ortsökning före stationsträff. sw.js v97.
+  hopfällt ark på mobil, ortsökning före stationsträff, delade länkar öppnar platsen, tillbakaknapp. sw.js v105.
 - **Källkontroll (12 okt):** `verifiera-kallor.yml` kör tisdagar och lägger döda
   länkar + försvunna citat i ett ärende som ärenderutinen/område D tar vidare.
 - **Kvalitetsvakter i deployen (12 okt):** `check-mirrors.mjs`, `check-register.mjs`
@@ -87,8 +86,8 @@ Se https://github.com/PerraFree/PJfrance/issues?q=is%3Aopen+label%3Abacklog
 
 ## Nästa steg (förslag)
 
-1. Granskningsloggens "Kvar"-lista: exakta koordinater för fyra gasolpar och
-   nio osäkra poster; de nio geokodade registerparen inom 100 m.
+1. Granskningsloggens "Kvar"-lista (runda 3): lägen som väntar på Overpass,
+   Gotlandsregeln mot OSM (fråga till Per), "Sopstation"-noderna.
 2. Område E skiva 3: de ~150 OSM-platserna med egen webbplats utan säsong
    (`UPPDRAG-sasong.md` + `apply-sasong.mjs`).
 3. Område D varv 2 (VG först) med `UPPDRAG-kontroll.md` + `apply-kontroll.mjs`.
