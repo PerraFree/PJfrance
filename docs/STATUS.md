@@ -50,6 +50,9 @@ Se https://github.com/PerraFree/PJfrance/issues?q=is%3Aopen+label%3Abacklog
 
 ## Väntar på Per
 
+- Lanseringstexterna för crowdsourcing (#24) ligger i `docs/LANSERING.md`:
+  forum, Facebook, redaktionstips, brev till anläggningar, QR-dekal. Per lägger
+  ut; bevakningen mejlar var 3:e timme.
 - Dependabot-PR:er mergas i webbläsaren när de kommer (måndagar).
 - Rutinen "Veckosvep Tömnmingskartan" (skapad i webbgränssnittet) hänvisar till
   CLAUDE.md för metoderna, som nu ligger i `docs/svep-logg.md`/`docs/HISTORIK.md`

@@ -13,7 +13,7 @@ issues – aldrig här. Ny regel här bara om den gäller varje framtida session
 | `docs/STATUS.md` | Vid sessionsstart: aktuellt läge + nästa steg. Skrivs ÖVER vid överlämning. |
 | `docs/svep-logg.md` | Före ett datasvep: rotationen A–E, regler, logg över körda svep. |
 | `docs/HISTORIK.md` | Vid behov: arkiv med tidigare lägesbilder, metoder, beslut och gasol-/svepdetaljer (t.o.m. 11 okt 2026). |
-| `docs/KALLJAMFORELSER.md`, `docs/SEO.md` | Vid behov: källjämförelser (First Camp m.fl.) resp. SEO/spridning. |
+| `docs/KALLJAMFORELSER.md`, `docs/SEO.md`, `docs/LANSERING.md` | Vid behov: källjämförelser (First Camp m.fl.), SEO/spridning, lanseringstexter för crowdsourcing. |
 | `docs/ADMIN.md`, `docs/SUPABASE.md`, `docs/DATAKALLOR.md`, `docs/BUILD-MOBILE.md` | Pers adminguide, databasen, datakällor, Android-bygge. |
 | `scripts/import-tools/README.md` + `UPPDRAG-*.md` | Före ett svep: importskript och agentuppdrag. |
 | GitHub-issues med etiketten `backlog` | Öppna punkter, prioritet via `prio-1`/`prio-2`/`prio-3`. |
