@@ -28,6 +28,8 @@ const EXCLUDED_OSM_ELEMENTS = new Set([
   'way/1052749987',
   // First Camp Torekov: OSM-polygonen ligger ~450 m från registerposten (curated-317) och visades som en andra plats utan tömning – registerposten täcker campingen (kontroll okt 2026).
   'way/494506962',
+  // Samma camping, andra OSM-polygonen (kontroll okt 2026).
+  'way/494506963',
 ])
 
 // Gasol-utredning sep 2026: fuel:lpg=yes/service:vehicle:lpg=yes särskiljer

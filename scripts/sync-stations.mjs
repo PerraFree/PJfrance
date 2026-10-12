@@ -53,6 +53,8 @@ const EXCLUDED_OSM_ELEMENTS = new Set([
   'way/1052749987',
   // First Camp Torekov: OSM-polygonen ligger ~450 m från registerposten (curated-317) och visades som en andra plats utan tömning – registerposten täcker campingen (kontroll okt 2026).
   'way/494506962',
+  // Samma camping, andra OSM-polygonen (kontroll okt 2026).
+  'way/494506963',
 ])
 
 // Gasol-utredning sep 2026: fuel:lpg=yes/service:vehicle:lpg=yes särskiljer
@@ -1064,6 +1066,13 @@ try {
     const prev = JSON.parse(await readFile(OUT, 'utf8'))
     const reused = (prev.stations ?? prev)
       .filter((s) => s.source === 'osm')
+      // Nya undantag i EXCLUDED_OSM_ELEMENTS ska slå igenom även när Overpass
+      // är nere (12 okt 2026: Kullaberg och Torekov låg kvar i seeden för att
+      // förra körningens OSM-stationer återanvändes ofiltrerade).
+      .filter((s) => {
+        const m = /^osm-(node|way|relation)-(\d+)$/.exec(s.id ?? '')
+        return !(m && EXCLUDED_OSM_ELEMENTS.has(`${m[1]}/${m[2]}`))
+      })
       // Samma regel som i fetchOsmFrom: gasol utan verifierad byte/påfyllning
       // (ren fuel:lpg-mack) ska inte hänga kvar från en äldre seed.
       .map((s) => {
