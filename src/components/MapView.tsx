@@ -399,10 +399,11 @@ function popupHtml(
   const confidenceLine = station.confidence
     ? `<p class="confidence ${station.confidence}">${CONFIDENCE_TEXT[station.confidence]}</p>`
     : ''
-  // "Bekräftad av 3 användare, senast för 5 dagar sedan" – antalet bygger
+  // "Bekräftad 3 gånger, senast för 5 dagar sedan" (gånger, inte användare –
+  // upp till 3 per IP och dygn tillåts för delade nät) – antalet bygger
   // förtroende mer än bara ett datum.
   const verifiedLine = verified
-    ? `<p class="verified-line">✓ Bekräftad av ${verified.count === 1 ? 'en användare' : `${verified.count} användare, senast`} ${fmtVerified(verified.latest)}</p>`
+    ? `<p class="verified-line">✓ Bekräftad ${verified.count === 1 ? '' : `${verified.count} gånger, senast `}${fmtVerified(verified.latest)}</p>`
     : ''
   const avg = review && review.count > 0 ? review.sum / review.count : 0
   const ratingLine =

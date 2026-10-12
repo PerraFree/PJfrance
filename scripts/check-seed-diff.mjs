@@ -73,9 +73,16 @@ const KATEGORIER = ['gravatten', 'latrin', 'vatten', 'gasol', 'sopor', 'atervinn
 const oldList = (old.stations ?? old).filter((s) => !String(s.id).startsWith('curated-'))
 const kategoriFel = []
 for (const c of KATEGORIER) {
-  const tot = oldList.filter((s) => s.services.includes(c))
-  const gone = tot.filter((s) => !nyaId.has(s.id) && !ersatt(s, [c]))
-  if (gone.length >= 15 && gone.length > tot.length * 0.05) kategoriFel.push(`${c}: ${gone.length} av ${tot.length} borta utan ersättare (${((100 * gone.length) / tot.length).toFixed(1)} %)`)
+  const tot = oldList.filter((s) => s.services.includes(c))  // bara bekräftade
+  // Försvunnen utan ersättare, ELLER kvar men har tappat tjänsten / fått den
+  // grå (granskning 12 okt 2026: en regel som tyst gör hundratals grå eller
+  // stryker sopor på kvarvarande platser syntes inte).
+  const gone = tot.filter((s) => {
+    const n = nyaId.get(s.id)
+    if (!n) return !ersatt(s, [c])
+    return !n.services.includes(c)
+  })
+  if (gone.length >= 15 && gone.length > tot.length * 0.05) kategoriFel.push(`${c}: ${gone.length} av ${tot.length} borta/tappade/grå (${((100 * gone.length) / tot.length).toFixed(1)} %)`)
 }
 for (const k of kategoriFel) console.log('Kategori: ' + k)
 const rad = (s, extra = '') => `${s.id} | ${s.name} | ${s.services.join(',')}${extra}`

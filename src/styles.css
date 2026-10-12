@@ -2546,6 +2546,8 @@ button {
     text-align: center;
     border-radius: 14px;
     line-height: 1.35;
+    /* Släpper igenom tryck – rutan får aldrig blockera popupen under den. */
+    pointer-events: none;
   }
 }
 /* "transition: all" animerade även fokusramen från 0 – den syntes inte direkt */

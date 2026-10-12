@@ -199,7 +199,7 @@ function mergeInto(target: Station, s: Station, fillOnly = false): void {
   const paidNeighbour = s.fee ? !isFreeFee(s.fee) : added.some((x) => x === 'stallplats' || x === 'camping' || x === 'atervinning')
   // Rastplatsens egen husbilsparkering (OSM utan avgift) är inte en betald
   // granne – bara en uttrycklig avgift gör en rastplats "inte gratis".
-  const tvOwnParking = target.source === 'trafikverket' && s.source === 'osm' && !s.fee
+  const tvOwnParking = target.source === 'trafikverket' && s.source === 'osm' && !s.fee && added.every((x) => x === 'stallplats')
   if (added.length && s.source !== 'trafikverket' && paidNeighbour && !tvOwnParking) target.notFree = true
   if (fillOnly && target.unverified) {
     // En ren dricksvattennod (live-hämtningen) får aldrig göra en obekräftad
@@ -237,7 +237,12 @@ function mergeInto(target: Station, s: Station, fillOnly = false): void {
     const rest = target.unverifiedServices.filter((x) => !target.services.includes(x))
     target.unverifiedServices = rest.length ? rest : undefined
   }
-  const fac = [...new Set([...(target.facilities ?? []), ...(s.facilities ?? [])])]
+  // Registrets gasoltyper vinner: anger registret byte/påfyllning får en
+  // OSM-granne inte lägga till den andra (Storfors fick 'byt tub' från OSM:s
+  // automatiska shop=gas-tolkning – granskning 12 okt 2026).
+  const regGas = isCurated(target) && (target.facilities ?? []).some((f) => f.startsWith('gasol_'))
+  const sFac = (s.facilities ?? []).filter((f) => !(regGas && f.startsWith('gasol_')))
+  const fac = [...new Set([...(target.facilities ?? []), ...sFac])]
   target.facilities = fac.length ? fac : undefined
   for (const k of MERGE_FIELDS) {
     // Avgift, säsong och öppettider ärvs bara från samma sorts plats – annars

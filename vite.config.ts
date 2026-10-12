@@ -6,7 +6,7 @@ import { existsSync, readFileSync } from 'node:fs'
 // förut bara i deploy.yml, så Android-appen byggdes utan databas (inga
 // förslag, betyg, foton). Redan satta miljövariabler vinner (tester).
 // (Granskning 12 okt 2026.)
-if (existsSync('supabase.env')) {
+if (process.argv.includes('build') && existsSync('supabase.env')) {
   for (const line of readFileSync('supabase.env', 'utf8').split(/\r?\n/)) {
     const m = /^(VITE_[A-Z_]+)=(.*)$/.exec(line.trim())
     if (m && !process.env[m[1]]) process.env[m[1]] = m[2].trim()

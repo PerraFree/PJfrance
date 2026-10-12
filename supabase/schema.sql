@@ -296,7 +296,7 @@ begin
   if private.is_anon() then
     perform private.rate_limit(
       tg_argv[0], tg_argv[1]::int, tg_argv[2]::int, tg_argv[3]::int);
-    -- Betyg och bekräftelser: högst EN per avsändare och plats och dygn
+    -- Betyg och bekräftelser: högst 3 per IP-adress och plats och dygn
     -- (granskning 12 okt 2026: annars kunde en grå plats visa "Bekräftad av
     -- 20 användare" från en och samma person).
     if tg_nargs > 4 and tg_argv[4] = 'per_plats' then
