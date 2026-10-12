@@ -69,11 +69,6 @@
   "lon": 12.1158075,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Alfta Camping, Alfta": {
-  "lat": 61.3430983,
-  "lon": 16.0479909,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Allmags Golfklubb, Orust": {
   "lat": 58.2064619,
   "lon": 11.7911781,
@@ -234,9 +229,10 @@
   "lon": 13.2359868,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Barlastudden, Västervik": {
-  "miss": true,
-  "at": "2026-10-12T07:51:47.770Z"
+ "Barlastgatan 11, Västervik": {
+  "lat": 57.7555372,
+  "lon": 16.6504086,
+  "at": "2026-10-12T07:58:00.925Z"
  },
  "Batterigatan 2, Jönköping": {
   "lat": 57.7690824,
@@ -286,11 +282,6 @@
  "Bilbyggarvägen 5, Kalmar": {
   "lat": 56.6836814,
   "lon": 16.3185405,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Billingens Stugby och Camping, Skövde": {
-  "lat": 58.40633,
-  "lon": 13.81877,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Biltema, Borlänge": {
@@ -443,11 +434,6 @@
   "lon": 14.7012505,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Brohagen, Habo": {
-  "lat": 59.5892461,
-  "lon": 17.6513424,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Bruksgatan 6, Eslöv": {
   "lat": 55.8427392,
   "lon": 13.3106615,
@@ -561,11 +547,6 @@
  "Camp Kungsgården, Sandviken": {
   "lat": 60.605224,
   "lon": 16.6233631,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Camping Visby Strandby, Visby": {
-  "lat": 57.6543283,
-  "lon": 18.3071203,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Caravanhallen i Södertälje, Södertälje": {
@@ -868,29 +849,9 @@
   "lon": 12.9479764,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "First Camp Nickstabadet, Nynäshamn": {
-  "lat": 58.9069331,
-  "lon": 17.9364899,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "First Camp Siljansbadet, Rättvik": {
   "lat": 60.8880901,
   "lon": 15.1080658,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "First Camp Skutberget, Karlstad": {
-  "lat": 59.3741835,
-  "lon": 13.3872393,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "First Camp Skönstavik, Karlskrona": {
-  "lat": 56.2004545,
-  "lon": 15.6045695,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "First Camp Umeå, Umeå": {
-  "lat": 63.8436601,
-  "lon": 20.3445648,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Fiskaregatan 3, Vimmerby": {
@@ -1026,11 +987,6 @@
  "Fyllebrovägen 20, 302 63 Halmstad": {
   "lat": 56.6621078,
   "lon": 12.9091648,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Fyrishov Stugby och Camping, Uppsala": {
-  "lat": 59.8715106,
-  "lon": 17.6175154,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Fyrspannsvägen 4, Sundsvall": {
@@ -1243,11 +1199,6 @@
   "lon": 14.9666246,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Gäddede Camping och Stugby, Gäddede": {
-  "lat": 64.5059646,
-  "lon": 14.1473067,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Gästhamn Nattviken, Härnösand": {
   "lat": 62.6326773,
   "lon": 17.9309501,
@@ -1332,6 +1283,11 @@
   "lat": 56.8207619,
   "lon": 12.7432181,
   "at": "2026-10-11T12:56:15.644Z"
+ },
+ "Habo kyrka, Habo": {
+  "lat": 57.8853925,
+  "lon": 14.0210331,
+  "at": "2026-10-12T07:57:59.290Z"
  },
  "Hagaparken, centrala Hofors, Hofors": {
   "lat": 60.5445113,
@@ -1501,11 +1457,6 @@
  "Herrestadsgatan 23, 271 39 Ystad": {
   "lat": 55.4375233,
   "lon": 13.8335441,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Herrfallets Camping, Arboga": {
-  "lat": 59.2740013,
-  "lon": 15.8575974,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Herrljunga Folkets Park, Herrljunga": {
@@ -2273,11 +2224,6 @@
   "lon": 15.0075922,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Leksand Strand Camping & Resort, Leksand": {
-  "lat": 60.7499926,
-  "lon": 14.9736233,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Leksand Strand, Leksand": {
   "lat": 60.7503256,
   "lon": 14.9728769,
@@ -2389,11 +2335,6 @@
   "lon": 12.0300844,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Ljugarns Semesterby & Camping, Ljugarn": {
-  "lat": 57.3414451,
-  "lon": 18.7176756,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Ljungbyheds Golfklubb, Ljungbyhed, Klippans kommun": {
   "lat": 56.0744027,
   "lon": 13.2153006,
@@ -2442,11 +2383,6 @@
  "Läckö Golfklubb, Kållandsö, Lidköping": {
   "lat": 58.6536577,
   "lon": 13.1114798,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Löderups Strandbad Camping, Löderup": {
-  "lat": 55.3816312,
-  "lon": 14.1294899,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Lögarängsvägen 3, Västerås": {
@@ -2709,11 +2645,6 @@
   "lon": 16.3802337,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Mössebergs Camping, Falköping": {
-  "lat": 58.1758173,
-  "lon": 13.5272132,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Neptunivägen, Byxelkrok": {
   "lat": 57.3503912,
   "lon": 17.0379873,
@@ -2817,11 +2748,6 @@
  "Norrströmsvägen 92, Luleå": {
   "lat": 65.5903297,
   "lon": 22.0458747,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Norrtälje Sportcentrum, Norrtälje": {
-  "lat": 59.7516246,
-  "lon": 18.6979569,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Norrängsgatan 20, Sala": {
@@ -3274,11 +3200,6 @@
   "lon": 14.51732,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Sjöstugans Camping, Älmhult": {
-  "lat": 56.5687655,
-  "lon": 14.1324613,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Sjöviksvägen, 623 65 Ljugarn": {
   "lat": 57.3283205,
   "lon": 18.7125193,
@@ -3454,11 +3375,6 @@
   "lon": 12.0911054,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Småbåtshamnen i Simrishamn, Simrishamn": {
-  "lat": 55.5590305,
-  "lon": 14.3523976,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Småbåtshamnen, Rönnäng, Tjörn": {
   "lat": 57.9350553,
   "lon": 11.5867007,
@@ -3522,11 +3438,6 @@
  "Steninge allé, Steningebadet, Märsta": {
   "lat": 59.6004114,
   "lon": 17.814251,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Stenrösets Camping, Trollhättan": {
-  "lat": 58.2401537,
-  "lon": 12.235268,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Stenungsunds Båtklubb, Stenungsund": {
@@ -3619,11 +3530,6 @@
   "lon": 12.8604473,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Strandstuvikens Camping, Nyköping": {
-  "lat": 58.72,
-  "lon": 17.0926,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Strandtorps Golfklubb, Halmstad": {
   "lat": 56.6423712,
   "lon": 12.9002154,
@@ -3692,11 +3598,6 @@
  "Ställplats Gislaved, Gislaved": {
   "lat": 57.2959211,
   "lon": 13.5827601,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Ställplats Kedumsvik, Vara": {
-  "lat": 58.4816297,
-  "lon": 12.8915494,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Ställplats Klippan, Göteborg": {
@@ -4124,11 +4025,6 @@
   "lon": 17.114036,
   "at": "2026-10-11T12:56:15.644Z"
  },
- "Unda Camping & Stugby, Uddevalla": {
-  "lat": 58.3291086,
-  "lon": 11.8216802,
-  "at": "2026-10-11T12:56:15.644Z"
- },
  "Upplands Bil & Fritidscenter, Uppsala": {
   "lat": 59.7453394,
   "lon": 17.8076517,
@@ -4182,11 +4078,6 @@
  "Varbergs Golfklubb, Varberg": {
   "lat": 57.0566474,
   "lon": 12.3499617,
-  "at": "2026-10-11T12:56:15.644Z"
- },
- "Varbergs innerhamn, Varberg": {
-  "lat": 57.111074,
-  "lon": 12.2421305,
   "at": "2026-10-11T12:56:15.644Z"
  },
  "Varbergsvägen 2, Skene": {
