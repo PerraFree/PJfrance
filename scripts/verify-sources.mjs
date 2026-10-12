@@ -64,13 +64,27 @@ export function quotesOf(description) {
     const raw = m[2]
     const inner = [...raw.matchAll(/'([^']{25,})'/g)].map((x) => x[1]).sort((a, b) => b.length - a.length)[0]
     let probe = inner ?? raw.replace(/^[^:]{0,80}:\s*/, '')
-    probe = probe.replace(/\[\.\.\.\]|\(\.\.\.\)|…/g, ' ').trim()
+    probe = probe.replace(/\[\.\.\.\]|\(\.\.\.\)|…|\.\.\./g, ' ').replace(/^[\s:;,.'"-]+/, '').trim()
     // 40–60 tecken räcker och tål redigeringar runt omkring
     const n = norm(probe)
     if (n.length < 25) continue
     out.push({ url, probe: n.slice(0, 60) })
   }
   return out
+}
+
+/**
+ * Citatet hittat? Först hela utdraget, annars andelen 4-ordsfönster som finns i
+ * sidtexten (≥ 40 %). Tål att agenten parafraserat eller att sidan redigerats.
+ */
+export function quoteFound(text, probe) {
+  if (text.includes(probe)) return true
+  const words = probe.split(' ').filter(Boolean)
+  if (words.length < 5) return text.includes(probe)
+  const shingles = []
+  for (let i = 0; i + 4 <= words.length; i++) shingles.push(words.slice(i, i + 4).join(' '))
+  const hits = shingles.filter((sh) => text.includes(sh)).length
+  return hits / shingles.length >= 0.4
 }
 
 async function fetchText(url) {
@@ -116,7 +130,7 @@ async function main() {
       for (const q of job.quotes) {
         const f = await get(q.url)
         const readable = f.status === 200 && f.text.length > 300
-        r.quotes.push({ url: q.url, status: f.status || f.error, found: readable ? f.text.includes(q.probe) : null, probe: q.probe })
+        r.quotes.push({ url: q.url, status: f.status || f.error, found: readable ? quoteFound(f.text, q.probe) : null, probe: q.probe })
       }
       results.push(r)
       if (results.length % 100 === 0) console.log(`${results.length}/${list.length}`)
@@ -136,7 +150,7 @@ async function main() {
     `Källkontroll ${report.date.slice(0, 10)}: ${results.length} poster, ${okSites} webbadresser svarar 200, ${report.quotesChecked} citat kontrollerade varav ${okQuotes} hittade på sidan.`,
     '',
     `## Döda länkar (${dead.length}) – 404/410/DNS/timeout`,
-    ...dead.slice(0, 80).map(line),
+    ...report.dead.slice(0, 80).map(line),
     dead.length > 80 ? `… och ${dead.length - 80} till (se artefakten)` : '',
     '',
     `## Citat som inte längre hittas på sidan (${missing.length}) – sidan kan ha ändrats, kandidater för område D`,
@@ -144,7 +158,7 @@ async function main() {
     missing.length > 80 ? `… och ${missing.length - 80} till (se artefakten)` : '',
     '',
     `## Bot-skyddade/svarar inte normalt (${blocked.length}) – ingen åtgärd, bara info`,
-    ...blocked.slice(0, 30).map(line),
+    ...report.blocked.slice(0, 30).map(line),
   ].filter((l) => l !== undefined).join('\n')
   writeFileSync(SUMMARY, md)
   console.log(md.split('\n').slice(0, 12).join('\n'))
