@@ -1,5 +1,5 @@
 /* Enkel service worker: cachar appskal + stationsdata så appen fungerar offline. */
-const CACHE = 'tomningskartan-v114'
+const CACHE = 'tomningskartan-v115'
 const APP_SHELL = [
   './',
   './manifest.webmanifest',
