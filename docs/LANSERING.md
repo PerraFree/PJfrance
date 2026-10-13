@@ -16,7 +16,7 @@ Jag har byggt en gratis karta för oss som kör husbil eller husvagn:
 färskvatten, lämna sopor, hitta återvinningscentral och byta eller fylla gasol
 (10/11 kg). Ställplatser och campingar finns med som extra info.
 
-Just nu ligger det ungefär 6 600 platser i kartan. Grunden är OpenStreetMap,
+Just nu ligger det ungefär 5 000 platser i kartan. Grunden är OpenStreetMap,
 Trafikverkets rastplatser och ett eget register där varje plats är kontrollerad
 mot kommunens eller anläggningens egen sida. Platser som bara finns i
 forum eller appar utan källa visas grå ("obekräftad") tills någon bekräftar dem.
@@ -36,9 +36,9 @@ Inget konto behövs, ingen reklam, ingen spårning. Kartan går att lägga på
 hemskärmen som en app (öppna i webbläsaren → "Lägg till på hemskärmen").
 
 Extra tacksam för tips i de här kommunerna, där jag inte hittat någon belagd
-tömningsplats alls: Eslöv, Sjöbo, Skurup, Staffanstorp, Åstorp, Perstorp,
-Svalöv, Lekeberg, Hallsberg, Kungsör, Fagersta, Norberg, Malå,
-Skinnskatteberg, Storfors och Lilla Edet.
+tömningsplats alls: Ale, Bjurholm, Bjuv, Bollebygd, Eslöv, Essunga,
+Forshaga, Lekeberg, Lilla Edet, Malå, Norberg, Norsjö, Perstorp,
+Skinnskatteberg, Skurup, Staffanstorp, Tibro, Vännäs och Åstorp.
 
 Tack på förhand!
 Per
@@ -46,7 +46,7 @@ Per
 ## 2. Facebook-grupper (kort version)
 
 Gratis karta över tömning, vatten och gasol för husbil och husvagn:
-**tomningskartan.se** – ca 6 600 platser, kontrollerade mot kommuner och
+**tomningskartan.se** – ca 5 000 platser, kontrollerade mot kommuner och
 anläggningar, ingen reklam, inget konto.
 
 Hjälp mig fylla luckorna: tryck på en plats och välj "Rapportera fel" eller
@@ -66,7 +66,7 @@ Hej!
 Jag heter Per Johnsson och har byggt Tömningskartan (tomningskartan.se), en
 gratis webbapp som visar var husbils- och husvagnsägare kan tömma gråvatten och
 latrin, fylla färskvatten och byta eller fylla gasol i hela Sverige. Den har i
-dag cirka 6 600 platser och bygger på OpenStreetMap, Trafikverkets rastplatser
+dag cirka 5 000 platser och bygger på OpenStreetMap, Trafikverkets rastplatser
 och ett eget register där varje plats är kontrollerad mot kommunens eller
 anläggningens egen webbplats. Obekräftade platser visas grå tills någon
 bekräftar dem på plats.
