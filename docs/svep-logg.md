@@ -27,6 +27,15 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 ## Logg
 
+- **2026-10-13, E (öppettider/säsong) skiva 3 – OSM-platser med egen webbplats (session "Gråvatten 5", #27):**
+  121 OSM-platser med tömning/vatten, egen sajt och utan säsong; 76 valda (en per kommun), 6 agenter × 20
+  sökningar (≈105 använda, inga kvotfel). **50 av 76 fick säsong/öppettider** → `OSM_SEASON_OVERRIDES` i båda
+  filerna. Viktigt: **Kaffetorpet Camping stängd hela 2026** (öppnar påsk 2027) – vatten grått i registret och
+  på OSM-noden; **First Camp Lugnet** latrintömning bara apr–sep fast campingen är öppen året runt. Bifynd
+  för nästa D-varv: Stocka Gästhamn nämner latrintömning (saknas hos oss), Grönfjälls fritidsby och Stenshult
+  Mellangård nämner latrintömning, Färila IF nämner tömningsplats, Norråker "latrin bara sommar", fel
+  OSM-webbadress för Torne Camping (tornecamping.com), Skotteksgården (skottek.se) och Storforsen
+  (storforsen.se). 24 utan primärkälla (bara prissäsonger eller tysta sajter).
 - **2026-10-13, C – grå poster UTAN egen webbplats (session "Gråvatten 5", #26):** 144 grå registerposter
   med tömning/vatten men bara aggregatorlänk eller ingen sajt (Gotland/Orust undantagna i väntan på Pers svar);
   80 valda (max 2 per kommun), 8 agenter × 30 sökningar via kommun/turistråd (≈215 använda, inga kvotfel).

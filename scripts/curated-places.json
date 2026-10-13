@@ -28501,20 +28501,20 @@
     "id": "curated-1657-kaffetorpets-camping",
     "name": "Kaffetorpets camping",
     "services": [
-      "vatten",
       "camping",
       "stallplats"
     ],
-    "description": "Kontrollpost okt 2026 ovanpå OSM-objektet (https://www.openstreetmap.org/node/3649123872). Kontroll okt 2026 (https://kaffetorpetscamping.com/bra-att-veta.html): \"kaffetorpetscamping.com (Bra att veta): Latrintömning – \"Detta finns vid vårt servicehus.\" – \"Vårt servicehus är öppet dygnet runt och för dig som bor på vår camping. Här finns dusch och toalett samt möjlighet att diska.\" – \"Öppet från den 1 april 2026\". 36 platser med el, några utan.\"",
+    "description": "Kontrollpost okt 2026 ovanpå OSM-objektet (https://www.openstreetmap.org/node/3649123872). Kontroll okt 2026 (https://kaffetorpetscamping.com/bra-att-veta.html): \"kaffetorpetscamping.com (Bra att veta): Latrintömning – \"Detta finns vid vårt servicehus.\" – \"Vårt servicehus är öppet dygnet runt och för dig som bor på vår camping. Här finns dusch och toalett samt möjlighet att diska.\" – \"Öppet från den 1 april 2026\". 36 platser med el, några utan.\" 13 okt 2026: egen startsida säger att campingen är stängd hela 2026 och öppnar till påsk 2027 – vatten grått tills dess.",
     "source": "egen",
     "lat": 56.9987819,
     "lon": 16.517488,
     "website": "https://kaffetorpetscamping.com/",
     "confidence": "medium",
     "unverifiedServices": [
-      "latrin"
+      "latrin",
+      "vatten"
     ],
-    "openingHours": "Säsong från 1 april (2025: 11 apr–15 sep)",
+    "openingHours": "Stängd hela 2026 – öppnar till påsk 2027",
     "season": "seasonal"
   },
   {
