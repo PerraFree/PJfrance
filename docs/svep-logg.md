@@ -27,6 +27,22 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 ## Logg
 
+- **2026-10-13, D varv 2 – Västra Götaland + bifynd (session "Gråvatten 5", Per: "kör prio 1"):** 79 platser
+  i VG med tömning/vatten och egen webbplats som INTE kontrollerats i varv 1 (max 3 per kommun, 40 kommuner, 63
+  register + 16 OSM) + 6 bifynd från E-svepet. 9 agenter, 173 sökningar, inga kvotfel. **Utfall: 33 ok, 28
+  ändrade, 0 nedlagda, 24 oklara.** 54 registerposter uppdaterade (avgift/säsong/citat), 3 nya kontrollposter
+  (Grästorps camping, Henåns ställplats +vatten, KronoCamping Lidköping). Viktigast: **Öckerö Hamn**
+  +gråvatten/vatten, latrin bekräftad (hamnföreningens sajt); **Sunnanå hamn** +gråvatten; **Yttre Hamnen
+  Mariestad** och **Borås Camping & Vandrarhem** – nya exakta poster sammanslagna in i gamla grå
+  aggregatorposter (id behålls); **Ställplats Kiviks hamn** −ställplats (kommunens taxa: inga ställplatser
+  i hamnen), latrin kvar; **Hörsjöns Camping** tömning grå (under överlåtelse sedan 31 aug 2025);
+  **Kolholmarna Lysekil** stänger 31 aug 2026 (markarbete); 10 OSM-platser till grå-listan (Seglora,
+  Skogsvallen, Hällevadsholm, Hunnebergs Gård, Brålands Gård, Vindön, Flötemarken, Vammerviken, Strömsnäs,
+  Lisebergsbyn); namnbyten First Camp City – Strömstad, Töreboda Camping & Bad, GateBison, Lagunen Camping &
+  Stugor. Bifynd: Nabbelund (vattenbrist bekräftad, vi visar inte vatten), Grums (kommunsidan listar
+  stationen – står kvar), Kartåsen (bara latrin – stämmer). **Kvar/oklart:** Vänersborgs gästhamn
+  (husbilsplatserna kan vara stängda sedan ~2020 – ring marinan 0521-657 09), Ramsvik, Hofsnäs latrin,
+  Lökholmen, Skara Stadscamping (citat ej återfunnet), Borås GK (Pers fakta gäller). Nästa D-region: Skåne.
 - **2026-10-12, E (öppettider/säsong), andra skivan (session "Gråvatten 5", vald själv):** 314 platser med
   tömning/vatten, egen webbplats och utan `openingHours`/`season` (seed 08:32); 160 valda (18 kommunala +
   142 register, geografiskt spridda syd→nord i 8 grupper), 8 agenter × 25 sökningar (199 använda, inga
