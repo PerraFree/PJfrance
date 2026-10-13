@@ -27,6 +27,18 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 ## Logg
 
+- **2026-10-13, C – grå poster UTAN egen webbplats (session "Gråvatten 5", #26):** 144 grå registerposter
+  med tömning/vatten men bara aggregatorlänk eller ingen sajt (Gotland/Orust undantagna i väntan på Pers svar);
+  80 valda (max 2 per kommun), 8 agenter × 30 sökningar via kommun/turistråd (≈215 använda, inga kvotfel).
+  **33 poster uppgraderade (18 hela platser bekräftade)** med citat från kommun/turistråd/egen sajt – bl.a.
+  Bödagården, Camping Tiveden, Strandstuviken, Bureå, First Camp Siljansbadet, Långnäs, Rönninge (tömning bara
+  högsäsong), Tömningsplats Arboga (kommunen: inget vatten), Nyköpings hamn (latrin kvar grå – gäller båtar),
+  Albacken/Mjölby. Manuellt: **Kristianstads Ställplats −latrin** (kommunens sida: "saknar … möjlighet till
+  latrintömning"); **Tömningsplats Karlskrona** flyttad ~400 m till kommunens GPS för pump-outstationen;
+  **Räfsnäs Camping (Rådmansö)** och **Stamhem AB (Kristianstad)** borttagna – aggregatorposter geokodade till
+  fel ort (borttagna.json); Hörsjöns Camping hölls grå (under överlåtelse) och Tömningsplats Mjölby hölls grå
+  (citatet gällde Albacken 1,5 km bort). camping.se räknas fortsatt som branschlista (ej primärkälla) –
+  Sjötorpet och Karlsborgs Camping ligger kvar grå. **Kvar:** ~64 grå poster utan sajt, kandidatlistans rester.
 - **2026-10-13, D varv 2 – Västra Götaland + bifynd (session "Gråvatten 5", Per: "kör prio 1"):** 79 platser
   i VG med tömning/vatten och egen webbplats som INTE kontrollerats i varv 1 (max 3 per kommun, 40 kommuner, 63
   register + 16 OSM) + 6 bifynd från E-svepet. 9 agenter, 173 sökningar, inga kvotfel. **Utfall: 33 ok, 28
