@@ -541,6 +541,23 @@ async function fetchOsm() {
     }
   }
   if (best && best.length) {
+    // Ett ofullständigt svar (13 okt 2026: 4 225 av 4 398) tappade ~80 riktiga
+    // tömningsplatser och stoppades av check-seed-diff – då kom inte heller
+    // registerändringarna ut. Återanvänd hellre förra seedens OSM-data (samma
+    // väg som när Overpass är helt nere). Har OSM-datan redan återanvänts i
+    // över 7 dagar godtas det största svaret, så en verklig minskning i OSM
+    // inte låser synken för alltid.
+    let staleDays = 0
+    try {
+      const prev = JSON.parse(await readFile(OUT, 'utf8'))
+      const src = prev.sources?.osm
+      if (src && src.fresh === false && src.at) staleDays = (Date.now() - Date.parse(src.at)) / 86_400_000
+    } catch {
+      /* ingen förra seed – godta svaret */
+    }
+    if (staleDays < 7 && prevCount) {
+      throw new Error(`Ingen spegel nådde 97 % av förra antalet (bästa ${best.length} av ${prevCount}) – återanvänder förra seedens OSM-data`)
+    }
     console.warn(`Ingen spegel nådde 97 % av förra antalet – använder det största svaret (${best.length}).`)
     return best
   }
