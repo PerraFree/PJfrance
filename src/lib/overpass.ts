@@ -140,6 +140,7 @@ const OSM_UNVERIFIED_OVERRIDES = new Map<string, ServiceType[]>([
   ['node/13980206457', ['vatten']], // naturgården Udden – ingen uppgift (kontroll okt 2026)
   ['node/431825882', ['gravatten', 'latrin', 'vatten']], // Kvarnsjö Camp – egen sajt tyst (kontroll okt 2026)
   ['way/783370464', ['gravatten', 'latrin']], // Ristafallet Camping – egen sajt tyst (kontroll okt 2026)
+  ['node/11878507670', ['gravatten']], // Örebro Truckstop – besökare 13 okt 2026: "Gråvattentömning ej tillgänglig" (#36), ingen primärkälla
   ['way/198088418', ['gravatten', 'latrin', 'vatten']], // Gällivare Camping – ny sajt utan tömningsinfo (kontroll okt 2026)
   ['node/842323095', ['gravatten', 'latrin', 'vatten']], // Stenbräcka/Hägnans Camping – egen sajt tyst (kontroll okt 2026)
   ['node/3668991153', ['vatten']], // Måviken Camping – ingen källa (OSM-sajten är ett rehabcenter) (kontroll okt 2026)
