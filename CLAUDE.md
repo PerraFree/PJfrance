@@ -276,6 +276,8 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
   det egna skalet och dödar kommandot.
 - När Overpass inte svarar återanvänder synken förra veckans OSM-data
   (`sources.osm.fresh=false`) – en tolkningsrättning syns först vid en synk
-  där Overpass svarar. Kontrollera `sources` i seeden efter synken. Samma
+  där Overpass svarar. De speglade listorna (EXCLUDED, grå, säsong) tillämpas
+  dock även på återanvänd data – en ny lista måste läggas in i reservvägen
+  också. Kontrollera `sources` i seeden efter synken. Samma
   reserv används när ingen spegel ger ≥ 97 % av förra antalet (ofullständigt
   svar, 13 okt 2026) – utom när OSM-datan redan återanvänts i över 7 dagar.

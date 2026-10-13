@@ -1501,7 +1501,13 @@ try {
         const original = [...new Set([...s.services, ...(s.unverifiedServices ?? [])])]
         const { unverifiedServices: _u, unverified: _v, ...rest } = s
         const unv = applyUnverifiedOverride(`${m[1]}/${m[2]}`, original)
-        return { ...rest, ...unv }
+        // Säsongslistan likaså (13 okt 2026: 50 nya rader slog inte igenom när
+        // Overpass svarade 502). Som i fetchOsmFrom fyller den bara tomma fält.
+        const so = OSM_SEASON_OVERRIDES.get(`${m[1]}/${m[2]}`)
+        const seasonFields = so
+          ? { openingHours: rest.openingHours ?? so.openingHours, season: rest.season ?? so.season }
+          : {}
+        return { ...rest, ...unv, ...seasonFields }
       })
     if (reused.length) {
       console.warn(`Återanvänder ${reused.length} OSM-stationer från förra seeden (${prev.updatedAt ?? 'okänt datum'}).`)
