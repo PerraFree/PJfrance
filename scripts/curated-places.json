@@ -13802,15 +13802,14 @@
   },
   {
     "id": "curated-802-ställplats-(parkering-för-husbil)",
-    "name": "Ställplats Kiviks hamn",
+    "name": "Latrintömning Kiviks hamn",
     "lat": 55.685541,
     "lon": 14.2249587,
     "services": [
-      "stallplats",
       "latrin"
     ],
     "source": "egen",
-    "description": "Komplettering skane-blekinge sep 2026. Källa (https://www.simrishamn.se/gata-park-och-natur/trafik/husbilar): \"Simrishamns kommun, sidan 'Husbilar': ställplatser för husbilar och toalettömning finns i hamnarna i Simrishamn, Skillinge och Kivik. Simrishamn och Skillinge finns redan med latrin i appen; Kivik saknas. Befintlig OSM-ställplats vid Kiviks hamn (55.6855, 14.2250) är rimlig bärare. (via sökmotorsammanfattning av simrishamn.se)\" Kontroll okt 2026 (https://www.simrishamn.se/om-kommunen/ekonomi/taxor): \"Taxor (simrishamn.se): 'I övriga av kommunens hamnar (Brantevik, Vik, Baskemölla, Kivik och Vitemölla) saknas ställplatser i hamnområdet.' Samma taxesida anger kommunal latrintömning i Kivik och Skillinge; husbilssidan: tömning finns i hamnarna i Simrishamn, Skillinge och Kivik, och listar Kiviks familjecamping och Än…\"",
+    "description": "Komplettering skane-blekinge sep 2026. Källa (https://www.simrishamn.se/gata-park-och-natur/trafik/husbilar): \"Simrishamns kommun, sidan 'Husbilar': ställplatser för husbilar och toalettömning finns i hamnarna i Simrishamn, Skillinge och Kivik. Simrishamn och Skillinge finns redan med latrin i appen; Kivik saknas. Befintlig OSM-ställplats vid Kiviks hamn (55.6855, 14.2250) är rimlig bärare. (via sökmotorsammanfattning av simrishamn.se)\" Kontroll okt 2026 (https://www.simrishamn.se/om-kommunen/ekonomi/taxor): \"Taxor (simrishamn.se): 'I övriga av kommunens hamnar (Brantevik, Vik, Baskemölla, Kivik och Vitemölla) saknas ställplatser i hamnområdet.' Samma taxesida anger kommunal latrintömning i Kivik och Skillinge; husbilssidan: tömning finns i hamnarna i Simrishamn, Skillinge och Kivik, och listar Kiviks familjecamping och Än…\" Ändrat 13 okt 2026: ställplatsen borttagen (kommunen: inga ställplatser i Kiviks hamn), latrintömningen står kvar.",
     "website": "https://www.simrishamn.se/gata-park-och-natur/trafik/husbilar"
   },
   {

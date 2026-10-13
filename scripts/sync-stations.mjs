@@ -27,6 +27,9 @@ const CURATED = new URL('./curated-places.json', import.meta.url)
 // vi inte kan rätta i själva OpenStreetMap härifrån. Format: "<type>/<id>".
 // Ta bort raden här OM/när OSM-datan rättas uppströms.
 const EXCLUDED_OSM_ELEMENTS = new Set([
+  // Husbilsparkering i Kiviks hamn – Simrishamns kommuns taxa: "saknas ställplatser i
+  // hamnområdet" (D-varv 2, 13 okt 2026). Latrintömningen ligger kvar i registret.
+  'way/1290201470',
   // "Tömningsstation" (namnlös nod) ~106 m från Borås Camping Saltemad –
   // Per bekräftade aug 2026 att det bara finns EN tömning där (campingens
   // egen), inte två. https://www.openstreetmap.org/node/12907898116

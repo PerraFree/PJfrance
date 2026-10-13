@@ -5,6 +5,9 @@ import type { ServiceType, Station } from '../types'
 // vi inte kan rätta i själva OpenStreetMap härifrån. Speglar samma lista i
 // scripts/sync-stations.mjs – ändra ALLTID båda.
 const EXCLUDED_OSM_ELEMENTS = new Set([
+  // Husbilsparkering i Kiviks hamn – Simrishamns kommuns taxa: "saknas ställplatser i
+  // hamnområdet" (D-varv 2, 13 okt 2026). Latrintömningen ligger kvar i registret.
+  'way/1290201470',
   // "Tömningsstation" (namnlös nod) ~106 m från Borås Camping Saltemad –
   // Per bekräftade aug 2026 att det bara finns EN tömning där.
   // https://www.openstreetmap.org/node/12907898116
