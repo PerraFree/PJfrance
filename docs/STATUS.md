@@ -3,9 +3,14 @@
 Skrivs ÖVER vid varje överlämning (lägg inte äldre lägesbilder på hög – historik
 finns i git-loggen, `docs/svep-logg.md` och `docs/HISTORIK.md`).
 
-**Uppdaterad:** 2026-10-12, session "Gråvatten 5" (sessionslänk i senaste commit).
+**Uppdaterad:** 2026-10-13, session "Gråvatten 5" (sessionslänk i senaste commit).
 
-Senaste händelse (12 okt): elva granskningsrundor (runda 11 hittade inga riktiga fel) (se `docs/granskningslogg.md`),
+Senaste händelse (13 okt): prio 1–2 körda – D varv 2 Västra Götaland (#25),
+område C grå platser utan sajt (33 bekräftade, #26), område E skiva 3 (50 OSM-
+platser fick säsong, #27), 15 gasolposters popuptext rättad mot byte/påfyllning
+(#29). Läns-sidor i SEO. sw.js v115.
+
+Tidigare (12 okt): elva granskningsrundor (runda 11 hittade inga riktiga fel) (se `docs/granskningslogg.md`),
 försvunna registerplatser återställda (Borås GK, Engesberg, Sandviken Strand,
 Vilhelmina) med förlustvakt + `scripts/per-fakta.json`, och SEO: ~1 750
 platssidor, kommun-, läns- och tjänstesidor, vanliga frågor och sitemap
@@ -32,8 +37,9 @@ Rutinen "Veckogranskning" (onsdagar) upprepar granskningen varje vecka.
   Värmland/Dalarna/Gävleborg (73: Flå −latrin, Orsa Grönklitt −gråvatten,
   Stocka/Mörudden +tömning) och Norrland/Gotland/Blekinge (81: Härnösands
   båtstation utesluten, Forshaga/Saxemara/Ljusnedal borttagna, Bräcke Strand
-  +tömning). **D klart för hela landet: 402 platser, 163 ändrade.** Område C
-  kört av rutinen 12 okt.
+  +tömning). **D klart för hela landet: 402 platser, 163 ändrade.** D varv 2
+  körd för Västra Götaland 13 okt (79 platser, 28 ändrade) – nästa: Skåne.
+  Område C (grå utan sajt) och E skiva 3 körda 13 okt.
   Webben är i stort sett uttömd för nya platser – nästa metod är crowdsourcing.
 - **UI senast:** CSP, svenska fel + tidsgräns i alla formulär, tack först efter
   lyckat svar, jämnt markörurval (tak 3 000), räknare per filter, mindre
@@ -86,10 +92,11 @@ Se https://github.com/PerraFree/PJfrance/issues?q=is%3Aopen+label%3Abacklog
 
 ## Nästa steg (förslag)
 
-1. Granskningsloggens "Kvar"-lista (runda 3): lägen som väntar på Overpass,
-   Gotlandsregeln mot OSM (fråga till Per), "Sopstation"-noderna.
-2. Område E skiva 3: de ~150 OSM-platserna med egen webbplats utan säsong
-   (`UPPDRAG-sasong.md` + `apply-sasong.mjs`).
-3. Område D varv 2 (VG först) med `UPPDRAG-kontroll.md` + `apply-kontroll.mjs`.
+1. Område D varv 2 Skåne (`UPPDRAG-kontroll.md` + `apply-kontroll.mjs`) med
+   bifynden från E skiva 3 (Stocka Gästhamn, Grönfjäll, Stenshult, Färila IF,
+   Norråker; fel OSM-webbadress Torne Camping/Skotteksgården/Storforsen).
+2. Område C: ~64 grå poster utan sajt kvar + kandidatlistans rester.
+3. Fråga till Per (när han hör av sig): gäller Gotland/Orust-regeln även
+   campingarnas egna latrinstationer? Vänersborgs gästhamn – ring marinan.
 
 Per vill inte bli tillfrågad – sessionen väljer själv enligt prio-etiketterna och kör.
