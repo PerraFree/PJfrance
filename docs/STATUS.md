@@ -3,9 +3,13 @@
 Skrivs ÖVER vid varje överlämning (lägg inte äldre lägesbilder på hög – historik
 finns i git-loggen, `docs/svep-logg.md` och `docs/HISTORIK.md`).
 
-**Uppdaterad:** 2026-10-13, session "Gråvatten 5" (sessionslänk i senaste commit).
+**Uppdaterad:** 2026-10-14, session "Gråvatten 5" (sessionslänk i senaste commit).
 
-Senaste händelse (13 okt): prio 1–2 körda – D varv 2 Västra Götaland (#25),
+Senaste händelse (14 okt): veckogranskning med 6 granskare – förlustvakten
+skärpt, namnkedjor, larm som kunde kapas, fotoregler i databasen, SEO-säkerhet
+(se `docs/granskningslogg.md`); kvar i ärende #38. sw.js v116.
+
+Därförinnan (13 okt): prio 1–2 körda – D varv 2 Västra Götaland (#25),
 område C grå platser utan sajt (33 bekräftade, #26), område E skiva 3 (50 OSM-
 platser fick säsong, #27), 15 gasolposters popuptext rättad mot byte/påfyllning
 (#29). Läns-sidor i SEO. sw.js v115.

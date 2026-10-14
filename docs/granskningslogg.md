@@ -6,6 +6,28 @@ avsnitt per körning, nyast överst. Varje fynd: vad, bevis, åtgärd, och vilke
 **vakt** (automatisk kontroll) som nu hindrar att samma sorts fel kommer tillbaka.
 Regler hör hemma i CLAUDE.md, läget i `docs/STATUS.md` – här bara loggen.
 
+## 2026-10-14 – veckogranskning (6 oberoende granskare)
+
+Områden: säkerhet, ny kod (8 dagar), webbläsare, datakvalitet, drift, SEO/PWA/beroenden.
+Rättat i d3e6224 (schemat installerat och fientligt testat mot levande databas,
+tillfälligt workflow borttaget i 90a0d209); synk + deploy gröna (662ab2f4).
+
+| Allvar | Fynd | Åtgärd | Vakt framåt |
+|---|---|---|---|
+| Hög | Förlustvakten gick att passera: synken körde den inte (jämförde ny seed med ny seed) och ett gammalt "Källa … 2026" räknades som orsak (432 av 1 099 poster) | Körs mot gh-pages-seeden i synk och deploy; orsaken måste vara NY och nämna tjänsten | Negativt test: två konstruerade förluster stoppas, alla verkliga förluster 12–13 okt passerar |
+| Medel | Namn kedjades vid synk med återanvänd OSM-data ("Sopstation vid Sopstation vid Sopstation vid Skeppsbron", 7 platser) | Grundnamn återställs i reservvägen; grannamn lånar bara delen efter "vid" | `check-seed.mjs` stoppar kedjade namn |
+| Medel | Synkens larm saknades när synkskriptet självt stoppade; bortfallsärendet stängdes trots stopp | Larm även för synksteget | – |
+| Medel | Larmärenden kunde kapas av vem som helst (markör i ett eget ärende tystade sajt-/databasvakten) | Bara `github-actions[bot]`s ärenden räknas | Regel i CLAUDE.md |
+| Medel | Påhittad foto-URL ersatte en plats foto utan uppladdning; valfritt filnamn i bucketen; räkna-sedan-skriv utan lås | Fotorad kräver befintlig fil, unik URL, sökvägsregel, advisory lock, revoke truncate | PGlite + levande test (401/400/200/201) |
+| Medel | 9 obekräftade registerposter visades "Säkerhet: Hög" på SEO-sidan, med aggregatorlänk som "Webbplats" | OSM-nivå när registerposten är obekräftad; aggregatorer visas inte | – |
+| Medel | OSM-granne gjorde gråvatten grönt där registrets källa är tyst (5 poster) + Marina Dals Långed | `unverifiedServices` resp. grå-listan | – |
+| Låg | Reservvägen tog inte gasol-overrides; delsvar <90 % godtogs efter 7 dagar; synkrutan i deploy hann aldrig; jobb utan tidsgräns; felmejl var 3:e timme från databasvakten; källkontrollen kommenterade varje vecka; CSP tillät alla Supabase-projekt; "Swish/kontant" räknades som gratis; länssidornas titlar för långa; kommunsidor lovade tömning i H1; kvarglömt `pw-dbg.mjs`; varningar i check-register skrevs aldrig ut | Rättade | Varning: bekräftade tjänster utan primärkälla (118) |
+
+Kvar (ärende #38): 118 bekräftade poster utan primärkälla, Gotska GK:s läge,
+Stjärnfors/Klässbol som försvinner i sammanslagningen, gasol från kedjor utan
+butiksbekräftelse, spamskyddets gemensamma tak (avvägning). Medvetet: OSM-noder
+som särskilt kartlagda tömningsstationer vid Brålands Gård/Kvarnsjö får vara gröna.
+
 ## 2026-10-12 – runda 7–11 (runda 11: inga riktiga fel – felsökningen avslutad)
 
 | Runda | Viktigaste fynd | Åtgärd | Vakt framåt |
