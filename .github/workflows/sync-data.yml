@@ -40,7 +40,17 @@ jobs:
         with:
           node-version: 22
       - name: Hämta stationsdata (OSM + ev. Trafikverket)
-        run: node scripts/sync-stations.mjs
+        id: sync
+        run: |
+          # Förlustvakten jämför mot den PUBLICERADE seeden (gh-pages) – den
+          # committade kan redan innehålla förlusten efter en synk (granskning 14 okt 2026).
+          if git fetch -q --depth=1 origin gh-pages && git show FETCH_HEAD:data/stations-seed.json > "$RUNNER_TEMP/pub-seed.json"; then
+            SEED_PATH="$RUNNER_TEMP/pub-seed.json" node scripts/check-register.mjs
+          else
+            echo "::warning::Kunde inte läsa den publicerade seeden – jämför med den committade"
+            node scripts/check-register.mjs
+          fi
+          node scripts/sync-stations.mjs
         env:
           TRV_API_KEY: ${{ secrets.TRV_API_KEY }}
           REGISTER_DROPPED: register-bortfall.json
@@ -93,14 +103,18 @@ jobs:
       # tidigare bara en rad i loggen, nu ett ärende som ärenderutinen tar
       # (granskning 12 okt 2026). Ärendet uppdateras; stängs när listan är tom.
       - name: Larma om seedkontrollen stoppade synken (stängs när den går igen)
-        if: always() && (steps.seedcheck.outcome == 'failure' || steps.seedcheck.outcome == 'success')
+        # Granskning 14 okt 2026: förut larmade bara seedkontrollen – stoppade
+        # synkskriptet själv (<95 % av registret, <50 % av förra antalet,
+        # registret oläsbart) kom inget ärende alls.
+        if: always() && (steps.sync.outcome == 'failure' || steps.seedcheck.outcome == 'failure' || steps.seedcheck.outcome == 'success')
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             const marker = '<!-- synk-seedkontroll -->'
-            const failed = '${{ steps.seedcheck.outcome }}' === 'failure'
+            const syncFailed = '${{ steps.sync.outcome }}' === 'failure'
+            const failed = syncFailed || '${{ steps.seedcheck.outcome }}' === 'failure'
             const issues = await github.paginate(github.rest.issues.listForRepo, { owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100 })
-            const mine = issues.find((i) => (i.body ?? '').startsWith(marker))
+            const mine = issues.find((i) => i.user?.login === 'github-actions[bot]' && (i.body ?? '').startsWith(marker))
             if (!failed) {
               if (mine) await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, state: 'closed', state_reason: 'completed' })
               return
@@ -109,7 +123,10 @@ jobs:
             const fs = require('fs')
             const esc = (t) => String(t ?? '').replace(/[[\]()<>`*_@#|]/g, ' ')
             const diff = fs.existsSync('seed-bortfall.txt') ? fs.readFileSync('seed-bortfall.txt', 'utf8').split('\n').filter(Boolean) : []
-            const body = `${marker}\nDatasynken ${new Date().toISOString().slice(0, 16)} UTC fick en seed som inte klarar kontrollen och publicerade den INTE – sajten visar förra data tills nästa synk lyckas. Antingen för få platser från en källa, trasiga poster, eller att många platser med tömning/vatten/gasol försvann på en gång (se listan).\n\nKörning: ${url}\n\n` +
+            const what = syncFailed
+              ? 'stoppades av synkskriptet självt (registret oläsbart, för få registerposter, för få platser jämfört med förra seeden eller ingen data alls – se körningens logg)'
+              : 'fick en seed som inte klarar kontrollen'
+            const body = `${marker}\nDatasynken ${new Date().toISOString().slice(0, 16)} UTC ${what} och publicerade den INTE – sajten visar förra data tills nästa synk lyckas. Antingen för få platser från en källa, trasiga poster, eller att många platser med tömning/vatten/gasol försvann på en gång (se listan).\n\nKörning: ${url}\n\n` +
               (diff.length ? `Försvunna/ändrade platser (${diff.length}):\n` + diff.slice(0, 120).map(esc).join('\n') + '\n\n' : '') +
               `_Ärendet stängs automatiskt när en synk går igenom. Delvis svar från Overpass/Trafikverket: kör "Synka stationsdata" igen om en stund. Avsiktlig ändring (t.ex. ny taggregel): granska listan och kör synken manuellt med rutan "tillat_bortfall"._`
             if (mine) await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, body })
@@ -123,8 +140,10 @@ jobs:
             const list = JSON.parse(fs.readFileSync('register-bortfall.json', 'utf8'))
             const marker = '<!-- register-bortfall -->'
             const open = await github.paginate(github.rest.issues.listForRepo, { owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100 })
-            const mine = open.find((i) => (i.body ?? '').startsWith(marker))
+            const mine = open.find((i) => i.user?.login === 'github-actions[bot]' && (i.body ?? '').startsWith(marker))
             if (!list.length) {
+              // Stängs bara när synken faktiskt gick igenom (granskning 14 okt 2026).
+              if ('${{ steps.sync.outcome }}' !== 'success') return
               if (mine) await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, state: 'closed', state_reason: 'completed' })
               return
             }

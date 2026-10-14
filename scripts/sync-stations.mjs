@@ -184,6 +184,7 @@ const OSM_SEASON_OVERRIDES = new Map([
 // grå markeras hela platsen som obekräftad. Speglas i src/lib/overpass.ts – ändra ALLTID
 // båda (check-mirrors.mjs stoppar deployen annars).
 const OSM_UNVERIFIED_OVERRIDES = new Map([
+  ['way/270924720', ['gravatten']], // Marina Dals Långed – Mustadfors källa (vastsverige.com) nämner bara kemtoalett, inte gråvatten (granskning 14 okt 2026)
   ['way/1290118511', ['vatten']], // Kulturhuset Öster Sallerup (Hörby) – ingen källa för vatten (kontroll okt 2026)
   ['way/294060302', ['gravatten', 'latrin', 'vatten']], // Immelns Camping – egen sajt tyst om tömning/vatten (kontroll okt 2026)
   ['node/12879399396', ['gravatten', 'latrin', 'vatten']], // Hälldala Ranch – egen sajt tyst (kontroll okt 2026)
@@ -611,6 +612,12 @@ async function fetchOsm() {
     }
     if (staleDays < 7 && prevCount) {
       throw new Error(`Ingen spegel nådde 97 % av förra antalet (bästa ${best.length} av ${prevCount}) – återanvänder förra seedens OSM-data`)
+    }
+    // Även efter 7 dagar: under 90 % är nästan säkert ett avbrutet svar, inte
+    // en verklig minskning – det hade bara stoppats av seedkontrollen och låst
+    // varje synk (granskning 14 okt 2026). Återanvänd hellre.
+    if (prevCount && best.length < prevCount * 0.9) {
+      throw new Error(`Bästa svaret ${best.length} av ${prevCount} (under 90 %) – återanvänder förra seedens OSM-data`)
     }
     console.warn(`Ingen spegel nådde 97 % av förra antalet – använder det största svaret (${best.length}).`)
     return best
@@ -1304,7 +1311,10 @@ async function nameGenericStations(stations) {
         }
       }
     }
-    if (best) { s.name = `${s.name} vid ${best.name}`; s.nameFrom = 'nearby'; nearby++; continue }
+    // Ett härlett grannamn lånar bara delen efter första " vid " (som naming.ts) –
+    // annars kedjades namnen ("Sopstation vid Sopstation vid …", granskning 14 okt 2026).
+    const bestName = best && best.nameFrom === 'nearby' && best.name.includes(' vid ') ? best.name.slice(best.name.indexOf(' vid ') + 5) : best?.name
+    if (best) { s.name = `${s.name} vid ${bestName}`; s.nameFrom = 'nearby'; nearby++; continue }
     if (!s.services.some((x) => NAME_CORE.has(x))) continue
     if (prevNames.has(s.id)) { s.name = prevNames.get(s.id); s.nameFrom = 'reverse'; reused++; continue }
     todo.push(s)
@@ -1478,6 +1488,20 @@ try {
       .filter((s) => {
         const m = /^osm-(node|way|relation)-(\d+)$/.exec(s.id ?? '')
         return !(m && EXCLUDED_OSM_ELEMENTS.has(`${m[1]}/${m[2]}`))
+      })
+      // Härledda namn ("Sopstation vid Skeppsbron") återställs till grundnamnet
+      // så att namnsättningen nedan gör om dem – annars lades ett nytt "vid"
+      // till för varje synk med återanvänd data (granskning 14 okt 2026).
+      .map((s) => (s.nameFrom === 'nearby' && s.name.includes(' vid ')
+        ? { ...s, name: s.name.slice(0, s.name.indexOf(' vid ')), nameFrom: undefined }
+        : s))
+      // Nya rader i OSM_FACILITY_OVERRIDES ska också slå igenom (granskning
+      // 14 okt 2026). Läggs på före gasolfiltret nedan, som i fetchOsmFrom.
+      .map((s) => {
+        const m = /^osm-(node|way|relation)-(\d+)$/.exec(s.id ?? '')
+        const override = m && OSM_FACILITY_OVERRIDES.get(`${m[1]}/${m[2]}`)
+        if (!override || !s.services.includes('gasol')) return s
+        return { ...s, facilities: [...new Set([...(s.facilities ?? []), ...override])] }
       })
       // Samma regel som i fetchOsmFrom: gasol utan verifierad byte/påfyllning
       // (ren fuel:lpg-mack) ska inte hänga kvar från en äldre seed.

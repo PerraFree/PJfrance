@@ -28,6 +28,13 @@ for (const s of st) {
   if (!(s.lat >= 55 && s.lat <= 69.5 && s.lon >= 10.5 && s.lon <= 24.5)) badCoord++
   if (!Array.isArray(s.services) || !s.services.length || s.services.some((x) => !SERVICES.has(x))) badSvc++
 }
+// Kedjade härledda namn ("Sopstation vid Sopstation vid …") – synken lade
+// till ett "vid" per körning med återanvänd OSM-data (granskning 14 okt 2026).
+// Grundnamnen = GENERIC_NAME i sync-stations.mjs / GENERIC_NAME_RE i src/lib/naming.ts.
+const GEN = '(Tömningsstation|Ställplats för husbil|Vattenpåfyllning|Sopstation|Återvinningscentral|Drivmedelsstation|Camping|Ställplats|Rastplats|Gasolförsäljning|Gästhamn/marina|Dricksvatten|Vägkrog/serviceområde)'
+const CHAIN = new RegExp(`^${GEN} vid ${GEN} vid `)
+const chained = (Array.isArray(st) ? st : []).filter((s) => s.nameFrom === 'nearby' && CHAIN.test(s.name))
+if (chained.length) errors.push(`${chained.length} härledda namn med flera "vid" (t.ex. ${chained[0].name})`)
 if (badCoord) errors.push(`${badCoord} platser med koordinater utanför Sverige`)
 if (badSvc) errors.push(`${badSvc} platser med saknade eller okända tjänster`)
 

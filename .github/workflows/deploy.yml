@@ -3,18 +3,13 @@ name: Deploy till GitHub Pages
 # Bygger appen från den COMMITTADE seed-filen (public/data/stations-seed.json)
 # och publicerar – tar ett par minuter. Själva datasynken (OSM/Trafikverket/
 # geokodning, ~30 min) sköts av sync-data.yml, som committar seeden och sedan
-# startar den här workflowen (issue #15). Vill man undantagsvis synka i samma
-# körning: kör workflowen manuellt med rutan "synk" ibockad.
+# startar den här workflowen (issue #15). Ny data utan att vänta på måndagen:
+# kör "Synka stationsdata till repot" manuellt.
 on:
   push:
     branches:
       - claude/gravatten-latrin-app-sverige-aed0qg
   workflow_dispatch:
-    inputs:
-      synk:
-        description: 'Synka stationsdata (OSM + Trafikverket) innan bygget (~30 min)'
-        type: boolean
-        default: false
 
 permissions:
   contents: write
@@ -43,18 +38,22 @@ jobs:
       - name: Kontrollera att OSM-listorna är identiska i synk och app (stoppar vid avvikelse)
         run: node scripts/check-mirrors.mjs
       - name: Kvalitetskontroll av registret (tjänstekoder, koordinater, dubbletter inom 100 m)
-        run: node scripts/check-register.mjs
+        run: |
+          # Förlustvakten jämför mot den PUBLICERADE seeden (gh-pages) – den
+          # committade kan redan innehålla förlusten efter en synk (granskning 14 okt 2026).
+          if git fetch -q --depth=1 origin gh-pages && git show FETCH_HEAD:data/stations-seed.json > "$RUNNER_TEMP/pub-seed.json"; then
+            SEED_PATH="$RUNNER_TEMP/pub-seed.json" node scripts/check-register.mjs
+          else
+            echo "::warning::Kunde inte läsa den publicerade seeden – jämför med den committade"
+            node scripts/check-register.mjs
+          fi
       - name: Kontrollera att CSP:n täcker alla externa värdar i appen
         run: node scripts/check-csp.mjs
       - name: Säkerhetskontroll av produktionsberoenden (stoppar vid high/critical)
         run: npm audit --omit=dev --audit-level=high
-      - name: Synka stationsdata (OSM + Trafikverket) – bara vid manuell körning med "synk"
-        if: github.event_name == 'workflow_dispatch' && inputs.synk
-        run: node scripts/sync-stations.mjs
-        continue-on-error: true
-        env:
-          TRV_API_KEY: ${{ secrets.TRV_API_KEY }}
-      # Seedkontrollen EFTER ev. synk, så att en manuell synk också kontrolleras
+      # Synk-rutan borttagen (granskning 14 okt 2026): synken tar 13–36 min och
+      # hann inte inom jobbets 20 min, och en manuell synk här committades aldrig.
+      # Kör "Synka stationsdata till repot" (sync-data.yml) i stället.
       - name: Kontroll av seeden (golv per källa, koordinater, tjänster, dubbla id)
         run: node scripts/check-seed.mjs
       - name: Bygg SEO-sidor (kommunsidor + sitemap) från seed-datan

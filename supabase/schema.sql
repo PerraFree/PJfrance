@@ -100,6 +100,24 @@ alter table photos enable row level security;
 -- Granskning 12 okt 2026: mappen i URL:en måste vara PLATSENS mapp (samma
 -- tvätt av id som appen gör i src/lib/photos.ts). Annars kunde en enda
 -- uppladdad bild kopplas till hundratals platser och ersätta deras foton.
+create schema if not exists private;
+create or replace function private.photo_object_exists(p_url text) returns boolean
+language sql stable security definer set search_path = private, public, storage as $$
+  select exists (
+    select 1 from storage.objects o
+    where o.bucket_id = 'place-photos'
+      and o.name = substring(p_url from '/object/public/place-photos/(.*)$')
+  )
+$$;
+revoke all on function private.photo_object_exists(text) from public;
+grant usage on schema private to anon;
+grant execute on function private.photo_object_exists(text) to anon;
+-- Samma bild får bara publiceras en gång (dubbletter avpubliceras först, så
+-- att indexet alltid går att skapa).
+update photos set status = 'rejected' where id in (
+  select id from (select id, row_number() over (partition by url order by created_at) as n
+                  from photos where status = 'approved') d where d.n > 1);
+create unique index if not exists photos_url_approved on photos (url) where status = 'approved';
 drop policy if exists "anon kan lägga till foto" on photos;
 create policy "anon kan lägga till foto" on photos
   for insert to anon with check (
@@ -107,6 +125,10 @@ create policy "anon kan lägga till foto" on photos
     and url ~ '^https://yssyebjkejqpoenbhlfq\.supabase\.co/storage/v1/object/public/place-photos/[A-Za-z0-9_-]+/[0-9]+\.jpg$'
     and url ~ ('^https://yssyebjkejqpoenbhlfq\.supabase\.co/storage/v1/object/public/place-photos/'
                || regexp_replace(station_id, '[^a-zA-Z0-9_-]', '_', 'g') || '/[0-9]+\.jpg$')
+    -- Granskning 14 okt 2026: filen måste finnas i bucketen. Förut räckte en
+    -- påhittad URL för att ersätta en plats foto med en trasig bild – utan
+    -- uppladdning, så uppladdningstaket gällde inte.
+    and private.photo_object_exists(url)
   );
 -- Städa bort rader som redan hunnit in med främmande URL (idempotent – körs
 -- varje gång schemat körs, så en sådan rad kan aldrig ligga kvar publicerad).
@@ -224,6 +246,9 @@ declare
   kw text;
   n int;
 begin
+  -- Räkna-sedan-skriv utan lås lät en samtidig skur passera taken (granskning
+  -- 14 okt 2026). Låset gäller transaktionen ut och bara samma bucket.
+  perform pg_advisory_xact_lock(hashtext('rate_limit:' || p_bucket));
   delete from public.rate_limits where bucket in (p_bucket, p_bucket || ':nät', p_bucket || ':plats')
     and created_at < now() - interval '1 day';
   select count(*) into n from public.rate_limits where bucket = p_bucket;
@@ -275,6 +300,7 @@ begin
   k := private.client_ip_hash();
   if k is null or k in ('okänd-ip', 'ogiltig-ip') then return; end if;
   kp := md5(k || '|' || coalesce(p_station, ''));
+  perform pg_advisory_xact_lock(hashtext('once_per_station:' || kp));
   -- Högst 3 per IP-adress, plats och dygn: flera personer på samma camping-
   -- wifi eller mobiloperatörs-IP ska kunna bekräfta/betygsätta samma plats.
   if (select count(*) from public.rate_limits where bucket = p_bucket || ':plats' and key = kp
@@ -338,7 +364,11 @@ revoke all on function private.rate_limit_storage() from public;
 grant execute on function private.rate_limit_storage() to anon;
 create policy "anon kan ladda upp foton" on storage.objects
   for insert to anon
-  with check (bucket_id = 'place-photos' and private.rate_limit_storage());
+  with check (bucket_id = 'place-photos'
+              -- Bara "<platsmapp>/<siffror>.jpg", som appen laddar upp (granskning 14 okt 2026:
+              -- valfritt filnamn och valfri mapp gick igenom).
+              and name ~ '^[A-Za-z0-9_-]{1,200}/[0-9]{1,20}\.jpg$'
+              and private.rate_limit_storage());
 
 -- Platsförslag måste vara rimliga (granskning 12 okt 2026: NaN/Infinity-
 -- koordinater, tomt namn, tom eller 2D-tjänstelista gick igenom och hamnade
@@ -400,3 +430,8 @@ create or replace view public.review_summary as
   select station_id, sum(rating)::int as sum, count(*)::int as n
   from public.reviews where status = 'approved' group by station_id;
 grant select on public.verification_summary, public.review_summary to anon, authenticated;
+
+-- Djupförsvar (granskning 14 okt 2026): Supabases standard "grant all" ger anon
+-- även TRUNCATE (går förbi RLS), REFERENCES och TRIGGER. PostgREST kan inte
+-- skicka dem, men ingen roll utanför ägaren ska ha dem.
+revoke truncate, references, trigger on all tables in schema public from anon, authenticated;

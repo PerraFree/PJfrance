@@ -13,7 +13,7 @@ import { isGenericName } from './naming'
 const FREE_RE = /gratis|kostnadsfri|utan avgift|avgiftsfri|\bfree\b/i
 const FREE_QUALIFIED_RE =
   /(för|bara|endast)\s+(boende\s+|betalande\s+|egna\s+)?(camping|ställplats|båt|natt|hamn)?-?\s*(gäster|gäst|medlemmar|kunder|boende)|greenfee|för\s+gäs|med\s+(camping|övernatt)/i
-const PAID_RE = /\d\s*(kr|sek|:-|€|eur)\b|betala|motstridig|\d+:e natten|avgift i/i
+const PAID_RE = /\d\s*(kr|sek|:-|€|eur)\b|betala|swish|kontant|kortbetal|motstridig|\d+:e natten|avgift i/i
 export function isFreeFee(fee: string): boolean {
   return FREE_RE.test(fee) && !FREE_QUALIFIED_RE.test(fee) && !PAID_RE.test(fee)
 }

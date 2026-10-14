@@ -176,5 +176,6 @@ async function main() {
 }
 
 if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split('/').pop())) {
-  main().catch((e) => { console.error(e); process.exit(0) })
+  // En krasch ska synas som ett rött jobb, inte som en gammal rapport (granskning 14 okt 2026).
+  main().catch((e) => { console.error(e); process.exit(1) })
 }

@@ -665,12 +665,13 @@
     "services": [
       "stallplats"
     ],
-    "description": "Ställplats vid Ribersborgsfältet. El, toalett, dricksvatten och latrintömning. Källa: Husbil.se. Granskning 12 okt 2026: enda källan är aggregatorer – latrin/vatten flyttade till obekräftade tills en primärkälla (kommun, anläggningens sajt, turistråd) belägger tjänsten. Sökt primärkälla: campercontact/promobil/norcamp (aggregatorer) – ingen primärkälla.",
+    "description": "Ställplats vid Ribersborgsfältet. El, toalett, dricksvatten och latrintömning. Källa: Husbil.se. Granskning 12 okt 2026: enda källan är aggregatorer – latrin/vatten flyttade till obekräftade tills en primärkälla (kommun, anläggningens sajt, turistråd) belägger tjänsten. Sökt primärkälla: campercontact/promobil/norcamp (aggregatorer) – ingen primärkälla. Granskning 14 okt 2026: gråvatten låst som obekräftat – bara en OSM-granne anger det, källan ovan nämner det inte.",
     "url": "https://www.husbil.se/stallplatser/p/18/",
     "source": "egen",
     "unverifiedServices": [
       "latrin",
-      "vatten"
+      "vatten",
+      "gravatten"
     ]
   },
   {
@@ -1152,14 +1153,15 @@
     "services": [
       "stallplats"
     ],
-    "description": "El, färskvatten, latrintömning, wifi. Källa: stallplatskartan.se. Granskning 12 okt 2026: enda källan är aggregatorer – latrin/vatten flyttade till obekräftade tills en primärkälla (kommun, anläggningens sajt, turistråd) belägger tjänsten.",
+    "description": "El, färskvatten, latrintömning, wifi. Källa: stallplatskartan.se. Granskning 12 okt 2026: enda källan är aggregatorer – latrin/vatten flyttade till obekräftade tills en primärkälla (kommun, anläggningens sajt, turistråd) belägger tjänsten. Granskning 14 okt 2026: gråvatten låst som obekräftat – bara en OSM-granne anger det, källan ovan nämner det inte.",
     "url": "https://stallplatskartan.se/sv/stallplats-markaryd/",
     "source": "egen",
     "lat": 56.464488,
     "lon": 13.602297,
     "unverifiedServices": [
       "latrin",
-      "vatten"
+      "vatten",
+      "gravatten"
     ]
   },
   {
@@ -1235,12 +1237,13 @@
     "services": [
       "stallplats"
     ],
-    "description": "El, toalett, dusch, dricksvatten, latrintömning. Källa: husbil.se. Granskning 12 okt 2026: enda källan är aggregatorer – latrin/vatten flyttade till obekräftade tills en primärkälla (kommun, anläggningens sajt, turistråd) belägger tjänsten. Sökt primärkälla: vimmerby.se nämner ingen ställplats i Tuna.",
+    "description": "El, toalett, dusch, dricksvatten, latrintömning. Källa: husbil.se. Granskning 12 okt 2026: enda källan är aggregatorer – latrin/vatten flyttade till obekräftade tills en primärkälla (kommun, anläggningens sajt, turistråd) belägger tjänsten. Sökt primärkälla: vimmerby.se nämner ingen ställplats i Tuna. Granskning 14 okt 2026: gråvatten låst som obekräftat – bara en OSM-granne anger det, källan ovan nämner det inte.",
     "url": "https://www.husbil.se/stallplatser/p/507/",
     "source": "egen",
     "unverifiedServices": [
       "latrin",
-      "vatten"
+      "vatten",
+      "gravatten"
     ]
   },
   {
@@ -5859,9 +5862,12 @@
       "camping",
       "latrin"
     ],
-    "description": "Erbjuder latrintömning för husbil/husvagn. Källa: anläggningens webbplats. Kontroll okt 2026 (https://emmabodagk.se/boende/stallplatser/): \"Emmaboda GK (boende/ställplatser): 25 platser med el, nybyggd servicebyggnad med toaletter och duschar; latrintömning anges. Gråvattentömning nämns inte.\"",
+    "description": "Erbjuder latrintömning för husbil/husvagn. Källa: anläggningens webbplats. Kontroll okt 2026 (https://emmabodagk.se/boende/stallplatser/): \"Emmaboda GK (boende/ställplatser): 25 platser med el, nybyggd servicebyggnad med toaletter och duschar; latrintömning anges. Gråvattentömning nämns inte.\" Granskning 14 okt 2026: gråvatten låst som obekräftat – bara en OSM-granne anger det, källan ovan nämner det inte.",
     "url": "https://emmabodagk.se/boende/#stallplatser",
-    "source": "egen"
+    "source": "egen",
+    "unverifiedServices": [
+      "gravatten"
+    ]
   },
   {
     "id": "curated-347-löderups-strandbad-camping",
@@ -24975,12 +24981,15 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.skarastadscamping.se/husvagn-och-husbil/): \"Skara Stadscamping och stugby har 60 stycken tomter för husvagn och husbil. Samtliga husvagn- och husbilsplatser är utrustade med 10A-ström eller 16A-ström. (Faciliteter: el, färskvatten, toalett, dusch, sopkärl, Internet/Wifi, tömma latrin.)\" Ligger ~130 m från befintliga 'Jula Camping' (58.3894, 13.4595, gravatten+latrin+camping+stallplats) – sannolikt samma anläggning under nytt namn. Föreslår namnbyte till 'Skara Stadscamping & Stugby' + komplettering med vatten, sopor, telefon, webbplats. Faciliteterna (inkl. 'tömma latrin') anges i husbilsplats.se-listningen; egen sida nämner 60 platser med el – gråvatten ej belagt i egen sida men finns redan på befintlig post.",
+    "description": "Källa (https://www.skarastadscamping.se/husvagn-och-husbil/): \"Skara Stadscamping och stugby har 60 stycken tomter för husvagn och husbil. Samtliga husvagn- och husbilsplatser är utrustade med 10A-ström eller 16A-ström. (Faciliteter: el, färskvatten, toalett, dusch, sopkärl, Internet/Wifi, tömma latrin.)\" Ligger ~130 m från befintliga 'Jula Camping' (58.3894, 13.4595, gravatten+latrin+camping+stallplats) – sannolikt samma anläggning under nytt namn. Föreslår namnbyte till 'Skara Stadscamping & Stugby' + komplettering med vatten, sopor, telefon, webbplats. Faciliteterna (inkl. 'tömma latrin') anges i husbilsplats.se-listningen; egen sida nämner 60 platser med el – gråvatten ej belagt i egen sida men finns redan på befintlig post. Granskning 14 okt 2026: gråvatten låst som obekräftat – bara en OSM-granne anger det, källan ovan nämner det inte.",
     "website": "https://www.skarastadscamping.se/",
     "fee": "Från 300 kr/natt",
     "phone": "0511-31 00 00",
     "address": "Vilangatan 4, 532 37 Skara",
-    "confidence": "high"
+    "confidence": "high",
+    "unverifiedServices": [
+      "gravatten"
+    ]
   },
   {
     "id": "curated-1464-valle-camping-ställplatser",

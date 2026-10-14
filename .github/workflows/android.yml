@@ -19,6 +19,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -56,6 +57,7 @@ jobs:
     name: Starta appen i emulator
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     # contents: write behövs bara för att lägga skärmdumpen på grenen `emulator-skarmdump`
     permissions:
       contents: write

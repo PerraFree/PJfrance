@@ -122,7 +122,18 @@ if (existsSync(SEED)) {
 }
 
 console.log(`Register: ${reg.length} poster, ${errors.length} fel, ${warnings.length} varningar`)
-for (const w of warnings) console.log('  varning: ' + w)
+// Bekräftad tömning/vatten/gasol utan en enda primärkälla (granskning 14 okt
+// 2026: 91 poster, mest "Källa: sammanställd information om anläggningen").
+// Varning tills de är genomgångna (ärende), sedan fel.
+{
+  const AGG = /husbilsplats\.se|park4night|campingkollen|stallplatskartan|stallplatserna\.se|husbil\.se|campercontact|hitta\.se|facebook\.com|\/\/(www\.)?camping\.se\b/i
+  const KÄRNA2 = ['gravatten', 'latrin', 'vatten', 'gasol']
+  const utanKälla = reg.filter((p) => !p.unverified && p.confidence !== 'low'
+    && (p.services ?? []).some((x) => KÄRNA2.includes(x) && !(p.unverifiedServices ?? []).includes(x))
+    && ![p.website, p.url, ...(String(p.description ?? '').match(/https?:\/\/[^\s)"]+/g) ?? [])].filter(Boolean).some((u) => !AGG.test(u)))
+  if (utanKälla.length) warnings.push(`${utanKälla.length} poster har bekräftad tömning/vatten/gasol utan primärkälla (ingen länk utom aggregatorer), t.ex. ${utanKälla.slice(0, 3).map((p) => p.id).join(', ')}`)
+}
+
 // Alias (gamla id → nuvarande, public/data/id-aliases.json): varje mål måste
 // finnas i registret och inget gammalt id får vara ett nuvarande id. Annars
 // pekar sparade favoriter/betyg/foton på en plats som inte finns (en post som
@@ -171,6 +182,7 @@ if (existsSync(SEED)) {
   const BORT = new URL('./borttagna.json', import.meta.url)
   const bort = existsSync(BORT) ? JSON.parse(readFileSync(BORT, 'utf8')) : {}
   const bekräftade = (p) => (p.unverified ? [] : (p.services ?? []).filter((x) => KÄRNA.includes(x) && !(p.unverifiedServices ?? []).includes(x)))
+  const TJÄNSTORD = { gravatten: /gråvatten|−tömning|-tömning|ingen tömning|tömning[^.]{0,40}(borta|saknas|finns inte|stängd|grå)/i, latrin: /latrin|kassett|−tömning|-tömning|ingen tömning|tömning[^.]{0,40}(borta|saknas|finns inte|stängd|grå)/i, vatten: /(?<!grå)vatten/i, gasol: /gasol/i }
   const ORSAK = /(kontroll|granskning|rättat|pers|sammanslagen|källa|svep|research)[^.]{0,200}20\d\d|20\d\d[^.]{0,200}(kontroll|granskning|rättat|pers|källa)/i
   for (const s of seedSt) {
     if (!String(s.id).startsWith('curated-')) continue
@@ -186,8 +198,14 @@ if (existsSync(SEED)) {
       continue
     }
     const lost = had.filter((x) => !bekräftade(p).includes(x))
-    if (lost.length && !ORSAK.test(p.description ?? '')) {
-      errors.push(`"${p.name}" har tappat bekräftad ${lost.join('/')} utan daterad orsak i description (t.ex. "Kontroll okt 2026: …")`)
+    // Granskning 14 okt 2026: ORSAK ensam träffade 432 av 1 099 beskrivningar
+    // ("Källa … 2026") – orsaken måste också nämna den tjänst som försvann.
+    // … och vara NY: beskrivningen måste ha ändrats sedan den publicerade seeden
+    // (ett gammalt citat som nämner latrin räknas inte som orsak till att den försvann).
+    const ny = (p.description ?? '') !== (s.description ?? '')
+    const utan = lost.filter((x) => !(ny && ORSAK.test(p.description ?? '') && TJÄNSTORD[x].test(p.description ?? '')))
+    if (utan.length) {
+      errors.push(`"${p.name}" har tappat bekräftad ${utan.join('/')} utan daterad orsak som nämner tjänsten i description (t.ex. "Kontroll okt 2026: ingen latrintömning enligt kommunen")`)
     }
   }
 }
@@ -206,6 +224,8 @@ const VALBARA = ['gravatten', 'latrin', 'vatten', 'sopor', 'atervinning', 'gasol
 const osynliga = reg.filter((p) => !(p.services ?? []).some((x) => VALBARA.includes(x)) && !(p.unverifiedServices ?? []).some((x) => VALBARA.includes(x)))
 if (osynliga.length) warnings.push(`${osynliga.length} poster har bara ställplats/camping och syns inte på kartan (t.ex. ${osynliga.slice(0, 3).map((p) => p.name).join(', ')})`)
 
+// Alla varningar skrivs ut sist (förut tappades de som lades till efter utskriften).
+for (const w of warnings) console.log('  varning: ' + w)
 if (errors.length) {
   console.error('\nFEL i scripts/curated-places.json – rätta före push:')
   for (const e of errors) console.error('  - ' + e)

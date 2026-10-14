@@ -19,9 +19,18 @@ if (process.argv.includes('build') && existsSync('supabase.env')) {
 // Ny extern tjänst i appen? Lägg värden här, annars blockeras den tyst –
 // scripts/check-csp.mjs i deploy.yml stoppar bygget om en värd i src/ saknas.
 // (Granskning 12 okt 2026: ingen CSP alls.)
+// Bara det egna Supabase-projektet, inte *.supabase.co (granskning 14 okt
+// 2026: jokertecknet släppte igenom vilket Supabase-projekt som helst).
+const SUPABASE_ORIGIN = (() => {
+  try {
+    return new URL(process.env.VITE_SUPABASE_URL ?? '').origin
+  } catch {
+    return 'https://*.supabase.co'
+  }
+})()
 export const CSP_HOSTS = {
   connect: [
-    'https://*.supabase.co',
+    SUPABASE_ORIGIN,
     'https://overpass-api.de',
     'https://overpass.kumi.systems',
     'https://overpass.private.coffee',
@@ -31,7 +40,7 @@ export const CSP_HOSTS = {
     'https://opendata-download-metfcst.smhi.se',
   ],
   img: [
-    'https://*.supabase.co',
+    SUPABASE_ORIGIN,
     'https://server.arcgisonline.com',
     'https://tile.openstreetmap.org',
     'https://*.tile.opentopomap.org',

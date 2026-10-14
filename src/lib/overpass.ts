@@ -156,6 +156,7 @@ const OSM_SEASON_OVERRIDES = new Map<string, { season?: Station['season']; openi
 // grå markeras hela platsen som obekräftad. Speglas i scripts/sync-stations.mjs – ändra ALLTID
 // båda (check-mirrors.mjs stoppar deployen annars).
 const OSM_UNVERIFIED_OVERRIDES = new Map<string, ServiceType[]>([
+  ['way/270924720', ['gravatten']], // Marina Dals Långed – Mustadfors källa (vastsverige.com) nämner bara kemtoalett, inte gråvatten (granskning 14 okt 2026)
   ['way/1290118511', ['vatten']], // Kulturhuset Öster Sallerup (Hörby) – ingen källa för vatten (kontroll okt 2026)
   ['way/294060302', ['gravatten', 'latrin', 'vatten']], // Immelns Camping – egen sajt tyst om tömning/vatten (kontroll okt 2026)
   ['node/12879399396', ['gravatten', 'latrin', 'vatten']], // Hälldala Ranch – egen sajt tyst (kontroll okt 2026)
@@ -639,7 +640,7 @@ function amenityFields(tags: Record<string, string>) {
     payment: payment.length ? payment : undefined,
     address: addressFromTags(tags),
     capacity:
-      tags.capacity ?? tags['capacity:pitches'] ?? tags['capacity:caravans'] ?? tags['capacity:persons'],
+      tags.capacity || tags['capacity:pitches'] || tags['capacity:caravans'] || tags['capacity:persons'],
     maxstay: tags.maxstay,
     operator: tags.operator,
     phone: tags.phone ?? tags['contact:phone'],
@@ -701,7 +702,7 @@ function addressFromTags(tags: Record<string, string>): string | undefined {
   const street = tags['addr:street']
   const num = tags['addr:housenumber']
   const place =
-    tags['addr:city'] ?? tags['addr:place'] ?? tags['addr:municipality'] ?? tags['addr:hamlet']
+    tags['addr:city'] || tags['addr:place'] || tags['addr:municipality'] || tags['addr:hamlet']
   const line1 = street ? `${street}${num ? ' ' + num : ''}` : ''
   const addr = [line1, place].filter(Boolean).join(', ')
   return addr || undefined

@@ -28,6 +28,7 @@ concurrency:
 jobs:
   bevaka:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -75,7 +76,7 @@ jobs:
             // Per får mejl – och stängs automatiskt när databasen svarar igen.
             const dbMarker = '<!-- supabase-vakt -->'
             const openIssues = await github.paginate(github.rest.issues.listForRepo, { owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100 })
-            const dbIssue = openIssues.find((i) => (i.body ?? '').startsWith(dbMarker))
+            const dbIssue = openIssues.find((i) => i.user?.login === 'github-actions[bot]' && (i.body ?? '').startsWith(dbMarker))
             let dbError = null
             for (let i = 0; i < 2; i++) {
               try {
@@ -92,7 +93,10 @@ jobs:
                 `_Vanligaste orsaken: projektet har pausats. Öppna supabase.com/dashboard → projektet Greywater → **Restore**, eller kör workflowen "Installera databasen". Ärendet stängs automatiskt när databasen svarar igen._`
               if (dbIssue) await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: dbIssue.number, body })
               else await github.rest.issues.create({ owner: context.repo.owner, repo: context.repo.repo, title: 'Databasen (Supabase) svarar inte – förslag, betyg och foton fungerar inte', body, labels: ['backlog', 'prio-1'] })
-              core.setFailed(dbError.message)
+              // Felmejl bara första gången – därefter varning (ärendet finns redan),
+              // som sajtvakten. Annars kom ett felmejl var 3:e timme (granskning 14 okt 2026).
+              if (dbIssue) core.warning(dbError.message)
+              else core.setFailed(dbError.message)
               return
             }
             if (dbIssue) {
@@ -139,7 +143,7 @@ jobs:
             const cell = (v) =>
               neutral(v ?? '–')
                 .replace(/\|/g, '\\|')
-                .replace(/\r?\n/g, '<br>') || '–'
+                .replace(/\r\n|\r|\n/g, '<br>') || '–'
             // Titlar är ren text (HTML-entiteter visas som de är, @ ger ingen
             // notis där) – ta bara bort HTML-kommentarer och radbrytningar.
             const titel = (v) => String(v ?? '–').replace(/<!--|-->/g, '').replace(/\p{Cf}/gu, '').replace(/\s+/g, ' ').trim() || '–'

@@ -25,6 +25,7 @@ concurrency:
 jobs:
   vakt:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -45,7 +46,7 @@ jobs:
           # kommit ikapp (förut stängdes det aldrig, och medan det låg öppet
           # larmade nya fel inte – granskning 12 okt 2026).
           close_issue() {
-            for n in $(gh issue list --repo "$REPO" --state open --search "Deployen misslyckas in:title" --json number --jq '.[].number'); do
+            for n in $(gh issue list --repo "$REPO" --state open --author "app/github-actions" --search "Deployen misslyckas in:title" --json number --jq '.[].number'); do
               gh issue close "$n" --repo "$REPO" --comment "Deployen fungerar igen – publicerat ${DEPLOYED}." || true
             done
           }
@@ -90,7 +91,7 @@ jobs:
               exit 0
             fi
             URL=$(echo "$RUNS" | jq -r --arg h "$HEAD" '[.workflow_runs[] | select(.head_sha==$h and (.conclusion=="failure" or .conclusion=="timed_out"))][0].html_url')
-            OPEN=$(gh issue list --repo "$REPO" --state open --search "Deployen misslyckas in:title" --json number --jq 'length')
+            OPEN=$(gh issue list --repo "$REPO" --state open --author "app/github-actions" --search "Deployen misslyckas in:title" --json number --jq 'length')
             if [ "$OPEN" = "0" ]; then
               gh issue create --repo "$REPO" --title "Deployen misslyckas – sajten visar en äldre version" --label backlog --label prio-1 \
                 --body "Deployen för \`$HEAD\` misslyckades: $URL. Vakten startar inte om den (det skulle bara misslyckas igen). Rätta felet och pusha – ärendet kan stängas när en deploy lyckats."

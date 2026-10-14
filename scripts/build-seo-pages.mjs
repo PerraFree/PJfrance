@@ -196,6 +196,8 @@ const valid = (seed.stations ?? seed).filter(
 // ingår – de kan bara göra tjänster grå, aldrig gröna). Källorna samlas för
 // sidornas "Källa"-rad.
 const sourcesOf = new Map()
+const originalById = new Map(valid.map((s) => [s.id, s]))
+const AGGREGATOR = /husbilsplats\.se|park4night|campingkollen|stallplatskartan|stallplatserna\.se|\/\/(www\.)?camping\.se\b|campercontact|searchforsites/i
 const merged0 = dedupe(valid, () => 0, () => false, (kept, m) => {
   sourcesOf.set(kept.id, [...new Set([...(sourcesOf.get(kept.id) ?? [kept.source]), m.source])])
 })
@@ -298,9 +300,13 @@ for (const s of places) {
     .filter((x) => x.d <= 60000)
     .sort((a, b) => a.d - b.d)
     .slice(0, 8)
-  const web = safeHref(String(s.website ?? '').split(/\s*[;,]\s*|\s+/)[0])
+  const web0 = safeHref(String(s.website ?? '').split(/\s*[;,]\s*|\s+/)[0])
+  // Aggregatorer (husbilsplats.se, park4night …) är ingen "Webbplats" för platsen.
+  const web = web0 && !AGGREGATOR.test(web0) ? web0 : null
   const osmHref = safeHref(s.osmUrl) ?? 'https://www.openstreetmap.org/'
-  const curated = String(s.id).startsWith('curated-')
+  // En obekräftad registerpost vars tjänster bekräftas av en OSM-granne är
+  // inte "kontrollerad mot primärkälla" (granskning 14 okt 2026: 9 sidor).
+  const curated = String(s.id).startsWith('curated-') && !originalById.get(s.id)?.unverified
   // Ärlig källa och säkerhet (granskning 12 okt 2026: branschlistor
   // presenterades som "anläggningens egen sajt").
   const källa = curated
@@ -388,7 +394,7 @@ for (const k of kommuner) {
   const trail = [['Tömningskartan', `${SITE}/`], ...(lan ? [[lan, lanUrl(lan)]] : [['Kommuner', `${SITE}/kommun/`]]), [k, canonical]]
   const first = core[0] ?? list[0]
   const body = `${bcHtml(trail)}
-<h1>Tömning, vatten & gasol för husbil i ${esc(k)}</h1>
+<h1>${esc(!have.length ? `Ställplatser och camping för husbil i ${k}` : tömning ? `Tömning, vatten & gasol för husbil i ${k}` : `${listSv(have).replace(/^./, (c) => c.toUpperCase())} för husbil i ${k}`)}</h1>
 <p class="lead">${esc(description)}</p>
 <a class="cta" href="/?at=${first.lat.toFixed(4)},${first.lon.toFixed(4)},11">Öppna kartan över ${esc(k)} →</a>
 ${sections}
@@ -440,8 +446,9 @@ for (const l of lans) {
   const trail = [['Tömningskartan', `${SITE}/`], ['Län', `${SITE}/lan/`], [l, canonical]]
   const description = `${nCore} platser för husbil i ${l}: ${counts.map(([sv, n]) => `${n} ${LABELS[sv].toLowerCase()}`).join(', ')}. Kommun för kommun med karta och vägbeskrivning.`
   await put(`lan/${slug(l)}/index.html`, page({
-    title: `Tömning för husbil i ${l} – latrin, gråvatten, vatten & gasol`,
-    description, canonical,
+    // ≤ 65/155 tecken som övriga sidor (granskning 14 okt 2026: länssidorna var 70–90/183).
+    title: [`Tömning för husbil i ${l} – latrin, gråvatten, vatten & gasol`, `Tömning för husbil i ${l} – latrin, vatten & gasol`, `Tömning, vatten & gasol för husbil i ${l}`, `Tömning för husbil i ${l}`].find((t) => t.length <= 65) ?? clip(`Tömning för husbil i ${l}`, 65),
+    description: clip(description, 155), canonical,
     body: `${bcHtml(trail)}
 <h1>Tömning, vatten & gasol för husbil i ${esc(l)}</h1>
 <p class="lead">${esc(description)}</p>

@@ -57,9 +57,14 @@ jobs:
             const marker = '<!-- kallkontroll -->'
             const body = `${marker}\n${md}\n\n_Automatisk rapport från verifiera-kallor.yml. Döda länkar: byt website eller ta bort; saknade citat: kontrollera platsen (område D)._`
             const open = await github.paginate(github.rest.issues.listForRepo, { owner: context.repo.owner, repo: context.repo.repo, state: 'open', labels: 'backlog', per_page: 50 })
-            const mine = open.find((i) => (i.body ?? '').startsWith(marker))
+            const mine = open.find((i) => i.user?.login === 'github-actions[bot]' && (i.body ?? '').startsWith(marker))
             const title = `Källkontroll: döda länkar och ändrade sidor i registret`
-            if (mine) {
+            // Bara mejl (kommentar) när rapporten faktiskt ändrats – förut en
+            // kommentar varje vecka även utan nyheter (granskning 14 okt 2026).
+            const norm = (t) => String(t ?? '').replace(/\d{4}-\d{2}-\d{2}[T\d:.Z]*/g, '').trim()
+            if (mine && norm(mine.body) === norm(body)) {
+              console.log('Rapporten oförändrad – ingen kommentar.')
+            } else if (mine) {
               await github.rest.issues.update({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, body })
               await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: mine.number, body: `Ny körning ${new Date().toISOString().slice(0, 10)} – ärendetexten är uppdaterad.` })
             } else {

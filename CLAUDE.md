@@ -79,7 +79,7 @@ Android förberett (`docs/BUILD-MOBILE.md`).
   `src/` finns i CSP:n i `vite.config.ts`), `scripts/check-seed.mjs` (golv per
   källa, koordinater; körs efter ev. synk) eller `npm audit --omit=dev
   --audit-level=high` slår larm, och efter bygget om sitemap/kommunsidor/CSP
-  saknas. Kör vakterna lokalt före push. Synkar bara om rutan "synk" bockas i.
+  saknas. Kör vakterna lokalt före push. Synkar aldrig (det gör sync-data.yml).
 - `sync-data.yml` – enda datasynken; vid push på synkskript/register + måndagar
   03 UTC. Kör `check-seed.mjs` + `check-seed-diff.mjs` FÖRE commit (trasig seed
   eller stort bortfall publiceras inte, ärende `<!-- synk-seedkontroll -->`).
@@ -276,8 +276,16 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
   det egna skalet och dödar kommandot.
 - När Overpass inte svarar återanvänder synken förra veckans OSM-data
   (`sources.osm.fresh=false`) – en tolkningsrättning syns först vid en synk
-  där Overpass svarar. De speglade listorna (EXCLUDED, grå, säsong) tillämpas
-  dock även på återanvänd data – en ny lista måste läggas in i reservvägen
-  också. Kontrollera `sources` i seeden efter synken. Samma
-  reserv används när ingen spegel ger ≥ 97 % av förra antalet (ofullständigt
-  svar, 13 okt 2026) – utom när OSM-datan redan återanvänts i över 7 dagar.
+  där Overpass svarar. De speglade listorna (EXCLUDED, grå, säsong, gasol-
+  overrides) tillämpas dock även på återanvänd data, och härledda namn
+  (`nameFrom: 'nearby'`) återställs först, annars kedjades "vid" per körning.
+  En ny lista måste läggas in i reservvägen också. Kontrollera `sources` i
+  seeden efter synken. Samma reserv används när ingen spegel ger ≥ 97 % av
+  förra antalet (ofullständigt svar) – efter 7 dagars återanvändning räcker
+  90 %.
+- Larmärenden (sajtvakt, databasvakt, synk, källkontroll, deploy-vakt) väljs
+  BARA bland ärenden skapade av `github-actions[bot]` – repot är publikt och
+  vem som helst kunde annars öppna ett ärende med markören och tysta larmet.
+- Förlustvakten (`check-register.mjs`) jämför mot den PUBLICERADE seeden
+  (gh-pages) i både synk och deploy, och orsaken måste vara ny (beskrivningen
+  ändrad) och nämna den försvunna tjänsten – ett gammalt citat räknas inte.
