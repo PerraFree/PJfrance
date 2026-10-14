@@ -77,6 +77,9 @@ export default function SubmitForm({ onClose, onAdd, mapCenter, onPhotoUploaded 
     const station = savedStation.current
     if (!station || reviewBusy.current) return
     reviewBusy.current = true
+    // Samma 600 ms-spärr vid "Försök skicka igen": knappen försvinner och
+    // Klart flyttar upp under fingret, så ett dubbelklick stängde rutan.
+    doneAt.current = Date.now()
     setReviewStatus('sending')
     setReviewError('')
     try {

@@ -195,7 +195,8 @@ function fmtVerified(iso: string): string {
 }
 
 function starRow(avg: number): string {
-  const filled = Math.round(avg)
+  // Begränsa till 0–5: ett felaktigt snitt gav RangeError och ingen platsruta.
+  const filled = Number.isFinite(avg) ? Math.min(5, Math.max(0, Math.round(avg))) : 0
   return '★'.repeat(filled) + '☆'.repeat(5 - filled)
 }
 
@@ -249,7 +250,7 @@ function popupHtml(
   const unverifiedNote = unverifiedPlace
     ? `<p class="unverified-note"><strong>Obekräftad plats.</strong> Uppgiften kommer från användarsajter, inte från kommunen eller anläggningen. Har du varit här? Tryck <strong>Stämmer</strong> nedan om platsen finns – eller <strong>Rapportera fel</strong> om den inte gör det.</p>`
     : claimed.length
-      ? `<p class="unverified-note"><strong>Obekräftat:</strong> ${claimed.map((s) => SERVICE_LABELS[s].toLowerCase()).join(', ')} ska finnas här enligt användarsajter, men det är inte bekräftat av kommunen eller anläggningen. Har du varit här? Tryck <strong>Stämmer</strong> om det finns.</p>`
+      ? `<p class="unverified-note"><strong>Obekräftat:</strong> ${claimed.map((s) => (SERVICE_LABELS[s] ?? s).toLowerCase()).join(', ')} ska finnas här enligt användarsajter, men det är inte bekräftat av kommunen eller anläggningen. Har du varit här? Tryck <strong>Stämmer</strong> om det finns.</p>`
       : ''
   const season = stationSeason(station)
   const seasonBadge =
@@ -607,6 +608,10 @@ export default function MapView({
       const loc = document.querySelector('.locate-btn')?.getBoundingClientRect()
       right = Math.min(right, ctrl.left - 8, loc && loc.width > 0 && loc.left > vw / 2 ? loc.left - 8 : Infinity)
     }
+    // Täcker panelen (t.ex. utfälld direkt efter att telefonen vridits) nästan
+    // hela skärmen blev den fria ytan 0 px och rutan knuffades utanför skärmen
+    // – använd då hela skärmen (granskning 14 okt 2026).
+    if (bottom - top < 160 || right - left < 160) return { left: 0, top: 0, right: vw, bottom: vh }
     return { left, top, right, bottom }
   }
   const computePopupPadding = () => {
@@ -662,6 +667,44 @@ export default function MapView({
     popup.options.autoPanPaddingTopLeft = padTopLeft
     popup.options.autoPanPaddingBottomRight = padBottomRight
   }
+
+  // Telefonen vrids/fönstret ändrar storlek med rutan öppen: räkna om bredd
+  // och läge, annars hamnade rutan utanför skärmen (granskning 14 okt 2026).
+  useEffect(() => {
+    let t = 0
+    const onResize = () => {
+      window.clearTimeout(t)
+      t = window.setTimeout(() => {
+        const open = openMarkerRef.current
+        const popup = open?.marker.getPopup()
+        if (!popupOpenRef.current || !open || !popup?.isOpen()) return
+        const map = mapRef.current
+        if (!map) return
+        // Först: flytta platsen till mitten av den nya fria ytan utan
+        // animering, så att den inte ligger utanför den nya skärmen.
+        map.invalidateSize({ pan: false })
+        const free = computeFreeRect()
+        const pt = map.latLngToContainerPoint(open.marker.getLatLng())
+        map.panBy([pt.x - (free.left + free.right) / 2, pt.y - (free.top + free.bottom) / 2], { animate: false })
+        refreshPopupPadding(open.marker)
+        // Utan Leaflets egen autoPan här – den och centerPopup panorerade
+        // annars båda och rutan hamnade under skärmkanten och stängdes.
+        const autoPan = popup.options.autoPan
+        popup.options.autoPan = false
+        popup.update()
+        popup.options.autoPan = autoPan
+        centerPopup(popup)
+      }, 700)
+    }
+    window.addEventListener('resize', onResize)
+    window.addEventListener('orientationchange', onResize)
+    return () => {
+      window.clearTimeout(t)
+      window.removeEventListener('resize', onResize)
+      window.removeEventListener('orientationchange', onResize)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   /**
    * Bygger bara markörer i (och nära) den synliga kartvyn, med ett tak – i
@@ -786,7 +829,7 @@ export default function MapView({
       const primary = pick?.service ?? station.services[0]
       const fill = pick?.unverified ? { color: UNVERIFIED_COLOR } : serviceFill(station, primary)
       // Namn för skärmläsare (nålen är annars en knapp med bara en bild).
-      const label = `${station.name}: ${station.services.map((sv) => SERVICE_LABELS[sv].toLowerCase()).join(', ')}${station.unverified ? ' (obekräftad)' : ''}`
+      const label = `${station.name}: ${station.services.map((sv) => (SERVICE_LABELS[sv] ?? sv).toLowerCase()).join(', ')}${station.unverified ? ' (obekräftad)' : ''}`
       const marker = L.marker([station.lat, station.lon], {
         icon: pinIcon(fill.color, serviceGlyph(station, primary), fill.split, label),
       })

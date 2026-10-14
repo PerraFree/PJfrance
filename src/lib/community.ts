@@ -1,5 +1,5 @@
 import { SUPABASE_ANON_KEY, SUPABASE_URL, communityEnabled } from '../config'
-import type { ServiceType, Station } from '../types'
+import { SERVICE_LABELS, type ServiceType, type Station } from '../types'
 import { fetchWithTimeout } from './http'
 import { restError } from './restError'
 
@@ -78,12 +78,17 @@ export async function fetchApprovedPlaces(): Promise<Station[]> {
   const res = await fetchWithTimeout(url, { headers })
   if (!res.ok) throw new Error(`Kunde inte hämta community-platser (${res.status}).`)
   const rows = (await res.json()) as SubmissionRow[]
+  // Bara kända tjänstekoder: en okänd kod (t.ex. en ny tjänst i databasen
+  // när telefonen kör en äldre version) kraschade hela appen (granskning 14 okt 2026).
+  const known = (x: unknown): x is ServiceType => typeof x === 'string' && Object.prototype.hasOwnProperty.call(SERVICE_LABELS, x)
   return rows
+    .map((r) => ({ ...r, services: Array.isArray(r.services) ? r.services.filter(known) : [] }))
     .filter(
       (r) =>
         typeof r.lat === 'number' &&
+        Number.isFinite(r.lat) &&
         typeof r.lon === 'number' &&
-        Array.isArray(r.services) &&
+        Number.isFinite(r.lon) &&
         r.services.length > 0,
     )
     .map((r) => ({
