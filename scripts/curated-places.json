@@ -29439,26 +29439,6 @@
     "gasolPrice": "Byte PC10 559 kr enligt prislistan (startsidan anger 430 kr – kontrollera i automaten)"
   },
   {
-    "id": "curated-gasol-hänne-ab",
-    "name": "Hänne AB",
-    "query": "Magasingatan 4, Edsbyn",
-    "nearLat": 61.37,
-    "nearLon": 15.82,
-    "maxKm": 15,
-    "address": "Magasingatan 4, 828 30 Edsbyn",
-    "services": [
-      "gasol"
-    ],
-    "facilities": [
-      "gasol_byte"
-    ],
-    "source": "egen",
-    "description": "Återförsäljare som enligt Norbro byter/säljer gasolflaska. Flaskstorlek (10/11 kg) ej belagd – grå tills butiken bekräftat. Källa: https://www.norbro.se/aterforsaljare-gasolflaskor/hanne-ab-magasingatan-4-82830-edsbyn/. Svep okt 2026.",
-    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/hanne-ab-magasingatan-4-82830-edsbyn/",
-    "unverified": true,
-    "confidence": "low"
-  },
-  {
     "id": "curated-gasol-grillhaket-i-bräcke-ab",
     "name": "Grillhaket i Bräcke AB",
     "query": "Riksvägen 47, 843 31 Bräcke",
