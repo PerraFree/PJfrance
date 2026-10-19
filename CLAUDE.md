@@ -113,8 +113,10 @@ Android förberett (`docs/BUILD-MOBILE.md`).
   `sb_secret_…`, går inte ut), `TRV_API_KEY`.
 - **Alla actions är låsta till commit-SHA** med versionen som kommentar. Ny
   action: `git ls-remote --tags https://github.com/<ägare>/<repo>` → peeled SHA.
-  Dependabot (`.github/dependabot.yml`, måndagar) öppnar max fem PR:er – Per
-  mergar dem i webbläsaren en i taget. Håll upload-/download-artifact i samma major.
+  Dependabot (`.github/dependabot.yml`, måndagar) öppnar max fem PR:er –
+  `dependabot-automerge.yml` kör vakterna + bygget och mergar patch/minor själv
+  (Per vill slippa manuella steg, 19 okt 2026); major eller andra filer lämnas
+  med kommentar åt en session. Håll upload-/download-artifact i samma major.
 - **Claude-rutiner** (claude.ai → Rutiner, inte i repot): "Veckosvep
   Tömnmingskartan" (måndagar 05:15 UTC), "Veckorapport – nya/borttagna platser"
   (måndagar), "Månatlig säkerhetsgenomgång Tömningskartan" (1:a i månaden,

@@ -1,0 +1,117 @@
+name: Dependabot – automatisk merge
+
+# Per vill slippa klicka igenom Dependabots förslag varje måndag (19 okt 2026).
+# Den här workflowen gör samma kontroller som deployen (vakterna + bygget) på
+# Dependabots förslag och mergar själv om allt går igenom. Bara patch/minor –
+# en major-uppdatering (t.ex. Vite 7, ny major av en action) lämnas med en
+# kommentar, den kräver att en session tittar på den. Förslag som rör andra
+# filer än package*.json och workflows mergas aldrig automatiskt.
+#
+# Säkerhet: kontrolljobbet (som kör beroendenas kod i bygget) har bara läsrätt.
+# Skrivrätten finns bara i merge-jobbet, som inte checkar ut någon kod. Körs
+# bara för PR:er som Dependabot själv öppnat i det här repot.
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dependabot-merge-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  kontroll:
+    if: >-
+      github.event.pull_request.user.login == 'dependabot[bot]' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      update-type: ${{ steps.meta.outputs.update-type }}
+      filer-ok: ${{ steps.filer.outputs.ok }}
+    steps:
+      - name: Läs vad Dependabot uppdaterar (patch/minor/major)
+        id: meta
+        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Bara package*.json och workflows får ändras
+        id: filer
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          filer=$(gh pr diff "$PR" --repo "$GITHUB_REPOSITORY" --name-only)
+          echo "$filer"
+          if echo "$filer" | grep -qvE '^(package\.json|package-lock\.json|\.github/workflows/[A-Za-z0-9._-]+\.ya?ml)$'; then
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Förslaget rör andra filer – ingen automatisk merge"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: node scripts/check-mirrors.mjs
+      - name: Kvalitetskontroll av registret
+        run: |
+          if git fetch -q --depth=1 origin gh-pages && git show FETCH_HEAD:data/stations-seed.json > "$RUNNER_TEMP/pub-seed.json"; then
+            SEED_PATH="$RUNNER_TEMP/pub-seed.json" node scripts/check-register.mjs
+          else
+            node scripts/check-register.mjs
+          fi
+      - run: node scripts/check-csp.mjs
+      - run: npm audit --omit=dev --audit-level=high
+      - run: node scripts/check-seed.mjs
+      - run: node scripts/build-seo-pages.mjs
+      - name: Bygg appen
+        run: npm run build
+        env:
+          BASE_PATH: /
+      - name: Kontrollera bygget
+        run: |
+          test -s dist/index.html
+          test -s dist/sitemap.xml
+          grep -q 'Content-Security-Policy' dist/index.html
+
+  merge:
+    needs: kontroll
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PR: ${{ github.event.pull_request.number }}
+      TYP: ${{ needs.kontroll.outputs.update-type }}
+      FILER_OK: ${{ needs.kontroll.outputs.filer-ok }}
+      BAS: ${{ github.event.pull_request.base.ref }}
+    steps:
+      - name: Merga (patch/minor) eller lämna kvar (major/okänt)
+        run: |
+          if [ "$FILER_OK" != "true" ]; then
+            echo "Rör andra filer – lämnas kvar"; exit 0
+          fi
+          case "$TYP" in
+            version-update:semver-patch|version-update:semver-minor) ;;
+            *)
+              gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body "Automatisk merge hoppades över: uppdateringstypen är \`${TYP:-okänd}\` (bara patch/minor mergas automatiskt). Kontrollerna gick igenom; en major-uppdatering behöver granskas av en session."
+              exit 0 ;;
+          esac
+          gh pr merge "$PR" --repo "$GITHUB_REPOSITORY" --squash --delete-branch \
+            || gh pr merge "$PR" --repo "$GITHUB_REPOSITORY" --merge --delete-branch
+          # En merge med GITHUB_TOKEN startar inte deployen själv – starta den
+          # (deploy-vakt.yml fångar det annars inom 15 min).
+          gh workflow run deploy.yml --repo "$GITHUB_REPOSITORY" --ref "$BAS" || true
