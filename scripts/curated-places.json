@@ -29441,9 +29441,9 @@
   {
     "id": "curated-gasol-hänne-ab",
     "name": "Hänne AB",
-    "query": "Magasingatan 4, 828 30 Edsbyn",
-    "nearLat": 61.354,
-    "nearLon": 15.812,
+    "query": "Magasingatan 4, Edsbyn",
+    "nearLat": 61.37,
+    "nearLon": 15.82,
     "maxKm": 15,
     "address": "Magasingatan 4, 828 30 Edsbyn",
     "services": [
@@ -29477,26 +29477,6 @@
     "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/grillhaket-i-bracke-ab-riksvagen-47-84331-bracke/",
     "unverified": true,
     "confidence": "low"
-  },
-  {
-    "id": "curated-gasol-gasolautomat-aga-magasin-136",
-    "name": "Gasolautomat (AGA) Magasin 136",
-    "query": "Klintagatan 19, 387 50 Köpingsvik",
-    "nearLat": 56.523,
-    "nearLon": 16.468,
-    "maxKm": 15,
-    "address": "Klintagatan 19, 387 50 Köpingsvik",
-    "services": [
-      "gasol"
-    ],
-    "facilities": [
-      "gasol_byte"
-    ],
-    "source": "egen",
-    "description": "Gasolautomat (AGA/Linde): byte av tom gasolflaska mot full, 10 kg-kompositflaska (PC10); tomma 11 kg-stålflaskor tas emot där Linde anger det. Dygnet runt, kortbetalning. Källa: Lindes försäljningsställen (https://forsaljningsstallen.linde.se/k%C3%B6pingsvik/klintagatan-19/aga-gasolautomat-magasin-136). Svep okt 2026.",
-    "url": "https://forsaljningsstallen.linde.se/k%C3%B6pingsvik/klintagatan-19/aga-gasolautomat-magasin-136",
-    "openingHours": "Dygnet runt",
-    "confidence": "medium"
   },
   {
     "id": "curated-gasol-gasolautomat-aga-tomelilla",
@@ -29542,9 +29522,9 @@
   {
     "id": "curated-gasol-ola-ludvigsson-b-s-ab",
     "name": "Ola Ludvigsson B/S AB",
-    "query": "Blåvägen 282, 923 32 Storuman",
-    "nearLat": 65.588,
-    "nearLon": 15.282,
+    "query": "Blåvägen 282, Storuman",
+    "nearLat": 65.09,
+    "nearLon": 17.11,
     "maxKm": 15,
     "address": "Blåvägen 282, 923 32 Storuman",
     "services": [
@@ -29562,9 +29542,9 @@
   {
     "id": "curated-gasol-lidens-järnhandel-ab-rob",
     "name": "Lidens Järnhandel AB Rob",
-    "query": "Strandvägen 19, 920 70 Sorsele",
-    "nearLat": 65.534,
-    "nearLon": 17.017,
+    "query": "Strandvägen 19, Sorsele",
+    "nearLat": 65.53,
+    "nearLon": 17.53,
     "maxKm": 15,
     "address": "Strandvägen 19, 920 70 Sorsele",
     "services": [
