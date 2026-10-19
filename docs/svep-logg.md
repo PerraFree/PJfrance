@@ -9,7 +9,7 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 | Fokusområde | Vad | Senast kört |
 |---|---|---|
 | A. Tömning latrin/gråvatten | Kommuner med 0–1 tömningsplatser: kommunsidor, turistråd, anläggningars egna sajter. Kompletteringar av befintliga camping-/ställplatsposter räknas. | 2026-10-05 |
-| B. Gasol byte/påfyllning + priser | Kedjornas butikssidor (Byggmax/Granngården/Rusta/ÖoB per butik), Norbro-/Linde-/gasolautomat.se-listor, lokala påfyllningsbolag, priser. Bara 10/11 kg-flaskor (P11/PA11/PC10/PK10). | 2026-09-28 |
+| B. Gasol byte/påfyllning + priser | Kedjornas butikssidor (Byggmax/Granngården/Rusta/ÖoB per butik), Norbro-/Linde-/gasolautomat.se-listor, lokala påfyllningsbolag, priser. Bara 10/11 kg-flaskor (P11/PA11/PC10/PK10). | 2026-10-19 |
 | C. Obekräftade platser: verifiera + fyll på | (1) Sök primärkälla för de OBEKRÄFTADE posterna i registret (`unverified: true` / `unverifiedServices`) – får de citat: ta bort obekräftat-flaggan. (2) Gör om lovande rader i `docs/kandidatplatser-husbilsplats-park4night.md` (tydlig tjänst + ort) till obekräftade registerposter så de syns grått på kartan. | 2026-10-12 |
 | D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. Uppdrag + import: `scripts/import-tools/UPPDRAG-kontroll.md`, `apply-kontroll.mjs`. Körda regioner: Västra Götaland (11 okt), Skåne (12 okt), Stockholm/Uppsala/Södermanland (12 okt), Halland + Kalmar län (12 okt), Jönköping/Kronoberg (12 okt), Östergötland/Örebro/Västmanland (12 okt), Värmland/Dalarna/Gävleborg (12 okt), Norrland + Gotland/Blekinge (12 okt). Hela landet klart – nästa varv börjar om med VG, bara platser utan "Kontroll okt 2026". | 2026-10-12 |
 | E. Öppettider + vinterstängt | Platser med tömning/vatten som saknar `openingHours`/`season`: hämta säsong ("1 maj–30 sep", "vinterstängt", "året runt") från kommun-/anläggningssida. Skriv `season: 'seasonal'`/`'year-round'` + `openingHours`. Prioritera kommunala tömningsstationer och Trafikverkets rastplatser med vattenavstängning. | 2026-10-12 |
@@ -27,6 +27,15 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 ## Logg
 
+- **2026-10-19, B (gasol) – kommuner utan gasolpost (session veckorutin):** 127 kommuner saknade gasolpost i seeden; 8 agenter
+  (≈200 sökningar av 480 budgeterade, inga kvotfel; sökverktyget gav bara sammandrag, WebFetch blockad) sökte Lindes
+  försäljningsställen, Norbro, gasolautomat.se. **10 nya poster:** 5 bekräftade gasolautomater (AGA/Linde, PC10:
+  Leksand, Mörbylånga/Köpingsvik, Håbo/Bålsta, Sotenäs/Wiggersvik, Nora) och 5 grå (Tomelilla AGA – storlek ej angiven;
+  Norbro-återförsäljare Hänne Edsbyn, Grillhaket Bräcke, Ola Ludvigsson Storuman, Lidens Sorsele). ≈45 låg-evidensfynd
+  (Linde-ombud som listar "utbytesflaskor" utan storlek) och negativa kommuner i `docs/gasol-svep-okt-2026-lag-evidens.md`.
+  Kedjor (Byggmax/ÖoB/Granngården m.fl.) utelämnade enligt regeln. Koordinater saknades i alla källor → `query` +
+  kommunens medianläge (maxKm 15): **verifiera geokodningen efter synk** (särskilt Wiggersvik utan gatunummer).
+  Kvar: ≈45 Linde-ombud att ringa/bekräfta, Ragunda/Markaryd/Uppvidinge osökta, priser.
 - **2026-10-13, E (öppettider/säsong) skiva 3 – OSM-platser med egen webbplats (session "Gråvatten 5", #27):**
   121 OSM-platser med tömning/vatten, egen sajt och utan säsong; 76 valda (en per kommun), 6 agenter × 20
   sökningar (≈105 använda, inga kvotfel). **50 av 76 fick säsong/öppettider** → `OSM_SEASON_OVERRIDES` i båda

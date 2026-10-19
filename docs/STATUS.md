@@ -3,7 +3,9 @@
 Skrivs ÖVER vid varje överlämning (lägg inte äldre lägesbilder på hög – historik
 finns i git-loggen, `docs/svep-logg.md` och `docs/HISTORIK.md`).
 
-**Uppdaterad:** 2026-10-14, session "Gråvatten 5" (sessionslänk i senaste commit).
+**Uppdaterad:** 2026-10-19, veckosvep B (gasol) efter "Gråvatten 5".
+
+Senaste svep (19 okt, B gasol): 10 nya gasolposter i tidigare tomma kommuner (5 bekräftade automater, 5 grå); geokodningen ska verifieras efter synk. Låg-evidens i `docs/gasol-svep-okt-2026-lag-evidens.md`. Rotation: äldst nu är A (5 okt).
 
 Senaste händelse (14 okt): veckogranskning med 6 granskare – förlustvakten
 skärpt, namnkedjor, larm som kunde kapas, fotoregler i databasen, SEO-säkerhet

@@ -29416,5 +29416,207 @@
     "fee": "Manuell latrintömning gratis i servicehus 1 och 2; Camperclean (servicehus 5) 20 kr",
     "openingHours": "Året runt",
     "season": "year-round"
+  },
+  {
+    "id": "curated-gasol-gasolautomat-aga-leksand",
+    "name": "Gasolautomat (AGA) Leksand",
+    "query": "Gärde Häradsväg 35, 793 50 Leksand",
+    "nearLat": 60.75,
+    "nearLon": 14.979,
+    "maxKm": 15,
+    "address": "Gärde Häradsväg 35, 793 50 Leksand",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (AGA/Linde): byte av tom gasolflaska mot full, 10 kg-kompositflaska (PC10); tomma 11 kg-stålflaskor tas emot där Linde anger det. Dygnet runt, kortbetalning. Källa: gasolautomat.se (https://gasolautomat.se/automater/). Svep okt 2026.",
+    "url": "https://gasolautomat.se/automater/",
+    "openingHours": "Dygnet runt",
+    "confidence": "high",
+    "gasolPrice": "Byte PC10 559 kr enligt prislistan (startsidan anger 430 kr – kontrollera i automaten)"
+  },
+  {
+    "id": "curated-gasol-hänne-ab",
+    "name": "Hänne AB",
+    "query": "Magasingatan 4, 828 30 Edsbyn",
+    "nearLat": 61.354,
+    "nearLon": 15.812,
+    "maxKm": 15,
+    "address": "Magasingatan 4, 828 30 Edsbyn",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare som enligt Norbro byter/säljer gasolflaska. Flaskstorlek (10/11 kg) ej belagd – grå tills butiken bekräftat. Källa: https://www.norbro.se/aterforsaljare-gasolflaskor/hanne-ab-magasingatan-4-82830-edsbyn/. Svep okt 2026.",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/hanne-ab-magasingatan-4-82830-edsbyn/",
+    "unverified": true,
+    "confidence": "low"
+  },
+  {
+    "id": "curated-gasol-grillhaket-i-bräcke-ab",
+    "name": "Grillhaket i Bräcke AB",
+    "query": "Riksvägen 47, 843 31 Bräcke",
+    "nearLat": 62.828,
+    "nearLon": 15.355,
+    "maxKm": 15,
+    "address": "Riksvägen 47, 843 31 Bräcke",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare som enligt Norbro byter/säljer gasolflaska. Flaskstorlek (10/11 kg) ej belagd – grå tills butiken bekräftat. Källa: https://www.norbro.se/aterforsaljare-gasolflaskor/grillhaket-i-bracke-ab-riksvagen-47-84331-bracke/. Svep okt 2026.",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/grillhaket-i-bracke-ab-riksvagen-47-84331-bracke/",
+    "unverified": true,
+    "confidence": "low"
+  },
+  {
+    "id": "curated-gasol-gasolautomat-aga-magasin-136",
+    "name": "Gasolautomat (AGA) Magasin 136",
+    "query": "Klintagatan 19, 387 50 Köpingsvik",
+    "nearLat": 56.523,
+    "nearLon": 16.468,
+    "maxKm": 15,
+    "address": "Klintagatan 19, 387 50 Köpingsvik",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (AGA/Linde): byte av tom gasolflaska mot full, 10 kg-kompositflaska (PC10); tomma 11 kg-stålflaskor tas emot där Linde anger det. Dygnet runt, kortbetalning. Källa: Lindes försäljningsställen (https://forsaljningsstallen.linde.se/k%C3%B6pingsvik/klintagatan-19/aga-gasolautomat-magasin-136). Svep okt 2026.",
+    "url": "https://forsaljningsstallen.linde.se/k%C3%B6pingsvik/klintagatan-19/aga-gasolautomat-magasin-136",
+    "openingHours": "Dygnet runt",
+    "confidence": "medium"
+  },
+  {
+    "id": "curated-gasol-gasolautomat-aga-tomelilla",
+    "name": "Gasolautomat (AGA) Tomelilla",
+    "query": "Banmästaregatan 2, Tomelilla",
+    "nearLat": 55.546,
+    "nearLon": 13.964,
+    "maxKm": 15,
+    "address": "Banmästaregatan 2, Tomelilla",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (AGA/Linde): byte av tom gasolflaska mot full, 10 kg-kompositflaska (PC10); tomma 11 kg-stålflaskor tas emot där Linde anger det. Dygnet runt, kortbetalning. Källa: Lindes försäljningsställen (https://forsaljningsstallen.linde.se/tomelilla/banm%C3%A4staregatan-2/aga-gasolautomat-tomelilla). Svep okt 2026.",
+    "url": "https://forsaljningsstallen.linde.se/tomelilla/banm%C3%A4staregatan-2/aga-gasolautomat-tomelilla",
+    "openingHours": "Dygnet runt",
+    "unverified": true,
+    "confidence": "low"
+  },
+  {
+    "id": "curated-gasol-gasolautomat-aga-bålsta",
+    "name": "Gasolautomat (AGA) Bålsta",
+    "query": "Lillsjörännan 9, 746 50 Bålsta",
+    "nearLat": 59.605,
+    "nearLon": 17.53,
+    "maxKm": 15,
+    "address": "Lillsjörännan 9, 746 50 Bålsta",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (AGA/Linde): byte av tom gasolflaska mot full, 10 kg-kompositflaska (PC10); tomma 11 kg-stålflaskor tas emot där Linde anger det. Dygnet runt, kortbetalning. Källa: Lindes försäljningsställen (https://forsaljningsstallen.linde.se/b%C3%A5lsta/lillsj%C3%B6r%C3%A4nnan-9/aga-gasolautomat-b%C3%A5lsta). Svep okt 2026.",
+    "url": "https://forsaljningsstallen.linde.se/b%C3%A5lsta/lillsj%C3%B6r%C3%A4nnan-9/aga-gasolautomat-b%C3%A5lsta",
+    "openingHours": "Dygnet runt",
+    "confidence": "medium"
+  },
+  {
+    "id": "curated-gasol-ola-ludvigsson-b-s-ab",
+    "name": "Ola Ludvigsson B/S AB",
+    "query": "Blåvägen 282, 923 32 Storuman",
+    "nearLat": 65.588,
+    "nearLon": 15.282,
+    "maxKm": 15,
+    "address": "Blåvägen 282, 923 32 Storuman",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare som enligt Norbro byter/säljer gasolflaska. Flaskstorlek (10/11 kg) ej belagd – grå tills butiken bekräftat. Källa: https://www.norbro.se/aterforsaljare-gasolflaskor/ola-ludvigsson-b-s-ab-blavagen-282-92332-storuman/. Svep okt 2026.",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/ola-ludvigsson-b-s-ab-blavagen-282-92332-storuman/",
+    "unverified": true,
+    "confidence": "low"
+  },
+  {
+    "id": "curated-gasol-lidens-järnhandel-ab-rob",
+    "name": "Lidens Järnhandel AB Rob",
+    "query": "Strandvägen 19, 920 70 Sorsele",
+    "nearLat": 65.534,
+    "nearLon": 17.017,
+    "maxKm": 15,
+    "address": "Strandvägen 19, 920 70 Sorsele",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Återförsäljare som enligt Norbro byter/säljer gasolflaska. Flaskstorlek (10/11 kg) ej belagd – grå tills butiken bekräftat. Källa: https://www.norbro.se/aterforsaljare-gasolflaskor/lidens-jarnhandel-ab-rob-strandvagen-19-92070-sorsele/. Svep okt 2026.",
+    "url": "https://www.norbro.se/aterforsaljare-gasolflaskor/lidens-jarnhandel-ab-rob-strandvagen-19-92070-sorsele/",
+    "unverified": true,
+    "confidence": "low"
+  },
+  {
+    "id": "curated-gasol-gasolautomat-aga-wiggersvik",
+    "name": "Gasolautomat (AGA) Wiggersvik",
+    "query": "Wiggersvik, 456 34 Kungshamn",
+    "nearLat": 58.386,
+    "nearLon": 11.282,
+    "maxKm": 15,
+    "address": "Wiggersvik, 456 34 Kungshamn (gatunummer saknas)",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (AGA/Linde): byte av tom gasolflaska mot full, 10 kg-kompositflaska (PC10); tomma 11 kg-stålflaskor tas emot där Linde anger det. Dygnet runt, kortbetalning. Källa: Lindes försäljningsställen (https://forsaljningsstallen.linde.se/kungshamn/wiggersvik/aga-gasolautomat-wiggersvik). Svep okt 2026.",
+    "url": "https://forsaljningsstallen.linde.se/kungshamn/wiggersvik/aga-gasolautomat-wiggersvik",
+    "openingHours": "Dygnet runt",
+    "confidence": "high"
+  },
+  {
+    "id": "curated-gasol-gasolautomat-aga-nora",
+    "name": "Gasolautomat (AGA) Nora",
+    "query": "Storgatan 45, 713 30 Nora",
+    "nearLat": 59.514,
+    "nearLon": 15.04,
+    "maxKm": 15,
+    "address": "Storgatan 45, 713 30 Nora",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "description": "Gasolautomat (AGA/Linde): byte av tom gasolflaska mot full, 10 kg-kompositflaska (PC10); tomma 11 kg-stålflaskor tas emot där Linde anger det. Dygnet runt, kortbetalning. Källa: Lindes försäljningsställen (https://forsaljningsstallen.linde.se/nora/storgatan-45/aga-gasolautomat-nora). Svep okt 2026.",
+    "url": "https://forsaljningsstallen.linde.se/nora/storgatan-45/aga-gasolautomat-nora",
+    "openingHours": "Dygnet runt",
+    "confidence": "medium"
   }
 ]
