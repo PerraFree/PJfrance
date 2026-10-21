@@ -69,6 +69,8 @@ interface SubmissionRow {
   lon: number
 }
 
+const str = (v: unknown): string => (typeof v === 'string' ? v : '')
+
 /** Hämtar godkända community-platser att visa på kartan. */
 export async function fetchApprovedPlaces(): Promise<Station[]> {
   if (!communityEnabled) return []
@@ -92,13 +94,15 @@ export async function fetchApprovedPlaces(): Promise<Station[]> {
         r.services.length > 0,
     )
     .map((r) => ({
+      // Textfälten tvingas till text – ett icke-textvärde kraschade annars
+      // hela appen (granskning 21 okt 2026; databasen har text i dag).
       id: `community-${r.id}`,
-      name: r.name || 'Inskickad plats',
+      name: str(r.name) || 'Inskickad plats',
       lat: r.lat,
       lon: r.lon,
       services: r.services,
       source: 'community' as const,
-      description: r.description ?? r.address,
-      fee: r.fee ?? undefined,
+      description: str(r.description) || str(r.address) || undefined,
+      fee: str(r.fee) || undefined,
     }))
 }

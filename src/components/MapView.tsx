@@ -312,13 +312,13 @@ function popupHtml(
   if (station.description) rows.push(`<p class="desc">${esc(station.description)}</p>`)
   rows.push(facilityList(station))
   if (station.payment?.length)
-    rows.push(`<p class="meta"><strong>Betalning</strong>${esc(station.payment.join(', '))}</p>`)
+    rows.push(`<p class="meta"><strong>Betalning</strong> ${esc(station.payment.join(', '))}</p>`)
   if (station.capacity)
-    rows.push(`<p class="meta"><strong>Platser</strong>${esc(station.capacity)}</p>`)
+    rows.push(`<p class="meta"><strong>Platser</strong> ${esc(station.capacity)}</p>`)
   if (station.maxstay)
-    rows.push(`<p class="meta"><strong>Max övernattning</strong>${esc(station.maxstay)}</p>`)
+    rows.push(`<p class="meta"><strong>Max övernattning</strong> ${esc(station.maxstay)}</p>`)
   if (station.operator)
-    rows.push(`<p class="meta"><strong>Drivs av</strong>${esc(station.operator)}</p>`)
+    rows.push(`<p class="meta"><strong>Drivs av</strong> ${esc(station.operator)}</p>`)
   const contact: string[] = []
   const phone = station.phone ? safeUrl(`tel:${station.phone.replace(/[^\d+]/g, '')}`) : null
   if (phone) contact.push(`<a href="${escapeAttr(phone)}">📞 Ring</a>`)
@@ -403,10 +403,10 @@ function popupHtml(
   // "Bekräftad 3 gånger, senast för 5 dagar sedan" (gånger, inte användare –
   // upp till 3 per IP och dygn tillåts för delade nät) – antalet bygger
   // förtroende mer än bara ett datum.
-  const verifiedLine = verified
+  const verifiedLine = verified && verified.count >= 1 && !Number.isNaN(new Date(verified.latest).getTime())
     ? `<p class="verified-line">✓ Bekräftad ${verified.count === 1 ? '' : `${verified.count} gånger, senast `}${fmtVerified(verified.latest)}</p>`
     : ''
-  const avg = review && review.count > 0 ? review.sum / review.count : 0
+  const avg = review && review.count > 0 ? Math.min(5, Math.max(1, review.sum / review.count)) : 0
   const ratingLine =
     review && review.count > 0
       ? `<p class="rating-line"><span class="stars">${starRow(avg)}</span> ${avg.toFixed(1)} · ${review.count} ${review.count === 1 ? 'omdöme' : 'omdömen'}</p>`

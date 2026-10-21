@@ -6,6 +6,30 @@ avsnitt per körning, nyast överst. Varje fynd: vad, bevis, åtgärd, och vilke
 **vakt** (automatisk kontroll) som nu hindrar att samma sorts fel kommer tillbaka.
 Regler hör hemma i CLAUDE.md, läget i `docs/STATUS.md` – här bara loggen.
 
+## 2026-10-21 – veckogranskning (5 oberoende granskare)
+
+Områden: säkerhet, ny kod (8 dagar), webbläsare, datakvalitet, drift/PWA.
+Rättat i 08c5057d, e9fd4c53, 81931bbf, c9d8baa9, 61d2d912 och webbläsarfynden
+i commiten efter denna logg. Synken 21 okt (Overpass färsk) rättade namnen.
+
+| Allvar | Fynd | Åtgärd | Vakt framåt |
+|---|---|---|---|
+| Hög | Område C-skriptet (`apply-obekraftade.mjs`) gjorde helt grå poster helt gröna 12–13 okt, även tjänster citatet inte nämnde (Renöhamn "Septitömning för båtar" → latrin+gråvatten, Garpahamnen vatten trots "Färskvatten: Nej", Norrtälje Camping allt utan citat) | 15 poster + Vättersol, Töcksfors: ostyrkta tjänster grå med daterad orsak; skriptet gör ostyrkta tjänster grå | `check-register.mjs` uppgraderingsvakt: en tjänst som blir bekräftad mot gh-pages-seeden måste nämnas i beskrivningen (fångade 13 av felen i efterhand) |
+| Medel | Automerge kunde inte merga actions-PR:er (GITHUB_TOKEN får inte röra workflowfiler), mergade utan karenstid och utan kontroll att toppen var den testade commiten; aldrig körd | Actions-PR:er lämnas med EN kommentar åt en session; 7 dagars cooldown; `--match-head-commit`; fillista via API; Android-bygget startas | Simulerat (4 vägar); verklig körning kontrolleras 26 okt |
+| Medel | Påhittade `station_id` kan tränga undan riktiga bekräftelser/foton; oanvända fotofiler kan fylla lagringen; deployen bygger med skrivrätt | Ärende #42 (prio-2) | – |
+| Medel | Platsrutan tappade ort och "Öppet nu" vid skärmvridning (`popup.update()` byggde om innehållet) | `fillPopupSlots()` körs även efter omritning | Playwright: ort kvar efter vridning |
+| Medel | Service workern kunde förlora startsidan/seeden offline om de inte gick att hämta vid installationen | Saknade appskalsfiler följer med från förra cachen; `cache: 'reload'` | – |
+| Medel | 121 dubbla härledda namn ("Återvinningscentral vid Brändkläppen Återvinningscentral") | `vidName()` i synk + app | `check-seed.mjs` stoppar sådana namn |
+| Låg | GitHub kör schemalagda vakter var 2–6:e timme i stället för 15/30 min | Scheman flyttade från hel kvart/timme; CLAUDE.md beskriver verkligheten | – |
+| Låg | Kivik-latrinens läge är parkeringens; Göta Holme "året runt" trots service maj–sep; Leksands gasol två priser; Tomelilla påstod PC10; Engesberg/Ingelsby motsägelsefulla texter; svepdokument fel | Rättade | – |
+| Låg | Webbläsartest: icke-text från databasen kraschade appen; betygssnitt/antal/datum utan gränser; långt ord i rubriken klipptes; "Drivs avPreem" | Fälten tvingas till text, snitt 1–5, ogiltiga rader hoppas över, `overflow-wrap`, mellanslag | – |
+
+Kvar (#43): gasolposter utan ordagrant citat, Norbro-söksidor som källa,
+Gnesta, Haparanda, säsong Lugnet/Sonfjället, ÅVC vid campingar, bortfallsvakt
+över 7 dagar. Kvar (låg, inte ärende): stjärnväljaren saknar piltangenter,
+fokus återgår inte till platsrutan efter betygsfönstret, introrutan 15 px under
+arkets kant på 390×760, "Borås → Borås · 0 km".
+
 ## 2026-10-14 – veckogranskning (6 oberoende granskare)
 
 Områden: säkerhet, ny kod (8 dagar), webbläsare, datakvalitet, drift, SEO/PWA/beroenden.

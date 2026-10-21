@@ -54,7 +54,7 @@ export async function fetchReviews(): Promise<Map<string, StationReviews>> {
       const crows = (await cres.json()) as Array<{ station_id?: string; rating?: number; comment?: string | null; created_at?: string }>
       for (const r of crows) {
         const entry = r.station_id ? map.get(r.station_id) : undefined
-        if (!entry || !r.comment || typeof r.rating !== 'number' || entry.comments.length >= 2) continue
+        if (!entry || typeof r.comment !== 'string' || !r.comment || typeof r.rating !== 'number' || entry.comments.length >= 2) continue
         entry.comments.push({ rating: r.rating, comment: r.comment, created_at: r.created_at ?? '' })
       }
     }
@@ -80,7 +80,7 @@ export async function fetchReviews(): Promise<Map<string, StationReviews>> {
     }
     entry.sum += r.rating
     entry.count++
-    if (r.comment && entry.comments.length < 2) {
+    if (typeof r.comment === 'string' && r.comment && entry.comments.length < 2) {
       entry.comments.push({
         rating: r.rating,
         comment: r.comment,

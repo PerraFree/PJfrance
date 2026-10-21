@@ -3,13 +3,19 @@
 Skrivs ÖVER vid varje överlämning (lägg inte äldre lägesbilder på hög – historik
 finns i git-loggen, `docs/svep-logg.md` och `docs/HISTORIK.md`).
 
-**Uppdaterad:** 2026-10-19, veckosvep B (gasol) efter "Gråvatten 5".
+**Uppdaterad:** 2026-10-21, veckogranskningen (5 granskare).
 
-Senaste svep (19 okt, B gasol): 8 nya gasolposter i tidigare tomma kommuner (4 bekräftade automater, 4 grå); alla verifierade i seeden; geokodningen ska verifieras efter synk. Låg-evidens i `docs/gasol-svep-okt-2026-lag-evidens.md`. Rotation: äldst nu är A (5 okt).
+Senaste händelse (21 okt): veckogranskning – 16 platser fick grå tjänster som
+område C-skriptet felaktigt gjort gröna (ny uppgraderingsvakt i
+check-register), dubbla härledda namn borta (vakt i check-seed), platsrutan vid
+vridning, offline-skydd i service workern, automergen skärpt. Se
+`docs/granskningslogg.md`; kvar i #42 (databas/deploy) och #43 (källor). sw.js v120.
 
-Senaste händelse (14 okt): veckogranskning med 6 granskare – förlustvakten
-skärpt, namnkedjor, larm som kunde kapas, fotoregler i databasen, SEO-säkerhet
-(se `docs/granskningslogg.md`); kvar i ärende #38. sw.js v116.
+Förra svepet (19 okt, B gasol): 8 nya gasolposter i tidigare tomma kommuner;
+lägen kontrollerade i seeden. Rotation: äldst nu är A (5 okt).
+
+Förra granskningen (14 okt): förlustvakten skärpt, namnkedjor, larm som kunde
+kapas, fotoregler i databasen (ärende #38).
 
 Därförinnan (13 okt): prio 1–2 körda – D varv 2 Västra Götaland (#25),
 område C grå platser utan sajt (33 bekräftade, #26), område E skiva 3 (50 OSM-
@@ -73,14 +79,18 @@ Se https://github.com/PerraFree/PJfrance/issues?q=is%3Aopen+label%3Abacklog
    Stockholms län (prio-1).
 2. #26 Område C: grå platser. #27 Område E: öppettider/säsong. #28 Restlista
    som kräver webbläsare (prio-2).
-3. #29 Gasolluckor. #30 Tekniska tillval/underhåll. #31 SEO/spridning (prio-3).
+3. #42 Databas: påhittade plats-id, oanvända fotofiler, deploy utan skrivrätt
+   i byggsteget (prio-2). #43 Gasolcitat + kvarvarande datatvivel (prio-2).
+4. #29 Gasolluckor. #30 Tekniska tillval/underhåll. #31 SEO/spridning (prio-3).
 
 ## Väntar på Per
 
 - Lanseringstexterna för crowdsourcing (#24) ligger i `docs/LANSERING.md`:
   forum, Facebook, redaktionstips, brev till anläggningar, QR-dekal. Per lägger
   ut; bevakningen mejlar var 3:e timme.
-- Dependabot-PR:er mergas i webbläsaren när de kommer (måndagar).
+- Dependabot: npm-patch/minor mergas automatiskt (`dependabot-automerge.yml`,
+  aldrig körd skarpt – kontrolleras 26 okt). Actions-PR:er får en kommentar och
+  mergas av en session (MCP `merge_pull_request`) när kontrollen är grön.
 - Rutinen "Veckosvep Tömnmingskartan" (skapad i webbgränssnittet) hänvisar till
   CLAUDE.md för metoderna, som nu ligger i `docs/svep-logg.md`/`docs/HISTORIK.md`
   – ny prompt levererad i chatten 11 okt att klistra in i claude.ai → Rutiner.

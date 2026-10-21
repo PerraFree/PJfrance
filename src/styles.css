@@ -1102,6 +1102,7 @@ button {
 
 .popup h3 {
   margin: 0 0 8px;
+  overflow-wrap: anywhere;
   padding-left: 11px;
   position: relative;
   font-size: 1.05rem;
