@@ -243,6 +243,41 @@ const OSM_UNVERIFIED_OVERRIDES = new Map([
   ['way/245336774', ['gravatten']], // Hammarstrands Camping – gråvatten nämns inte, recension säger ej tillåtet (kontroll okt 2026)
 ])
 
+
+// "Återvinningscentral" + "Brändkläppen Återvinningscentral" → "Återvinningscentral
+// vid Brändkläppen": grannens namn upprepar inte första ordet i det generiska
+// namnet (granskning 21 okt 2026). Samma funktion som vidName i src/lib/naming.ts.
+function vidName(base, place) {
+  const letters = (w) => w.toLowerCase().replace(/[^\p{L}]/gu, '')
+  const key = letters(base.split(/[\s,]/)[0])
+  const baseWords = base.split(/\s+/).map(letters)
+  const toks = place.split(/\s+/)
+  const out = []
+  let changed = false
+  for (let i = 0; i < toks.length; i++) {
+    // Hela det generiska namnet ("Ställplats för husbil, Osby")
+    const seq = toks.slice(i, i + baseWords.length).map(letters)
+    const whole = baseWords.length > 1 && seq.length === baseWords.length && seq.every((w, j) => w === baseWords[j])
+    const t = letters(toks[i])
+    const next = toks[i + (whole ? baseWords.length : 1)]
+    const end = whole ? toks[i + baseWords.length - 1] : toks[i]
+    const keyHit = key.length >= 5 && t.startsWith(key) && t.length - key.length <= 3
+    const freeAfter = next === undefined || /[,)]$/.test(end) || /^[\p{Lu}\d(–-]/u.test(next)
+    if (whole || (keyHit && freeAfter)) {
+      // Genitiv före ordet ("Lysernas Ställplats") – behåll grannens namn som det är.
+      if (out.length && /s$/i.test(out[out.length - 1]) && !/ss$/i.test(out[out.length - 1])) return `${base} vid ${place}`
+      if (/,$/.test(end) && out.length) out[out.length - 1] += ','
+      i += whole ? baseWords.length - 1 : 0
+      changed = true
+      continue
+    }
+    out.push(toks[i])
+  }
+  if (!changed) return `${base} vid ${place}`
+  const kept = out.join(' ').replace(/\s*[–-]\s*(?=\(|$)/g, ' ').replace(/(\s+(&|och))+$/i, '').replace(/^[\s,–-]+|[\s,–&-]+$/g, '').replace(/\s{2,}/g, ' ').trim()
+  return `${base} vid ${kept.length >= 3 ? kept : place}`
+}
+
 function applyUnverifiedOverride(key, services) {
   const unv = OSM_UNVERIFIED_OVERRIDES.get(key)
   if (!unv) return { services }
@@ -1314,7 +1349,7 @@ async function nameGenericStations(stations) {
     // Ett härlett grannamn lånar bara delen efter första " vid " (som naming.ts) –
     // annars kedjades namnen ("Sopstation vid Sopstation vid …", granskning 14 okt 2026).
     const bestName = best && best.nameFrom === 'nearby' && best.name.includes(' vid ') ? best.name.slice(best.name.indexOf(' vid ') + 5) : best?.name
-    if (best) { s.name = `${s.name} vid ${bestName}`; s.nameFrom = 'nearby'; nearby++; continue }
+    if (best) { s.name = vidName(s.name, bestName); s.nameFrom = 'nearby'; nearby++; continue }
     if (!s.services.some((x) => NAME_CORE.has(x))) continue
     if (prevNames.has(s.id)) { s.name = prevNames.get(s.id); s.nameFrom = 'reverse'; reused++; continue }
     todo.push(s)

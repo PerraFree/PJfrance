@@ -63,6 +63,43 @@ export function nameGenericByNearby(stations: Station[], maxKm = 0.25): Station[
     // vid Sopstation vid Skeppsbron" (granskning 10–11, 12 okt 2026).
     const model = best as Station
     const place = model.nameFrom === 'nearby' && model.name.includes(' vid ') ? model.name.slice(model.name.indexOf(' vid ') + 5) : model.name
-    return { ...s, name: `${s.name} vid ${place}`, nameFrom: 'nearby' as const }
+    return { ...s, name: vidName(s.name, place), nameFrom: 'nearby' as const }
   })
+}
+
+/**
+ * "Återvinningscentral" + "Brändkläppen Återvinningscentral" →
+ * "Återvinningscentral vid Brändkläppen" – grannens namn upprepar inte första
+ * ordet i det generiska namnet (77 dubbleringar, granskning 21 okt 2026).
+ * Samma funktion finns i scripts/sync-stations.mjs – ändra båda.
+ */
+export function vidName(base: string, place: string): string {
+  const letters = (w: string) => w.toLowerCase().replace(/[^\p{L}]/gu, '')
+  const key = letters(base.split(/[\s,]/)[0])
+  const baseWords = base.split(/\s+/).map(letters)
+  const toks = place.split(/\s+/)
+  const out: string[] = []
+  let changed = false
+  for (let i = 0; i < toks.length; i++) {
+    // Hela det generiska namnet ("Ställplats för husbil, Osby")
+    const seq = toks.slice(i, i + baseWords.length).map(letters)
+    const whole = baseWords.length > 1 && seq.length === baseWords.length && seq.every((w, j) => w === baseWords[j])
+    const t = letters(toks[i])
+    const next = toks[i + (whole ? baseWords.length : 1)]
+    const end = whole ? toks[i + baseWords.length - 1] : toks[i]
+    const keyHit = key.length >= 5 && t.startsWith(key) && t.length - key.length <= 3
+    const freeAfter = next === undefined || /[,)]$/.test(end) || /^[\p{Lu}\d(–-]/u.test(next)
+    if (whole || (keyHit && freeAfter)) {
+      // Genitiv före ordet ("Lysernas Ställplats") – behåll grannens namn som det är.
+      if (out.length && /s$/i.test(out[out.length - 1]) && !/ss$/i.test(out[out.length - 1])) return `${base} vid ${place}`
+      if (/,$/.test(end) && out.length) out[out.length - 1] += ','
+      i += whole ? baseWords.length - 1 : 0
+      changed = true
+      continue
+    }
+    out.push(toks[i])
+  }
+  if (!changed) return `${base} vid ${place}`
+  const kept = out.join(' ').replace(/\s*[–-]\s*(?=\(|$)/g, ' ').replace(/(\s+(&|och))+$/i, '').replace(/^[\s,–-]+|[\s,–&-]+$/g, '').replace(/\s{2,}/g, ' ').trim()
+  return `${base} vid ${kept.length >= 3 ? kept : place}`
 }

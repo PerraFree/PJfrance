@@ -11,6 +11,7 @@ const reg = JSON.parse(readFileSync(new URL('./curated-places.json', import.meta
 const st = seed.stations ?? seed
 const SERVICES = new Set(['gravatten', 'latrin', 'vatten', 'sopor', 'atervinning', 'stallplats', 'camping', 'gasol'])
 const errors = []
+const warnings = []
 const by = (src) => st.filter((s) => s.source === src).length
 const curated = st.filter((s) => String(s.id).startsWith('curated-')).length
 
@@ -35,10 +36,23 @@ const GEN = '(Tömningsstation|Ställplats för husbil|Vattenpåfyllning|Sopstat
 const CHAIN = new RegExp(`^${GEN} vid ${GEN} vid `)
 const chained = (Array.isArray(st) ? st : []).filter((s) => s.nameFrom === 'nearby' && CHAIN.test(s.name))
 if (chained.length) errors.push(`${chained.length} härledda namn med flera "vid" (t.ex. ${chained[0].name})`)
+// "Återvinningscentral vid Brändkläppen Återvinningscentral": grannens namn
+// upprepar det generiska ordet (vidName i synken tar bort det, granskning 21 okt 2026).
+const first = (n) => n.split(/[\s,]/)[0].toLowerCase()
+const redundant = (Array.isArray(st) ? st : []).filter((s) => {
+  if (s.nameFrom !== 'nearby') return false
+  const m = s.name.match(new RegExp(`^${GEN} vid (.+)$`))
+  if (!m) return false
+  const key = first(m[1])
+  const last = m[2].split(/\s+/).pop().toLowerCase().replace(/[^\p{L}]/gu, '')
+  return /\s/.test(m[2].trim()) && key.length >= 5 && last.startsWith(key) && last.length - key.length <= 3 && !/\p{L}s\s+\S+$/u.test(m[2])
+})
+if (redundant.length) warnings.push(`${redundant.length} härledda namn som upprepar det generiska ordet (t.ex. ${redundant[0].name})`)
 if (badCoord) errors.push(`${badCoord} platser med koordinater utanför Sverige`)
 if (badSvc) errors.push(`${badSvc} platser med saknade eller okända tjänster`)
 
 console.log(`Seed: ${st.length} platser (OSM ${by('osm')}, Trafikverket ${by('trafikverket')}, register ${curated}/${reg.length})`)
+for (const w of warnings) console.warn('Varning: ' + w)
 if (errors.length) {
   console.error('\nSeeden ser trasig ut – publicerar inte:')
   for (const e of errors) console.error('  - ' + e)
