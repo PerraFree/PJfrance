@@ -1,5 +1,5 @@
 /* Enkel service worker: cachar appskal + stationsdata så appen fungerar offline. */
-const CACHE = 'tomningskartan-v118'
+const CACHE = 'tomningskartan-v119'
 const APP_SHELL = [
   './',
   './manifest.webmanifest',
@@ -18,7 +18,8 @@ const APP_SHELL = [
 // till den nya cachen innan den gamla raderas.
 async function cacheShellAndAssets() {
   const c = await caches.open(CACHE)
-  await Promise.allSettled(APP_SHELL.map((u) => c.add(u)))
+  // cache: 'reload' – annars kan webbläsarens HTTP-cache ge en gammal startsida.
+  await Promise.allSettled(APP_SHELL.map((u) => c.add(new Request(u, { cache: 'reload' }))))
   const shell = await c.match('./')
   if (!shell) return
   const html = await shell.text()
@@ -48,6 +49,14 @@ self.addEventListener('activate', (event) => {
             const res = await old.match(req)
             if (res) await keep.put(req, res)
           }
+        }
+        // Misslyckades startsidan eller seeden vid installationen (nätavbrott,
+        // 5xx) följer den gamla kopian med – annars tom karta offline
+        // (granskning 21 okt 2026).
+        for (const u of APP_SHELL) {
+          if (await keep.match(u)) continue
+          const res = await old.match(u)
+          if (res) await keep.put(u, res)
         }
         await caches.delete(k)
       }
