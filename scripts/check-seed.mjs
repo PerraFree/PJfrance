@@ -47,7 +47,7 @@ const redundant = (Array.isArray(st) ? st : []).filter((s) => {
   const last = m[2].split(/\s+/).pop().toLowerCase().replace(/[^\p{L}]/gu, '')
   return /\s/.test(m[2].trim()) && key.length >= 5 && last.startsWith(key) && last.length - key.length <= 3 && !/\p{L}s\s+\S+$/u.test(m[2])
 })
-if (redundant.length) warnings.push(`${redundant.length} härledda namn som upprepar det generiska ordet (t.ex. ${redundant[0].name})`)
+if (redundant.length) errors.push(`${redundant.length} härledda namn som upprepar det generiska ordet (t.ex. ${redundant[0].name})`)
 if (badCoord) errors.push(`${badCoord} platser med koordinater utanför Sverige`)
 if (badSvc) errors.push(`${badSvc} platser med saknade eller okända tjänster`)
 

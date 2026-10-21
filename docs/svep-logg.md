@@ -29,7 +29,7 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 - **2026-10-19, B (gasol) – kommuner utan gasolpost (session veckorutin):** 127 kommuner saknade gasolpost i seeden; 8 agenter
   (≈200 sökningar av 480 budgeterade, inga kvotfel; sökverktyget gav bara sammandrag, WebFetch blockad) sökte Lindes
-  försäljningsställen, Norbro, gasolautomat.se. **8 nya poster** (Hänne Edsbyn kunde inte geokodas) (Köpingsvik fanns redan i OSM, Borgholm – ej Mörbylånga): 4 bekräftade gasolautomater (AGA/Linde, PC10:
+  försäljningsställen, Norbro, gasolautomat.se. **8 nya poster** (Hänne Edsbyn kunde inte geokodas) (Köpingsvik fanns redan i registret som curated-168-klintagatan-19,-köpingsvik, Borgholm – ej Mörbylånga): 4 bekräftade gasolautomater (AGA/Linde, PC10:
   Leksand, Håbo/Bålsta, Sotenäs/Wiggersvik, Nora) och 4 grå (Tomelilla AGA – storlek ej angiven;
   Norbro-återförsäljare Grillhaket Bräcke, Ola Ludvigsson Storuman, Lidens Sorsele). ≈45 låg-evidensfynd
   (Linde-ombud som listar "utbytesflaskor" utan storlek) och negativa kommuner i `docs/gasol-svep-okt-2026-lag-evidens.md`.

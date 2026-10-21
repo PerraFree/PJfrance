@@ -29494,11 +29494,11 @@
       "gasol_byte"
     ],
     "source": "egen",
-    "description": "Gasolautomat (AGA/Linde): byte av tom gasolflaska mot full, 10 kg-kompositflaska (PC10); tomma 11 kg-stålflaskor tas emot där Linde anger det. Dygnet runt, kortbetalning. Källa: gasolautomat.se (https://gasolautomat.se/automater/). Svep okt 2026.",
+    "description": "Gasolautomat (AGA/Linde): byte av tom gasolflaska mot full, 10 kg-kompositflaska (PC10); tomma 11 kg-stålflaskor tas emot där Linde anger det. Dygnet runt, kortbetalning. Källa: gasolautomat.se (https://gasolautomat.se/automater/). Svep okt 2026. Granskning 21 okt 2026: startsidan angav 430 kr, prislistan 559 kr – prislistan visas.",
     "url": "https://gasolautomat.se/automater/",
     "openingHours": "Dygnet runt",
     "confidence": "high",
-    "gasolPrice": "Byte PC10 559 kr enligt prislistan (startsidan anger 430 kr – kontrollera i automaten)"
+    "gasolPrice": "Byte PC10 559 kr (Lindes prislista)"
   },
   {
     "id": "curated-gasol-grillhaket-i-bräcke-ab",
@@ -29535,7 +29535,7 @@
       "gasol_byte"
     ],
     "source": "egen",
-    "description": "Gasolautomat (AGA/Linde): byte av tom gasolflaska mot full, 10 kg-kompositflaska (PC10); tomma 11 kg-stålflaskor tas emot där Linde anger det. Dygnet runt, kortbetalning. Källa: Lindes försäljningsställen (https://forsaljningsstallen.linde.se/tomelilla/banm%C3%A4staregatan-2/aga-gasolautomat-tomelilla). Svep okt 2026.",
+    "description": "Gasolautomat (AGA/Linde): byte av tom gasolflaska mot full – flaskstorlek ej angiven på Lindes sida, därför grå. Dygnet runt, kortbetalning. Källa: Lindes försäljningsställen (https://forsaljningsstallen.linde.se/tomelilla/banm%C3%A4staregatan-2/aga-gasolautomat-tomelilla). Svep okt 2026.",
     "url": "https://forsaljningsstallen.linde.se/tomelilla/banm%C3%A4staregatan-2/aga-gasolautomat-tomelilla",
     "openingHours": "Dygnet runt",
     "unverified": true,
