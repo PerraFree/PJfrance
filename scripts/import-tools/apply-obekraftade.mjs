@@ -55,7 +55,10 @@ for (const f of fs.readdirSync(path.join(S, 'c')).filter((x) => /^res-\d+\.json$
     const newly = conf2.filter((s) => unv.includes(s) || !(p.services || []).includes(s))
     if (!newly.length && !wasWhole) { st.skipped++; continue }
     p.services = uniq([...(p.services || []), ...conf2])
-    p.unverifiedServices = unv.filter((s) => !conf2.includes(s))
+    // En helt grå plats: tjänster agenten inte styrkt blir grå, inte gröna
+    // (18 + 12 poster blev felaktigt helt gröna 12–13 okt, granskning 21 okt 2026).
+    const stillGrey = wasWhole ? p.services.filter((s) => !conf2.includes(s) && !['stallplats', 'camping'].includes(s)) : []
+    p.unverifiedServices = uniq([...unv.filter((s) => !conf2.includes(s)), ...stillGrey])
     if (!p.unverifiedServices.length) delete p.unverifiedServices
     if (r.fee && r.fee.length <= 70) p.fee = r.fee
     if (r.openingHours && r.openingHours.length <= 60 && !p.openingHours) p.openingHours = r.openingHours

@@ -197,6 +197,26 @@ if (existsSync(SEED)) {
       if (lostT.length && !(target.name === s.name && ORSAK.test(target.description ?? ''))) errors.push(`"${s.name}" slogs ihop med "${target.name}" men bekräftad ${lostT.join('/')} gick förlorad (blev grå/borta) – behåll bekräftade tjänster vid sammanslagning`)
       continue
     }
+  }
+  // Uppgraderingsvakt (granskning 21 okt 2026): område C-skriptet gjorde helt
+  // grå poster helt gröna, även tjänster citatet inte nämnde ("Septitömning för
+  // båtar" → latrin + gråvatten). En tjänst som blir bekräftad måste nämnas i
+  // beskrivningen.
+  const BELÄGG = { gravatten: /gråvatten|grå\s*(-|&|och)\s*(och\s*)?svart|smutsvatten|avlopp|grey ?water|wastewater|spillvatten|dumpstation|tömningsstation/i, latrin: /latrin|kassett|toalettömning|toatömning|kemisk|husvagnstoalett|utslagsback|svartvatten|chemical|fäkal|dumpstation|tömningsstation/i, vatten: /(?<!grå|spill|svart|smuts|av)vatten(?!.{0,15}:\s*nej)|fresh ?water|drinking water/i, gasol: /gasol|propan|flaskgas/i }
+  const seedById = new Map(seedSt.map((s) => [s.id, s]))
+  for (const p of reg) {
+    const s = seedById.get(p.id)
+    if (!s) continue
+    const gained = bekräftade(p).filter((x) => !bekräftade(s).includes(x))
+    const utan = gained.filter((x) => !BELÄGG[x].test(p.description ?? ''))
+    if (utan.length) errors.push(`"${p.name}" (${p.id}) har fått bekräftad ${utan.join('/')} men beskrivningen nämner inte tjänsten – lägg in citatet eller låt den vara grå (unverifiedServices)`)
+  }
+  for (const s of seedSt) {
+    if (!String(s.id).startsWith('curated-')) continue
+    const had = bekräftade(s)
+    if (!had.length) continue
+    const p = byIdReg.get(s.id)
+    if (!p) continue
     const lost = had.filter((x) => !bekräftade(p).includes(x))
     // Granskning 14 okt 2026: ORSAK ensam träffade 432 av 1 099 beskrivningar
     // ("Källa … 2026") – orsaken måste också nämna den tjänst som försvann.
