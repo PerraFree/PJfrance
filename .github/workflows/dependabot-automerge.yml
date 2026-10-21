@@ -5,9 +5,9 @@ name: Dependabot – automatisk merge
 # Dependabots förslag och mergar själv om allt går igenom. Bara patch/minor –
 # en major-uppdatering (t.ex. Vite 7, ny major av en action) lämnas med en
 # kommentar, den kräver att en session tittar på den. Förslag som rör andra
-# filer än package*.json och workflows mergas aldrig automatiskt, och bland
-# actions bara GitHubs egna (actions/*, dependabot/*) – tredjepartsactions
-# (peaceiris, reactivecircus) lämnas åt en session (granskning 21 okt 2026).
+# filer än package*.json mergas aldrig automatiskt. Actions-uppdateringar
+# (workflowfiler) kan GitHubs token inte merga – de lämnas med en kommentar åt
+# en session (granskning 21 okt 2026).
 # Dependabot väntar 7 dagar på nya versioner (cooldown i dependabot.yml), så
 # ett kapat paket hinner oftast dras tillbaka innan det når hit.
 #
@@ -52,7 +52,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR: ${{ github.event.pull_request.number }}
         run: |
-          filer=$(gh pr diff "$PR" --repo "$GITHUB_REPOSITORY" --name-only)
+          filer=$(gh api "repos/$GITHUB_REPOSITORY/pulls/$PR/files" --paginate --jq '.[].filename')
           echo "$filer"
           if echo "$filer" | grep -qvE '^(package\.json|package-lock\.json|\.github/workflows/[A-Za-z0-9._-]+\.ya?ml)$'; then
             echo "ok=false" >> "$GITHUB_OUTPUT"
@@ -110,31 +110,28 @@ jobs:
     steps:
       - name: Merga (patch/minor) eller lämna kvar (major/okänt)
         run: |
-          if [ "$FILER_OK" != "true" ]; then
-            echo "Rör andra filer – lämnas kvar"; exit 0
-          fi
-          if [ -z "$ECO" ] || [ -z "$DEPS" ]; then
-            echo "Okänt ekosystem eller beroende – lämnas kvar"; exit 0
-          fi
-          if [ "$ECO" = "github_actions" ]; then
-            for d in $(echo "$DEPS" | tr ',' ' '); do
-              case "$d" in
-                actions/*|dependabot/*) ;;
-                *)
-                  gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body "Automatisk merge hoppades över: \`$d\` är en action från tredje part och behöver granskas av en session. Kontrollerna gick igenom."
-                  exit 0 ;;
-              esac
-            done
-          fi
+          # Lämnar PR:en kvar med EN kommentar (inte en ny vid varje rebase).
+          lamna() {
+            echo "$1"
+            if ! gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" --paginate --jq '.[].body' | grep -q 'automerge-lamnad'; then
+              gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body "<!-- automerge-lamnad -->
+          Automatisk merge hoppades över: $1 Kontrollerna gick igenom; en Claude-session tar hand om den."
+            fi
+            exit 0
+          }
+          [ "$FILER_OK" = "true" ] || lamna "förslaget rör andra filer än package*.json."
+          [ -n "$ECO" ] && [ -n "$DEPS" ] || lamna "okänt ekosystem eller beroende."
+          # GitHubs egen token får inte ändra filer under .github/workflows/, så
+          # actions-uppdateringar kan inte mergas härifrån (granskning 21 okt 2026).
+          [ "$ECO" != "github_actions" ] || lamna "actions-uppdateringar ändrar workflowfiler, som GitHubs token inte får merga."
           case "$TYP" in
             version-update:semver-patch|version-update:semver-minor) ;;
-            *)
-              gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body "Automatisk merge hoppades över: uppdateringstypen är \`${TYP:-okänd}\` (bara patch/minor mergas automatiskt). Kontrollerna gick igenom; en major-uppdatering behöver granskas av en session."
-              exit 0 ;;
+            *) lamna "uppdateringstypen är \`${TYP:-okänd}\` (bara patch/minor mergas automatiskt)." ;;
           esac
           # Bara exakt den commit som kontrollerades mergas.
           gh pr merge "$PR" --repo "$GITHUB_REPOSITORY" --squash --delete-branch --match-head-commit "$SHA" \
             || gh pr merge "$PR" --repo "$GITHUB_REPOSITORY" --merge --delete-branch --match-head-commit "$SHA"
-          # En merge med GITHUB_TOKEN startar inte deployen själv – starta den
-          # (deploy-vakt.yml fångar det annars inom 15 min).
+          # En merge med GITHUB_TOKEN startar inga push-workflows – starta deployen
+          # och Android-bygget (deploy-vakt.yml fångar deployen annars).
           gh workflow run deploy.yml --repo "$GITHUB_REPOSITORY" --ref "$BAS" || true
+          gh workflow run android.yml --repo "$GITHUB_REPOSITORY" --ref "$BAS" || true

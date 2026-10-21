@@ -10,7 +10,7 @@ name: Deploy-vakt (startar deployen om GitHub missade pushen)
 
 on:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '4,19,34,49 * * * *'
   workflow_dispatch:
 
 permissions:

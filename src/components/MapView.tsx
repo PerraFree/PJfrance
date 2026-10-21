@@ -487,6 +487,60 @@ function sharePlace(name: string, lat: number, lon: number, id: string | undefin
   })
 }
 
+/**
+ * Fyller i öppet-nu, ortsnamn (och arkiverat väder) i en platsruta. Körs när
+ * rutan öppnas OCH när den byggs om vid skärmvridning (popup.update() bygger
+ * om innehållet, granskning 21 okt 2026).
+ */
+function fillPopupSlots(el: HTMLElement) {
+  const ohSlot = el.querySelector<HTMLElement>('.open-now-slot')
+  const oh = ohSlot?.dataset.oh
+  if (ohSlot && oh) {
+    void openNow(oh).then((state) => {
+      if (state === 'open') ohSlot.outerHTML = '<span class="open-now open">Öppet nu</span>'
+      else if (state === 'closed')
+        ohSlot.outerHTML = '<span class="open-now closed">Stängt nu</span>'
+    })
+  }
+
+  const locSlot = el.querySelector<HTMLElement>('.loc-slot')
+  if (locSlot && locSlot.dataset.lat && locSlot.dataset.lon) {
+    void reverseGeocode(
+      parseFloat(locSlot.dataset.lat),
+      parseFloat(locSlot.dataset.lon),
+    ).then((place) => {
+      locSlot.textContent = place ? `📍 ${place}` : '📍 Plats på kartan'
+    })
+  }
+
+  // Väder: arkiverad funktion, se SHOW_WEATHER.
+  const weatherSlot = SHOW_WEATHER ? el.querySelector<HTMLElement>('.weather-slot') : null
+  if (weatherSlot && weatherSlot.dataset.lat && weatherSlot.dataset.lon) {
+    const wLat = parseFloat(weatherSlot.dataset.lat)
+    const wLon = parseFloat(weatherSlot.dataset.lon)
+    const body = weatherSlot.querySelector<HTMLElement>('.weather-body')
+    void fetchWeather(wLat, wLon).then((days) => {
+      if (!body) return
+      if (!days.length) {
+        body.textContent = 'Prognos ej tillgänglig just nu.'
+        return
+      }
+      const chips = days
+        .map(
+          (d) =>
+            `<span class="weather-day"><span class="weather-day-wd">${esc(d.weekday)}</span>` +
+            `<span class="weather-day-icon">${WEATHER_ICONS[d.symbol] ?? '·'}</span>` +
+            `<span class="weather-day-temp">${d.tMax}°/${d.tMin}°</span></span>`,
+        )
+        .join('')
+      const windyUrl = `https://www.windy.com/?${wLat.toFixed(4)},${wLon.toFixed(4)},10`
+      body.innerHTML =
+        `<div class="weather-days">${chips}</div>` +
+        `<a class="weather-windy" href="${escapeAttr(windyUrl)}" target="_blank" rel="noopener">Vind &amp; nederbörd på Windy →</a>`
+    })
+  }
+}
+
 export default function MapView({
   stations,
   activeFilters,
@@ -693,6 +747,8 @@ export default function MapView({
         popup.options.autoPan = false
         popup.update()
         popup.options.autoPan = autoPan
+        const popupEl = popup.getElement()
+        if (popupEl) fillPopupSlots(popupEl)
         centerPopup(popup)
       }, 700)
     }
@@ -1240,52 +1296,7 @@ export default function MapView({
       }
       if (!el) return
 
-      const ohSlot = el.querySelector<HTMLElement>('.open-now-slot')
-      const oh = ohSlot?.dataset.oh
-      if (ohSlot && oh) {
-        void openNow(oh).then((state) => {
-          if (state === 'open') ohSlot.outerHTML = '<span class="open-now open">Öppet nu</span>'
-          else if (state === 'closed')
-            ohSlot.outerHTML = '<span class="open-now closed">Stängt nu</span>'
-        })
-      }
-
-      const locSlot = el.querySelector<HTMLElement>('.loc-slot')
-      if (locSlot && locSlot.dataset.lat && locSlot.dataset.lon) {
-        void reverseGeocode(
-          parseFloat(locSlot.dataset.lat),
-          parseFloat(locSlot.dataset.lon),
-        ).then((place) => {
-          locSlot.textContent = place ? `📍 ${place}` : '📍 Plats på kartan'
-        })
-      }
-
-      // Väder: arkiverad funktion, se SHOW_WEATHER.
-      const weatherSlot = SHOW_WEATHER ? el.querySelector<HTMLElement>('.weather-slot') : null
-      if (weatherSlot && weatherSlot.dataset.lat && weatherSlot.dataset.lon) {
-        const wLat = parseFloat(weatherSlot.dataset.lat)
-        const wLon = parseFloat(weatherSlot.dataset.lon)
-        const body = weatherSlot.querySelector<HTMLElement>('.weather-body')
-        void fetchWeather(wLat, wLon).then((days) => {
-          if (!body) return
-          if (!days.length) {
-            body.textContent = 'Prognos ej tillgänglig just nu.'
-            return
-          }
-          const chips = days
-            .map(
-              (d) =>
-                `<span class="weather-day"><span class="weather-day-wd">${esc(d.weekday)}</span>` +
-                `<span class="weather-day-icon">${WEATHER_ICONS[d.symbol] ?? '·'}</span>` +
-                `<span class="weather-day-temp">${d.tMax}°/${d.tMin}°</span></span>`,
-            )
-            .join('')
-          const windyUrl = `https://www.windy.com/?${wLat.toFixed(4)},${wLon.toFixed(4)},10`
-          body.innerHTML =
-            `<div class="weather-days">${chips}</div>` +
-            `<a class="weather-windy" href="${escapeAttr(windyUrl)}" target="_blank" rel="noopener">Vind &amp; nederbörd på Windy →</a>`
-        })
-      }
+      fillPopupSlots(el)
     })
 
     return () => {

@@ -98,7 +98,7 @@ Android förberett (`docs/BUILD-MOBILE.md`).
   `cell()` (# före @); max 20 ärenden per körning; try/catch per rad.
 - `hantera-platsforslag.yml` – kommentar `godkänn`/`neka`/`avslå` → PATCH via
   PostgREST med `SUPABASE_SERVICE_KEY` (ord-jämförelse, inte `\b` – trasigt med å/ä/ö).
-- `sajtvakt.yml` – var 30:e minut: hämtar tomningskartan.se och seeden; öppnar
+- `sajtvakt.yml` – schemat säger var 30:e minut: hämtar tomningskartan.se och seeden; öppnar
   ett ärende (`<!-- sajtvakt -->`) om sajten inte svarar, stänger det när den gör det.
 - `verifiera-kallor.yml` – tisdagar 04:20 UTC + manuell: `scripts/verify-sources.mjs`
   hämtar registrets webbadresser från runnern (som har nät) och kontrollerar att
@@ -106,6 +106,9 @@ Android förberett (`docs/BUILD-MOBILE.md`).
   ärende med markör `<!-- kallkontroll -->` (uppdateras). Inga secrets.
 - `android.yml` – debug-APK + `starttest` i emulator; skärmdump force-pushas till
   grenen `emulator-skarmdump` (artefakter går inte att hämta från en session).
+- **GitHub stryper schemalagda körningar** (granskning 21 okt 2026): vakterna
+  som ska gå var 15:e/30:e minut går i praktiken var 2–6:e timme, och
+  måndagssynken startar ofta timmar efter sin tid. Räkna inte med snabbare larm.
 - Secrets: `SUPABASE_ACCESS_TOKEN` (bara installationen; scoped token, går ut
   ~var 90:e dag – byt på supabase.com/dashboard/account/tokens, Resource access
   Project → Greywater, bara nödvändiga rättigheter, längsta giltighet, uppdatera
@@ -114,8 +117,10 @@ Android förberett (`docs/BUILD-MOBILE.md`).
 - **Alla actions är låsta till commit-SHA** med versionen som kommentar. Ny
   action: `git ls-remote --tags https://github.com/<ägare>/<repo>` → peeled SHA.
   Dependabot (`.github/dependabot.yml`, måndagar) öppnar max fem PR:er –
-  `dependabot-automerge.yml` kör vakterna + bygget och mergar patch/minor av npm och GitHubs egna actions själv (7 dagars cooldown, tredjepartsactions lämnas)
-  (Per vill slippa manuella steg, 19 okt 2026); major eller andra filer lämnas
+  `dependabot-automerge.yml` kör vakterna + bygget och mergar npm-patch/minor själv
+  (7 dagars cooldown, `--match-head-commit`). Actions-PR:er kan GitHubs token inte
+  merga (workflowfiler) – de får en kommentar och mergas av en session när
+  kontrollen är grön (Per vill slippa manuella steg, 19 okt 2026); major eller andra filer lämnas
   med kommentar åt en session. Håll upload-/download-artifact i samma major.
 - **Claude-rutiner** (claude.ai → Rutiner, inte i repot): "Veckosvep
   Tömnmingskartan" (måndagar 05:15 UTC), "Veckorapport – nya/borttagna platser"

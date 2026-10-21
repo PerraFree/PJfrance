@@ -19,7 +19,7 @@ on:
       - 'scripts/curated-places.json'
       - '.github/workflows/sync-data.yml'
   schedule:
-    - cron: '0 3 * * 1'
+    - cron: '17 2 * * 1'
 
 permissions:
   contents: write
