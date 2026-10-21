@@ -1,0 +1,80 @@
+10-21 05:53:33.706  2641  2641 V Capacitor/AppPlugin: Notifying listeners for event appStateChange
+10-21 05:53:33.706  2641  2641 D Capacitor/AppPlugin: No listeners found for event appStateChange
+10-21 05:53:33.706  2641  2641 D Capacitor: App resumed
+10-21 05:53:33.761  2641  2880 D Capacitor: Handling local request: https://localhost/
+10-21 05:53:33.980  1053  1053 D CarrierSvcBindHelper: onPackageAdded: se.tomningskartan.app
+10-21 05:53:34.000   519  1888 D CoreBackPreview: Window{e3fbbf u0 se.tomningskartan.app/se.tomningskartan.app.MainActivity}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@d7d6abd, mPriority=0, mIsAnimationCallback=false}
+10-21 05:53:34.079   519   550 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.android.chrome/org.chromium.chrome.browser.quickactionsearchwidget.QuickActionSearchWidgetProvider$QuickActionSearchWidgetProviderSearch} won't be persisted.
+10-21 05:53:34.079   519   550 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.android.chrome/org.chromium.chrome.browser.quickactionsearchwidget.QuickActionSearchWidgetProvider$QuickActionSearchWidgetProviderDino} won't be persisted.
+10-21 05:53:34.079   519   550 D AppWidgetServiceImpl: Provider info from ComponentInfo{com.android.chrome/org.chromium.chrome.browser.searchwidget.SearchWidgetProvider} won't be persisted.
+10-21 05:53:34.129  2641  2881 D Capacitor: Handling local request: https://localhost/assets/index-8FiaPOHc.js
+10-21 05:53:34.153  2641  2882 D Capacitor: Handling local request: https://localhost/assets/leaflet-CN-MMHnt.js
+10-21 05:53:34.168  2641  2884 D Capacitor: Handling local request: https://localhost/assets/index-CXC3Yp1W.css
+10-21 05:53:34.909   519   754 I ActivityManager: Start proc 3078:com.google.android.webview:webview_apk/u0a134 for service {com.google.android.webview/org.chromium.android_webview.nonembedded.AwComponentUpdateService}
+10-21 05:53:34.994  1683  1683 I AiAiEcho: AppFetcherImplV2 updateApps package:[se.tomningskartan.app], userId:[0], reason:[package is added.].
+10-21 05:53:35.226   519   539 W ziparchive: Unable to open '/data/app/~~-bcudL89Gap-1POpik0aXg==/se.tomningskartan.app-Zp-Lec0xsPAsEGKrx_8XYg==/base.dm': No such file or directory
+10-21 05:53:35.232   519   539 I ActivityTaskManager: Displayed se.tomningskartan.app/.MainActivity for user 0: +5s500ms
+10-21 05:53:35.383   519  1764 I ImeTracker: se.tomningskartan.app:508f1858: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+10-21 05:53:35.390   519  1764 I ImeTracker: se.tomningskartan.app:508f1858: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-21 05:53:35.571  1559  1559 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x12000000 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 initialSelStart=-1 initialSelEnd=-1 initialCapsMode=0x0 hintText=null label=null packageName=se.tomningskartan.app fieldId=0 fieldName=null extras=null}, false)
+10-21 05:53:35.584  2641  2881 D Capacitor: Handling local request: https://localhost/assets/index-Bji9AqO-.js
+10-21 05:53:35.852   840   840 I SafetyLabelChangedBroadcastReceiver: received broadcast packageName: se.tomningskartan.app, current user: UserHandle{0}, packageChangeEvent: NEW_INSTALL, intent user: UserHandle{0}
+10-21 05:53:35.860   519  2486 W InputManager-JNI: Input channel object 'a407a59 Splash Screen se.tomningskartan.app (client)' was disposed without first being removed with the input manager!
+10-21 05:53:36.020  2641  2881 D Capacitor: Handling local request: https://localhost/icon.svg
+10-21 05:53:36.291  2641  2882 D Capacitor: Handling local request: https://localhost/data/stations-seed.json
+10-21 05:53:36.459  2641  2641 I Capacitor/Console: File:  - Line 349 - Msg: [object Object]
+10-21 05:53:36.462  2641  2641 V Capacitor/Plugin: To native (Capacitor plugin): callbackId: 39522331, pluginId: StatusBar, methodName: setBackgroundColor
+10-21 05:53:36.462  2641  2641 V Capacitor: callback: 39522331, pluginId: StatusBar, methodName: setBackgroundColor, methodData: {"color":"#f6f8f6"}
+10-21 05:53:36.477  2641  2884 D Capacitor: Handling local request: https://localhost/icon.svg
+10-21 05:53:36.689  3078  3179 W cr_AWNetworkFetcherTask: 	at org.chromium.android_webview.nonembedded.NetworkFetcherTask.download(chromium-TrichromeWebViewGoogle6432.apk-stable-567263637:48)
+10-21 05:53:36.824  1053  1374 D ImsResolver: maybeAddedImsService, packageName: se.tomningskartan.app
+10-21 05:53:41.452   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{265d0ac com.google.android.youtube/10139} BLOCKED
+10-21 05:53:41.452   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{3002c86 com.google.android.as/10125} BLOCKED
+10-21 05:53:41.452   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{282f574 com.google.android.gm/10141} BLOCKED
+10-21 05:53:41.452   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{4440a9d com.google.android.dialer/10128} BLOCKED
+10-21 05:53:41.452   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{ea28b12 com.google.android.contacts/10154} BLOCKED
+10-21 05:53:41.453   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{380e2e3 com.google.android.apps.youtube.music/10156} BLOCKED
+10-21 05:53:41.909  2641  2641 I Capacitor/Console: File:  - Line 333 - Msg: undefined
+10-21 05:53:41.911  2641  2641 I Capacitor/Console: File:  - Line 349 - Msg: [object Object]
+10-21 05:53:41.915  2641  2641 V Capacitor/Plugin: To native (Capacitor plugin): callbackId: 39522332, pluginId: StatusBar, methodName: setStyle
+10-21 05:53:41.915  2641  2641 V Capacitor: callback: 39522332, pluginId: StatusBar, methodName: setStyle, methodData: {"style":"LIGHT"}
+10-21 05:53:42.466  2641  3578 D ProfileInstaller: Installing profile for se.tomningskartan.app
+10-21 05:53:42.590  2641  2907 D Capacitor: Handling local request: https://localhost/assets/index-BHITqUnb.js
+10-21 05:53:42.592  2641  2641 I Capacitor/Console: File:  - Line 333 - Msg: undefined
+10-21 05:53:42.610  2641  2641 I Capacitor/Console: File:  - Line 349 - Msg: [object Object]
+10-21 05:53:42.611  2641  3060 D Capacitor: Handling local request: https://localhost/assets/index-BPOTujGz.js
+10-21 05:53:42.618  2641  2641 V Capacitor/Plugin: To native (Capacitor plugin): callbackId: 39522333, pluginId: App, methodName: addListener
+10-21 05:53:42.619  2641  2641 V Capacitor: callback: 39522333, pluginId: App, methodName: addListener, methodData: {"eventName":"backButton"}
+10-21 05:53:42.628  2641  2641 I Capacitor/Console: File:  - Line 349 - Msg: [object Object]
+10-21 05:53:42.628  2641  2641 V Capacitor/Plugin: To native (Capacitor plugin): callbackId: 39522334, pluginId: SplashScreen, methodName: hide
+10-21 05:53:42.628  2641  2641 V Capacitor: callback: 39522334, pluginId: SplashScreen, methodName: hide, methodData: {}
+10-21 05:53:42.636  2641  2641 I Capacitor/Console: File:  - Line 333 - Msg: undefined
+10-21 05:53:42.644  2641  2882 W ningskartan.app: Long monitor contention with owner ThreadPoolForeg (2881) at org.chromium.net.AndroidCertVerifyResult OB0.h(byte[][], java.lang.String, java.lang.String)(chromium-TrichromeWebViewGoogle6432.apk-stable-567263637:18) waiters=0 in org.chromium.net.AndroidCertVerifyResult OB0.h(byte[][], java.lang.String, java.lang.String) for 729ms
+10-21 05:53:43.188  1093  1151 I Launcher.IconCache: Database bulk icon loading failed, using fallback bulk icon loading for: ComponentInfo{se.tomningskartan.app/se.tomningskartan.app.MainActivity}
+10-21 05:53:43.203  2641  2884 W ningskartan.app: Long monitor contention with owner ThreadPoolForeg (2881) at org.chromium.net.AndroidCertVerifyResult OB0.h(byte[][], java.lang.String, java.lang.String)(chromium-TrichromeWebViewGoogle6432.apk-stable-567263637:18) waiters=1 in org.chromium.net.AndroidCertVerifyResult OB0.h(byte[][], java.lang.String, java.lang.String) for 1.288s
+10-21 05:53:44.096  3356  3397 W id.gms.unstable: Verification of void org.chromium.net.impl.CronetUrlRequest.onResponseStarted(int, java.lang.String, java.lang.String[], boolean, java.lang.String, java.lang.String, long) took 104.213ms (143.93 bytecodes/s) (1704B approximate peak alloc)
+10-21 05:53:44.204  2641  2881 D Capacitor: Handling local request: https://localhost/data/id-aliases.json
+10-21 05:53:45.099  3356  3629 W id.gms.unstable: Verification of void org.chromium.base.ApplicationStatus.registerThreadSafeNativeApplicationStateListener() took 423.084ms (54.36 bytecodes/s) (1712B approximate peak alloc)
+10-21 05:53:49.332   519   533 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{d69c146 com.google.android.gm/10141} BLOCKED
+10-21 05:53:51.466   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{6a48b48 com.google.android.googlequicksearchbox/10131} BLOCKED
+10-21 05:53:51.472   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{82f6de1 com.android.camera2/10147} BLOCKED
+10-21 05:53:51.472   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{cb28706 com.google.android.gm/10141} BLOCKED
+10-21 05:53:51.472   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{a54071d com.google.android.devicelockcontroller/10170} BLOCKED
+10-21 05:53:51.473   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{fe87c90 com.google.android.rkpdapp/10183} BLOCKED
+10-21 05:53:51.491   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{42df9af com.google.android.contacts/10154} BLOCKED
+10-21 05:53:51.494   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{394ad1b com.google.android.projection.gearhead/10123} BLOCKED
+10-21 05:53:53.850   519  1888 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{e3877d5 com.google.android.settings.intelligence/10118} BLOCKED
+10-21 05:53:53.858   519  1888 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{ff24d78 com.google.android.settings.intelligence/10118} BLOCKED
+10-21 05:53:53.872  1470  2904 I BlockstoreStorage: Clearing Blockstore Data for package se.tomningskartan.app [CONTEXT service_id=258 ]
+10-21 05:54:03.006   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{2203468 com.google.android.youtube/10139} BLOCKED
+10-21 05:54:03.006   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{81e3081 com.google.android.googlequicksearchbox/10131} BLOCKED
+10-21 05:54:03.007   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{c682526 com.google.android.apps.messaging/10129} BLOCKED
+10-21 05:54:03.008   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{6c56550 com.google.android.apps.maps/10155} BLOCKED
+10-21 05:54:13.130   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{86274da com.google.android.apps.messaging/10129} BLOCKED
+10-21 05:54:13.130   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{c225d0b com.google.android.as/10125} BLOCKED
+10-21 05:54:13.130   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{47d27e8 com.google.android.contacts/10154} BLOCKED
+10-21 05:54:14.522   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{93532f4 com.google.android.contacts/10154} BLOCKED
+10-21 05:54:16.167   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{655782d com.google.android.apps.messaging/10129} BLOCKED
+10-21 05:54:16.291  4467  4915 I cr_CronetUrlRequestContext: destroyNativeStreamLocked org.chromium.net.impl.CronetBidirectionalStream@1ddf95
+10-21 05:54:17.432   519   899 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{11ce50d com.google.android.settings.intelligence/10118} BLOCKED
+10-21 05:54:18.368   519   575 I AppsFilter: interaction: PackageSetting{4b93b2e se.tomningskartan.app/10192} -> PackageSetting{a6ab74c com.google.android.googlequicksearchbox/10131} BLOCKED
