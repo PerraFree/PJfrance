@@ -114,7 +114,7 @@ Android förberett (`docs/BUILD-MOBILE.md`).
 - **Alla actions är låsta till commit-SHA** med versionen som kommentar. Ny
   action: `git ls-remote --tags https://github.com/<ägare>/<repo>` → peeled SHA.
   Dependabot (`.github/dependabot.yml`, måndagar) öppnar max fem PR:er –
-  `dependabot-automerge.yml` kör vakterna + bygget och mergar patch/minor själv
+  `dependabot-automerge.yml` kör vakterna + bygget och mergar patch/minor av npm och GitHubs egna actions själv (7 dagars cooldown, tredjepartsactions lämnas)
   (Per vill slippa manuella steg, 19 okt 2026); major eller andra filer lämnas
   med kommentar åt en session. Håll upload-/download-artifact i samma major.
 - **Claude-rutiner** (claude.ai → Rutiner, inte i repot): "Veckosvep

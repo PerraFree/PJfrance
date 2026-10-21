@@ -13,6 +13,10 @@ updates:
       timezone: Europe/Stockholm
     # Ingen "labels:"-rad: etiketten måste finnas i repot i förväg, annars
     # lägger Dependabot en felkommentar i varje PR (hände 11 okt 2026).
+    # Nya versioner väntar 7 dagar innan förslaget öppnas – ger tid för att
+    # ett kapat paket upptäcks och dras tillbaka (granskning 21 okt 2026).
+    cooldown:
+      default-days: 7
     commit-message:
       prefix: "actions"
   - package-ecosystem: npm
@@ -29,5 +33,7 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
+    cooldown:
+      default-days: 7
     commit-message:
       prefix: "npm"
