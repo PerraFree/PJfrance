@@ -293,6 +293,9 @@ Claude-Session: https://claude.ai/code/session_01AMD92fRRy7TUSsKmSB1TFY
 - Larmärenden (sajtvakt, databasvakt, synk, källkontroll, deploy-vakt) väljs
   BARA bland ärenden skapade av `github-actions[bot]` – repot är publikt och
   vem som helst kunde annars öppna ett ärende med markören och tysta larmet.
+- **Ny tabell i `public` kräver uttryckliga `grant`** i `schema.sql` (Supabase ger
+  inga automatiska API-rättigheter till nya tabeller från 30 okt 2026) – annars
+  svarar API:t "permission denied".
 - Förlustvakten (`check-register.mjs`) jämför mot den PUBLICERADE seeden
   (gh-pages) i både synk och deploy, och orsaken måste vara ny (beskrivningen
   ändrad) och nämna den försvunna tjänsten – ett gammalt citat räknas inte.

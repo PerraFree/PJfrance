@@ -431,6 +431,15 @@ create or replace view public.review_summary as
   from public.reviews where status = 'approved' group by station_id;
 grant select on public.verification_summary, public.review_summary to anon, authenticated;
 
+-- Uttryckliga rättigheter (Supabase slutar 30 okt 2026 ge nya tabeller i public
+-- automatiska API-rättigheter – gäller vid nytt projekt/ominstallation).
+-- Appen läser och skickar bara in; RLS-policyerna ovan avgör vilka rader.
+-- Workflowerna (bevaka-/hantera-platsforslag) använder service_role.
+grant select, insert on public.submissions, public.reports, public.verifications,
+  public.reviews, public.photos to anon, authenticated;
+grant select, insert, update, delete on public.submissions, public.reports,
+  public.verifications, public.reviews, public.photos to service_role;
+
 -- Djupförsvar (granskning 14 okt 2026): Supabases standard "grant all" ger anon
 -- även TRUNCATE (går förbi RLS), REFERENCES och TRIGGER. PostgREST kan inte
 -- skicka dem, men ingen roll utanför ägaren ska ha dem.
