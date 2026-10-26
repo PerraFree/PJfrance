@@ -29669,11 +29669,3528 @@
     "lat": 57.2044,
     "lon": 12.3999,
     "address": "Stamnared 222, 432 92 Varberg",
-    "kommun": "Varberg",
     "fee": "Från 270 kr/natt (förbokas via Campio)",
     "openingHours": "1 maj–31 okt",
     "season": "seasonal",
     "website": "https://campio.no/sv/campsite/stall-plats-backagarden",
     "description": "Per 26 okt 2026: Backagården har latrintömning, sopor och vattenpåfyllning. Ägarens text på bokningssidan (Campio): \"Välkommen till Backagården en ställplats endast för husbilar! Förbokas för att säkerställa plats! ... Toaletter, dusch, tömning av toalettkassett, vattenpåfyllning, sophantering samt El. Vi har tyvärr inte någon tömning av gråvatten idag.\" Säsong 1 maj–31 okt. Läge (57.2044, 12.3999) och adress Stamnared 222, Varberg från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/backagaarden). Ingen gråvattentömning."
+  },
+  {
+    "id": "curated-hk-javrebodarnas-fiskecamp",
+    "name": "Jävrebodarnas Fiskecamp",
+    "services": [
+      "latrin",
+      "vatten",
+      "camping"
+    ],
+    "lat": 65.0781,
+    "lon": 21.5284,
+    "address": "Södra Jävrebodarna 351 Jävrebyn 944 94 Norrbotten",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/jaevrebodarnas-fiskecamp). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.fiskecampen.se/"
+  },
+  {
+    "id": "curated-hk-kolbacken-stugby-camping",
+    "name": "Kolbacken Stugby & Camping",
+    "services": [
+      "latrin",
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 62.6503,
+    "lon": 14.3757,
+    "address": "Kolbacksvägen 3 Åsarna 845 51 Jämtland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/kolbacken-stugby-och-camping). Har du varit här? Bekräfta i appen.",
+    "website": "https://kolbackenscamping.se"
+  },
+  {
+    "id": "curated-hk-high-coast-distillery",
+    "name": "High Coast Distillery",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 62.9996,
+    "lon": 17.7967,
+    "address": "Sörviken 140 Bjärtrå 872 96 Ångermanland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/high-coast-distillery). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.highcoastwhisky.se/besok-oss/boende-stallplatser"
+  },
+  {
+    "id": "curated-hk-orrkulla-camping",
+    "name": "Orrkulla Camping",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping"
+    ],
+    "lat": 65.2845,
+    "lon": 17.857,
+    "address": "Orrkulla 1 Blattnicksele 924 92 Lappland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/orrkulla-camping). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.orrkulla.se"
+  },
+  {
+    "id": "curated-hk-arontorps-kroppkakor",
+    "name": "Arontorps Kroppkakor",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 56.6453,
+    "lon": 16.5152,
+    "address": "Torslunda 102 Färjestaden 386 96 Öland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/arontorps-kroppkakor). Har du varit här? Bekräfta i appen.",
+    "website": "https://kroppkakor.se"
+  },
+  {
+    "id": "curated-hk-the-view-sweden",
+    "name": "The View Sweden",
+    "services": [
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 58.0933,
+    "lon": 14.1836,
+    "address": "Häldetorp 4B Brandstorp 566 93 Västergötland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, färskvatten bekräftat. Källa (https://theviewsweden.se/husbil/): \"Vattenpåfyllning Källsortering ENDAST tömning av GRÅVATTEN! Vi tar INTE emot SVARTVATTEN\" Ingen latrintömning enligt källan. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/the-view-sweden).",
+    "website": "https://theviewsweden.se/husbil/"
+  },
+  {
+    "id": "curated-hk-halmstads-segelsallskaps-hamn",
+    "name": "Halmstads Segelsällskaps Hamn",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 56.6607,
+    "lon": 12.8506,
+    "address": "Småbåtsgatan 3 Halmstad 302 90 Halland",
+    "source": "egen",
+    "unverifiedServices": [
+      "gravatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): färskvatten, latrintömning bekräftat. Källa (http://hss1910.se/husbilar): \"Det finns 30 uppställningsplatser för husbilar, med tillgång till färskvatten och el, inom hamnområdet.\" \"Tömning av sopor och mobil toalettank finns tillgängligt.\" gråvattentömning anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/halmstads-segelsaellskaps-hamn).",
+    "website": "http://hss1910.se/husbilar"
+  },
+  {
+    "id": "curated-hk-tanndalsvallens-camping",
+    "name": "Tänndalsvallens Camping",
+    "services": [
+      "latrin",
+      "vatten",
+      "gravatten",
+      "camping"
+    ],
+    "lat": 62.5402,
+    "lon": 12.3051,
+    "address": "Tänndalsvallen 640 Tänndalen 846 98 Härjedalen",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/taenndalsvallens-camping). Har du varit här? Bekräfta i appen.",
+    "website": "https://tanndalsvallen.nu/camping/"
+  },
+  {
+    "id": "curated-hk-martens-vall-vrena-if",
+    "name": "Mårtens Vall, Vrena IF",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 58.8559,
+    "lon": 16.7016,
+    "address": "Mårtensdal Vrena 611 98 Södermanland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/maartens-vall-vrena-if). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-stallplats-horja",
+    "name": "Ställplats Hörja",
+    "services": [
+      "vatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 56.2064,
+    "lon": 13.5962,
+    "address": "Örkelljungavägen 19 Hörja 282 94 Skåne",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/staellplats-hoerja). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.facebook.com/profile.php?id=100054564244582#"
+  },
+  {
+    "id": "curated-hk-umfors-camping",
+    "name": "Umfors Camping",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping"
+    ],
+    "lat": 65.9476,
+    "lon": 15.0408,
+    "address": "Umfors 272 Hemavan 925 93 Lappland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/umfors-camping). Har du varit här? Bekräfta i appen.",
+    "website": "http://camping.umfors.se"
+  },
+  {
+    "id": "curated-hk-stallplats-orserum",
+    "name": "Ställplats Örserum",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 58.013,
+    "lon": 14.5783,
+    "address": "Örserum 20 Gränna 563 91 Småland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/staellplats-oerserum). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.stallplatsorserum.se/sv/"
+  },
+  {
+    "id": "curated-hk-stallplats-lauker",
+    "name": "Ställplats Lauker",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 65.6571,
+    "lon": 19.7874,
+    "address": "Lauker Arvidsjaur 933 91 Lappland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/staellplats-lauker). Har du varit här? Bekräfta i appen.",
+    "website": "http://lauker.se/stallplatser.html"
+  },
+  {
+    "id": "curated-hk-stocklycke-stallplats",
+    "name": "Stocklycke Ställplats",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 58.3093,
+    "lon": 14.6341,
+    "address": "Södra Sjövägen Ödeshög 599 93 Östergötland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (http://www.sveaskog.se/upplev-naturen/besoksomraden/ekopark-omberg): \"Ställplatserna är öppna från 1 april till 30 september. Latrintömning för grå- och svartvatten samt möjlighet att fylla på färskvatten finns vid toaletten på parkeringen i Stocklycke.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/stocklycke-staellplats).",
+    "fee": "150 kr/natt",
+    "openingHours": "1 apr–30 sep",
+    "season": "seasonal",
+    "website": "http://www.sveaskog.se/upplev-naturen/besoksomraden/ekopark-omberg"
+  },
+  {
+    "id": "curated-hk-strandvillan-i-alandsbro",
+    "name": "Strandvillan i Älandsbro",
+    "services": [
+      "vatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 62.6718,
+    "lon": 17.8429,
+    "address": "Åvägen 4 Älandsbro 871 71 Ångermanland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/strandvillan-i-aelandsbro). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-timjan-restaurang-cafe",
+    "name": "Timjan Restaurang & Café",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 57.3159,
+    "lon": 14.2925,
+    "address": "Flahult 2 Vrigstad 576 97 Småland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://www.timjan.se/stallplats): \"Tillgång till toa, dusch, färskvatten, tvätt & torktumlare och toatömning, ej gråvattentömning.\" Ingen gråvattentömning enligt källan. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/timjan-restaurang-och-cafe).",
+    "fee": "150 kr/dygn, 195 kr med el",
+    "website": "https://www.timjan.se/stallplats"
+  },
+  {
+    "id": "curated-hk-langban",
+    "name": "Långban",
+    "services": [
+      "gravatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 59.8421,
+    "lon": 14.258,
+    "address": "Långban Stora Sten 10 Filipstad 682 92 Värmland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/laangban). Har du varit här? Bekräfta i appen.",
+    "website": "https://zeilingers-in-schweden.com/"
+  },
+  {
+    "id": "curated-hk-tingvall-b-b",
+    "name": "Tingvall B&B",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 58.741191,
+    "lon": 11.5536765,
+    "address": "Tingvalls Eko 1 Bullaren 457 51 Bohuslän",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/tingvall-bochb). Har du varit här? Bekräfta i appen.",
+    "website": "https://minto-tingvall.com/se/"
+  },
+  {
+    "id": "curated-hk-bergbo-gard",
+    "name": "Bergbo Gård",
+    "services": [
+      "vatten",
+      "latrin",
+      "sopor",
+      "stallplats"
+    ],
+    "lat": 57.3681,
+    "lon": 12.1253,
+    "address": "Petters Väg 65 Åsa 439 52 Halland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): färskvatten, latrintömning, sopor bekräftat. Källa (https://www.bergbogård.se/): \"Färskvatten Diskmöjligheter Sophantering Tvättstuga Latrintömning\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/bergbo-gaard).",
+    "website": "https://www.bergbogård.se/"
+  },
+  {
+    "id": "curated-hk-bergviksparken",
+    "name": "Bergviksparken",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 61.2623812,
+    "lon": 16.8242068,
+    "address": "Vannsättervägen 25 Bergvik 826 67 Hälsingland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://www.svenskalag.se/ifkbergvik-dans/sida/36950/camping): \"Vill du bara tömma latrin och fylla vatten 50:-\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/bergviksparken).",
+    "website": "https://www.svenskalag.se/ifkbergvik-dans/sida/36950/camping"
+  },
+  {
+    "id": "curated-hk-koffsta-stallplats",
+    "name": "Koffsta Ställplats",
+    "services": [
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 60.389,
+    "lon": 17.025,
+    "address": "Östvedavägen 41 Hedesunda 818 96 Gästrikland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/koffsta-staellplats). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.facebook.com/koffstastallplats"
+  },
+  {
+    "id": "curated-hk-cafe-de",
+    "name": "Café & Dé",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 60.1537,
+    "lon": 14.9755,
+    "address": "Saxenvägen 64 Saxdalen 772 70 Dalarna",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://www.cafe-de.se/sv/stallplats): \"möjligheter till vattenpåfyllning och grå/svartvattentömning\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/cafe-och-de).",
+    "website": "https://www.cafe-de.se/sv/stallplats"
+  },
+  {
+    "id": "curated-hk-klockestrands-batklubb",
+    "name": "Klockestrands Båtklubb",
+    "services": [
+      "vatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 62.8807,
+    "lon": 17.9033,
+    "address": "Lervägen Sandöverken 872 64 Ångermanland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/klockestrands-baatklubb). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.klbk.se"
+  },
+  {
+    "id": "curated-hk-bk-flottaren-sandslan",
+    "name": "BK-Flottaren, Sandslån",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 63.0085,
+    "lon": 17.7998,
+    "address": "Flottarvägen 67 Nyland 873 71 Ångermanland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://bk-flottaren.se/prislista/): \"I ställplatssavgiften ingår användning av tvättstuga, gråvatten och svartvatten tömning, gästkök, gästtoalett och färskvatten, el ingår.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/bk-flottaren-sandslaan).",
+    "fee": "250 kr/dygn inkl. el",
+    "website": "https://bk-flottaren.se/prislista/"
+  },
+  {
+    "id": "curated-hk-harlig-heden",
+    "name": "Härlig Heden",
+    "services": [
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 59.9786,
+    "lon": 13.5723,
+    "address": "Myra Heden 1 Råda 683 93 Värmland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/haerlig-heden). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.harlig-heden.org"
+  },
+  {
+    "id": "curated-hk-barsta-camping",
+    "name": "Barsta Camping",
+    "services": [
+      "latrin",
+      "vatten",
+      "camping"
+    ],
+    "lat": 62.8634,
+    "lon": 18.3959,
+    "address": "Barsta 260 Nordingrå 873 99 Ångermanland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/barsta-camping). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.barstacamping.com/"
+  },
+  {
+    "id": "curated-hk-brohagen",
+    "name": "Brohagen",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 57.9164,
+    "lon": 14.047,
+    "address": "Kvill Brohagen 1 Habo 566 91 Västergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/brohagen). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.naturkartan.se/sv/jonkopings-lan/brohagens-stallplats"
+  },
+  {
+    "id": "curated-hk-vitgarden",
+    "name": "Vitgården",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 63.0526,
+    "lon": 14.8542,
+    "address": "Haxäng 141 Brunflo 834 97 Jämtland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/vitgaarden). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-timmernabbens-batsallskap",
+    "name": "Timmernabbens Båtsällskap",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 56.9665,
+    "lon": 16.443,
+    "address": "Varvsvägen Timmernabben 384 72 Småland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/timmernabbens-baatsaellskap). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.sailtotbs.se/stallplatser"
+  },
+  {
+    "id": "curated-hk-sjobodsviken",
+    "name": "Sjöbodsviken",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 62.7986,
+    "lon": 18.0754,
+    "address": "Lövvik 400 Sandöverken 872 94 Ångermanland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://www.sjobodviken.se/sv/): \"Latrintömning finns i en separat byggnad vid in/utfarten och är alltid öppet.\" Ingen gråvattentömning enligt källan. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/sjoebodsviken).",
+    "website": "https://www.sjobodviken.se/sv/"
+  },
+  {
+    "id": "curated-hk-offroadcamp",
+    "name": "Offroadcamp",
+    "services": [
+      "latrin",
+      "vatten",
+      "gravatten",
+      "camping"
+    ],
+    "lat": 61.4132,
+    "lon": 13.2274,
+    "address": "Fjärdtjärnsvägen 15 Sörsjön 780 69 Dalarna",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/offroadcamp). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.offroadcamp.se/sv"
+  },
+  {
+    "id": "curated-hk-kramforsvikens-camping",
+    "name": "Kramforsvikens Camping",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 62.9395,
+    "lon": 17.7753,
+    "address": "Kajvägen Kramfors 872 36 Ångermanland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://kramforsviken.se/camping/): \"Hos oss kan du fylla på färskvatten, tömma gråvatten och latrintömning.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/kramforsvikens-camping).",
+    "website": "https://kramforsviken.se/camping/"
+  },
+  {
+    "id": "curated-hk-hallehunneberg",
+    "name": "HalleHunneberg",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 58.3464,
+    "lon": 12.4291,
+    "address": "Hunneberg 121 Vargön 468 31 Västergötland",
+    "source": "egen",
+    "unverifiedServices": [
+      "vatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning bekräftat. Källa (https://www.hallehunneberg.se/stallplats-hunneberg): \"Gråvatten töms direkt i stolpen eller via spillvattensäck i latrinrummet\" \"Kasettoalett töms i latrinrummet\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/hallehunneberg).",
+    "website": "https://www.hallehunneberg.se/stallplats-hunneberg"
+  },
+  {
+    "id": "curated-hk-wilderness-life",
+    "name": "Wilderness Life",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 65.7461,
+    "lon": 19.4037,
+    "address": "Auktsjaur 16 Arvidsjaur 933 91 Lappland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, gråvattentömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/wilderness-life). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.wildernesslife.se"
+  },
+  {
+    "id": "curated-hk-stallplats-bogla",
+    "name": "Ställplats Bogla",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 57.7424,
+    "lon": 14.2895,
+    "address": "Bogla 29 Tenhult 561 61 Småland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/staellplats-bogla). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.facebook.com/profile.php?id=100054330619423&locale=sv_SE#"
+  },
+  {
+    "id": "curated-hk-sagnernas-hus",
+    "name": "Sägnernas Hus",
+    "services": [
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 57.9736,
+    "lon": 13.7441,
+    "address": "Svenstorp Sörgården Sandhem 565 94 Västergötland",
+    "source": "egen",
+    "unverifiedServices": [
+      "gravatten",
+      "latrin"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): färskvatten bekräftat. Källa (https://sagnernasmusikochkultur.se/boende/): \"Tillgång till dusch (10 kr), toalett, diskplats och färskvatten\" gråvattentömning, latrintömning anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/saegnernas-hus).",
+    "website": "https://sagnernasmusikochkultur.se/boende/"
+  },
+  {
+    "id": "curated-hk-aminne-bruk",
+    "name": "Åminne Bruk",
+    "services": [
+      "vatten",
+      "latrin",
+      "gravatten",
+      "sopor",
+      "stallplats"
+    ],
+    "lat": 57.1239,
+    "lon": 14.0108,
+    "address": "Åminne Bruk Värnamo 331 91 Småland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, gråvattentömning, färskvatten, sopor bekräftat. Källa (https://aminnebruk.se/stallplatser): \"Latrin- och gråvattentömning - Wifi - Färskvatten - Sophantering\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aaminne-bruk).",
+    "website": "https://aminnebruk.se/stallplatser"
+  },
+  {
+    "id": "curated-hk-horvikens-marina-kallandso",
+    "name": "Hörvikens Marina Kållandsö",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 58.6828,
+    "lon": 13.1629,
+    "address": "Granviksvägen Lidköping 531 99 Västergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/hoervikens-marina-kaallandsoe). Har du varit här? Bekräfta i appen.",
+    "website": "https://kmbk.se/stallplats-for-husbil"
+  },
+  {
+    "id": "curated-hk-graftavallens-fjallanlaggning",
+    "name": "Gräftåvallens Fjällanläggning",
+    "services": [
+      "latrin",
+      "camping"
+    ],
+    "lat": 63.0241,
+    "lon": 13.9397,
+    "address": "Fjällvägen 16 Oviken 845 72 Jämtland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/graeftaavallens-fjaellanlaeggning). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.graftavallen.se"
+  },
+  {
+    "id": "curated-hk-vindagard",
+    "name": "Vindagård",
+    "services": [
+      "vatten",
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 65.7819,
+    "lon": 23.412,
+    "address": "Skolvägen 10 Båtskärsnäs 952 95 Norrbotten",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/vindagaard). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.psidan.se/sv/vindagard"
+  },
+  {
+    "id": "curated-hk-wildlife-sweden-camp-angra",
+    "name": "Wildlife Sweden Camp Ängra",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping"
+    ],
+    "lat": 61.9364738,
+    "lon": 15.4174486,
+    "address": "Ängra 6 Kårböle 827 73 Hälsingland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/wildlife-sweden-camp-aengra). Har du varit här? Bekräfta i appen.",
+    "website": "http://wildlifesweden.se"
+  },
+  {
+    "id": "curated-hk-brunskogs-hembygdsgard",
+    "name": "Brunskogs Hembygdsgård",
+    "services": [
+      "latrin",
+      "gravatten",
+      "sopor",
+      "stallplats"
+    ],
+    "lat": 59.6574,
+    "lon": 12.8905,
+    "address": "Vikene Skutboudden 1 Brunskog 671 94 Värmland",
+    "source": "egen",
+    "unverifiedServices": [
+      "vatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, gråvattentömning, sopor bekräftat. Källa (https://brunskogshembygdsgard.se/besok/boende/stallplatser.html): \"Soptunnor finns på området. Tömning av spillvatten/latrin (stängd under vinterhalvåret).\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/brunskogs-hembygdsgaard).",
+    "website": "https://brunskogshembygdsgard.se/besok/boende/stallplatser.html"
+  },
+  {
+    "id": "curated-hk-robertsfors-gk",
+    "name": "Robertsfors GK",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 64.1866,
+    "lon": 20.8566,
+    "address": "Bruksallén 2 Robertsfors 915 32 Västerbotten",
+    "source": "egen",
+    "unverifiedServices": [
+      "vatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://www.robertsforsgk.se/bo): \"Latrin tömning finns.\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/robertsfors-gk).",
+    "fee": "100 kr/dygn",
+    "website": "https://www.robertsforsgk.se/bo"
+  },
+  {
+    "id": "curated-hk-king-road-camping-restaurang",
+    "name": "King Road Camping & Restaurang",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 62.9562,
+    "lon": 16.6769,
+    "address": "Utanede 241 Bispgården 844 93 Jämtland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/king-road-camping-och-restaurang). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.facebook.com/PaviljongSweden"
+  },
+  {
+    "id": "curated-hk-slaggens-gasthamn",
+    "name": "Slaggens Gästhamn",
+    "services": [
+      "latrin",
+      "vatten",
+      "sopor",
+      "stallplats"
+    ],
+    "lat": 59.7821,
+    "lon": 16.1824,
+    "address": "Bruksvägen Ramnäs 735 60 Västmanland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): färskvatten, latrintömning, sopor bekräftat. Källa (https://surahammar.se/kultur-fritid-och-turism/turist/stallplatser.html): \"Faciliteter Tillgång till färskvatten Tömning av latrin Toalett och dusch Soptömning Grillplats och eldstad\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/slaggens-gaesthamn).",
+    "website": "https://surahammar.se/kultur-fritid-och-turism/turist/stallplatser.html"
+  },
+  {
+    "id": "curated-hk-pataholms-segelklubb",
+    "name": "Pataholms Segelklubb",
+    "services": [
+      "vatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 56.8981,
+    "lon": 16.4462,
+    "address": "Norra Korpemåla 725 Ålem 384 92 Småland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/pataholms-segelklubb). Har du varit här? Bekräfta i appen.",
+    "website": "http://psk.se"
+  },
+  {
+    "id": "curated-hk-nykrok-stallplats",
+    "name": "Nykrok Ställplats",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 57.7457,
+    "lon": 18.8057,
+    "address": "Lärbro Stora Vägume 2025 Lärbro 624 53 Gotland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/nykrok-staellplats). Har du varit här? Bekräfta i appen.",
+    "website": "https://ingridchf.se/Nykrokstallplats/"
+  },
+  {
+    "id": "curated-hk-norrsundets-motorbatsklubb",
+    "name": "Norrsundets Motorbåtsklubb",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 60.9303,
+    "lon": 17.1443,
+    "address": "Rödboharen Norrsundet 817 30 Gästrikland",
+    "source": "egen",
+    "unverifiedServices": [
+      "vatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning bekräftat. Källa (http://www.nmk-boat.se/index.php/component/content/article/gasthamn-guest-harbor?catid=9&Itemid=284): \"Latrintömning Latrinstömningspump (Finns i förrådet till vänster om klubbhuset)\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/norrsundets-motorbaatsklubb).",
+    "website": "http://www.nmk-boat.se/index.php/component/content/article/gasthamn-guest-harbor?catid=9&Itemid=284"
+  },
+  {
+    "id": "curated-hk-camp-furan",
+    "name": "Camp Furan",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 63.1439616,
+    "lon": 14.7309677,
+    "address": "Torvalla By 210 Östersund 831 92 Jämtland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://furuparken.se/campfuran): \"Du kan tömma din latrin här, fylla på dricksvatten. Tyvärr ingen tömning av gråvatten\" Ingen gråvattentömning enligt källan. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/camp-furan).",
+    "website": "https://furuparken.se/campfuran"
+  },
+  {
+    "id": "curated-hk-borrby-bed-breakfast",
+    "name": "Borrby Bed & Breakfast",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 55.4668,
+    "lon": 14.2113,
+    "address": "Blågårdsvägen 36 Borrby 276 35 Skåne",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/borrby-bed-och-breakfast). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.borrbybob.se"
+  },
+  {
+    "id": "curated-hk-krattemasugn",
+    "name": "Krattemasugn",
+    "services": [
+      "vatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 60.4533,
+    "lon": 16.3836,
+    "address": "Krattevägen 33 Torsåker 813 96 Gästrikland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/krattemasugn). Har du varit här? Bekräfta i appen.",
+    "website": "https://kratte-masugn.se"
+  },
+  {
+    "id": "curated-hk-strombackens",
+    "name": "Strömbackens",
+    "services": [
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 62.0704,
+    "lon": 15.1063,
+    "address": "Strömbacken 810 Ytterhogdal 842 97 Hälsingland",
+    "source": "egen",
+    "unverifiedServices": [
+      "latrin"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): färskvatten, gråvattentömning bekräftat. Källa (http://www.strombackens.com): \"färsk- och gråvatten/tömning av toaletter. (Ingen Kemitoilett)\" latrintömning anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/stroembackens).",
+    "website": "http://www.strombackens.com"
+  },
+  {
+    "id": "curated-hk-nackstromshamnen",
+    "name": "Näckströmshamnen",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 58.0459,
+    "lon": 14.998,
+    "address": "Småbåtsvägen 1 Tranås 573 43 Småland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/naeckstroemshamnen). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.facebook.com/groups/1035330741101145/?locale=sv_SE"
+  },
+  {
+    "id": "curated-hk-nyefiket",
+    "name": "Nyefiket",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 57.3438,
+    "lon": 15.2714,
+    "address": "Nykyrkavägen 2A Nye 574 98 Småland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/nyefiket). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.facebook.com/Nyefiket#"
+  },
+  {
+    "id": "curated-hk-dream-camp",
+    "name": "Dream Camp",
+    "services": [
+      "gravatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 63.7594889,
+    "lon": 14.3088559,
+    "address": "Skärvången 244 Föllinge 835 63 Jämtland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/dream-camp). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.facebook.com/profile.php?id=61565542184814"
+  },
+  {
+    "id": "curated-hk-nilstorstensgard",
+    "name": "Nilstorstensgård",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 57.048248770191,
+    "lon": 12.321197823865,
+    "address": "Åhs 25 Tvååker 432 76 Halland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/nilstorstensgaard). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.facebook.com/profile.php?id=61559086564515"
+  },
+  {
+    "id": "curated-hk-fredriksdal-stallplats",
+    "name": "Fredriksdal Ställplats",
+    "services": [
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 57.6152,
+    "lon": 14.5956,
+    "address": "Möbelvägen 11 Fredriksdal 571 75 Småland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/fredriksdal-staellplats). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.facebook.com/profile.php?id=61565818843714"
+  },
+  {
+    "id": "curated-hk-rundviks-batklubb",
+    "name": "Rundviks Båtklubb",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 63.5289,
+    "lon": 19.4402,
+    "address": "Obbolsskatan Rundvik 914 41 Ångermanland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/rundviks-baatklubb). Har du varit här? Bekräfta i appen.",
+    "website": "https://rundviksbatklubb.se/st%C3%A4llplats-husbilhusvagn"
+  },
+  {
+    "id": "curated-hk-vastragard",
+    "name": "Västragård",
+    "services": [
+      "vatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 57.4039,
+    "lon": 16.4766,
+    "address": "Köksmåla Västra Gård 1 Fårbo 572 96 Småland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/vaestragaard). Har du varit här? Bekräfta i appen.",
+    "website": "https://xn--frbofrikyrkofrsamling-s2b71b.se/vastragard/"
+  },
+  {
+    "id": "curated-hk-langbergets-sporthotell",
+    "name": "Långbergets Sporthotell",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 60.8183,
+    "lon": 12.8781,
+    "address": "Hotellvägen 1 Sysslebäck 680 60 Värmland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/laangbergets-sporthotell). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.langberget.se"
+  },
+  {
+    "id": "curated-hk-odarp",
+    "name": "Ödarp",
+    "services": [
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 57.867,
+    "lon": 14.9914,
+    "address": "Ödarp Björkhaga 1 Sunhultsbrunn 573 73 Småland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/oedarp). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-vikarbodarna-skatan",
+    "name": "Vikarbodarna/Skatan",
+    "services": [
+      "vatten",
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 62.199,
+    "lon": 17.4957,
+    "address": "Vikarbodarna Njurunda 862 96 Medelpad",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/vikarbodarnaskatan). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-vastra-amtervik-camping",
+    "name": "Västra Ämtervik Camping",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "camping"
+    ],
+    "lat": 59.7235141,
+    "lon": 13.1485516,
+    "address": "Sillegården 109 Västra Ämtervik 686 95 Värmland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/vaestra-aemtervik-camping). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.facebook.com/V%C3%A4stra-%C3%84mtervik-Camping-259244331109004/"
+  },
+  {
+    "id": "curated-hk-sodertalje-husvagnsklubb",
+    "name": "Södertälje Husvagnsklubb",
+    "services": [
+      "vatten",
+      "latrin",
+      "gravatten",
+      "sopor",
+      "stallplats"
+    ],
+    "lat": 59.1297,
+    "lon": 17.55,
+    "address": "Agdala 1 Järna 153 95 Södermanland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): färskvatten, gråvattentömning, latrintömning, sopor bekräftat. Källa (https://agdala.se/om-oss): \"Färskvatten Gästparkering Hjärtstartare Kök och disk Lekpark (se bilder nedan) Sopsortering Toaletter (handikappanpassad) Tömningsplats för gråvatten Tömningsplats för latrin (Kassett)\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/soedertaelje-husvagnsklubb).",
+    "website": "https://agdala.se/om-oss"
+  },
+  {
+    "id": "curated-hk-lovangergarden",
+    "name": "Lövångergården",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 64.3701,
+    "lon": 21.319,
+    "address": "Kungsvägen 31 Lövånger 932 61 Västerbotten",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/loevaangergaarden). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.lovangergarden.se"
+  },
+  {
+    "id": "curated-hk-maskincentrum-i-bockara-stallplats",
+    "name": "Maskincentrum i Bockara, Ställplats",
+    "services": [
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 57.2619,
+    "lon": 16.0831,
+    "address": "Stora Vägen 62C Bockara 579 91 Småland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/maskincentrum-i-bockara-staellplats). Har du varit här? Bekräfta i appen.",
+    "website": "https://maskincentrum-bockara.se/"
+  },
+  {
+    "id": "curated-hk-bergmans-fisk",
+    "name": "Bergmans Fisk",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 60.9286344,
+    "lon": 17.1567642,
+    "address": "Havsvägen 38 Norrsundet 817 30 Gästrikland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/bergmans-fisk). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.bergmansfisk.nu"
+  },
+  {
+    "id": "curated-hk-hudiksvalls-gk",
+    "name": "Hudiksvalls GK",
+    "services": [
+      "latrin",
+      "vatten",
+      "sopor",
+      "stallplats"
+    ],
+    "lat": 61.704,
+    "lon": 17.1274,
+    "address": "Fäskärsvägen 7 Hudiksvall 824 91 Hälsingland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten, sopor bekräftat. Källa (https://www.hudiksvallsgk.se/gaest/staellplatser): \"Nytt servicehus med toalett, dusch, disk och latrintömning finns på ställplatsområdet\" \"Dricksvatten finns även på uppställningplatsen.\" \"Soptunnor finns vid uppställningsplatsen\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/hudiksvalls-gk).",
+    "website": "https://www.hudiksvallsgk.se/gaest/staellplatser"
+  },
+  {
+    "id": "curated-hk-stora-beddinge-idrottsplats",
+    "name": "Stora Beddinge Idrottsplats",
+    "services": [
+      "vatten",
+      "gravatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 55.3955,
+    "lon": 13.4423,
+    "address": "Bollvägen 15-4 Klagstorp 231 98 Skåne",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, gråvattentömning, latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/stora-beddinge-idrottsplats). Har du varit här? Bekräfta i appen.",
+    "website": "https://storabeddingebyalag.se/st-llplatser"
+  },
+  {
+    "id": "curated-hk-ruda-gard-camping",
+    "name": "Ruda Gård Camping",
+    "services": [
+      "latrin",
+      "camping"
+    ],
+    "lat": 58.985,
+    "lon": 15.8561,
+    "address": "Ruda Gård 1 Vingåker 643 94 Östergötland",
+    "source": "egen",
+    "unverifiedServices": [
+      "vatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://rudagard.se/camping/information/): \"Manuell latrintömning finns vid servicehuset.\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/ruda-gaard-camping).",
+    "website": "https://rudagard.se/camping/information/"
+  },
+  {
+    "id": "curated-hk-tunavallen",
+    "name": "Tunavallen",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 65.6069,
+    "lon": 22.1136,
+    "address": "Mjölkuddsvägen 290 Luleå 973 43 Norrbotten",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/tunavallen). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-donstorpsbadet-cafe-camping",
+    "name": "Dönstorpsbadet Café & Camping",
+    "services": [
+      "latrin",
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 58.2966,
+    "lon": 13.0694,
+    "address": "Skarstad Dönstorpsbadet 1 Vara 534 95 Västergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/doenstorpsbadet-cafe-och-camping). Har du varit här? Bekräfta i appen.",
+    "website": "http://donstorpsbadets-cafe-och-camping.webnode.se"
+  },
+  {
+    "id": "curated-hk-strand-stugby",
+    "name": "Strand Stugby",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 59.0064,
+    "lon": 11.1519,
+    "address": "Strand Bäcken 1 Strömstad 452 91 Bohuslän",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/strand-stugby). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.campcation.com/sv/campsite/strand-stugby/?ref=hbk"
+  },
+  {
+    "id": "curated-hk-malsbogard",
+    "name": "Malsbogård",
+    "services": [
+      "vatten",
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 57.3855,
+    "lon": 13.4203,
+    "address": "Malsbo 1 Ambjörnarp 514 93 Västergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/malsbogaard). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.malsbo.se/stallplats"
+  },
+  {
+    "id": "curated-hk-hemavans-fjallcenter-camping",
+    "name": "Hemavans Fjällcenter & Camping",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 65.8112,
+    "lon": 15.086,
+    "address": "Renstigen 1 Hemavan 925 93 Lappland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://www.hemavansfjallcenter.se/aktiviteter/stallplats/): \"För extra bekvämlighet finns även latrintömning med möjlighet att fylla på vatten med vattenslang.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/hemavans-fjaellcenter-och-camping).",
+    "website": "https://www.hemavansfjallcenter.se/aktiviteter/stallplats/"
+  },
+  {
+    "id": "curated-hk-stallplats-kullaborg-osterforse",
+    "name": "Ställplats Kullaborg, Österforse",
+    "services": [
+      "vatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 63.144,
+    "lon": 17.0102,
+    "address": "Kullaborg Långsele 882 91 Ångermanland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/staellplats-kullaborg-oesterforse). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.osterforse.se/"
+  },
+  {
+    "id": "curated-hk-fjatervalen",
+    "name": "Fjätervålen",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 61.9391,
+    "lon": 12.9896,
+    "address": "Fjätervålsvägen Särna 797 91 Dalarna",
+    "source": "egen",
+    "unverifiedServices": [
+      "vatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://fjatervalen.se/stugor/stallplatser/): \"Latrintömning är enkelt tillgänglig i anslutning till servicehuset.\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/fjaetervaalen).",
+    "website": "https://fjatervalen.se/stugor/stallplatser/"
+  },
+  {
+    "id": "curated-hk-vasterang",
+    "name": "Västeräng",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 58.5308,
+    "lon": 16.7737,
+    "address": "Glofshult Västeräng Vikbolandet 610 27 Östergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/vaesteraeng). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-hagabergets-vandrarhem-stallplats",
+    "name": "Hagabergets Vandrarhem & Ställplats",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 57.0949,
+    "lon": 12.8284,
+    "address": "Hagabergsvägen 8 Ullared 311 61 Halland",
+    "source": "egen",
+    "unverifiedServices": [
+      "gravatten",
+      "vatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://falkenberg.se/sova/vandrarhem/hagabergets-vandrarhem-stallplats/): \"Här finns WC, dusch och möjlighet att diska och tömma latrin.\" gråvattentömning, färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/hagabergets-vandrarhem-och-staellplats).",
+    "website": "https://falkenberg.se/sova/vandrarhem/hagabergets-vandrarhem-stallplats/"
+  },
+  {
+    "id": "curated-hk-hoverbergsgrottans-camping",
+    "name": "Hoverbergsgrottans Camping",
+    "services": [
+      "latrin",
+      "vatten",
+      "camping"
+    ],
+    "lat": 62.8306,
+    "lon": 14.4158,
+    "address": "Balviken 555 Svenstavik 845 62 Jämtland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/hoverbergsgrottans-camping). Har du varit här? Bekräfta i appen.",
+    "website": "https://explorehoverberg.se/boende"
+  },
+  {
+    "id": "curated-hk-kungsbygget-aventyrspark",
+    "name": "Kungsbygget Äventyrspark",
+    "services": [
+      "vatten",
+      "sopor",
+      "stallplats"
+    ],
+    "lat": 56.3687544,
+    "lon": 13.1681994,
+    "address": "Kungsbygget 44 Våxtorp 312 98 Halland",
+    "source": "egen",
+    "unverifiedServices": [
+      "latrin",
+      "gravatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): färskvatten, sopor bekräftat. Källa (https://kungsbygget.com/camping): \"Dricksvatten Diskmöjligheter Tömning Sophantering\" latrintömning, gråvattentömning anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/kungsbygget-aeventyrspark).",
+    "website": "https://kungsbygget.com/camping"
+  },
+  {
+    "id": "curated-hk-naske-lax",
+    "name": "Näske Lax",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 63.1577,
+    "lon": 18.5195,
+    "address": "Näske 201 Bjästa 893 91 Ångermanland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/naeske-lax). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.naskelax.se"
+  },
+  {
+    "id": "curated-hk-wilderness-adventures-sweden",
+    "name": "Wilderness Adventures Sweden",
+    "services": [
+      "latrin",
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 62.9902,
+    "lon": 16.6214,
+    "address": "Sörböle 230 Bispgården 844 93 Jämtland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/wilderness-adventures-sweden). Har du varit här? Bekräfta i appen.",
+    "website": "http://wildernessadventuressweden.com"
+  },
+  {
+    "id": "curated-hk-nederhogen-vildmarkscenter",
+    "name": "Nederhögen Vildmarkscenter",
+    "services": [
+      "gravatten",
+      "latrin",
+      "camping"
+    ],
+    "lat": 62.4115,
+    "lon": 14.4219,
+    "address": "Nederhögen 604 Rätan 845 95 Jämtland",
+    "source": "egen",
+    "unverifiedServices": [
+      "vatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, gråvattentömning bekräftat. Källa (https://nederhogen.se/camping/): \"Tömning av toalett och spillvattenavlopp är också möjligt hos oss.\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/nederhoegen-vildmarkscenter).",
+    "website": "https://nederhogen.se/camping/"
+  },
+  {
+    "id": "curated-hk-nylycke-gard",
+    "name": "Nylycke Gård",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 58.468,
+    "lon": 14.4187,
+    "address": "Frökärr Nylycke Karlsborg 546 91 Västergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/nylycke-gaard). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-ankarede",
+    "name": "Ankarede",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 64.8182,
+    "lon": 14.2373,
+    "address": "Ankarede Stora Blåsjön 833 99 Jämtland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/ankarede). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.stromsund.se/16016.html"
+  },
+  {
+    "id": "curated-hk-varbergs-gk-ostra",
+    "name": "Varbergs GK Östra",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 57.1201,
+    "lon": 12.4665,
+    "address": "Torstorp 55 Grimeton 432 98 Halland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/varbergs-gk-oestra). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.varbergsgk.se"
+  },
+  {
+    "id": "curated-hk-ettans-bathamn",
+    "name": "Ettans Båthamn",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 65.5802,
+    "lon": 22.16,
+    "address": "Småbåtsgatan 2 Luleå 972 35 Norrbotten",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (http://www.granec.se/bathamn/stallplats-husbil-pris-info/): \"Latrinrum/tömning, samt Färskvatten och Elektricitet uttag på stolpe.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/ettans-baathamn).",
+    "website": "http://www.granec.se/bathamn/stallplats-husbil-pris-info/"
+  },
+  {
+    "id": "curated-hk-akers-stallplatser-overnattning",
+    "name": "Åkers Ställplatser & Övernattning",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 57.382,
+    "lon": 13.9973,
+    "address": "Åker Skolan 1 Skillingaryd 568 92 Småland",
+    "source": "egen",
+    "unverifiedServices": [
+      "vatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://aker-stallplats-overnattning.se/): \"Man får tillgång till toaletter, dusch, uppehållsrum, lekplats, fotbollsplan, latrin tömning, tvättmaskin.\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aakers-staellplatser-och-oevernattning).",
+    "website": "https://aker-stallplats-overnattning.se/"
+  },
+  {
+    "id": "curated-hk-prastakvarna-gard",
+    "name": "Prästakvarna Gård",
+    "services": [
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 58.5083,
+    "lon": 13.8241,
+    "address": "Övertorp Prästakvarna Skövde 549 94 Västergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/praestakvarna-gaard). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.prastakvarna.se/"
+  },
+  {
+    "id": "curated-hk-beckmansplatsen",
+    "name": "Beckmansplatsen",
+    "services": [
+      "vatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 58.4919,
+    "lon": 16.9337,
+    "address": "Fyrvägen 8 Vikbolandet 610 25 Östergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/beckmansplatsen). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-mats-ers-gard-varmsatra",
+    "name": "Mats-Ers Gård, Varmsätra",
+    "services": [
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 59.8715,
+    "lon": 16.7211,
+    "address": "Varmsätra 152 Sala 733 92 Västmanland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/mats-ers-gaard-varmsaetra). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-fiskebacks-smabatshamn",
+    "name": "Fiskebäcks Småbåtshamn",
+    "services": [
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 57.6484,
+    "lon": 11.8507,
+    "address": "Hälleflundregatan Västra Frölunda 426 58 Bohuslän",
+    "source": "egen",
+    "unverifiedServices": [
+      "gravatten",
+      "latrin"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): färskvatten bekräftat. Källa (https://goteborg.se/wps/portal/enheter/grefab/hamnar/fiskebacks-hamn/stallplatser): \"Koden ger dig tillgång till: El Färskvatten Toaletter och duschar\" gråvattentömning, latrintömning anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/fiskebaecks-smaabaatshamn).",
+    "website": "https://goteborg.se/wps/portal/enheter/grefab/hamnar/fiskebacks-hamn/stallplatser"
+  },
+  {
+    "id": "curated-hk-lapland-adventures",
+    "name": "Lapland Adventures",
+    "services": [
+      "latrin",
+      "vatten",
+      "camping"
+    ],
+    "lat": 65.1385,
+    "lon": 19.5139,
+    "address": "Dragnäs 3 Jörn 936 95 Västerbotten",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/lapland-adventures). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.lapland-adventures.com/"
+  },
+  {
+    "id": "curated-hk-ormanasgarden",
+    "name": "Ormanäsgården",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 55.9154,
+    "lon": 13.4629,
+    "address": "Ormanäs 833 Höör 243 91 Skåne",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://ormanasgarden.se/stallplats): \"tillgång till WC, färskvatten, latrin- och gråvattentömning\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/ormanaesgaarden).",
+    "fee": "200 kr/natt + 50 kr för el",
+    "website": "https://ormanasgarden.se/stallplats"
+  },
+  {
+    "id": "curated-hk-killingsands-havsbad",
+    "name": "Killingsands Havsbad",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 64.1779,
+    "lon": 21.0396,
+    "address": "Klintsjölänningen Robertsfors 915 93 Västerbotten",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/killingsands-havsbad). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.visitrobertsfors.nu/sv/killingsand-havsbad"
+  },
+  {
+    "id": "curated-hk-stallplats-hummelvik",
+    "name": "Ställplats Hummelvik",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 63.1651,
+    "lon": 18.5862,
+    "address": "Ulvövägen 7 Köpmanholmen 893 40 Ångermanland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (http://www.hummelvik.org/sida/1127/Ställplats): \"Tömning av latrin och påfyllning av vatten finns.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/staellplats-hummelvik).",
+    "website": "http://www.hummelvik.org/sida/1127/Ställplats"
+  },
+  {
+    "id": "curated-hk-vejbystrand-gasthamn-stallplats",
+    "name": "Vejbystrand Gästhamn & Ställplats",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 56.3157,
+    "lon": 12.7636,
+    "address": "Hamnvägen 11 Vejbystrand 266 52 Skåne",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/vejbystrand-gaesthamn-och-staellplats). Har du varit här? Bekräfta i appen.",
+    "website": "http://vejbystrandshamn.se"
+  },
+  {
+    "id": "curated-hk-ellosparken",
+    "name": "EllösParken",
+    "services": [
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 58.1768,
+    "lon": 11.4804,
+    "address": "Glimsåsvägen 11 Ellös 474 32 Bohuslän",
+    "source": "egen",
+    "unverifiedServices": [
+      "latrin"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, färskvatten bekräftat. Källa (http://ellosparken.se/stallplatser): \"Påfyllnad av färskvatten\" \"Tömning av gråvatten\" latrintömning anges bara av Husbilskompisar – grått tills bekräftat. Latrin (utslagsvask) står på sajten men Orust kommun tar inte emot husbilslatrin – lämnas grå tills någon bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/elloesparken).",
+    "website": "http://ellosparken.se/stallplatser"
+  },
+  {
+    "id": "curated-hk-tolvsbo-inn",
+    "name": "Tolvsbo Inn",
+    "services": [
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 60.0465,
+    "lon": 15.5237,
+    "address": "Värdshusvägen 13 Söderbärke 777 93 Dalarna",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/tolvsbo-inn). Har du varit här? Bekräfta i appen.",
+    "website": "https://tolvsbo.se"
+  },
+  {
+    "id": "curated-hk-klovsjo-hamn",
+    "name": "Klövsjö Hamn",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 62.5281,
+    "lon": 14.1751,
+    "address": "Hamptjärnsvägen Klövsjö 845 97 Jämtland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/kloevsjoe-hamn). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-solvi-smu-gard",
+    "name": "Solvi SMU-gård",
+    "services": [
+      "latrin",
+      "vatten",
+      "camping"
+    ],
+    "lat": 60.7361,
+    "lon": 14.9925,
+    "address": "Rättviksvägen 60 Leksand 793 31 Dalarna",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/solvi-smu-gaard). Har du varit här? Bekräfta i appen.",
+    "website": "https://equmeniakyrkan.se/leksand/solvi/"
+  },
+  {
+    "id": "curated-hk-brevikens-gk",
+    "name": "Brevikens GK",
+    "services": [
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 58.4443,
+    "lon": 14.3977,
+    "address": "Brevik Storängen Karlsborg 546 91 Västergötland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, färskvatten bekräftat. Källa (https://www.breviken.se/camping): \"Du kan även fylla färskvatten och tömma gråvatten hos oss. (ej latrintömning)\" Ingen latrintömning enligt källan. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/brevikens-gk).",
+    "fee": "225 kr/dygn inkl. el",
+    "website": "https://www.breviken.se/camping"
+  },
+  {
+    "id": "curated-hk-strandpirens-marina",
+    "name": "Strandpirens Marina",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 58.548,
+    "lon": 14.5056,
+    "address": "Spårljusvägen Karlsborg 546 34 Västergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/strandpirens-marina). Har du varit här? Bekräfta i appen.",
+    "website": "https://strandpirensmarina.se"
+  },
+  {
+    "id": "curated-hk-aspa-batklubb",
+    "name": "Aspa Båtklubb",
+    "services": [
+      "gravatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 58.7599,
+    "lon": 14.8055,
+    "address": "Norrviksvägen 4 Aspabruk 696 73 Närke",
+    "source": "egen",
+    "unverifiedServices": [
+      "vatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, gråvattentömning bekräftat. Källa (https://www.aspabatklubb.se/hamnen/stallplatser): \"Möjlighet finns till tömning av latrin och gråvatten.\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aspa-baatklubb).",
+    "website": "https://www.aspabatklubb.se/hamnen/stallplatser"
+  },
+  {
+    "id": "curated-hk-svanshalls-gasthamn",
+    "name": "Svanshalls Gästhamn",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 56.2522,
+    "lon": 12.6614,
+    "address": "Hamnabacken 21 Jonstorp 263 92 Skåne",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/svanshalls-gaesthamn). Har du varit här? Bekräfta i appen.",
+    "website": "http://svanshall.net"
+  },
+  {
+    "id": "curated-hk-harabackens-gk",
+    "name": "Harabäckens GK",
+    "services": [
+      "vatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 57.1367,
+    "lon": 12.397,
+    "address": "Gödestad 63 Varberg 432 91 Halland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/harabaeckens-gk). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.harabacken.se/gaest/boende/staellplatser/"
+  },
+  {
+    "id": "curated-hk-flamslatt-stifts-och-kursgard",
+    "name": "Flämslätt Stifts- och Kursgård",
+    "services": [
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 58.4605,
+    "lon": 13.6815,
+    "address": "Flämslätt Stifts- och Kursgård Lerdala 541 97 Västergötland",
+    "source": "egen",
+    "unverifiedServices": [
+      "vatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning bekräftat. Källa (http://flamslatt.se/boende/stallplatser): \"Tillgång till servicehus Gråvatten/avlopp\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/flaemslaett-stifts-och-kursgaard).",
+    "fee": "250 kr/dygn inkl. el",
+    "website": "http://flamslatt.se/boende/stallplatser"
+  },
+  {
+    "id": "curated-hk-bygdsiljums-camping",
+    "name": "Bygdsiljums Camping",
+    "services": [
+      "latrin",
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 64.3477903,
+    "lon": 20.501702,
+    "address": "Välvsjövägen 3 Bygdsiljum 937 33 Västerbotten",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/bygdsiljums-camping). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.bygdsiljum.se"
+  },
+  {
+    "id": "curated-hk-vareviksbadets-camping",
+    "name": "Vareviksbadets Camping",
+    "services": [
+      "latrin",
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 57.5153,
+    "lon": 14.6898,
+    "address": "Vareviksbadet Bodafors 571 62 Småland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/vareviksbadets-camping). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-bybergets-camping",
+    "name": "Bybergets Camping",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 62.4963,
+    "lon": 15.2765,
+    "address": "By 184 Alby 841 94 Medelpad",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/bybergets-camping). Har du varit här? Bekräfta i appen.",
+    "website": "http://byberget.outby.se"
+  },
+  {
+    "id": "curated-hk-tangerdalen-camping-cafe",
+    "name": "Tängerdalen Camping & Café",
+    "services": [
+      "latrin",
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 60.8595,
+    "lon": 15.7501,
+    "address": "Övertänger 160 Enviken 790 26 Dalarna",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/taengerdalen-camping-och-cafe). Har du varit här? Bekräfta i appen.",
+    "website": "https://tangercamping.com"
+  },
+  {
+    "id": "curated-hk-guldstrom-co",
+    "name": "Guldström & Co",
+    "services": [
+      "latrin",
+      "vatten",
+      "sopor",
+      "camping"
+    ],
+    "lat": 57.4144,
+    "lon": 15.3227,
+    "address": "Guldgrävarnas Väg 1 Holsbybrunn 574 54 Småland",
+    "source": "egen",
+    "unverifiedServices": [
+      "gravatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten, sopor bekräftat. Källa (https://www.guldvaskning.se/boende/var-camping-klart-popularast): \"Vi har även en plats för latrintömning där man kan tömma sin Porta Potti.\" \"fylla på dricksvatten till husvagn/husbil. Soptömning med flera kärl ingår\" gråvattentömning anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/guldstroem-och-co).",
+    "website": "https://www.guldvaskning.se/boende/var-camping-klart-popularast"
+  },
+  {
+    "id": "curated-hk-geg-hotel",
+    "name": "GEG Hotel",
+    "services": [
+      "vatten",
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 55.922,
+    "lon": 12.8444,
+    "address": "Rosenhällsvägen 40 Härslöv 261 92 Skåne",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/geg-hotel-haersloev). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.geghotel.se"
+  },
+  {
+    "id": "curated-hk-borstingens-fiskecamp",
+    "name": "Börstingens Fiskecamp",
+    "services": [
+      "latrin",
+      "camping"
+    ],
+    "lat": 65.804,
+    "lon": 21.6656,
+    "address": "Börstingens Fiskecamp Boden 961 44 Norrbotten",
+    "source": "egen",
+    "unverifiedServices": [
+      "vatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://borstingen.se/camping): \"På området finns duschar, toaletter, gemensamt kök, matsal och latrintömning.\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/boerstingens-fiskecamp).",
+    "website": "https://borstingen.se/camping"
+  },
+  {
+    "id": "curated-hk-hotellet-vid-fjallet",
+    "name": "Hotellet Vid Fjället",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 61.0917,
+    "lon": 13.309,
+    "address": "Transtrands Kyrkby 175 Transtrand 780 68 Dalarna",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/hotellet-vid-fjaellet). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.facebook.com/hotelletvidfjallet"
+  },
+  {
+    "id": "curated-hk-kapten-billes-norsholm",
+    "name": "Kapten Billes, Norsholm",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 58.5081,
+    "lon": 15.9789,
+    "address": "Slussvägen 3 Norsholm 617 92 Östergötland",
+    "source": "egen",
+    "unverifiedServices": [
+      "vatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://kaptenbille.se/stallplatser): \"Latrintömning (under högsäsong, ej gråvatten)\" Ingen gråvattentömning enligt källan. färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/kapten-billes-norsholm).",
+    "website": "https://kaptenbille.se/stallplatser"
+  },
+  {
+    "id": "curated-hk-osjobol-stallplats",
+    "name": "Ösjöbol Ställplats",
+    "services": [
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 57.1934,
+    "lon": 15.2502,
+    "address": "Ösjöbol 3 Åseda 364 33 Småland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/oesjoebol-staellplats). Har du varit här? Bekräfta i appen.",
+    "website": "http://glasriket.se/resa/osjobol-stallplats/"
+  },
+  {
+    "id": "curated-hk-galtstroms-bruk-tomning",
+    "name": "Galtströms Bruk, Tömning",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ],
+    "lat": 62.1631,
+    "lon": 17.5005,
+    "address": "Galtström Njurunda 862 96 Medelpad",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/galtstroems-bruk-toemning-njurunda). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-huseliiharen-gefle-segel-sallskap",
+    "name": "Huseliiharen, Gefle Segel Sällskap",
+    "services": [
+      "vatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 60.7286,
+    "lon": 17.2827,
+    "address": "Huseliiharen 8 Gävle 805 95 Gästrikland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/huseliiharen-gefle-segel-saellskap). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.gss.nu"
+  },
+  {
+    "id": "curated-hk-smedens-stugby-stallplatser",
+    "name": "Smedens Stugby & Ställplatser",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 60.1401,
+    "lon": 15.4038,
+    "address": "Vassängsgatan Smedjebacken 777 34 Dalarna",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/smedens-stugby-och-staellplatser). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.visitdalarna.se/boende/anlaggning/smedens-stugby-och-stallplatser"
+  },
+  {
+    "id": "curated-hk-arrie-stallplats",
+    "name": "Arrie Ställplats",
+    "services": [
+      "vatten",
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 55.5082,
+    "lon": 13.0991,
+    "address": "Landsvägen 200 Vellinge 235 94 Skåne",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://www.arriegard.se/stallplats-malmoe): \"Tömningsplats av gråvatten finns på området\" \"Latrintömning finns på området.\" \"Färskvatten finns på området\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/arrie-staellplats).",
+    "website": "https://www.arriegard.se/stallplats-malmoe"
+  },
+  {
+    "id": "curated-hk-seskaro-gasthamn",
+    "name": "Seskarö Gästhamn",
+    "services": [
+      "vatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 65.7423,
+    "lon": 23.7412,
+    "address": "Aluddsvägen 33 Seskarö 953 94 Norrbotten",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/seskaroe-gaesthamn). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.naturkartan.se/sv/norrbottens-lan/gasthamn-leppaniemikajen"
+  },
+  {
+    "id": "curated-hk-ramoa-adventure-village",
+    "name": "Ramoa Adventure Village",
+    "services": [
+      "vatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 57.2027,
+    "lon": 14.9134,
+    "address": "Ramkvilla Torp 16 Ramkvilla 574 74 Småland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/ramoa-adventure-village). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.ramoa.se"
+  },
+  {
+    "id": "curated-hk-river-camping",
+    "name": "River Camping",
+    "services": [
+      "latrin",
+      "vatten",
+      "camping"
+    ],
+    "lat": 59.9853,
+    "lon": 15.2868,
+    "address": "Nyfors 32 Ludvika 771 90 Dalarna",
+    "source": "egen",
+    "unverifiedServices": [
+      "gravatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (http://nordicdiscovery.se/rivercamping): \"Dricksvatten x Elektricitet x Diskbänk med diskvatten x Latrintömning\" gråvattentömning anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/river-camping).",
+    "website": "http://nordicdiscovery.se/rivercamping"
+  },
+  {
+    "id": "curated-hk-lev-naturanda",
+    "name": "Lev Naturanda",
+    "services": [
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 65.0736,
+    "lon": 19.4056,
+    "address": "Mensträsk 77 Norsjö 935 93 Västerbotten",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/lev-naturanda). Har du varit här? Bekräfta i appen.",
+    "website": "https://lev-naturanda.com"
+  },
+  {
+    "id": "curated-hk-granbackens-camping",
+    "name": "Granbackens Camping",
+    "services": [
+      "vatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 57.3566,
+    "lon": 14.4743,
+    "address": "Kristina Nilssons Väg Vrigstad 576 97 Småland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/granbackens-camping). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.facebook.com/profile.php?id=61573502991258"
+  },
+  {
+    "id": "curated-hk-gryts-varv",
+    "name": "Gryts Varv",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 58.1586,
+    "lon": 16.8098,
+    "address": "Hummelvik Gryts Varv Gryt 615 96 Östergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/gryts-varv). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.grytsvarv.se/"
+  },
+  {
+    "id": "curated-hk-stallplats-arvesund",
+    "name": "Ställplats Arvesund",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 63.2351,
+    "lon": 14.0694,
+    "address": "Södra Arvesund 516 Mattmar 837 91 Jämtland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://www.angarenostersund.com/stallplats-arvesund): \"Här finns färskvatten, elström, WC och dusch samt tömning av gråvatten och latrin från kassett eller fast tank.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/staellplats-arvesund).",
+    "website": "https://www.angarenostersund.com/stallplats-arvesund"
+  },
+  {
+    "id": "curated-hk-sandslans-vandrarhem-camping",
+    "name": "Sandslåns Vandrarhem & Camping",
+    "services": [
+      "latrin",
+      "vatten",
+      "sopor",
+      "stallplats"
+    ],
+    "lat": 63.0098,
+    "lon": 17.7958,
+    "address": "Flottarvägen 74 Nyland 873 71 Ångermanland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten, sopor bekräftat. Källa (https://sandslan.se/camping/): \"Färskvatten Latrintömning och sopcontainer\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/sandslaans-vandrarhem-och-camping).",
+    "website": "https://sandslan.se/camping/"
+  },
+  {
+    "id": "curated-hk-stallplats-harna",
+    "name": "Ställplats Härna",
+    "services": [
+      "vatten",
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 58.4669,
+    "lon": 15.5155,
+    "address": "Härna Vreta Kloster 585 76 Östergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/staellplats-haerna). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-banegardet",
+    "name": "Bånegärdet",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 57.0847,
+    "lon": 12.6757,
+    "address": "Halsestorp 125 Ullared 311 61 Halland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://www.banegardet.se): \"Påfyllning av färskvatten (april\" \"och tömning av latrin på plats.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/baanegaerdet).",
+    "fee": "250 kr/natt med el, 150 kr utan",
+    "website": "https://www.banegardet.se"
+  },
+  {
+    "id": "curated-hk-vildmarkscamp-stora-stentrask",
+    "name": "Vildmarkscamp Stora Stenträsk",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 66.144,
+    "lon": 22.0661,
+    "address": "Stenträskvägen Niemisel 955 95 Norrbotten",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/vildmarkscamp-stora-stentraesk). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.campcation.com/sv/campsite/vildmarkscamp-stora-stentrask/?ref=hbk"
+  },
+  {
+    "id": "curated-hk-dalagarden",
+    "name": "Dalagården",
+    "services": [
+      "vatten",
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 60.7173,
+    "lon": 15.9076,
+    "address": "Dalagården Svärdsjö 790 23 Dalarna",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/dalagaarden). Har du varit här? Bekräfta i appen.",
+    "website": "https://dalagarden.se/stallplats"
+  },
+  {
+    "id": "curated-hk-raa-hamn",
+    "name": "Råå Hamn",
+    "services": [
+      "gravatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 55.9949,
+    "lon": 12.7467,
+    "address": "Råå Hamn Råå 252 70 Skåne",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, gråvattentömning bekräftat. Källa (https://www.raahamn.se/hamn#husbilinfo): \"Plats för tömning av latrin finns bakom servicehuset, samt för gråvatten framför servicehuset.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/raaaa-hamn).",
+    "website": "https://www.raahamn.se/hamn#husbilinfo"
+  },
+  {
+    "id": "curated-hk-caravan-club-kapellskar",
+    "name": "Caravan Club Kapellskär",
+    "services": [
+      "vatten",
+      "latrin",
+      "gravatten",
+      "camping"
+    ],
+    "lat": 59.7261,
+    "lon": 19.0657,
+    "address": "Myntarbyäng 30 Gräddö 760 15 Uppland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/caravan-club-kapellskaer). Har du varit här? Bekräfta i appen.",
+    "website": "https://caravanclub.se/camping/kapellskar"
+  },
+  {
+    "id": "curated-hk-hjarnevallen",
+    "name": "Hjärnevallen",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 58.677,
+    "lon": 14.954,
+    "address": "Medevi Brunn 75 Motala 591 97 Östergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/hjaernevallen). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-ski-bike-hike",
+    "name": "Ski Bike Hike",
+    "services": [
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 57.8192,
+    "lon": 13.4121,
+    "address": "Vist 922 Ulricehamn 523 37 Västergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/ski-bike-hike). Har du varit här? Bekräfta i appen.",
+    "website": "https://skibikehike.se/boende"
+  },
+  {
+    "id": "curated-hk-ryda-gard",
+    "name": "Ryda Gård",
+    "services": [
+      "vatten",
+      "gravatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 57.997,
+    "lon": 15.8833,
+    "address": "Ryda Rimforsa 590 47 Östergötland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://ryda.se/stallplatser/): \"Smidig tömning av gråvatten och latrin Enkel påfyllning av färskvatten\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/ryda-gaard).",
+    "website": "https://ryda.se/stallplatser/"
+  },
+  {
+    "id": "curated-hk-gideagarden",
+    "name": "Gideågården",
+    "services": [
+      "gravatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 63.4808,
+    "lon": 18.9689,
+    "address": "Skollärarvägen 3 Gideå 896 93 Ångermanland",
+    "source": "egen",
+    "unverifiedServices": [
+      "vatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning bekräftat. Källa (http://gideagarden.se/se-och-gora/stallplatser): \"Det finns wc, diskbänk, tömning för gråvatten och latrin i det röda huset vid tennisplanen.\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/gideaagaarden).",
+    "fee": "200 kr/dygn",
+    "website": "http://gideagarden.se/se-och-gora/stallplatser"
+  },
+  {
+    "id": "curated-hk-stallplats-torp",
+    "name": "Ställplats Torp",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 59.1336,
+    "lon": 15.002,
+    "address": "Torp, Kräcklinge Kumla 692 93 Närke",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning bekräftat. Källa (http://konferensplatstorp.se/konferensplats-torp/stallplats-torp.html): \"Toaletter, dusch och latrintömning finns på området.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/staellplats-torp).",
+    "fee": "220 kr/natt",
+    "website": "http://konferensplatstorp.se/konferensplats-torp/stallplats-torp.html"
+  },
+  {
+    "id": "curated-hk-storklinten",
+    "name": "Storklinten",
+    "services": [
+      "latrin",
+      "vatten",
+      "gravatten",
+      "camping"
+    ],
+    "lat": 66.0208,
+    "lon": 21.249,
+    "address": "Storklinten 2 Boden 961 98 Norrbotten",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/storklinten). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.storklinten.se/camping"
+  },
+  {
+    "id": "curated-hk-viboo",
+    "name": "Viboö",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 59.2764,
+    "lon": 16.0164,
+    "address": "Viboön Stora Sundby 635 35 Södermanland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/vibooe). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-sandarne-batklubb",
+    "name": "Sandarne Båtklubb",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 61.262,
+    "lon": 17.1572,
+    "address": "Stenövägen 25 Sandarne 826 72 Hälsingland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/sandarne-baatklubb). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.sandarnebatklubb.se"
+  },
+  {
+    "id": "curated-hk-hotell-e-10",
+    "name": "Hotell E-10",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 67.8464,
+    "lon": 20.2568,
+    "address": "Lastvägen 9 Kiruna 981 38 Lappland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://www.e-10.se/stallplats-for-husbil-kiruna/): \"Vattenpåfyllning och latrintömning ingår i priset.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/hotell-e-10).",
+    "fee": "360 kr/dygn med el, 300 kr utan",
+    "website": "https://www.e-10.se/stallplats-for-husbil-kiruna/"
+  },
+  {
+    "id": "curated-hk-torpakra-station",
+    "name": "Torpåkra Station",
+    "services": [
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 57.9407,
+    "lon": 13.0288,
+    "address": "Torpåkra Ljung 524 95 Västergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/torpaakra-station). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.campcation.com/sv/campsite/torpakra-station/?ref=hbk"
+  },
+  {
+    "id": "curated-hk-petes-ekogard",
+    "name": "Petes Ekogård",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "sopor",
+      "stallplats"
+    ],
+    "lat": 57.1684,
+    "lon": 18.1703,
+    "address": "Hablingbo Petes 650 Havdhem 623 42 Gotland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten, sopor bekräftat. Källa (http://www.petesekogard.se/st%C3%A4llplatser): \"Tömning av Latrin ( även fast tank) Tömning av gråvatten ( även fast tank, gallerplats till höger om infarten ) Sophantering\" \"Påfyllning färskvatten\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/petes-ekogaard).",
+    "website": "http://www.petesekogard.se/st%C3%A4llplatser"
+  },
+  {
+    "id": "curated-hk-stora-ekeberg",
+    "name": "Stora Ekeberg",
+    "services": [
+      "vatten",
+      "latrin",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 58.405,
+    "lon": 13.5435,
+    "address": "Stora Ekeberg Axvall 532 92 Västergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/stora-ekeberg). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.storaekeberg.se"
+  },
+  {
+    "id": "curated-hk-lilla-boslid",
+    "name": "Lilla Böslid",
+    "services": [
+      "latrin",
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 56.5986,
+    "lon": 12.9512,
+    "address": "Lilla Böslid 146 Eldsberga 305 96 Halland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/lilla-boeslid). Har du varit här? Bekräfta i appen.",
+    "website": "https://hushallningssallskapet.se/hushallningssallskapet-halland/om-oss/garden-lilla-boslid/"
+  },
+  {
+    "id": "curated-hk-cafe-jagmastargarden",
+    "name": "Café Jägmästargården",
+    "services": [
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 58.4583,
+    "lon": 16.2584,
+    "address": "Lund, Jägmästargården 1 Söderköping 614 92 Östergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/cafe-jaegmaestargaarden). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.cafejagmastargarden.se"
+  },
+  {
+    "id": "curated-hk-tangens-marina",
+    "name": "Tångens Marina",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 58.3567,
+    "lon": 11.2671,
+    "address": "Varvsgatan 19 Kungshamn 456 32 Bohuslän",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/taangens-marina). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.facebook.com/profile.php?id=61566138519310"
+  },
+  {
+    "id": "curated-hk-the-backyard",
+    "name": "The Backyard",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 58.4522,
+    "lon": 13.0495,
+    "address": "Kållands-Åsaka Sandhem 1 Lidköping 531 96 Västergötland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://www.bkyd.se/#Ställplats): \"Vi tillhandahåller faciliteter för vattenfyllning, tömning av kassett och tömning av gråvatten\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/the-backyard).",
+    "website": "https://www.bkyd.se/#Ställplats"
+  },
+  {
+    "id": "curated-hk-stannum-golf",
+    "name": "Stannum Golf",
+    "services": [
+      "gravatten",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 57.8352,
+    "lon": 12.2582,
+    "address": "Valters Väg 2 Gråbo 443 70 Västergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/stannum-golf). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.stannumgolf.se"
+  },
+  {
+    "id": "curated-hk-viksjo-folketshus",
+    "name": "Viksjö Folketshus",
+    "services": [
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 62.7758,
+    "lon": 17.4228,
+    "address": "Nyhemmanet 174 Viksjö 871 94 Ångermanland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/viksjoe-folketshus). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.hogakusten.com/sv/stallplats-vid-viksjo-folkets-hus"
+  },
+  {
+    "id": "curated-hk-asens-vandrarhem-uvboet",
+    "name": "Åsens Vandrarhem, Uvboet",
+    "services": [
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 61.2748,
+    "lon": 13.8201,
+    "address": "Brunnmyrvägen 2 Älvdalen 796 90 Dalarna",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aasens-vandrarhem-uvboet). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.uvboet.se"
+  },
+  {
+    "id": "curated-hk-jadersbruk",
+    "name": "Jädersbruk",
+    "services": [
+      "vatten",
+      "latrin",
+      "sopor",
+      "stallplats"
+    ],
+    "lat": 59.4074,
+    "lon": 15.7847,
+    "address": "Jädersholme Verkstaden 188 Arboga 732 96 Västmanland",
+    "source": "egen",
+    "unverifiedServices": [
+      "gravatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): färskvatten, latrintömning, sopor bekräftat. Källa (http://www.jadersbruksvanner.se/vara-stallplatser): \"Färskvatten Soptunnor (bio, restavfall, glas, plast) Möjlighet att tömma latrintank\" gråvattentömning anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/jaedersbruk).",
+    "fee": "150 kr/natt med el, 100 kr utan",
+    "website": "http://www.jadersbruksvanner.se/vara-stallplatser"
+  },
+  {
+    "id": "curated-hk-sjovallen-ahlafors-if",
+    "name": "Sjövallen, Ahlafors IF",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 57.9155,
+    "lon": 12.1069,
+    "address": "Sjövallavägen Alafors 449 50 Västergötland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (http://www.ahlaforsif.se/camping): \"Vatten och möjlighet till latrintömning finns i den lilla gula byggnaden intill klubbhuset.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/sjoevallen-ahlafors-if).",
+    "website": "http://www.ahlaforsif.se/camping"
+  },
+  {
+    "id": "curated-hk-stallplats-lindarva",
+    "name": "Ställplats Lindärva",
+    "services": [
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 58.4452,
+    "lon": 13.2342,
+    "address": "Lindärva Skattegården 5 Vinninga 531 91 Västergötland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): färskvatten, gråvattentömning bekräftat. Källa (http://www.vastsverige.com/lackokinnekulle/produkter/stallplats-lindarva/): \"Här finns dricksvatten, och el i begränsad omfattning, toalett med dusch och möjlighet att tömma gråvatten.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/staellplats-lindaerva).",
+    "website": "http://www.vastsverige.com/lackokinnekulle/produkter/stallplats-lindarva/"
+  },
+  {
+    "id": "curated-hk-rosahojdens-gard-kok-bageri",
+    "name": "Rosahöjdens Gård, Kök & Bageri",
+    "services": [
+      "latrin",
+      "camping"
+    ],
+    "lat": 60.1413,
+    "lon": 14.3721,
+    "address": "Tyforsvägen 1 Fredriksberg 770 10 Dalarna",
+    "source": "egen",
+    "unverifiedServices": [
+      "vatten"
+    ],
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://www.xn--rosahjden-47a.se/camping): \"Faciliteter: Latrintömning.\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/rosahoejdens-gaard-koek-och-bageri).",
+    "website": "https://www.xn--rosahjden-47a.se/camping"
+  },
+  {
+    "id": "curated-hk-upgrid-experience",
+    "name": "Upgrid Experience",
+    "services": [
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 59.3523,
+    "lon": 12.6732,
+    "address": "Södra Åtorp Värmlands Nysäter 661 95 Värmland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/upgrid-experience). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.upgridexperience.com/"
+  },
+  {
+    "id": "curated-hk-stallplats-frodinge",
+    "name": "Ställplats Frödinge",
+    "services": [
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 57.7022,
+    "lon": 16.0097,
+    "address": "Idrottsvägen 6 Vimmerby 598 95 Småland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/staellplats-froedinge). Har du varit här? Bekräfta i appen.",
+    "website": "https://bygdegardarna.se/frodinge/stallplatser-frodinge/"
+  },
+  {
+    "id": "curated-hk-nyangets-havsbad-camping",
+    "name": "Nyängets Havsbad & Camping",
+    "services": [
+      "vatten",
+      "latrin",
+      "camping"
+    ],
+    "lat": 63.2518,
+    "lon": 18.6854,
+    "address": "Nyängetsvägen Domsjö 892 32 Ångermanland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): färskvatten, latrintömning bekräftat. Källa (https://nyangetshavsbad.se): \"Vattenutkastare för påfyllning av tank. Latrintömning.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/nyaengets-havsbad-och-camping).",
+    "website": "https://nyangetshavsbad.se"
+  },
+  {
+    "id": "curated-hk-bergfors-naturrastplats",
+    "name": "Bergfors Naturrastplats",
+    "services": [
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 68.1539,
+    "lon": 19.7774,
+    "address": "Rastplats Bergfors Kiruna 981 95 Lappland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/bergfors-naturrastplats). Har du varit här? Bekräfta i appen.",
+    "website": "https://kiruna.se/trafik--resor/trafik-och-gator/parkering.html"
+  },
+  {
+    "id": "curated-hk-kallahamn",
+    "name": "Källahamn",
+    "services": [
+      "vatten",
+      "latrin",
+      "stallplats"
+    ],
+    "lat": 57.1102,
+    "lon": 16.989,
+    "address": "Källahamnsvägen Löttorp 387 71 Öland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/kaellahamn). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.facebook.com/kallahamnsstallplats"
+  },
+  {
+    "id": "curated-hk-krokstorp",
+    "name": "Krokstorp",
+    "services": [
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 57.0703,
+    "lon": 16.3348,
+    "address": "Krokstorp 404 Mönsterås 383 92 Småland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/krokstorp). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-hagens-camping",
+    "name": "Hagens Camping",
+    "services": [
+      "latrin",
+      "camping"
+    ],
+    "lat": 57.3549,
+    "lon": 14.4985,
+    "address": "Stockarydsvägen Vrigstad 576 96 Småland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/hagens-camping). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.facebook.com/campinghagens"
+  },
+  {
+    "id": "curated-hk-spangens-camping",
+    "name": "Spångens Camping",
+    "services": [
+      "vatten",
+      "gravatten",
+      "camping"
+    ],
+    "lat": 57.8994,
+    "lon": 13.2139,
+    "address": "Spången 101 Hökerum 523 99 Västergötland",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/spaangens-camping). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.campcation.com/sv/campsite/spangens-camping/?ref=hbk"
+  },
+  {
+    "id": "curated-hk-ornviken-soderkoping",
+    "name": "Örnviken Söderköping",
+    "services": [
+      "gravatten",
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 58.2699,
+    "lon": 16.7091,
+    "address": "Kejsarnäs Örntorpet Valdemarsvik 615 93 Östergötland",
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://www.ornviken-soderkoping.se/stallplatser): \"Tömningsstation för gråvatten och latrin. Dricksvatten finns vid varje ställplats.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/oernviken-soederkoeping).",
+    "website": "https://www.ornviken-soderkoping.se/stallplatser"
+  },
+  {
+    "id": "curated-hk-bastad-hamn",
+    "name": "Båstad Hamn",
+    "services": [
+      "latrin",
+      "vatten",
+      "stallplats"
+    ],
+    "lat": 56.4324,
+    "lon": 12.8431,
+    "address": "Strandpromenaden Båstad 269 33 Skåne",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/baastad-hamn). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.tallyweb.dk/bastad-hamn/home"
+  },
+  {
+    "id": "curated-hk-stallplats-slatthult",
+    "name": "Ställplats Slätthult",
+    "services": [
+      "latrin",
+      "vatten",
+      "gravatten",
+      "stallplats"
+    ],
+    "lat": 58.1807,
+    "lon": 11.4785,
+    "address": "Slätthultsvägen 20 Ellös 474 31 Bohuslän",
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med latrintömning, färskvatten, gråvattentömning, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/staellplats-slaetthult). Har du varit här? Bekräfta i appen."
+  },
+  {
+    "id": "curated-hk-camping-fritidsspecialisten",
+    "name": "Camping & Fritidsspecialisten",
+    "services": [
+      "gasol"
+    ],
+    "lat": 64.5866,
+    "lon": 18.6953,
+    "address": "Karossvägen 3A Lycksele 921 45 Lappland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gasol, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Säljer gasol enligt egen sida/kedja, men flaskstorlek (10/11 kg) ej belagd. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/camping-och-fritidsspecialisten). Har du varit här? Bekräfta i appen.",
+    "website": "https://campingofritid.se"
+  },
+  {
+    "id": "curated-hk-akarservice-i-hofors",
+    "name": "Åkarservice i Hofors",
+    "services": [
+      "gasol"
+    ],
+    "lat": 60.5326,
+    "lon": 16.3089,
+    "address": "Torsåkersvägen 45 Hofors 813 33 Gästrikland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gasol, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Säljer gasol enligt egen sida/kedja, men flaskstorlek (10/11 kg) ej belagd. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aakarservice-i-hofors). Har du varit här? Bekräfta i appen.",
+    "website": "https://akarservice.se"
+  },
+  {
+    "id": "curated-hk-mekonomen-gasolfyllarna",
+    "name": "Mekonomen/Gasolfyllarna",
+    "services": [
+      "gasol"
+    ],
+    "lat": 59.004,
+    "lon": 16.231,
+    "address": "Österleden 10 Katrineholm 641 49 Södermanland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gasol, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Säljer gasol enligt egen sida/kedja, men flaskstorlek (10/11 kg) ej belagd. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/mekonomengasolfyllarna). Har du varit här? Bekräfta i appen.",
+    "website": "https://gasolfyllarna.se"
+  },
+  {
+    "id": "curated-hk-gasol-24-7-gasolautomat-angelholm",
+    "name": "Gasol 24/7 Gasolautomat Ängelholm",
+    "services": [
+      "gasol"
+    ],
+    "lat": 56.28517,
+    "lon": 12.8404,
+    "address": "Stjernsvärds Allé Ängelholm 262 74 Skåne",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://www.gasol247.com): \"Ängelholm Valhall Park Stjernsvärds allé 262 74 Ängelholm\" \"I automaten säljer vi kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10) stålflaska 11 kg (P11).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/gasol-247-gasolautomat-aengelholm).",
+    "website": "https://www.gasol247.com"
+  },
+  {
+    "id": "curated-hk-aga-gasolautomat-kallby",
+    "name": "AGA Gasolautomat, Källby",
+    "services": [
+      "gasol"
+    ],
+    "lat": 58.50606,
+    "lon": 13.31035,
+    "address": "Mobergs Väg 2 Källby 531 73 Västergötland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://forsaljningsstallen.linde.se/k%C3%A4llby/mobergs-v%C3%A4g-2/aga-gasolautomat-k%C3%A4llby-bil-&-handel): \"Mobergs väg 2 53173 Källby\" \"I automaten säljer vi och tar emot kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aga-gasolautomat-kaellby).",
+    "website": "https://forsaljningsstallen.linde.se/k%C3%A4llby/mobergs-v%C3%A4g-2/aga-gasolautomat-k%C3%A4llby-bil-&-handel"
+  },
+  {
+    "id": "curated-hk-aga-gasolautomat-ica-kallekarr",
+    "name": "AGA Gasolautomat, Ica Kållekärr",
+    "services": [
+      "gasol"
+    ],
+    "lat": 58.0244,
+    "lon": 11.6548,
+    "address": "Kållekärr 50 Kållekärr 471 93 Bohuslän",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://forsaljningsstallen.linde.se/k%C3%A5llek%C3%A4rr/k%C3%A5llek%C3%A4rr-50/aga-gasolautomat-ica-supermarket): \"Kållekärr 50 47193 Kållekärr\" \"I automaten säljer vi och tar emot kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aga-gasolautomat-ica-kaallekaerr).",
+    "website": "https://forsaljningsstallen.linde.se/k%C3%A5llek%C3%A4rr/k%C3%A5llek%C3%A4rr-50/aga-gasolautomat-ica-supermarket"
+  },
+  {
+    "id": "curated-hk-gasol-24-7-gasolautomat-liatorp",
+    "name": "Gasol 24/7 Gasolautomat Liatorp",
+    "services": [
+      "gasol"
+    ],
+    "lat": 56.6653,
+    "lon": 14.2608,
+    "address": "Växjövägen 500 Liatorp 343 74 Småland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://www.gasol247.com): \"Liatorp ICA Nära Växjövägen 500 343 74 Liatorp\" \"I automaten säljer vi kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10) stålflaska 11 kg (P11).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/gasol-247-gasolautomat-liatorp).",
+    "website": "https://www.gasol247.com"
+  },
+  {
+    "id": "curated-hk-ah-bensin-gasolfyllarna",
+    "name": "AH Bensin/Gasolfyllarna",
+    "services": [
+      "gasol"
+    ],
+    "lat": 57.9873,
+    "lon": 15.6384,
+    "address": "Östgötagatan 2 Kisa 590 38 Östergötland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gasol, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Säljer gasol enligt egen sida/kedja, men flaskstorlek (10/11 kg) ej belagd. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/ah-bensingasolfyllarna). Har du varit här? Bekräfta i appen.",
+    "website": "https://gasolfyllarna.se"
+  },
+  {
+    "id": "curated-hk-aga-gasolautomat-frendo-rollsbo",
+    "name": "AGA Gasolautomat, Frendo Rollsbo",
+    "services": [
+      "gasol"
+    ],
+    "lat": 57.88652,
+    "lon": 11.9475,
+    "address": "Rollsbovägen 44a Kungälv 442 40 Bohuslän",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://forsaljningsstallen.linde.se/kung%C3%A4lv/rollsbov%C3%A4gen-44/aga-gasolautomat-frendo-rollsbo): \"Rollsbovägen 44 442 40 Kungälv\" \"Byte 10 kg gasol komposit 1949 SEK 589 SEK\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aga-gasolautomat-frendo-rollsbo).",
+    "gasolPrice": "Byte 10 kg komposit 589 kr",
+    "website": "https://forsaljningsstallen.linde.se/kung%C3%A4lv/rollsbov%C3%A4gen-44/aga-gasolautomat-frendo-rollsbo"
+  },
+  {
+    "id": "curated-hk-norbro-energi-gasolautomat-vallda",
+    "name": "Norbro Energi Gasolautomat, Vallda",
+    "services": [
+      "gasol"
+    ],
+    "lat": 57.4657,
+    "lon": 11.9937,
+    "address": "Munkhättans Väg Vallda 434 90 Halland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://www.norbro.se/privat/hitta-gasolautomat/): \"Munkhättans väg 434 90 Vallda Hitta vägen här Du kan byta och köpa följande gasolflaskor i vår automat: 5 kg PK5-gasolflasksa För mer information 10 kg PK10-gasolflasksa\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/norbro-energi-gasolautomat-vallda).",
+    "website": "https://www.norbro.se/privat/hitta-gasolautomat/"
+  },
+  {
+    "id": "curated-hk-gasolautomat-se-ica-almo-livs",
+    "name": "GasolAutomat.se, Ica Almö Livs",
+    "services": [
+      "gasol"
+    ],
+    "lat": 58.0622,
+    "lon": 11.751,
+    "address": "Myggenäsvägen 2 Myggenäs 471 60 Bohuslän",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://gasolautomat.se/automater/): \"ICA Almö Livs Centrumhuset 471 60 Myggenäs +46706087041 Typ av flaskor: PC5, PC10\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/gasolautomat.se-ica-almoe-livs).",
+    "website": "https://gasolautomat.se/automater/"
+  },
+  {
+    "id": "curated-hk-norbro-energi-gasolautomat-nodinge",
+    "name": "Norbro Energi Gasolautomat, Nödinge",
+    "services": [
+      "gasol"
+    ],
+    "lat": 57.8943,
+    "lon": 12.0453,
+    "address": "Ale Torg Nödinge 449 31 Västergötland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://www.norbro.se/privat/hitta-gasolautomat/): \"Ale Torg 449 31 Nödinge Hitta vägen här Du kan byta och köpa följande gasolflaskor i vår automat: 5 kg PK5-gasolflasksa För mer information 10 kg PK10-gasolflasksa\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/norbro-energi-gasolautomat-noedinge).",
+    "website": "https://www.norbro.se/privat/hitta-gasolautomat/"
+  },
+  {
+    "id": "curated-hk-aga-gasolautomat-tempo-vattholma",
+    "name": "AGA Gasolautomat, Tempo Vattholma",
+    "services": [
+      "gasol"
+    ],
+    "lat": 60.0173,
+    "lon": 17.7332,
+    "address": "Malmvågsvägen 7 Vattholma 743 50 Uppland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://forsaljningsstallen.linde.se/vattholma/malmv%C3%A5gsv%C3%A4gen-7/aga-gasolautomat-tempo): \"Malmvågsvägen 7 74350 Vattholma\" \"I automaten säljer vi och tar emot kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aga-gasolautomat-tempo-vattholma).",
+    "website": "https://forsaljningsstallen.linde.se/vattholma/malmv%C3%A5gsv%C3%A4gen-7/aga-gasolautomat-tempo"
+  },
+  {
+    "id": "curated-hk-aga-gasolautomat-dalby",
+    "name": "AGA Gasolautomat, Dalby",
+    "services": [
+      "gasol"
+    ],
+    "lat": 55.66038,
+    "lon": 13.342,
+    "address": "Pumpvägen 2 Dalby 247 50 Skåne",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://forsaljningsstallen.linde.se/dalby/pumpv%C3%A4gen-2/aga-gasolautomat-dalby): \"Pumpvägen 2 24750 Dalby\" \"I automaten säljer vi och tar emot kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aga-gasolautomat-dalby).",
+    "website": "https://forsaljningsstallen.linde.se/dalby/pumpv%C3%A4gen-2/aga-gasolautomat-dalby"
+  },
+  {
+    "id": "curated-hk-fundins-oljor-gasolfyllarna",
+    "name": "Fundins Oljor/Gasolfyllarna",
+    "services": [
+      "gasol"
+    ],
+    "lat": 58.0347,
+    "lon": 14.9975,
+    "address": "Bäckagatan 1 Tranås 573 36 Småland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gasol, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Säljer gasol enligt egen sida/kedja, men flaskstorlek (10/11 kg) ej belagd. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/fundins-oljorgasolfyllarna). Har du varit här? Bekräfta i appen.",
+    "website": "https://gasolfyllarna.se"
+  },
+  {
+    "id": "curated-hk-aga-gasolautomat-ica-ljunghusen",
+    "name": "AGA Gasolautomat, Ica Ljunghusen",
+    "services": [
+      "gasol"
+    ],
+    "query": "Falsterbovägen 131, Höllviken",
+    "nearLat": 55.40582,
+    "nearLon": 12.9211,
+    "maxKm": 3,
+    "address": "Lönnkrogsvägen 10 Höllviken 236 41 Skåne",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://forsaljningsstallen.linde.se/h%C3%B6llviken/falsterbov%C3%A4gen-131/aga-gasolautomat-ica-n%C3%A4ra-ljunghusen): \"Falsterbovägen 131 23641 Höllviken\" \"I automaten säljer vi och tar emot kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aga-gasolautomat-ica-ljunghusen).",
+    "website": "https://forsaljningsstallen.linde.se/h%C3%B6llviken/falsterbov%C3%A4gen-131/aga-gasolautomat-ica-n%C3%A4ra-ljunghusen"
+  },
+  {
+    "id": "curated-hk-gasol-24-7-gasolautomat-lund",
+    "name": "Gasol 24/7 Gasolautomat Lund",
+    "services": [
+      "gasol"
+    ],
+    "lat": 55.7129,
+    "lon": 13.1574,
+    "address": "Företagsvägen 10 Lund 227 61 Skåne",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://www.gasol247.com): \"Lund Nova Lund Företagsvägen 10 227 61 Lund\" \"I automaten säljer vi kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10) stålflaska 11 kg (P11).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/gasol-247-gasolautomat-lund).",
+    "website": "https://www.gasol247.com"
+  },
+  {
+    "id": "curated-hk-hultmarks-akeri-gasolfyllarna",
+    "name": "Hultmarks Åkeri/Gasolfyllarna",
+    "services": [
+      "gasol"
+    ],
+    "lat": 58.2089,
+    "lon": 15.9917,
+    "address": "Spårgatan 3 Åtvidaberg 597 53 Östergötland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gasol, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Säljer gasol enligt egen sida/kedja, men flaskstorlek (10/11 kg) ej belagd. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/hultmarks-aakerigasolfyllarna). Har du varit här? Bekräfta i appen.",
+    "website": "https://gasolfyllarna.se"
+  },
+  {
+    "id": "curated-hk-aga-gasolautomat-elon-lidingo",
+    "name": "AGA Gasolautomat, Elon Lidingö",
+    "services": [
+      "gasol"
+    ],
+    "lat": 59.3603,
+    "lon": 18.13395,
+    "address": "Södra Kungsvägen 64 Lidingö 181 32 Uppland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://forsaljningsstallen.linde.se/liding%C3%B6/s%C3%B6dra-kungsv%C3%A4gen-64/aga-gasolautomat-elon): \"I automaten säljer vi och tar emot kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aga-gasolautomat-elon-lidingoe).",
+    "website": "https://forsaljningsstallen.linde.se/liding%C3%B6/s%C3%B6dra-kungsv%C3%A4gen-64/aga-gasolautomat-elon"
+  },
+  {
+    "id": "curated-hk-aga-gasolautomat-dalums-lanthandel",
+    "name": "AGA Gasolautomat, Dalums Lanthandel",
+    "services": [
+      "gasol"
+    ],
+    "lat": 57.8979,
+    "lon": 13.46147,
+    "address": "Centralvägen 5 Dalum 523 75 Västergötland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://forsaljningsstallen.linde.se/dalum/centralv%C3%A4gen-5/aga-gasolautomat-dalums-bensin-&-lanthandel): \"I automaten säljer vi och tar emot kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aga-gasolautomat-dalums-lanthandel).",
+    "website": "https://forsaljningsstallen.linde.se/dalum/centralv%C3%A4gen-5/aga-gasolautomat-dalums-bensin-&-lanthandel"
+  },
+  {
+    "id": "curated-hk-aga-gasolautomat-mariestad",
+    "name": "AGA Gasolautomat, Mariestad",
+    "services": [
+      "gasol"
+    ],
+    "lat": 58.71036,
+    "lon": 13.83644,
+    "address": "Stockholmsvägen 55 Mariestad 542 39 Västergötland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://forsaljningsstallen.linde.se/mariestad/stockholmsv%C3%A4gen-55/aga-gasolautomat-mariestad): \"I automaten säljer vi och tar emot kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aga-gasolautomat-mariestad).",
+    "website": "https://forsaljningsstallen.linde.se/mariestad/stockholmsv%C3%A4gen-55/aga-gasolautomat-mariestad"
+  },
+  {
+    "id": "curated-hk-aga-gasolautomat-tempo-kareby",
+    "name": "AGA Gasolautomat, Tempo Kareby",
+    "services": [
+      "gasol"
+    ],
+    "lat": 57.90498,
+    "lon": 11.9248,
+    "address": "Prästvägen 110 Kareby 442 46 Bohuslän",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://forsaljningsstallen.linde.se/kareby/pr%C3%A4stv%C3%A4gen-110/aga-gasolautomat-tempo-kareby): \"I automaten säljer vi och tar emot kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aga-gasolautomat-tempo-kareby).",
+    "website": "https://forsaljningsstallen.linde.se/kareby/pr%C3%A4stv%C3%A4gen-110/aga-gasolautomat-tempo-kareby"
+  },
+  {
+    "id": "curated-hk-gasol-24-7-gasolautomat-hjarup",
+    "name": "Gasol 24/7 Gasolautomat Hjärup",
+    "services": [
+      "gasol"
+    ],
+    "lat": 55.6707,
+    "lon": 13.1612,
+    "address": "Väståkravägen 16 Staffanstorp 245 61 Skåne",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://www.gasol247.com): \"Hjärup Coop Väståkravägen 16 245 64 Staffanstop\" \"I automaten säljer vi kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10) stålflaska 11 kg (P11).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/gasol-247-gasolautomat-hjaerup).",
+    "website": "https://www.gasol247.com"
+  },
+  {
+    "id": "curated-hk-ostermalms-livs-gasolfyllarna",
+    "name": "Östermalms Livs/Gasolfyllarna",
+    "services": [
+      "gasol"
+    ],
+    "lat": 59.6004,
+    "lon": 15.2369,
+    "address": "Björkhyttevägen 30 Lindesberg 711 32 Västmanland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gasol, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Säljer gasol enligt egen sida/kedja, men flaskstorlek (10/11 kg) ej belagd. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/oestermalms-livsgasolfyllarna). Har du varit här? Bekräfta i appen.",
+    "website": "https://gasolfyllarna.se"
+  },
+  {
+    "id": "curated-hk-pr-husbilar-ab",
+    "name": "PR Husbilar AB",
+    "services": [
+      "gasol"
+    ],
+    "lat": 58.1243,
+    "lon": 12.519,
+    "address": "Vetegatan 6 Sollebrunn 441 71 Västergötland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gasol, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Säljer gasol enligt egen sida/kedja, men flaskstorlek (10/11 kg) ej belagd. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/pr-husbilar-ab). Har du varit här? Bekräfta i appen.",
+    "website": "http://www.prhusbilar.com"
+  },
+  {
+    "id": "curated-hk-gasolstationen-gasolautomat-mellbystrand",
+    "name": "Gasolstationen Gasolautomat Mellbystrand",
+    "services": [
+      "gasol"
+    ],
+    "lat": 56.5049,
+    "lon": 12.9569,
+    "address": "Norrleden 2 Mellbystrand 312 60 Halland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (http://www.gasolstationen.se/gasolautomater): \"Finns i Mellbystrand (parkeringen vi resturang tre laxar)\" \"De flasktyper som kommer att vara tillgängliga för köp och byte är kompositflaskor av typen 5 kg (PC5) och 10 kg (PC10). samt stål typ P6 och P11.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/gasolstationen-gasolautomat-mellbystrand).",
+    "website": "http://www.gasolstationen.se/gasolautomater"
+  },
+  {
+    "id": "curated-hk-provinsbutiken-gasolfyllarna",
+    "name": "Provinsbutiken/Gasolfyllarna",
+    "services": [
+      "gasol"
+    ],
+    "lat": 59.0405,
+    "lon": 15.8741,
+    "address": "Sävstaholmsvägen 5 Vingåker 643 31 Södermanland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gasol, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Säljer gasol enligt egen sida/kedja, men flaskstorlek (10/11 kg) ej belagd. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/provinsbutikengasolfyllarna). Har du varit här? Bekräfta i appen.",
+    "website": "https://gasolfyllarna.se"
+  },
+  {
+    "id": "curated-hk-aga-gasolautomat-huskvarna",
+    "name": "AGA Gasolautomat, Huskvarna",
+    "services": [
+      "gasol"
+    ],
+    "lat": 57.85142,
+    "lon": 14.30577,
+    "address": "Tunnlandsvägen 5 Huskvarna 561 46 Småland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://forsaljningsstallen.linde.se/huskvarna/tunnlandsv%C3%A4gen-5/aga-gasolautomat-huskvarna): \"I automaten säljer vi och tar emot kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aga-gasolautomat-huskvarna).",
+    "website": "https://forsaljningsstallen.linde.se/huskvarna/tunnlandsv%C3%A4gen-5/aga-gasolautomat-huskvarna"
+  },
+  {
+    "id": "curated-hk-svenska-gas-gasol-gasolautomat",
+    "name": "Svenska Gas & Gasol, Gasolautomat",
+    "services": [
+      "gasol"
+    ],
+    "lat": 58.2022,
+    "lon": 11.9045,
+    "address": "Anfasterödsvägen Ljungskile 459 33 Bohuslän",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://www.svenskagas.se/gasolautomat): \"PC10 - kompositflaska 10kg Byte: 399:-\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/svenska-gas-och-gasol-gasolautomat).",
+    "gasolPrice": "Byte PC10 399 kr",
+    "website": "https://www.svenskagas.se/gasolautomat"
+  },
+  {
+    "id": "curated-hk-aga-gasolautomat-ica-oxie",
+    "name": "AGA Gasolautomat, Ica Oxie",
+    "services": [
+      "gasol"
+    ],
+    "lat": 55.54994,
+    "lon": 13.09657,
+    "address": "Oxie Kyrkoväg 212 Oxie 238 34 Skåne",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://forsaljningsstallen.linde.se/oxie/oxie-kyrkov%C3%A4g-212/aga-gasolautomat-ica-n%C3%A4ra): \"I automaten säljer vi och tar emot kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aga-gasolautomat-ica-oxie).",
+    "website": "https://forsaljningsstallen.linde.se/oxie/oxie-kyrkov%C3%A4g-212/aga-gasolautomat-ica-n%C3%A4ra"
+  },
+  {
+    "id": "curated-hk-rudvi-fritid-ab",
+    "name": "Rudvi Fritid AB",
+    "services": [
+      "gasol"
+    ],
+    "lat": 56.2008,
+    "lon": 15.6215,
+    "address": "Intagsvägen 1C Karlskrona 371 46 Blekinge",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gasol, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Säljer gasol enligt egen sida/kedja, men flaskstorlek (10/11 kg) ej belagd. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/rudvi-fritid-ab). Har du varit här? Bekräfta i appen.",
+    "website": "https://rudvi.se/rudvi-fritid/"
+  },
+  {
+    "id": "curated-hk-erikssons-husbilar-husvagnar-stenstorp",
+    "name": "Erikssons Husbilar Husvagnar, Stenstorp",
+    "services": [
+      "gasol"
+    ],
+    "lat": 58.2684,
+    "lon": 13.7285,
+    "address": "Hantverkaregatan 38 Stenstorp 521 60 Västergötland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gasol, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Säljer gasol enligt egen sida/kedja, men flaskstorlek (10/11 kg) ej belagd. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/erikssons-husbilar-husvagnar-stenstorp). Har du varit här? Bekräfta i appen.",
+    "website": "https://www.erikssonshusvagnar.se"
+  },
+  {
+    "id": "curated-hk-aga-gasolautomat-enhorna",
+    "name": "AGA Gasolautomat, Enhörna",
+    "services": [
+      "gasol"
+    ],
+    "lat": 59.2518,
+    "lon": 17.5247,
+    "address": "Bäverstigen 1 Enhörna 151 50 Södermanland",
+    "facilities": [
+      "gasol_byte"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://forsaljningsstallen.linde.se/enh%C3%B6rna/b%C3%A4verstigen-1/aga-gasolautomat-enh%C3%B6rna): \"I automaten säljer vi och tar emot kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aga-gasolautomat-enhoerna).",
+    "website": "https://forsaljningsstallen.linde.se/enh%C3%B6rna/b%C3%A4verstigen-1/aga-gasolautomat-enh%C3%B6rna"
   }
 ]
