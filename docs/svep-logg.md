@@ -543,3 +543,14 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   campingspot) användes inte som källa; firstcamp jämförd tidigare (`docs/KALLJAMFORELSER.md`).
   **Kvar:** ~150 (husbil.se) + ~320 (Husbilskompisar) platser där bara färskvatten saknas, och
   Göta kanals ställplatser vars bokningssidor inte visar tjänsterna. Seeden efter synk: 6 641 platser.
+- **2026-10-26, runda 3 (vatten + kompletteringar):** kandidater = Husbilskompisar-/husbil.se-platser där
+  kartan inom 400 m saknar en tjänst (1 316, främst färskvatten men även ~450 latrin/~320 gråvatten
+  på befintliga platser). 1 111 egna webbplatser lästa via runnern som nyckelordsutdrag (451 nämnde
+  tömning/vatten), granskade av sex agenter med regeln "uttryckligt, för husbil, på just denna plats";
+  `apply-r3` godtar bara citat som finns ordagrant i hämtad text och slår ihop med registerpost inom
+  100 m/samma namn. **51 registerposter kompletterade, 91 OSM/TRV-platser fick registerpost ovanpå,
+  90 nya** (alla `medium`). Utelämnat: bokningssajter (Campcation m.fl.) och kataloger som enda källa,
+  båtfaciliteter, ensamt "tömning", stängda (Liljedal, Lysekil Fiskhamnen, Gekås), oklara mål
+  (Ängskär, Östra Piren, Västervik Resort) och en ren tömningsstation >100 m bort som mål.
+  Inga befintliga gröna tjänster motsades av egna sidor. Ärende #45 (Ljunghusen geokodad 3 km fel)
+  rättat med exakt läge och stängt. Seed efter synk: 6 823 platser.
