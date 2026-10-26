@@ -525,3 +525,21 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   Samma deploy var den första med issue #15-flödet (sync-data committar seeden och startar deployen
   själv) – synk 3 min, deploy under en minut. Furusjöns Camping (Ånimskog) föll bort i den allra
   första cachade synken (tillfälligt Nominatim-fel cachades som miss) och är tillbaka efter rättning.
+- **2026-10-26, Pers källtips (Backagården + 15 länkar):** Per påpekade att Backagården (Varberg)
+  saknades → inlagd (`per-fakta.json`). Därefter: Husbilskompisars hela ställplatskarta (5 211 sidor,
+  läst via en tillfällig workflow på runnern) jämförd med seeden – 232 kandidater med tömning/gasol
+  utan motsvarighet inom 400 m. Sex agenter + runner-hämtning av platsernas egna sidor; varje grön
+  tjänst har ordagrant citat som kontrollerats mot den hämtade sidan. **79 bekräftade + 124 grå nya
+  poster** (`curated-hk-*`); hoppade över nedlagda/motstridiga (Härjarö, Gudinge, Sjökaptensgården
+  till salu, Färgelanda Ridklubb, Aeroseum bara under evenemang), dubbletter (Arkösund =
+  Beckmansplatsen) och verkstäder som bara gör gasoltest. Gasol: AGA-, Gasol 24/7-, Norbro-,
+  GasolAutomat- och Svenska Gas-automater gröna (10 kg i operatörens lista för just den automaten);
+  Gasolfyllarnas återförsäljare + PR Husbilar grå (flaskstorlek ej angiven). EllösParken: latrin
+  grå trots egen sajt (Orust tar inte emot husbilslatrin – bekräfta på plats).
+  Pers 15 länkar: turistråden (Västsverige, Visit Blekinge, Höga Kusten, Göta kanal – renderade med
+  Playwright på runnern) gav 8 nya/kompletteringar + Bisonfarmen; husbil.se (~1 060 platser) gav
+  141 tömningskandidater, varav 41 hade egen sida med uppgift → 22 inlagda/kompletterade.
+  Aggregatorerna (svenskastallplatser, stellplatz.app, husbilsplats, husbilslivet, parkandstay,
+  campingspot) användes inte som källa; firstcamp jämförd tidigare (`docs/KALLJAMFORELSER.md`).
+  **Kvar:** ~150 (husbil.se) + ~320 (Husbilskompisar) platser där bara färskvatten saknas, och
+  Göta kanals ställplatser vars bokningssidor inte visar tjänsterna. Seeden efter synk: 6 641 platser.

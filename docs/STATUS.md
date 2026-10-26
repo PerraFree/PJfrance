@@ -3,9 +3,18 @@
 Skrivs ÖVER vid varje överlämning (lägg inte äldre lägesbilder på hög – historik
 finns i git-loggen, `docs/svep-logg.md` och `docs/HISTORIK.md`).
 
-**Uppdaterad:** 2026-10-26, veckosvep A (tömning).
+**Uppdaterad:** 2026-10-26, svep mot Pers källtips (Husbilskompisar, husbil.se, turistråd).
 
-Senaste svep (26 okt, A): 66 glesa kommuner, 0 nya + 1 komplettering (Ställplats Kinnekulle +gråvatten/latrin); metoden uttömd. Rotation: äldst nu är C/D/E (12 okt).
+Senaste svep (26 okt, Pers tips efter Backagården): Husbilskompisars hela
+ställplatskarta (5 211 sidor) och husbil.se (~1 060) jämförda med kartan;
+kandidaterna kontrollerade mot egen sida/kommun/turistråd via runnern.
+Resultat: 203 + 30 nya/kompletterade platser (≈100 med bekräftad tjänst och
+ordagrant citat, 124 grå). Kvar: ~150 vatten-only-kandidater från
+husbil.se + ~320 från Husbilskompisar (inte kontrollerade), Göta kanals
+övriga ställplatser (sidorna visar inte tjänster), Gasolfyllarnas
+återförsäljare (grå – flaskstorlek ej angiven). Se `docs/svep-logg.md`.
+
+Förra svepet (26 okt, A): 66 glesa kommuner, 0 nya + 1 komplettering (Ställplats Kinnekulle +gråvatten/latrin); metoden uttömd. Rotation: äldst nu är C/D/E (12 okt).
 
 Senaste händelse (21 okt): veckogranskning – 16 platser fick grå tjänster som
 område C-skriptet felaktigt gjort gröna (ny uppgraderingsvakt i
