@@ -29640,5 +29640,18 @@
     "url": "https://forsaljningsstallen.linde.se/nora/storgatan-45/aga-gasolautomat-nora",
     "openingHours": "Dygnet runt",
     "confidence": "medium"
+  },
+  {
+    "name": "Ställplats Kinnekulle",
+    "lat": 58.6314294,
+    "lon": 13.441739,
+    "services": [
+      "stallplats",
+      "gravatten",
+      "latrin"
+    ],
+    "source": "egen",
+    "description": "Komplettering vg (Ale, Alingsås, Bollebygd, Essunga, Färgelanda, Götene, Härryda, Lilla Edet, Tibro, Vara, Vårgårda, Aneby, Nässjö, Sävsjö) sep 2026. Källa (https://www.gotene.se/upplevaochgora/fritidochnatur/friluftslivochmotion/camping.6338.html): \"Götene kommun: ställplats vid Hällekis småbåtshamn med gråvattentömning och tömning av toalett i utslagsback; öppnar i april, stänger för säsongen i september. Vårrundan-folder 2022: duschar/toaletter, tömning för gråvatten och latrin, drivs av Hällekis Båtklubb.\"",
+    "website": "https://www.gotene.se/upplevaochgora/fritidochnatur/friluftslivochmotion/camping.6338.html"
   }
 ]
