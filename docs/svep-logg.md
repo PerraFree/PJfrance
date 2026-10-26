@@ -583,3 +583,9 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   Västerås Lögarängen ej gråvatten; Svanshall ej latrin). Uteslutet: Naturkartan, camping.se, kanna-
   vatten (Nikkaluokta), Gotlands vatten, Lysekil Havsbadet (båtar), Östanå gråvatten "via slang",
   Eremit, EllösParken latrin (Orust).
+- **2026-10-26, område E/#27 (säsong, register):** 356 gröna registerposter utan säsong/öppettider
+  med egen webbplats lästa via runnern (+ undersidor om öppettider/priser); 287 hade utdrag, fyra
+  agenter extraherade säsong med ordagrant citat. **83 poster fick `season` + `openingHours`**
+  (≈40 året runt, ≈43 säsong). Uteslutet: prislistor som enda belägg för året runt (Björkö hamn,
+  Almåsa), motstridiga datum (Vallvik), säsong som bara gäller vattnet (Bånegärdet), oklara (Ängdala,
+  Nyhemsgården). Kvar: ~270 registerposter + ~714 OSM-platser utan säsong.

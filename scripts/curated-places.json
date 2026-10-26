@@ -519,9 +519,11 @@
       "gravatten",
       "vatten"
     ],
-    "description": "Central tömningsstation på Öland: färskvatten, gråvatten samt latrin (kassett och fast tank). Källa: Borgholms kommun.",
+    "description": "Central tömningsstation på Öland: färskvatten, gråvatten samt latrin (kassett och fast tank). Källa: Borgholms kommun. Säsong (kontroll 26 okt 2026, https://www.oland.se/latrintomning-borgholms-tomningsstation): \"Öppettider Frostfri tid Vatten: Ja\"",
     "url": "https://www.oland.se/en/latrine-emptying-borgholm-emptying-station",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "Frostfri tid"
   },
   {
     "id": "curated-31-ställplatsen-karlskoga",
@@ -5638,9 +5640,11 @@
       "latrin",
       "vatten"
     ],
-    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats. Säsong (kontroll 26 okt 2026, https://www.asacamping.se/info): \"Vi håller öppet 17 april till den 13 september 2026\"",
     "url": "http://asacamping.se/index.php/sv/contact",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "17 apr–13 sep"
   },
   {
     "id": "curated-332-gnosjö-strand",
@@ -5808,9 +5812,11 @@
       "latrin",
       "vatten"
     ],
-    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats. Säsong (kontroll 26 okt 2026, https://saltvikscamping.se/): \"Saltvik är en av få campingplatser i Bohuslän som har öppet året runt\"",
     "url": "http://www.saltvikscamping.se/",
-    "source": "egen"
+    "source": "egen",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-342-vallersvik-camping-&-vandrarhem",
@@ -5964,9 +5970,11 @@
       "latrin",
       "vatten"
     ],
-    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats. Säsong (kontroll 26 okt 2026, https://www.mollstorpscamping.se/campinginfo): \"är öppen under sommarsäsongen, med gott om plats för både husvagnar, husbilar\"",
     "url": "https://www.mollstorpscamping.se/",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "Sommarsäsong"
   },
   {
     "id": "curated-351-skruvs-fiskeklubbs-camping",
@@ -6078,9 +6086,11 @@
       "latrin",
       "vatten"
     ],
-    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats. Säsong (kontroll 26 okt 2026, https://www.skaralidscamping.se/): \"Vi har stängt för säsongen och öppnar åter igen den 28/4 - 2027\"",
     "url": "https://www.skaralidscamping.se/",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "Från 28 apr; stängt vintertid"
   },
   {
     "id": "curated-358-sturkö-camping",
@@ -6217,7 +6227,7 @@
       "gravatten",
       "vatten"
     ],
-    "description": "Källa (https://book.destinationgotland.se/sv/stallplats-pa-havssidan-12, operatörens bokningssida via Destination Gotland): \"Electrical connection at each pitch, a newly built service building with toilets and private shower cubicles, access to a shared kitchen, washrooms equipped with washing machine and dryer, and facilities for greywater emptying, fresh water taps and latrine emptying.\" Ställplatserna Havssidan 1–12 ligger mittemot Sandvikens Camping & Stugby (sandvikenscamping-stugby.com). Rättat 12 okt 2026: citatet försvann när posterna slogs ihop och tjänsterna blev felaktigt grå. Latrin grå tills Per avgjort om Gotlandsregeln (Region Gotland tar inte emot husbilslatrin) gäller anläggningars egna stationer – operatören säger att latrintömning finns. Tidigare källänk (död okt 2026, källkontrollen 13 okt): https://book.destinationgotland.se/sv/stallplats-pa-havssidan-12.",
+    "description": "Källa (https://book.destinationgotland.se/sv/stallplats-pa-havssidan-12, operatörens bokningssida via Destination Gotland): \"Electrical connection at each pitch, a newly built service building with toilets and private shower cubicles, access to a shared kitchen, washrooms equipped with washing machine and dryer, and facilities for greywater emptying, fresh water taps and latrine emptying.\" Ställplatserna Havssidan 1–12 ligger mittemot Sandvikens Camping & Stugby (sandvikenscamping-stugby.com). Rättat 12 okt 2026: citatet försvann när posterna slogs ihop och tjänsterna blev felaktigt grå. Latrin grå tills Per avgjort om Gotlandsregeln (Region Gotland tar inte emot husbilslatrin) gäller anläggningars egna stationer – operatören säger att latrintömning finns. Tidigare källänk (död okt 2026, källkontrollen 13 okt): https://book.destinationgotland.se/sv/stallplats-pa-havssidan-12. Säsong (kontroll 26 okt 2026, https://sandvikenscamping-stugby.com/boende-bokning/56741.boka.html): \"Ställplatser vinter 1 oktober - 31 maj Tillgång till toalett och dusch\"",
     "source": "egen",
     "website": "https://sandvikenscamping-stugby.com",
     "address": "Sandviken, 623 68 Katthammarsvik",
@@ -6225,7 +6235,9 @@
     "phone": "070-256 11 00",
     "unverifiedServices": [
       "latrin"
-    ]
+    ],
+    "season": "year-round",
+    "openingHours": "Året runt (vinterställplats 1 okt–31 maj)"
   },
   {
     "id": "curated-367-vättersol-stugor-&-camping",
@@ -6278,10 +6290,12 @@
       "latrin",
       "vatten"
     ],
-    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats. Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten, latrintömning, gråvattentömning bekräftat. Källa (https://www.tyrislotcamping.se/camping): \"På området finns 4st vattenposter att hämta från.\" \"En handikapptoalett och en latrintömning. På södra delen av området finns det gråvattentömning.\"",
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats. Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten, latrintömning, gråvattentömning bekräftat. Källa (https://www.tyrislotcamping.se/camping): \"På området finns 4st vattenposter att hämta från.\" \"En handikapptoalett och en latrintömning. På södra delen av området finns det gråvattentömning.\" Säsong (kontroll 26 okt 2026, https://www.tyrislotcamping.se/camping): \"Camping Försäsong (24/4-14/6 365:-, med el 395:-/natt Högsäsong (15/6-16/8) 395:-,med el425:-/natt Eftersäsong (17/8-27/9)\"",
     "url": "https://www.tyrislotcamping.se/",
     "source": "egen",
-    "confidence": "medium"
+    "confidence": "medium",
+    "season": "seasonal",
+    "openingHours": "24 apr–27 sep"
   },
   {
     "id": "curated-370-kalvholmens-camping",
@@ -6511,9 +6525,11 @@
       "vatten",
       "gravatten"
     ],
-    "description": "Erbjuder latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats. rastplatserna.se/husbilsplats.se. \"Visit Roslagen/roslagen.se: '24 husbilsplatser med el och färskvatten vid servicestolpen. För husbil och husvagn finns Camper-Clean-station för automatisk tömning av kassettoaletter och gråvatten – ingår i campingavgifte\" (https://www.visitroslagen.se/kapellskars-camping)",
+    "description": "Erbjuder latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats. rastplatserna.se/husbilsplats.se. \"Visit Roslagen/roslagen.se: '24 husbilsplatser med el och färskvatten vid servicestolpen. För husbil och husvagn finns Camper-Clean-station för automatisk tömning av kassettoaletter och gråvatten – ingår i campingavgifte\" (https://www.visitroslagen.se/kapellskars-camping) Säsong (kontroll 26 okt 2026, https://kapellskarscamping.se/): \"Lågsäsong 24 april - 4 juni 17 augusti - 13 september Receptionen öppen: Sön - Tors: 17:00 - 19:00 Fre - Lör: 13:00 - 19:00 Vintersäsong (oktober–april): Campingen är stängd\"",
     "url": "https://kapellskarscamping.se/",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "24 apr–13 sep"
   },
   {
     "id": "curated-384-storängens-camping",
@@ -6611,9 +6627,11 @@
       "gravatten",
       "latrin"
     ],
-    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "description": "Erbjuder gråvattentömning, latrintömning för husbil/husvagn. Källa: anläggningens webbplats. Säsong (kontroll 26 okt 2026, https://vamabadetscamping.se/): \"Campingen har öppet från 17 April till 27 september\"",
     "url": "https://vamabadetscamping.se/",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "17 apr–27 sep"
   },
   {
     "id": "curated-390-svegs-camping",
@@ -6735,9 +6753,11 @@
       "latrin",
       "vatten"
     ],
-    "description": "Erbjuder latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "description": "Erbjuder latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats. Säsong (kontroll 26 okt 2026, http://www.borkacamping.se/): \"Campingen är öppen året om men under vinterhalvåret är det endast förbokning\"",
     "url": "http://www.borkacamping.se",
-    "source": "egen"
+    "source": "egen",
+    "season": "year-round",
+    "openingHours": "Året runt; vintertid endast förbokning"
   },
   {
     "id": "curated-398-first-camp-fläsian",
@@ -6934,9 +6954,11 @@
       "latrin",
       "vatten"
     ],
-    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "description": "Erbjuder gråvattentömning, latrintömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats. Säsong (kontroll 26 okt 2026, https://www.hemlundacamping.se/): \"Open 15 May – 10 September\"",
     "url": "https://www.hemlundacamping.se/",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "15 maj–10 sep"
   },
   {
     "id": "curated-409-gränssjöarna-stugor-&-camping",
@@ -7016,9 +7038,11 @@
       "gravatten",
       "vatten"
     ],
-    "description": "Erbjuder gråvattentömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats.",
+    "description": "Erbjuder gråvattentömning, färskvattenpåfyllning för husbil/husvagn. Källa: anläggningens webbplats. Säsong (kontroll 26 okt 2026, https://amselecamping.se/): \"Sommaren hyr vi ut stugor och platser för husvagn och husbilar från mitten av maj till mitten av september.\"",
     "url": "https://www.amselecamping.se/",
-    "source": "egen"
+    "source": "egen",
+    "season": "seasonal",
+    "openingHours": "Mitten av maj–mitten av sep"
   },
   {
     "id": "curated-414-österjörn-camping",
@@ -14263,8 +14287,10 @@
       "gravatten"
     ],
     "source": "egen",
-    "description": "Komplettering varmland-dalarna sep 2026. Källa (https://www.saterscamping.se/om-campingen/camping/): \"Två servicehus med hygienutrymmen, matlagnings- och tvättmöjligheter, och i en separat byggnad finns latrintömning och avlopp för gråvatten.\" rastplatserna.se/husbilsplats.se. \"saterscamping.se 'Camping': 'Campingen har en separat byggnad med latrintömning och avlopp för gråvatten.' Två servicehus, latrintömningsautomat, gråvattenavlopp, färskvatten. Vid sjön Ljustern 1 km från Säters centrum, \" (https://www.saterscamping.se/om-campingen/camping/)",
-    "website": "https://www.saterscamping.se/om-campingen/camping/"
+    "description": "Komplettering varmland-dalarna sep 2026. Källa (https://www.saterscamping.se/om-campingen/camping/): \"Två servicehus med hygienutrymmen, matlagnings- och tvättmöjligheter, och i en separat byggnad finns latrintömning och avlopp för gråvatten.\" rastplatserna.se/husbilsplats.se. \"saterscamping.se 'Camping': 'Campingen har en separat byggnad med latrintömning och avlopp för gråvatten.' Två servicehus, latrintömningsautomat, gråvattenavlopp, färskvatten. Vid sjön Ljustern 1 km från Säters centrum, \" (https://www.saterscamping.se/om-campingen/camping/) Säsong (kontroll 26 okt 2026, https://www.saterscamping.se/): \"Sommarsäsong öppnar vi campingen från 1 maj, stänger 27 september.\"",
+    "website": "https://www.saterscamping.se/om-campingen/camping/",
+    "season": "seasonal",
+    "openingHours": "1 maj–27 sep"
   },
   {
     "id": "curated-817-göteborgsvägen-725,-getinge",
@@ -17571,13 +17597,15 @@
       "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://www.monsteras.se/trafik-resor-och-utemiljo/stallplatser/): \"Det finns ingen latrintömning på ställplatsen, och det är absolut förbjudet att tömma latrin i hamnens toaletter. Närmsta latrintömning finns på rastplats Emån längs med E22 i både nord- och sydgående trafik.\" Kommunen bekräftar ställplatsen (grå post kan bli bekräftad) men INGEN latrintömning. OBS: befintlig post 'Mönsterås Gästhamn' (57.0239,16.4897, husbil.se) påstår latrin – motsägs av kommunen, kontrollera. Obekräftad plats (husbilsplats.se, ej primärkälla): rastplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen. Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten bekräftat. Källa (https://www.campingspot.com/sv/docks/827-monsteras-stallplats): \"I anslutning till hamnen finns möjlighet att fylla vattentanken med vattenslang.\" Ingen latrintömning, gråvattentömning enligt sidan.",
+    "description": "Källa (https://www.monsteras.se/trafik-resor-och-utemiljo/stallplatser/): \"Det finns ingen latrintömning på ställplatsen, och det är absolut förbjudet att tömma latrin i hamnens toaletter. Närmsta latrintömning finns på rastplats Emån längs med E22 i både nord- och sydgående trafik.\" Kommunen bekräftar ställplatsen (grå post kan bli bekräftad) men INGEN latrintömning. OBS: befintlig post 'Mönsterås Gästhamn' (57.0239,16.4897, husbil.se) påstår latrin – motsägs av kommunen, kontrollera. Obekräftad plats (husbilsplats.se, ej primärkälla): rastplats. Läget kan vara ungefärligt. Har du varit här? Bekräfta i appen. Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten bekräftat. Källa (https://www.campingspot.com/sv/docks/827-monsteras-stallplats): \"I anslutning till hamnen finns möjlighet att fylla vattentanken med vattenslang.\" Ingen latrintömning, gråvattentömning enligt sidan. Säsong (kontroll 26 okt 2026, https://www.monsteras.se/trafik-resor-och-utemiljo/stallplatser/): \"Priset är 15 april – 15 oktober: 250 kronor per dygn. Övriga året: 175 kr per dygn\"",
     "website": "https://www.monsteras.se/trafik-resor-och-utemiljo/stallplatser/",
     "lat": 57.0406,
     "lon": 16.4472,
     "address": "Hamngatan 4, Mönsterås",
     "confidence": "high",
-    "fee": "175 kr/natt (högsäsong 15 apr–15 okt 250 kr)"
+    "fee": "175 kr/natt (högsäsong 15 apr–15 okt 250 kr)",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-1024-2-färjeleden,-visby",
@@ -18973,9 +19001,11 @@
       "latrin"
     ],
     "source": "egen",
-    "description": "First Camp (egen sida): servicehus 4. \"\"Latrintömning för husbilar finns vid servicehus 4.\" / \"Tömningsstationen: se campingkartan.\" / \"Tillgång till servicehus ingår alltid och på platser med el ingår ström i priset.\" / \"I alla tre servicehusen finns duschar\" (https://firstcamp.se/destinationer/city-stromstad/camping) Granskning 12 okt 2026: sammanslagen med \"Lökholmens Camping\" (samma plats inom 100 m, Pers regel). Kontroll okt 2026 (https://firstcamp.se/destinationer/city-stromstad/camping): \"firstcamp.se/destinationer/city-stromstad/camping: \"Latrintömning för husbilar finns vid servicehus 4.\" Destinationssidan listar tömning av fasta och portabla tankar. firstcamp.se/campingtips/husbil/latrintomning: förbipasserande kan tömma och fylla för 60 kr, dagligen från 12:00.\"",
+    "description": "First Camp (egen sida): servicehus 4. \"\"Latrintömning för husbilar finns vid servicehus 4.\" / \"Tömningsstationen: se campingkartan.\" / \"Tillgång till servicehus ingår alltid och på platser med el ingår ström i priset.\" / \"I alla tre servicehusen finns duschar\" (https://firstcamp.se/destinationer/city-stromstad/camping) Granskning 12 okt 2026: sammanslagen med \"Lökholmens Camping\" (samma plats inom 100 m, Pers regel). Kontroll okt 2026 (https://firstcamp.se/destinationer/city-stromstad/camping): \"firstcamp.se/destinationer/city-stromstad/camping: \"Latrintömning för husbilar finns vid servicehus 4.\" Destinationssidan listar tömning av fasta och portabla tankar. firstcamp.se/campingtips/husbil/latrintomning: förbipasserande kan tömma och fylla för 60 kr, dagligen från 12:00.\" Säsong (kontroll 26 okt 2026, https://firstcamp.se/destinationer/city-stromstad): \"First Camp City – Strömstad har öppet året runt.\"",
     "website": "https://firstcamp.se/destinationer/city-stromstad/camping",
-    "fee": "Gratis för campinggäster; förbipasserande husbil töm/fyll 60 kr (First Camps kedjekampanj, från 12:00, via receptionen)"
+    "fee": "Gratis för campinggäster; förbipasserande husbil töm/fyll 60 kr (First Camps kedjekampanj, från 12:00, via receptionen)",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-1100-first-camp-herrgårdsliv-–-kristinehamn",
@@ -19156,8 +19186,10 @@
     ],
     "source": "egen",
     "fee": "Gratis för gäster; icke-gäster 60–150 kr per tömning (uppgifterna spretar)",
-    "description": "First Camp: Latrintömning vid servicehus 1 och 3. Husbilsplatser med hårdgjord yta och el nära reception/servicehus. Kontroll okt 2026 (https://firstcamp.se/destinationer/froson-ostersund ; https://visitostersund.se/en/information-motorhomes/): \"First Camp Frösön: latrintömning i servicehus 1 och 3. Visit Östersund 'Information motorhomes': lös tank töms i servicehus 1, fast tank i servicehus 3; \"If you have a fixed tank, greywater can be emptied in the same place as latrine emptying.\" Gratis för campinggäster, övriga betalar 100 resp. 150 kr (sidan anger båd…\"",
-    "website": "https://firstcamp.se/destinationer/froson-ostersund"
+    "description": "First Camp: Latrintömning vid servicehus 1 och 3. Husbilsplatser med hårdgjord yta och el nära reception/servicehus. Kontroll okt 2026 (https://firstcamp.se/destinationer/froson-ostersund ; https://visitostersund.se/en/information-motorhomes/): \"First Camp Frösön: latrintömning i servicehus 1 och 3. Visit Östersund 'Information motorhomes': lös tank töms i servicehus 1, fast tank i servicehus 3; \"If you have a fixed tank, greywater can be emptied in the same place as latrine emptying.\" Gratis för campinggäster, övriga betalar 100 resp. 150 kr (sidan anger båd…\" Säsong (kontroll 26 okt 2026, https://firstcamp.se/destinationer/froson-ostersund/camping): \"Just nu under höst och vintersäsongen finns 8 st elplatser på hårt underlag att boka. Servicehus 1 håller även öppet där tillgång till WC, dusch, kök och latrintömning finns.\"",
+    "website": "https://firstcamp.se/destinationer/froson-ostersund",
+    "season": "year-round",
+    "openingHours": "Året runt (vinter: 8 elplatser, tömning)"
   },
   {
     "id": "curated-1111-bodens-camping",
@@ -19569,14 +19601,16 @@
       "camping"
     ],
     "source": "egen",
-    "description": "Campingkollen/primärkälla. \"Ölands officiella turistsida oland.se (Ställplats – Grönhögen): '38 platser med el, fint servicehus med WC, dusch, tvättmaskin samt tömning av grå- och svartvatten'; annan beskrivning: 'servicehuset har fem fräscha toale\" (https://www.oland.se/en/pitch-gronhogen)",
+    "description": "Campingkollen/primärkälla. \"Ölands officiella turistsida oland.se (Ställplats – Grönhögen): '38 platser med el, fint servicehus med WC, dusch, tvättmaskin samt tömning av grå- och svartvatten'; annan beskrivning: 'servicehuset har fem fräscha toale\" (https://www.oland.se/en/pitch-gronhogen) Säsong (kontroll 26 okt 2026, https://www.oland.se/stallplats-gronhogen): \"Öppettider Året runt (dubbelkolla med angiven kontaktperson vid frost- och vintertid)\"",
     "query": "Grönhögen, Mörbylånga",
     "nearLat": 56.5017,
     "nearLon": 16.6068,
     "maxKm": 40,
     "address": "Grönhögen (vid Ottenbyvägen nära hamnen), Mörbylånga kommun",
     "confidence": "medium",
-    "website": "https://www.oland.se/en/pitch-gronhogen"
+    "website": "https://www.oland.se/en/pitch-gronhogen",
+    "season": "year-round",
+    "openingHours": "Året runt (kolla vid frost/vinter)"
   },
   {
     "id": "curated-1134-norrköpings",
@@ -20617,13 +20651,15 @@
       "camping"
     ],
     "source": "egen",
-    "description": "rastplatserna.se/husbilsplats.se. \"Egen sajt storsjo-camping.se: \"Storsjö kapell camping/ställplats består av 14 platser med el och ett litet servicehus med kök och toalett. Det finns möjlighet att fylla på dricksvatten och tömma latrin, både tank och kas\" (https://storsjo-camping.se/)",
+    "description": "rastplatserna.se/husbilsplats.se. \"Egen sajt storsjo-camping.se: \"Storsjö kapell camping/ställplats består av 14 platser med el och ett litet servicehus med kök och toalett. Det finns möjlighet att fylla på dricksvatten och tömma latrin, både tank och kas\" (https://storsjo-camping.se/) Säsong (kontroll 26 okt 2026, https://storsjo-camping.se/): \"Campingen är öppen året runt och man kan boka säsong, vecka, weekend eller dygn.\"",
     "query": "Storsjö, Berg",
     "nearLat": 62.8,
     "nearLon": 13.1,
     "maxKm": 30,
     "address": "Storsjö 220, 845 98 Storsjö",
-    "website": "https://storsjo-camping.se/"
+    "website": "https://storsjo-camping.se/",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-1199-sandvikens-camping-&-stugby",
@@ -25761,12 +25797,14 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.oland.se/stallplats-tjusby): \"Water: Yes (drinking water). Toilets: 2. Shower: Yes. 20 spaces. Electricity: Yes. WiFi: Yes. Emptying latrine cassette: No, Emptying latrine fixed tanks: No, Emptying gray water: No – pumping and refilling station in Borgholm, about 10 km away, at Kapelluddens Camping. Starting price: 250 kr.\" Ny plats, 10 km öster om Borgholm, norr om Gärdslösa/Störlinge. Drivs av samma ägare som Klinta Camping (samma telefonnummer).",
+    "description": "Källa (https://www.oland.se/stallplats-tjusby): \"Water: Yes (drinking water). Toilets: 2. Shower: Yes. 20 spaces. Electricity: Yes. WiFi: Yes. Emptying latrine cassette: No, Emptying latrine fixed tanks: No, Emptying gray water: No – pumping and refilling station in Borgholm, about 10 km away, at Kapelluddens Camping. Starting price: 250 kr.\" Ny plats, 10 km öster om Borgholm, norr om Gärdslösa/Störlinge. Drivs av samma ägare som Klinta Camping (samma telefonnummer). Säsong (kontroll 26 okt 2026, https://www.oland.se/stallplats-tjusby): \"Öppettider Året runt\"",
     "website": "https://www.oland.se/stallplats-tjusby",
     "fee": "Från 250 kr (Swish/kort)",
     "phone": "0485-56 07 70",
     "address": "Tjusby 11, 387 93 Borgholm",
-    "confidence": "high"
+    "confidence": "high",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-1490-lilla-gatan-4,-södvik,-borgholm",
@@ -25866,10 +25904,12 @@
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.oland.se/en/pitch-kopingsviks-stallplats): \"Parking lot offers the opportunity to park overnight, only for motorhomes. Water and toilets available, but does not offer emptying of latrine cassettes, emptying of fixed latrine tanks, or emptying of gray water. 40 parking spaces, electricity and WiFi.\" Inte samma som Klinta Strand (Köpingevägen 57) eller Smedjans ställplatser. Kontrollera dubblett mot befintliga Köpingsvik-poster efter geokodning.",
+    "description": "Källa (https://www.oland.se/en/pitch-kopingsviks-stallplats): \"Parking lot offers the opportunity to park overnight, only for motorhomes. Water and toilets available, but does not offer emptying of latrine cassettes, emptying of fixed latrine tanks, or emptying of gray water. 40 parking spaces, electricity and WiFi.\" Inte samma som Klinta Strand (Köpingevägen 57) eller Smedjans ställplatser. Kontrollera dubblett mot befintliga Köpingsvik-poster efter geokodning. Säsong (kontroll 26 okt 2026, https://www.oland.se/stallplats-kopingsviks-stallplats): \"Öppettider April - November (kontakta angiven kontaktperson för mer info).\"",
     "website": "https://www.oland.se/en/pitch-kopingsviks-stallplats",
     "address": "Köpingevägen 20, 387 50 Köpingsvik",
-    "confidence": "high"
+    "confidence": "high",
+    "season": "seasonal",
+    "openingHours": "April–november"
   },
   {
     "id": "curated-1496-lundegård-camping-&-stugby",
@@ -25995,12 +26035,14 @@
       "sopor"
     ],
     "source": "egen",
-    "description": "Källa (https://www.oland.se/en/pitch-grasgard): \"22 parking places (12 with electricity), water access, electricity, toilets (outhouse), and showers. Emptying of latrine cassettes, fixed tanks, and gray water are not available. Access to dry toilets, garbage containers, electricity, and water.\" Ny plats; även på alltpaoland.se/platser/grasgards-hamns-stallplats/. Gräsgård ligger på sydöstra kusten mellan Bläsinge och Ottenby.",
+    "description": "Källa (https://www.oland.se/en/pitch-grasgard): \"22 parking places (12 with electricity), water access, electricity, toilets (outhouse), and showers. Emptying of latrine cassettes, fixed tanks, and gray water are not available. Access to dry toilets, garbage containers, electricity, and water.\" Ny plats; även på alltpaoland.se/platser/grasgards-hamns-stallplats/. Gräsgård ligger på sydöstra kusten mellan Bläsinge och Ottenby. Säsong (kontroll 26 okt 2026, https://www.oland.se/stallplats-grasgard): \"Öppettider Året runt (dubbelkolla med angiven kontaktperson vid frost- och vintertid).\"",
     "website": "https://www.oland.se/en/pitch-grasgard",
     "address": "Gräsgårds hamn, 380 65 Degerhamn (sydöstra Öland)",
     "confidence": "high",
     "lat": 56.31722,
-    "lon": 16.5317
+    "lon": 16.5317,
+    "season": "year-round",
+    "openingHours": "Året runt (kolla vid frost/vinter)"
   },
   {
     "id": "curated-1503-allégården-kastlösa-ställplats",
@@ -26014,10 +26056,12 @@
       "vatten"
     ],
     "source": "egen",
-    "description": "Källa (https://www.oland.se/en/pitch-allegarden-kastlosa): \"Allégården Kastlösa: 10 pitches with electricity, offers latrine cassette emptying.\" Komplettering: befintlig post har bara camping. Vatten/gråvatten ej synligt i utdraget – kolla sidan. Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning, färskvatten bekräftat. Källa (https://kastlosa.se/bo-ata/camping/): \"Vi erbjuder enbart latrintömning och tömning av gråvatten i utslagsvask. Kommunalt vatten går att fylla på med slang på anvisad plats.\" Kontroll 26 okt 2026: ingen gråvattentömning enligt https://www.oland.se/en/pitch-allegarden-kastlosa: \"Emptying latrine cassette: Yes Emptying latrine fixed tanks: No Emptying of gray water: No\"",
+    "description": "Källa (https://www.oland.se/en/pitch-allegarden-kastlosa): \"Allégården Kastlösa: 10 pitches with electricity, offers latrine cassette emptying.\" Komplettering: befintlig post har bara camping. Vatten/gråvatten ej synligt i utdraget – kolla sidan. Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning, färskvatten bekräftat. Källa (https://kastlosa.se/bo-ata/camping/): \"Vi erbjuder enbart latrintömning och tömning av gråvatten i utslagsvask. Kommunalt vatten går att fylla på med slang på anvisad plats.\" Kontroll 26 okt 2026: ingen gråvattentömning enligt https://www.oland.se/en/pitch-allegarden-kastlosa: \"Emptying latrine cassette: Yes Emptying latrine fixed tanks: No Emptying of gray water: No\" Säsong (kontroll 26 okt 2026, https://www.oland.se/stallplats-allegarden-kastlosa): \"Öppettider Maj - September (kontakta angiven kontaktperson för mer info).\"",
     "website": "https://www.oland.se/en/pitch-allegarden-kastlosa",
     "address": "Kastlösa, Mörbylånga",
-    "confidence": "high"
+    "confidence": "high",
+    "season": "seasonal",
+    "openingHours": "Maj–september"
   },
   {
     "id": "curated-1504-haga-park-camping-&-stugor",
@@ -29893,8 +29937,10 @@
       "latrin"
     ],
     "source": "egen",
-    "description": "Komplettering vg (Ale, Alingsås, Bollebygd, Essunga, Färgelanda, Götene, Härryda, Lilla Edet, Tibro, Vara, Vårgårda, Aneby, Nässjö, Sävsjö) sep 2026. Källa (https://www.gotene.se/upplevaochgora/fritidochnatur/friluftslivochmotion/camping.6338.html): \"Götene kommun: ställplats vid Hällekis småbåtshamn med gråvattentömning och tömning av toalett i utslagsback; öppnar i april, stänger för säsongen i september. Vårrundan-folder 2022: duschar/toaletter, tömning för gråvatten och latrin, drivs av Hällekis Båtklubb.\"",
-    "website": "https://www.gotene.se/upplevaochgora/fritidochnatur/friluftslivochmotion/camping.6338.html"
+    "description": "Komplettering vg (Ale, Alingsås, Bollebygd, Essunga, Färgelanda, Götene, Härryda, Lilla Edet, Tibro, Vara, Vårgårda, Aneby, Nässjö, Sävsjö) sep 2026. Källa (https://www.gotene.se/upplevaochgora/fritidochnatur/friluftslivochmotion/camping.6338.html): \"Götene kommun: ställplats vid Hällekis småbåtshamn med gråvattentömning och tömning av toalett i utslagsback; öppnar i april, stänger för säsongen i september. Vårrundan-folder 2022: duschar/toaletter, tömning för gråvatten och latrin, drivs av Hällekis Båtklubb.\" Säsong (kontroll 26 okt 2026, https://www.gotene.se/upplevaochgora/fritidochnatur/friluftslivochmotion/camping.6338.html): \"Ställplats Kinnekulle öppnar i april och stänger för säsongen i september.\"",
+    "website": "https://www.gotene.se/upplevaochgora/fritidochnatur/friluftslivochmotion/camping.6338.html",
+    "season": "seasonal",
+    "openingHours": "April–september"
   },
   {
     "id": "curated-backagarden-stamnared",
@@ -30103,8 +30149,10 @@
     "address": "Umfors 272 Hemavan 925 93 Lappland",
     "source": "egen",
     "confidence": "medium",
-    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/umfors-camping). Har du varit här? Bekräfta i appen. Kontroll 26 okt 2026 (egen sida/kommun lästa via runnern): färskvatten, latrintömning, gråvattentömning bekräftat. Källa: (https://camping.umfors.se/) \"Vatten för påfyllning Latrin tömning, gråvatten/svartvatten\"",
-    "website": "http://camping.umfors.se"
+    "description": "Obekräftad plats (svep 26 okt 2026): finns på Husbilskompisars ställplatskarta med gråvattentömning, latrintömning, färskvatten, men ingen primärkälla (egen sida, kommun, turistråd) bekräftade det. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/umfors-camping). Har du varit här? Bekräfta i appen. Kontroll 26 okt 2026 (egen sida/kommun lästa via runnern): färskvatten, latrintömning, gråvattentömning bekräftat. Källa: (https://camping.umfors.se/) \"Vatten för påfyllning Latrin tömning, gråvatten/svartvatten\" Säsong (kontroll 26 okt 2026, https://camping.umfors.se/): \"Vi har öppet hela året.\"",
+    "website": "http://camping.umfors.se",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-hk-stallplats-orserum",
@@ -30478,8 +30526,10 @@
     "address": "Hunneberg 121 Vargön 468 31 Västergötland",
     "source": "egen",
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning bekräftat. Källa (https://www.hallehunneberg.se/stallplats-hunneberg): \"Gråvatten töms direkt i stolpen eller via spillvattensäck i latrinrummet\" \"Kasettoalett töms i latrinrummet\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/hallehunneberg). Kontroll 26 okt 2026 (egen sida/kommun lästa via runnern): färskvatten bekräftat. Källa: (https://www.hallehunneberg.se/stallplats-hunneberg) \"I vårt servicehus kan du tömma svartvatten, gråvatten, hämta färskvatten\"",
-    "website": "https://www.hallehunneberg.se/stallplats-hunneberg"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning bekräftat. Källa (https://www.hallehunneberg.se/stallplats-hunneberg): \"Gråvatten töms direkt i stolpen eller via spillvattensäck i latrinrummet\" \"Kasettoalett töms i latrinrummet\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/hallehunneberg). Kontroll 26 okt 2026 (egen sida/kommun lästa via runnern): färskvatten bekräftat. Källa: (https://www.hallehunneberg.se/stallplats-hunneberg) \"I vårt servicehus kan du tömma svartvatten, gråvatten, hämta färskvatten\" Säsong (kontroll 26 okt 2026, https://www.hallehunneberg.se/stallplats-hunneberg): \"Här står du med din husbil bekvämt och tryggt året runt\"",
+    "website": "https://www.hallehunneberg.se/stallplats-hunneberg",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-hk-wilderness-life",
@@ -30551,8 +30601,10 @@
     "address": "Åminne Bruk Värnamo 331 91 Småland",
     "source": "egen",
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, gråvattentömning, färskvatten, sopor bekräftat. Källa (https://aminnebruk.se/stallplatser): \"Latrin- och gråvattentömning - Wifi - Färskvatten - Sophantering\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aaminne-bruk).",
-    "website": "https://aminnebruk.se/stallplatser"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, gråvattentömning, färskvatten, sopor bekräftat. Källa (https://aminnebruk.se/stallplatser): \"Latrin- och gråvattentömning - Wifi - Färskvatten - Sophantering\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aaminne-bruk). Säsong (kontroll 26 okt 2026, https://aminnebruk.se/stallplatser): \"14 ställplatser som är öppna alla dagar, dygnet runt, från mitten av mars till sista oktober\"",
+    "website": "https://aminnebruk.se/stallplatser",
+    "season": "seasonal",
+    "openingHours": "Mitten av mars–sista oktober"
   },
   {
     "id": "curated-hk-horvikens-marina-kallandso",
@@ -30693,8 +30745,10 @@
     "address": "Bruksvägen Ramnäs 735 60 Västmanland",
     "source": "egen",
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): färskvatten, latrintömning, sopor bekräftat. Källa (https://surahammar.se/kultur-fritid-och-turism/turist/stallplatser.html): \"Faciliteter Tillgång till färskvatten Tömning av latrin Toalett och dusch Soptömning Grillplats och eldstad\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/slaggens-gaesthamn).",
-    "website": "https://surahammar.se/kultur-fritid-och-turism/turist/stallplatser.html"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): färskvatten, latrintömning, sopor bekräftat. Källa (https://surahammar.se/kultur-fritid-och-turism/turist/stallplatser.html): \"Faciliteter Tillgång till färskvatten Tömning av latrin Toalett och dusch Soptömning Grillplats och eldstad\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/slaggens-gaesthamn). Säsong (kontroll 26 okt 2026, https://surahammar.se/kultur-fritid-och-turism/turist/stallplatser.html): \"Öppet: 1 maj - 30 september\"",
+    "website": "https://surahammar.se/kultur-fritid-och-turism/turist/stallplatser.html",
+    "season": "seasonal",
+    "openingHours": "1 maj–30 sep"
   },
   {
     "id": "curated-hk-pataholms-segelklubb",
@@ -30811,8 +30865,10 @@
       "latrin"
     ],
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): färskvatten, gråvattentömning bekräftat. Källa (http://www.strombackens.com): \"färsk- och gråvatten/tömning av toaletter. (Ingen Kemitoilett)\" latrintömning anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/stroembackens).",
-    "website": "http://www.strombackens.com"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): färskvatten, gråvattentömning bekräftat. Källa (http://www.strombackens.com): \"färsk- och gråvatten/tömning av toaletter. (Ingen Kemitoilett)\" latrintömning anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/stroembackens). Säsong (kontroll 26 okt 2026, https://www.strombackens.com/): \"Ställplats: 01. Maj till 01. Oktober varje dag\"",
+    "website": "http://www.strombackens.com",
+    "season": "seasonal",
+    "openingHours": "1 maj–1 okt"
   },
   {
     "id": "curated-hk-nackstromshamnen",
@@ -31020,8 +31076,10 @@
     "address": "Agdala 1 Järna 153 95 Södermanland",
     "source": "egen",
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): färskvatten, gråvattentömning, latrintömning, sopor bekräftat. Källa (https://agdala.se/om-oss): \"Färskvatten Gästparkering Hjärtstartare Kök och disk Lekpark (se bilder nedan) Sopsortering Toaletter (handikappanpassad) Tömningsplats för gråvatten Tömningsplats för latrin (Kassett)\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/soedertaelje-husvagnsklubb).",
-    "website": "https://agdala.se/om-oss"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): färskvatten, gråvattentömning, latrintömning, sopor bekräftat. Källa (https://agdala.se/om-oss): \"Färskvatten Gästparkering Hjärtstartare Kök och disk Lekpark (se bilder nedan) Sopsortering Toaletter (handikappanpassad) Tömningsplats för gråvatten Tömningsplats för latrin (Kassett)\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/soedertaelje-husvagnsklubb). Säsong (kontroll 26 okt 2026, https://agdala.se/om-oss): \"8 Ställ/Gäst platser ( öppna året runt )\"",
+    "website": "https://agdala.se/om-oss",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-hk-lovangergarden",
@@ -31372,8 +31430,10 @@
       "vatten"
     ],
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, gråvattentömning bekräftat. Källa (https://nederhogen.se/camping/): \"Tömning av toalett och spillvattenavlopp är också möjligt hos oss.\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/nederhoegen-vildmarkscenter).",
-    "website": "https://nederhogen.se/camping/"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, gråvattentömning bekräftat. Källa (https://nederhogen.se/camping/): \"Tömning av toalett och spillvattenavlopp är också möjligt hos oss.\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/nederhoegen-vildmarkscenter). Säsong (kontroll 26 okt 2026, https://nederhogen.se/camping/): \"Campingen är öppen året runt!\"",
+    "website": "https://nederhogen.se/camping/",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-hk-nylycke-gard",
@@ -31629,8 +31689,10 @@
       "latrin"
     ],
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, färskvatten bekräftat. Källa (http://ellosparken.se/stallplatser): \"Påfyllnad av färskvatten\" \"Tömning av gråvatten\" latrintömning anges bara av Husbilskompisar – grått tills bekräftat. Latrin (utslagsvask) står på sajten men Orust kommun tar inte emot husbilslatrin – lämnas grå tills någon bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/elloesparken).",
-    "website": "http://ellosparken.se/stallplatser"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, färskvatten bekräftat. Källa (http://ellosparken.se/stallplatser): \"Påfyllnad av färskvatten\" \"Tömning av gråvatten\" latrintömning anges bara av Husbilskompisar – grått tills bekräftat. Latrin (utslagsvask) står på sajten men Orust kommun tar inte emot husbilslatrin – lämnas grå tills någon bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/elloesparken). Säsong (kontroll 26 okt 2026, https://ellosparken.se/stallplatser/): \"Vi öppnar åter 1/4 2027 och stänger 31/10 2027.\"",
+    "website": "http://ellosparken.se/stallplatser",
+    "season": "seasonal",
+    "openingHours": "1 apr–31 okt"
   },
   {
     "id": "curated-hk-tolvsbo-inn",
@@ -31873,8 +31935,10 @@
       "gravatten"
     ],
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten, sopor bekräftat. Källa (https://www.guldvaskning.se/boende/var-camping-klart-popularast): \"Vi har även en plats för latrintömning där man kan tömma sin Porta Potti.\" \"fylla på dricksvatten till husvagn/husbil. Soptömning med flera kärl ingår\" gråvattentömning anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/guldstroem-och-co).",
-    "website": "https://www.guldvaskning.se/boende/var-camping-klart-popularast"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten, sopor bekräftat. Källa (https://www.guldvaskning.se/boende/var-camping-klart-popularast): \"Vi har även en plats för latrintömning där man kan tömma sin Porta Potti.\" \"fylla på dricksvatten till husvagn/husbil. Soptömning med flera kärl ingår\" gråvattentömning anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/guldstroem-och-co). Säsong (kontroll 26 okt 2026, https://www.guldvaskning.se/boende/var-camping-klart-popularast): \"Öppen året runt, dygnet runt.\"",
+    "website": "https://www.guldvaskning.se/boende/var-camping-klart-popularast",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-hk-geg-hotel",
@@ -31909,8 +31973,10 @@
       "vatten"
     ],
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://borstingen.se/camping): \"På området finns duschar, toaletter, gemensamt kök, matsal och latrintömning.\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/boerstingens-fiskecamp).",
-    "website": "https://borstingen.se/camping"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://borstingen.se/camping): \"På området finns duschar, toaletter, gemensamt kök, matsal och latrintömning.\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/boerstingens-fiskecamp). Säsong (kontroll 26 okt 2026, https://borstingen.se/camping/): \"Öppettider: 1 juni – 15 oktober 2025\"",
+    "website": "https://borstingen.se/camping",
+    "season": "seasonal",
+    "openingHours": "1 jun–15 okt"
   },
   {
     "id": "curated-hk-hotellet-vid-fjallet",
@@ -32029,8 +32095,10 @@
     "address": "Landsvägen 200 Vellinge 235 94 Skåne",
     "source": "egen",
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://www.arriegard.se/stallplats-malmoe): \"Tömningsplats av gråvatten finns på området\" \"Latrintömning finns på området.\" \"Färskvatten finns på området\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/arrie-staellplats).",
-    "website": "https://www.arriegard.se/stallplats-malmoe"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://www.arriegard.se/stallplats-malmoe): \"Tömningsplats av gråvatten finns på området\" \"Latrintömning finns på området.\" \"Färskvatten finns på området\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/arrie-staellplats). Säsong (kontroll 26 okt 2026, https://www.arriegard.se/stallplats-malmoe): \"Arrie ställplats i Vellinge kommun är öppen året runt\"",
+    "website": "https://www.arriegard.se/stallplats-malmoe",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-hk-seskaro-gasthamn",
@@ -32082,8 +32150,10 @@
       "gravatten"
     ],
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (http://nordicdiscovery.se/rivercamping): \"Dricksvatten x Elektricitet x Diskbänk med diskvatten x Latrintömning\" gråvattentömning anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/river-camping).",
-    "website": "http://nordicdiscovery.se/rivercamping"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (http://nordicdiscovery.se/rivercamping): \"Dricksvatten x Elektricitet x Diskbänk med diskvatten x Latrintömning\" gråvattentömning anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/river-camping). Säsong (kontroll 26 okt 2026, https://nordicdiscovery.se/rivercamping/): \"River Camping är öppen mellan 20 april och 18 oktober\"",
+    "website": "http://nordicdiscovery.se/rivercamping",
+    "season": "seasonal",
+    "openingHours": "20 apr–18 okt"
   },
   {
     "id": "curated-hk-lev-naturanda",
@@ -32151,8 +32221,10 @@
     "address": "Södra Arvesund 516 Mattmar 837 91 Jämtland",
     "source": "egen",
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://www.angarenostersund.com/stallplats-arvesund): \"Här finns färskvatten, elström, WC och dusch samt tömning av gråvatten och latrin från kassett eller fast tank.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/staellplats-arvesund).",
-    "website": "https://www.angarenostersund.com/stallplats-arvesund"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://www.angarenostersund.com/stallplats-arvesund): \"Här finns färskvatten, elström, WC och dusch samt tömning av gråvatten och latrin från kassett eller fast tank.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/staellplats-arvesund). Säsong (kontroll 26 okt 2026, https://www.angarenostersund.com/stallplats-arvesund): \"Tillgänglig hela året.\"",
+    "website": "https://www.angarenostersund.com/stallplats-arvesund",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-hk-sandslans-vandrarhem-camping",
@@ -32168,8 +32240,10 @@
     "address": "Flottarvägen 74 Nyland 873 71 Ångermanland",
     "source": "egen",
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten, sopor bekräftat. Källa (https://sandslan.se/camping/): \"Färskvatten Latrintömning och sopcontainer\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/sandslaans-vandrarhem-och-camping).",
-    "website": "https://sandslan.se/camping/"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten, sopor bekräftat. Källa (https://sandslan.se/camping/): \"Färskvatten Latrintömning och sopcontainer\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/sandslaans-vandrarhem-och-camping). Säsong (kontroll 26 okt 2026, https://sandslan.se/camping/): \"Camping & vandrarhem Öppet from 1/6- 30/9 ställplatser\"",
+    "website": "https://sandslan.se/camping/",
+    "season": "seasonal",
+    "openingHours": "1 jun–30 sep"
   },
   {
     "id": "curated-hk-stallplats-harna",
@@ -32253,8 +32327,10 @@
     "address": "Råå Hamn Råå 252 70 Skåne",
     "source": "egen",
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, gråvattentömning bekräftat. Källa (https://www.raahamn.se/hamn#husbilinfo): \"Plats för tömning av latrin finns bakom servicehuset, samt för gråvatten framför servicehuset.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/raaaa-hamn).",
-    "website": "https://www.raahamn.se/hamn#husbilinfo"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, gråvattentömning bekräftat. Källa (https://www.raahamn.se/hamn#husbilinfo): \"Plats för tömning av latrin finns bakom servicehuset, samt för gråvatten framför servicehuset.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/raaaa-hamn). Säsong (kontroll 26 okt 2026, https://www.raahamn.se/hamn): \"Våra ställplatser är tillgängliga i perioden 1/6 till omkring 15 september\"",
+    "website": "https://www.raahamn.se/hamn#husbilinfo",
+    "season": "seasonal",
+    "openingHours": "1 jun–ca 15 sep"
   },
   {
     "id": "curated-hk-caravan-club-kapellskar",
@@ -32423,9 +32499,11 @@
     "address": "Lastvägen 9 Kiruna 981 38 Lappland",
     "source": "egen",
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://www.e-10.se/stallplats-for-husbil-kiruna/): \"Vattenpåfyllning och latrintömning ingår i priset.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/hotell-e-10).",
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://www.e-10.se/stallplats-for-husbil-kiruna/): \"Vattenpåfyllning och latrintömning ingår i priset.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/hotell-e-10). Säsong (kontroll 26 okt 2026, https://www.e-10.se/stallplats-for-husbil-kiruna/): \"Ja, ställplatserna är öppna året om — sommar som vinter.\"",
     "fee": "360 kr/dygn med el, 300 kr utan",
-    "website": "https://www.e-10.se/stallplats-for-husbil-kiruna/"
+    "website": "https://www.e-10.se/stallplats-for-husbil-kiruna/",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-hk-torpakra-station",
@@ -32459,8 +32537,10 @@
     "address": "Hablingbo Petes 650 Havdhem 623 42 Gotland",
     "source": "egen",
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten, sopor bekräftat. Källa (http://www.petesekogard.se/st%C3%A4llplatser): \"Tömning av Latrin ( även fast tank) Tömning av gråvatten ( även fast tank, gallerplats till höger om infarten ) Sophantering\" \"Påfyllning färskvatten\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/petes-ekogaard).",
-    "website": "http://www.petesekogard.se/st%C3%A4llplatser"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten, sopor bekräftat. Källa (http://www.petesekogard.se/st%C3%A4llplatser): \"Tömning av Latrin ( även fast tank) Tömning av gråvatten ( även fast tank, gallerplats till höger om infarten ) Sophantering\" \"Påfyllning färskvatten\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/petes-ekogaard). Säsong (kontroll 26 okt 2026, https://www.petesekogard.se/st%C3%A4llplatser): \"2026 öppnar vi 9/6 och håller öppet till 31/10\"",
+    "website": "http://www.petesekogard.se/st%C3%A4llplatser",
+    "season": "seasonal",
+    "openingHours": "9 jun–31 okt (2026)"
   },
   {
     "id": "curated-hk-stora-ekeberg",
@@ -32667,8 +32747,10 @@
       "vatten"
     ],
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://www.xn--rosahjden-47a.se/camping): \"Faciliteter: Latrintömning.\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/rosahoejdens-gaard-koek-och-bageri).",
-    "website": "https://www.xn--rosahjden-47a.se/camping"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://www.xn--rosahjden-47a.se/camping): \"Faciliteter: Latrintömning.\" färskvatten anges bara av Husbilskompisar – grått tills bekräftat. Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/rosahoejdens-gaard-koek-och-bageri). Säsong (kontroll 26 okt 2026, https://www.xn--rosahjden-47a.se/camping): \"Campingen är öppen hela året.\"",
+    "website": "https://www.xn--rosahjden-47a.se/camping",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-hk-upgrid-experience",
@@ -32815,8 +32897,10 @@
     "address": "Kejsarnäs Örntorpet Valdemarsvik 615 93 Östergötland",
     "source": "egen",
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://www.ornviken-soderkoping.se/stallplatser): \"Tömningsstation för gråvatten och latrin. Dricksvatten finns vid varje ställplats.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/oernviken-soederkoeping).",
-    "website": "https://www.ornviken-soderkoping.se/stallplatser"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://www.ornviken-soderkoping.se/stallplatser): \"Tömningsstation för gråvatten och latrin. Dricksvatten finns vid varje ställplats.\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/oernviken-soederkoeping). Säsong (kontroll 26 okt 2026, https://www.ornviken-soderkoping.se/stallplatser): \"Våra ställplatser är öppna året runt!\"",
+    "website": "https://www.ornviken-soderkoping.se/stallplatser",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-hk-bastad-hamn",
@@ -33484,7 +33568,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://www.visitblekinge.se/halens-camping",
-    "description": "Svep 26 okt 2026 (turistrådets lista, Pers källtips): latrin bekräftat. Källa (https://www.visitblekinge.se/halens-camping): \"I byggnaden hittar man även hundduschrum, latrintömning, tvättmaskin/torktumlare\" Läge = OSM-campingen (way 868653687), registret lägger till latrintömning."
+    "description": "Svep 26 okt 2026 (turistrådets lista, Pers källtips): latrin bekräftat. Källa (https://www.visitblekinge.se/halens-camping): \"I byggnaden hittar man även hundduschrum, latrintömning, tvättmaskin/torktumlare\" Läge = OSM-campingen (way 868653687), registret lägger till latrintömning. Säsong (kontroll 26 okt 2026, https://www.visitblekinge.se/halens-camping): \"Campingen är from 2026 öppen året om\"",
+    "season": "year-round",
+    "openingHours": "Året runt (från 2026)"
   },
   {
     "id": "curated-brofastet-senoren",
@@ -33581,11 +33667,13 @@
     ],
     "lat": 57.0397288,
     "lon": 12.3251005,
-    "description": "Svep 26 okt 2026 (kandidat från husbil.se, kontrollerad mot egen sida/kommun): latrintömning, gråvattentömning, sopor bekräftat. Källa (https://rodlixvandrarhem.se/camping-talt-stallplatser/): \"Latrintömning, gråvatten, slänga skräp & fylla vatten\" Läge = OSM way-625832150 (registret lägger till tjänsterna). Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning, färskvatten, sopor bekräftat. Källa (https://rodlixvandrarhem.se/camping-talt-stallplatser/): \"Latrintömning, gråvatten, slänga skräp & fylla vatten\"",
+    "description": "Svep 26 okt 2026 (kandidat från husbil.se, kontrollerad mot egen sida/kommun): latrintömning, gråvattentömning, sopor bekräftat. Källa (https://rodlixvandrarhem.se/camping-talt-stallplatser/): \"Latrintömning, gråvatten, slänga skräp & fylla vatten\" Läge = OSM way-625832150 (registret lägger till tjänsterna). Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning, färskvatten, sopor bekräftat. Källa (https://rodlixvandrarhem.se/camping-talt-stallplatser/): \"Latrintömning, gråvatten, slänga skräp & fylla vatten\" Säsong (kontroll 26 okt 2026, https://rodlixvandrarhem.se/camping-talt-stallplatser/): \"Camping, Tält & Ställplatser 1 april – 13 oktober stängt övriga månader\"",
     "source": "egen",
     "confidence": "medium",
     "website": "https://rodlixvandrarhem.se/camping-talt-stallplatser/",
-    "fee": "Quickstop 2 h (tömning, vatten, WC, dusch) 170 kr"
+    "fee": "Quickstop 2 h (tömning, vatten, WC, dusch) 170 kr",
+    "season": "seasonal",
+    "openingHours": "1 apr–13 okt"
   },
   {
     "id": "curated-kungshamns-vandrarhem",
@@ -33679,10 +33767,12 @@
     ],
     "lat": 63.066609,
     "lon": 18.3660686,
-    "description": "Svep 26 okt 2026 (kandidat från husbil.se, kontrollerad mot egen sida/kommun): latrintömning bekräftat. Källa (https://www.skulebergethavscamping.se/stallplatser-faciliteter): \"Latrintömning finns i ett separat litet hus på parkeringen och är alltid öppet.\" \"inte kan erbjuda gråvattentömning\" Ingen gråvattentömning enligt egen sida. Läge = OSM way-823579307 (registret lägger till tjänsterna).",
+    "description": "Svep 26 okt 2026 (kandidat från husbil.se, kontrollerad mot egen sida/kommun): latrintömning bekräftat. Källa (https://www.skulebergethavscamping.se/stallplatser-faciliteter): \"Latrintömning finns i ett separat litet hus på parkeringen och är alltid öppet.\" \"inte kan erbjuda gråvattentömning\" Ingen gråvattentömning enligt egen sida. Läge = OSM way-823579307 (registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://www.skulebergethavscamping.se/sv/): \"400kr/dygn inkl el hela säsongen (1 maj till 31 oktober)\"",
     "source": "egen",
     "confidence": "medium",
-    "website": "https://www.skulebergethavscamping.se/stallplatser-faciliteter"
+    "website": "https://www.skulebergethavscamping.se/stallplatser-faciliteter",
+    "season": "seasonal",
+    "openingHours": "1 maj–31 okt"
   },
   {
     "id": "curated-furulid",
@@ -33941,7 +34031,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://asensby.se/bo/stallplats/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten, sopor bekräftat. Källa (https://asensby.se/bo/stallplats/): \"Utomhuskran med dricksvatten finns utanför gårdsbutiken (under rännebron).\" \"Soptunnor med sortering finns vid Prästgårdens ladugård.\" Ingen gråvattentömning, latrintömning enligt sidan. Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aasens-by)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten, sopor bekräftat. Källa (https://asensby.se/bo/stallplats/): \"Utomhuskran med dricksvatten finns utanför gårdsbutiken (under rännebron).\" \"Soptunnor med sortering finns vid Prästgårdens ladugård.\" Ingen gråvattentömning, latrintömning enligt sidan. Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aasens-by). Säsong (kontroll 26 okt 2026, https://asensby.se/bo/stallplats/): \"Ställplatsen och reservatet är öppna året runt\"",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-r3-sorby-gard-stjarnorp",
@@ -34002,7 +34094,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://www.orsagronklitt.se/boende/camping-och-staellplatser",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://www.orsagronklitt.se/boende/camping-och-staellplatser): \"✔ Latrintömning sker vid servicehuset på Orsa Grönklitts camping\" Ingen gråvattentömning enligt sidan. Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/orsa-groenklitt)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://www.orsagronklitt.se/boende/camping-och-staellplatser): \"✔ Latrintömning sker vid servicehuset på Orsa Grönklitts camping\" Ingen gråvattentömning enligt sidan. Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/orsa-groenklitt). Säsong (kontroll 26 okt 2026, https://www.orsagronklitt.se/boende/camping-och-staellplatser): \"Campingområdet ligger i direkt anslutning till service och aktiviteter och är öppet året runt.\"",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-r3-slattvallen",
@@ -34082,7 +34176,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://fridawilen.wixsite.com/vastergarden/stallplatser",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning, färskvatten, sopor bekräftat. Källa (https://fridawilen.wixsite.com/vastergarden/stallplatser): \"Här kan ni även tömma latrin och gråvatten.\" \"Behöver man fylla på färskvatten och slänga sopor från vistelsen går det också bra.\" Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/haestholmens-vaestergaard)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning, färskvatten, sopor bekräftat. Källa (https://fridawilen.wixsite.com/vastergarden/stallplatser): \"Här kan ni även tömma latrin och gråvatten.\" \"Behöver man fylla på färskvatten och slänga sopor från vistelsen går det också bra.\" Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/haestholmens-vaestergaard). Säsong (kontroll 26 okt 2026, https://fridawilen.wixsite.com/vastergarden/stallplatser): \"Vi har öppet hela året, men servicehuset är öppet från april till november om vädret tillåter.\"",
+    "season": "year-round",
+    "openingHours": "Året runt; servicehus apr–nov"
   },
   {
     "id": "curated-r3-stigmansgarden",
@@ -34214,7 +34310,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://firstcamp.se/destinationer/moraparken-dalarna",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://firstcamp.se/destinationer/moraparken-dalarna): \"Tömningsstation Latrin finns i samtliga servicehus.\" \"Servicehus 4 Toalett Dusch Dricksvatten Handikappvänligt\" Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/first-camp-moraparken-dalarna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://firstcamp.se/destinationer/moraparken-dalarna): \"Tömningsstation Latrin finns i samtliga servicehus.\" \"Servicehus 4 Toalett Dusch Dricksvatten Handikappvänligt\" Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/first-camp-moraparken-dalarna). Säsong (kontroll 26 okt 2026, https://firstcamp.se/destinationer/moraparken-dalarna): \"First Camp Moraparken – Dalarna har öppet året om.\"",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-r3-utansjon",
@@ -34582,8 +34680,10 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://www.hagern.com/camping",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten, latrintömning, sopor, gråvattentömning bekräftat. Källa (https://www.hagern.com/camping): \"Vattenpåfyllning Latrintömning - Soptunna\" \"Tömning av kemtoaletter och spilvatten görs i latrintömning vid vattenposten\" Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/haegern-bed-och-nature).",
-    "fee": "fr. 250 kr/dygn (2 pers.)"
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten, latrintömning, sopor, gråvattentömning bekräftat. Källa (https://www.hagern.com/camping): \"Vattenpåfyllning Latrintömning - Soptunna\" \"Tömning av kemtoaletter och spilvatten görs i latrintömning vid vattenposten\" Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/haegern-bed-och-nature). Säsong (kontroll 26 okt 2026, https://www.hagern.com/): \"Öppet 1 juni - 23 augusti 2026\"",
+    "fee": "fr. 250 kr/dygn (2 pers.)",
+    "season": "seasonal",
+    "openingHours": "1 jun–23 aug (2026)"
   },
   {
     "id": "curated-r3-vadstena-gk",
@@ -34629,7 +34729,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://www.claybullet.com/boka-stllplats",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten, sopor bekräftat. Källa (https://www.claybullet.com/boka-stllplats): \"Ja, vi erbjuder påfyllning av färskt dricksvatten på ställplatsen.\" \"SOPHANTERING Hantering av hushållssopor\" Ingen latrintömning, gråvattentömning enligt sidan. Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/lerkulan)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten, sopor bekräftat. Källa (https://www.claybullet.com/boka-stllplats): \"Ja, vi erbjuder påfyllning av färskt dricksvatten på ställplatsen.\" \"SOPHANTERING Hantering av hushållssopor\" Ingen latrintömning, gråvattentömning enligt sidan. Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/lerkulan). Säsong (kontroll 26 okt 2026, https://www.claybullet.com/boka-stllplats): \"När är ställplatsen öppen? Vi har öppet dygnet runt, året runt.\"",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-r3-d-o-g-arena",
@@ -34765,8 +34867,10 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://glasbruket.com/boende/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten bekräftat. Källa (https://glasbruket.com/boende/): \"I servicehuset har du tillgång till dusch, toalett och färskvatten.\" Ingen latrintömning, gråvattentömning enligt sidan. Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/glasbruket).",
-    "fee": "345 kr/natt med el, 295 kr utan"
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten bekräftat. Källa (https://glasbruket.com/boende/): \"I servicehuset har du tillgång till dusch, toalett och färskvatten.\" Ingen latrintömning, gråvattentömning enligt sidan. Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/glasbruket). Säsong (kontroll 26 okt 2026, https://glasbruket.com/feed/): \"Boende, ställplats och aktiviteter är öppet alla dagar från april-september\"",
+    "fee": "345 kr/natt med el, 295 kr utan",
+    "season": "seasonal",
+    "openingHours": "Apr–sep"
   },
   {
     "id": "curated-r3-wirehus-stallplats",
@@ -34857,7 +34961,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://www.ratan.se/boende/bo-som-besokare/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten bekräftat. Källa (https://www.ratan.se/boende/bo-som-besokare/): \"På campingen finns toalett och dricksvatten men inte el.\" Läge = OSM way-122856316 (\"Storsand\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten bekräftat. Källa (https://www.ratan.se/boende/bo-som-besokare/): \"På campingen finns toalett och dricksvatten men inte el.\" Läge = OSM way-122856316 (\"Storsand\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://www.ratan.se/boende/bo-som-besokare/): \"Storsands Camping och Quick stop i Ratan är öppen från den 22 maj 2026.\"",
+    "season": "seasonal",
+    "openingHours": "Sommarsäsong, från 22 maj"
   },
   {
     "id": "curated-r3-vallviks-camping",
@@ -34934,7 +35040,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://www.ristafallet.se/camping/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://www.ristafallet.se/camping/): \"Bredvid servicebyggnaden finns utslagsback till grå vatten och en till kemitoa, samt möjlighet till påfyllning av dricksvatten för husbilar och husvagnar.\" Läge = OSM way-783370464 (\"Ristafallet Camping\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://www.ristafallet.se/camping/): \"Bredvid servicebyggnaden finns utslagsback till grå vatten och en till kemitoa, samt möjlighet till påfyllning av dricksvatten för husbilar och husvagnar.\" Läge = OSM way-783370464 (\"Ristafallet Camping\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://www.ristafallet.se/camping/): \"Campingen är öppet under barmark säsongen.\"",
+    "season": "seasonal",
+    "openingHours": "Under barmarkssäsongen"
   },
   {
     "id": "curated-r3-vitvikens-cafe-camping",
@@ -34966,7 +35074,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://laxvikcamping.se/laxvik-camping/campingen",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning bekräftat. Källa (https://laxvikcamping.se/laxvik-camping/campingen): \"Det finns även möjlighet att tömma latrin och gråvatten.\" Läge = OSM relation-10486250 (\"Laxvik Camping\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning bekräftat. Källa (https://laxvikcamping.se/laxvik-camping/campingen): \"Det finns även möjlighet att tömma latrin och gråvatten.\" Läge = OSM relation-10486250 (\"Laxvik Camping\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://laxvikcamping.se/%C3%B6ppettider): \"Campingen har öppet mellan 24:e april och 13:e september 2026.\"",
+    "season": "seasonal",
+    "openingHours": "24 apr–13 sep"
   },
   {
     "id": "curated-r3-grotvik",
@@ -35083,7 +35193,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://jormvattnetsfiskecamp.se/wordpress/sv/om/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://jormvattnetsfiskecamp.se/wordpress/sv/om/): \"Vi erbjuder även latrintömning och tvättmöjligheter.\" Läge = OSM way-971946249 (\"Jormvattnets Fiskecamp\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://jormvattnetsfiskecamp.se/wordpress/sv/om/): \"Vi erbjuder även latrintömning och tvättmöjligheter.\" Läge = OSM way-971946249 (\"Jormvattnets Fiskecamp\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://jormvattnetsfiskecamp.se/wordpress/sv/boende/): \"Vår camping är öppen året runt men under vintersäsongen är våra ställplatser bokade av vinteruppställare.\"",
+    "season": "year-round",
+    "openingHours": "Året runt; vinterplatser bokade av säsongare"
   },
   {
     "id": "curated-r3-stenshult-stallplats",
@@ -35204,7 +35316,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://bergafjarden.nu/index.php/campingplatser/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, sopor bekräftat. Källa (https://bergafjarden.nu/index.php/campingplatser/): \"I separata byggnader finns toaletter, handikapptoalett, duschar, tvättstuga, latrintömning m.m.\" \"Era hushållssopor slänger ni i utställda containrar på campingen.\" Läge = OSM relation-10885781 (\"Bergafjärdens Camping & Havsbad\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, sopor bekräftat. Källa (https://bergafjarden.nu/index.php/campingplatser/): \"I separata byggnader finns toaletter, handikapptoalett, duschar, tvättstuga, latrintömning m.m.\" \"Era hushållssopor slänger ni i utställda containrar på campingen.\" Läge = OSM relation-10885781 (\"Bergafjärdens Camping & Havsbad\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://bergafjarden.nu/evenemang/stangt-for-sasongen-2026/): \"Nästa sommar hoppas vi på bättre väder. Varmt välkomna tillbaka 7 maj 2027!\"",
+    "season": "seasonal",
+    "openingHours": "Sommarsäsong; öppnar igen 7 maj 2027"
   },
   {
     "id": "curated-r3-svenljunga-tomningsstation",
@@ -35237,8 +35351,10 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://torsvikencamping.se/bokning-och-priser/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://torsvikencamping.se/bokning-och-priser/): \"Möjlighet att tömma gråvatten, latrin Slängning av aska Påfyllning av vatten husbil/husvagn\" Läge = OSM way-589705145 (\"Torsvikens Camping\", registret lägger till tjänsterna).",
-    "fee": "400 kr/dygn med el, 350 kr utan"
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): gråvattentömning, latrintömning, färskvatten bekräftat. Källa (https://torsvikencamping.se/bokning-och-priser/): \"Möjlighet att tömma gråvatten, latrin Slängning av aska Påfyllning av vatten husbil/husvagn\" Läge = OSM way-589705145 (\"Torsvikens Camping\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://torsvikencamping.se/): \"Campingen är öppen för gäster mellan 1 maj – 30 september.\"",
+    "fee": "400 kr/dygn med el, 350 kr utan",
+    "season": "seasonal",
+    "openingHours": "1 maj–30 sep"
   },
   {
     "id": "curated-r3-gullmarsbadens-camping",
@@ -35271,7 +35387,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://prangenscamping.se/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://prangenscamping.se/): \"Gråvatten * Latrintömning * Reception\" \"Dusch * Färskvatten * Grillplats\" Läge = OSM relation-10257497 (\"Prångens Camping\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://prangenscamping.se/): \"Gråvatten * Latrintömning * Reception\" \"Dusch * Färskvatten * Grillplats\" Läge = OSM relation-10257497 (\"Prångens Camping\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://prangenscamping.se/camping/): \"Njut av naturskön camping vid Åsundens strand – året runt\"",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-r3-arnas-bathamn",
@@ -35356,7 +35474,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://tykarpsgrottan.se/stallplatser/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten, gråvattentömning, latrintömning, sopor bekräftat. Källa (https://tykarpsgrottan.se/stallplatser/): \"Alla platser har el och vatten. På området finns toalett, gråvattentömning samt sopsortering samt latrintömning för kassettoa.\" Läge = OSM way-905727709 (\"Tykarpsgrottan's Camping\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten, gråvattentömning, latrintömning, sopor bekräftat. Källa (https://tykarpsgrottan.se/stallplatser/): \"Alla platser har el och vatten. På området finns toalett, gråvattentömning samt sopsortering samt latrintömning för kassettoa.\" Läge = OSM way-905727709 (\"Tykarpsgrottan's Camping\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://tykarpsgrottan.se/stallplatser/): \"Ställplatserna är tillgängliga från 1 maj till 30 september 2026.\"",
+    "season": "seasonal",
+    "openingHours": "1 maj–30 sep"
   },
   {
     "id": "curated-r3-badhotellet",
@@ -35483,8 +35603,10 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://sofielundsala.se/campingen/prislista-campingen/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning, färskvatten bekräftat. Källa (https://sofielundsala.se/campingen/prislista-campingen/): \"Husvagn/Husbil 400 kr/dygn El och latrintömning\" \"Greywater Drainage Located between grassy and gravel camping spots. Fresh Water Refill station available.\" Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/sofielund-vandrarhem-och-camping).",
-    "fee": "400 kr/dygn inkl el och latrintömning"
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning, färskvatten bekräftat. Källa (https://sofielundsala.se/campingen/prislista-campingen/): \"Husvagn/Husbil 400 kr/dygn El och latrintömning\" \"Greywater Drainage Located between grassy and gravel camping spots. Fresh Water Refill station available.\" Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/sofielund-vandrarhem-och-camping). Säsong (kontroll 26 okt 2026, https://sofielundsala.se/om-sofielund/): \"Vandrarhemmet och campingen är öppna året runt\"",
+    "fee": "400 kr/dygn inkl el och latrintömning",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-r3-varnas-camping",
@@ -35624,7 +35746,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://www.svarteborg.se/start/?ID=52685",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, färskvatten, gråvattentömning, sopor bekräftat. Källa (https://www.svarteborg.se/start/?ID=52685): \"Latrintömning sker på anvisad plats bakom dansbanan. Dricksvatten och tömning av gråvatten finns vid dansbanans gavel mot vägen. Sopor slängs\" Läge = OSM node-3662742329 (\"Ställplats för husbil, Hällevadsholm\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, färskvatten, gråvattentömning, sopor bekräftat. Källa (https://www.svarteborg.se/start/?ID=52685): \"Latrintömning sker på anvisad plats bakom dansbanan. Dricksvatten och tömning av gråvatten finns vid dansbanans gavel mot vägen. Sopor slängs\" Läge = OSM node-3662742329 (\"Ställplats för husbil, Hällevadsholm\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://www.svarteborg.se/start/?ID=52685): \"Ställplatsen är öppen från 1 april till 31 oktober.\"",
+    "season": "seasonal",
+    "openingHours": "1 apr–31 okt"
   },
   {
     "id": "curated-r3-hogfjallshotellet-storlien",
@@ -35654,7 +35778,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://bjorkenascamping.com/information",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning bekräftat. Källa (https://bjorkenascamping.com/information): \"Toalettavfall och spillvatten tömmer du i utslagstankarna bakom maskinhallen (se campingkarta).\" Läge = OSM relation-11699966 (\"Björkenäs Camping\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning bekräftat. Källa (https://bjorkenascamping.com/information): \"Toalettavfall och spillvatten tömmer du i utslagstankarna bakom maskinhallen (se campingkarta).\" Läge = OSM relation-11699966 (\"Björkenäs Camping\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://bjorkenascamping.com/vi-erbjuder): \"Campingsäsongen på Björkenäs Camping öppnar den 30 april och stänger den 15 september.\"",
+    "season": "seasonal",
+    "openingHours": "30 apr–15 sep"
   },
   {
     "id": "curated-r3-grisslehamns-marina-camping",
@@ -35669,7 +35795,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://www.grisslehamnsmarina.se/stallplats-och-camping/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten, latrintömning bekräftat. Källa (https://www.grisslehamnsmarina.se/stallplats-och-camping/): \"Dricksvattenposter på området WiFi (fiber) Latrintömning och miljöstation\" Läge = OSM node-431824597 (\"Grisslehamns Husvagnscamping\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten, latrintömning bekräftat. Källa (https://www.grisslehamnsmarina.se/stallplats-och-camping/): \"Dricksvattenposter på området WiFi (fiber) Latrintömning och miljöstation\" Läge = OSM node-431824597 (\"Grisslehamns Husvagnscamping\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://www.grisslehamnsmarina.se/stallplats-och-camping/): \"På vår camping resort erbjuder vi, året runt, ett stort utbud av olika tomter\"",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-r3-herrangs-marina",
@@ -35684,8 +35812,10 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://www.herrangsmarina.se/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, sopor bekräftat. Källa (https://www.herrangsmarina.se/): \"Kod/nyckel till servicehus, sopcontainer, latrintömning och infartsbom hittar ni på plats.\" Läge = OSM way-168927071 (\"Ställplats för husbil, Herräng\", registret lägger till tjänsterna).",
-    "fee": "275 kr/dygn"
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, sopor bekräftat. Källa (https://www.herrangsmarina.se/): \"Kod/nyckel till servicehus, sopcontainer, latrintömning och infartsbom hittar ni på plats.\" Läge = OSM way-168927071 (\"Ställplats för husbil, Herräng\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://www.herrangsmarina.se/): \"STÄLLPLATSER FÖR HUSBILAR, ÖPPET FÖR SÄSONGEN FRÅN 1/4-26.\"",
+    "fee": "275 kr/dygn",
+    "season": "seasonal",
+    "openingHours": "Säsong från 1 apr"
   },
   {
     "id": "curated-r3-stenhuset-surahammar",
@@ -35733,7 +35863,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://hjortsjonscamping.se/sv/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten bekräftat. Källa (https://hjortsjonscamping.se/sv/): \"Dricksvatten finns på flera ställen på campingen: i servicehuset, vid kran nära plats 10 samt vid infarten bredvid stuga 6. Slang finns vid servicehuset och vid receptionen.\" Läge = OSM relation-8250813 (\"Hjortsjöns Camping\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten bekräftat. Källa (https://hjortsjonscamping.se/sv/): \"Dricksvatten finns på flera ställen på campingen: i servicehuset, vid kran nära plats 10 samt vid infarten bredvid stuga 6. Slang finns vid servicehuset och vid receptionen.\" Läge = OSM relation-8250813 (\"Hjortsjöns Camping\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://hjortsjonscamping.se/sv/): \"Vi håller öppet 1 maj-13 september.\"",
+    "season": "seasonal",
+    "openingHours": "1 maj–13 sep"
   },
   {
     "id": "curated-r3-paskallaviks-gasthamn",
@@ -35765,7 +35897,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://vasterascamping.se/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://vasterascamping.se/): \"tvättstuga med tvättmaskiner och torktumlare, latrintömning och kök för handdisk\" Läge = OSM way-715529798 (\"Västerås Camping Ängsö\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://vasterascamping.se/): \"tvättstuga med tvättmaskiner och torktumlare, latrintömning och kök för handdisk\" Läge = OSM way-715529798 (\"Västerås Camping Ängsö\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://vasterascamping.se/): \"Öppet: Året runt Öppet: fullservice: 6 Juni – 10 Augusti\"",
+    "season": "year-round",
+    "openingHours": "Året runt; fullservice 6 jun–10 aug"
   },
   {
     "id": "curated-r3-hamburgsunds-husbilsparkering",
@@ -35874,7 +36008,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://www.ramundberget.se/sv/boende/stallplats",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://www.ramundberget.se/sv/boende/stallplats): \"I en mindre byggnad bredvid finns toaletter och möjlighet att fylla på dricksvatten samt tömma svartvatten från kasett.\" Läge = OSM way-1287612403 (\"Plats 6\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://www.ramundberget.se/sv/boende/stallplats): \"I en mindre byggnad bredvid finns toaletter och möjlighet att fylla på dricksvatten samt tömma svartvatten från kasett.\" Läge = OSM way-1287612403 (\"Plats 6\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://www.ramundberget.se/sv/boende/stallplats): \"Öppet 1 juni - 27 september 2026 19 december 2026 - 25 april 2027\"",
+    "season": "seasonal",
+    "openingHours": "1 jun–27 sep och 19 dec–25 apr"
   },
   {
     "id": "curated-r3-dragsviks-husvagnsklubb",
@@ -35888,7 +36024,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://www.dragsvik.se/om-oss/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://www.dragsvik.se/om-oss/): \"Utanför finns latrintömning, diskplatser samt handikappanpassad WC och dusch.\" Läge = OSM way-1317074970 (\"Camping, Kärr\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://www.dragsvik.se/om-oss/): \"Utanför finns latrintömning, diskplatser samt handikappanpassad WC och dusch.\" Läge = OSM way-1317074970 (\"Camping, Kärr\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://www.dragsvik.se/om-oss/): \"området är öppet året runt för medlemmar med husvagn eller husbil\"",
+    "season": "year-round",
+    "openingHours": "Året runt (för medlemmar)"
   },
   {
     "id": "curated-r3-surfviken",
@@ -36094,7 +36232,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://www.svennevadscamping.se/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten bekräftat. Källa (https://www.svennevadscamping.se/): \"Toalett, dusch och dricksvatten finns på campingen.\" Ingen latrintömning, gråvattentömning enligt sidan. Läge = OSM way-297206370 (\"Ställplats för husbil, Dampudden\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten bekräftat. Källa (https://www.svennevadscamping.se/): \"Toalett, dusch och dricksvatten finns på campingen.\" Ingen latrintömning, gråvattentömning enligt sidan. Läge = OSM way-297206370 (\"Ställplats för husbil, Dampudden\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://www.svennevadscamping.se/): \"Campingen är nu stängd för säsongen. Vi tackar alla gäster som har besökt oss. Vi öppnar åter i april 2027.\"",
+    "season": "seasonal",
+    "openingHours": "Säsong; öppnar igen i april"
   },
   {
     "id": "curated-r3-vanersborgs-gasthamn-marina",
@@ -36137,7 +36277,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://caravanclub.se/camping/norrviken/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://caravanclub.se/camping/norrviken/): \"Ett mindre servicehus med toalett, separat WC för funktionsanpassning, diskutrymme samt latrintömning finns i bortre delen av campingen.\" \"Där finns även en särskild plats för tömning av husbilars avlopp samt fyllning av färskvatten.\" Läge = OSM way-788231620 (\"Caravan Club Norrviken\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://caravanclub.se/camping/norrviken/): \"Ett mindre servicehus med toalett, separat WC för funktionsanpassning, diskutrymme samt latrintömning finns i bortre delen av campingen.\" \"Där finns även en särskild plats för tömning av husbilars avlopp samt fyllning av färskvatten.\" Läge = OSM way-788231620 (\"Caravan Club Norrviken\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://caravanclub.se/camping/norrviken/): \"Campingsäsong 21 mars- 4 oktober 2026\"",
+    "season": "seasonal",
+    "openingHours": "21 mar–4 okt"
   },
   {
     "id": "curated-r3-torsangs-camping",
@@ -36183,7 +36325,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://alvstalodges.se/camping/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning bekräftat. Källa (https://alvstalodges.se/camping/): \"We offer a campercleanbox on site to empty your chemical toilet & grey water .\" Läge = OSM way-1183960599 (\"Älvstalodges\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning bekräftat. Källa (https://alvstalodges.se/camping/): \"We offer a campercleanbox on site to empty your chemical toilet & grey water .\" Läge = OSM way-1183960599 (\"Älvstalodges\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://alvstalodges.se/sv/camping/): \"* Öppet från påsk\"",
+    "season": "seasonal",
+    "openingHours": "Från påsk"
   },
   {
     "id": "curated-r3-tivedsbadets-camping-bad",
@@ -36227,8 +36371,10 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://www.furudalsfritidsby.se/camping.html",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://www.furudalsfritidsby.se/camping.html): \"handikapptoalett, skötbord samt separat latrintömning\" Läge = OSM way-987918179 (\"Furudals Fritidsby & Camping\", registret lägger till tjänsterna).",
-    "fee": "330–370 kr/dygn"
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://www.furudalsfritidsby.se/camping.html): \"handikapptoalett, skötbord samt separat latrintömning\" Läge = OSM way-987918179 (\"Furudals Fritidsby & Camping\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://www.furudalsfritidsby.se/camping.html): \"Öppet året runt !\"",
+    "fee": "330–370 kr/dygn",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-r3-angdala-camping-pa-osterlen",
@@ -36308,8 +36454,10 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://caravanclub.se/camping/aslerod/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning, färskvatten bekräftat. Källa (https://caravanclub.se/camping/aslerod/): \"Tömning av latrin/gråvatten (gäller ej säsongsboende och betalande gäster på campingen) 100 kr\" \"Påfyllning av vatten (gäller ej säsongsboende och betalande gäster på campingen) 50 kr\" Läge = OSM relation-11382006 (\"Caravan Club Åsleröd\", registret lägger till tjänsterna).",
-    "fee": "Tömning 100 kr, vatten 50 kr för icke-gäster"
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning, färskvatten bekräftat. Källa (https://caravanclub.se/camping/aslerod/): \"Tömning av latrin/gråvatten (gäller ej säsongsboende och betalande gäster på campingen) 100 kr\" \"Påfyllning av vatten (gäller ej säsongsboende och betalande gäster på campingen) 50 kr\" Läge = OSM relation-11382006 (\"Caravan Club Åsleröd\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://caravanclub.se/camping/aslerod/): \"Caravan Club Åsleröd Allmän Camping - Året runt - Bohuslän\"",
+    "fee": "Tömning 100 kr, vatten 50 kr för icke-gäster",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-r3-apelsater-jakt-skytte",
@@ -36390,7 +36538,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://www.sundanceranch.eu/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning bekräftat. Källa (https://www.sundanceranch.eu/): \"NEW in 2026 : possibility to empty chemical toilet and greywater tank\" Läge = OSM node-11135491139 (\"Sun Dance Ranch\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, gråvattentömning bekräftat. Källa (https://www.sundanceranch.eu/): \"NEW in 2026 : possibility to empty chemical toilet and greywater tank\" Läge = OSM node-11135491139 (\"Sun Dance Ranch\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://www.sundanceranch.eu/): \"CAMPING (ställplats) Open all year\"",
+    "season": "year-round",
+    "openingHours": "Året runt"
   },
   {
     "id": "curated-r3-first-camp-karlstorp-halmstad",
@@ -36404,7 +36554,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://firstcamp.se/destinationer/karlstorp-halmstad",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://firstcamp.se/destinationer/karlstorp-halmstad): \"Latrintömning finns i servicehus 1 och 2.\" Läge = OSM way-203213006 (\"First Camp Halmstad\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://firstcamp.se/destinationer/karlstorp-halmstad): \"Latrintömning finns i servicehus 1 och 2.\" Läge = OSM way-203213006 (\"First Camp Halmstad\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://firstcamp.se/destinationer/karlstorp-halmstad): \"First Camp Karlstorp – Halmstad är öppet under vår- och sommarsäsongen. Läs mer Öppettider 21 september – 31 december Stängt\"",
+    "season": "seasonal",
+    "openingHours": "Vår–sommar; stängt 21 sep–31 dec"
   },
   {
     "id": "curated-r3-breanas-hotell",
@@ -36450,7 +36602,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://halsohamn.se/stallplats",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://halsohamn.se/stallplats): \"Tillgång till: Toaletter, utslagsplats för husbilar och husvagnars septitankar Duschar I mån av tillgänglighet el Färskvatten (ej vintertid)\" Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/haelsoe-gaesthamn)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://halsohamn.se/stallplats): \"Tillgång till: Toaletter, utslagsplats för husbilar och husvagnars septitankar Duschar I mån av tillgänglighet el Färskvatten (ej vintertid)\" Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/haelsoe-gaesthamn). Säsong (kontroll 26 okt 2026, https://halsohamn.se/stallplats): \"Under hela året är husbilar och husvagnar välkomna till Hälsö.\"",
+    "season": "year-round",
+    "openingHours": "Året runt; färskvatten ej vintertid"
   },
   {
     "id": "curated-r3-smaangens-camping",
@@ -36464,7 +36618,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://www.smaangenscamping.se/boende/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://www.smaangenscamping.se/boende/): \"Latrintömningen sker på baksidan av servicehuset.\" Läge = OSM node-5841562081 (\"Vattenpåfyllning vid Småängens Camping\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning bekräftat. Källa (https://www.smaangenscamping.se/boende/): \"Latrintömningen sker på baksidan av servicehuset.\" Läge = OSM node-5841562081 (\"Vattenpåfyllning vid Småängens Camping\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://www.smaangenscamping.se/boende/): \"Öppet 24/4-27/9\"",
+    "season": "seasonal",
+    "openingHours": "24 apr–27 sep"
   },
   {
     "id": "curated-r3-grannaberget",
@@ -36480,8 +36636,10 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://www.grannabygdensok.se/mtb-1",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, färskvatten, sopor bekräftat. Källa (https://www.grannabygdensok.se/mtb-1): \"Vi erbjuder tömning av latrin (ingen gråvattentömning finns)\" \"Färskvatten och diskmöjlighet finns på baksidan av klubbstugan.\" \"Soptunnor finns vid grusparkeringen ovanför klubbstugan.\" Ingen gråvattentömning enligt sidan. Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/graennaberget).",
-    "fee": "150 kr/natt"
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, färskvatten, sopor bekräftat. Källa (https://www.grannabygdensok.se/mtb-1): \"Vi erbjuder tömning av latrin (ingen gråvattentömning finns)\" \"Färskvatten och diskmöjlighet finns på baksidan av klubbstugan.\" \"Soptunnor finns vid grusparkeringen ovanför klubbstugan.\" Ingen gråvattentömning enligt sidan. Läge från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/graennaberget). Säsong (kontroll 26 okt 2026, https://www.grannabygdensok.se/mtb-1): \"GBOK har sex ställplatser på grusplan öppna året runt, under säsong öppnar vi vår stora gräsplan.\"",
+    "fee": "150 kr/natt",
+    "season": "year-round",
+    "openingHours": "Året runt (grusplatser)"
   },
   {
     "id": "curated-r3-malgoviks-camping",
@@ -36495,7 +36653,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://malgoviks-camping.webnode.se/information/",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten bekräftat. Källa (https://malgoviks-camping.webnode.se/information/): \"Det finns ett vattenutkast på samma byggnad för påfyllnad av färskvatten.\" Läge = OSM node-1853821216 (\"Ställplats för husbil, Laxbäcken\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten bekräftat. Källa (https://malgoviks-camping.webnode.se/information/): \"Det finns ett vattenutkast på samma byggnad för påfyllnad av färskvatten.\" Läge = OSM node-1853821216 (\"Ställplats för husbil, Laxbäcken\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://malgoviks-camping.webnode.se/): \"Campingen har öppet dygnet runt från maj till oktober\"",
+    "season": "seasonal",
+    "openingHours": "Maj–okt"
   },
   {
     "id": "curated-r3-skeppsdockans-camping-vandrarhem",
@@ -36524,7 +36684,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://kalmar.com/bra-att-veta/kalmar-gasthamn/stallplatser-kalmar-gasthamn",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten bekräftat. Källa (https://kalmar.com/bra-att-veta/kalmar-gasthamn/stallplatser-kalmar-gasthamn): \"Här ingår, el, wifi, dricksvatten och tillgång till Kalmar Gästhamns servicebyggnad på ca 400 meters avstånd.\" Ingen latrintömning, gråvattentömning enligt sidan. Läge = OSM way-305600004 (\"Kvarnholmen 2:1\", registret lägger till tjänsterna)."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten bekräftat. Källa (https://kalmar.com/bra-att-veta/kalmar-gasthamn/stallplatser-kalmar-gasthamn): \"Här ingår, el, wifi, dricksvatten och tillgång till Kalmar Gästhamns servicebyggnad på ca 400 meters avstånd.\" Ingen latrintömning, gråvattentömning enligt sidan. Läge = OSM way-305600004 (\"Kvarnholmen 2:1\", registret lägger till tjänsterna). Säsong (kontroll 26 okt 2026, https://kalmar.com/bra-att-veta/kalmar-gasthamn/stallplatser-kalmar-gasthamn): \"De kommunala latrintömningsstationerna stängs för vintern vecka 45 och öppnar igen vecka 14.\"",
+    "season": "seasonal",
+    "openingHours": "Tömning v 14–v 45"
   },
   {
     "id": "curated-r3-maleras-vandrarhem-b-b",
@@ -36555,7 +36717,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://www.blaklycke.se/stallplatser.php",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten, gråvattentömning bekräftat. Källa (https://www.blaklycke.se/stallplatser.php): \"Tvättmedel, tömning av gråvatten (slang) samt påfyllning av kommunalt dricksvatten ingår. Kl 11.00-14.00.\" Läge från husbil.se."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): färskvatten, gråvattentömning bekräftat. Källa (https://www.blaklycke.se/stallplatser.php): \"Tvättmedel, tömning av gråvatten (slang) samt påfyllning av kommunalt dricksvatten ingår. Kl 11.00-14.00.\" Läge från husbil.se. Säsong (kontroll 26 okt 2026, https://www.blaklycke.se/stallplatser.php): \"Ställplatser på lantgård från 50 kr per natt Öppet sommartid.\"",
+    "season": "seasonal",
+    "openingHours": "Sommartid"
   },
   {
     "id": "curated-r3-moonshine-camping",
@@ -36570,7 +36734,9 @@
     "source": "egen",
     "confidence": "medium",
     "website": "https://moonshine.n.nu/paradis-camping",
-    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://moonshine.n.nu/paradis-camping): \"Toalettbyggnaden med duschar, diskplats, latrintömning, driksvattenpost blev färdigställd sommaren 2025\" Ingen gråvattentömning enligt sidan. Läge från husbil.se."
+    "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://moonshine.n.nu/paradis-camping): \"Toalettbyggnaden med duschar, diskplats, latrintömning, driksvattenpost blev färdigställd sommaren 2025\" Ingen gråvattentömning enligt sidan. Läge från husbil.se. Säsong (kontroll 26 okt 2026, https://moonshine.n.nu/paradis-camping): \"VI HAR NU VINTERCAMPING. öppet hela året! OBSERVERA! stora begränsningar på service under vinterhalvåret\"",
+    "season": "year-round",
+    "openingHours": "Året runt; begränsad service vintertid"
   },
   {
     "id": "curated-kaffeteriet-stallplats-borensberg",
