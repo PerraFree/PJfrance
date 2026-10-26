@@ -1,8 +1,21 @@
 {
   "_om": "Pers egen fältkännedom. check-register.mjs stoppar deployen om någon av dessa tjänster saknas eller är grå i registret. Tas bara bort på Pers begäran. (CLAUDE.md princip 5: Pers kännedom väger tyngre än att en webbplats är tyst.)",
   "curated-7-borås-golfklubb,-borås": {
-    "tjanster": ["latrin", "vatten", "sopor"],
+    "tjanster": [
+      "latrin",
+      "vatten",
+      "sopor"
+    ],
     "datum": "2026-10-12",
     "not": "Per: 'de har påfyllning av vatten, sopor och latrintömning' (flaggat även sep 2026)."
+  },
+  "curated-backagarden-stamnared": {
+    "tjanster": [
+      "latrin",
+      "vatten",
+      "sopor"
+    ],
+    "datum": "2026-10-26",
+    "not": "Per: \"Backa gården har tömning av latrin, sopor och påfyllning av vatten\" (länkade Husbilskompisar och Campio)."
   }
 }

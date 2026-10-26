@@ -29654,5 +29654,26 @@
     "source": "egen",
     "description": "Komplettering vg (Ale, Alingsås, Bollebygd, Essunga, Färgelanda, Götene, Härryda, Lilla Edet, Tibro, Vara, Vårgårda, Aneby, Nässjö, Sävsjö) sep 2026. Källa (https://www.gotene.se/upplevaochgora/fritidochnatur/friluftslivochmotion/camping.6338.html): \"Götene kommun: ställplats vid Hällekis småbåtshamn med gråvattentömning och tömning av toalett i utslagsback; öppnar i april, stänger för säsongen i september. Vårrundan-folder 2022: duschar/toaletter, tömning för gråvatten och latrin, drivs av Hällekis Båtklubb.\"",
     "website": "https://www.gotene.se/upplevaochgora/fritidochnatur/friluftslivochmotion/camping.6338.html"
+  },
+  {
+    "id": "curated-backagarden-stamnared",
+    "name": "Ställplats Backagården",
+    "services": [
+      "latrin",
+      "vatten",
+      "sopor",
+      "stallplats"
+    ],
+    "source": "egen",
+    "confidence": "medium",
+    "lat": 57.2044,
+    "lon": 12.3999,
+    "address": "Stamnared 222, 432 92 Varberg",
+    "kommun": "Varberg",
+    "fee": "Från 270 kr/natt (förbokas via Campio)",
+    "openingHours": "1 maj–31 okt",
+    "season": "seasonal",
+    "website": "https://campio.no/sv/campsite/stall-plats-backagarden",
+    "description": "Per 26 okt 2026: Backagården har latrintömning, sopor och vattenpåfyllning. Ägarens text på bokningssidan (Campio): \"Välkommen till Backagården en ställplats endast för husbilar! Förbokas för att säkerställa plats! ... Toaletter, dusch, tömning av toalettkassett, vattenpåfyllning, sophantering samt El. Vi har tyvärr inte någon tömning av gråvatten idag.\" Säsong 1 maj–31 okt. Läge (57.2044, 12.3999) och adress Stamnared 222, Varberg från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/backagaarden). Ingen gråvattentömning."
   }
 ]
