@@ -554,3 +554,9 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   (Ängskär, Östra Piren, Västervik Resort) och en ren tömningsstation >100 m bort som mål.
   Inga befintliga gröna tjänster motsades av egna sidor. Ärende #45 (Ljunghusen geokodad 3 km fel)
   rättat med exakt läge och stängt. Seed efter synk: 6 823 platser.
+- **2026-10-26, Göta kanal:** gotakanal.se:s sitemap + alla ställplatssidor renderade med Playwright
+  (sv/en, "Visa mer" klickat). Bara Lyrestad, Söderköping, Motala verkstad, Vassbacken, Kaffeteriet
+  (Borensberg) och Bergs slussar anger tjänster; Sjötorp N/S, Forsvik, Norrqvarn, Malfors, Ljungs
+  västra, Tåtorp, Borenshult och Töreboda gör det inte (faciliteter stängda 1 okt–1/6 maj). Nytt:
+  Kaffeteriet (vatten/sopor/latrin/gråvatten ovanpå OSM way 347982479) och sopor på Motala verkstad;
+  övriga redan inlagda tidigare idag. Vassbacken (svart-/gråvattentömning) saknar koordinat – ej inlagd.

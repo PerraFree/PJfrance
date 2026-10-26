@@ -1086,9 +1086,10 @@
       "latrin",
       "gravatten",
       "stallplats",
-      "vatten"
+      "vatten",
+      "sopor"
     ],
-    "description": "Vid Göta kanal med drive over-tömning av svart- och gråvatten. Källa: gotakanal.se. Kontroll okt 2026 (https://www.gotakanal.se/sv/boka/boende/2655246/st%C3%A4llplats-motala-verkstad/detaljer): \"gotakanal.se: 'a drive-over station for emptying black and grey water is available on site and is included in the motorhome pitch price'; 27 platser med el; servicebyggnad med 'dricksvatten, toalett, dusch och tvättstuga'; lågsäsong 1 oktober–6 maj: 'reduced prices due to low season. This means that there is no access…\" Källa (https://www.gotakanal.se/sv/boka/boende/2655246/st%C3%A4llplats-motala-verkstad/detaljer): \"Servicebyggnaden har \"dricksvatten, toalett, dusch och tvättstuga\"; fyrsiffrig bomkod öppnar även servicebyggnaden.\" Verifierad okt 2026 (område C).",
+    "description": "Vid Göta kanal med drive over-tömning av svart- och gråvatten. Källa: gotakanal.se. Kontroll okt 2026 (https://www.gotakanal.se/sv/boka/boende/2655246/st%C3%A4llplats-motala-verkstad/detaljer): \"gotakanal.se: 'a drive-over station for emptying black and grey water is available on site and is included in the motorhome pitch price'; 27 platser med el; servicebyggnad med 'dricksvatten, toalett, dusch och tvättstuga'; lågsäsong 1 oktober–6 maj: 'reduced prices due to low season. This means that there is no access…\" Källa (https://www.gotakanal.se/sv/boka/boende/2655246/st%C3%A4llplats-motala-verkstad/detaljer): \"Servicebyggnaden har \"dricksvatten, toalett, dusch och tvättstuga\"; fyrsiffrig bomkod öppnar även servicebyggnaden.\" Verifierad okt 2026 (område C). Kontroll 26 okt 2026: sopor bekräftat av Göta kanal (https://www.gotakanal.se/sv/stays/village/2655246/stallplats-motala-verkstad): \"Sophantering På området finns möjlighet att slänga sopor.\"",
     "url": "https://www.gotakanal.se/sv/boka/boende/2655246/st%C3%A4llplats-motala-verkstad/detaljer",
     "source": "egen",
     "fee": "Tömning ingår i ställplatspriset; lägre pris i lågsäsong",
@@ -36407,5 +36408,22 @@
     "confidence": "medium",
     "website": "https://moonshine.n.nu/paradis-camping",
     "description": "Svep 26 okt 2026 (runda 3, kandidat från Husbilskompisar/husbil.se, kontrollerad mot egen sida): latrintömning, färskvatten bekräftat. Källa (https://moonshine.n.nu/paradis-camping): \"Toalettbyggnaden med duschar, diskplats, latrintömning, driksvattenpost blev färdigställd sommaren 2025\" Ingen gråvattentömning enligt sidan. Läge från husbil.se."
+  },
+  {
+    "id": "curated-kaffeteriet-stallplats-borensberg",
+    "name": "Kaffeteriet ställplats, Borensberg",
+    "services": [
+      "latrin",
+      "gravatten",
+      "vatten",
+      "sopor",
+      "stallplats"
+    ],
+    "lat": 58.5582992,
+    "lon": 15.2788252,
+    "source": "egen",
+    "confidence": "medium",
+    "website": "https://www.gotakanal.se/sv/boende/stallplats/kaffeteriet-stallplats",
+    "description": "Svep 26 okt 2026 (Göta kanals egen sida, renderad): färskvatten, sopor, latrintömning, gråvattentömning bekräftat. Källa (https://www.gotakanal.se/sv/boende/stallplats/kaffeteriet-stallplats): \"Vatten, sopor, latrin- och gråvattentömning finns lättillgängligt ute på själva ställplatsen.\" Läge = OSM way 347982479 (\"Ställplats för husbil, Borensberg\", 58 m från Göta kanals kartpunkt)."
   }
 ]
