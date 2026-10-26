@@ -124,14 +124,15 @@ if (existsSync(SEED)) {
 console.log(`Register: ${reg.length} poster, ${errors.length} fel, ${warnings.length} varningar`)
 // Bekräftad tömning/vatten/gasol utan en enda primärkälla (granskning 14 okt
 // 2026: 91 poster, mest "Källa: sammanställd information om anläggningen").
-// Varning tills de är genomgångna (ärende), sedan fel.
+// Varning tills de var genomgångna (ärende #38), fel sedan 26 okt 2026.
 {
   const AGG = /husbilsplats\.se|park4night|campingkollen|stallplatskartan|stallplatserna\.se|husbil\.se|campercontact|hitta\.se|facebook\.com|\/\/(www\.)?camping\.se\b/i
   const KÄRNA2 = ['gravatten', 'latrin', 'vatten', 'gasol']
   const utanKälla = reg.filter((p) => !p.unverified && p.confidence !== 'low'
     && (p.services ?? []).some((x) => KÄRNA2.includes(x) && !(p.unverifiedServices ?? []).includes(x))
     && ![p.website, p.url, ...(String(p.description ?? '').match(/https?:\/\/[^\s)"]+/g) ?? [])].filter(Boolean).some((u) => !AGG.test(u)))
-  if (utanKälla.length) warnings.push(`${utanKälla.length} poster har bekräftad tömning/vatten/gasol utan primärkälla (ingen länk utom aggregatorer), t.ex. ${utanKälla.slice(0, 3).map((p) => p.id).join(', ')}`)
+  // Listan genomgången 26 okt 2026 (ärende #38) – nu ett fel: grön kräver primärkälla.
+  if (utanKälla.length) errors.push(`${utanKälla.length} poster har bekräftad tömning/vatten/gasol utan primärkälla (ingen länk utom aggregatorer), t.ex. ${utanKälla.slice(0, 3).map((p) => p.id).join(', ')} – lägg in källa med citat eller sätt unverifiedServices`)
 }
 
 // Alias (gamla id → nuvarande, public/data/id-aliases.json): varje mål måste

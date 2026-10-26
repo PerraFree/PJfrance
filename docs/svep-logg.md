@@ -560,3 +560,12 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   västra, Tåtorp, Borenshult och Töreboda gör det inte (faciliteter stängda 1 okt–1/6 maj). Nytt:
   Kaffeteriet (vatten/sopor/latrin/gråvatten ovanpå OSM way 347982479) och sopor på Motala verkstad;
   övriga redan inlagda tidigare idag. Vassbacken (svart-/gråvattentömning) saknar koordinat – ej inlagd.
+- **2026-10-26, område D + ärende #38 (källkontroll av gröna poster):** alla registerposter med grön
+  tömning/vatten/gasol (1 410) fick sina primärkällor (1 922 URL:er, 611 renderade med Playwright)
+  lästa via runnern. **#38 – 118 poster utan primärkälla:** agenter hittade kandidat-URL:er, sidorna
+  lästes, varje grön tjänst bedömdes mot ordagranna utdrag: 65 tjänster bekräftade (citat tillagt),
+  201 tjänster på 99 poster grå ("Kontroll 26 okt 2026: ingen primärkälla nämner …"), 10 poster helt
+  grå; camping.se räknades som branschlista. Varningen i `check-register.mjs` är nu ett FEL.
+  **Övriga gröna (487 sidor med negationsord granskade):** 3 säkra fel – Allégården Kastlösa ingen
+  gråvattentömning (Ölands turistråd), Surahammars GK ingen latrintömning (egen sida), jem & fix
+  Kristinehamn Albinvägen permanent stängd (flyttad till Kromgatan 3B, gasol grå tills bekräftat).
