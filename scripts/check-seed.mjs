@@ -18,7 +18,12 @@ const curated = st.filter((s) => String(s.id).startsWith('curated-')).length
 if (!Array.isArray(st)) errors.push('seeden saknar stations-lista')
 if (by('osm') < 4000) errors.push(`för få OSM-platser: ${by('osm')} (golv 4 000)`)
 if (by('trafikverket') < 280) errors.push(`för få Trafikverket-platser: ${by('trafikverket')} (golv 280)`)
-if (curated < reg.length * 0.93) errors.push(`bara ${curated} av ${reg.length} registerposter finns i seeden (golv 93 %)`)
+if (curated < reg.length * 0.93) {
+  const msg = `bara ${curated} av ${reg.length} registerposter finns i seeden (golv 93 %)`
+  // Deploy direkt efter en registerpush: seeden byggs om av sync-data.yml strax efter.
+  if (process.env.REGISTER_AHEAD === 'true') warnings.push(msg + ' – registret är nyare än seeden, synken publicerar')
+  else errors.push(msg)
+}
 
 const ids = new Set()
 let badCoord = 0

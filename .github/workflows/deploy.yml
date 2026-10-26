@@ -55,6 +55,11 @@ jobs:
       # hann inte inom jobbets 20 min, och en manuell synk här committades aldrig.
       # Kör "Synka stationsdata till repot" (sync-data.yml) i stället.
       - name: Kontroll av seeden (golv per källa, koordinater, tjänster, dubbla id)
+        env:
+          # En push som ändrar registret men inte seeden: seeden ligger efter tills
+          # sync-data.yml (startas av samma push) committat den nya och deployat –
+          # registergolvet blir då en varning i stället för ett falsklarm (26 okt 2026).
+          REGISTER_AHEAD: ${{ github.event_name == 'push' && contains(join(github.event.head_commit.modified, ','), 'scripts/curated-places.json') && !contains(join(github.event.head_commit.modified, ','), 'public/data/stations-seed.json') }}
         run: node scripts/check-seed.mjs
       - name: Bygg SEO-sidor (kommunsidor + sitemap) från seed-datan
         run: node scripts/build-seo-pages.mjs
