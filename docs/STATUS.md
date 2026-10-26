@@ -3,7 +3,9 @@
 Skrivs ÖVER vid varje överlämning (lägg inte äldre lägesbilder på hög – historik
 finns i git-loggen, `docs/svep-logg.md` och `docs/HISTORIK.md`).
 
-**Uppdaterad:** 2026-10-21, veckogranskningen (5 granskare).
+**Uppdaterad:** 2026-10-26, veckosvep A (tömning).
+
+Senaste svep (26 okt, A): 66 glesa kommuner, 0 nya + 1 komplettering (Ställplats Kinnekulle +gråvatten/latrin); metoden uttömd. Rotation: äldst nu är C/D/E (12 okt).
 
 Senaste händelse (21 okt): veckogranskning – 16 platser fick grå tjänster som
 område C-skriptet felaktigt gjort gröna (ny uppgraderingsvakt i

@@ -8,7 +8,7 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 | Fokusområde | Vad | Senast kört |
 |---|---|---|
-| A. Tömning latrin/gråvatten | Kommuner med 0–1 tömningsplatser: kommunsidor, turistråd, anläggningars egna sajter. Kompletteringar av befintliga camping-/ställplatsposter räknas. | 2026-10-05 |
+| A. Tömning latrin/gråvatten | Kommuner med 0–1 tömningsplatser: kommunsidor, turistråd, anläggningars egna sajter. Kompletteringar av befintliga camping-/ställplatsposter räknas. | 2026-10-26 |
 | B. Gasol byte/påfyllning + priser | Kedjornas butikssidor (Byggmax/Granngården/Rusta/ÖoB per butik), Norbro-/Linde-/gasolautomat.se-listor, lokala påfyllningsbolag, priser. Bara 10/11 kg-flaskor (P11/PA11/PC10/PK10). | 2026-10-19 |
 | C. Obekräftade platser: verifiera + fyll på | (1) Sök primärkälla för de OBEKRÄFTADE posterna i registret (`unverified: true` / `unverifiedServices`) – får de citat: ta bort obekräftat-flaggan. (2) Gör om lovande rader i `docs/kandidatplatser-husbilsplats-park4night.md` (tydlig tjänst + ort) till obekräftade registerposter så de syns grått på kartan. | 2026-10-12 |
 | D. Kontroll av befintliga platser | Per prioriterar RÄTT före FLER: välj ~40 befintliga platser med tömning/vatten i en region (gärna campingar/ställplatser med `website`), kontrollera mot källan att tjänsterna fortfarande finns, rätta fel (ta bort tjänst, uppdatera avgift/öppettider). Golfklubbar + vattenkiosker som upptäckt-del. Uppdrag + import: `scripts/import-tools/UPPDRAG-kontroll.md`, `apply-kontroll.mjs`. Körda regioner: Västra Götaland (11 okt), Skåne (12 okt), Stockholm/Uppsala/Södermanland (12 okt), Halland + Kalmar län (12 okt), Jönköping/Kronoberg (12 okt), Östergötland/Örebro/Västmanland (12 okt), Värmland/Dalarna/Gävleborg (12 okt), Norrland + Gotland/Blekinge (12 okt). Hela landet klart – nästa varv börjar om med VG, bara platser utan "Kontroll okt 2026". | 2026-10-12 |
@@ -27,6 +27,12 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
 
 ## Logg
 
+- **2026-10-26, A (tömning latrin/gråvatten) – 66 kommuner med 0–1 tömningsplatser (veckorutin):** 4 agenter × 40 i budget
+  (122 sökningar använda, inget kvotfel) mot samma glesbygds-/storstadskommuner som 5 okt. Kommunerna publicerar
+  nästan aldrig husbilsstationer. **Resultat: 0 nya platser, 1 komplettering** med primärkälla: Ställplats Kinnekulle Hällekis
+  +gråvatten +latrin (Götene kommun). Nickstabadet-fyndet fanns redan i registret (First Camp Nickstabadet). 11 låg-/medelfynd (Campercontact, park4night, norcamp, Hönsäter hamn utan koordinat) i
+  `docs/tomning-svep-okt-2026-lag-evidens.md`. Kvar: Hönsäter hamn (kolla mot Kinnekulle-posten), Östanå Havscamp,
+  E20-rastplatser Alingsås/Vårgårda; metoden är i praktiken uttömd – nästa steg är crowdsourcing/telefonkontakt.
 - **2026-10-19, B (gasol) – kommuner utan gasolpost (session veckorutin):** 127 kommuner saknade gasolpost i seeden; 8 agenter
   (≈200 sökningar av 480 budgeterade, inga kvotfel; sökverktyget gav bara sammandrag, WebFetch blockad) sökte Lindes
   försäljningsställen, Norbro, gasolautomat.se. **8 nya poster** (Hänne Edsbyn kunde inte geokodas) (Köpingsvik fanns redan i registret som curated-168-klintagatan-19,-köpingsvik, Borgholm – ej Mörbylånga): 4 bekräftade gasolautomater (AGA/Linde, PC10:

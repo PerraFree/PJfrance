@@ -36,3 +36,17 @@ Fynd där bara aggregatorer/forum eller äldre notiser belägger tömningen. Kol
 - sthlm2: Camp Nygård Täby (latrintömningsautomat, bara aggregatorer; kolla camp-nygard.se)
 - Notis: Gnesta Ågatan 8 stängd tills vidare (låg grundvattennivå) enl. kommunen
 - vg: Alingsås GK hänvisar till E20-rastplatser med latrin åt båda håll (namn okända); Maplelake Adventure Hökensås (Västsverige: latrin i servicehuset)
+
+## Svep 26 okt 2026 (område A) – låg-/medelevidens, INTE inlagda
+
+- ENRICH Vännäs Bad & Camping +latrin – https://camping.se/en/camping/3148/Vannas-Bad-Camping
+- ENRICH Gällivare Camping +latrin – https://www.promobil.de/stellplatz/gaellivare-camping-64972f62c7de3a0008840eb9.html
+- ENRICH Ställplats Wassara +gravatten – https://www.campcation.com/campsite/stallplats-wassara
+- ENRICH Rännuddens camping + – https://www.campcation.com/campsite/fridfulla-rannudden
+- ENRICH Solängens Ställplats Perstorp +latrin – https://www.norcamp.de/en/sweden/solaengens-camping.2323.1.html
+- ENRICH Ekuddens Camping, Kungsör +latrin,gravatten – https://www.campercontact.com/en/sweden/vastmanland-county/kungsor/156610/camping-ekuddens.md
+- ENRICH Norbergs Camping +gravatten – https://www.norcamp.de/en/sweden/caravan-club-norbergs-camping.2424.1.html
+- Östanå Havscamp [latrin,gravatten,vatten] – https://park4night.com/en/place/255103
+- ENRICH Camp Nygård +latrin,gravatten – https://www.campercontact.com/en/md/94733
+- ENRICH Rösjöbadens Camping +latrin,gravatten – https://www.campercontact.com/en/sweden/stockholm-county/sollentuna-kommun/69720/rosjobaden-camping.md
+- Hönsäter hamn & ställplats (gråvattentömning) [gravatten] – https://www.vastsverige.com/lackokinnekulle/produkter/honsater-hamn/
