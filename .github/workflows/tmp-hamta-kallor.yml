@@ -11,45 +11,58 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 22
-      - name: Hämta kandidaternas egna sidor
+      - name: Läs husbil.se + turistrådens ställplatslistor
         run: |
           mkdir -p ut && cd ut
-          cat > urls.json <<'EOF'
-          ["https://www.svenskastallplatser.se/", "https://stellplatz.app/", "https://www.husbil.se/stallplatser/", "https://www.vastsverige.com/bo/stallplatser/", "https://www.visitblekinge.se/stallplatser-i-blekinge", "https://www.parkandstay.se/", "https://www.gotakanal.se/sv/stallplatser", "https://husbilsplats.se/hitta-husbilsplatser/", "https://husbilslivet.se/stallplatser/", "https://www.campingspot.com/sv/marina-manage", "https://firstcamp.se/campingtips/stallplatser", "https://www.hogakusten.com/sv/boende/stallplatser", "https://lwhusvagnar.se/husvagnssemester-sommar-stallplatser-du-maste-besoka", "https://vardnas.se/boende/stallplatser_husbilar.html", "https://play.google.com/store/apps/details?id=com.greenstream.stellplatz.free&hl=sv"]
-          EOF
-          cat > hamta.mjs <<'JS'
+          npm init -y >/dev/null && npm i playwright@1.49.1 >/dev/null
+          cat > crawl.mjs <<'JS'
           import fs from 'node:fs'
+          import { chromium } from 'playwright'
           const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130 Safari/537.36'
-          const urls = JSON.parse(fs.readFileSync('urls.json', 'utf8'))
-          const text = (h) => h.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/&quot;/g, '"').replace(/&#x27;|&#39;/g, "'").replace(/&aring;/g, 'å').replace(/&auml;/g, 'ä').replace(/&ouml;/g, 'ö').replace(/\s+/g, ' ').slice(0, 60000)
-          const KW = /husbil|st[aä]llplats|stallplats|stellplatz|camping|marina|hamn|produkter|boende/i
-          async function get(u) {
-            try {
-              const r = await fetch(u, { headers: { 'user-agent': UA }, redirect: 'follow', signal: AbortSignal.timeout(25000) })
-              const h = await r.text()
-              return { status: r.status, final: r.url, html: h }
-            } catch (e) { return { status: 0, err: String(e).slice(0, 200) } }
-          }
-          const out = {}
-          const q = [...urls]
-          await Promise.all(Array.from({ length: 3 }, async () => {
-            while (q.length) {
-              const u = q.shift()
-              const r = await get(u)
-              const pages = [{ u, status: r.status, err: r.err, text: r.html ? text(r.html) : '', html: (r.html || '').slice(0, 4000000) }]
-              if (r.html) {
-                const base = new URL(r.final || u)
-                const links = [...new Set([...r.html.matchAll(/href="([^"#]+)"/g)].map((m) => { try { return new URL(m[1], base).href } catch { return null } }).filter((x) => x && new URL(x).host === base.host && KW.test(x) && !/\.(jpg|png|pdf|css|js)$/i.test(x)))].slice(0, 80)
-                for (const l of links) { const s = await get(l); pages.push({ u: l, status: s.status, text: s.html ? text(s.html) : '', geo: s.html ? [...s.html.matchAll(/(5[5-9]|6[0-9])\.\d{3,}[^0-9]{1,40}?(1[0-9]|2[0-4])\.\d{3,}/g)].slice(0, 5).map((m) => m[0]) : [] }) }
-              }
-              out[u] = pages
+          const text = (h) => h.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, ' ').replace(/<[^>]+>/g, ' ').replace(/&amp;/g, '&').replace(/&nbsp;|&#160;/g, ' ').replace(/&#187;/g, '»').replace(/\s+/g, ' ')
+          // 1) husbil.se
+          const hb = []
+          const ids = Array.from({ length: 1500 }, (_, i) => i + 1)
+          await Promise.all(Array.from({ length: 4 }, async () => {
+            while (ids.length) {
+              const id = ids.shift()
+              try {
+                const r = await fetch(`https://www.husbil.se/stallplatser/p/${id}`, { headers: { 'user-agent': UA }, signal: AbortSignal.timeout(25000) })
+                if (r.ok) { const h = await r.text(); const web = (h.match(/href="([^"]+)"[^>]*>\s*Webbplats/) || [])[1]; hb.push({ id, web, text: text(h).slice(0, 8000) }) }
+              } catch {}
+              await new Promise((s) => setTimeout(s, 200))
             }
           }))
-          fs.writeFileSync("kallor-per.json", JSON.stringify(out))
-          console.log('klart', Object.keys(out).length, Object.values(out).filter((p) => p[0].status === 200).length, 'ok')
+          fs.writeFileSync('husbilse.json', JSON.stringify(hb))
+          console.log('husbil.se', hb.length)
+          // 2) turistråd (JS-renderade listor)
+          const browser = await chromium.launch({ channel: 'chrome' })
+          const out = {}
+          for (const u of ['https://www.vastsverige.com/bo/stallplatser/', 'https://www.visitblekinge.se/stallplatser-i-blekinge', 'https://www.hogakusten.com/sv/boende/stallplatser', 'https://www.gotakanal.se/sv/stallplatser']) {
+            try {
+              const pg = await browser.newPage({ userAgent: UA })
+              await pg.goto(u, { waitUntil: 'networkidle', timeout: 60000 })
+              for (let i = 0; i < 25; i++) {
+                await pg.mouse.wheel(0, 4000); await pg.waitForTimeout(700)
+                const more = await pg.$('button:has-text("Visa fler"), button:has-text("Ladda fler"), a:has-text("Visa fler")')
+                if (more) { try { await more.click(); await pg.waitForTimeout(1500) } catch {} }
+              }
+              const html = await pg.content()
+              const host = new URL(u).host
+              const links = [...new Set([...html.matchAll(/href="([^"#]+)"/g)].map((m) => { try { return new URL(m[1].replace(/&amp;/g, '&'), u).href } catch { return null } }).filter((x) => x && new URL(x).host === host && /produkter|\/boende\/|stallplats|ställplats|camping|hamn/i.test(x)))]
+              const pages = []
+              for (const l of links.slice(0, 250)) {
+                try { const r = await fetch(l, { headers: { 'user-agent': UA }, signal: AbortSignal.timeout(25000) }); const h = await r.text(); pages.push({ u: l, status: r.status, text: text(h).slice(0, 20000), geo: [...h.matchAll(/(5[5-9]|6[0-9])\.\d{3,}[^0-9]{1,40}?(1[0-9]|2[0-4])\.\d{3,}/g)].slice(0, 3).map((m) => m[0]) }) } catch {}
+              }
+              out[u] = { list: text(html).slice(0, 200000), links, pages }
+              console.log(u, links.length, pages.length)
+            } catch (e) { out[u] = { err: String(e) }; console.log(u, 'fel', String(e).slice(0, 200)) }
+          }
+          await browser.close()
+          fs.writeFileSync('turistrad.json', JSON.stringify(out))
           JS
-          node hamta.mjs
-          rm hamta.mjs urls.json
+          node crawl.mjs
+          rm -rf crawl.mjs node_modules package.json package-lock.json
       - name: Publicera till grenen tmp-kallsidor
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
