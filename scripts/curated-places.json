@@ -32890,18 +32890,16 @@
     "services": [
       "gasol"
     ],
-    "query": "Falsterbovägen 131, Höllviken",
-    "nearLat": 55.40582,
-    "nearLon": 12.9211,
-    "maxKm": 3,
     "address": "Lönnkrogsvägen 10 Höllviken 236 41 Skåne",
     "facilities": [
       "gasol_byte"
     ],
     "source": "egen",
     "confidence": "medium",
-    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://forsaljningsstallen.linde.se/h%C3%B6llviken/falsterbov%C3%A4gen-131/aga-gasolautomat-ica-n%C3%A4ra-ljunghusen): \"Falsterbovägen 131 23641 Höllviken\" \"I automaten säljer vi och tar emot kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aga-gasolautomat-ica-ljunghusen).",
-    "website": "https://forsaljningsstallen.linde.se/h%C3%B6llviken/falsterbov%C3%A4gen-131/aga-gasolautomat-ica-n%C3%A4ra-ljunghusen"
+    "description": "Svep 26 okt 2026 (kandidat från Husbilskompisar, kontrollerad mot egen sida): gasol bekräftat. Källa (https://forsaljningsstallen.linde.se/h%C3%B6llviken/falsterbov%C3%A4gen-131/aga-gasolautomat-ica-n%C3%A4ra-ljunghusen): \"Falsterbovägen 131 23641 Höllviken\" \"I automaten säljer vi och tar emot kompositflaskor i storlekarna 5 kg och 10 kg (PC5 & PC10).\" Läge och adress från Husbilskompisars ställplatskarta (https://husbilskompisar.se/stallplatskartan/aga-gasolautomat-ica-ljunghusen). Läge 26 okt 2026: Nominatim lade \"Falsterbovägen 131, Höllviken\" mitt i Höllviken, 3 km från Ljunghusen; automaten står vid ICA Nära Ljunghusen – koordinat från Husbilskompisar (55.40582, 12.9211).",
+    "website": "https://forsaljningsstallen.linde.se/h%C3%B6llviken/falsterbov%C3%A4gen-131/aga-gasolautomat-ica-n%C3%A4ra-ljunghusen",
+    "lat": 55.40582,
+    "lon": 12.9211
   },
   {
     "id": "curated-hk-gasol-24-7-gasolautomat-lund",
