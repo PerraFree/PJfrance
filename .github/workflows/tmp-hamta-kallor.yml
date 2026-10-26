@@ -16,7 +16,7 @@ jobs:
           mkdir -p ut && cd ut
           npm init -y >/dev/null && npm i playwright@1.49.1 >/dev/null
           cat > urls.json <<'EOF'
-          ["https://www.campingalingsas.com/", "https://hamn.lysekil.se/", "https://www.lysekil.se/", "https://stenungsogarden.se/", "https://www.vafabmiljo.se/", "https://tidaholmscamping.se/", "https://www.maplelake.se/", "https://www.liseberg.se/sv/bo/lisebergsbyn/", "https://amal.se/uppleva-och-gora/turism/vara-olika-boenden/camping-stugor-och-stallplats/", "https://www.vastsverige.com/dals-ed/produkter/sjostugetomten/", "https://lovekulle.se/", "https://www.gasolstationen.se/gasolautomater", "https://expressgasol.se/", "https://www.norbro.se/privat/hitta-gasolautomat/", "https://www.edsbyn.se/", "https://www.gnesta.se/", "https://www.hultsfred.se/"]
+          ["https://www.norbro.se/privat/hitta-gasolautomat/", "https://expressgasol.se/alvesta", "https://expressgasol.se/kungsbacka", "https://expressgasol.se/landvetter", "https://expressgasol.se/oskarshamn", "https://expressgasol.se/ronneby", "https://expressgasol.se/tingsryd", "https://expressgasol.se/vaxjo", "https://hamn.lysekil.se/sv/Husbilavgift", "https://hamn.lysekil.se/sv/GastServicePriser", "https://www.stenungsogarden.se/camping/", "https://amal.se/uppleva-och-gora/turism/vara-olika-boenden/camping-stugor-och-stallplats/makebergs-stallplats", "https://amal.se/uppleva-och-gora/turism/vara-olika-boenden/camping-stugor-och-stallplats/forsbacka-stallplats", "https://amal.se/uppleva-och-gora/turism/vara-olika-boenden/camping-stugor-och-stallplats/tossestugans-stallplats", "https://amal.se/uppleva-och-gora/turism/vara-olika-boenden/camping-stugor-och-stallplats/ornas-camping-destination-amal", "https://vafabmiljo.se/avfall/latrin/", "https://www.liseberg.se/sv/bo/lisebergsbyn/", "https://www.vastsverige.com/dals-ed/produkter/sjostugetomten/", "https://lovekulle.se/", "https://www.campingalingsas.com/"]
           EOF
           cat > hamta.mjs <<'JS'
           import fs from 'node:fs'
@@ -36,10 +36,10 @@ jobs:
           console.log('renderar', redo.length)
           const browser = await chromium.launch({ channel: 'chrome' })
           const ctx = await browser.newContext({ userAgent: UA, locale: 'sv-SE' })
-          const rq = [...redo]
+          const rq = [...redo]; let pi = 0
           await Promise.all(Array.from({ length: 4 }, async () => {
-            const pg = await ctx.newPage()
-            while (rq.length) { const u = rq.shift(); try { const r = await pg.goto(u, { waitUntil: 'networkidle', timeout: 30000 }); await pg.waitForTimeout(1500); const t = text(await pg.content()); const links = await pg.$$eval('a[href]', (as) => as.map((a) => a.href)).catch(() => []); out[u] = { status: r ? r.status() : 0, text: t.slice(0, 40000), links: [...new Set(links)].filter((l) => /husbil|st[aä]llplats|t[öo]mning|camping|gasol|automat|hamn/i.test(l)).slice(0, 40) } } catch (e) { out[u] = out[u] || {}; out[u].renderErr = String(e).slice(0, 80) } }
+            let pg = await ctx.newPage()
+            while (rq.length) { const u = rq.shift(); try { const r = await pg.goto(u, { waitUntil: 'domcontentloaded', timeout: 45000 }); await pg.waitForTimeout(5000); const t = text(await pg.content()); const links = await pg.$$eval('a[href]', (as) => as.map((a) => a.href)).catch(() => []); out[u] = { status: r ? r.status() : 0, text: t.slice(0, 40000), links: [...new Set(links)].filter((l) => /husbil|st[aä]llplats|t[öo]mning|camping|gasol|automat|hamn/i.test(l)).slice(0, 40) } } catch (e) { out[u] = out[u] || {}; out[u].renderErr = String(e).slice(0, 80); await pg.close().catch(() => {}); pg = await ctx.newPage() } }
           }))
           await browser.close()
           fs.writeFileSync('rest28.json', JSON.stringify(out))
