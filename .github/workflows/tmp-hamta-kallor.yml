@@ -1,0 +1,29 @@
+name: TMP hämta källsidor (tas bort efter användning)
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  hamta:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Hämta sidor och sitemap
+        run: |
+          mkdir -p ut && cd ut
+          UA="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
+          curl -sSL -A "$UA" -m 60 -o backagaarden.html https://husbilskompisar.se/stallplatskartan/backagaarden || true
+          curl -sSL -A "$UA" -m 60 -o campio-backagarden.html https://campio.no/sv/campsite/stall-plats-backagarden || true
+          curl -sSL -A "$UA" -m 60 -o hk-sitemap.xml https://husbilskompisar.se/sitemap.xml || true
+          curl -sSL -A "$UA" -m 60 -o hk-robots.txt https://husbilskompisar.se/robots.txt || true
+          ls -la
+      - name: Publicera till grenen tmp-kallsidor
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd ut
+          git init -q -b tmp-kallsidor
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A && git commit -q -m "tmp källsidor"
+          git push -f "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" tmp-kallsidor
