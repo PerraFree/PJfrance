@@ -6,17 +6,52 @@ permissions:
 jobs:
   hamta:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 120
     steps:
-      - name: Hämta sidor och sitemap
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+      - name: Läs Husbilskompisars ställplatskarta
         run: |
           mkdir -p ut && cd ut
-          UA="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130 Safari/537.36"
-          curl -sSL -A "$UA" -m 60 -o backagaarden.html https://husbilskompisar.se/stallplatskartan/backagaarden || true
-          curl -sSL -A "$UA" -m 60 -o campio-backagarden.html https://campio.no/sv/campsite/stall-plats-backagarden || true
-          curl -sSL -A "$UA" -m 60 -o hk-sitemap.xml https://husbilskompisar.se/sitemap.xml || true
-          curl -sSL -A "$UA" -m 60 -o hk-robots.txt https://husbilskompisar.se/robots.txt || true
-          ls -la
+          cat > crawl.mjs <<'JS'
+          import fs from 'node:fs'
+          const UA = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/130 Safari/537.36'
+          const sm = await (await fetch('https://husbilskompisar.se/sitemap.xml', { headers: { 'user-agent': UA } })).text()
+          const urls = [...new Set([...sm.matchAll(/<loc>(https:\/\/husbilskompisar\.se\/stallplatskartan\/[^<]+)<\/loc>/g)].map((m) => m[1]))]
+          console.log('urls', urls.length)
+          const text = (h) => h.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/g, '').replace(/<[^>]+>/g, '\n').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#x27;|&#39;/g, "'").replace(/\n\s*\n+/g, '\n')
+          const out = []
+          let i = 0
+          async function one(u) {
+            for (let t = 0; t < 3; t++) {
+              try {
+                const r = await fetch(u, { headers: { 'user-agent': UA }, signal: AbortSignal.timeout(30000) })
+                if (!r.ok) { await new Promise((s) => setTimeout(s, 2000)); continue }
+                const s = text(await r.text())
+                const g = (re) => (s.match(re) || [])[1]?.trim()
+                const name = g(/\n([^\n]+) \| Husbilskompisar/) || g(/Logga in\n([^\n]+)\n/)
+                const lat = parseFloat(g(/Latitud:\s*\n([\d.]+)/)), lon = parseFloat(g(/Longitud:\s*\n([\d.]+)/))
+                const about = g(/\nOm \n[^\n]+\n([\s\S]*?)\nInformation\n/)
+                const adr = g(/Adress\n([\s\S]*?)\nKontakt/)?.replace(/\n,?\s*/g, ' ')
+                const fac = g(/Faciliteter\n([\s\S]*?)\nKategori/)?.split('\n').map((x) => x.trim()).filter(Boolean)
+                const kat = g(/Kategori\n([^\n]+)/)
+                const web = g(/Webbplats:?\s*\n([^\n]+)/)
+                out.push({ u, name, lat, lon, adr, about, fac, kat, web })
+                return
+              } catch { await new Promise((s) => setTimeout(s, 2000)) }
+            }
+            out.push({ u, err: true })
+          }
+          const q = [...urls]
+          await Promise.all(Array.from({ length: 4 }, async () => {
+            while (q.length) { const u = q.shift(); await one(u); i++; if (i % 250 === 0) console.log(i); await new Promise((s) => setTimeout(s, 250)) }
+          }))
+          fs.writeFileSync('hk-platser.json', JSON.stringify(out))
+          console.log('klart', out.length, out.filter((o) => o.err).length, 'fel')
+          JS
+          node crawl.mjs
+          rm crawl.mjs
       - name: Publicera till grenen tmp-kallsidor
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
