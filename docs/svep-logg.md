@@ -569,3 +569,9 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   **Övriga gröna (487 sidor med negationsord granskade):** 3 säkra fel – Allégården Kastlösa ingen
   gråvattentömning (Ölands turistråd), Surahammars GK ingen latrintömning (egen sida), jem & fix
   Kristinehamn Albinvägen permanent stängd (flyttad till Kromgatan 3B, gasol grå tills bekräftat).
+- **2026-10-26, restlistan #28 (via runnern):** Norbro gasolautomat ICA Servett Lerum NY (PK10, grön);
+  Expressgasol Växjö Norremarksvägen 3, Sandvägen 17 och Skövde Storgatan 14 NYA men grå (storlek ej
+  angiven); "Hamnservice Lysekil tömning" (Havsbadet) grå – kommunen anger husbilstömning bara vid
+  husbilsparkeringarna (Kolholmarna/Valbodalen finns som egna poster); Stenungsögårdens tömning/vatten
+  grå (campingsidan nämner dem inte längre); Måkeberg bekräftad av kommunen; Lygnareds sajt anger inga
+  tjänster; Lövekulle-adressen är en vägförening; Tidaholm/Maplelake-domänerna finns inte (DNS).

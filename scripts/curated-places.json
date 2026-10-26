@@ -820,12 +820,13 @@
       "gravatten",
       "vatten"
     ],
-    "description": "Kommunal tömning av latrin och gråvatten nära havsbadet. Källa: hamn.lysekil.se. Kontroll okt 2026 (https://www.vastsverige.com/lysekil/produkter/hamnservice-lysekil/): \"vastsverige.com (Hamnservice Lysekil): \"Hamnservice för Lysekils kommunala gästhamnar och ställplatser hittas i Havsbadsområdet i centrala Lysekil, och har öppet säsongsvis från april - september. Tillgänglig service inkluderar: El och färskvatten, Dusch, toalett och tvättmöjligheter, Sjömack och latrintömning.\" hamn.…\" Källa (https://www.vastsverige.com/lysekil/produkter/hamnservice-lysekil/): \"El och färskvatten; Dusch, toalett och tvättmöjligheter; Sjömack och latrintömning ... har öppet säsongsvis från april - september\" Verifierad okt 2026 (område C).",
+    "description": "Kommunal tömning av latrin och gråvatten nära havsbadet. Källa: hamn.lysekil.se. Kontroll okt 2026 (https://www.vastsverige.com/lysekil/produkter/hamnservice-lysekil/): \"vastsverige.com (Hamnservice Lysekil): \"Hamnservice för Lysekils kommunala gästhamnar och ställplatser hittas i Havsbadsområdet i centrala Lysekil, och har öppet säsongsvis från april - september. Tillgänglig service inkluderar: El och färskvatten, Dusch, toalett och tvättmöjligheter, Sjömack och latrintömning.\" hamn.…\" Källa (https://www.vastsverige.com/lysekil/produkter/hamnservice-lysekil/): \"El och färskvatten; Dusch, toalett och tvättmöjligheter; Sjömack och latrintömning ... har öppet säsongsvis från april - september\" Verifierad okt 2026 (område C). Kontroll 26 okt 2026: Lysekils hamns prissida (https://hamn.lysekil.se/sv/GastServicePriser) anger latrintömning och gråvattentömning för husbilar bara vid husbilsparkeringarna (\"Tömning av gråvatten: Husbilsparkering Latrintömning: Husbilsparkering\") – tömningen vid Havsbadet gäller båtar; latrintömning, gråvattentömning och färskvatten här grå (se Kolholmarna/Valbodalen).",
     "url": "https://hamn.lysekil.se/sv/TomningLatrin",
     "source": "egen",
     "season": "seasonal",
     "openingHours": "Hamnservice april–september",
-    "confidence": "high"
+    "confidence": "low",
+    "unverified": true
   },
   {
     "id": "curated-50-kinna-resecentrum-husbilsplatser",
@@ -24277,19 +24278,21 @@
     "nearLon": 11.83414,
     "maxKm": 30,
     "services": [
-      "gravatten",
-      "latrin",
-      "vatten",
       "camping",
       "stallplats"
     ],
     "source": "egen",
-    "description": "Källa (https://www.stenungsogarden.se/camping/): \"Faciliteter inkluderar elplatser, moderna servicehus med dusch, WC, kök och tvättmöjligheter, samt tömningsstationer för grå- och svartvatten. Stenungsögårdens Camping kan erbjuda ett 30-tal husvagnsplatser med el.\" Färskvatten ('dricksvatten') belagt via Acamp-listningen ('servicehus med allt inklusive tömningar och dricksvatten', 3 platser med el + 5 utan på ställplatsdelen), gråvatten/svartvatten via egen sajt. Befintlig post 'Camping i Stenungsunds kommun' (58.0050,11.9908) ligger 12 km österut och är INTE samma plats. Koordinat saknas – sajterna blockade. Kontroll okt 2026 (https://www.stenungsogarden.se/camping/): \"stenungsogarden.se/camping/: \"Husvagn/ Husbil Högsäsong 1/6 – 31/8: 400:-/ dygn inkl. el Maj & September: 350:-/dygn inkl. el ... Lågsäsong 1/10 – 30/4: 250:-/dygn inkl. el\"; \"ett 30-tal husvagnsplatser med el varav några är säsongsplatser sommartid och även möjlighet till säsongsbokning under vintern\".\"",
+    "description": "Källa (https://www.stenungsogarden.se/camping/): \"Faciliteter inkluderar elplatser, moderna servicehus med dusch, WC, kök och tvättmöjligheter, samt tömningsstationer för grå- och svartvatten. Stenungsögårdens Camping kan erbjuda ett 30-tal husvagnsplatser med el.\" Färskvatten ('dricksvatten') belagt via Acamp-listningen ('servicehus med allt inklusive tömningar och dricksvatten', 3 platser med el + 5 utan på ställplatsdelen), gråvatten/svartvatten via egen sajt. Befintlig post 'Camping i Stenungsunds kommun' (58.0050,11.9908) ligger 12 km österut och är INTE samma plats. Koordinat saknas – sajterna blockade. Kontroll okt 2026 (https://www.stenungsogarden.se/camping/): \"stenungsogarden.se/camping/: \"Husvagn/ Husbil Högsäsong 1/6 – 31/8: 400:-/ dygn inkl. el Maj & September: 350:-/dygn inkl. el ... Lågsäsong 1/10 – 30/4: 250:-/dygn inkl. el\"; \"ett 30-tal husvagnsplatser med el varav några är säsongsplatser sommartid och även möjlighet till säsongsbokning under vintern\".\" Kontroll 26 okt 2026: campingsidan (https://www.stenungsogarden.se/camping/) nämner inte längre gråvattentömning, latrintömning eller färskvatten – grå tills bekräftat.",
     "website": "https://www.stenungsogarden.se/camping/",
     "fee": "Högsäsong 1/6–31/8: 400 kr/dygn inkl. el; maj & september 350 kr; lågsäsong 1/10–30/4 250 kr",
     "address": "John Forsells väg 1, Stenungsön, 444 30 Stenungsund",
     "season": "year-round",
-    "confidence": "high"
+    "confidence": "high",
+    "unverifiedServices": [
+      "gravatten",
+      "latrin",
+      "vatten"
+    ]
   },
   {
     "id": "curated-1411-stenungsunds-båtklubb,-stenungsund",
@@ -36608,5 +36611,82 @@
     "confidence": "medium",
     "website": "https://www.gotakanal.se/sv/boende/stallplats/kaffeteriet-stallplats",
     "description": "Svep 26 okt 2026 (Göta kanals egen sida, renderad): färskvatten, sopor, latrintömning, gråvattentömning bekräftat. Källa (https://www.gotakanal.se/sv/boende/stallplats/kaffeteriet-stallplats): \"Vatten, sopor, latrin- och gråvattentömning finns lättillgängligt ute på själva ställplatsen.\" Läge = OSM way 347982479 (\"Ställplats för husbil, Borensberg\", 58 m från Göta kanals kartpunkt)."
+  },
+  {
+    "id": "curated-norbro-gasolautomat-lerum",
+    "name": "Norbro gasolautomat ICA Servett, Lerum",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "query": "Almekärrsvägen 1, Lerum",
+    "nearLat": 57.77,
+    "nearLon": 12.27,
+    "maxKm": 5,
+    "address": "Almekärrsvägen 1, 443 39 Lerum",
+    "openingHours": "24/7",
+    "source": "egen",
+    "confidence": "medium",
+    "website": "https://www.norbro.se/privat/hitta-gasolautomat/",
+    "description": "Svep 26 okt 2026 (Norbros automatlista, renderad via runnern): gasol (byte/köp PK10) bekräftat. Källa (https://www.norbro.se/privat/hitta-gasolautomat/): \"Gasolautomat / Lerum (ICA Servett) På parkeringen vid ICA Servett. Almekärrsvägen 1 443 39 Lerum Hitta vägen här Du kan byta och köpa följande gasolflaskor i vår automat: 5 kg PK5-gasolflasksa För mer information 10 kg PK10-gasolflasksa\""
+  },
+  {
+    "id": "curated-expressgasol-vaxjo-norremarksvagen",
+    "name": "Expressgasol – gasolautomat Växjö (Norremarksvägen 3)",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "query": "Norremarksvägen 3, Växjö",
+    "nearLat": 56.88,
+    "nearLon": 14.8,
+    "maxKm": 8,
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "website": "https://expressgasol.se/vaxjo",
+    "description": "Svep 26 okt 2026: finns i Expressgasols lista över gasolautomater (https://expressgasol.se/vaxjo), men flaskstorlek (10/11 kg) anges inte – grå tills bekräftat."
+  },
+  {
+    "id": "curated-expressgasol-vaxjo-sandvagen",
+    "name": "Expressgasol – gasolautomat Växjö (Sandvägen 17)",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "query": "Sandvägen 17, Växjö",
+    "nearLat": 56.88,
+    "nearLon": 14.8,
+    "maxKm": 8,
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "website": "https://expressgasol.se/vaxjo",
+    "description": "Svep 26 okt 2026: finns i Expressgasols lista över gasolautomater (https://expressgasol.se/vaxjo), men flaskstorlek (10/11 kg) anges inte – grå tills bekräftat."
+  },
+  {
+    "id": "curated-expressgasol-skovde",
+    "name": "Expressgasol – gasolautomat Skövde (Storgatan 14)",
+    "services": [
+      "gasol"
+    ],
+    "facilities": [
+      "gasol_byte"
+    ],
+    "query": "Storgatan 14, Skövde",
+    "nearLat": 58.39,
+    "nearLon": 13.85,
+    "maxKm": 8,
+    "source": "egen",
+    "unverified": true,
+    "confidence": "low",
+    "website": "https://expressgasol.se/vaxjo",
+    "description": "Svep 26 okt 2026: finns i Expressgasols lista över gasolautomater (https://expressgasol.se/vaxjo), men flaskstorlek (10/11 kg) anges inte – grå tills bekräftat."
   }
 ]
