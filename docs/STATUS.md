@@ -3,16 +3,16 @@
 Skrivs ÖVER vid varje överlämning (lägg inte äldre lägesbilder på hög – historik
 finns i git-loggen, `docs/svep-logg.md` och `docs/HISTORIK.md`).
 
-**Uppdaterad:** 2026-10-26, svep mot Pers källtips (Husbilskompisar, husbil.se, turistråd).
+**Uppdaterad:** 2026-10-26 eftermiddag – svep + källkontroll via runnern.
 
-Senaste svep (26 okt, Pers tips + runda 3): Husbilskompisars hela karta
-(5 211) och husbil.se (~1 060) jämförda med kartan; ~1 100 platsers egna sidor
-lästa via runnern och granskade (ordagranna citat). Totalt idag: ~460
-nya/kompletterade platser (runda 1–2: 233, runda 3: 232 – främst färskvatten
-och kompletteringar av befintliga platser). Seeden: 6 823 platser. Kvar:
-Göta kanals ställplatser utan tjänstetext (bokningssidorna), Gasolfyllarnas
-återförsäljare (grå, flaskstorlek ej angiven), platser vars egen sida inte
-nämner tjänsten (förblir grå/utelämnade). Se `docs/svep-logg.md`.
+Idag (26 okt): Pers källtips + Husbilskompisar/husbil.se/turistråd/Göta kanal gav
+~460 nya/kompletterade platser; därefter källkontroll av hela registret:
+#38 (118 gröna utan primärkälla: 65 tjänster bekräftade, 201 grå), område D
+(3 motsägelser rättade), #28 restlistan, #26 grå platser (47 tjänster gröna,
+9 borttagna). Seeden: 6 828 platser, 2 445 med grön tömning/vatten/gasol.
+`check-register` kräver nu primärkälla för grönt (fel, inte varning).
+Metod för sajter sandlådan inte når: tillfällig runner-workflow (CLAUDE.md).
+Kvar: ~275 grå utan egen sida, #27 säsong/öppettider, #38 p.3 lägen, #42.
 
 Förra svepet (26 okt, A): 66 glesa kommuner, 0 nya + 1 komplettering (Ställplats Kinnekulle +gråvatten/latrin); metoden uttömd. Rotation: äldst nu är C/D/E (12 okt).
 
