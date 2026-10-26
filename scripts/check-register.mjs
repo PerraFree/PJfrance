@@ -176,7 +176,17 @@ if (existsSync(PER)) {
 if (existsSync(SEED)) {
   const KÄRNA = ['gravatten', 'latrin', 'vatten', 'gasol']
   const seedSt = JSON.parse(readFileSync(SEED, 'utf8')).stations ?? []
-  const byIdReg = new Map(reg.map((p) => [p.id, p]))
+  // Poster utan id får curated-<namn> i synken (samma regel som assign-ids.mjs) –
+  // annars ser en ny post som redan publicerats ut som borttagen (Kinnekulle 26 okt 2026).
+  const slug = (t) => String(t).toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60)
+  const usedIds = new Set(reg.map((p) => p.id).filter(Boolean))
+  const byIdReg = new Map(reg.map((p) => {
+    if (p.id) return [p.id, p]
+    let id = `curated-${slug(p.name)}`
+    for (let k = 2; usedIds.has(id); k++) id = `curated-${slug(p.name)}-${k}`
+    usedIds.add(id)
+    return [id, p]
+  }))
   const ALIASES2 = new URL('../public/data/id-aliases.json', import.meta.url)
   const al = existsSync(ALIASES2) ? JSON.parse(readFileSync(ALIASES2, 'utf8')) : {}
   const BORT = new URL('./borttagna.json', import.meta.url)
