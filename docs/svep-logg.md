@@ -575,3 +575,11 @@ Efter varje körning: uppdatera datumet i tabellen och lägg en rad i loggen lä
   husbilsparkeringarna (Kolholmarna/Valbodalen finns som egna poster); Stenungsögårdens tömning/vatten
   grå (campingsidan nämner dem inte längre); Måkeberg bekräftad av kommunen; Lygnareds sajt anger inga
   tjänster; Lövekulle-adressen är en vägförening; Tidaholm/Maplelake-domänerna finns inte (DNS).
+- **2026-10-26, område C/#26 (grå platser):** 434 registerposter med grå tömning/vatten/gasol; egna sidor
+  (+ Husbilskompisars/husbil.se:s webbadress för samma plats) lästa via runnern, 159 hade relevanta
+  utdrag, fyra agenter granskade med ordagranna citat. **47 tjänster gröna på 32 poster** (10 helt grå
+  poster nu delvis gröna), **9 grå tjänster borttagna** där sidan säger att de saknas (t.ex. Kalkeelboet
+  – citatet gällde en annan plats; Ställplats Berget Degerfors utan service; Barlastudden ej gråvatten;
+  Västerås Lögarängen ej gråvatten; Svanshall ej latrin). Uteslutet: Naturkartan, camping.se, kanna-
+  vatten (Nikkaluokta), Gotlands vatten, Lysekil Havsbadet (båtar), Östanå gråvatten "via slang",
+  Eremit, EllösParken latrin (Orust).
