@@ -11296,8 +11296,10 @@
     "facilities": [
       "gasol_byte"
     ],
-    "description": "Motonet byter AGA P11 och PC10/PC5 i varuhuset under öppettider (\"köp och byt direkt i butiken\"). Pris visas i butik. Källa: motonet.se.",
-    "url": "https://www.motonet.se/varuhus/vasteras?id=703"
+    "description": "Motonet byter AGA P11 och PC10/PC5 i varuhuset under öppettider (\"köp och byt direkt i butiken\"). Pris visas i butik. Källa: motonet.se. Kontroll 27 okt 2026: källkontrollen (ärende #32) får 404 på motonet.se-butikssidan – gasol grå tills butiken bekräftat igen.",
+    "url": "https://www.motonet.se/varuhus/vasteras?id=703",
+    "unverified": true,
+    "confidence": "low"
   },
   {
     "id": "curated-655-östra-svedengatan-22,-linköping",
@@ -29820,7 +29822,7 @@
       "gasol_byte"
     ],
     "source": "egen",
-    "description": "Gasolautomat (AGA/Linde): byte av tom gasolflaska mot full – flaskstorlek ej angiven på Lindes sida, därför grå. Dygnet runt, kortbetalning. Källa: Lindes försäljningsställen (https://forsaljningsstallen.linde.se/tomelilla/banm%C3%A4staregatan-2/aga-gasolautomat-tomelilla). Svep okt 2026.",
+    "description": "Gasolautomat (AGA/Linde): byte av tom gasolflaska mot full – flaskstorlek ej angiven på Lindes sida, därför grå. Dygnet runt, kortbetalning. Källa: Lindes försäljningsställen (https://forsaljningsstallen.linde.se/tomelilla/banm%C3%A4staregatan-2/aga-gasolautomat-tomelilla). Svep okt 2026. Kontroll 27 okt 2026: Lindes sida för automaten ger 404 (ärende #32) – automaten kan vara borttagen.",
     "url": "https://forsaljningsstallen.linde.se/tomelilla/banm%C3%A4staregatan-2/aga-gasolautomat-tomelilla",
     "openingHours": "Dygnet runt",
     "unverified": true,
