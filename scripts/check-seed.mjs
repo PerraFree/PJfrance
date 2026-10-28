@@ -5,6 +5,7 @@
 // dubbla id. Golven är medvetet låga – de ska fånga haverier, inte variation
 // (OSM pendlar 4 400–4 600 beroende på vilken Overpass-spegel som svarade).
 import { readFileSync } from 'node:fs'
+import { execSync } from 'node:child_process'
 
 const seed = JSON.parse(readFileSync(new URL('../public/data/stations-seed.json', import.meta.url), 'utf8'))
 const reg = JSON.parse(readFileSync(new URL('./curated-places.json', import.meta.url), 'utf8'))
@@ -18,12 +19,24 @@ const curated = st.filter((s) => String(s.id).startsWith('curated-')).length
 if (!Array.isArray(st)) errors.push('seeden saknar stations-lista')
 if (by('osm') < 4000) errors.push(`för få OSM-platser: ${by('osm')} (golv 4 000)`)
 if (by('trafikverket') < 280) errors.push(`för få Trafikverket-platser: ${by('trafikverket')} (golv 280)`)
-if (curated < reg.length * 0.93) {
-  const msg = `bara ${curated} av ${reg.length} registerposter finns i seeden (golv 93 %)`
-  // Deploy direkt efter en registerpush: seeden byggs om av sync-data.yml strax efter.
-  if (process.env.REGISTER_AHEAD === 'true') warnings.push(msg + ' – registret är nyare än seeden, synken publicerar')
-  else errors.push(msg)
-}
+// Registergolvet mäts mot registret som seeden byggdes från. En push som bara
+// ändrar registret deployas innan sync-data.yml hunnit bygga om seeden – då är
+// golvet 93 % av registret vid seedens senaste commit (granskning 28 okt 2026;
+// förut en flagga från head_commit som missade pushar med flera commits).
+// Är seeden själv ändrad (synken) eller historiken saknas gäller hela registret.
+let regBase = reg.length
+let baseNote = ''
+try {
+  const git = (c) => execSync(c, { cwd: new URL('..', import.meta.url), encoding: 'utf8', maxBuffer: 256 * 1024 * 1024, stdio: ['ignore', 'pipe', 'ignore'] })
+  const seedDirty = git('git status --porcelain -- public/data/stations-seed.json').trim() !== ''
+  const seedSha = git('git log -1 --format=%H -- public/data/stations-seed.json').trim()
+  if (!seedDirty && seedSha) {
+    const prev = JSON.parse(git(`git show ${seedSha}:scripts/curated-places.json`))
+    if (prev.length < reg.length) { regBase = prev.length; baseNote = ` (registret vid seedens commit ${seedSha.slice(0, 8)}: ${prev.length} poster; synken bygger om seeden)` }
+  }
+} catch { /* ingen git-historik – hela registret gäller */ }
+if (curated < regBase * 0.93) errors.push(`bara ${curated} av ${regBase} registerposter finns i seeden (golv 93 %)${baseNote}`)
+else if (baseNote) warnings.push(`registret är nyare än seeden${baseNote}`)
 
 const ids = new Set()
 let badCoord = 0

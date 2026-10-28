@@ -30,5 +30,7 @@ jobs:
             echo "Ingen ändring."
           else
             git commit -m "Uppdatera kommungränser (scripts/kommuner.json) [skip ci]"
+            # Grenen kan ha flyttat sig under körningen (granskning 28 okt 2026)
+            git pull --rebase origin "${GITHUB_REF_NAME}"
             git push
           fi

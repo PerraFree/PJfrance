@@ -229,7 +229,10 @@ jobs:
                 ``,
                 `| | |`,
                 `|---|---|`,
-                `| **Plats** | ${cell(r.station_name ?? r.station_id)} |`,
+                // Namnet skickas av avsändaren och kan vara påhittat – id:t avgör vilken
+                // plats kommentaren hamnar på (granskning 28 okt 2026).
+                `| **Plats (enligt avsändaren)** | ${cell(r.station_name)} |`,
+                `| **Plats-id** | \`${cell(r.station_id).replace(/`/g, '')}\` |`,
                 `| **Betyg** | ${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)} (${r.rating}/5) |`,
                 ``,
                 `> ${neutral(r.comment || '').replace(/\n/g, '\n> ')}`,

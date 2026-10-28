@@ -19,8 +19,11 @@ permissions:
 
 jobs:
   hantera:
-    # Bara gransknings-ärenden och kommentarer från repo-ägare/medarbetare
+    # Bara gransknings-ärenden som bevakningen själv skapat (github-actions[bot] –
+    # repot är publikt och en etikett kan följa med en ärendemall; granskning
+    # 28 okt 2026) och kommentarer från repo-ägare/medarbetare
     if: >
+      github.event.issue.user.login == 'github-actions[bot]' &&
       (contains(github.event.issue.labels.*.name, 'platsförslag') ||
        contains(github.event.issue.labels.*.name, 'omdöme')) &&
       contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'), github.event.comment.author_association)
@@ -38,6 +41,17 @@ jobs:
         with:
           script: |
             const fs = require('fs')
+            // Ett misslyckat försök syns som kommentar i ärendet (förut bara en
+            // röd körning som ingen såg – granskning 28 okt 2026).
+            const fail = async (msg) => {
+              core.setFailed(msg)
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.issue.number,
+                body: `⚠️ Det gick inte att spara beslutet: ${msg}`,
+              })
+            }
             // Redan avgjorda ärenden ändras inte (skydd mot senare "neka" på
             // en publicerad plats).
             if (context.payload.issue.state === 'closed') {
@@ -64,7 +78,7 @@ jobs:
             const body = context.payload.issue.body || ''
             const m = body.match(/^<!-- (submission|review):([0-9a-f-]{36}) -->/i)
             if (!m) {
-              core.setFailed('Hittade inget giltigt förslags-id i ärendet.')
+              await fail('Hittade inget giltigt förslags-id i ärendet.')
               return
             }
             const table = m[1] === 'review' ? 'reviews' : 'submissions'
@@ -76,7 +90,7 @@ jobs:
               if (m) urlVar = m[1].trim()
             }
             if (!key || !urlVar) {
-              core.setFailed('Secret SUPABASE_SERVICE_KEY eller Supabase-koppling saknas. Se docs/ADMIN.md.')
+              await fail('Secret SUPABASE_SERVICE_KEY eller Supabase-koppling saknas. Se docs/ADMIN.md.')
               return
             }
             const base = urlVar.replace(/\/$/, '')
@@ -94,7 +108,7 @@ jobs:
               body: JSON.stringify({ status }),
             })
             if (!res.ok) {
-              core.setFailed(
+              await fail(
                 `Supabase svarade ${res.status}: ${(await res.text()).slice(0, 300)}. ` +
                   'Kontrollera SUPABASE_SERVICE_KEY, och att projektet inte är pausat. Kommentera igen om en stund.',
               )
@@ -102,7 +116,7 @@ jobs:
             }
             const rows = await res.json()
             if (!Array.isArray(rows) || rows.length !== 1) {
-              core.setFailed(`Hittade ingen rad med id ${id} i ${table} – är den redan borttagen i Supabase?`)
+              await fail(`Hittade ingen rad med id ${id} i ${table} – är den redan borttagen i Supabase?`)
               return
             }
             const vad = table === 'reviews' ? 'kommentaren' : 'platsen'

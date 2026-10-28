@@ -112,7 +112,10 @@ jobs:
           script: |
             const marker = '<!-- synk-seedkontroll -->'
             const syncFailed = '${{ steps.sync.outcome }}' === 'failure'
-            const failed = syncFailed || '${{ steps.seedcheck.outcome }}' === 'failure'
+            // En misslyckad push räknas också – annars stängdes larmet fast seeden
+            // aldrig kom fram (granskning 28 okt 2026).
+            const pushFailed = '${{ steps.commit.outcome }}' === 'failure'
+            const failed = syncFailed || pushFailed || '${{ steps.seedcheck.outcome }}' === 'failure'
             const issues = await github.paginate(github.rest.issues.listForRepo, { owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100 })
             const mine = issues.find((i) => i.user?.login === 'github-actions[bot]' && (i.body ?? '').startsWith(marker))
             if (!failed) {
@@ -123,7 +126,9 @@ jobs:
             const fs = require('fs')
             const esc = (t) => String(t ?? '').replace(/[[\]()<>`*_@#|]/g, ' ')
             const diff = fs.existsSync('seed-bortfall.txt') ? fs.readFileSync('seed-bortfall.txt', 'utf8').split('\n').filter(Boolean) : []
-            const what = syncFailed
+            const what = pushFailed
+              ? 'byggde en godkänd seed men kunde inte pusha den (grenen ändrades under körningen tre gånger, eller rättighetsfel – se körningens logg)'
+              : syncFailed
               ? 'stoppades av synkskriptet självt (registret oläsbart, för få registerposter, för få platser jämfört med förra seeden eller ingen data alls – se körningens logg)'
               : 'fick en seed som inte klarar kontrollen'
             const body = `${marker}\nDatasynken ${new Date().toISOString().slice(0, 16)} UTC ${what} och publicerade den INTE – sajten visar förra data tills nästa synk lyckas. Antingen för få platser från en källa, trasiga poster, eller att många platser med tömning/vatten/gasol försvann på en gång (se listan).\n\nKörning: ${url}\n\n` +

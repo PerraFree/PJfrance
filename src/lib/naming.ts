@@ -10,6 +10,8 @@ import type { Station } from '../types'
 export const GENERIC_NAME_RE =
   /^(Tömningsstation|Ställplats för husbil|Vattenpåfyllning|Sopstation|Återvinningscentral|Drivmedelsstation|Camping|Ställplats|Rastplats|Gasolförsäljning|Gästhamn\/marina|Dricksvatten|Vägkrog\/serviceområde)$/
 
+const GENERIC_VID_RE = new RegExp(`${GENERIC_NAME_RE.source.replace(/\$$/, '')} vid `)
+
 export function isGenericName(name: string): boolean {
   return GENERIC_NAME_RE.test(name.trim())
 }
@@ -62,7 +64,9 @@ export function nameGenericByNearby(stations: Station[], maxKm = 0.25): Station[
     // Härlett förebildsnamn: låna bara orten efter "vid" – annars "Sopstation
     // vid Sopstation vid Skeppsbron" (granskning 10–11, 12 okt 2026).
     const model = best as Station
-    const place = model.nameFrom === 'nearby' && model.name.includes(' vid ') ? model.name.slice(model.name.indexOf(' vid ') + 5) : model.name
+    // Även grannar som HETER "Ställplats vid …" (registret) – annars "Ställplats
+    // vid Ställplats vid Klässbol" (granskning 28 okt 2026). Samma i synken.
+    const place = model.nameFrom === 'nearby' && model.name.includes(' vid ') ? model.name.slice(model.name.indexOf(' vid ') + 5) : model.name.replace(GENERIC_VID_RE, '')
     return { ...s, name: vidName(s.name, place), nameFrom: 'nearby' as const }
   })
 }

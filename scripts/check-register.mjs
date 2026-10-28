@@ -35,14 +35,16 @@ for (const [i, p] of reg.entries()) {
     if (!/^curated-[a-z0-9][a-z0-9.,&()'\-åäöéü/:–]*$/i.test(p.id)) errors.push(`${tag}: ogiltigt id "${p.id}"`)
     if (ids.has(p.id)) errors.push(`${tag}: id "${p.id}" används redan av #${ids.get(p.id)}`)
     ids.set(p.id, i)
-  } else warnings.push(`${tag}: saknar id – får curated-<namn> i synken; kör node scripts/assign-ids.mjs`)
+  // Granskning 28 okt 2026: en ny post utan id kunde få samma härledda id som en
+  // befintlig (synkens slug) – därför fel, inte varning.
+  } else errors.push(`${tag}: saknar id – kör node scripts/assign-ids.mjs`)
   const key = (p.name ?? '').trim().toLowerCase()
   if (names.has(key)) errors.push(`${tag}: dubblettnamn (samma som #${names.get(key)}) – slå ihop eller särskilj med ort`)
   names.set(key, i)
   if (!Array.isArray(p.services) || p.services.length === 0) errors.push(`${tag}: tom eller saknad tjänstelista (grå plats? sätt unverified: true och behåll tjänsterna)`)
   for (const s of p.services ?? []) if (!SERVICES.has(s)) errors.push(`${tag}: okänd tjänst "${s}"`)
   for (const s of p.unverifiedServices ?? []) if (!SERVICES.has(s)) errors.push(`${tag}: okänd obekräftad tjänst "${s}"`)
-  for (const s of p.unverifiedServices ?? []) if ((p.services ?? []).includes(s)) warnings.push(`${tag}: "${s}" både bekräftad och obekräftad`)
+  for (const s of p.unverifiedServices ?? []) if ((p.services ?? []).includes(s)) errors.push(`${tag}: "${s}" står både i services och unverifiedServices – appen visar den grön; ta bort den ur services om den ska vara grå (granskning 28 okt 2026)`)
   const hasCoord = typeof p.lat === 'number' && typeof p.lon === 'number'
   const hasQuery = typeof p.query === 'string' && p.query.trim().length > 0
   if (!hasCoord && !hasQuery) errors.push(`${tag}: varken lat/lon eller query`)
@@ -160,6 +162,7 @@ if (existsSync(PER)) {
     if (id.startsWith('_')) continue
     const p = byId.get(id)
     if (!p) { errors.push(`Pers fakta: posten ${id} finns inte längre i registret`); continue }
+    if (!Array.isArray(f.tjanster) || !f.tjanster.length) errors.push(`per-fakta.json: ${id} saknar tjanster (felstavad nyckel?) – posten skyddas inte`)
     for (const t of f.tjanster ?? []) {
       if (!p.services?.includes(t) || p.unverified || (p.unverifiedServices ?? []).includes(t)) {
         errors.push(`Pers fakta: "${p.name}" ska ha ${t} bekräftat (${f.datum}: ${f.not ?? ''}) – ändra inte utan Pers besked`)
@@ -215,11 +218,25 @@ if (existsSync(SEED)) {
   // beskrivningen.
   const BELÄGG = { gravatten: /gråvatten|grå\s*(-|&|och)\s*(och\s*)?svart|smutsvatten|avlopp|grey ?water|wastewater|spillvatten|dumpstation|tömningsstation/i, latrin: /latrin|kassett|toalettömning|toatömning|kemisk|husvagnstoalett|utslagsback|svartvatten|chemical|fäkal|dumpstation|tömningsstation/i, vatten: /(?<!grå|spill|svart|smuts|av)vatten(?!.{0,15}:\s*nej)|fresh ?water|drinking water/i, gasol: /gasol|propan|flaskgas/i }
   const seedById = new Map(seedSt.map((s) => [s.id, s]))
-  for (const p of reg) {
-    const s = seedById.get(p.id)
+  // Granskning 28 okt 2026: vakterna fick prövas mot hela beskrivningen, så ett
+  // gammalt citat (eller ett tillagt mellanslag) räckte som "ny" orsak/belägg.
+  // Nu prövas bara meningar som inte fanns i den publicerade beskrivningen.
+  const nyText = (nu, förr) => {
+    const gamla = new Set(String(förr ?? '').split(/(?<=[.!?"”])\s+/).map((x) => x.trim()))
+    return String(nu ?? '').split(/(?<=[.!?"”])\s+/).map((x) => x.trim()).filter((x) => x && !gamla.has(x)).join(' ')
+  }
+  // Belägg som föregås av ett nekande ("Ingen latrintömning") räknas inte.
+  const NEJ = /(ingen|inget|inga|inte|ej|saknas|nej|no|not)\b[^.!?]{0,30}$/i
+  const belagd = (re, txt) => [...txt.matchAll(new RegExp(re.source, re.flags.includes('g') ? re.flags : re.flags + 'g'))].some((m) => !NEJ.test(txt.slice(Math.max(0, m.index - 35), m.index)))
+  // Samma id-tolkning som förlustvakten: härlett id för poster utan id, och alias (gammalt seed-id → nytt id).
+  const aliasTill = new Map(); for (const [gammal, ny] of Object.entries(al)) aliasTill.set(ny, [...(aliasTill.get(ny) ?? []), gammal])
+  for (const [id, p] of byIdReg) {
+    if (!p.id && seedById.has(id)) errors.push(`"${p.name}" finns i den publicerade seeden som ${id} men saknar id i registret – sätt id (kör node scripts/assign-ids.mjs)`)
+    const s = seedById.get(id) ?? (aliasTill.get(id) ?? []).map((g) => seedById.get(g)).find(Boolean)
     if (!s) continue
     const gained = bekräftade(p).filter((x) => !bekräftade(s).includes(x))
-    const utan = gained.filter((x) => !BELÄGG[x].test(p.description ?? ''))
+    const ny = nyText(p.description, s.description)
+    const utan = gained.filter((x) => !belagd(BELÄGG[x], ny))
     if (utan.length) errors.push(`"${p.name}" (${p.id}) har fått bekräftad ${utan.join('/')} men beskrivningen nämner inte tjänsten – lägg in citatet eller låt den vara grå (unverifiedServices)`)
   }
   for (const s of seedSt) {
@@ -233,8 +250,8 @@ if (existsSync(SEED)) {
     // ("Källa … 2026") – orsaken måste också nämna den tjänst som försvann.
     // … och vara NY: beskrivningen måste ha ändrats sedan den publicerade seeden
     // (ett gammalt citat som nämner latrin räknas inte som orsak till att den försvann).
-    const ny = (p.description ?? '') !== (s.description ?? '')
-    const utan = lost.filter((x) => !(ny && ORSAK.test(p.description ?? '') && TJÄNSTORD[x].test(p.description ?? '')))
+    const nytt = nyText(p.description, s.description)
+    const utan = lost.filter((x) => !(ORSAK.test(nytt) && TJÄNSTORD[x].test(nytt)))
     if (utan.length) {
       errors.push(`"${p.name}" har tappat bekräftad ${utan.join('/')} utan daterad orsak som nämner tjänsten i description (t.ex. "Kontroll okt 2026: ingen latrintömning enligt kommunen")`)
     }

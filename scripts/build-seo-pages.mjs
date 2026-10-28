@@ -75,15 +75,15 @@ const CORE = ['latrin', 'gravatten', 'vatten', 'gasol']
 
 // Riksöversikter per tjänst – slug, rubrik och vilka platser som räknas.
 const TJANSTER = [
-  { slug: 'latrintomning', label: 'Latrintömning', short: 'latrintömning', match: (s) => s.services.includes('latrin'),
+  { slug: 'latrintomning', label: 'Latrintömning', short: 'latrintömning', match: (s) => confirmed(s).includes('latrin'),
     intro: 'Latrintömning (kassettoalett/svartvatten) för husbil och husvagn' },
-  { slug: 'gravattentomning', label: 'Gråvattentömning', short: 'gråvattentömning', match: (s) => s.services.includes('gravatten'),
+  { slug: 'gravattentomning', label: 'Gråvattentömning', short: 'gråvattentömning', match: (s) => confirmed(s).includes('gravatten'),
     intro: 'Gråvattentömning för husbil – tömningsstationer med brunn eller ränna' },
-  { slug: 'farskvatten', label: 'Färskvatten', short: 'färskvatten', match: (s) => s.services.includes('vatten'),
+  { slug: 'farskvatten', label: 'Färskvatten', short: 'färskvatten', match: (s) => confirmed(s).includes('vatten'),
     intro: 'Påfyllning av färskvatten (dricksvatten) för husbil och husvagn' },
-  { slug: 'gasol-byte', label: 'Byt gasoltub', short: 'gasolbyte', match: (s) => s.services.includes('gasol') && (s.facilities ?? []).includes('gasol_byte'),
+  { slug: 'gasol-byte', label: 'Byt gasoltub', short: 'gasolbyte', match: (s) => confirmed(s).includes('gasol') && (s.facilities ?? []).includes('gasol_byte'),
     intro: 'Byte av gasolflaska i butik eller automat' },
-  { slug: 'gasol-pafyllning', label: 'Gasolpåfyllning', short: 'gasolpåfyllning', match: (s) => s.services.includes('gasol') && (s.facilities ?? []).includes('gasol_pafyllning'),
+  { slug: 'gasol-pafyllning', label: 'Gasolpåfyllning', short: 'gasolpåfyllning', match: (s) => confirmed(s).includes('gasol') && (s.facilities ?? []).includes('gasol_pafyllning'),
     intro: 'Påfyllning av egen gasolflaska eller fast gasoltank i husbilen' },
 ]
 
@@ -359,7 +359,9 @@ const kommunStats = new Map()
 for (const k of kommuner) {
   // Sammanslagna platser (som i kartan) – förut den råa seeden, så samma
   // plats listades flera gånger och antalen var uppblåsta (granskning 7).
-  const list = byKommun.get(k)
+  // Låg säkerhet får ingen platssida och räknas/listas därför inte heller här
+  // (granskning 28 okt 2026: kommunsidan visade dem gröna utan länk).
+  const list = byKommun.get(k).filter((s) => s.confidence !== 'low')
   const core = list.filter((s) => confirmed(s).some((x) => ORDER.includes(x)))
   const count = (sv) => list.filter((s) => confirmed(s).includes(sv)).length
   const counts = ORDER.map((sv) => [sv, count(sv)]).filter(([, n]) => n > 0)
@@ -398,7 +400,7 @@ for (const k of kommuner) {
 <p class="lead">${esc(description)}</p>
 <a class="cta" href="/?at=${first.lat.toFixed(4)},${first.lon.toFixed(4)},11">Öppna kartan över ${esc(k)} →</a>
 ${sections}
-${neighbours.length ? `<h2>Grannkommuner</h2><ul class="cols">${neighbours.map(({ o }) => `<li><a href="${esc(kommunUrl(o).replace(SITE, ''))}">${esc(o)}</a> (${kommunStats.get(o)?.core ?? byKommun.get(o).filter((s) => confirmed(s).some((x) => ORDER.includes(x))).length})</li>`).join('')}</ul>` : ''}
+${neighbours.length ? `<h2>Grannkommuner</h2><ul class="cols">${neighbours.map(({ o }) => `<li><a href="${esc(kommunUrl(o).replace(SITE, ''))}">${esc(o)}</a> (${kommunStats.get(o)?.places ?? 0})</li>`).join('')}</ul>` : ''}
 <p class="lead">Saknas en plats eller stämmer något inte? Öppna kartan och använd "Lägg till en plats" eller "Rapportera fel" – uppgifterna granskas och kartan uppdateras varje vecka.</p>`
   const itemList = {
     '@context': 'https://schema.org', '@type': 'ItemList', name: `Tömning och vatten för husbil i ${k}`,

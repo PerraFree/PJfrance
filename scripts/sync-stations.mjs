@@ -1255,6 +1255,7 @@ async function enrichImagesFromCommons(stations) {
 // Speglar GENERIC_NAME_RE i src/lib/naming.ts – ändra ALLTID båda.
 const GENERIC_NAME =
   /^(Tömningsstation|Ställplats för husbil|Vattenpåfyllning|Sopstation|Återvinningscentral|Drivmedelsstation|Camping|Ställplats|Rastplats|Gasolförsäljning|Gästhamn\/marina|Dricksvatten|Vägkrog\/serviceområde)$/
+const GENERIC_VID = new RegExp(`${GENERIC_NAME.source.replace(/\$$/, '')} vid `)
 const NAME_CORE = new Set(['gravatten', 'latrin', 'vatten', 'stallplats', 'camping'])
 // Senast publicerade seed – används som cache för redan uppslagna ortsnamn.
 const PREV_SEED_URL = 'https://raw.githubusercontent.com/PerraFree/PJfrance/gh-pages/data/stations-seed.json'
@@ -1348,7 +1349,9 @@ async function nameGenericStations(stations) {
     }
     // Ett härlett grannamn lånar bara delen efter första " vid " (som naming.ts) –
     // annars kedjades namnen ("Sopstation vid Sopstation vid …", granskning 14 okt 2026).
-    const bestName = best && best.nameFrom === 'nearby' && best.name.includes(' vid ') ? best.name.slice(best.name.indexOf(' vid ') + 5) : best?.name
+    // Även grannar som HETER "Ställplats vid …" (registret) – annars "Ställplats
+    // vid Ställplats vid Klässbol" (granskning 28 okt 2026). Samma i naming.ts.
+    const bestName = best && best.nameFrom === 'nearby' && best.name.includes(' vid ') ? best.name.slice(best.name.indexOf(' vid ') + 5) : best?.name.replace(GENERIC_VID, '')
     if (best) { s.name = vidName(s.name, bestName); s.nameFrom = 'nearby'; nearby++; continue }
     if (!s.services.some((x) => NAME_CORE.has(x))) continue
     if (prevNames.has(s.id)) { s.name = prevNames.get(s.id); s.nameFrom = 'reverse'; reused++; continue }
