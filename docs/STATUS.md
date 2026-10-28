@@ -3,24 +3,25 @@
 Skrivs ÖVER vid varje överlämning (lägg inte äldre lägesbilder på hög – historik
 finns i git-loggen, `docs/svep-logg.md` och `docs/HISTORIK.md`).
 
-**Uppdaterad:** 2026-10-26 eftermiddag – svep + källkontroll via runnern.
+**Uppdaterad:** 2026-10-28 morgon – veckogranskning.
 
-Idag (26 okt): Pers källtips + Husbilskompisar/husbil.se/turistråd/Göta kanal gav
-~460 nya/kompletterade platser; därefter källkontroll av hela registret:
-#38 (118 gröna utan primärkälla: 65 tjänster bekräftade, 201 grå), område D
-(3 motsägelser rättade), #28 restlistan, #26 grå platser (47 tjänster gröna,
-9 borttagna). Seeden: 6 828 platser, 2 445 med grön tömning/vatten/gasol.
-`check-register` kräver nu primärkälla för grönt (fel, inte varning).
+Senaste händelse (28 okt): veckogranskning med 6 granskare (e43877f9).
+Vakterna i `check-register` gick att lura (mellanslag, gammalt citat, nytt id)
+– nu prövas bara ny text; 16 poster visade grått som grönt (överlapp nu fel);
+10 dubblettpar från runda 3 sammanslagna; 6 tjänster med svagt belägg grå;
+15 säsongsfel; registergolvet i `check-seed` mäts mot seedens commit;
+tjänste-/kommunsidor räknar bara bekräftat; workflowfixar (förslagsärenden,
+synklarm, automerge). sw.js v121. Se `docs/granskningslogg.md`.
+Kvar: #46 (gratis-nålar vid campingar, ÅVC, 404-sida, ~30 säsonger utan citat,
+Gotland/Orust-frågan till Per), #42, #43.
+
+Förra arbetsdagen (26 okt): Pers källtips + Husbilskompisar/husbil.se/turistråd/
+Göta kanal gav ~460 nya/kompletterade platser; källkontroll av hela registret
+(#38, område D, #28, #26). `check-register` kräver primärkälla för grönt.
 Metod för sajter sandlådan inte når: tillfällig runner-workflow (CLAUDE.md).
-Kvar: ~275 grå utan egen sida, #27 säsong/öppettider, #38 p.3 lägen, #42.
+Kvar: ~275 grå utan egen sida, #27 säsong/öppettider, #38 p.3 lägen.
 
 Förra svepet (26 okt, A): 66 glesa kommuner, 0 nya + 1 komplettering (Ställplats Kinnekulle +gråvatten/latrin); metoden uttömd. Rotation: äldst nu är C/D/E (12 okt).
-
-Senaste händelse (21 okt): veckogranskning – 16 platser fick grå tjänster som
-område C-skriptet felaktigt gjort gröna (ny uppgraderingsvakt i
-check-register), dubbla härledda namn borta (vakt i check-seed), platsrutan vid
-vridning, offline-skydd i service workern, automergen skärpt. Se
-`docs/granskningslogg.md`; kvar i #42 (databas/deploy) och #43 (källor). sw.js v120.
 
 Förra svepet (19 okt, B gasol): 8 nya gasolposter i tidigare tomma kommuner;
 lägen kontrollerade i seeden. Rotation: äldst nu är A (5 okt).

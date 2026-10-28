@@ -6,6 +6,33 @@ avsnitt per körning, nyast överst. Varje fynd: vad, bevis, åtgärd, och vilke
 **vakt** (automatisk kontroll) som nu hindrar att samma sorts fel kommer tillbaka.
 Regler hör hemma i CLAUDE.md, läget i `docs/STATUS.md` – här bara loggen.
 
+## 2026-10-28 – veckogranskning (6 oberoende granskare)
+
+Områden: säkerhet, ny kod (7 dagar, mest vakterna och runda 3-importen),
+drift, nya dataposter (643 ändrade sedan 21 okt), OSM-/TRV-datakvalitet,
+SEO/PWA/leverantörskedja. Rättat i e43877f9. Granskarens attackfall mot
+`check-register.mjs` kördes om efter rättningen och stoppas nu.
+
+| Allvar | Fynd | Åtgärd | Vakt framåt |
+|---|---|---|---|
+| Hög | Förlust-/uppgraderingsvakten gick att passera: ett tillagt mellanslag i beskrivningen räckte som "ny orsak", ett gammalt citat eller "ingen latrintömning" räknades som belägg, och ett nytt id + alias eller ett borttaget id hoppade över jämförelsen | Vakterna prövar bara meningar som inte fanns i den publicerade beskrivningen; nekade belägg räknas inte; alias och härlett id följs; post utan id är fel | Attackfall t1–t7 (mellanslag, oförändrad text, negation, borttaget id, alias, krockande id) ger exit 1 |
+| Hög | 16 registerposter hade samma tjänst i `services` och `unverifiedServices` – appen och 10 platssidor visade grått som grönt (Norrtälje Camping, Renöhamn, Leksands rastplats m.fl.) | Grå tjänster borttagna ur `services` | `check-register.mjs`: överlappet är nu fel, inte varning |
+| Medel | Registergolvets undantag (`REGISTER_AHEAD`) läste bara pushens sista commit och stängde av golvet helt | `check-seed.mjs` mäter golvet mot registret vid seedens senaste commit (deployen hämtar hela historiken); ändrad seed (synken) mäts mot hela registret | Testat: +300 poster → varning; 20 % saknas i ny seed → stopp |
+| Medel | 10 dubblettpar: runda 3 lade in platser som redan fanns (identiska citat, 0–430 m isär), t.ex. Bengt i Örkelljunga, Kalmar gästhamn, Kårehamn, Björkäng | Sammanslagna, äldre id behålls, alias pekar om; Kumla flyttad till källornas läge | `check-register.mjs` jämför redan geokodade par <100 m; par 100–700 m: ärende #46 |
+| Medel | Grönt på svagt belägg: Garpahamnen (citat från en annan verksamhet), Hyppeln ("för båtgäster"), Norrsundet (båtpump), Fotö (septisug till båtar), Mellbystrand-gasol ("kommer att vara"), Ljungskile-gasol (läget bara från Husbilskompisar) | Grå med daterad orsak; Expressgasol "Skövde" (grå, fel stad) borttagen | Uppgraderingsvakten (ovan) |
+| Medel | Säsong säger emot öppettiderna: 10 poster "säsong" + "året om" utan säsongscitat, 5 "året runt" där tömning/servicehus är vinterstängt; Kalmar fick latrinstationernas öppettider, Bisonfarmen incheckningstider | Rättade | – (förslag i #46) |
+| Medel | Tjänstesidorna räknade grå tjänster (Latrin 1128 mot FAQ 1127); kommunsidor räknade poster med låg säkerhet (Simrishamn 17 men 16 länkar) och grannkommuner ett annat antal | `confirmed()` i tjänstesidorna; låg säkerhet utesluts; ett antal överallt | – |
+| Medel | Granskningsärenden för omdömen visade avsändarens platsnamn, inte vilket id kommentaren hamnar på; godkänn/neka-jobbet kontrollerade inte att ärendet skapats av boten, och fel syntes bara som röd körning | Plats-id visas; bara `github-actions[bot]`s ärenden; fel kommenteras i ärendet | – |
+| Låg | Synkens larm stängdes fast pushen misslyckades; automergen falsklarmade på en PR-gren som låg efter den publicerade seeden; kommungränsjobbet pushade utan rebase; "Ställplats vid Ställplats vid Klässbol" när grannen själv heter "X vid …" | Rättade (synk + app för namnet) | `check-seed.mjs` stoppar kedjade namn |
+
+Kvar (ärende #46): OSM-tömningar 100–400 m från en camping visas som egna
+"Gratis"-nålar (Stensö, Klubbensborg m.fl.), campingars sopsortering som ÅVC,
+gratisfiltret, ~30 säsonger utan citat, 404-sida, dubbla platssidor, CACHE från
+bygghashen, Supabase-väckning, gamla grenar, Gotland/Orust-latrin (Pers beslut).
+Fortfarande öppet från förra veckan: #42 (påhittade id, fotolagring), #43.
+Medvetet: upload-artifact v7 och download-artifact v8 är olika major men
+GitHubs senaste – Android-körningarna går igenom.
+
 ## 2026-10-21 – veckogranskning (5 oberoende granskare)
 
 Områden: säkerhet, ny kod (8 dagar), webbläsare, datakvalitet, drift/PWA.
