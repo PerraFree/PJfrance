@@ -4,6 +4,7 @@ import App from './App'
 import ErrorBoundary from './components/ErrorBoundary'
 import './styles.css'
 import { initNativeShell, isNative } from './lib/native'
+import { countVisit } from './lib/stats'
 
 // Skydd mot att sajten bäddas in i en främmande sida (klickkapning). GitHub
 // Pages kan inte skicka X-Frame-Options/frame-ancestors, och CSP i meta-tagg
@@ -23,6 +24,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     </ErrorBoundary>
   </React.StrictMode>,
 )
+
+// Besöksräkning (GoatCounter, bara på tomningskartan.se)
+countVisit()
 
 // Native app-skal (statusfält, splash) – ingen effekt i webbläsaren
 void initNativeShell()

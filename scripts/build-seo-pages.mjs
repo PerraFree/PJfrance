@@ -117,7 +117,7 @@ function page({ title, description, canonical, body, jsonld = [] }) {
 <html lang="sv">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://tomningskartan.goatcounter.com; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
@@ -137,6 +137,7 @@ ${jsonld.map((o) => `<script type="application/ld+json">${json(o)}</script>`).jo
 </head>
 <body>
 <header><a href="/"><img src="/icon.svg" alt="">Tömningskartan</a></header>
+<img src="https://tomningskartan.goatcounter.com/count?p=${encodeURIComponent(new URL(canonical).pathname)}" alt="" width="1" height="1" style="position:absolute;left:-9999px" referrerpolicy="no-referrer-when-downgrade">
 <main>
 ${body}
 </main>

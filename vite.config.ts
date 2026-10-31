@@ -46,6 +46,7 @@ export const CSP_HOSTS = {
     'https://*.tile.opentopomap.org',
     'https://upload.wikimedia.org',
     'https://commons.wikimedia.org',
+    'https://tomningskartan.goatcounter.com', // besöksräkning (src/lib/stats.ts)
   ],
 }
 const CSP = [

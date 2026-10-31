@@ -46,6 +46,19 @@ Kolla även att rätt mejladress står på https://github.com/settings/notificat
 
 Betyg utan text och ✓-bekräftelser publiceras direkt – inget att göra.
 
+## Besöksstatistik (GoatCounter)
+
+Appen och platssidorna räknar besök med GoatCounter – utan cookies, inget sparas
+om besökaren. Statistiken syns på https://tomningskartan.goatcounter.com när
+kontot är skapat (gratis): gå till goatcounter.com → *Sign up*, välj koden
+**tomningskartan** (exakt så), ange din mejl. Innan kontot finns räknas inget.
+
+- Dina egna besök räknas inte i en webbläsare där du någon gång öppnat
+  `tomningskartan.se/?admin=1` (gör det en gång på telefonen och datorn).
+- `?statistik=pa` slår på räkningen igen i den webbläsaren.
+- Google Search Console visar bara klick från Google-sökningar; GoatCounter
+  visar alla besök (startsidan, delade länkar, plats- och kommunsidor).
+
 ## Bra länkar
 
 - Adminstatus: https://tomningskartan.se/?admin=1
