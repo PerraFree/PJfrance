@@ -3,9 +3,17 @@
 Skrivs ÖVER vid varje överlämning (lägg inte äldre lägesbilder på hög – historik
 finns i git-loggen, `docs/svep-logg.md` och `docs/HISTORIK.md`).
 
-**Uppdaterad:** 2026-10-28 morgon – veckogranskning.
+**Uppdaterad:** 2026-10-31 – besöksräknare + gratis-/dubblettnålar.
 
-Senaste händelse (28 okt): veckogranskning med 6 granskare (e43877f9).
+Senaste (31 okt): GoatCounter-besöksräknare (Per har skapat kontot
+`tomningskartan`; pixel i appen och på SEO-sidorna, ?admin=1 stänger av
+räkningen i den webbläsaren, se `docs/ADMIN.md`). #46 p.1/3: OSM-noder med
+samma namn som en registerpost ≤400 m slås ihop (69 nålar), OSM-tömning
+"gratis" ≤250 m från camping räknas inte som gratis, "Gratis" kräver
+tömning/vatten/ställplats (524 → 379), gasolbutiker inte längre ortsnamn.
+sw.js v123.
+
+Förra händelsen (28 okt): veckogranskning med 6 granskare (e43877f9).
 Vakterna i `check-register` gick att lura (mellanslag, gammalt citat, nytt id)
 – nu prövas bara ny text; 16 poster visade grått som grönt (överlapp nu fel);
 10 dubblettpar från runda 3 sammanslagna; 6 tjänster med svagt belägg grå;
