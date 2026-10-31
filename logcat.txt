@@ -1,0 +1,80 @@
+10-31 16:27:34.170   522  1806 I ImeTracker: se.tomningskartan.app:9b9f52b5: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-31 16:27:34.230  2664  3021 D Capacitor: Handling local request: https://localhost/data/stations-seed.json
+10-31 16:27:34.270   522  1711 D CoreBackPreview: Window{9b26c3 u0 Splash Screen se.tomningskartan.app}: Setting back callback null
+10-31 16:27:34.271   522   536 W InputManager-JNI: Input channel object '9b26c3 Splash Screen se.tomningskartan.app (client)' was disposed without first being removed with the input manager!
+10-31 16:27:34.298  2664  3045 D Capacitor: Handling local request: https://localhost/icon.svg
+10-31 16:27:34.386  1486  1486 I GoogleInputMethodService: GoogleInputMethodService.onStartInput():1877 onStartInput(EditorInfo{inputType=0x0(NULL) imeOptions=0x12000000 privateImeOptions=null actionName=UNSPECIFIED actionLabel=null actionId=0 initialSelStart=-1 initialSelEnd=-1 initialCapsMode=0x0 hintText=null label=null packageName=se.tomningskartan.app fieldId=0 fieldName=null extras=null}, false)
+10-31 16:27:34.418   522   551 I ActivityManager: Start proc 3375:com.google.android.webview:webview_apk/u0a134 for service {com.google.android.webview/org.chromium.android_webview.nonembedded.AwComponentUpdateService}
+10-31 16:27:36.157  3375  3520 W cr_AWNetworkFetcherTask: 	at org.chromium.android_webview.nonembedded.NetworkFetcherTask.download(chromium-TrichromeWebViewGoogle6432.apk-stable-567263637:48)
+10-31 16:27:37.525  1638  1638 I AiAiEcho: AppFetcherImplV2 updateApps package:[se.tomningskartan.app], userId:[0], reason:[package is added.].
+10-31 16:27:37.849  1638  1638 I AiAiEcho: AppFetcherImpl onPackageChanged se.tomningskartan.app.
+10-31 16:27:37.853  1638  2730 I AiAiEcho: AppIndexer Package:[se.tomningskartan.app] UserProfile:[0] Enabled:[true].
+10-31 16:27:37.853  1638  2730 I AiAiEcho: AppFetcherImplV2 updateApps package:[se.tomningskartan.app], userId:[0], reason:[package is updated.].
+10-31 16:27:38.513  2664  2664 I Capacitor/Console: File:  - Line 349 - Msg: [object Object]
+10-31 16:27:38.518  2664  2664 V Capacitor/Plugin: To native (Capacitor plugin): callbackId: 131984671, pluginId: StatusBar, methodName: setBackgroundColor
+10-31 16:27:38.521  2664  2664 V Capacitor: callback: 131984671, pluginId: StatusBar, methodName: setBackgroundColor, methodData: {"color":"#f6f8f6"}
+10-31 16:27:38.523  2664  2664 E chromium: [ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint (unset) for first_image_paint 2.297 s
+10-31 16:27:38.523  2664  2664 E chromium: [ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint (unset) for first_image_paint 2.297 s
+10-31 16:27:38.680  3390  3694 W id.gms.unstable: Verification of android.os.Handler org.chromium.base.ThreadUtils.a() took 300.249ms (159.87 bytecodes/s) (2848B approximate peak alloc)
+10-31 16:27:38.690  2664  2664 E chromium: [ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 6.07 s for first_image_paint 2.297 s
+10-31 16:27:38.690  2664  2664 E chromium: [ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 6.07 s for first_image_paint 2.297 s
+10-31 16:27:38.751  2664  2664 I Capacitor/Console: File:  - Line 333 - Msg: undefined
+10-31 16:27:38.753  2664  2664 I Capacitor/Console: File:  - Line 349 - Msg: [object Object]
+10-31 16:27:38.755  2664  2664 V Capacitor/Plugin: To native (Capacitor plugin): callbackId: 131984672, pluginId: StatusBar, methodName: setStyle
+10-31 16:27:38.759  2664  2664 V Capacitor: callback: 131984672, pluginId: StatusBar, methodName: setStyle, methodData: {"style":"LIGHT"}
+10-31 16:27:38.950  2664  2664 I Capacitor/Console: File:  - Line 333 - Msg: undefined
+10-31 16:27:38.954  2664  3043 D Capacitor: Handling local request: https://localhost/assets/index-Cnogpi5u.js
+10-31 16:27:38.966  2664  3744 D ProfileInstaller: Installing profile for se.tomningskartan.app
+10-31 16:27:38.975  2664  2664 I Capacitor/Console: File:  - Line 349 - Msg: [object Object]
+10-31 16:27:38.982  2664  2664 V Capacitor/Plugin: To native (Capacitor plugin): callbackId: 131984673, pluginId: App, methodName: addListener
+10-31 16:27:38.983  2664  2664 V Capacitor: callback: 131984673, pluginId: App, methodName: addListener, methodData: {"eventName":"backButton"}
+10-31 16:27:39.096  2664  3043 D Capacitor: Handling local request: https://localhost/assets/index-WNtUxtVl.js
+10-31 16:27:39.208  2664  2664 E chromium: [ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 6.07 s for first_image_paint 2.297 s
+10-31 16:27:39.309  2664  2664 I Capacitor/Console: File:  - Line 349 - Msg: [object Object]
+10-31 16:27:39.310  2664  2664 V Capacitor/Plugin: To native (Capacitor plugin): callbackId: 131984674, pluginId: SplashScreen, methodName: hide
+10-31 16:27:39.310  2664  2664 V Capacitor: callback: 131984674, pluginId: SplashScreen, methodName: hide, methodData: {}
+10-31 16:27:39.312  2664  2664 I Capacitor/Console: File:  - Line 333 - Msg: undefined
+10-31 16:27:39.380  2664  3032 W ningskartan.app: Long monitor contention with owner ThreadPoolForeg (3021) at org.chromium.net.AndroidCertVerifyResult OB0.h(byte[][], java.lang.String, java.lang.String)(chromium-TrichromeWebViewGoogle6432.apk-stable-567263637:242) waiters=0 in org.chromium.net.AndroidCertVerifyResult OB0.h(byte[][], java.lang.String, java.lang.String) for 833ms
+10-31 16:27:39.381  2664  3034 W ningskartan.app: Long monitor contention with owner ThreadPoolForeg (3021) at org.chromium.net.AndroidCertVerifyResult OB0.h(byte[][], java.lang.String, java.lang.String)(chromium-TrichromeWebViewGoogle6432.apk-stable-567263637:242) waiters=1 in org.chromium.net.AndroidCertVerifyResult OB0.h(byte[][], java.lang.String, java.lang.String) for 628ms
+10-31 16:27:39.408  2664  2664 E chromium: [ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 6.07 s for first_image_paint 2.297 s
+10-31 16:27:39.736  2664  2664 E chromium: [ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 6.07 s for first_image_paint 2.297 s
+10-31 16:27:40.087  2664  3021 D Capacitor: Handling local request: https://localhost/data/id-aliases.json
+10-31 16:27:40.097  2664  2664 E chromium: [ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 6.07 s for first_image_paint 2.297 s
+10-31 16:27:40.435  2664  2664 E chromium: [ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 6.07 s for first_image_paint 2.297 s
+10-31 16:27:40.675  2664  2664 E chromium: [ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 6.07 s for first_image_paint 2.297 s
+10-31 16:27:40.784  2664  2664 E chromium: [ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 6.07 s for first_image_paint 2.297 s
+10-31 16:27:40.993   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{61204c7 com.google.android.googlequicksearchbox/10132} BLOCKED
+10-31 16:27:40.995  2664  2664 E chromium: [ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 6.07 s for first_image_paint 2.297 s
+10-31 16:27:40.995   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{c0adaf4 com.android.camera2/10147} BLOCKED
+10-31 16:27:41.005   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{c0dc21d com.google.android.gm/10141} BLOCKED
+10-31 16:27:41.006   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{26eac92 com.google.android.devicelockcontroller/10171} BLOCKED
+10-31 16:27:41.006   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{ca02663 com.google.android.dialer/10128} BLOCKED
+10-31 16:27:41.006   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{f74b260 com.google.android.contacts/10155} BLOCKED
+10-31 16:27:41.006   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{9496319 com.google.android.apps.youtube.music/10156} BLOCKED
+10-31 16:27:41.194   522  1988 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{afa3cbe com.google.android.gm/10141} BLOCKED
+10-31 16:27:41.993   522   592 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{b7826a1 com.google.android.settings.intelligence/10118} BLOCKED
+10-31 16:27:42.002   522   592 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{4796623 com.google.android.settings.intelligence/10118} BLOCKED
+10-31 16:27:51.090   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{725985b com.google.android.googlequicksearchbox/10132} BLOCKED
+10-31 16:27:51.090   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{cfc8f8 com.google.android.apps.messaging/10129} BLOCKED
+10-31 16:27:51.090   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{f8451d1 com.google.android.gm/10141} BLOCKED
+10-31 16:27:51.091   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{4eab436 com.google.android.rkpdapp/10189} BLOCKED
+10-31 16:27:51.091   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{29b5f37 com.google.android.settings.intelligence/10118} BLOCKED
+10-31 16:27:51.091   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{c61fdd6 com.google.android.projection.gearhead/10123} BLOCKED
+10-31 16:27:51.491  1443  4487 I BlockstoreStorage: Clearing Blockstore Data for package se.tomningskartan.app [CONTEXT service_id=258 ]
+10-31 16:27:58.506   522  1707 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{988283e com.google.android.settings.intelligence/10118} BLOCKED
+10-31 16:28:02.631   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{4fb94ba com.google.android.youtube/10139} BLOCKED
+10-31 16:28:02.631   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{84b2f6b com.google.android.apps.messaging/10129} BLOCKED
+10-31 16:28:02.631   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{837fac8 com.google.android.as/10126} BLOCKED
+10-31 16:28:02.631   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{e436e32 com.google.android.apps.maps/10154} BLOCKED
+10-31 16:28:02.631   522   574 I AppsFilter: interaction: PackageSetting{b0741c5 se.tomningskartan.app/10192} -> PackageSetting{ceee761 com.google.android.contacts/10155} BLOCKED
+10-31 16:28:04.735  4330  5216 I cr_CronetUrlRequestContext: destroyNativeStreamLocked org.chromium.net.impl.CronetBidirectionalStream@d5ef80a
+10-31 16:28:06.935   522  1823 I ActivityManager: Killing 2664:se.tomningskartan.app/u0a192 (adj 0): depends on provider com.google.android.gms/.fonts.provider.FontsProvider in dying proc com.google.android.gms.persistent (adj -10000)
+10-31 16:28:06.975   522  1708 I WindowManager: WIN DEATH: Window{38deabd u0 se.tomningskartan.app/se.tomningskartan.app.MainActivity}
+10-31 16:28:06.975   522  1708 W InputManager-JNI: Input channel object '38deabd se.tomningskartan.app/se.tomningskartan.app.MainActivity (client)' was disposed without first being removed with the input manager!
+10-31 16:28:06.976   522  1821 I ImeTracker: se.tomningskartan.app:c7b6fb88: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_REMOVE_CLIENT
+10-31 16:28:06.976   522  1821 I ImeTracker: se.tomningskartan.app:c7b6fb88: onCancelled at PHASE_SERVER_SHOULD_HIDE
+10-31 16:28:06.983   522   759 D ConnectivityService: releasing NetworkRequest [ REQUEST id=71, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED Uid: 10192 RequestorUid: 10192 RequestorPkg: se.tomningskartan.app UnderlyingNetworks: Null] ] (release request)
+10-31 16:28:06.983   522  1820 I ActivityManager: Killing 3029:com.google.android.webview:sandboxed_process0:org.chromium.content.app.SandboxedProcessService0:0/u0a192i0 (adj 0): isolated not needed
+10-31 16:28:06.997   522  1820 W ActivityTaskManager: Force removing ActivityRecord{8edace0 u0 se.tomningskartan.app/.MainActivity t8}: app died, no saved state
+10-31 16:28:07.020   831   869 V WindowManagerShell: Transition requested: android.os.BinderProxy@5139486 TransitionRequestInfo { type = CLOSE, triggerTask = TaskInfo{userId=0 taskId=8 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=se.tomningskartan.app/.MainActivity } baseActivity=ComponentInfo{se.tomningskartan.app/se.tomningskartan.app.MainActivity} topActivity=ComponentInfo{se.tomningskartan.app/se.tomningskartan.app.MainActivity} origActivity=null realActivity=ComponentInfo{se.tomningskartan.app/se.tomningskartan.app.MainActivity} numActivities=1 lastActiveTime=35424 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@63b4147} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 128 - 0, 0) topActivityInfo=ActivityInfo{9089d74 se.tomningskartan.app.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=true isVisible=true isVisibleRequested=true isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+10-31 16:28:08.374   522   539 V WindowManager: Sent Transition #9 createdAt=10-31 16:28:06.997 via request=TransitionRequestInfo { type = CLOSE, triggerTask = TaskInfo{userId=0 taskId=8 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=se.tomningskartan.app/.MainActivity } baseActivity=ComponentInfo{se.tomningskartan.app/se.tomningskartan.app.MainActivity} topActivity=ComponentInfo{se.tomningskartan.app/se.tomningskartan.app.MainActivity} origActivity=null realActivity=ComponentInfo{se.tomningskartan.app/se.tomningskartan.app.MainActivity} numActivities=1 lastActiveTime=35424 supportsMultiWindow=true resizeMode=1 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{d49105d Task{d1f0b99 #8 type=standard A=10192:se.tomningskartan.app}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=Rect(0, 128 - 0, 0) topActivityInfo=ActivityInfo{67dd2 se.tomningskartan.app.MainActivity} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=true isVisible=true isVisibleRequested=true isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
