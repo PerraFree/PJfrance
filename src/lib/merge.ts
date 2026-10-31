@@ -25,6 +25,9 @@ export function isFree(s: Station): boolean {
   // Gasol är alltid ett köp – en plats som bara säljer gasol kan aldrig
   // räknas som gratis, oavsett vad avgiftsfältet råkar säga.
   if (!s.services.some((sv) => sv !== 'gasol')) return false
+  // "Gratis" gäller tömning, vatten eller övernattning – en soptunna på en
+  // rastplats eller en ÅVC räknades förut (102 nålar, granskning 28 okt 2026).
+  if (!s.services.some((sv) => sv === 'gravatten' || sv === 'latrin' || sv === 'vatten' || sv === 'stallplats')) return false
   return s.source === 'trafikverket' || (s.fee ? isFreeFee(s.fee) : false)
 }
 
@@ -276,6 +279,78 @@ export function dedupe(
       else grid.set(key, [copy])
       kept.push(copy)
     }
+  }
+  return campingNeighbours(sameNameIntoRegister(kept, grid, CELL, isFillOnly, onMerge))
+}
+
+/** "Tömningsstation vid Stensö Camping" → "stensö camping" (jämförs med registrets namn). */
+const GENERIC_VID = /^(Tömningsstation|Ställplats för husbil|Vattenpåfyllning|Sopstation|Återvinningscentral|Drivmedelsstation|Camping|Ställplats|Rastplats|Gasolförsäljning|Gästhamn\/marina|Dricksvatten|Vägkrog\/serviceområde) vid /
+const nameKey = (n: string) => n.replace(GENERIC_VID, '').toLowerCase().replace(/[^a-zåäöéü0-9]+/g, ' ').trim()
+
+/** Pers regel: samma namn inom ~400 m är samma plats. En OSM-nod som heter
+ *  som en registerpost (eller "X vid <registernamnet>") 100–400 m bort blev
+ *  förut en egen nål, ofta "Gratis" fast campingen tar betalt (Stensö,
+ *  Klubbensborg; granskning 28 okt 2026). Den slås nu in i registerposten –
+ *  registret vinner som vanligt. En campings egen "återvinningscentral" är
+ *  dess sopsortering, inte kommunens ÅVC. */
+function sameNameIntoRegister(
+  kept: Station[],
+  grid: Map<string, Station[]>,
+  CELL: number,
+  isFillOnly: (s: Station) => boolean,
+  onMerge?: (kept: Station, merged: Station) => void,
+): Station[] {
+  const gone = new Set<Station>()
+  for (const s of kept) {
+    if (s.source !== 'osm' || gasolOnly(s)) continue
+    const key = nameKey(s.name)
+    if (!key) continue
+    const cx = Math.round(s.lat / CELL)
+    const cy = Math.round(s.lon / CELL)
+    let target: Station | undefined
+    for (let dx = -2; dx <= 2 && !target; dx++) {
+      for (let dy = -2; dy <= 2 && !target; dy++) {
+        target = grid.get(`${cx + dx},${cy + dy}`)?.find(
+          (r) => isCurated(r) && !gone.has(r) && !gasolOnly(r) && nameKey(r.name) === key && distMeters(r, s) <= 400,
+        )
+      }
+    }
+    if (!target) continue
+    const overnight = target.services.some((x) => x === 'camping' || x === 'stallplats')
+    const src = overnight && s.services.includes('atervinning')
+      ? { ...s, services: [...new Set(s.services.map((x) => (x === 'atervinning' ? 'sopor' : x)))] as ServiceType[] }
+      : s
+    mergeInto(target, src, isFillOnly(s))
+    onMerge?.(target, s)
+    gone.add(s)
+  }
+  return gone.size ? kept.filter((s) => !gone.has(s)) : kept
+}
+
+/** En OSM-tömning med "fee=no" inom 250 m från en camping är i praktiken
+ *  campingens egen station – gratis för gäster, inte för den som kör förbi.
+ *  Den visas inte under "Gratis" (Getnö, Tobisvik, Falsterbo m.fl.;
+ *  granskning 28 okt 2026). */
+function campingNeighbours(kept: Station[]): Station[] {
+  const CELL = 0.003
+  const grid = new Map<string, Station[]>()
+  for (const s of kept) {
+    if (!s.services.includes('camping')) continue
+    const k = `${Math.round(s.lat / CELL)},${Math.round(s.lon / CELL)}`
+    grid.set(k, [...(grid.get(k) ?? []), s])
+  }
+  for (const s of kept) {
+    if (s.source !== 'osm' || s.notFree || s.services.includes('camping')) continue
+    if (!s.services.some((x) => x === 'gravatten' || x === 'latrin' || x === 'vatten')) continue
+    const cx = Math.round(s.lat / CELL)
+    const cy = Math.round(s.lon / CELL)
+    for (let dx = -1; dx <= 1 && !s.notFree; dx++) {
+      for (let dy = -1; dy <= 1 && !s.notFree; dy++) {
+        if (grid.get(`${cx + dx},${cy + dy}`)?.some((c) => c !== s && distMeters(c, s) <= 250)) s.notFree = true
+      }
+    }
+    // Popupen och platssidan visar avgiften – "Gratis" ensamt vore fel signal.
+    if (s.notFree && s.fee && isFreeFee(s.fee)) s.fee = `${s.fee} enligt OpenStreetMap – vid en camping, kan gälla bara gäster`
   }
   return kept
 }

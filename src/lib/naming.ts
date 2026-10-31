@@ -38,6 +38,9 @@ export function nameGenericByNearby(stations: Station[], maxKm = 0.25): Station[
   const key = (lat: number, lon: number) => `${Math.round(lat / CELL)},${Math.round(lon / CELL)}`
   for (const s of stations) {
     if (isGenericName(s.name)) continue
+    // En gasolbutik är inget bra ortsnamn ("Sopstation vid Gasol – jem & fix",
+    // granskning 28 okt 2026). Samma i scripts/sync-stations.mjs.
+    if (s.services.length && s.services.every((x) => x === 'gasol')) continue
     const k = key(s.lat, s.lon)
     const bucket = grid.get(k)
     if (bucket) bucket.push(s)
