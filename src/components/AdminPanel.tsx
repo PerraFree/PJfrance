@@ -71,6 +71,10 @@ export default function AdminPanel() {
   const sqlNeeded = [submissions, reports, verifications, reviews, photos].some(
     (s) => s === 'missing',
   )
+  // Engångsfixen är redan gjord när allt är grönt – då fälls rutan ihop så den
+  // inte ser ut som något Per måste göra (Pers fråga 31 okt 2026).
+  const allOk =
+    communityEnabled && [submissions, reports, verifications, reviews, photos].every((s) => s === 'ok')
 
   return (
     <main className="admin">
@@ -141,7 +145,14 @@ export default function AdminPanel() {
       </section>
 
       <section className="admin-card">
-        <h2>Engångsfix: koppla ihop GitHub och Supabase</h2>
+        {allOk && (
+          <p className="adm-done">
+            ✅ <strong>Allt är installerat – du behöver inte göra något.</strong> Stegen nedan
+            behövs bara om en rad ovan blir röd (t.ex. när Supabase-nyckeln byts ut).
+          </p>
+        )}
+        <details open={!allOk}>
+        <summary><h2 style={{ display: 'inline' }}>Engångsfix: koppla ihop GitHub och Supabase</h2></summary>
         <p>
           Ett enda "lösenord" (en nyckel) behövs för att GitHub ska kunna sköta databasen åt
           dig. Tre steg, ca 3 minuter:
@@ -193,6 +204,7 @@ export default function AdminPanel() {
           </a>{' '}
           – dit skickas granskningsmejlen.
         </p>
+        </details>
       </section>
 
       <section className="admin-card">
@@ -212,6 +224,10 @@ export default function AdminPanel() {
           {' · '}
           <a href={`${REPO}/issues?q=is%3Aopen+label%3Aomd%C3%B6me`} target="_blank" rel="noopener noreferrer">
             Väntande kommentarer
+          </a>
+          {' · '}
+          <a href="https://tomningskartan.goatcounter.com" target="_blank" rel="noopener noreferrer">
+            Besöksstatistik
           </a>
           {' · '}
           <a href="https://supabase.com/dashboard" target="_blank" rel="noopener noreferrer">
